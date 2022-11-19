@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	
+	<!-- title -->
+	
+	<title>
+	
+		Hive优化 | 
+	 
+	Personal Blog
+	</title>
+	
+	<!-- keywords,description -->
+	 
+
+	<!-- favicon -->
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+	
+
+
+	<!-- search -->
+	<script>
+		var searchEngine = "";
+		if(typeof searchEngine == "undefined" || searchEngine == null || searchEngine == ""){
+			searchEngine = "https://www.google.com/search?q=";
+		}
+		var homeHost = "";
+		if(typeof homeHost == "undefined" || homeHost == null || homeHost == ""){
+			homeHost = window.location.host;
+		}
+	</script>
+
+
+	
+<link rel="stylesheet" href="/css/main.css">
+
+	
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/darcula.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
+
+	
+<script src="/js/main.js"></script>
+
+	
+		
+<script src="https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
+
+		
+<script src="https://cdn.jsdelivr.net/npm/valine@v1.4.14/dist/Valine.min.js"></script>
+
+	
+	
+		<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?3efe99c287df5a1d6f0d02d187e403c1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<header id="header">
+    <a id="title" href="/" class="logo">Personal Blog</a>
+
+	<ul id="menu">
+		<li class="menu-item">
+			<a href="/about" class="menu-item-link">ABOUT</a>
+		</li>
+	
+		<li class="menu-item">
+			<a href="/tags" class="menu-item-link">标签</a>
+		</li>
+	
+
+	
+		<li class="menu-item">
+			<a href="/categories" class="menu-item-link">分类</a>
+		</li>
+	
+
+		<li class="menu-item">
+			<a href="https://github.com/wujun234/uid-generator-spring-boot-starter" class="menu-item-link" target="_blank">
+				UidGenerator
+			</a>
+		</li>
+		<li class="menu-item">
+			<a href="https://github.com/wujun234" class="menu-item-link" target="_blank">
+				<i class="fa fa-github fa-2x"></i>
+			</a>
+		</li>
+	</ul>
+</header>
+
+	
+<div id="sidebar">
+	<button id="sidebar-toggle" class="toggle" ><i class="fa fa-arrow-right " aria-hidden="true"></i></button>
+	
+	<div id="site-toc">
+		<input id="search-input" class="search-input" type="search" placeholder="按回车全站搜索">
+		<div id="tree">
+			
+
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Hadoop
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Hive
+									</a>
+									
+							<ul>
+								<li class="file active">
+									<a href="/Hadoop/Hive/Hive%E4%BC%98%E5%8C%96/">
+                     
+										    Hive优化
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Hadoop/Hive/Hive%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/">
+                     
+										    Hive基本知识
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Hadoop/Hive/Hive%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+                     
+										    Hive数据类型
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Hadoop/Hive/Hive%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F/">
+                     
+										    Hive文件格式
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Hadoop/Hive/Hive%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E8%AF%AD%E6%B3%95/">
+                     
+										    Hive的基本使用语法
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Hadoop/Hive/Hive%E8%AF%AD%E6%B3%95%E7%B2%BE%E7%82%BC/">
+                     
+										    Hive语法精炼
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Hadoop/Hive/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E5%BC%80%E5%8F%91%E6%9E%B6%E6%9E%84%E5%B1%82%E6%AC%A1/">
+                     
+										    数据仓库开发架构层次
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Hadoop/Hive/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%87%BD%E6%95%B0/">
+                     
+										    数据库函数
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Hadoop/Hive/%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E6%80%9D%E8%B7%AF/">
+                     
+										    数据开发思路
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Hadoop/Hive/%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E8%A6%81%E7%82%B9/">
+                     
+										    数据开发要点
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Hadoop/Hive/%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E8%AF%AD%E6%B3%95%E7%BB%86%E8%8A%82%E2%80%94%E2%80%94%E5%AE%9E%E6%88%98%E7%BB%8F%E9%AA%8C/">
+                     
+										    数据开发语法细节——实战经验
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Hexo搭建流程
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/Hexo%E6%90%AD%E5%BB%BA%E6%B5%81%E7%A8%8B/Hexo%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E6%B5%81%E7%A8%8B/">
+                     
+										    Hexo基本配置流程
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										IDEA
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/IDEA/IDEA%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/">
+                     
+										    IDEA基本配置
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/IDEA/IDEA%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%B1%87%E6%80%BB/">
+                     
+										    IDEA常用快捷键汇总
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Java
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										JDK
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/Java/JDK/JDK%E7%9A%84%E5%8D%B8%E8%BD%BD%E4%B8%8E%E5%AE%89%E8%A3%85/">
+                     
+										    JDK的卸载与安装
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Maven
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/Java/Maven/maven%E5%AE%89%E8%A3%85/">
+                     
+										    maven安装
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										MyBatis
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/Java/MyBatis/MyBatis%20@Param%E6%B3%A8%E8%A7%A3%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E8%AF%B4%E6%98%8E/">
+                     
+										    MyBatis @Param注解使用场景说明
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/MyBatis/Mybatis%E4%BD%BF%E7%94%A8/">
+                     
+										    Mybatis使用
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/MyBatis/Mybatis/">
+                     
+										    Mybatis
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										注意点
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/Java/%E6%B3%A8%E6%84%8F%E7%82%B9/%E7%A9%BA%E5%80%BC%E5%88%A4%E6%96%AD/">
+                     
+										    空值判断
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/%E6%B3%A8%E6%84%8F%E7%82%B9/%E8%A7%A3%E5%86%B3%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%97%A0%E6%B3%95%E7%94%9F%E6%95%88%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%88pom.xml%E4%B8%AD%E8%BF%9B%E8%A1%8C%E9%85%8D%E7%BD%AE%EF%BC%89/">
+                     
+										    解决配置文件无法生效的问题（pom.xml中进行配置）
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/%E6%B3%A8%E6%84%8F%E7%82%B9/%E9%80%BB%E8%BE%91%E5%B1%82%E5%85%B3%E7%B3%BB%E6%A2%B3%E7%90%86/">
+                     
+										    逻辑层关系梳理
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										注解
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/Java/%E6%B3%A8%E8%A7%A3/%E4%B8%80%E4%BA%9B%E6%B3%A8%E8%A7%A3/">
+                     
+										    一些注解
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										语法知识
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95----%E8%BF%90%E7%AE%97%E7%AC%A6/">
+                     
+										    Java基本语法----运算符
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E2%80%94%E2%80%94JavaDoc%E7%94%9F%E6%88%90%E6%96%87%E6%A1%A3/">
+                     
+										    Java基本语法——JavaDoc生成文档
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E2%80%94%E2%80%94%E5%8C%85%E6%9C%BA%E5%88%B6/">
+                     
+										    Java基本语法——包机制
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E2%80%94%E2%80%94%E5%8F%98%E9%87%8F%E3%80%81%E5%B8%B8%E9%87%8F%E3%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F/">
+                     
+										    Java基本语法——变量、常量、作用域
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95--%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%89%A9%E5%B1%95/">
+                     
+										    Java基础语法--数据类型扩展
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95--%E6%A0%87%E8%AF%86%E7%AC%A6/">
+                     
+										    Java基础语法--标识符
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95--%E6%B3%A8%E9%87%8A/">
+                     
+										    Java基础语法--注释
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E6%95%B0%E7%BB%84/">
+                     
+										    Java数组
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E6%96%B9%E6%B3%95%E2%80%94%E2%80%94%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/">
+                     
+										    Java方法——可变参数
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E6%96%B9%E6%B3%95%E2%80%94%E2%80%94%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%BC%A0%E5%8F%82/">
+                     
+										    Java方法——命令行传参
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E6%96%B9%E6%B3%95%E2%80%94%E2%80%94%E6%96%B9%E6%B3%95%E7%9A%84%E9%87%8D%E8%BD%BD/">
+                     
+										    Java方法——方法的重载
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E2%80%94%E2%80%94Scanner/">
+                     
+										    Java流程控制——Scanner
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80%E2%80%94%E2%80%94%20%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/">
+                     
+										    Java语法基础—— 类型转换
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+                     
+										    Java语法基础——数据类型
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Static%E5%85%B3%E9%94%AE%E5%AD%97/">
+                     
+										    Static关键字
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E5%86%85%E9%83%A8%E7%B1%BB/">
+                     
+										    内部类
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E5%A2%9E%E5%BC%BAfor%E5%BE%AA%E7%8E%AF/">
+                     
+										    增强for循环
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E5%BC%82%E5%B8%B8/">
+                     
+										    异常
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E6%8A%BD%E8%B1%A1%E7%B1%BB/">
+                     
+										    抽象类
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E6%8E%A5%E5%8F%A3/">
+                     
+										    接口
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E6%B3%9B%E5%9E%8B/">
+                     
+										    泛型
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                     
+										    设计模式
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/">
+                     
+										    集合框架
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
+                     
+										    面向对象
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Linux
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/Linux/Linux%E4%B8%8B%E5%AE%89%E8%A3%85anaconda/">
+                     
+										    Linux下安装anaconda
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Linux/Linux%E5%9F%BA%E7%A1%80/">
+                     
+										    Linux基础
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Markdown
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/Markdown/Markdown%20%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">
+                     
+										    Markdown 基本语法
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										MySQL
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/MySQL/MySQL%E5%AE%89%E8%A3%85/">
+                     
+										    MySQL安装
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/MySQL/MySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2/">
+                     
+										    MySQL数据检索
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Python
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/Python/kats%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">
+                     
+										    kats安装教程
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										其他
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Cron定时任务表达式
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/%E5%85%B6%E4%BB%96/Cron%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E8%A1%A8%E8%BE%BE%E5%BC%8F/Cron%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+                     
+										    Cron表达式
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										机器学习
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/K%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0%EF%BC%88k-Nearest%20Neighbor%20,kNN)/">
+                     
+										    K近邻算法概述（k-Nearest Neighbor ,kNN)
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%9C%80(%E6%9E%81)%E5%A4%A7%E4%BC%BC%E7%84%B6%E6%B3%95/">
+                     
+										    最(极)大似然法
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%81%9A%E7%B1%BB/">
+                     
+										    聚类
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%99%8D%E7%BB%B4/">
+                     
+										    降维
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										深度学习
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/CNN%E7%B3%BB%E5%88%97%E6%A8%A1%E5%9E%8B/">
+                     
+										    CNN系列模型
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/Pipeline/">
+                     
+										    Pipeline
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E7%AE%97%E6%B3%95/">
+                     
+										    反向传播算法
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%A4%9A%E5%B1%82%E6%84%9F%E7%9F%A5%E6%9C%BA%E6%B7%B1%E5%BA%A6%E5%89%8D%E9%A6%88%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A8%E8%BF%9E%E6%8E%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
+                     
+										    多层感知机深度前馈神经网络人工神经网络全连接神经网络
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E7%B3%BB%E5%88%97%E7%AE%97%E6%B3%95/">
+                     
+										    梯度下降系列算法
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/">
+                     
+										    深度学习基础
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+		</div>
+	</div>
+</div>
+
+	<!-- 引入正文 -->
+	<div id="content">
+		<h1 id="article-title">
+	Hive优化
+</h1>
+<div class="article-meta">
+	
+		<span>
+			阅读量:<span id="/Hadoop/Hive/Hive%E4%BC%98%E5%8C%96/" class="leancloud_visitors" data-flag-title=""></span>
+		</span>
+	
+	<span>Taizi</span>
+	<span>2022-11-19 11:35:31</span>
+		<div id="article-categories">
+    
+		<span>Categories：</span>
+            
+    
+
+    
+		<span>Tags：</span>
+            
+    
+		</div>
+
+</div>
+
+<div id="article-content">
+	<h1 id="Hive优化"><a href="#Hive优化" class="headerlink" title="Hive优化"></a>Hive优化</h1><h2 id="1-Fetch抓取"><a href="#1-Fetch抓取" class="headerlink" title="1. Fetch抓取"></a>1. Fetch抓取</h2><blockquote>
+<p>Fetch抓取是指，Hive中对某些情况的查询可以不必使用MapReduce计算.</p>
+<p>hive.fetch.task.conversion默认是more，老版本hive默认是minimal，该属性修改为more以后，在全局查找、字段查找、limit查找等都不走mapreduce。</p>
+</blockquote>
+<h2 id="2-本地模式"><a href="#2-本地模式" class="headerlink" title="2. 本地模式"></a>2. 本地模式</h2><blockquote>
+<p>有时Hive的输入数据量是非常小的。在这种情况下，为查询触发执行任务消耗的时间可能会比实际job的执行时间要多的多。对于大多数这种情况，Hive可以通过本地模式在单台机器上处理所有的任务。对于小数据集，执行时间可以明显被缩短。</p>
+<p>可以通过设置hive.exec.mode.local.auto的值为true，来让Hive在适当的时候自动启动这个优化。</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> hive.exec.mode.local.auto<span class="operator">=</span><span class="literal">true</span>;  <span class="operator">/</span><span class="operator">/</span>开启本地mr</span><br><span class="line"><span class="operator">/</span><span class="operator">/</span>设置<span class="keyword">local</span> mr的最大输入数据量，当输入数据量小于这个值时采用<span class="keyword">local</span>  mr的方式，默认为<span class="number">134217728</span>，即<span class="number">128</span>M</span><br><span class="line"><span class="keyword">set</span> hive.exec.mode.local.auto.inputbytes.max<span class="operator">=</span><span class="number">50000000</span>;</span><br><span class="line"><span class="operator">/</span><span class="operator">/</span>设置<span class="keyword">local</span> mr的最大输入文件个数，当输入文件个数小于这个值时采用<span class="keyword">local</span> mr的方式，默认为<span class="number">4</span></span><br><span class="line"><span class="keyword">set</span> hive.exec.mode.local.auto.input.files.max<span class="operator">=</span><span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-表的优化"><a href="#3-表的优化" class="headerlink" title="3. 表的优化"></a>3. 表的优化</h2><h3 id="3-1-小表、大表join"><a href="#3-1-小表、大表join" class="headerlink" title="3.1 小表、大表join"></a>3.1 小表、大表join</h3><blockquote>
+<p>将key相对分散，并且数据量小的表放在join的左边，这样可以有效减少内存溢出错误发生的几率；再进一步，可以使用map join让小的维度表（1000条以下的记录条数）先进内存。在map端完成reduce。</p>
+<p>新版的hive已经对小表JOIN大表和大表JOIN小表进行了优化。小表放在左边和右边已经没有明显区别。</p>
+</blockquote>
+<h3 id="3-2-大表-join-大表"><a href="#3-2-大表-join-大表" class="headerlink" title="3.2 大表 join 大表"></a>3.2 大表 join 大表</h3><h4 id="3-2-1-空key过滤"><a href="#3-2-1-空key过滤" class="headerlink" title="3.2.1 空key过滤"></a>3.2.1 空key过滤</h4><blockquote>
+<p>有时join超时是因为某些key对应的数据太多，而相同key对应的数据都会发送到相同的reducer上，从而导致内存不够。此时我们应该仔细分析这些异常的key，很多情况下，这些key对应的数据是异常数据，我们需要在SQL语句中进行过滤。</p>
+<p>join前可以将值为空的连接key过滤掉。</p>
+</blockquote>
+<h4 id="3-2-2-空key转换"><a href="#3-2-2-空key转换" class="headerlink" title="3.2.2 空key转换"></a>3.2.2 空key转换</h4><blockquote>
+<p>有时虽然某个key为空对应的数据很多，但是相应的数据不是异常数据，必须要包含在join的结果中，此时我们可以表a中key为空的字段赋一个随机的值，使得数据随机均匀地分不到不同的reducer上。</p>
+</blockquote>
+<h3 id="3-3-MapJoin"><a href="#3-3-MapJoin" class="headerlink" title="3.3 MapJoin"></a>3.3 MapJoin</h3><p>工作机制：</p>
+<p><img src="/Hadoop/Hive/Hive%E4%BC%98%E5%8C%96/.%5CHive%E4%BC%98%E5%8C%96%5Cclip_image002.png" alt="img"></p>
+<p>开启MapJoin功能：</p>
+<p>​	<code>set hive.auto.convert.join = true; </code>         默认为true</p>
+<p>大表小表的阈值设置（默认25M一下认为是小表）：</p>
+<p>​	<code>set hive.mapjoin.smalltable.filesize=25000000;</code></p>
+<h3 id="3-4-Group-By"><a href="#3-4-Group-By" class="headerlink" title="3.4 Group By"></a>3.4 Group By</h3><blockquote>
+<p>默认情况下，Map阶段同一Key数据分发给一个reduce，当一个key数据过大时就倾斜了。</p>
+<p>并不是所有的聚合操作都需要在Reduce端完成，很多聚合操作都可以先在Map端进行部分聚合，最后在Reduce端得出最终结果。</p>
+</blockquote>
+<p>1．开启Map端聚合参数设置</p>
+<p>（1）是否在Map端进行聚合，默认为True</p>
+<p>​	<code>hive.map.aggr = true</code></p>
+<p>（2）在Map端进行聚合操作的条目数目</p>
+<p>​	<code>hive.groupby.mapaggr.checkinterval = 100000</code></p>
+<p>（3）有数据倾斜的时候进行负载均衡（默认是false）</p>
+<p>​	<code>hive.groupby.skewindata = true</code></p>
+<blockquote>
+<p>当选项设定为 true，生成的查询计划会有两个MR Job。第一个MR Job中，Map的输出结果会随机分布到Reduce中，每个Reduce做部分聚合操作，并输出结果，这样处理的结果是相同的Group By Key有可能被分发到不同的Reduce中，从而达到负载均衡的目的；第二个MR Job再根据预处理的数据结果按照Group By Key分布到Reduce中（这个过程可以保证相同的Group By Key被分布到同一个Reduce中），最后完成最终的聚合操作。</p>
+</blockquote>
+<h3 id="3-5-Count-Distinct-去重统计"><a href="#3-5-Count-Distinct-去重统计" class="headerlink" title="3.5 Count(Distinct) 去重统计"></a>3.5 Count(Distinct) 去重统计</h3><blockquote>
+<p>数据量小的时候无所谓，数据量大的情况下，由于COUNT DISTINCT操作需要用一个Reduce Task来完成，这一个Reduce需要处理的数据量太大，就会导致整个Job很难完成，一般COUNT DISTINCT使用先GROUP BY再COUNT的方式替换,虽然会多用一个Job来完成，但在数据量大的情况下，这个绝对是值得的。</p>
+</blockquote>
+<h3 id="3-6-笛卡尔积"><a href="#3-6-笛卡尔积" class="headerlink" title="3.6 笛卡尔积"></a>3.6 笛卡尔积</h3><blockquote>
+<p>尽量避免笛卡尔积，join的时候不加on条件，或者无效的on条件，Hive只能使用1个reducer来完成笛卡尔积。</p>
+</blockquote>
+<h3 id="3-7-行列过滤"><a href="#3-7-行列过滤" class="headerlink" title="3.7 行列过滤"></a>3.7 行列过滤</h3><blockquote>
+<p>列处理：在SELECT中，只拿需要的列，如果有，尽量使用分区过滤，少用SELECT *。</p>
+<p>行处理：在分区剪裁中，当使用外关联时，如果将副表的过滤条件写在Where后面，那么就会先全表关联，之后再过滤.  所以连接的子表需要过滤时，应尽量现在子表中使用where条件过滤，实在无法再子表中过滤时再考虑在关联之后使用where条件过滤</p>
+</blockquote>
+<h3 id="3-8-动态分区"><a href="#3-8-动态分区" class="headerlink" title="3.8 动态分区"></a>3.8 动态分区</h3><blockquote>
+<p>关系型数据库中，对分区表Insert数据时候，数据库自动会根据分区字段的值，将数据插入到相应的分区中，Hive中也提供了类似的机制，即动态分区(Dynamic Partition)，只不过，使用Hive的动态分区，需要进行相应的配置。</p>
+</blockquote>
+<p><strong>1．开启动态分区参数设置</strong></p>
+<p>（1）开启动态分区功能（默认true，开启）</p>
+<p>​	<code>set hive.exec.dynamic.partition=true;</code></p>
+<p>（2）设置为非严格模式（动态分区的模式，默认strict，表示必须指定至少一个分区为静态分区，nonstrict模式表示允许所有的分区字段都可以使用动态分区。）</p>
+<p>​	<code>set hive.exec.dynamic.partition.mode=nonstrict;</code></p>
+<p>（3）在所有执行MR的节点上，最大一共可以创建多少个动态分区。</p>
+<p>​	<code>set hive.exec.max.dynamic.partitions=1000;</code></p>
+<p>​    （4）在每个执行MR的节点上，最大可以创建多少个动态分区。该参数需要根据实际的数据来设定。比如：源数据中包含了一年的数据，即day字段有365个值，那么该参数就需要设置成大于365，如果使用默认值100，则会报错。</p>
+<p>​	<code>set hive.exec.max.dynamic.partitions.pernode=100;</code></p>
+<p>（5）整个MR Job中，最大可以创建多少个HDFS文件。</p>
+<p>​	<code>set hive.exec.max.created.files=100000;</code></p>
+<p>（6）当有空分区生成时，是否抛出异常。一般不需要设置。</p>
+<p>​	<code>set hive.error.on.empty.partition=false;</code></p>
+<h2 id="4-数据倾斜（MR优化）"><a href="#4-数据倾斜（MR优化）" class="headerlink" title="4. 数据倾斜（MR优化）"></a>4. 数据倾斜（MR优化）</h2><h3 id="4-1-合理设置Map数"><a href="#4-1-合理设置Map数" class="headerlink" title="4.1 合理设置Map数"></a>4.1 合理设置Map数</h3><p><strong>1</strong>）通常情况下，作业会通过input的目录产生一个或者多个map任务。</p>
+<p>​	主要的决定因素有：input的文件总个数，input的文件大小，集群设置的文件块大小。</p>
+<p><strong>2</strong>）是不是map数越多越好？</p>
+<p>​	答案是否定的。如果一个任务有很多小文件（远远小于块大小128m），则每个小文件也会被当做一个块，用一个map任务来完成，而一个map任务启动和初始化的时间远远大于逻辑处理的时间，就会造成很大的资源浪费。而且，同时可执行的map数是受限的。</p>
+<p><strong>3</strong>）是不是保证每个map处理接近128m的文件块，就高枕无忧了？</p>
+<p>​	答案也是不一定。比如有一个127m的文件，正常会用一个map去完成，但这个文件只有一个或者两个小字段，却有几千万的记录，如果map处理的逻辑比较复杂，用一个map任务去做，肯定也比较耗时。</p>
+<p>针对上面的问题2和3，我们需要采取两种方式来解决：即减少map数和增加map数；</p>
+<h3 id="4-2-小文件合并"><a href="#4-2-小文件合并" class="headerlink" title="4.2 小文件合并"></a>4.2 小文件合并</h3><p>在map执行前合并小文件，减少map数：CombineHiveInputFormat具有对小文件进行合并的功能（系统默认的格式）。HiveInputFormat没有对小文件合并功能。</p>
+<p>​	<code>set hive.input.format= org.apache.hadoop.hive.ql.io.CombineHiveInputFormat;</code></p>
+<h3 id="4-3-复杂文件增加Map数"><a href="#4-3-复杂文件增加Map数" class="headerlink" title="4.3 复杂文件增加Map数"></a>4.3 复杂文件增加Map数</h3><p>当input的文件都很大，任务逻辑复杂，map执行非常慢的时候，可以考虑增加Map数，来使得每个map处理的数据量减少，从而提高任务的执行效率。</p>
+<p>增加map的方法为：根据computeSliteSize(Math.max(minSize,Math.min(maxSize,blocksize)))&#x3D;blocksize&#x3D;128M公式，调整maxSize最大值。让maxSize最大值低于blocksize就可以增加map的个数。</p>
+<p>设置最大切片值大小：</p>
+<p>​	<code>set mapreduce.input.fileinputformat.split.maxsize=100;</code></p>
+<h3 id="4-4-合理设置Reduce数"><a href="#4-4-合理设置Reduce数" class="headerlink" title="4.4 合理设置Reduce数"></a>4.4 合理设置Reduce数</h3><p><strong>1．调整reduce个数方法一</strong>   （通过设置每个Reduce处理的数据量确定Reduce的值）</p>
+<p>（1）每个Reduce处理的数据量默认是256MB</p>
+<p>​	<code>set hive.exec.reducers.bytes.per.reducer=256000000;</code></p>
+<p>（2）每个任务最大的reduce数，默认为1009</p>
+<p>​	<code>set hive.exec.reducers.max=1009;</code></p>
+<p>（3）计算reducer数的公式</p>
+<p>​	<code>	N=min(参数2，总输入数据量/参数1)</code></p>
+<p><strong>2．调整reduce个数方法二</strong>	(直接指定reduce的个数)</p>
+<p>在hadoop的mapred-default.xml文件中修改</p>
+<p>设置每个job的Reduce个数(默认为-1, 按数据在MapReduce之前的大小，以及上面方法一的配置量来分配的)</p>
+<p>​	<code>set mapreduce.job.reduces = 15;</code></p>
+<p><strong>3．reduce个数并不是越多越好</strong></p>
+<p>1）过多的启动和初始化reduce也会消耗时间和资源；</p>
+<p>2）另外，有多少个reduce，就会有多少个输出文件，如果生成了很多个小文件，那么如果这些小文件作为下一个任务的输入，则也会出现小文件过多的问题；</p>
+<p>在设置reduce个数的时候也需要考虑这两个原则：处理大数据量利用合适的reduce数；使单个reduce任务处理数据量大小要合适；</p>
+<h2 id="5-并行执行"><a href="#5-并行执行" class="headerlink" title="5. 并行执行"></a>5. 并行执行</h2><p>hive会将一个查询转化成一个或者多个阶段。这样的阶段可以是MapReduce阶段、抽样阶段、合并阶段、limit阶段。或者Hive执行过程中可能需要的其他阶段。默认情况下，Hive一次只会执行一个阶段。不过，某个特定的job可能包含众多的阶段，而这些阶段可能并非完全互相依赖的，也就是说有些阶段是可以并行执行的，这样可能使得整个job的执行时间缩短。不过，如果有更多的阶段可以并行执行，那么job可能就越快完成。</p>
+<p>​    通过设置参数hive.exec.parallel值为true，就可以开启并发执行。不过，在共享集群中，需要注意下，如果job中并行阶段增多，那么集群利用率就会增加。</p>
+<p><code>set hive.exec.parallel=true; </code>      &#x2F;&#x2F;打开任务并行执行</p>
+<p><code>set hive.exec.parallel.thread.number=16;</code> &#x2F;&#x2F;同一个sql允许最大并行度，默认为8。</p>
+<p>当然，得是在系统资源比较空闲的时候才有优势，否则，没资源，并行也起不来。</p>
+<h2 id="6-严格模式"><a href="#6-严格模式" class="headerlink" title="6. 严格模式"></a>6. 严格模式</h2><p>Hive提供了一个严格模式，可以防止用户执行那些可能意想不到的不好的影响的查询。</p>
+<p>​    通过设置属性hive.mapred.mode值为默认是非严格模式nonstrict 。开启严格模式需要修改hive.mapred.mode值为strict     <code>set hive.mapred.mode=strict;</code></p>
+<p>，开启严格模式可以禁止3种类型的查询。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>hive.mapred.mode<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>strict<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">description</span>&gt;</span></span><br><span class="line">      The mode in which the Hive operations are being performed. </span><br><span class="line">      In strict mode, some risky queries are not allowed to run. They include:</span><br><span class="line">        Cartesian Product.</span><br><span class="line">        No partition being picked up for a query.</span><br><span class="line">        Comparing bigints and strings.</span><br><span class="line">        Comparing bigints and doubles.</span><br><span class="line">        Orderby without limit.</span><br><span class="line"><span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><p>对于分区表，除非where语句中含有分区字段过滤条件来限制范围，否则不允许执行。换句话说，就是用户不允许扫描所有分区。进行这个限制的原因是，通常分区表都拥有非常大的数据集，而且数据增加迅速。没有进行分区限制的查询可能会消耗令人不可接受的巨大资源来处理这个表。</p>
+</li>
+<li><p>对于使用了order by语句的查询，要求必须使用limit语句。因为order by为了执行排序过程会将所有的结果数据分发到同一个Reducer中进行处理，强制要求用户增加这个LIMIT语句可以防止Reducer额外执行很长一段时间。</p>
+</li>
+<li><p>限制笛卡尔积的查询。对关系型数据库非常了解的用户可能期望在执行JOIN查询的时候不使用ON语句而是使用where语句，这样关系数据库的执行优化器就可以高效地将WHERE语句转化成那个ON语句。不幸的是，Hive并不会执行这种优化，因此，如果表足够大，那么这个查询就会出现不可控的情况。</p>
+</li>
+</ol>
+<h2 id="7-JVM重用"><a href="#7-JVM重用" class="headerlink" title="7. JVM重用"></a>7. JVM重用</h2><p>JVM重用是Hadoop调优参数的内容，其对Hive的性能具有非常大的影响，特别是对于很难避免小文件的场景或task特别多的场景，这类场景大多数执行时间都很短。</p>
+<p>Hadoop的默认配置通常是使用派生JVM来执行map和Reduce任务的。这时JVM的启动过程可能会造成相当大的开销，尤其是执行的job包含有成百上千task任务的情况。JVM重用可以使得JVM实例在同一个job中重新使用N次。N的值可以在Hadoop的mapred-site.xml文件中进行配置。通常在10-20之间，具体多少需要根据具体业务场景测试得出。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"> <span class="tag">&lt;<span class="name">name</span>&gt;</span>mapreduce.job.jvm.numtasks<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line"></span><br><span class="line"> <span class="tag">&lt;<span class="name">value</span>&gt;</span>10<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"></span><br><span class="line"> <span class="tag">&lt;<span class="name">description</span>&gt;</span></span><br><span class="line">     How many tasks to run per jvm. If set to -1, there is no limit. </span><br><span class="line"> <span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这个功能的缺点是，开启JVM重用将一直占用使用到的task插槽，以便进行重用，直到任务完成后才能释放。如果某个“不平衡的”job中有某几个reduce task执行的时间要比其他Reduce task消耗的时间多的多的话，那么保留的插槽就会一直空闲着却无法被其他的job使用，直到所有的task都结束了才会释放。</p>
+<h2 id="8-推测执行"><a href="#8-推测执行" class="headerlink" title="8. 推测执行"></a>8. 推测执行</h2><p>在分布式集群环境下，因为程序Bug（包括Hadoop本身的bug），负载不均衡或者资源分布不均等原因，会造成同一个作业的多个任务之间运行速度不一致，有些任务的运行速度可能明显慢于其他任务（比如一个作业的某个任务进度只有50%，而其他所有任务已经运行完毕），则这些任务会拖慢作业的整体执行进度。为了避免这种情况发生，Hadoop采用了推测执行（Speculative Execution）机制，它根据一定的法则推测出“拖后腿”的任务，并为这样的任务启动一个备份任务，让该任务与原始任务同时处理同一份数据，并最终选用最先成功运行完成任务的计算结果作为最终结果。</p>
+<p>设置开启推测执行参数：Hadoop的mapred-site.xml文件中进行配置</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>mapreduce.map.speculative<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>true<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">description</span>&gt;</span>If true, then multiple instances of some map tasks </span><br><span class="line">               may be executed in parallel.<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>mapreduce.reduce.speculative<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>true<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">description</span>&gt;</span>If true, then multiple instances of some reduce tasks </span><br><span class="line">               may be executed in parallel.<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>不过hive本身也提供了配置项来控制reduce-side的推测执行：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>hive.mapred.reduce.tasks.speculative.execution<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>true<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">description</span>&gt;</span>Whether speculative execution for reducers should be turned on. <span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>关于调优这些推测执行变量，还很难给一个具体的建议。如果用户对于运行时的偏差非常敏感的话，那么可以将这些功能关闭掉。如果用户因为输入数据量很大而需要执行长时间的map或者Reduce task的话，那么启动推测执行造成的浪费是非常巨大大。</p>
+<h2 id="10-执行计划（Explain）"><a href="#10-执行计划（Explain）" class="headerlink" title="10. 执行计划（Explain）"></a>10. 执行计划（Explain）</h2><p>1．基本语法</p>
+<p>EXPLAIN [EXTENDED | DEPENDENCY | AUTHORIZATION] query</p>
+<p>2．案例实操</p>
+<p>（1）查看下面这条语句的执行计划</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hive (<span class="keyword">default</span>)<span class="operator">&gt;</span> explain <span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> emp;</span><br><span class="line"></span><br><span class="line">hive (<span class="keyword">default</span>)<span class="operator">&gt;</span> explain <span class="keyword">select</span> deptno, <span class="built_in">avg</span>(sal) avg_sal <span class="keyword">from</span> emp <span class="keyword">group</span> <span class="keyword">by</span> deptno;</span><br></pre></td></tr></table></figure>
+
+<p>（2）查看详细执行计划</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hive (<span class="keyword">default</span>)<span class="operator">&gt;</span> explain extended <span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> emp;</span><br><span class="line"></span><br><span class="line">hive (<span class="keyword">default</span>)<span class="operator">&gt;</span> explain extended <span class="keyword">select</span> deptno, <span class="built_in">avg</span>(sal) avg_sal <span class="keyword">from</span> emp <span class="keyword">group</span> <span class="keyword">by</span> deptno;</span><br></pre></td></tr></table></figure>
+
+</div>
+
+
+    <div class="post-guide">
+        <div class="item left">
+            
+              <a href="/Hadoop/Hive/Hive%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  Hive基本知识
+              </a>
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/Hadoop/Hive/Hive%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F/">
+                Hive文件格式
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
+
+
+
+	<div id="vcomments"></div>
+
+
+<script>
+	
+		// 评论
+		new Valine({
+			el: '#vcomments',
+			appId: 'F45pCfA2eAGxpJ1vwOuFzwnb-gzGzoHsz',
+			appKey: 'Dt9qs1xUTsnmVN7mQcwUdzTS',
+			placeholder: '期待你的留言^_^',
+			path: window.location.pathname,
+			avatar: 'retro',
+			highlight: false,
+      recordIP: true,
+      enableQQ: true,
+			requiredFields: ['nick','mail']
+		})
+	
+	
+    // 显示次数
+		function showTime(Counter) {
+			var query = new AV.Query("Counter");
+			if($(".leancloud_visitors").length > 0){
+				var url = $(".leancloud_visitors").attr('id').trim();
+				// where field
+				query.equalTo("words", url);
+				// count
+				query.count().then(function (number) {
+					// There are number instances of MyClass where words equals url.
+					$(document.getElementById(url)).text(number?  number : '--');
+				}, function (error) {
+					// error is an instance of AVError.
+				});
+			}
+		}
+		// 追加pv
+		function addCount(Counter) {
+			var url = $(".leancloud_visitors").length > 0 ? $(".leancloud_visitors").attr('id').trim() : 'wujun234.github.io';
+			var Counter = AV.Object.extend("Counter");
+			var query = new Counter;
+			query.save({
+				words: url
+			}).then(function (object) {
+			})
+		}
+		$(function () {
+			var Counter = AV.Object.extend("Counter");
+			addCount(Counter);
+			showTime(Counter);
+		});
+	
+</script>
+	</div>
+	<div id="footer">
+	<p>
+	©2022-<span id="footerYear"></span> 
+	<a href="/">Taizi</a> 
+	
+	
+		|
+		<span id="busuanzi_container_site_pv">
+			pv
+			<span id="busuanzi_value_site_pv"></span>
+		</span>
+		|
+		<span id="busuanzi_container_site_uv"> 
+			uv
+			<span id="busuanzi_value_site_uv"></span>
+		</span>
+	
+	<br>
+	Theme <a href="//github.com/wujun234/hexo-theme-tree" target="_blank">Tree</a>
+	by <a href="//github.com/wujun234" target="_blank">WuJun</a>
+	Powered by <a href="//hexo.io" target="_blank">Hexo</a>
+	</p>
+</div>
+<script type="text/javascript"> 
+	document.getElementById('footerYear').innerHTML = new Date().getFullYear() + '';
+</script>
+	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+</body>
+</html>

@@ -784,6 +784,39 @@ var _hmt = _hmt || [];
 								<div class="article-toc" style="display: none;"></div>
 							</ul>
 			
+							<ul>
+								<li class="file">
+									<a href="/Linux/Linux%E7%8E%AF%E5%A2%83%E4%B8%8B%E5%AE%89%E8%A3%85Hive/">
+                     
+										    Linux环境下安装Hive
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Linux/Linux%E7%8E%AF%E5%A2%83%E4%B8%8B%E5%AE%89%E8%A3%85JDK/">
+                     
+										    Linux环境下安装JDK
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Linux/MySQL%E5%AE%89%E8%A3%85%EF%BC%88Linux%EF%BC%89/">
+                     
+										    MySQL安装（Linux）
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
 								</li>
 								
 							</ul>
@@ -1039,6 +1072,69 @@ var _hmt = _hmt || [];
 		<div id="index">
 	
 		<div class="index-li">
+			<a href="/Hadoop/Hive/%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E8%A6%81%E7%82%B9/">
+				<h2 class="index-title">
+					数据开发要点
+				</h2>
+				<div class="index-brief">
+					数据开发要点
+多表连接时，首行连接语句中指明分区，动态分区则指明变量(如：pdate&#x3D;’${a}’),指明分区后，主体的select语句中不必再写分区字段。
+
+多表连接时，需要特别注意主表的连接字段是否为NULL或空字符串，需要的时候可以进行过滤，以下是一种过滤方式：
+1coalesce(
+					...
+				</div>
+			</a>
+                <div class="article-meta">
+				    <span>2022-11-19</span>
+                    
+                            
+                    
+                </div>
+		</div>	
+	
+		<div class="index-li">
+			<a href="/Hadoop/Hive/%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E6%80%9D%E8%B7%AF/">
+				<h2 class="index-title">
+					数据开发思路
+				</h2>
+				<div class="index-brief">
+					数据开发思路需求（作图分析）
+开发内容涉及到哪几个模块的功能，针对每个模块进行分析：
+该模块功能在哪里实现？Hive、gp、报表工具？
+该模块间是否与其他模块有关联？如果存在关联？因为此关联每个模块需要注意哪些问题？
+需要哪些上层表的支持，针对每张上层表进行分析：
+使用该表的目的是什么？该表本身的逻
+					...
+				</div>
+			</a>
+                <div class="article-meta">
+				    <span>2022-11-19</span>
+                    
+                            
+                    
+                </div>
+		</div>	
+	
+		<div class="index-li">
+			<a href="/Hadoop/Hive/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%87%BD%E6%95%B0/">
+				<h2 class="index-title">
+					数据库函数
+				</h2>
+				<div class="index-brief">
+					数据库函数空值处理COALESCE	(hive)12345678910命令格式：	coalesce(expr1,expr2,...)用途：	返回列表中第一个非null的值，如果列表中的所有值都是null则返回null参数说明：	*expri是要测试的值。所有这些值类型必须相同或为null，否则会引发
+					...
+				</div>
+			</a>
+                <div class="article-meta">
+				    <span>2022-11-19</span>
+                    
+                            
+                    
+                </div>
+		</div>	
+	
+		<div class="index-li">
 			<a href="/Hadoop/Hive/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E5%BC%80%E5%8F%91%E6%9E%B6%E6%9E%84%E5%B1%82%E6%AC%A1/">
 				<h2 class="index-title">
 					数据仓库开发架构层次
@@ -1173,80 +1269,6 @@ MyBatis免除了几乎所有的 JDBC 代码以及设置参数和获取结果集�
 					MyBatis @Param注解使用场景说明一、有多个基本类型参数有多个基本类型参数时，需要在每个参数前添加@Param注解。
 二、方法参数需要起别名时当方法参数需要起别名时，需要在参数前添加@Param注解，注解内说明参数的别名。
 三、当XML配置文件中存在$符号时虽然在XML使用$符号传参会有S
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2022-11-19</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/Java/Maven/maven%E5%AE%89%E8%A3%85/">
-				<h2 class="index-title">
-					maven安装
-				</h2>
-				<div class="index-brief">
-					maven安装
-官网下载maven压缩包，link下的zip包
-解压安装包到特定目录
-添加系统环境变量，命名为MAVEN_HOME,路径为解压后的文件夹目录
-在Path中添加路径，MAVEN_HOME下的bin目录，即：
-
-
-%MAVEN_HOME%\bin
-
-maven配置
-settings.xm
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2022-11-19</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/Linux/Linux%E4%B8%8B%E5%AE%89%E8%A3%85anaconda/">
-				<h2 class="index-title">
-					Linux下安装anaconda
-				</h2>
-				<div class="index-brief">
-					Linux下安装anaconda
-首先在anaconda官网下载Linux版本的anaconda的shell包；
-使用bash命令执行.sh脚本文件安装anaconda，注意更改安装路径，一般可以安装在&#x2F;opt目录下；
-安装结束后，在系统中添加环境变量：
-
-
-sudo vim &#x2F;
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2022-11-19</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/IDEA/IDEA%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%B1%87%E6%80%BB/">
-				<h2 class="index-title">
-					IDEA常用快捷键汇总
-				</h2>
-				<div class="index-brief">
-					IDEA常用快捷键汇总
-Alt + Enter  ：万能快捷键，可用于报错、创建对象等多种情况
-Ctrl + O ：快速重写，在一个类继承了另一个类之后，可以使用此快捷键快速重写父类的方法
-Ctrl + P ：查看参数，用于在方法的参数列表中查看方法有哪些参数
-Alt + Insert ：快速生成s
 					...
 				</div>
 			</a>

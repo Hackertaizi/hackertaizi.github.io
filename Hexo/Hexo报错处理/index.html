@@ -1177,7 +1177,7 @@ var _hmt = _hmt || [];
 <ol start="2">
 <li><p>为文章添加了标签tags 或分类 categorie，文章部署后，想修改标签或分类的大小写，直接修改了源文件头部标注文件，再次部署后相关tags 和 categories点击出现404空白页。</p>
 <p>原因：自动生成的用于存放对应标签或分类的html文件的文件夹名字没有随源文件的更改而更改，这是由于git忽略了大小写而导致的。</p>
-<p>解决办法：<br>方法一：修改git配置，在博客根目录下，显示隐藏文件，修改<code>.deploy_git/.git/config</code>文件，将该配置文件中的忽略大小写配置项改为false：<code>ignorecase = false</code><br>方法二：删除<code>public/</code>文件夹下tags文件夹或者categories文件夹中对应的标签或分类文件夹，然后重新部署发布，让文件夹重新生成。</p>
+<p>解决办法：<br>方法一：修改git配置，在博客根目录下，显示隐藏文件，修改<code>.deploy_git/.git/config</code>文件，将该配置文件中的忽略大小写配置项改为false：<code>ignorecase = false</code><br>方法二：删除git仓库中tags文件夹或者categories文件夹中对应的标签或分类文件夹，然后重新部署发布，让文件夹重新生成。</p>
 </li>
 </ol>
 

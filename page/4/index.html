@@ -155,6 +155,17 @@ var _hmt = _hmt || [];
 			
 							<ul>
 								<li class="file">
+									<a href="/Hadoop/Hive/Hive%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2/">
+                     
+										    Hive数据检索
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
 									<a href="/Hadoop/Hive/Hive%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
                      
 										    Hive数据类型
@@ -264,14 +275,36 @@ var _hmt = _hmt || [];
 								<li class="directory">
 									<a href="#" class="directory">
 										<i class="fa fa-plus-square-o"></i>
-										Hexo搭建流程
+										Hexo
 									</a>
 									
 							<ul>
 								<li class="file">
-									<a href="/Hexo%E6%90%AD%E5%BB%BA%E6%B5%81%E7%A8%8B/Hexo%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E6%B5%81%E7%A8%8B/">
+									<a href="/Hexo/Hexo%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E6%B5%81%E7%A8%8B/">
                      
 										    Hexo基本配置流程
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Hexo/hexo%E6%8A%A5%E9%94%99%E5%A4%84%E7%90%86/">
+                     
+										    hexo报错处理
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Hexo/%E4%B8%BA%E6%96%87%E7%AB%A0%E6%B7%BB%E5%8A%A0%E5%88%86%E7%B1%BB%E5%92%8C%E6%A0%87%E7%AD%BE/">
+                     
+										    为文章添加分类和标签
                      
 									</a>
 								</li>
@@ -872,6 +905,17 @@ var _hmt = _hmt || [];
 								<div class="article-toc" style="display: none;"></div>
 							</ul>
 			
+							<ul>
+								<li class="file">
+									<a href="/MySQL/MySQL%E8%AF%AD%E6%B3%95/">
+                     
+										    MySQL语法
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
 								</li>
 								
 							</ul>
@@ -1072,6 +1116,87 @@ var _hmt = _hmt || [];
 		<div id="index">
 	
 		<div class="index-li">
+			<a href="/Hadoop/Hive/Hive%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+				<h2 class="index-title">
+					Hive数据类型
+				</h2>
+				<div class="index-brief">
+					Hive数据类型一、数字类型
+TINYINT  (1字节有符号整数，范围从-128到127)
+
+SMALLINT  (2字节有符号整数，范围从-32,768到32,767)
+
+INT &#x2F; INTEGER  (4字节有符号整数，范围从 -2,147,483,648 到 2,147,483,6
+					...
+				</div>
+			</a>
+                <div class="article-meta">
+				    <span>2022-11-19</span>
+                    
+                            
+                    
+                </div>
+		</div>	
+	
+		<div class="index-li">
+			<a href="/Hadoop/Hive/Hive%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/">
+				<h2 class="index-title">
+					Hive基本知识
+				</h2>
+				<div class="index-brief">
+					Hive基本知识一、分区表分区表是指按照数据表的某列或某些列分为多个区，区从形式上可以理解为文件夹，分区是手动进行的。
+注意，不通与传统数据库，hive在创建分区表时 CREATE TABLE 下的字段中不能包含分区表字段，分区表字段只在PARTITION BY中定义，创建后，分区字段是表中的最后字
+					...
+				</div>
+			</a>
+                <div class="article-meta">
+				    <span>2022-11-19</span>
+                    
+                            
+                    
+                </div>
+		</div>	
+	
+		<div class="index-li">
+			<a href="/Hadoop/Hive/Hive%E4%BC%98%E5%8C%96/">
+				<h2 class="index-title">
+					Hive优化
+				</h2>
+				<div class="index-brief">
+					Hive优化1. Fetch抓取
+Fetch抓取是指，Hive中对某些情况的查询可以不必使用MapReduce计算.
+hive.fetch.task.conversion默认是more，老版本hive默认是minimal，该属性修改为more以后，在全局查找、字段查找、limit查找等都不走mapr
+					...
+				</div>
+			</a>
+                <div class="article-meta">
+				    <span>2022-11-19</span>
+                    
+                            
+                    
+                </div>
+		</div>	
+	
+		<div class="index-li">
+			<a href="/Hadoop/Hive/Hive%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F/">
+				<h2 class="index-title">
+					Hive文件格式
+				</h2>
+				<div class="index-brief">
+					Hive 文件格式一、 ORC Files1. ORC文件格式概述ORC(Optimized Row Columnar)文件格式提供了一种非常高效的方式来存储hive数据。它旨在克服其他Hive文件格式的限制。使用ORC文件可以提升Hive在读、写、处理数据时的性能。
+以RCFile 格式做比较，O
+					...
+				</div>
+			</a>
+                <div class="article-meta">
+				    <span>2022-11-19</span>
+                    
+                            
+                    
+                </div>
+		</div>	
+	
+		<div class="index-li">
 			<a href="/%E5%85%B6%E4%BB%96/Cron%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E8%A1%A8%E8%BE%BE%E5%BC%8F/Cron%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
 				<h2 class="index-title">
 					Cron表达式
@@ -1187,87 +1312,10 @@ sklearn中把机器学习处理过程抽象为estimator，其
                 </div>
 		</div>	
 	
-		<div class="index-li">
-			<a href="/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/CNN%E7%B3%BB%E5%88%97%E6%A8%A1%E5%9E%8B/">
-				<h2 class="index-title">
-					CNN系列模型
-				</h2>
-				<div class="index-brief">
-					CNN系列模型一、卷积神经网络(Convolutional Neural Network, CNN)1.1 互相关运算卷积层中，使用输入数据与卷积核的二维互相关运算来得到输出，二维互相关运算示例如下：
-
-卷积核从输入矩阵的左上方开始，按从左往右、从上往下的顺序在矩阵上滑动，每滑动到一个位置，卷积核中
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2022-11-19</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%99%8D%E7%BB%B4/">
-				<h2 class="index-title">
-					降维
-				</h2>
-				<div class="index-brief">
-					降维维数灾难在高维空间中，机器学习方法会面临数据样本稀疏、距离计算困难等问题，这种问题被称为维数灾难。
-低维嵌入解决位数灾难的方法是降维，或称为维数约减，即通过某种数学变换将原始高维属性空间转变为一个低维的子空间，在子空间中样本密度大幅提高，距离计算也变得更为容易。能进行降维操作是因为在很多时候，人
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2022-11-19</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%81%9A%E7%B1%BB/">
-				<h2 class="index-title">
-					聚类
-				</h2>
-				<div class="index-brief">
-					聚类一、基本知识1.什么是聚类任务？聚类任务是针对于无监督学习任务的，用于聚类的样本没有标记信息，需要通过学习来揭示数据的内在性质和规律。
-2.聚类原理聚类一般是把数据集中的样本划分为若干个不相交的子集，每个子集称为一个‘簇’，通过划分，每个簇可能对应一些潜在的概念或类别。但是，聚类只能划分出一个个
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2022-11-19</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%9C%80(%E6%9E%81)%E5%A4%A7%E4%BC%BC%E7%84%B6%E6%B3%95/">
-				<h2 class="index-title">
-					最(极)大似然法
-				</h2>
-				<div class="index-brief">
-					最(极)大似然法1.用极大似然法进行参数估计&#x2F;最大似然估计(Maximum likelihood estimation, MLE)极大似然法的估计场景是模型已知而参数未知的情况，也就是使用已知的样本结果信息来反推出最有可能(概率最大)导致这些样本结果出现的模型参数值。
-使用极大似然估计的前
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2022-11-19</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
 	
 	<div id="index-paginator">
 		
-			<a class="extend prev" rel="prev" href="/page/3/">&lt;</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/">&gt;</a>
+			<a class="extend prev" rel="prev" href="/page/3/">&lt;</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/5/">&gt;</a>
 		
 	</div>
 </div>

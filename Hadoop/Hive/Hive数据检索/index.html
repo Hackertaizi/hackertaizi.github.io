@@ -1,0 +1,1715 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	
+	<!-- title -->
+	
+	<title>
+	
+		Hive数据检索 | 
+	 
+	太子的个人博客
+	</title>
+	
+	<!-- keywords,description -->
+	 
+
+	<!-- favicon -->
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+	
+
+
+	<!-- search -->
+	<script>
+		var searchEngine = "";
+		if(typeof searchEngine == "undefined" || searchEngine == null || searchEngine == ""){
+			searchEngine = "https://www.google.com/search?q=";
+		}
+		var homeHost = "";
+		if(typeof homeHost == "undefined" || homeHost == null || homeHost == ""){
+			homeHost = window.location.host;
+		}
+	</script>
+
+
+	
+<link rel="stylesheet" href="/css/main.css">
+
+	
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/darcula.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
+
+	
+<script src="/js/main.js"></script>
+
+	
+		
+<script src="https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
+
+		
+<script src="https://cdn.jsdelivr.net/npm/valine@v1.4.14/dist/Valine.min.js"></script>
+
+	
+	
+		<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?3efe99c287df5a1d6f0d02d187e403c1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<header id="header">
+    <a id="title" href="/" class="logo">太子的个人博客</a>
+
+	<ul id="menu">
+		<li class="menu-item">
+			<a href="/about" class="menu-item-link">ABOUT</a>
+		</li>
+	
+		<li class="menu-item">
+			<a href="/tags" class="menu-item-link">标签</a>
+		</li>
+	
+
+	
+		<li class="menu-item">
+			<a href="/categories" class="menu-item-link">分类</a>
+		</li>
+	
+	</ul>
+</header>
+
+	
+<div id="sidebar">
+	<button id="sidebar-toggle" class="toggle" ><i class="fa fa-arrow-right " aria-hidden="true"></i></button>
+	
+	<div id="site-toc">
+		<input id="search-input" class="search-input" type="search" placeholder="按回车全站搜索">
+		<div id="tree">
+			
+
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Hadoop
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Hive
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/Hadoop/Hive/Hive%E4%BC%98%E5%8C%96/">
+                     
+										    Hive优化
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Hadoop/Hive/Hive%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/">
+                     
+										    Hive基本知识
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file active">
+									<a href="/Hadoop/Hive/Hive%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2/">
+                     
+										    Hive数据检索
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Hadoop/Hive/Hive%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+                     
+										    Hive数据类型
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Hadoop/Hive/Hive%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F/">
+                     
+										    Hive文件格式
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Hadoop/Hive/Hive%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E8%AF%AD%E6%B3%95/">
+                     
+										    Hive的基本使用语法
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Hadoop/Hive/Hive%E8%AF%AD%E6%B3%95%E7%B2%BE%E7%82%BC/">
+                     
+										    Hive语法精炼
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Hadoop/Hive/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E5%BC%80%E5%8F%91%E6%9E%B6%E6%9E%84%E5%B1%82%E6%AC%A1/">
+                     
+										    数据仓库开发架构层次
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Hadoop/Hive/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%87%BD%E6%95%B0/">
+                     
+										    数据库函数
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Hadoop/Hive/%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E6%80%9D%E8%B7%AF/">
+                     
+										    数据开发思路
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Hadoop/Hive/%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E8%A6%81%E7%82%B9/">
+                     
+										    数据开发要点
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Hadoop/Hive/%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E8%AF%AD%E6%B3%95%E7%BB%86%E8%8A%82%E2%80%94%E2%80%94%E5%AE%9E%E6%88%98%E7%BB%8F%E9%AA%8C/">
+                     
+										    数据开发语法细节——实战经验
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Hexo
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/Hexo/Hexo%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E6%B5%81%E7%A8%8B/">
+                     
+										    Hexo基本配置流程
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Hexo/hexo%E6%8A%A5%E9%94%99%E5%A4%84%E7%90%86/">
+                     
+										    hexo报错处理
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Hexo/%E4%B8%BA%E6%96%87%E7%AB%A0%E6%B7%BB%E5%8A%A0%E5%88%86%E7%B1%BB%E5%92%8C%E6%A0%87%E7%AD%BE/">
+                     
+										    为文章添加分类和标签
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										IDEA
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/IDEA/IDEA%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/">
+                     
+										    IDEA基本配置
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/IDEA/IDEA%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%B1%87%E6%80%BB/">
+                     
+										    IDEA常用快捷键汇总
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Java
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										JDK
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/Java/JDK/JDK%E7%9A%84%E5%8D%B8%E8%BD%BD%E4%B8%8E%E5%AE%89%E8%A3%85/">
+                     
+										    JDK的卸载与安装
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Maven
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/Java/Maven/maven%E5%AE%89%E8%A3%85/">
+                     
+										    maven安装
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										MyBatis
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/Java/MyBatis/MyBatis%20@Param%E6%B3%A8%E8%A7%A3%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E8%AF%B4%E6%98%8E/">
+                     
+										    MyBatis @Param注解使用场景说明
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/MyBatis/Mybatis/">
+                     
+										    Mybatis
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/MyBatis/Mybatis%E4%BD%BF%E7%94%A8/">
+                     
+										    Mybatis使用
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										注意点
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/Java/%E6%B3%A8%E6%84%8F%E7%82%B9/%E7%A9%BA%E5%80%BC%E5%88%A4%E6%96%AD/">
+                     
+										    空值判断
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/%E6%B3%A8%E6%84%8F%E7%82%B9/%E8%A7%A3%E5%86%B3%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%97%A0%E6%B3%95%E7%94%9F%E6%95%88%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%88pom.xml%E4%B8%AD%E8%BF%9B%E8%A1%8C%E9%85%8D%E7%BD%AE%EF%BC%89/">
+                     
+										    解决配置文件无法生效的问题（pom.xml中进行配置）
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/%E6%B3%A8%E6%84%8F%E7%82%B9/%E9%80%BB%E8%BE%91%E5%B1%82%E5%85%B3%E7%B3%BB%E6%A2%B3%E7%90%86/">
+                     
+										    逻辑层关系梳理
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										注解
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/Java/%E6%B3%A8%E8%A7%A3/%E4%B8%80%E4%BA%9B%E6%B3%A8%E8%A7%A3/">
+                     
+										    一些注解
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										语法知识
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95----%E8%BF%90%E7%AE%97%E7%AC%A6/">
+                     
+										    Java基本语法----运算符
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E2%80%94%E2%80%94JavaDoc%E7%94%9F%E6%88%90%E6%96%87%E6%A1%A3/">
+                     
+										    Java基本语法——JavaDoc生成文档
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E2%80%94%E2%80%94%E5%8C%85%E6%9C%BA%E5%88%B6/">
+                     
+										    Java基本语法——包机制
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E2%80%94%E2%80%94%E5%8F%98%E9%87%8F%E3%80%81%E5%B8%B8%E9%87%8F%E3%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F/">
+                     
+										    Java基本语法——变量、常量、作用域
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95--%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%89%A9%E5%B1%95/">
+                     
+										    Java基础语法--数据类型扩展
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95--%E6%A0%87%E8%AF%86%E7%AC%A6/">
+                     
+										    Java基础语法--标识符
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95--%E6%B3%A8%E9%87%8A/">
+                     
+										    Java基础语法--注释
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E6%95%B0%E7%BB%84/">
+                     
+										    Java数组
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E6%96%B9%E6%B3%95%E2%80%94%E2%80%94%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/">
+                     
+										    Java方法——可变参数
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E6%96%B9%E6%B3%95%E2%80%94%E2%80%94%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%BC%A0%E5%8F%82/">
+                     
+										    Java方法——命令行传参
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E6%96%B9%E6%B3%95%E2%80%94%E2%80%94%E6%96%B9%E6%B3%95%E7%9A%84%E9%87%8D%E8%BD%BD/">
+                     
+										    Java方法——方法的重载
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E2%80%94%E2%80%94Scanner/">
+                     
+										    Java流程控制——Scanner
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80%E2%80%94%E2%80%94%20%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/">
+                     
+										    Java语法基础—— 类型转换
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+                     
+										    Java语法基础——数据类型
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Static%E5%85%B3%E9%94%AE%E5%AD%97/">
+                     
+										    Static关键字
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E5%86%85%E9%83%A8%E7%B1%BB/">
+                     
+										    内部类
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E5%A2%9E%E5%BC%BAfor%E5%BE%AA%E7%8E%AF/">
+                     
+										    增强for循环
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E5%BC%82%E5%B8%B8/">
+                     
+										    异常
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E6%8A%BD%E8%B1%A1%E7%B1%BB/">
+                     
+										    抽象类
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E6%8E%A5%E5%8F%A3/">
+                     
+										    接口
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E6%B3%9B%E5%9E%8B/">
+                     
+										    泛型
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                     
+										    设计模式
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/">
+                     
+										    集合框架
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
+                     
+										    面向对象
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Linux
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/Linux/Linux%E4%B8%8B%E5%AE%89%E8%A3%85anaconda/">
+                     
+										    Linux下安装anaconda
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Linux/Linux%E5%9F%BA%E7%A1%80/">
+                     
+										    Linux基础
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Linux/Linux%E7%8E%AF%E5%A2%83%E4%B8%8B%E5%AE%89%E8%A3%85Hive/">
+                     
+										    Linux环境下安装Hive
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Linux/Linux%E7%8E%AF%E5%A2%83%E4%B8%8B%E5%AE%89%E8%A3%85JDK/">
+                     
+										    Linux环境下安装JDK
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Linux/MySQL%E5%AE%89%E8%A3%85(Linux)/">
+                     
+										    MySQL安装(Linux)
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Markdown
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/Markdown/Markdown%20%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">
+                     
+										    Markdown 基本语法
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										MySQL
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/MySQL/MySQL%E5%AE%89%E8%A3%85/">
+                     
+										    MySQL安装
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/MySQL/MySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2/">
+                     
+										    MySQL数据检索
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/MySQL/MySQL%E8%AF%AD%E6%B3%95/">
+                     
+										    MySQL语法
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Python
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/Python/kats%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">
+                     
+										    kats安装教程
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										其他
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Cron定时任务表达式
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/%E5%85%B6%E4%BB%96/Cron%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E8%A1%A8%E8%BE%BE%E5%BC%8F/Cron%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+                     
+										    Cron表达式
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										机器学习
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/K%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0%EF%BC%88k-Nearest%20Neighbor%20,kNN)/">
+                     
+										    K近邻算法概述（k-Nearest Neighbor ,kNN)
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%9C%80(%E6%9E%81)%E5%A4%A7%E4%BC%BC%E7%84%B6%E6%B3%95/">
+                     
+										    最(极)大似然法
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%81%9A%E7%B1%BB/">
+                     
+										    聚类
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%99%8D%E7%BB%B4/">
+                     
+										    降维
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										深度学习
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/CNN%E7%B3%BB%E5%88%97%E6%A8%A1%E5%9E%8B/">
+                     
+										    CNN系列模型
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/Pipeline/">
+                     
+										    Pipeline
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E7%AE%97%E6%B3%95/">
+                     
+										    反向传播算法
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%A4%9A%E5%B1%82%E6%84%9F%E7%9F%A5%E6%9C%BA%E6%B7%B1%E5%BA%A6%E5%89%8D%E9%A6%88%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A8%E8%BF%9E%E6%8E%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
+                     
+										    多层感知机深度前馈神经网络人工神经网络全连接神经网络
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E7%B3%BB%E5%88%97%E7%AE%97%E6%B3%95/">
+                     
+										    梯度下降系列算法
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/">
+                     
+										    深度学习基础
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+		</div>
+	</div>
+</div>
+
+	<!-- 引入正文 -->
+	<div id="content">
+		<h1 id="article-title">
+	Hive数据检索
+</h1>
+<div class="article-meta">
+	
+		<span>
+			阅读量:<span id="/Hadoop/Hive/Hive%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2/" class="leancloud_visitors" data-flag-title="Hive数据检索"></span>
+		</span>
+	
+	<span>Taizi</span>
+	<span>2023-01-30 09:54:00</span>
+		<div id="article-categories">
+    
+		<span>Categories：</span>
+            
+    
+
+    
+		<span>Tags：</span>
+            
+                
+                    <span>
+                        <i class="fa fa-tag" aria-hidden="true">
+                        <a href="/tags/大数据/">大数据</a>
+                        </i>
+                    </span>
+                
+            
+    
+		</div>
+
+</div>
+
+<div id="article-content">
+	<h1 id="Hive数据检索"><a href="#Hive数据检索" class="headerlink" title="Hive数据检索"></a>Hive数据检索</h1><h2 id="一、Select语法"><a href="#一、Select语法" class="headerlink" title="一、Select语法"></a>一、Select语法</h2><p>语法格式：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[<span class="keyword">WITH</span> CommonTableExpression (, CommonTableExpression)<span class="operator">*</span>]    (Note: <span class="keyword">Only</span> available starting <span class="keyword">with</span> Hive <span class="number">0.13</span><span class="number">.0</span>)</span><br><span class="line"><span class="keyword">SELECT</span> [<span class="keyword">ALL</span> <span class="operator">|</span> <span class="keyword">DISTINCT</span>] select_expr, select_expr, ...</span><br><span class="line">  <span class="keyword">FROM</span> table_reference</span><br><span class="line">  [<span class="keyword">WHERE</span> where_condition]</span><br><span class="line">  [<span class="keyword">GROUP</span> <span class="keyword">BY</span> col_list]</span><br><span class="line">  [<span class="keyword">ORDER</span> <span class="keyword">BY</span> col_list]</span><br><span class="line">  [CLUSTER <span class="keyword">BY</span> col_list</span><br><span class="line">    <span class="operator">|</span> [DISTRIBUTE <span class="keyword">BY</span> col_list] [SORT <span class="keyword">BY</span> col_list]</span><br><span class="line">  ]</span><br><span class="line"> [LIMIT [<span class="keyword">offset</span>,] <span class="keyword">rows</span>]</span><br></pre></td></tr></table></figure>
+
+<p>语法解析：</p>
+<ul>
+<li><p>Select语句可以是UNION查询的一部分，也可以是另一个查询的子查询。</p>
+</li>
+<li><p><code>table_reference</code>是指查询的输入，它可以是一个普通表、视图、连接结构或者子查询。</p>
+</li>
+<li><p>表名和列名不区分大小写。</p>
+<ul>
+<li>在Hive 0.12 及之前版本，表名和列名中只允许出现字母、数字和下划线。</li>
+<li>在Hive 0.13及之后的版本，列名可以包含任何Unicode字符。在反引号中指定的任何列名都按照字面意思处理。在反引号包裹的字符串中，可以使用连续的两个反引号来表示反引号字符。</li>
+<li>如果要使用Hive 0.13之前的命名规则，即只能使用字母、数字、下划线命名的方式，可以将配置属性<code>hive.support.quoted.identifiers</code>为none，在这种设置下，反引号中的名字将被看作普通表达。</li>
+</ul>
+</li>
+<li><p>一个简单的查询，查询表t1中的所有行列值：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> t1 </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注意：自Hive 0.13.0起，from关键字变为可选的。</p>
+</li>
+<li><p>如果要获取当前数据库中的内容，可以使用current_database()函数，如：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> current_database()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查询时指定数据库，可以使用携带数据库名字的表名，如“db_name.table_name”(Hive 0.7 起使用)，也可以在查询之前使用USE语句(Hive 0.6起使用)。<br>“db_name.table_name”的方式允许一个查询在不同的数据库中获取表。</p>
+</li>
+<li><p>USE 关键字为之后的所有HiveQL语句设置了数据库，使用关键字”default”可以将数据库重设为默认数据库，如：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">USE database_name;</span><br><span class="line"><span class="keyword">SELECT</span> query_specifications;</span><br><span class="line">USE <span class="keyword">default</span>;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="1-1-WHERE子句"><a href="#1-1-WHERE子句" class="headerlink" title="1.1 WHERE子句"></a>1.1 WHERE子句</h3><p>WHERE条件是一个布尔表达式，例如，下面的查询只返回来自美国地区的金额大于10的销售记录。Hive在WHERE子句中支持许多操作符和用户自定义函数：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> sales <span class="keyword">WHERE</span> amount <span class="operator">&gt;</span> <span class="number">10</span> <span class="keyword">AND</span> region <span class="operator">=</span> &quot;US&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2-ALL-和-DISTINCT-子句"><a href="#1-2-ALL-和-DISTINCT-子句" class="headerlink" title="1.2 ALL 和 DISTINCT 子句"></a>1.2 ALL 和 DISTINCT 子句</h3><p>ALL 和 DISTINCT 子句用来确定重复的行是否应该被返回，如果没有给出这些选项，则默认为ALL(所有匹配的行都被返回)。DISTINCT指定了要在结果集中删除的行。注意，Hive 在 1.1.0版本后支持SELECT DISTINCT * 的写法。下面是一些例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; SELECT col1, col2 FROM t1</span><br><span class="line">    1 3</span><br><span class="line">    1 3</span><br><span class="line">    1 4</span><br><span class="line">    2 5</span><br><span class="line">hive&gt; SELECT DISTINCT col1, col2 FROM t1</span><br><span class="line">    1 3</span><br><span class="line">    1 4</span><br><span class="line">    2 5</span><br><span class="line">hive&gt; SELECT DISTINCT col1 FROM t1</span><br><span class="line">    1</span><br><span class="line">    2</span><br></pre></td></tr></table></figure>
+
+<p>ALL 和  DISTINCT 也可以被用在UNION子句中。</p>
+<h3 id="1-3-基于分区的查询"><a href="#1-3-基于分区的查询" class="headerlink" title="1.3 基于分区的查询"></a>1.3 基于分区的查询</h3><p>一般来说，选择语句查询会扫描整个表(除了抽样外)。如果建表时使用了PARTITIONED BY子句，查询范围会减小为只扫描与指定分区相关的表的一部分。如果分区谓词是在WHERE子句中，或者在JOIN中的ON子句指定的，则Hive会做分区修整。例如，如果表page_views使用日期列进行分区，下面的查询只会检索那些在2008-03-01 到 2008-03-31之间的行：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> page_views.<span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> page_views</span><br><span class="line"><span class="keyword">WHERE</span> page_views.date <span class="operator">&gt;=</span> <span class="string">&#x27;2008-03-01&#x27;</span> <span class="keyword">AND</span> page_views.date <span class="operator">&lt;=</span> <span class="string">&#x27;2008-03-31&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>如果表page_views与另一个表dim_users连接在一起，可以像下面这样在ON子句中确定分区范围：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> page_views.<span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> page_views <span class="keyword">JOIN</span> dim_users</span><br><span class="line">  <span class="keyword">ON</span> (page_views.user_id <span class="operator">=</span> dim_users.id <span class="keyword">AND</span> page_views.date <span class="operator">&gt;=</span> <span class="string">&#x27;2008-03-01&#x27;</span> <span class="keyword">AND</span> page_views.date <span class="operator">&lt;=</span> <span class="string">&#x27;2008-03-31&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-4-Having子句"><a href="#1-4-Having子句" class="headerlink" title="1.4 Having子句"></a>1.4 Having子句</h3><p>Having用法：</p>
+<blockquote>
+<p> 1.WHERE 子句用来筛选 FROM 子句中指定的操作所产生的行。<br> 2.GROUP BY 子句用来分组 WHERE 子句的输出。<br> 3.HAVING 子句用来从分组的结果中筛选行。</p>
+</blockquote>
+<p><strong>Having子句必须配合Group By 子句使用！</strong></p>
+<p>在0.7.0 版本中 Hive添加了对HAVING子句的支持，而在更老的版本中，Hive也可能通过子查询达到相同的效果，如：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> col1 <span class="keyword">FROM</span> t1 <span class="keyword">GROUP</span> <span class="keyword">BY</span> col1 <span class="keyword">HAVING</span> <span class="built_in">SUM</span>(col2) <span class="operator">&gt;</span> <span class="number">10</span></span><br></pre></td></tr></table></figure>
+
+<p>也可以被这样表示：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> col1 <span class="keyword">FROM</span> (<span class="keyword">SELECT</span> col1, <span class="built_in">SUM</span>(col2) <span class="keyword">AS</span> col2sum <span class="keyword">FROM</span> t1 <span class="keyword">GROUP</span> <span class="keyword">BY</span> col1) t2 <span class="keyword">WHERE</span> t2.col2sum <span class="operator">&gt;</span> <span class="number">10</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="1-5-LIMIT子句"><a href="#1-5-LIMIT子句" class="headerlink" title="1.5 LIMIT子句"></a>1.5 LIMIT子句</h3><p>LIMIT子句可以用来对SELECT查询的返回结果进行行数上的限制。</p>
+<p>LIMIT 关键字可以带有一到两个参数，这些参数必须是非负整数。</p>
+<p>第一个参数指定了到第一行的偏移量，第二个参数指定了最大返回行数。</p>
+<p>当只给定了一个参数据，它代表返回的最大行数，此时偏移量默认为0。</p>
+<p>下面的查询返回了5个任意的customers：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> customers LIMIT <span class="number">5</span></span><br></pre></td></tr></table></figure>
+
+<p>下面的查询返回了最先创建的5个customers：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> customers LIMIT <span class="number">5</span></span><br></pre></td></tr></table></figure>
+
+<p>下面的查询返回了第三个到第七个创建的customers：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> customers <span class="keyword">ORDER</span> <span class="keyword">BY</span> create_date LIMIT <span class="number">2</span>,<span class="number">5</span></span><br></pre></td></tr></table></figure>
+
+<p>在Hive 0.13.0之前的版本中，SELECT语句可以采用基于正则表达式(REGEX)的列规范，或者在0.13.0及以后的版本中，将<code>hive.support.quoted.identifiers</code>设置为none。</p>
+<blockquote>
+<p>使用Java的正则表达式语法规则。</p>
+<p>下面的查询选择了除ds和hr的所有列:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> `(ds<span class="operator">|</span>hr)?<span class="operator">+</span>.<span class="operator">+</span>` <span class="keyword">FROM</span> sales</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="1-6-Group-By语法"><a href="#1-6-Group-By语法" class="headerlink" title="1.6 Group By语法"></a>1.6 Group By语法</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">groupByClause: GROUP BY groupByExpression (, groupByExpression)*</span><br><span class="line"> </span><br><span class="line">groupByExpression: expression</span><br><span class="line"> </span><br><span class="line">groupByQuery: SELECT expression (, expression)* FROM src groupByClause?</span><br></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<p>groupByExpression中列可以通过名字指定，但不能通过位置指定。但在Hive 0.11.0之后，列可以通过位置指定，只要按照以下方式配置：	</p>
+<ul>
+<li>当Hive 版本在 0.11.0 到 2.1.x之间，将<code>hive.groupby.orderby.position.alias</code>设置为true(默认为false)</li>
+<li>当Hive 版本在 2.2.0及以后时，将<code>hive.groupby.position.alias</code>设置为true(默认为false)</li>
+</ul>
+<h4 id="1-6-1-一些样例"><a href="#1-6-1-一些样例" class="headerlink" title="1.6.1 一些样例"></a>1.6.1 一些样例</h4><ul>
+<li><p>查询表中的数据行数：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="keyword">FROM</span> table2;</span><br></pre></td></tr></table></figure>
+
+<p>注意在一些hive版本中不支持COUNT(*)，需要使用COUNT(1)代替。</p>
+</li>
+<li><p>按性别计算不同用户的数量，可以编写如下查询:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> OVERWRITE <span class="keyword">TABLE</span> pv_gender_sum</span><br><span class="line"><span class="keyword">SELECT</span> pv_users.gender, <span class="built_in">count</span> (<span class="keyword">DISTINCT</span> pv_users.userid)</span><br><span class="line"><span class="keyword">FROM</span> pv_users</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> pv_users.gender;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>可以同时进行多个聚合，但是不能有两个聚合具有不同的DISTINCT列。例如，下面的做法是可行的，因为count(DISTINCT)和sum(DISTINCT)指定了相同的列:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> OVERWRITE <span class="keyword">TABLE</span> pv_gender_agg</span><br><span class="line"><span class="keyword">SELECT</span> pv_users.gender, <span class="built_in">count</span>(<span class="keyword">DISTINCT</span> pv_users.userid), <span class="built_in">count</span>(<span class="operator">*</span>), <span class="built_in">sum</span>(<span class="keyword">DISTINCT</span> pv_users.userid)</span><br><span class="line"><span class="keyword">FROM</span> pv_users</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> pv_users.gender;</span><br></pre></td></tr></table></figure>
+
+<p>下面的聚合则是不允许的，因为聚合的列不同：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> OVERWRITE <span class="keyword">TABLE</span> pv_gender_agg</span><br><span class="line"><span class="keyword">SELECT</span> pv_users.gender, <span class="built_in">count</span>(<span class="keyword">DISTINCT</span> pv_users.userid), <span class="built_in">count</span>(<span class="keyword">DISTINCT</span> pv_users.ip)</span><br><span class="line"><span class="keyword">FROM</span> pv_users</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> pv_users.gender;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="1-6-2-select表达式和group-by子句"><a href="#1-6-2-select表达式和group-by子句" class="headerlink" title="1.6.2 select表达式和group by子句"></a>1.6.2 select表达式和group by子句</h4><p>当要使用group by子句时，select表达式中只能包含那些在group by子句中的列，当然，select表达式中可以尽可能多的使用聚合函数(如count)。</p>
+<p>下面用一个例子来说明：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> t1(a <span class="type">INTEGER</span>, b INTGER);</span><br></pre></td></tr></table></figure>
+
+<p>查询上面创建的表可以这样写：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">   a,</span><br><span class="line">   <span class="built_in">sum</span>(b)</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">   t1</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span></span><br><span class="line">   a;</span><br></pre></td></tr></table></figure>
+
+<p>但一下的查询方式是不被允许的，因为select表达式中含有group by子句中没有的列：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">   a,</span><br><span class="line">   b</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">   t1</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span></span><br><span class="line">   a;</span><br></pre></td></tr></table></figure>
+
+<p>这是因为如果表是下面的形式：</p>
+<figure class="highlight plaintext"><figcaption><span>b</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a    b</span><br><span class="line">------</span><br><span class="line">100  1</span><br><span class="line">100  2</span><br><span class="line">100  3</span><br></pre></td></tr></table></figure>
+
+<p>如果使用a来分组，返回哪条数据是一个矛盾的问题。</p>
+<h4 id="1-6-3-高级特性"><a href="#1-6-3-高级特性" class="headerlink" title="1.6.3 高级特性"></a>1.6.3 高级特性</h4><h5 id="1-6-3-1-多表分组插入"><a href="#1-6-3-1-多表分组插入" class="headerlink" title="1.6.3.1 多表分组插入"></a>1.6.3.1 多表分组插入</h5><p>聚合或简单选择的输出可以进一步发送到多个表中，甚至发送到hadoop dfs文件(然后可以使用hdfs实用程序操作这些文件)。例如，如果除了性别分类，还需要找到按年龄分列单独视图页，可以通过以下查询实现:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> pv_users</span><br><span class="line"><span class="keyword">INSERT</span> OVERWRITE <span class="keyword">TABLE</span> pv_gender_sum</span><br><span class="line">  <span class="keyword">SELECT</span> pv_users.gender, <span class="built_in">count</span>(<span class="keyword">DISTINCT</span> pv_users.userid)</span><br><span class="line">  <span class="keyword">GROUP</span> <span class="keyword">BY</span> pv_users.gender</span><br><span class="line"><span class="keyword">INSERT</span> OVERWRITE DIRECTORY <span class="string">&#x27;/user/facebook/tmp/pv_age_sum&#x27;</span></span><br><span class="line">  <span class="keyword">SELECT</span> pv_users.age, <span class="built_in">count</span>(<span class="keyword">DISTINCT</span> pv_users.userid)</span><br><span class="line">  <span class="keyword">GROUP</span> <span class="keyword">BY</span> pv_users.age</span><br></pre></td></tr></table></figure>
+
+<h5 id="1-6-3-2-基于分组的映射端聚合"><a href="#1-6-3-2-基于分组的映射端聚合" class="headerlink" title="1.6.3.2 基于分组的映射端聚合"></a>1.6.3.2 基于分组的映射端聚合</h5><p><code>hive.map.aggr</code>参数控制了我们的聚合方式，默认为false，如果设置为true，Hive将直接在map任务中做第一级聚合。通常这样的销量更高，但是成功运行可能需要更多的内存。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> hive.map.aggr<span class="operator">=</span>``<span class="literal">true</span>``;</span><br><span class="line"><span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="keyword">FROM</span> table2;</span><br></pre></td></tr></table></figure>
+
+<p>注意：不包含HIVE-287的Hive版本需要用COUNT(1)来代替COUNT(*)。</p>
+<h3 id="1-7-Order-Sort-Cluster-and-Distribute-By"><a href="#1-7-Order-Sort-Cluster-and-Distribute-By" class="headerlink" title="1.7 Order, Sort, Cluster, and Distribute By"></a>1.7 Order, Sort, Cluster, and Distribute By</h3><h4 id="1-7-1-Order-By"><a href="#1-7-1-Order-By" class="headerlink" title="1.7.1 Order By"></a>1.7.1 Order By</h4><p>语法：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">colOrder: ( <span class="keyword">ASC</span> <span class="operator">|</span> <span class="keyword">DESC</span> )</span><br><span class="line">colNullOrder: (NULLS <span class="keyword">FIRST</span> <span class="operator">|</span> NULLS <span class="keyword">LAST</span>)           <span class="comment">-- (<span class="doctag">Note:</span> Available in Hive 2.1.0 and later)</span></span><br><span class="line">orderBy: <span class="keyword">ORDER</span> <span class="keyword">BY</span> colName colOrder? colNullOrder? (<span class="string">&#x27;,&#x27;</span> colName colOrder? colNullOrder?)<span class="operator">*</span></span><br><span class="line">query: <span class="keyword">SELECT</span> expression (<span class="string">&#x27;,&#x27;</span> expression)<span class="operator">*</span> <span class="keyword">FROM</span> src orderBy</span><br></pre></td></tr></table></figure>
+
+<p>Order By子句存在一些限制，在严格模式下(设置 hive.mapred.mode&#x3D;strict)，Order By子句后必须跟着一个Limit子句。如果没有设置严格模式的话Limit子句就不是必需的。原因是为了强制得到所有结果的总顺序，必须有一个reducer来对最终结果分类。如果输出行数非常多，则单个reducer可能会执行非常长的时间。</p>
+<p>模式的排序顺序是增序（ascending，ASC）。</p>
+<p>在Hive 2.1.0版本以后，支持在Order By子句中为每一列指定空的排序顺序。ASC顺序的默认空排序顺序是NULLS FIRST，而DESC顺序的默认空排序顺序是NULLS LAST。</p>
+<p>在Hive 3.0.0之后，没有Limit 的Order By子句在子查询和视图中将被优化器移除，要防止这种情况，可以将<code>hive.remove.orderby.in.subquery</code>设置为false。</p>
+<h4 id="1-7-2-Sort-By"><a href="#1-7-2-Sort-By" class="headerlink" title="1.7.2 Sort By"></a>1.7.2 Sort By</h4><p>语法：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">colOrder: ( <span class="keyword">ASC</span> <span class="operator">|</span> <span class="keyword">DESC</span> )</span><br><span class="line">sortBy: SORT <span class="keyword">BY</span> colName colOrder? (<span class="string">&#x27;,&#x27;</span> colName colOrder?)<span class="operator">*</span></span><br><span class="line">query: <span class="keyword">SELECT</span> expression (<span class="string">&#x27;,&#x27;</span> expression)<span class="operator">*</span> <span class="keyword">FROM</span> src sortBy</span><br></pre></td></tr></table></figure>
+
+<p>Hive使用SORT BY中的列对行进行排序，然后再将行输入reducer。分类顺序取决于列的类型。如果列是数值类型的，那么分类顺序也是按照数值顺序。如果列是string类型的，则分类顺序将是辞典编纂的循序（字典顺序）。</p>
+<p>在Hive 3.0.0之后，没有Limit 的Sort By子句在子查询和视图中将被优化器移除，要防止这种情况，可以将<code>hive.remove.orderby.in.subquery</code>设置为false。</p>
+<h4 id="1-7-3-Sort-By-和-Order-By的不同点"><a href="#1-7-3-Sort-By-和-Order-By的不同点" class="headerlink" title="1.7.3 Sort By 和 Order By的不同点"></a>1.7.3 Sort By 和 Order By的不同点</h4><p>“order by”和“sort by”之间的区别是，前者保证输出的总顺序，而后者仅保证reducer内的行排序。如果有多个reducer，“sort by”可能会给出部分排序的最终结果。</p>
+<p>单个列的SORT BY和CLUSTER BY之间的区别可能会令人困惑。不同之处在于CLUSTER BY是按字段进行分区，而SORT BY是在多个reducer之间随机分配数据(和加载)的情况下进行的。</p>
+<p>总的来说，每个reducer中的数据将按使用者提供的顺序来分类。下面是一个例子：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> key, <span class="keyword">value</span> <span class="keyword">FROM</span> src SORT <span class="keyword">BY</span> key <span class="keyword">ASC</span>, <span class="keyword">value</span> <span class="keyword">DESC</span></span><br></pre></td></tr></table></figure>
+
+<p>查询有两个reducer，每一个的输出分别为：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span>   <span class="number">5</span></span><br><span class="line"><span class="number">0</span>   <span class="number">3</span></span><br><span class="line"><span class="number">3</span>   <span class="number">6</span></span><br><span class="line"><span class="number">9</span>   <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span>   <span class="number">4</span></span><br><span class="line"><span class="number">0</span>   <span class="number">3</span></span><br><span class="line"><span class="number">1</span>   <span class="number">1</span></span><br><span class="line"><span class="number">2</span>   <span class="number">5</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="1-7-4-为Sort-By设置类型"><a href="#1-7-4-为Sort-By设置类型" class="headerlink" title="1.7.4 为Sort By设置类型"></a>1.7.4 为Sort By设置类型</h4><p>在TRANSFORM之后，变量类型通常被认为是字符串，这意味着数字数据将按字典顺序排序。为了克服这个问题，可以在使用SORT BY之前再使用带强制转换的SELECT语句。例如：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> (<span class="keyword">FROM</span> (<span class="keyword">FROM</span> src</span><br><span class="line">            <span class="keyword">SELECT</span> TRANSFORM(<span class="keyword">value</span>)</span><br><span class="line">            <span class="keyword">USING</span> <span class="string">&#x27;mapper&#x27;</span></span><br><span class="line">            <span class="keyword">AS</span> <span class="keyword">value</span>, count) mapped</span><br><span class="line">      <span class="keyword">SELECT</span> <span class="built_in">cast</span>(<span class="keyword">value</span> <span class="keyword">as</span> <span class="keyword">double</span>) <span class="keyword">AS</span> <span class="keyword">value</span>, <span class="built_in">cast</span>(count <span class="keyword">as</span> <span class="type">int</span>) <span class="keyword">AS</span> count</span><br><span class="line">      SORT <span class="keyword">BY</span> <span class="keyword">value</span>, count) sorted</span><br><span class="line"><span class="keyword">SELECT</span> TRANSFORM(<span class="keyword">value</span>, count)</span><br><span class="line"><span class="keyword">USING</span> <span class="string">&#x27;reducer&#x27;</span></span><br><span class="line"><span class="keyword">AS</span> whatever</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-7-5-Cluster-By-and-Distribute-By"><a href="#1-7-5-Cluster-By-and-Distribute-By" class="headerlink" title="1.7.5 Cluster By and Distribute By"></a>1.7.5 Cluster By and Distribute By</h4><p>Cluster By 和 Distribute By主要是和Transform&#x2F;Map-Reduce 脚本一起使用。如果需要为后续查询对查询的输出进行分区和排序，那么在SELECT语句中它有时是有用的。</p>
+<p>Cluster By 是对 Distribute By 和 Sort By的一种简化方式。</p>
+<p>Hive 在Distribute By 中使用列来把行分配给reducers。有相同Distribute By列 的行会分配到同一个reducer中。但是，Distribute By无法保证分配的列上的clustering 或 sorting 的属性。</p>
+<p>例如，使用Distribute By x将下面的五行数据分配给两个reducer：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x1</span><br><span class="line">x2</span><br><span class="line">x4</span><br><span class="line">x3</span><br><span class="line">x1</span><br></pre></td></tr></table></figure>
+
+<p>Reducer1得到：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x1</span><br><span class="line">x2</span><br><span class="line">x1</span><br></pre></td></tr></table></figure>
+
+<p>Reducer2得到：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x4</span><br><span class="line">x3</span><br></pre></td></tr></table></figure>
+
+<p>注意到拥有相同键值x1的两行被分配到了同一个reducer中，但是它们不能够保证聚集到了相邻的位置。</p>
+<p>相反地，如果使用Cluster By x，两个reducer会对x的行做进一步的排序：</p>
+<p>Reducer1得到：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x1</span><br><span class="line">x1</span><br><span class="line">x2</span><br></pre></td></tr></table></figure>
+
+<p>Reducer2得到：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x3</span><br><span class="line">x4</span><br></pre></td></tr></table></figure>
+
+<p>使用者可以指定 Distribute By 和 Sort By来代替Cluster By，所以分区列和分类列可以不同。通常的情况是分区列在分类列前面，即先分区再分类，但这不是必需的。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> col1, col2 <span class="keyword">FROM</span> t1 CLUSTER <span class="keyword">BY</span> col1</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> col1, col2 <span class="keyword">FROM</span> t1 DISTRIBUTE <span class="keyword">BY</span> col1</span><br><span class="line"> </span><br><span class="line"><span class="keyword">SELECT</span> col1, col2 <span class="keyword">FROM</span> t1 DISTRIBUTE <span class="keyword">BY</span> col1 SORT <span class="keyword">BY</span> col1 <span class="keyword">ASC</span>, col2 <span class="keyword">DESC</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> (</span><br><span class="line">  <span class="keyword">FROM</span> pv_users</span><br><span class="line">  MAP ( pv_users.userid, pv_users.date )</span><br><span class="line">  <span class="keyword">USING</span> <span class="string">&#x27;map_script&#x27;</span></span><br><span class="line">  <span class="keyword">AS</span> c1, c2, c3</span><br><span class="line">  DISTRIBUTE <span class="keyword">BY</span> c2</span><br><span class="line">  SORT <span class="keyword">BY</span> c2, c1) map_output</span><br><span class="line"><span class="keyword">INSERT</span> OVERWRITE <span class="keyword">TABLE</span> pv_users_reduced</span><br><span class="line">  REDUCE ( map_output.c1, map_output.c2, map_output.c3 )</span><br><span class="line">  <span class="keyword">USING</span> <span class="string">&#x27;reduce_script&#x27;</span></span><br><span class="line">  <span class="keyword">AS</span> <span class="type">date</span>, count;</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-8-TRANSFORM-和-Map-Reduce-脚本-（暂不研究）"><a href="#1-8-TRANSFORM-和-Map-Reduce-脚本-（暂不研究）" class="headerlink" title="1.8 TRANSFORM 和 Map-Reduce 脚本  （暂不研究）"></a>1.8 TRANSFORM 和 Map-Reduce 脚本  （暂不研究）</h3><h3 id="1-9-运算符和用户自定义函数-未完待续"><a href="#1-9-运算符和用户自定义函数-未完待续" class="headerlink" title="1.9 运算符和用户自定义函数  (未完待续)"></a>1.9 运算符和用户自定义函数  (未完待续)</h3><h4 id="内置运算符："><a href="#内置运算符：" class="headerlink" title="内置运算符："></a>内置运算符：</h4><ul>
+<li>运算符优先级</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>示例</th>
+<th>运算符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>A[B] , A.identifier</td>
+<td>中括号([]), 点(.)</td>
+<td>元素选择</td>
+</tr>
+<tr>
+<td>-A</td>
+<td>一元运算符，正号(+),负号(-),取反码(~)</td>
+<td>前置一元运算符</td>
+</tr>
+<tr>
+<td>A IS [NOT] (NULL|TRUE|FALSE)</td>
+<td>IS NULL,IS NOT NULL, …</td>
+<td>后置一元运算符</td>
+</tr>
+<tr>
+<td>A ^ B</td>
+<td>按位亦或(^)</td>
+<td>按位亦或</td>
+</tr>
+<tr>
+<td>A * B</td>
+<td>乘(*), 除(&#x2F;), 取余(%), 整除(DIV)</td>
+<td>乘除运算</td>
+</tr>
+<tr>
+<td>A + B</td>
+<td>加(+), 减(-)</td>
+<td>加减运算</td>
+</tr>
+<tr>
+<td>A || B</td>
+<td>字符串连接(||)</td>
+<td>字符串连接</td>
+</tr>
+<tr>
+<td>A &amp; B</td>
+<td>按位与(&amp;)</td>
+<td>按位与</td>
+</tr>
+<tr>
+<td>A | B</td>
+<td>按位或(|)</td>
+<td>按位或</td>
+</tr>
+</tbody></table>
+<ul>
+<li>关系运算符</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>操作类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>A &#x3D; B</td>
+<td>所有基本类型</td>
+<td>A等于B返回true，否则返回false</td>
+</tr>
+<tr>
+<td>A &#x3D;&#x3D; B</td>
+<td>所有基本类型</td>
+<td>相等，等号的同义词</td>
+</tr>
+<tr>
+<td>A &lt;&#x3D;&gt; B</td>
+<td>所有基本类型</td>
+<td>操作数非空时和 ‘&#x3D;’ 运算符返回相同的结果，当两个操作数都为空时返回true，当有一个操作数为空时返回false，(Hive 0.9.0 版本起用)</td>
+</tr>
+<tr>
+<td>A &lt;&gt; B</td>
+<td>所有基本类型</td>
+<td>当A或B中有一个为NULL时返回NULL，当A不等于B时返回TRUE，否则返回FALSE。</td>
+</tr>
+<tr>
+<td>A !&#x3D; B</td>
+<td>所有基本类型</td>
+<td>同”&lt;&gt;”运算符</td>
+</tr>
+<tr>
+<td>A &lt; B</td>
+<td>所有基本类型</td>
+<td>当A或B中有一个为NULL时返回NULL，当A小于B时返回TRUE，否则返回FALSE。</td>
+</tr>
+<tr>
+<td>A &lt;&#x3D; B</td>
+<td>所有基本类型</td>
+<td>当A或B中有一个为NULL时返回NULL，当A小于等于B时返回TRUE，否则返回FALSE。</td>
+</tr>
+<tr>
+<td>A &gt; B</td>
+<td>所有基本类型</td>
+<td>当A或B中有一个为NULL时返回NULL，当A大于B时返回TRUE，否则返回FALSE。</td>
+</tr>
+<tr>
+<td>A &gt;&#x3D; B</td>
+<td>所有基本类型</td>
+<td>当A或B中有一个为NULL时返回NULL，当A大于等于B时返回TRUE，否则返回FALSE。</td>
+</tr>
+<tr>
+<td>A [NOT] BETWEEN B AND C</td>
+<td>所有基本类型</td>
+<td>当A，B，C中任意一个为NULL时返回NULL，当A大于等于B且小于等于C时返回TRUE，否则返回FALSE。可以使用NOT关键字得到相反结果。(Hive 0.9.0 起用)</td>
+</tr>
+<tr>
+<td>A IS NULL</td>
+<td>所有类型</td>
+<td>A为NULL时返回TRUE，否则返回FALSE.</td>
+</tr>
+<tr>
+<td>A IS NOT NULL</td>
+<td>所有类型</td>
+<td>A不为NULL时返回TRUE，否则返回FALSE.</td>
+</tr>
+<tr>
+<td>A IS [NOT] (TRUE|FALSE)</td>
+<td>布尔类型</td>
+<td>只有满足判断条件时返回TRUE。(自Hive 3.0.0 起用）注意，NULL是未知的，当要判断NULL的布尔属性时，返回FALSE。</td>
+</tr>
+<tr>
+<td>A [NOT] LIKE B</td>
+<td>字符串</td>
+<td>如果A或B为NULL，则为NULL，如果字符串A匹配SQL简单正则表达式B，则为TRUE，否则为FALSE。比较是逐个字符进行的。B中的下划线字符匹配A中的任何字符。而B中的%字符匹配A中的任意数量的字符(类似于posix正则表达式中的.*)。例如，’foobar’ LIKE ‘foo’的计算结果为FALSE，而’foobar’ LIKE ‘foo_ _ _’的计算结果为TRUE， ‘foobar’ LIKE ‘foo%’的计算结果也是TRUE。</td>
+</tr>
+<tr>
+<td>A RLIKE B</td>
+<td>字符串</td>
+<td>如果A或B为NULL，则为NULL，如果A的任何子字符串(可能为空)匹配Java正则表达式B，则为TRUE，否则为FALSE。例如，’foobar’ RLIKE ‘foo’的计算结果为TRUE， ‘foobar’ RLIKE ‘^f.*r$’也是如此。</td>
+</tr>
+<tr>
+<td>A REGEXP B</td>
+<td>字符串</td>
+<td>同RLIKE。</td>
+</tr>
+</tbody></table>
+<h3 id="1-10-XPath函数（暂不研究）"><a href="#1-10-XPath函数（暂不研究）" class="headerlink" title="1.10 XPath函数（暂不研究）"></a>1.10 XPath函数（暂不研究）</h3><h3 id="1-11-连接-join"><a href="#1-11-连接-join" class="headerlink" title="1.11 连接(join)"></a>1.11 连接(join)</h3><p>Hive 支持如下的表连接语法：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">join_table:</span><br><span class="line">    table_reference [<span class="keyword">INNER</span>] <span class="keyword">JOIN</span> table_factor [join_condition]</span><br><span class="line">  <span class="operator">|</span> table_reference &#123;<span class="keyword">LEFT</span><span class="operator">|</span><span class="keyword">RIGHT</span><span class="operator">|</span><span class="keyword">FULL</span>&#125; [<span class="keyword">OUTER</span>] <span class="keyword">JOIN</span> table_reference join_condition</span><br><span class="line">  <span class="operator">|</span> table_reference <span class="keyword">LEFT</span> SEMI <span class="keyword">JOIN</span> table_reference join_condition</span><br><span class="line">  <span class="operator">|</span> table_reference <span class="keyword">CROSS</span> <span class="keyword">JOIN</span> table_reference [join_condition] (<span class="keyword">as</span> <span class="keyword">of</span> Hive <span class="number">0.10</span>)</span><br><span class="line"> </span><br><span class="line">table_reference:</span><br><span class="line">    table_factor</span><br><span class="line">  <span class="operator">|</span> join_table</span><br><span class="line"> </span><br><span class="line">table_factor:</span><br><span class="line">    tbl_name [alias]</span><br><span class="line">  <span class="operator">|</span> table_subquery alias</span><br><span class="line">  <span class="operator">|</span> ( table_references )</span><br><span class="line"> </span><br><span class="line">join_condition:</span><br><span class="line">    <span class="keyword">ON</span> expression</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>版本相关：</li>
+</ul>
+<blockquote>
+<p>从Hive 0.13.0开始支持隐式连接表示。这允许FROM子句连接以逗号分隔的表列表，省略join关键字。例如:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> table1 t1, table2 t2, table3 t3</span><br><span class="line"><span class="keyword">WHERE</span> t1.id <span class="operator">=</span> t2.id <span class="keyword">AND</span> t2.id <span class="operator">=</span> t3.id <span class="keyword">AND</span> t1.zipcode <span class="operator">=</span> <span class="string">&#x27;02535&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>从Hive 0.13.0开始，连接条件中支持非限定列引用。Hive尝试根据连接的输入来解决这些问题。如果非限定列引用解析为多个表，Hive将其标记为不明确引用。例如：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> a (k1 string, v1 string);</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> b (k2 string, v2 string);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> k1, v1, k2, v2</span><br><span class="line"><span class="keyword">FROM</span> a <span class="keyword">JOIN</span> b <span class="keyword">ON</span> k1 <span class="operator">=</span> k2; </span><br></pre></td></tr></table></figure>
+
+<p>从Hive 2.2.0开始支持ON子句中的复杂表达式。在此之前，Hive不支持非相等条件的连接条件。特别地，连接条件的语法被限制如下:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">join_condition:</span><br><span class="line">    <span class="keyword">ON</span> equality_expression ( <span class="keyword">AND</span> equality_expression )<span class="operator">*</span></span><br><span class="line"></span><br><span class="line">equality_expression:</span><br><span class="line">    expression <span class="operator">=</span> expression</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="一些示例："><a href="#一些示例：" class="headerlink" title="一些示例："></a>一些示例：</h4><p>在编写连接查询时需要考虑的一些要点如下:</p>
+<ul>
+<li>允许复杂的连接表达式，如：</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> a.<span class="operator">*</span> <span class="keyword">FROM</span> a <span class="keyword">JOIN</span> b <span class="keyword">ON</span> (a.id <span class="operator">=</span> b.id)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> a.<span class="operator">*</span> <span class="keyword">FROM</span> a <span class="keyword">JOIN</span> b <span class="keyword">ON</span> (a.id <span class="operator">=</span> b.id <span class="keyword">AND</span> a.department <span class="operator">=</span> b.department)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> a.<span class="operator">*</span> <span class="keyword">FROM</span> a <span class="keyword">LEFT</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> b <span class="keyword">ON</span> (a.id <span class="operator">&lt;&gt;</span> b.id)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>多个表可以通过查询连接在一起，如：</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> a.val, b.val, c.val <span class="keyword">FROM</span> a <span class="keyword">JOIN</span> b <span class="keyword">ON</span> (a.key <span class="operator">=</span> b.key1) <span class="keyword">JOIN</span> c <span class="keyword">ON</span> (c.key <span class="operator">=</span> b.key2)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>如果在每个表的join子句中使用了相同的列，那么Hive会将多个表的连接转换为一个map&#x2F;reduce任务,如</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> a.val, b.val, c.val <span class="keyword">FROM</span> a <span class="keyword">JOIN</span> b <span class="keyword">ON</span> (a.key <span class="operator">=</span> b.key1) <span class="keyword">JOIN</span> c <span class="keyword">ON</span> (c.key <span class="operator">=</span> b.key1)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>被转换成了一个map&#x2F;reduce任务，因为连接时只涉及到了表b的key1列，另一种情况：</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> a.val, b.val, c.val <span class="keyword">FROM</span> a <span class="keyword">JOIN</span> b <span class="keyword">ON</span> (a.key <span class="operator">=</span> b.key1) <span class="keyword">JOIN</span> c <span class="keyword">ON</span> (c.key <span class="operator">=</span> b.key2)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>被转换成了两个map&#x2F;reduce任务，因为第一个连接使用了表b的key1列，第二个连接使用了表b的key2列，第一个map&#x2F;reduce任务将表a和b连接在了一起，第二个map&#x2F;reduce任务将第一个的连接结果与表c连接在了一起。</p>
+</blockquote>
+<ul>
+<li>在连接的每个map&#x2F;reduce阶段，可以通过提示指定要流化的表 ：</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="comment">/*+ STREAMTABLE(a) */</span> a.val, b.val, c.val <span class="keyword">FROM</span> a <span class="keyword">JOIN</span> b <span class="keyword">ON</span> (a.key <span class="operator">=</span> b.key1) <span class="keyword">JOIN</span> c <span class="keyword">ON</span> (c.key <span class="operator">=</span> b.key1)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>所有这三个表被连接到一个单独的map&#x2F;reduce作业中，表b和c的键的特定值被缓冲在reducer的内存中。然后，对于从a中检索到的每一行，使用缓冲的行计算连接。如果省略STREAMTABLE提示，Hive会将最右边的表在join时流化。</p>
+</blockquote>
+<ul>
+<li><strong>左连接、右连接、全连接和外连接</strong>的存在是为了在ON子句匹配不到时提供更多的控制，例如，下面的查询</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> a.val, b.val <span class="keyword">FROM</span> a <span class="keyword">LEFT</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> b <span class="keyword">ON</span> (a.key<span class="operator">=</span>b.key)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>返回结果对应于a中的每一行，当a.key等于b.key时，返回行将包括a.val和b.val，不相等时，返回行的结果为a.val 和NULL。语句中”FROM a LEFT OUTER JOIN b”必须写在同一行内以便于理解连接过程——查询中a在b的左边，所以来自a的行都被保留；如果是RIGHT OUTER JOIN的话b的行将被全部保留；如果是FULL OUTER JOIN的话，来自a和b的行都会被全部保留。外连接OUTER JOIN的语法应该符合标准的SQL规范。</p>
+</blockquote>
+<ul>
+<li>连接发生在WHERE子句之前。如果想要对连接结果做过滤，则应该在WHERE子句中进行条件约束，否则应该约束应该在join子句中(实际上是ON子句可以约束连接的输出)。涉及到这个问题的一个点是分区表:</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> a.val, b.val <span class="keyword">FROM</span> a <span class="keyword">LEFT</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> b <span class="keyword">ON</span> (a.key<span class="operator">=</span>b.key)</span><br><span class="line"><span class="keyword">WHERE</span> a.ds<span class="operator">=</span><span class="string">&#x27;2009-07-07&#x27;</span> <span class="keyword">AND</span> b.ds<span class="operator">=</span><span class="string">&#x27;2009-07-07&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如上述语句，a表和b表做左连接，产生一个含有a.val 和 b.val的列表，ds是分区列。因为是左连接，所以a是主表，连接过程中对应不到a.key 的b的连接部分将被置为NULL，包括分区列ds。而在WHERE子句中使用分区列对连接结果进行了过滤，此时由于a和b没有匹配到的行中b的部分为NULL(包括b.ds),所以这些没有成功匹配的行会被WHERE子句过滤掉，最终的结果不是左连接的结果，因为WHERE破坏了左连接的约束。如果想要在连接时增加过滤条件，应该按下面这样写：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> a.val, b.val <span class="keyword">FROM</span> a <span class="keyword">LEFT</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> b</span><br><span class="line"><span class="keyword">ON</span> (a.key<span class="operator">=</span>b.key <span class="keyword">AND</span> b.ds<span class="operator">=</span><span class="string">&#x27;2009-07-07&#x27;</span> <span class="keyword">AND</span> a.ds<span class="operator">=</span><span class="string">&#x27;2009-07-07&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>连接结果在连接过程中已经进行了过滤，不会出现查询完再过滤所产生的问题。同样的逻辑适用于右连接和全连接。</p>
+</blockquote>
+<ul>
+<li>连接是不可交换的！连接是左关联的，无论是左连接还是右连接。</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> a.val1, a.val2, b.val, c.val</span><br><span class="line"><span class="keyword">FROM</span> a</span><br><span class="line"><span class="keyword">JOIN</span> b <span class="keyword">ON</span> (a.key <span class="operator">=</span> b.key)</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> c <span class="keyword">ON</span> (a.key <span class="operator">=</span> c.key)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>首先a连接b(内连接)，按连接条件只保留全部匹配的行。连接后形成的表再连接c。如果一个用于连接条件的key在表a和表c中都有，但表b中没有，将产生意料之外的结果：由于b没有与a匹配的key，这些行在a和b连接时就被过滤掉了，所以ab连接结果中也没有a表中的这个key，当ab连接结果与c表左连接时，c中这个key的行也匹配不到，因为a和b的连接结果中没有这个key（连接时被过滤掉了）。类似地，如果现在是右连接，对于c的有这个key的行来说，匹配结果将是NULL，NULL，NULL，c.val.因为即使我们指定了a.key &#x3D; c.key作为连接条件，在第一次连接时由于没有匹配到，这个key已经被过滤掉了。为了得到更为直观的效果，应该改为：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> c <span class="keyword">LEFT</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> a <span class="keyword">ON</span> (c.key <span class="operator">=</span> a.key) <span class="keyword">LEFT</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> b <span class="keyword">ON</span> (c.key <span class="operator">=</span> b.key)。</span><br></pre></td></tr></table></figure>
+</blockquote>
+<ul>
+<li>LEFT SEMI JOIN(左半连接)以一种有效的方式实现了不相关的 IN&#x2F;EXISTS子查询语法。在Hive 0.13版本中，子查询支持IN&#x2F;NOT IN&#x2F;EXISTS&#x2F;NOT EXISTS操作符，因此大多数join操作不再需要手动执行。使用LEFT SEMI JOIN的限制是，右边的表只能在连接条件(on -子句)中引用，而不能在WHERE子句或select 子句等中引用。例如：</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> a.key, a.value</span><br><span class="line"><span class="keyword">FROM</span> a</span><br><span class="line"><span class="keyword">WHERE</span> a.key <span class="keyword">in</span></span><br><span class="line"> (<span class="keyword">SELECT</span> b.key</span><br><span class="line">  <span class="keyword">FROM</span> B);</span><br></pre></td></tr></table></figure>
+
+<p>可以被写为：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> a.key, a.val</span><br><span class="line"><span class="keyword">FROM</span> a <span class="keyword">LEFT</span> SEMI <span class="keyword">JOIN</span> b <span class="keyword">ON</span> (a.key <span class="operator">=</span> b.key)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>如果参与连接的表(除了一个以外)都很小，那么连接可以写成一个仅有map的连接，下面的查询</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="comment">/*+ MAPJOIN(b) */</span> a.key, a.value</span><br><span class="line"><span class="keyword">FROM</span> a <span class="keyword">JOIN</span> b <span class="keyword">ON</span> a.key <span class="operator">=</span> b.key</span><br></pre></td></tr></table></figure>
+
+<p>不需要reducer。因为对于每一个A的映射，B都会整个儿地读一遍。这样做的限制就是无法实现 a FULL&#x2F;RIGHT OUTER JOIN b。</p>
+</li>
+</ul>
+<p><strong>！！！！！！MAPJOIN知识待补充！！！！！！！！</strong></p>
+<ul>
+<li><p>如果连接表的连接列是时分桶列，并且一个表中的桶数是另一个表中的桶数的倍数，那么这些桶可以相互联接。假如表A有四个分桶，表B也有四个分桶，下面的连接：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="comment">/*+ MAPJOIN(b) */</span> a.key, a.value</span><br><span class="line"><span class="keyword">FROM</span> a <span class="keyword">JOIN</span> b <span class="keyword">ON</span> a.key <span class="operator">=</span> b.key</span><br></pre></td></tr></table></figure>
+
+<p>只能通过映射器mapper来完成。只需获取需要的桶，而不必为了A的每个映射器来完全获取B。拿上面的查询来说，处理A的桶1的映射器将只获取b的桶1，这种行为不是默认的，而是由以下的参数来控制的：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> hive.optimize.bucketmapjoin <span class="operator">=</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果两个表的连接列被用来分类sort和分桶，并且它们有相同数量的桶，则可以执行排序-合并连接(sort-merge)。对应的桶将在映射器上互相连接，如果A和B都有四个桶：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="comment">/*+ MAPJOIN(b) */</span> a.key, a.value</span><br><span class="line"><span class="keyword">FROM</span> A a <span class="keyword">JOIN</span> B b <span class="keyword">ON</span> a.key <span class="operator">=</span> b.key</span><br></pre></td></tr></table></figure>
+
+<p>上面的查询只能通过映射器来实现。A桶的映射器将会遍历B桶。这也不是默认行为，需要进行如下设置：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> hive.input.format<span class="operator">=</span>org.apache.hadoop.hive.ql.io.BucketizedHiveInputFormat;</span><br><span class="line"><span class="keyword">set</span> hive.optimize.bucketmapjoin <span class="operator">=</span> <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">set</span> hive.optimize.bucketmapjoin.sortedmerge <span class="operator">=</span> <span class="literal">true</span>;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="MapJoin的限制"><a href="#MapJoin的限制" class="headerlink" title="MapJoin的限制"></a>MapJoin的限制</h4><ul>
+<li><p>如果参与连接的表(除了一个以外)都很小，那么连接可以写成一个仅有map的连接，下面的查询</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="comment">/*+ MAPJOIN(b) */</span> a.key, a.value</span><br><span class="line"><span class="keyword">FROM</span> a <span class="keyword">JOIN</span> b <span class="keyword">ON</span> a.key <span class="operator">=</span> b.key</span><br></pre></td></tr></table></figure>
+
+<p>不需要reducer。因为对于每一个A的映射，B都会被完整地读一遍。</p>
+</li>
+<li><p>以下是一些不受支持的行为：</p>
+<ul>
+<li>Union后接MapJoin</li>
+<li>Lateral View后接MapJoin</li>
+<li>Reduce Sink (Group By&#x2F;Join&#x2F;Sort By&#x2F;Cluster By&#x2F;Distribute By) 后接MapJoin</li>
+<li>MapJoin后接Union</li>
+<li>MapJoin后接Join</li>
+<li>MapJoin后接MapJoin</li>
+</ul>
+</li>
+<li><p>在一般情况下，配置变量<code>hive.auto.convert.join</code>如果为true，运行时joins操作将会自动转换为mapjoins操作，应以此种方式代替上面的mapjoins提示使用方法，mapjoins提示只能用于以下的查询方式：</p>
+<ul>
+<li>如果输入是分桶或者分类的，join应该转换为分桶的map-side join 或者分桶的 sort-merge join.</li>
+</ul>
+</li>
+<li><p>考虑一种多个mapjoin在不同key上的可能情况：</p>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="comment">/*+MAPJOIN(smallTableTwo)*/</span> idOne, idTwo, <span class="keyword">value</span> <span class="keyword">FROM</span></span><br><span class="line">  ( <span class="keyword">select</span> <span class="comment">/*+MAPJOIN(smallTableOne)*/</span> idOne, idTwo, <span class="keyword">value</span> <span class="keyword">FROM</span></span><br><span class="line">    bigTable <span class="keyword">JOIN</span> smallTableOne <span class="keyword">on</span> (bigTable.idOne <span class="operator">=</span> smallTableOne.idOne)                                                  </span><br><span class="line">  ) firstjoin                                                            </span><br><span class="line">  <span class="keyword">JOIN</span>                                                                 </span><br><span class="line">  smallTableTwo <span class="keyword">ON</span> (firstjoin.idTwo <span class="operator">=</span> smallTableTwo.idTwo)   </span><br></pre></td></tr></table></figure>
+
+<p><em><strong>下面三段来自机器翻译</strong></em> </p>
+<p>不支持上述查询。如果没有mapjoin提示，上面的查询将作为2个只包含map的作业执行。如果用户事先知道输入足够小，可以放入内存中，那么可以使用以下可配置参数来确保查询在单个map-reduce作业中执行。</p>
+<ul>
+<li><p>Hive .auto.convert.join.noconditionaltask - Hive是否根据输入文件大小对普通连接转换为mapjoin进行优化。如果该参数是开启的，并且n-1个表&#x2F;分区的大小之和小于指定的大小，则连接将直接转换为mapjoin(没有条件任务)。</p>
+</li>
+<li><p>hive.auto.convert.join.noconditionaltask.size—如果hive.auto.convert.join.noconditionaltask是关闭的，则该参数不生效。但是，如果它是开启的，并且n-1个表&#x2F;分区的大小之和小于这个大小，那么这个连接将直接转换为映射连接(没有条件任务)。默认是10MB。</p>
+</li>
+</ul>
+<h3 id="1-12-jion优化（暂不研究）"><a href="#1-12-jion优化（暂不研究）" class="headerlink" title="1.12 jion优化（暂不研究）"></a>1.12 jion优化（暂不研究）</h3><h4 id="1-12-1-Hive优化器的改进"><a href="#1-12-1-Hive优化器的改进" class="headerlink" title="1.12.1 Hive优化器的改进"></a>1.12.1 Hive优化器的改进</h4><p>版本信息：</p>
+<blockquote>
+<p>join优化自Hive 0.11.0开始引入。</p>
+</blockquote>
+<p>Hive自动识别变量的使用场景并优化它们，Hive 0.11版本起，优化器在一下情形中做出了改进：</p>
+<blockquote>
+</blockquote>
+<h3 id="1-13-联合-Union"><a href="#1-13-联合-Union" class="headerlink" title="1.13 联合(Union)"></a>1.13 联合(Union)</h3><ul>
+<li>Union语法</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select_statement <span class="keyword">UNION</span> [<span class="keyword">ALL</span> <span class="operator">|</span> <span class="keyword">DISTINCT</span>] select_statement <span class="keyword">UNION</span> [<span class="keyword">ALL</span> <span class="operator">|</span> <span class="keyword">DISTINCT</span>] select_statement ...</span><br></pre></td></tr></table></figure>
+
+<p>语法解析：</p>
+<blockquote>
+<p>Union用于将多个select语句的结果联合成一个结果集。</p>
+<ul>
+<li>1.2.0之前的Hive版本仅支持UNION ALL,不排除重复行。</li>
+<li>在Hive 1.2.0及之后，UNION默认将重复行从结果集中移除。可选关键字DISTINCT和这种默认情形没有区别，因为它也是确认和移除重复行。如果带有可选关键字ALL，重复行不再移除，结果集中包含所有select语句的所有匹配行。</li>
+</ul>
+<p>可以将UNION ALL 和 UNION DISTINCT在同一个查询中混合使用。在混合的Union类型中，DISTINCT union 会把它左边的 ALL union都覆盖掉。</p>
+</blockquote>
+
+</div>
+
+
+
+	<div id="vcomments"></div>
+
+
+<script>
+	
+		// 评论
+		new Valine({
+			el: '#vcomments',
+			appId: 'F45pCfA2eAGxpJ1vwOuFzwnb-gzGzoHsz',
+			appKey: 'Dt9qs1xUTsnmVN7mQcwUdzTS',
+			placeholder: '期待你的留言^_^',
+			path: window.location.pathname,
+			avatar: 'retro',
+			highlight: false,
+      recordIP: true,
+      enableQQ: true,
+			requiredFields: ['nick','mail']
+		})
+	
+	
+    // 显示次数
+		function showTime(Counter) {
+			var query = new AV.Query("Counter");
+			if($(".leancloud_visitors").length > 0){
+				var url = $(".leancloud_visitors").attr('id').trim();
+				// where field
+				query.equalTo("words", url);
+				// count
+				query.count().then(function (number) {
+					// There are number instances of MyClass where words equals url.
+					$(document.getElementById(url)).text(number?  number : '--');
+				}, function (error) {
+					// error is an instance of AVError.
+				});
+			}
+		}
+		// 追加pv
+		function addCount(Counter) {
+			var url = $(".leancloud_visitors").length > 0 ? $(".leancloud_visitors").attr('id').trim() : 'wujun234.github.io';
+			var Counter = AV.Object.extend("Counter");
+			var query = new Counter;
+			query.save({
+				words: url
+			}).then(function (object) {
+			})
+		}
+		$(function () {
+			var Counter = AV.Object.extend("Counter");
+			addCount(Counter);
+			showTime(Counter);
+		});
+	
+</script>
+	</div>
+	<div id="footer">
+	<p>
+	©2022-<span id="footerYear"></span> 
+	<a href="/">Taizi</a> 
+	
+	
+		|
+		<span id="busuanzi_container_site_pv">
+			pv
+			<span id="busuanzi_value_site_pv"></span>
+		</span>
+		|
+		<span id="busuanzi_container_site_uv"> 
+			uv
+			<span id="busuanzi_value_site_uv"></span>
+		</span>
+	
+	<br>
+	</p>
+</div>
+<script type="text/javascript"> 
+	document.getElementById('footerYear').innerHTML = new Date().getFullYear() + '';
+</script>
+	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+</body>
+</html>

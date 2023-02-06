@@ -1152,16 +1152,16 @@ var _hmt = _hmt || [];
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -e --nodeps mariadb-libs-5.5.68-1.el7.x86_64</span><br></pre></td></tr></table></figure>
 
 <p>提前建立好存放MySQL安装包，以及存放解压文件的目录，然后将下载的压缩包解压，此处以CentOS7系统为例：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf mysql-8.0.31-1.el7.x86_64.rpm-bundle.tar</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf mysql-8.0.31-1.el7.x86_64.rpm-bundle.tar</span><br><span class="line">[tar -xvf 包路径 -C 安装路径]</span><br></pre></td></tr></table></figure>
 
 <p>解压后，严格按照以下下顺序安装解压后的其中四个包：<br>mysql-community-common-8.0.31-1.el7.x86_64.rpm、mysql-community-libs-8.0.31-1.el7.x86_64.rpm、mysql-community-client-8.0.31-1.el7.x86_64.rpm、mysql-community-server-8.0.31-1.el7.x86_64.rpm</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm ivh mysql-community-common-8.0.31-1.el7.x86_64.rpm</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh mysql-community-common-8.0.31-1.el7.x86_64.rpm</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm ivh mysql-community-libs-8.0.31-1.el7.x86_64.rpm</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh mysql-community-libs-8.0.31-1.el7.x86_64.rpm</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm ivh mysql-community-client-8.0.31-1.el7.x86_64.rpm</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh mysql-community-client-8.0.31-1.el7.x86_64.rpm</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm ivh mysql-community-server-8.0.31-1.el7.x86_64.rpm</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh mysql-community-server-8.0.31-1.el7.x86_64.rpm</span><br></pre></td></tr></table></figure>
 
 <p>安装过程中可能会出现报错：<br><img src="/Linux/MySQL%E5%AE%89%E8%A3%85(Linux)/image-20230112184038119.png" alt="image-20230112184038119"></p>
 <p>如果安装过程中出现这个错误就在后面添加 –force –nodeps，这可能是由于yum安装了旧版本的GPG keys造成的，当然，通过报错信息也可以解决，不难看出安装这个依赖包需要先安装mysql-community-client-plugins-8这个包，我们的解压目录里是有这个包的。使用相同的安装命令先安装这个plugins这个包，然后再安装libs包即可。</p>

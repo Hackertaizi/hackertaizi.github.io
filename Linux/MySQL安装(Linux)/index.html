@@ -1207,7 +1207,7 @@ var _hmt = _hmt || [];
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill -9 进程号</span><br></pre></td></tr></table></figure>
 
 <p>但我的实际错误是由于CentOS系统是安装在WSL（windows的linux子系统）下的，因为windows里安装了mysql占用了3306端口号而导致linux下无法启动mysql服务。需要杀死占用windows下3306端口的进程，使用管理员身份打开windows下的命令行窗口，查询所有占用端口的进程：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -ano</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">netstat -ano</span><br><span class="line">netstat -ano | findstr 3306</span><br></pre></td></tr></table></figure>
 
 <p>找到占用3306端口的进程号，然后杀死进程：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TASKKILL /F /PID 进程号</span><br></pre></td></tr></table></figure>
@@ -1223,6 +1223,61 @@ var _hmt = _hmt || [];
 <p>之后重新启动mysql服务即可。</p>
 <p>进入mysql后，设置一个自己的登录密码，例如：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SET PASSWORD = &#x27;123456&#x27;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="Ubuntu系统安装MySQL"><a href="#Ubuntu系统安装MySQL" class="headerlink" title="Ubuntu系统安装MySQL"></a>Ubuntu系统安装MySQL</h2><h3 id="首先彻底删除环境中的MySQL"><a href="#首先彻底删除环境中的MySQL" class="headerlink" title="首先彻底删除环境中的MySQL"></a>首先彻底删除环境中的MySQL</h3><ol>
+<li><p>删除mysql的配置文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo rm /var/lib/mysql/ -R</span><br><span class="line">sudo rm /etc/mysql/ -R</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>自动卸载MySQL</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get autoremove mysql* --purge</span><br><span class="line">sudo apt-get remove apparmor</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>终端中查看MySQL的依赖项</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpkg --list|grep mysql</span><br></pre></td></tr></table></figure>
+
+<p>如果还有依赖项，则继续执行卸载命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get autoremove mysql* --purge</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>卸载</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get remove php7.0-mysql</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>清除残留数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpkg -l|grep ^rc|awk ‘&#123;print$2&#125;’|sudo xargs dpkg -P</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看剩余依赖项</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpkg --list|grep mysql</span><br></pre></td></tr></table></figure>
+
+<p>没有依赖项时，删除成功。</p>
+</li>
+</ol>
+<h3 id="更新源"><a href="#更新源" class="headerlink" title="更新源"></a>更新源</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt upgrade</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装MySQL服务器"><a href="#安装MySQL服务器" class="headerlink" title="安装MySQL服务器"></a>安装MySQL服务器</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install mysql-server</span><br></pre></td></tr></table></figure>
+
+<h3 id="启动MySQL（WSL环境下需要先杀死Windows中的3306端口进程）"><a href="#启动MySQL（WSL环境下需要先杀死Windows中的3306端口进程）" class="headerlink" title="启动MySQL（WSL环境下需要先杀死Windows中的3306端口进程）"></a>启动MySQL（WSL环境下需要先杀死Windows中的3306端口进程）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service mysql start</span><br></pre></td></tr></table></figure>
+
+<h3 id="设置用户名和密码"><a href="#设置用户名和密码" class="headerlink" title="设置用户名和密码"></a>设置用户名和密码</h3><p>查看系统默认的用户名和密码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cat /etc/mysql/debian.cnf</span><br></pre></td></tr></table></figure>
+
+<p>用默认用户名和密码登录MySQL：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u默认用户名 -p默认密码</span><br></pre></td></tr></table></figure>
+
+<h3 id="重置用户名和密码"><a href="#重置用户名和密码" class="headerlink" title="重置用户名和密码"></a>重置用户名和密码</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">use mysql;  </span><br><span class="line">update mysql.user set authentication_string=password(&#x27;123456&#x27;) where user=&#x27;root&#x27; and Host =&#x27;localhost&#x27;; </span><br><span class="line">update user set  plugin=&quot;mysql_native_password&quot;;     </span><br><span class="line">flush privileges;      </span><br><span class="line">quit;     </span><br></pre></td></tr></table></figure>
+
+<p>MySQL80使用一下方式设置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">use mysql;    </span><br><span class="line">alter user &#x27;root&#x27;@&#x27;localhost&#x27; identified with mysql_native_password by &#x27;123456&#x27;;   </span><br><span class="line">flush privileges; </span><br></pre></td></tr></table></figure>
+
+<h3 id="初始化MySQL"><a href="#初始化MySQL" class="headerlink" title="初始化MySQL"></a>初始化MySQL</h3><p>命令行中初始化MySQL：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mysql_secure_installation</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置字符集"><a href="#配置字符集" class="headerlink" title="配置字符集"></a>配置字符集</h3><p>编辑配置文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf</span><br></pre></td></tr></table></figure>
+
+<p>在[mysqld]下加入一行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">character_set_server=utf8</span><br></pre></td></tr></table></figure>
 
 </div>
 

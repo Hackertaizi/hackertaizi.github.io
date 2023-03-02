@@ -443,9 +443,9 @@ var _hmt = _hmt || [];
 			
 							<ul>
 								<li class="file">
-									<a href="/Java/MyBatis/Mybatis%E4%BD%BF%E7%94%A8/">
+									<a href="/Java/MyBatis/Mybatis/">
                      
-										    Mybatis使用
+										    Mybatis
                      
 									</a>
 								</li>
@@ -454,9 +454,9 @@ var _hmt = _hmt || [];
 			
 							<ul>
 								<li class="file">
-									<a href="/Java/MyBatis/Mybatis/">
+									<a href="/Java/MyBatis/Mybatis%E4%BD%BF%E7%94%A8/">
                      
-										    Mybatis
+										    Mybatis使用
                      
 									</a>
 								</li>
@@ -995,6 +995,28 @@ var _hmt = _hmt || [];
 								
 							</ul>
 			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										正则表达式
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/%E5%85%B6%E4%BB%96/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AF%AD%E6%B3%95%E8%A7%84%E5%88%99/">
+                     
+										    正则表达式语法规则
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
 								</li>
 								
 							</ul>
@@ -1174,7 +1196,11 @@ var _hmt = _hmt || [];
 <p>示例：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- from 和 to 长度一样，如translate(&quot;abcdef-abcdef&quot;,&quot;abcdef&quot;,&quot;123456&quot;);替换不是说把&quot;abcdef&quot;替换成&quot;123456&quot;，而是把a替换成1，把b替换成2，把c替换成3，把d替换成4，e替换成5，f替换成6.</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="built_in">translate</span>(<span class="string">&#x27;abcdef-abcdef&#x27;</span>, <span class="string">&#x27;abcd&#x27;</span>, <span class="string">&#x27;1234&#x27;</span>),<span class="comment">--1234ef-1234ef</span></span><br><span class="line">       <span class="built_in">translate</span>(<span class="string">&#x27;abcdef-abcdef&#x27;</span>, <span class="string">&#x27;ab&#x27;</span>, <span class="string">&#x27;12&#x27;</span>),    <span class="comment">--12cdef-12cdef</span></span><br><span class="line">       <span class="built_in">translate</span>(<span class="string">&#x27;abcdef-abcdef&#x27;</span>, <span class="string">&#x27;ad&#x27;</span>, <span class="string">&#x27;14&#x27;</span>),    <span class="comment">--1bc4ef-1bc4ef</span></span><br><span class="line">       <span class="built_in">translate</span>(<span class="string">&#x27;abcdef-abcdef&#x27;</span>, <span class="string">&#x27;da&#x27;</span>, <span class="string">&#x27;41&#x27;</span>);<span class="comment">--1bc4ef-1bc4ef</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- from 字符串长度&gt;to的字符串长度 ，例如translate(&#x27;abcdef-abcdef&#x27;,&#x27;adbc&#x27;,&#x27;123&#x27;)    意思是把 a替换为1，b替换为2，c替换为3，d替换为空，即删除掉。</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="built_in">translate</span>(<span class="string">&#x27;abcdef-abcdef&#x27;</span>, <span class="string">&#x27;abcd&#x27;</span>, <span class="string">&#x27;123&#x27;</span>), <span class="comment">--123ef-123ef</span></span><br><span class="line">       <span class="built_in">translate</span>(<span class="string">&#x27;abcdef-abcdef&#x27;</span>, <span class="string">&#x27;adbc&#x27;</span>, <span class="string">&#x27;123&#x27;</span>); <span class="comment">--132ef-132ef</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 如果 from里有重复字符 比如abca，1231，重复的字符a对应to的替换不会起作用</span></span><br><span class="line"><span class="keyword">select</span> <span class="built_in">TRANSLATE</span> (<span class="string">&#x27;abcdaabbaaabbb&#x27;</span>,<span class="string">&#x27;aa&#x27;</span>,<span class="string">&#x27;12&#x27;</span>)<span class="comment">--1bcd11bb111bbb </span></span><br></pre></td></tr></table></figure>
 
+<h3 id="REGEXP-hive"><a href="#REGEXP-hive" class="headerlink" title="REGEXP (hive)"></a>REGEXP (hive)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">	A REGEXP B</span><br><span class="line">用途：</span><br><span class="line">	判断字符串A是否符合正则表达式B，返回结果为boolean(true、false)或者null。</span><br></pre></td></tr></table></figure>
+
 <h3 id="REGEXP-REPLACE-hive"><a href="#REGEXP-REPLACE-hive" class="headerlink" title="REGEXP_REPLACE	(hive)"></a>REGEXP_REPLACE	(hive)</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">	REGEXP_REPLACE(string A, string B, string C);</span><br><span class="line">用途：</span><br><span class="line">	将字符串A中的部分字符做替换。</span><br><span class="line">用法：</span><br><span class="line">	将字符串A中满足Java正则表达式B的部分替换为字符串C。</span><br></pre></td></tr></table></figure>
+
+<h3 id="REGEXP-EXTRACT-hive"><a href="#REGEXP-EXTRACT-hive" class="headerlink" title="REGEXP_EXTRACT (hive)"></a>REGEXP_EXTRACT (hive)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">	REGEXP_EXTRACT(STRING subject, STRING pattern, INT index)</span><br><span class="line">用途：</span><br><span class="line">	将字符串进行正则拆分</span><br><span class="line">用法：</span><br><span class="line">	将字符串subject按照pattern正则表达式的规则进行拆分，返回index指定部分的字符，index从1开始计。</span><br><span class="line">	* index = 0时，将字符串与整个pattern正则表达式进行匹配，返回匹配结果</span><br><span class="line">	* index = 1时，将字符串与pattern中第一个括号里的表达式进行匹配，返回结果。</span><br><span class="line">	index &gt;=1时以此类推</span><br><span class="line">示例：</span><br><span class="line">	select regexp_extract(&#x27;AA123bbcccc&#x27; ,&#x27;A&#123;2&#125;([1-9]&#123;3&#125;)([a-z]&#123;6&#125;)&#x27;,0);</span><br><span class="line">	结果：AA123bbcccc</span><br><span class="line">	select regexp_extract(&#x27;AA123bbcccc&#x27; ,&#x27;A&#123;2&#125;([1-9]&#123;3&#125;)([a-z]&#123;6&#125;)&#x27;,2);</span><br><span class="line">	结果：bbcccc</span><br></pre></td></tr></table></figure>
 
 <h3 id="TRIM-hive"><a href="#TRIM-hive" class="headerlink" title="TRIM	(hive)"></a>TRIM	(hive)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">	TRIM(string)</span><br><span class="line">用途：</span><br><span class="line">	去掉字段首尾的空格</span><br></pre></td></tr></table></figure>
 

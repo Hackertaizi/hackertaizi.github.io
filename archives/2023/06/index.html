@@ -8,8 +8,6 @@
 	<!-- title -->
 	
 	<title>
-	
-		kats安装教程 | 
 	 
 	太子的个人博客
 	</title>
@@ -974,7 +972,7 @@ var _hmt = _hmt || [];
 									</a>
 									
 							<ul>
-								<li class="file active">
+								<li class="file">
 									<a href="/Python/kats%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">
                      
 										    kats安装教程
@@ -1181,113 +1179,33 @@ var _hmt = _hmt || [];
 
 	<!-- 引入正文 -->
 	<div id="content">
-		<h1 id="article-title">
-	kats安装教程
-</h1>
-<div class="article-meta">
+		<div id="index">
 	
-		<span>
-			阅读量:<span id="/Python/kats%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" class="leancloud_visitors" data-flag-title=""></span>
-		</span>
+		<div class="index-li">
+			<a href="/ETL/ETL%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/">
+				<h2 class="index-title">
+					ETL开发流程
+				</h2>
+				<div class="index-brief">
+					ETL开发流程准备阶段1. 开发架构确定​	在接收到需求后，首先要弄清楚业务类型，以及数据源类型。在宏观上，ETL是围绕数据开展的工作，不应局限于某种技术或某种数据处理方式，所以，在条件允许的情况下，应该选取最适合业务的开发架构和方式。以下列举了几种开发架构，笔者经验所限，后续将持续更新新的架构。
+
+					...
+				</div>
+			</a>
+                <div class="article-meta">
+				    <span>2023-06-14</span>
+                    
+                            
+                    
+                </div>
+		</div>	
 	
-	<span>Taizi</span>
-	<span>2022-11-19 11:34:18</span>
-		<div id="article-categories">
-    
-		<span>Categories：</span>
-            
-    
-
-    
-		<span>Tags：</span>
-            
-    
-		</div>
-
+	
+	<div id="index-paginator">
+		
+	</div>
 </div>
 
-<div id="article-content">
-	<h1 id="kats安装教程"><a href="#kats安装教程" class="headerlink" title="kats安装教程"></a>kats安装教程</h1><p>kats是Facebook开发的时间序列预测服务工具库，集成了多种时间预测模型。</p>
-<h2 id="安装过程（建议单独创建虚拟环境）"><a href="#安装过程（建议单独创建虚拟环境）" class="headerlink" title="安装过程（建议单独创建虚拟环境）"></a>安装过程（建议单独创建虚拟环境）</h2><h3 id="1-fbprophet的安装"><a href="#1-fbprophet的安装" class="headerlink" title="1.fbprophet的安装"></a>1.fbprophet的安装</h3><p>由于直接安装kats会报错，主要原因是fbprophet的安装问题。所以在安装kats之前，首先将fbprophet单独进行安装。</p>
-<p>直接pip install fdprophet也会出错，因此依次执行下面三个命令：</p>
-<blockquote>
-<p>python -m pip install -U pip</p>
-<p>conda install -c conda-forge pystan</p>
-<p>pip install fbprophet</p>
-</blockquote>
-<p>过程中，执行第二条命令conda install -c conda-forge pystan后可能会出现pip命令无法使用的情况，提示错误为ModuleNotFoundError: No module named ‘_sysconfigdata_x86_64_conda_linux_gnu’，这是因为第二条指令使用conda安装了“gxx-linux-64”，在某一个版本的python中丢失了一个备份文件，通常在同一个版本的python下会有两个相同的<code>_sysconfigdata_x86_64_conda_cos6_linux_gnu.py</code>文件和<code>_sysconfigdata_x86_64_conda_linux_gnu.py</code>文件。而在某些程序的运行过程中会依赖于其中的一个，因此我们需要做的就是检索系统中是否存在有这两个文件：</p>
-<blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo find ~ -name _sysconfigdata_x86_64*</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>我发现的问题是在虚拟环境下的anaconda下的python3.8路径下只有一个<code>_sysconfigdata_x86_64_conda_cos6_linux_gnu.py</code>文件而没有</p>
-<p><code>_sysconfigdata_x86_64_conda_linux_gnu.py</code>文件，所以只需要将上面有的文件复制一份成下面文件的名字即可，使用了命令：</p>
-<blockquote>
-<p> <code>cp /opt/anaconda3/envs/kats/lib/python3.8/_sysconfigdata_x86_64_conda_cos6_linux_gnu.py /opt/anaconda3/envs/kats/lib/python3.8/_sysconfigdata_x86_64_conda_linux_gnu.py</code></p>
-</blockquote>
-<p>这里kats是我创建的虚拟环境的名字。</p>
-<p>到此，不出意外的话fbprophet安装完毕。</p>
-<h3 id="2-kats的安装"><a href="#2-kats的安装" class="headerlink" title="2. kats的安装"></a>2. kats的安装</h3><p>由于kats的安装过程中需要安装pytorch，而安装pytorch的过程会导致进程killed，所以安装kats需要添加参数</p>
-<p>“–no-cache-dir”，安装命令为：</p>
-<p><code>pip install kats --no-cache-dir</code></p>
-<p>等待安装完毕即可。</p>
-
-</div>
-
-
-
-	<div id="vcomments"></div>
-
-
-<script>
-	
-		// 评论
-		new Valine({
-			el: '#vcomments',
-			appId: 'F45pCfA2eAGxpJ1vwOuFzwnb-gzGzoHsz',
-			appKey: 'Dt9qs1xUTsnmVN7mQcwUdzTS',
-			placeholder: '期待你的留言^_^',
-			path: window.location.pathname,
-			avatar: 'retro',
-			highlight: false,
-      recordIP: true,
-      enableQQ: true,
-			requiredFields: ['nick','mail']
-		})
-	
-	
-    // 显示次数
-		function showTime(Counter) {
-			var query = new AV.Query("Counter");
-			if($(".leancloud_visitors").length > 0){
-				var url = $(".leancloud_visitors").attr('id').trim();
-				// where field
-				query.equalTo("words", url);
-				// count
-				query.count().then(function (number) {
-					// There are number instances of MyClass where words equals url.
-					$(document.getElementById(url)).text(number?  number : '--');
-				}, function (error) {
-					// error is an instance of AVError.
-				});
-			}
-		}
-		// 追加pv
-		function addCount(Counter) {
-			var url = $(".leancloud_visitors").length > 0 ? $(".leancloud_visitors").attr('id').trim() : 'wujun234.github.io';
-			var Counter = AV.Object.extend("Counter");
-			var query = new Counter;
-			query.save({
-				words: url
-			}).then(function (object) {
-			})
-		}
-		$(function () {
-			var Counter = AV.Object.extend("Counter");
-			addCount(Counter);
-			showTime(Counter);
-		});
-	
-</script>
 	</div>
 	<div id="footer">
 	<p>

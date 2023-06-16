@@ -123,6 +123,28 @@ var _hmt = _hmt || [];
 								<li class="directory">
 									<a href="#" class="directory">
 										<i class="fa fa-plus-square-o"></i>
+										ETL
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/ETL/ETL%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/">
+                     
+										    ETL开发流程
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
 										Hadoop
 									</a>
 									
@@ -1323,6 +1345,10 @@ var _hmt = _hmt || [];
 
 
 <h2 id="窗口函数"><a href="#窗口函数" class="headerlink" title="窗口函数"></a>窗口函数</h2><h3 id="OVER-hive"><a href="#OVER-hive" class="headerlink" title="OVER	(hive)"></a>OVER	(hive)</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">	<span class="keyword">OVER</span>()</span><br><span class="line">用途：</span><br><span class="line">	指定分析函数工作的窗口大小，一般放在函数后面</span><br><span class="line">用法：</span><br><span class="line">	<span class="keyword">over</span>函数是对每一条数据都进行开窗，当<span class="keyword">over</span>括号中没有传入参数时，窗口大小默认为数据集大小。当使用distribute <span class="keyword">by</span> <span class="operator">/</span> sort <span class="keyword">by</span> <span class="operator">/</span> <span class="keyword">order</span> <span class="keyword">by</span>等关键字进行限制时，窗口大小相应地发生变化</span><br><span class="line">	</span><br><span class="line">相关参数(传入<span class="keyword">over</span>后的括号内使用)：</span><br><span class="line">	<span class="keyword">CURRENT</span> <span class="type">ROW</span>: 当前行</span><br><span class="line">	n PRECEDING: 往前n行数据</span><br><span class="line">	n FOLLOWING: 往后n行数据</span><br><span class="line">	UNBOUNDED: 起点</span><br><span class="line">	UNBOUNDED PRECEDING：表示从前面的起点</span><br><span class="line">	UNBOUNDED FOLLOWING：表示到后面的终点</span><br><span class="line">常配合使用的函数：</span><br><span class="line">	窗口函数可以对函数工作范围进行开窗，经常配合使用<span class="keyword">over</span>()的函数有以下几个:</span><br><span class="line">	<span class="built_in">row_number</span>():为结果集的每一行分配一个连续的整数，从<span class="number">1</span>开始</span><br><span class="line">	<span class="built_in">lag</span>(col,n,<span class="keyword">default</span>): 往前第n行数据，第一个参数指定列，第三个参数是当前面第n行该列不存在时的默认值</span><br><span class="line">	<span class="built_in">lead</span>(col,n,<span class="keyword">default</span>)：往后第n行数据，第一个参数指定列，第三个参数是当后面第n行该列不存在时的默认值</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="格式处理-1"><a href="#格式处理-1" class="headerlink" title="格式处理"></a>格式处理</h2><h3 id="CAST-hive"><a href="#CAST-hive" class="headerlink" title="CAST (hive)"></a>CAST (hive)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">	CAST(expression AS data_type)</span><br><span class="line">用途：</span><br><span class="line">	将字段类型转换成指定数据类型，显式类型转换</span><br><span class="line">用法：</span><br><span class="line">	expression:任何有效的字段或者表达式</span><br><span class="line">	data_type:要转换的数据类型</span><br><span class="line">特殊说明：</span><br><span class="line">	1.如果将浮点型的数据转换成int类型的，内部操作是通过round()或者floor()函数来实现的，而不是通过cast实现</span><br><span class="line">	2.对于BINARY类型的数据，只能将BINARY类型的数据转换成STRING类型。如果你确信BINARY类型数据是一个数字类型(a number)，这时候你可以利用嵌套的cast操作，比如a是一个BINARY，且它是一个数字类型，那么你可以用下面的查询：</span><br><span class="line">	SELECT (cast(cast(a as string) as double )) from src;</span><br><span class="line">	3.对于Date类型的数据，只能在Date、Timestamp以及String之间进行转换	</span><br></pre></td></tr></table></figure>
 
 
 </div>

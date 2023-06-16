@@ -9,7 +9,7 @@
 	
 	<title>
 	
-		kats安装教程 | 
+		ETL开发流程 | 
 	 
 	太子的个人博客
 	</title>
@@ -127,7 +127,7 @@ var _hmt = _hmt || [];
 									</a>
 									
 							<ul>
-								<li class="file">
+								<li class="file active">
 									<a href="/ETL/ETL%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/">
                      
 										    ETL开发流程
@@ -974,7 +974,7 @@ var _hmt = _hmt || [];
 									</a>
 									
 							<ul>
-								<li class="file active">
+								<li class="file">
 									<a href="/Python/kats%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">
                      
 										    kats安装教程
@@ -1182,16 +1182,16 @@ var _hmt = _hmt || [];
 	<!-- 引入正文 -->
 	<div id="content">
 		<h1 id="article-title">
-	kats安装教程
+	ETL开发流程
 </h1>
 <div class="article-meta">
 	
 		<span>
-			阅读量:<span id="/Python/kats%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" class="leancloud_visitors" data-flag-title=""></span>
+			阅读量:<span id="/ETL/ETL%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/" class="leancloud_visitors" data-flag-title=""></span>
 		</span>
 	
 	<span>Taizi</span>
-	<span>2022-11-19 11:34:18</span>
+	<span>2023-06-14 17:08:20</span>
 		<div id="article-categories">
     
 		<span>Categories：</span>
@@ -1207,29 +1207,66 @@ var _hmt = _hmt || [];
 </div>
 
 <div id="article-content">
-	<h1 id="kats安装教程"><a href="#kats安装教程" class="headerlink" title="kats安装教程"></a>kats安装教程</h1><p>kats是Facebook开发的时间序列预测服务工具库，集成了多种时间预测模型。</p>
-<h2 id="安装过程（建议单独创建虚拟环境）"><a href="#安装过程（建议单独创建虚拟环境）" class="headerlink" title="安装过程（建议单独创建虚拟环境）"></a>安装过程（建议单独创建虚拟环境）</h2><h3 id="1-fbprophet的安装"><a href="#1-fbprophet的安装" class="headerlink" title="1.fbprophet的安装"></a>1.fbprophet的安装</h3><p>由于直接安装kats会报错，主要原因是fbprophet的安装问题。所以在安装kats之前，首先将fbprophet单独进行安装。</p>
-<p>直接pip install fdprophet也会出错，因此依次执行下面三个命令：</p>
-<blockquote>
-<p>python -m pip install -U pip</p>
-<p>conda install -c conda-forge pystan</p>
-<p>pip install fbprophet</p>
-</blockquote>
-<p>过程中，执行第二条命令conda install -c conda-forge pystan后可能会出现pip命令无法使用的情况，提示错误为ModuleNotFoundError: No module named ‘_sysconfigdata_x86_64_conda_linux_gnu’，这是因为第二条指令使用conda安装了“gxx-linux-64”，在某一个版本的python中丢失了一个备份文件，通常在同一个版本的python下会有两个相同的<code>_sysconfigdata_x86_64_conda_cos6_linux_gnu.py</code>文件和<code>_sysconfigdata_x86_64_conda_linux_gnu.py</code>文件。而在某些程序的运行过程中会依赖于其中的一个，因此我们需要做的就是检索系统中是否存在有这两个文件：</p>
-<blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo find ~ -name _sysconfigdata_x86_64*</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>我发现的问题是在虚拟环境下的anaconda下的python3.8路径下只有一个<code>_sysconfigdata_x86_64_conda_cos6_linux_gnu.py</code>文件而没有</p>
-<p><code>_sysconfigdata_x86_64_conda_linux_gnu.py</code>文件，所以只需要将上面有的文件复制一份成下面文件的名字即可，使用了命令：</p>
-<blockquote>
-<p> <code>cp /opt/anaconda3/envs/kats/lib/python3.8/_sysconfigdata_x86_64_conda_cos6_linux_gnu.py /opt/anaconda3/envs/kats/lib/python3.8/_sysconfigdata_x86_64_conda_linux_gnu.py</code></p>
-</blockquote>
-<p>这里kats是我创建的虚拟环境的名字。</p>
-<p>到此，不出意外的话fbprophet安装完毕。</p>
-<h3 id="2-kats的安装"><a href="#2-kats的安装" class="headerlink" title="2. kats的安装"></a>2. kats的安装</h3><p>由于kats的安装过程中需要安装pytorch，而安装pytorch的过程会导致进程killed，所以安装kats需要添加参数</p>
-<p>“–no-cache-dir”，安装命令为：</p>
-<p><code>pip install kats --no-cache-dir</code></p>
-<p>等待安装完毕即可。</p>
+	<h1 id="ETL开发流程"><a href="#ETL开发流程" class="headerlink" title="ETL开发流程"></a>ETL开发流程</h1><h2 id="准备阶段"><a href="#准备阶段" class="headerlink" title="准备阶段"></a>准备阶段</h2><h3 id="1-开发架构确定"><a href="#1-开发架构确定" class="headerlink" title="1. 开发架构确定"></a>1. 开发架构确定</h3><p>​	在接收到需求后，首先要弄清楚业务类型，以及数据源类型。在宏观上，ETL是围绕数据开展的工作，不应局限于某种技术或某种数据处理方式，所以，在条件允许的情况下，应该选取最适合业务的开发架构和方式。以下列举了几种开发架构，笔者经验所限，后续将持续更新新的架构。</p>
+<ul>
+<li><p>离线开发：Hadoop+ hive</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">经典的离线开发方式，当需求对数据的实时性要求没那么高时，可以采用此种开发方式。当然该架构对于配置要求较高，需要有Hadoop集群以及数据开发平台。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实时开发：待补充</p>
+</li>
+<li><p>待补充</p>
+</li>
+</ul>
+<h3 id="2-了解数据源"><a href="#2-了解数据源" class="headerlink" title="2. 了解数据源"></a>2. 了解数据源</h3><p>当拿到一份陌生的数据源&#x2F;数据源表，首先要做的是对该表进行充分的了解：</p>
+<ul>
+<li>表字段、字段类型、字段注释的了解</li>
+<li>表的业务背景、来源、每个字段的含义</li>
+<li>表的更新方式（增量&#x2F;全量）、表格结构（普通表&#x2F;分区&#x2F;分桶）、使用方式（只用最新分区&#x2F;使用部分分区&#x2F;使用全量分区）</li>
+</ul>
+<p>基于对表的这些了解，应该形成文档，对要点做适当的记录，避免下次使用该表时因为疏漏而踩坑。</p>
+<p>然后，需要对数据源表进行数据探查，主要是为了大致评估数据量、数据质量、以及一些其他信息。数据探查的逻辑主要根据业务需求来制定，探查过后应该对资源分配、开发方式、数据源是否符合需求等有一个评估结论</p>
+<h3 id="2-开发逻辑设计"><a href="#2-开发逻辑设计" class="headerlink" title="2. 开发逻辑设计"></a>2. 开发逻辑设计</h3><h3 id="3-表结构设计"><a href="#3-表结构设计" class="headerlink" title="3. 表结构设计"></a>3. 表结构设计</h3><h3 id="4-数据流梳理"><a href="#4-数据流梳理" class="headerlink" title="4. 数据流梳理"></a>4. 数据流梳理</h3><h2 id="开发阶段"><a href="#开发阶段" class="headerlink" title="开发阶段"></a>开发阶段</h2><h3 id="1-离线开发流程"><a href="#1-离线开发流程" class="headerlink" title="1. 离线开发流程"></a>1. 离线开发流程</h3><ol>
+<li><p>了解数据源<br>当拿到一份陌生的数据源&#x2F;数据源表，首先要做的是对该表进行充分的了解：</p>
+<ul>
+<li>表字段、字段类型、字段注释的了解</li>
+<li>表的业务背景、来源、每个字段的含义</li>
+<li>表的更新方式（增量&#x2F;全量）、表格结构（普通表&#x2F;分区&#x2F;分桶）、使用方式（只用最新分区&#x2F;使用部分分区&#x2F;使用全量分区）</li>
+</ul>
+</li>
+<li><p>数据清洗<br>在充分了解了数据源之后，就需要根据业务需求对数据进行处理了：</p>
+<ul>
+<li><p><strong>确定业务数据范围</strong>。包括：</p>
+<ul>
+<li>业务数据范围：<br>在逻辑上对数据源的数据进行截取，例如只需要统计当年的数据，则通过表中的时间字段进行过滤即可。</li>
+<li>字段范围：<br>确定关键的字段有哪些，根据业务抽取需要的字段，对于一些明显用不到的字段，可以舍去，对于以后可能会用到的字段予以保留，避免后续迭代对表结构做改动。</li>
+<li>特别地，如果后续会经常使用该表，可以考虑只对该表做数据范围上的筛选，而不做字段范围上的限制（保留全部字段），加以清洗后形成一张通用明细表</li>
+</ul>
+</li>
+<li><p><strong>脏数据清洗</strong>。</p>
+<ul>
+<li><p>字段内容清洗<br>字段内容清洗是最常见的脏数据处理方式</p>
+<ul>
+<li>某些字段中可能掺杂了一些特殊字符、乱码数据等。这种情况下，一般需要将特殊字符去除，或者将整个值做统一替换处理。处理方式一般为字符串替换、正则表达式替换、或者采用if 、case when 等条件函数进行映射等。</li>
+<li>某些字段中可能存在一些不该存在的值，这种情况一般直接做映射处理，将这些不合适的值替换为其他值，可以采用上面的处理方式进行处理。</li>
+</ul>
+</li>
+<li><p>缺失值处理</p>
+<ul>
+<li><p>缺失值统一转换：<br>对于缺失值，最常规的处理方式就是将缺失值做统一转换，可以转换为某个特定的值，也可以将不同的缺失值统一成一样的缺失值，便于后续处理。处理一般可借助COALESCE、IF、NVL、CASE WHEN等函数。<br>特别地，在处理表时，由于很多字段不能确定是否有缺失值，或者日后是否会产生缺失值，所以在处理时基本可以对所有字段进行缺失值处理，防止出现缺失值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">空值转换:</span><br><span class="line">	NVL(field, 替换后的值)</span><br><span class="line">	IF(field IS NULL, 替换后的值, field)</span><br><span class="line">空字符串转NULL:</span><br><span class="line">	IF(field = &#x27;&#x27;, 替换后的值, field)</span><br><span class="line">判断字段是否为空或者空字符串:</span><br><span class="line">	COALESCE(field, &#x27;&#x27;) = &#x27;&#x27;    --字段为空或者空字符串</span><br><span class="line">	field IS NULL OR field = &#x27;&#x27; --字段为空或者空字符串</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>详细地址解析<br>当表中只有一个长串的详细地址字段，而没有单独的省市地址字段时，需要使用正则表达式进行解析，表达式书写需要根据具体的数据情况来写，考虑到一般的地址书写格式都比较相似，下面总结了一下地址解析的HIVESQL代码，主要是从详细地址中解析出省份名称和市名称，后续会不断优化，注意代码中语句的顺序十分重要：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">CASE</span><br><span class="line">    WHEN install_addr LIKE &#x27;%市%省%&#x27; THEN &#x27;其他&#x27; --异常数据过滤</span><br><span class="line">    WHEN install_addr LIKE &#x27;%北京%&#x27; THEN &#x27;北京市&#x27;</span><br><span class="line">    WHEN install_addr LIKE &#x27;%天津%&#x27; THEN &#x27;天津市&#x27;</span><br><span class="line">    WHEN install_addr LIKE &#x27;%上海%&#x27; THEN &#x27;上海市&#x27;</span><br><span class="line">    WHEN install_addr LIKE &#x27;%重庆%&#x27; THEN &#x27;重庆市&#x27;</span><br><span class="line">    WHEN install_addr LIKE &#x27;%香港%&#x27; THEN &#x27;香港特别行政区&#x27;</span><br><span class="line">    WHEN install_addr LIKE &#x27;%澳门%&#x27; THEN &#x27;澳门特别行政区&#x27;</span><br><span class="line">    WHEN install_addr LIKE &#x27;%自治区%&#x27; THEN REGEXP_EXTRACT(REGEXP_REPLACE(install_addr, &#x27;[ \f\n\r\t\v]&#x27;, &#x27;&#x27;), &#x27;.*?自治区&#x27;, 0)</span><br><span class="line">    WHEN install_addr LIKE &#x27;%省%&#x27; THEN REGEXP_EXTRACT(REGEXP_REPLACE(install_addr, &#x27;[ \f\n\r\t\v]&#x27;, &#x27;&#x27;), &#x27;.*?省&#x27;, 0)</span><br><span class="line">    ELSE &#x27;其他&#x27;</span><br><span class="line">END AS province_desc</span><br><span class="line">,CASE</span><br><span class="line">    WHEN install_addr LIKE &#x27;%北京%&#x27; THEN &#x27;北京市&#x27;</span><br><span class="line">    WHEN install_addr LIKE &#x27;%天津%&#x27; THEN &#x27;天津市&#x27;</span><br><span class="line">    WHEN install_addr LIKE &#x27;%上海%&#x27; THEN &#x27;上海市&#x27;</span><br><span class="line">    WHEN install_addr LIKE &#x27;%重庆%&#x27; THEN &#x27;重庆市&#x27;</span><br><span class="line">    WHEN install_addr LIKE &#x27;%省%自治州%&#x27; THEN REGEXP_EXTRACT(REGEXP_REPLACE(REGEXP_REPLACE(install_addr, &#x27;[ \f\n\r\t\v]&#x27;, &#x27;&#x27;), &#x27;^.*?省&#x27;, &#x27;&#x27;), &#x27;^.*?自治州&#x27;, 0)</span><br><span class="line">    WHEN install_addr LIKE &#x27;%自治区%自治州%&#x27; THEN REGEXP_EXTRACT(REGEXP_REPLACE(REGEXP_REPLACE(install_addr, &#x27;[ \f\n\r\t\v]&#x27;, &#x27;&#x27;), &#x27;^.*?自治区&#x27;, &#x27;&#x27;), &#x27;^.*?自治州&#x27;, 0)</span><br><span class="line">    WHEN install_addr LIKE &#x27;%自治区%地区%&#x27; THEN REGEXP_EXTRACT(REGEXP_REPLACE(REGEXP_REPLACE(install_addr, &#x27;[ \f\n\r\t\v]&#x27;, &#x27;&#x27;), &#x27;^.*?自治区&#x27;, &#x27;&#x27;), &#x27;^.*?地区&#x27;, 0)</span><br><span class="line">    WHEN install_addr LIKE &#x27;%省%地区%&#x27; THEN REGEXP_EXTRACT(REGEXP_REPLACE(REGEXP_REPLACE(install_addr, &#x27;[ \f\n\r\t\v]&#x27;, &#x27;&#x27;), &#x27;^.*?省&#x27;, &#x27;&#x27;), &#x27;^.*?地区&#x27;, 0)</span><br><span class="line">    WHEN install_addr LIKE &#x27;%自治区%盟%市%&#x27; THEN REGEXP_EXTRACT(REGEXP_REPLACE(REGEXP_REPLACE(install_addr, &#x27;[ \f\n\r\t\v]&#x27;, &#x27;&#x27;), &#x27;^.*?自治区&#x27;, &#x27;&#x27;), &#x27;^.*?盟&#x27;, 0)</span><br><span class="line">    WHEN install_addr LIKE &#x27;%自治区%市%&#x27; THEN REGEXP_EXTRACT(REGEXP_REPLACE(REGEXP_REPLACE(install_addr, &#x27;[ \f\n\r\t\v]&#x27;, &#x27;&#x27;), &#x27;^.*?自治区&#x27;, &#x27;&#x27;), &#x27;^.*?市&#x27;, 0)</span><br><span class="line">    WHEN install_addr LIKE &#x27;%自治区%盟%&#x27; THEN REGEXP_EXTRACT(REGEXP_REPLACE(REGEXP_REPLACE(install_addr, &#x27;[ \f\n\r\t\v]&#x27;, &#x27;&#x27;), &#x27;^.*?自治区&#x27;, &#x27;&#x27;), &#x27;^.*?盟&#x27;, 0)</span><br><span class="line">    WHEN install_addr LIKE &#x27;%省%市%&#x27; THEN REGEXP_EXTRACT(REGEXP_REPLACE(REGEXP_REPLACE(install_addr, &#x27;[ \f\n\r\t\v]&#x27;, &#x27;&#x27;), &#x27;^.*?省&#x27;, &#x27;&#x27;), &#x27;^.*?市&#x27;, 0)</span><br><span class="line">    WHEN install_addr LIKE &#x27;%香港%&#x27; THEN &#x27;香港特别行政区&#x27;</span><br><span class="line">    WHEN install_addr LIKE &#x27;%澳门%&#x27; THEN &#x27;澳门特别行政区&#x27;</span><br><span class="line">    WHEN install_addr LIKE &#x27;%神农架林区%&#x27; THEN &#x27;神农架林区&#x27;</span><br><span class="line">    WHEN install_addr LIKE &#x27;%平潭综合实验区%&#x27; THEN &#x27;平潭综合实验区&#x27;</span><br><span class="line">    ELSE &#x27;其他&#x27;</span><br><span class="line">END AS city_desc</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>字段类型转换<br>字段类型转换是一个比较头疼的问题，按规范来说，不同类型的字段应该选取最合适的字段类型。但是在实际开发中，还是推荐尽量在建表时将字段类型都指定为字符串类型，避免因类型转换带来的一系列问题。但一些数字类型的字段例外特别是整形字段，对于需要做数学运算的整形字段，建表时还是指定为整形，因为对字符串数字进行运算，结果常常会出现小数，处理比较麻烦。<br>字段类型转换遵循由简入繁的规则，特别是数值类型的字段，例如，任何整数类型都可以隐式地转换为一个范围更大的类型，TINYINT,SMALLINT,INT,BIGINT,FLOAT,STRING 都可以隐式地转换为DOUBLE，INT类型不能隐式地转换为TINYINT、SMALLINT类型（除非使用cast函数）,BOOLEAN不能转换为任何类型。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li></li>
+</ol>
 
 </div>
 

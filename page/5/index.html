@@ -1248,31 +1248,6 @@ var _hmt = _hmt || [];
 		<div id="index">
 	
 		<div class="index-li">
-			<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95--%E6%B3%A8%E9%87%8A/">
-				<h2 class="index-title">
-					Java基础语法--注释
-				</h2>
-				<div class="index-brief">
-					Java基础语法–注释单行注释语法格式：&#x2F;&#x2F;
-1//注释内容
-
-多行注释语法格式：&#x2F;*    *&#x2F;
-12345/*注释内容注释内容注释内容*/
-
-文档注释语法格式：&#x2F;**   *&#x2F;
-123456/***@Author 张开元*/具体文档内容
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2023-09-16</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
 			<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95--%E6%A0%87%E8%AF%86%E7%AC%A6/">
 				<h2 class="index-title">
 					Java基础语法--标识符
@@ -1302,6 +1277,31 @@ Java关键字
 		</div>	
 	
 		<div class="index-li">
+			<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E6%95%B0%E7%BB%84/">
+				<h2 class="index-title">
+					Java数组
+				</h2>
+				<div class="index-brief">
+					Java数组数组的声明和创建
+数组声明的两种方式：
+
+dataType[ ] arrayRefVar;     或       dataType arrayRefVar[ ];
+
+
+数组的创建在使用数组之前，需要创建数组，使用new关键字，语法如下：
+1dataType[] arrayRefVar 
+					...
+				</div>
+			</a>
+                <div class="article-meta">
+				    <span>2023-09-16</span>
+                    
+                            
+                    
+                </div>
+		</div>	
+	
+		<div class="index-li">
 			<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E2%80%94%E2%80%94%E5%8C%85%E6%9C%BA%E5%88%B6/">
 				<h2 class="index-title">
 					Java基本语法——包机制
@@ -1313,6 +1313,25 @@ Java关键字
 注意一般利用公司域名倒置作为报名，如com.baidu.www
 如果要使用某个包的方法，需要使用import语句导入该包
 
+					...
+				</div>
+			</a>
+                <div class="article-meta">
+				    <span>2023-09-16</span>
+                    
+                            
+                    
+                </div>
+		</div>	
+	
+		<div class="index-li">
+			<a href="/Java/%E6%B3%A8%E8%A7%A3/%E4%B8%80%E4%BA%9B%E6%B3%A8%E8%A7%A3/">
+				<h2 class="index-title">
+					一些注解
+				</h2>
+				<div class="index-brief">
+					一些注解1、@Autowired （Spring注解）@Autowired注解用于对象的自动装配，默认先通过类型进行装配，类型装配不成功时再通过名字进行装配，如果都不成功，可以使用@Qualifier(value&#x3D;“ ”）注解来指定名字协助装配，否则报错。
+2. @Resource  （J
 					...
 				</div>
 			</a>
@@ -1360,25 +1379,6 @@ Java关键字
 @since 指明需要最早使用的jdk版本
 @param 参数名
 @ret
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2023-09-16</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/Java/%E6%B3%A8%E8%A7%A3/%E4%B8%80%E4%BA%9B%E6%B3%A8%E8%A7%A3/">
-				<h2 class="index-title">
-					一些注解
-				</h2>
-				<div class="index-brief">
-					一些注解1、@Autowired （Spring注解）@Autowired注解用于对象的自动装配，默认先通过类型进行装配，类型装配不成功时再通过名字进行装配，如果都不成功，可以使用@Qualifier(value&#x3D;“ ”）注解来指定名字协助装配，否则报错。
-2. @Resource  （J
 					...
 				</div>
 			</a>
@@ -1441,16 +1441,12 @@ Controller层
 		</div>	
 	
 		<div class="index-li">
-			<a href="/Java/%E6%B3%A8%E6%84%8F%E7%82%B9/%E7%A9%BA%E5%80%BC%E5%88%A4%E6%96%AD/">
+			<a href="/Java/%E6%B3%A8%E6%84%8F%E7%82%B9/%E8%A7%A3%E5%86%B3%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%97%A0%E6%B3%95%E7%94%9F%E6%95%88%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%88pom.xml%E4%B8%AD%E8%BF%9B%E8%A1%8C%E9%85%8D%E7%BD%AE%EF%BC%89/">
 				<h2 class="index-title">
-					空值判断
+					解决配置文件无法生效的问题（pom.xml中进行配置）
 				</h2>
 				<div class="index-brief">
-					空值判断数据库查询
-在Mybatis中，如果数据查询select语句根据where条件找不到要找的数据时，将会返回null，无论接收返回值的类型是什么。如果要查询单个字段的一个值，应该使用包装类型而不是基本类型来接收返回值，因为基本类型接收null会报错。
-
-集合遍历
-当我们需要遍历一个集合时，首先
+					解决配置文件无法生效的问题（pom.xml中进行配置）123456789101112131415161718192021&lt;!--在build中配置resources，来防止我们资源导出失败的问题--&gt;&lt;build&gt;    &lt;resources&gt;        &l
 					...
 				</div>
 			</a>
@@ -1463,12 +1459,16 @@ Controller层
 		</div>	
 	
 		<div class="index-li">
-			<a href="/Java/%E6%B3%A8%E6%84%8F%E7%82%B9/%E8%A7%A3%E5%86%B3%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%97%A0%E6%B3%95%E7%94%9F%E6%95%88%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%88pom.xml%E4%B8%AD%E8%BF%9B%E8%A1%8C%E9%85%8D%E7%BD%AE%EF%BC%89/">
+			<a href="/Java/%E6%B3%A8%E6%84%8F%E7%82%B9/%E7%A9%BA%E5%80%BC%E5%88%A4%E6%96%AD/">
 				<h2 class="index-title">
-					解决配置文件无法生效的问题（pom.xml中进行配置）
+					空值判断
 				</h2>
 				<div class="index-brief">
-					解决配置文件无法生效的问题（pom.xml中进行配置）123456789101112131415161718192021&lt;!--在build中配置resources，来防止我们资源导出失败的问题--&gt;&lt;build&gt;    &lt;resources&gt;        &l
+					空值判断数据库查询
+在Mybatis中，如果数据查询select语句根据where条件找不到要找的数据时，将会返回null，无论接收返回值的类型是什么。如果要查询单个字段的一个值，应该使用包装类型而不是基本类型来接收返回值，因为基本类型接收null会报错。
+
+集合遍历
+当我们需要遍历一个集合时，首先
 					...
 				</div>
 			</a>

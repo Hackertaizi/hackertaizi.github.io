@@ -1248,25 +1248,23 @@ var _hmt = _hmt || [];
 		<div id="index">
 	
 		<div class="index-li">
-			<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E2%80%94%E2%80%94JavaDoc%E7%94%9F%E6%88%90%E6%96%87%E6%A1%A3/">
+			<a href="/Linux/Linux%E4%B8%8B%E5%AE%89%E8%A3%85anaconda/">
 				<h2 class="index-title">
-					Java基本语法——JavaDoc生成文档
+					Linux下安装anaconda
 				</h2>
 				<div class="index-brief">
-					Java基本语法——JavaDoc生成文档Javadoc的用途用于生成自己的API文档
-用法可以使用文档注释格式&#x2F;**  *&#x2F;来添加参数
-参数信息 ：
+					Linux下安装anaconda
+首先在anaconda官网下载Linux版本的anaconda的shell包；
+使用bash命令执行.sh脚本文件安装anaconda，注意更改安装路径，一般可以安装在&#x2F;opt目录下；
+安装结束后，在系统中添加环境变量：
 
-@author 作者名
-@version  版本号
-@since 指明需要最早使用的jdk版本
-@param 参数名
-@ret
+
+sudo vim &#x2F;
 					...
 				</div>
 			</a>
                 <div class="article-meta">
-				    <span>2022-11-19</span>
+				    <span>2023-09-16</span>
                     
                             
                     
@@ -1274,20 +1272,26 @@ var _hmt = _hmt || [];
 		</div>	
 	
 		<div class="index-li">
-			<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95----%E8%BF%90%E7%AE%97%E7%AC%A6/">
+			<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
 				<h2 class="index-title">
-					Java基本语法----运算符
+					设计模式
 				</h2>
 				<div class="index-brief">
-					Java基本语法—-运算符
-数学运算工具类——Math一些运算符使用的注意点在逻辑运算符中，存在短路机制，如计算  a&amp;&amp;b,如果a为假，则结果必为假，此时程序不会去计算b。直接给出结果，这就是短路机制
-位运算由于效率很高常用于算法中，左移一位相当于乘以2，右移一位相当于除以2.
-符
+					设计模式设计模式分类
+创建型模式（ 如何创建对象，让对象的创建和使用分离）
+单例模式、工厂模式、抽象工厂模式、建造者模式、原型模式
+
+
+结构型模式（ 将对象和类组合成一定的结构）
+适配器模式、桥接模式、装饰模式、组合模式、外观模式、享元模式、代理模式
+
+
+行为型模式（对象间如何相互协作，完成单个对象
 					...
 				</div>
 			</a>
                 <div class="article-meta">
-				    <span>2022-11-19</span>
+				    <span>2023-09-16</span>
                     
                             
                     
@@ -1295,24 +1299,193 @@ var _hmt = _hmt || [];
 		</div>	
 	
 		<div class="index-li">
-			<a href="/Hexo/Hexo%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E6%B5%81%E7%A8%8B/">
+			<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/">
 				<h2 class="index-title">
-					Hexo基本配置流程
+					集合框架
 				</h2>
 				<div class="index-brief">
-					环境准备安装git​	具体教程待补充，先到网上找，注意修改安装路径即可。
-安装Node.js
-下载地址https://nodejs.org/zh-cn/download/
-
-选择系统对应的版本，windows选择.msi安装包
-
-
-​	3. 安装过程中组件选项选择下面四个就可以，其他页面选项可以默认
+					集合框架一、集合框架图
+解析从上面的集合框架图中可以看出，语法形式上来看，集合框架主要有三种形式，首先是接口（图中的原点虚线框），最主要的集合接口是Collection，其次有List、Set、Map、Queue等，然后是抽象类（短横线虚线框），抽象类部分实现了接口中的方法，最后是具体的实现类(实线
 					...
 				</div>
 			</a>
                 <div class="article-meta">
-				    <span>2022-11-15</span>
+				    <span>2023-09-16</span>
+                    
+                            
+                    
+                </div>
+		</div>	
+	
+		<div class="index-li">
+			<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
+				<h2 class="index-title">
+					面向对象
+				</h2>
+				<div class="index-brief">
+					面向对象类和对象类是对象的抽象，类是对象的模板，对象是类的示例，类实例化后就是对象。
+创建和初始化对象创建对象使用new关键字，语法为：类名 对象名 &#x3D; new 类名();
+使用new关键字创建的时候，处理分配内存空间之外，还会给创建好的对象进行默认的初始化以及对类中构造器的调用。
+构造器
+					...
+				</div>
+			</a>
+                <div class="article-meta">
+				    <span>2023-09-16</span>
+                    
+                            
+                    
+                </div>
+		</div>	
+	
+		<div class="index-li">
+			<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E5%A2%9E%E5%BC%BAfor%E5%BE%AA%E7%8E%AF/">
+				<h2 class="index-title">
+					增强for循环
+				</h2>
+				<div class="index-brief">
+					增强for循环语法格式1234for(声明语句：表达式)&#123;    //代码&#125;
+
+
+声明语句：声明新的局部变量，该变量的类型必须与数组元素的类型匹配。其作用域限定在循环块内，其值与此时数组元素的值相等。
+表达式：要访问的数组名，或返回值为数组的方法
+
+例子12345678int[]
+					...
+				</div>
+			</a>
+                <div class="article-meta">
+				    <span>2023-09-16</span>
+                    
+                            
+                    
+                </div>
+		</div>	
+	
+		<div class="index-li">
+			<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E6%B3%9B%E5%9E%8B/">
+				<h2 class="index-title">
+					泛型
+				</h2>
+				<div class="index-brief">
+					泛型一、泛型介绍Java 泛型（generics）是 JDK 5 中引入的一个新特性, 泛型提供了编译时类型安全检测机制，该机制允许程序员在编译时检测到非法的类型。
+泛型的本质是参数化类型，也就是说所操作的数据类型被指定为一个参数。
+泛型可以理解为“广泛的类型”，也就是说定义时类型是未定的，需要使用
+					...
+				</div>
+			</a>
+                <div class="article-meta">
+				    <span>2023-09-16</span>
+                    
+                            
+                    
+                </div>
+		</div>	
+	
+		<div class="index-li">
+			<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E5%BC%82%E5%B8%B8/">
+				<h2 class="index-title">
+					异常
+				</h2>
+				<div class="index-brief">
+					异常Error和Execption
+Error通常是灾难性的致命的错误，是程序无法控制和处理的，当出现这些异常时，Java虚拟机（JVM）一般会选择终止线程；
+Exception通常情况下是可以通过程序处理的。
+
+异常类的层次
+异常处理机制捕获异常使用try和catch关键字可以捕获异常，try&#
+					...
+				</div>
+			</a>
+                <div class="article-meta">
+				    <span>2023-09-16</span>
+                    
+                            
+                    
+                </div>
+		</div>	
+	
+		<div class="index-li">
+			<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E6%8E%A5%E5%8F%A3/">
+				<h2 class="index-title">
+					接口
+				</h2>
+				<div class="index-brief">
+					接口对比
+普通类：只有具体实现
+抽象类：具体实现和规范（抽象方法）都有
+接口：只有规范
+
+理解
+接口就是规范，定义的是一组规则；
+接口的本质是契约
+
+语法[修饰符] interface [接口名]
+规则
+接口中的所有方法都是抽象的（public abstract），所有属性都是静态常量（static
+					...
+				</div>
+			</a>
+                <div class="article-meta">
+				    <span>2023-09-16</span>
+                    
+                            
+                    
+                </div>
+		</div>	
+	
+		<div class="index-li">
+			<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E6%8A%BD%E8%B1%A1%E7%B1%BB/">
+				<h2 class="index-title">
+					抽象类
+				</h2>
+				<div class="index-brief">
+					抽象类
+Java使用abstract关键字来声明抽象类或者抽象方法
+
+抽象类中可以没有抽象方法，但是有抽象方法的类一定要声明为抽象类。
+
+抽象类不能使用new关键字来实例化为对象，只能被继承；
+
+抽象类处理不能实例化对象之外，其他功能依然存在，属性、方法和构造方法的访问方式和普通类一样；
+
+抽象方法
+					...
+				</div>
+			</a>
+                <div class="article-meta">
+				    <span>2023-09-16</span>
+                    
+                            
+                    
+                </div>
+		</div>	
+	
+		<div class="index-li">
+			<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+				<h2 class="index-title">
+					Java语法基础——数据类型
+				</h2>
+				<div class="index-brief">
+					Java语法基础——数据类型Java是强类型语言，所有变量使用前必须先定义，定义时必须指定数据类型
+
+Java数据类型
+基本类型
+数值类型
+整数类型
+byte: 1字节
+short:2字节
+int: 4字节
+long：8字节  ，Long类型数字后加“L”
+
+浮点类型
+float:4字节
+doubl
+					...
+				</div>
+			</a>
+                <div class="article-meta">
+				    <span>2023-09-16</span>
                     
                             
                     
@@ -1322,7 +1495,7 @@ var _hmt = _hmt || [];
 	
 	<div id="index-paginator">
 		
-			<a class="extend prev" rel="prev" href="/archives/2022/11/page/6/">&lt;</a><a class="page-number" href="/archives/2022/11/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2022/11/page/5/">5</a><a class="page-number" href="/archives/2022/11/page/6/">6</a><span class="page-number current">7</span>
+			<a class="extend prev" rel="prev" href="/archives/2023/09/page/2/">&lt;</a><a class="page-number" href="/archives/2023/09/">1</a><a class="page-number" href="/archives/2023/09/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/archives/2023/09/page/4/">4</a><a class="page-number" href="/archives/2023/09/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2023/09/page/8/">8</a><a class="extend next" rel="next" href="/archives/2023/09/page/4/">&gt;</a>
 		
 	</div>
 </div>

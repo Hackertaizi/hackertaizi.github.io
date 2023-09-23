@@ -1248,24 +1248,20 @@ var _hmt = _hmt || [];
 		<div id="index">
 	
 		<div class="index-li">
-			<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E5%86%85%E9%83%A8%E7%B1%BB/">
+			<a href="/Hadoop/Hive/%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E8%AF%AD%E6%B3%95%E7%BB%86%E8%8A%82%E2%80%94%E2%80%94%E5%AE%9E%E6%88%98%E7%BB%8F%E9%AA%8C/">
 				<h2 class="index-title">
-					内部类
+					数据开发语法细节——实战经验
 				</h2>
 				<div class="index-brief">
-					内部类概念内部类就是在一个类的内部再定义一个类，如在A类中定义了B类，B类就是A类的内部类，A是B的外部类；
-分类
-成员内部类（一个类定义在另一个类中）
-静态内部类（有static关键字声明的成员内部类）
-局部内部类（一个雷定义在另一个类的方法中)
-匿名内部类（定义在另一个类的方法中的类
+					数据开发语法细节——实战经验SQL执行顺序问题
+hiveSQL
 
-
+from .. where .. join .. on .. select .. group by .. select .. having .. distinct .. order by .. limit .. union&#x2F;
 					...
 				</div>
 			</a>
                 <div class="article-meta">
-				    <span>2022-11-19</span>
+				    <span>2023-09-16</span>
                     
                             
                     
@@ -1273,18 +1269,22 @@ var _hmt = _hmt || [];
 		</div>	
 	
 		<div class="index-li">
-			<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Static%E5%85%B3%E9%94%AE%E5%AD%97/">
+			<a href="/Hadoop/Hive/%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E6%80%9D%E8%B7%AF/">
 				<h2 class="index-title">
-					Static关键字
+					数据开发思路
 				</h2>
 				<div class="index-brief">
-					Static关键字stastic关键字声明了方法或属性是静态存储的，在类中有专门的静态存储区用来存储静态方法和变量，静态方法和属性可以直接通过类名进行调用，而一般的方法和属性只能再类实例化之后通过实例化的类进行调用，这是因为使用static声明的静态方法和属性是和类同时加载的，属于类属性和类方法。
-
+					数据开发思路需求（作图分析）
+开发内容涉及到哪几个模块的功能，针对每个模块进行分析：
+该模块功能在哪里实现？Hive、gp、报表工具？
+该模块间是否与其他模块有关联？如果存在关联？因为此关联每个模块需要注意哪些问题？
+需要哪些上层表的支持，针对每张上层表进行分析：
+使用该表的目的是什么？该表本身的逻
 					...
 				</div>
 			</a>
                 <div class="article-meta">
-				    <span>2022-11-19</span>
+				    <span>2023-09-16</span>
                     
                             
                     
@@ -1292,21 +1292,21 @@ var _hmt = _hmt || [];
 		</div>	
 	
 		<div class="index-li">
-			<a href="/Java/JDK/JDK%E7%9A%84%E5%8D%B8%E8%BD%BD%E4%B8%8E%E5%AE%89%E8%A3%85/">
+			<a href="/Hadoop/Hive/%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E8%A6%81%E7%82%B9/">
 				<h2 class="index-title">
-					JDK的卸载与安装
+					数据开发要点
 				</h2>
 				<div class="index-brief">
-					JDK的卸载与安装1.JDK安装
+					数据开发要点
+多表连接时，首行连接语句中指明分区，动态分区则指明变量(如：pdate&#x3D;’${a}’),指明分区后，主体的select语句中不必再写分区字段。
 
-百度搜索  JDK+版本号  ，根据系统版本，在oracle官网上下载对应版本的JDK（需要登录oracle账号）
-双击安装jdk，注意配置好安装路径，路径在配置环境变量时要使用  
-配置系统环境变量，在系统环境变量中新建名为“JAVA_HOME”的环境变量，变量
+多表连接时，需要特别注意主表的连接字段是否为NULL或空字符串，需要的时候可以进行过滤，以下是一种过滤方式：
+1coalesce(
 					...
 				</div>
 			</a>
                 <div class="article-meta">
-				    <span>2022-11-19</span>
+				    <span>2023-09-16</span>
                     
                             
                     
@@ -1314,30 +1314,18 @@ var _hmt = _hmt || [];
 		</div>	
 	
 		<div class="index-li">
-			<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+			<a href="/Hadoop/Hive/Hive%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F/">
 				<h2 class="index-title">
-					Java语法基础——数据类型
+					Hive文件格式
 				</h2>
 				<div class="index-brief">
-					Java语法基础——数据类型Java是强类型语言，所有变量使用前必须先定义，定义时必须指定数据类型
-
-Java数据类型
-基本类型
-数值类型
-整数类型
-byte: 1字节
-short:2字节
-int: 4字节
-long：8字节  ，Long类型数字后加“L”
-
-浮点类型
-float:4字节
-doubl
+					Hive 文件格式一、 ORC Files1. ORC文件格式概述ORC(Optimized Row Columnar)文件格式提供了一种非常高效的方式来存储hive数据。它旨在克服其他Hive文件格式的限制。使用ORC文件可以提升Hive在读、写、处理数据时的性能。
+以RCFile 格式做比较，O
 					...
 				</div>
 			</a>
                 <div class="article-meta">
-				    <span>2022-11-19</span>
+				    <span>2023-09-16</span>
                     
                             
                     
@@ -1345,18 +1333,18 @@ doubl
 		</div>	
 	
 		<div class="index-li">
-			<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80%E2%80%94%E2%80%94%20%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/">
+			<a href="/Hadoop/Hive/Hive%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E8%AF%AD%E6%B3%95/">
 				<h2 class="index-title">
-					Java语法基础—— 类型转换
+					Hive的基本使用语法
 				</h2>
 				<div class="index-brief">
-					Java语法基础—— 类型转换Java是强类型语言，运算时，不同类型的值要先转化为同一类型。
-数据类型容量12低————————————————————————————------------&gt;高byte,short,char&lt; int &lt; long &lt; float &lt;
+					Hive 基本语法一、DDL1. 数据库操作1.1 创建数据库语法格式：
+12345CREATE [REMOTE] (DATABASE|SCHEMA) [IF NOT EXISTS] database_name  [COMMENT database_comment]-- 数据库注释信息  [LOCA
 					...
 				</div>
 			</a>
                 <div class="article-meta">
-				    <span>2022-11-19</span>
+				    <span>2023-09-16</span>
                     
                             
                     
@@ -1364,20 +1352,18 @@ doubl
 		</div>	
 	
 		<div class="index-li">
-			<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E2%80%94%E2%80%94Scanner/">
+			<a href="/Hadoop/Hive/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E5%BC%80%E5%8F%91%E6%9E%B6%E6%9E%84%E5%B1%82%E6%AC%A1/">
 				<h2 class="index-title">
-					Java流程控制——Scanner
+					数据仓库开发架构层次
 				</h2>
 				<div class="index-brief">
-					Java流程控制——Scanner用途获取用户输入，实现人机交互。
-基本语法1Scanner s = new Scanner(System.in);
-
-用法通过Scanner类的next()与nextLine()方法获取输入的字符串，读取前一般需要使用hasNext()与hasNextLine()判
+					数据仓库开发架构层次一、STG原始数据层（数据落地）这层的工作主要是原始数据在数据仓库的落地，数据结构和原始数据保持一致，不做逻辑处理。
+二、ODS数据操作层（数据清洗）用于原始数据在数据平台的落地。数据从数据结构、数据之间的逻辑关系上都与STG原始数据层基本保持一致。源数据进入这一层时，要进行业务
 					...
 				</div>
 			</a>
                 <div class="article-meta">
-				    <span>2022-11-19</span>
+				    <span>2023-09-16</span>
                     
                             
                     
@@ -1385,24 +1371,26 @@ doubl
 		</div>	
 	
 		<div class="index-li">
-			<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E6%96%B9%E6%B3%95%E2%80%94%E2%80%94%E6%96%B9%E6%B3%95%E7%9A%84%E9%87%8D%E8%BD%BD/">
+			<a href="/Hadoop/Hive/Hive%E8%AF%AD%E6%B3%95%E7%B2%BE%E7%82%BC/">
 				<h2 class="index-title">
-					Java方法——方法的重载
+					Hive语法精炼
 				</h2>
 				<div class="index-brief">
-					Java方法——方法的重载定义重载就是在一个类中，有相同的函数名称，但形参不同的函数。
-重载规则
-方法名称必须相同
-参数列表必须不同（个数不同、或类型不同、参数排列顺序不同等）
-方法的返回类型可以相同也可以不同
-仅仅返回类型不同不足以称为方法的重载
+					Hive语法精炼以下语法精简可用，但不一定是最全的语法格式，某些可选项可能被忽略，随时补充。
 
-实现原理方法名称相同时，编译器会根据调用方法的参
+查看数据库
+1show databases;
+
+创建数据库
+1create database [if not exists] database_name;
+
+删除数据库
+1drop database [i
 					...
 				</div>
 			</a>
                 <div class="article-meta">
-				    <span>2022-11-19</span>
+				    <span>2023-09-16</span>
                     
                             
                     
@@ -1410,18 +1398,17 @@ doubl
 		</div>	
 	
 		<div class="index-li">
-			<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E6%96%B9%E6%B3%95%E2%80%94%E2%80%94%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%BC%A0%E5%8F%82/">
+			<a href="/Hadoop/Hive/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%87%BD%E6%95%B0/">
 				<h2 class="index-title">
-					Java方法——命令行传参
+					数据库函数
 				</h2>
 				<div class="index-brief">
-					Java方法——命令行传参原理相当于给main方法传参，当需要在执行程序时再给它传递消息时，可以将命令行参数传递给main函数实现，具体说来，在命令行中，先编译（javac）程序，然后在执行程序的命令行后面加上参数即可，例如：
-123在命令行中：    首先：javac 程序名.java    然后
+					数据库函数空值处理COALESCE	(hive)12345678910命令格式：	coalesce(expr1,expr2,...)用途：	返回列表中第一个非null的值，如果列表中的所有值都是null则返回null参数说明：	*expri是要测试的值。所有这些值类型必须相同或为null，否则会引发
 					...
 				</div>
 			</a>
                 <div class="article-meta">
-				    <span>2022-11-19</span>
+				    <span>2023-09-16</span>
                     
                             
                     
@@ -1429,21 +1416,22 @@ doubl
 		</div>	
 	
 		<div class="index-li">
-			<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E6%96%B9%E6%B3%95%E2%80%94%E2%80%94%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/">
+			<a href="/Hadoop/Hive/Hive%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
 				<h2 class="index-title">
-					Java方法——可变参数
+					Hive数据类型
 				</h2>
 				<div class="index-brief">
-					Java方法——可变参数语法在方法声明中，在指定参数类型后加一个省略号“ …”，如：
-1int function(int... )
+					Hive数据类型一、数字类型
+TINYINT  (1字节有符号整数，范围从-128到127)
 
-一个方法中只能指定一个可变参数，且它必须是方法的最后一个参数，普通参数必须在它之前声明。
+SMALLINT  (2字节有符号整数，范围从-32,768到32,767)
 
+INT &#x2F; INTEGER  (4字节有符号整数，范围从 -2,147,483,648 到 2,147,483,6
 					...
 				</div>
 			</a>
                 <div class="article-meta">
-				    <span>2022-11-19</span>
+				    <span>2023-09-16</span>
                     
                             
                     
@@ -1451,24 +1439,19 @@ doubl
 		</div>	
 	
 		<div class="index-li">
-			<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E6%95%B0%E7%BB%84/">
+			<a href="/Hadoop/Hive/Hive%E4%BC%98%E5%8C%96/">
 				<h2 class="index-title">
-					Java数组
+					Hive优化
 				</h2>
 				<div class="index-brief">
-					Java数组数组的声明和创建
-数组声明的两种方式：
-
-dataType[ ] arrayRefVar;     或       dataType arrayRefVar[ ];
-
-
-数组的创建在使用数组之前，需要创建数组，使用new关键字，语法如下：
-1dataType[] arrayRefVar 
+					Hive优化1. Fetch抓取
+Fetch抓取是指，Hive中对某些情况的查询可以不必使用MapReduce计算.
+hive.fetch.task.conversion默认是more，老版本hive默认是minimal，该属性修改为more以后，在全局查找、字段查找、limit查找等都不走mapr
 					...
 				</div>
 			</a>
                 <div class="article-meta">
-				    <span>2022-11-19</span>
+				    <span>2023-09-16</span>
                     
                             
                     

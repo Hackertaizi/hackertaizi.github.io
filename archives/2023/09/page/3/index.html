@@ -430,9 +430,9 @@ var _hmt = _hmt || [];
 									
 							<ul>
 								<li class="file">
-									<a href="/Java/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/1.%20Java%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%8E%AF%E5%A2%83/">
+									<a href="/Java/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/1.Java%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%8E%AF%E5%A2%83/">
                      
-										    1. Java程序设计环境
+										    1.Java程序设计环境
                      
 									</a>
 								</li>
@@ -441,9 +441,9 @@ var _hmt = _hmt || [];
 			
 							<ul>
 								<li class="file">
-									<a href="/Java/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/2.%20Java%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/">
+									<a href="/Java/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/2.Java%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/">
                      
-										    2. Java的基本程序设计结构
+										    2.Java的基本程序设计结构
                      
 									</a>
 								</li>
@@ -1363,14 +1363,17 @@ sudo vim &#x2F;
 		</div>	
 	
 		<div class="index-li">
-			<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E6%B3%9B%E5%9E%8B/">
+			<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E5%BC%82%E5%B8%B8/">
 				<h2 class="index-title">
-					泛型
+					异常
 				</h2>
 				<div class="index-brief">
-					泛型一、泛型介绍Java 泛型（generics）是 JDK 5 中引入的一个新特性, 泛型提供了编译时类型安全检测机制，该机制允许程序员在编译时检测到非法的类型。
-泛型的本质是参数化类型，也就是说所操作的数据类型被指定为一个参数。
-泛型可以理解为“广泛的类型”，也就是说定义时类型是未定的，需要使用
+					异常Error和Execption
+Error通常是灾难性的致命的错误，是程序无法控制和处理的，当出现这些异常时，Java虚拟机（JVM）一般会选择终止线程；
+Exception通常情况下是可以通过程序处理的。
+
+异常类的层次
+异常处理机制捕获异常使用try和catch关键字可以捕获异常，try&#
 					...
 				</div>
 			</a>
@@ -1383,17 +1386,41 @@ sudo vim &#x2F;
 		</div>	
 	
 		<div class="index-li">
-			<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E5%BC%82%E5%B8%B8/">
+			<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E6%8A%BD%E8%B1%A1%E7%B1%BB/">
 				<h2 class="index-title">
-					异常
+					抽象类
 				</h2>
 				<div class="index-brief">
-					异常Error和Execption
-Error通常是灾难性的致命的错误，是程序无法控制和处理的，当出现这些异常时，Java虚拟机（JVM）一般会选择终止线程；
-Exception通常情况下是可以通过程序处理的。
+					抽象类
+Java使用abstract关键字来声明抽象类或者抽象方法
 
-异常类的层次
-异常处理机制捕获异常使用try和catch关键字可以捕获异常，try&#
+抽象类中可以没有抽象方法，但是有抽象方法的类一定要声明为抽象类。
+
+抽象类不能使用new关键字来实例化为对象，只能被继承；
+
+抽象类处理不能实例化对象之外，其他功能依然存在，属性、方法和构造方法的访问方式和普通类一样；
+
+抽象方法
+					...
+				</div>
+			</a>
+                <div class="article-meta">
+				    <span>2023-09-16</span>
+                    
+                            
+                    
+                </div>
+		</div>	
+	
+		<div class="index-li">
+			<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E6%B3%9B%E5%9E%8B/">
+				<h2 class="index-title">
+					泛型
+				</h2>
+				<div class="index-brief">
+					泛型一、泛型介绍Java 泛型（generics）是 JDK 5 中引入的一个新特性, 泛型提供了编译时类型安全检测机制，该机制允许程序员在编译时检测到非法的类型。
+泛型的本质是参数化类型，也就是说所操作的数据类型被指定为一个参数。
+泛型可以理解为“广泛的类型”，也就是说定义时类型是未定的，需要使用
 					...
 				</div>
 			</a>
@@ -1423,33 +1450,6 @@ Exception通常情况下是可以通过程序处理的。
 语法[修饰符] interface [接口名]
 规则
 接口中的所有方法都是抽象的（public abstract），所有属性都是静态常量（static
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2023-09-16</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E6%8A%BD%E8%B1%A1%E7%B1%BB/">
-				<h2 class="index-title">
-					抽象类
-				</h2>
-				<div class="index-brief">
-					抽象类
-Java使用abstract关键字来声明抽象类或者抽象方法
-
-抽象类中可以没有抽象方法，但是有抽象方法的类一定要声明为抽象类。
-
-抽象类不能使用new关键字来实例化为对象，只能被继承；
-
-抽象类处理不能实例化对象之外，其他功能依然存在，属性、方法和构造方法的访问方式和普通类一样；
-
-抽象方法
 					...
 				</div>
 			</a>

@@ -427,6 +427,50 @@ var _hmt = _hmt || [];
 								<li class="directory">
 									<a href="#" class="directory">
 										<i class="fa fa-plus-square-o"></i>
+										Java核心技术
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/Java/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/1.%20Java%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%8E%AF%E5%A2%83/">
+                     
+										    1. Java程序设计环境
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/2.%20Java%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/">
+                     
+										    2. Java的基本程序设计结构
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/Java/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/%E5%B8%B8%E7%94%A8Java%20API/">
+                     
+										    常用Java API
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
 										Maven
 									</a>
 									
@@ -479,6 +523,28 @@ var _hmt = _hmt || [];
 									<a href="/Java/MyBatis/Mybatis%E4%BD%BF%E7%94%A8/">
                      
 										    Mybatis使用
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										开发经验
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/Java/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/Java%E5%AE%9E%E6%88%98%E7%BB%8F%E9%AA%8C/">
+                     
+										    Java实战经验
                      
 									</a>
 								</li>
@@ -1191,7 +1257,7 @@ var _hmt = _hmt || [];
 		</span>
 	
 	<span>Taizi</span>
-	<span>2022-11-19 11:35:31</span>
+	<span>2023-09-16 13:48:25</span>
 		<div id="article-categories">
     
 		<span>Categories：</span>
@@ -1345,6 +1411,10 @@ var _hmt = _hmt || [];
 
 
 <h2 id="窗口函数"><a href="#窗口函数" class="headerlink" title="窗口函数"></a>窗口函数</h2><h3 id="OVER-hive"><a href="#OVER-hive" class="headerlink" title="OVER	(hive)"></a>OVER	(hive)</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">	<span class="keyword">OVER</span>()</span><br><span class="line">用途：</span><br><span class="line">	指定分析函数工作的窗口大小，一般放在函数后面</span><br><span class="line">用法：</span><br><span class="line">	<span class="keyword">over</span>函数是对每一条数据都进行开窗，当<span class="keyword">over</span>括号中没有传入参数时，窗口大小默认为数据集大小。当使用distribute <span class="keyword">by</span> <span class="operator">/</span> sort <span class="keyword">by</span> <span class="operator">/</span> <span class="keyword">order</span> <span class="keyword">by</span>等关键字进行限制时，窗口大小相应地发生变化</span><br><span class="line">	</span><br><span class="line">相关参数(传入<span class="keyword">over</span>后的括号内使用)：</span><br><span class="line">	<span class="keyword">CURRENT</span> <span class="type">ROW</span>: 当前行</span><br><span class="line">	n PRECEDING: 往前n行数据</span><br><span class="line">	n FOLLOWING: 往后n行数据</span><br><span class="line">	UNBOUNDED: 起点</span><br><span class="line">	UNBOUNDED PRECEDING：表示从前面的起点</span><br><span class="line">	UNBOUNDED FOLLOWING：表示到后面的终点</span><br><span class="line">常配合使用的函数：</span><br><span class="line">	窗口函数可以对函数工作范围进行开窗，经常配合使用<span class="keyword">over</span>()的函数有以下几个:</span><br><span class="line">	<span class="built_in">row_number</span>():为结果集的每一行分配一个连续的整数，从<span class="number">1</span>开始</span><br><span class="line">	<span class="built_in">lag</span>(col,n,<span class="keyword">default</span>): 往前第n行数据，第一个参数指定列，第三个参数是当前面第n行该列不存在时的默认值</span><br><span class="line">	<span class="built_in">lead</span>(col,n,<span class="keyword">default</span>)：往后第n行数据，第一个参数指定列，第三个参数是当后面第n行该列不存在时的默认值</span><br></pre></td></tr></table></figure>
+
+<h3 id="LAG"><a href="#LAG" class="headerlink" title="LAG"></a>LAG</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">	LAG(col, n, DEFAULT)</span><br><span class="line">用途：</span><br><span class="line">	用于获取当前行之前的行的值，可以用于计算当前行与之前行之间的值的差异或百分比变化等。</span><br><span class="line">用法：</span><br><span class="line">	结合OVER()函数开窗使用，在LAG函数中，第一个参数为列名；第二个参数为偏移量，即往前多少行；最后一个参数为默认值，就是如果往前n行没有值的话，就取这个默认值，如果不指定默认值，则默认值为NULL</span><br><span class="line">示例：</span><br><span class="line">SELECT * FROM TALBE;</span><br><span class="line">	name	time</span><br><span class="line">&gt; 	name1	2023-09-01 </span><br><span class="line">	name1 	2023-09-03</span><br><span class="line">	name1 	2023-09-02</span><br><span class="line">	name2 	2023-09-02</span><br><span class="line">	name2 	2023-09-01</span><br><span class="line">	name2 	2023-09-04</span><br><span class="line">SELECT </span><br><span class="line">	name</span><br><span class="line">	,time</span><br><span class="line">	,LAG(time, 1, &#x27;1970-01-01&#x27;) OVER(PARTITION BY name ORDER BY time) as last_1_time</span><br><span class="line">	,LAG(time, 2) OVER(PARTITION BY name ORDER BY time) as last_2_time</span><br><span class="line">FROM </span><br><span class="line">	TABLE</span><br><span class="line">	name	time		last_1_time		last_2_time</span><br><span class="line">&gt;	name1 	2023-09-01	1970-01-01		NULL</span><br><span class="line">	name1 	2023-09-02	2023-09-01		NULL</span><br><span class="line">	name1 	2023-09-03	2023-09-02		2023-09-01</span><br><span class="line">	name2	2023-09-01	1970-01-01		NULL</span><br><span class="line">	name2	2023-09-02	2023-09-01		NULL</span><br><span class="line">	name2	2023-09-04	2023-09-02		2023-09-01</span><br></pre></td></tr></table></figure>
+
+<h3 id="LEAD"><a href="#LEAD" class="headerlink" title="LEAD"></a>LEAD</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">	LEAD(col, n, DEFAULT)</span><br><span class="line">用途：</span><br><span class="line">	用于获取当前行之后的行的值，可以用于计算当前行与之后行之间的值的差异或百分比变化等。</span><br><span class="line">用法：</span><br><span class="line">	结合OVER()函数开窗使用，在LAG函数中，第一个参数为列名；第二个参数为偏移量，即往后多少行；最后一个参数为默认值，就是如果往后n行没有值的话，就取这个默认值，如果不指定默认值，则默认值为NULL</span><br><span class="line">示例：</span><br><span class="line">SELECT * FROM TALBE;</span><br><span class="line">	name 	time</span><br><span class="line">&gt; 	name1	2023-09-01 </span><br><span class="line">	name1 	2023-09-03</span><br><span class="line">	name1 	2023-09-02</span><br><span class="line">	name2 	2023-09-02</span><br><span class="line">	name2 	2023-09-01</span><br><span class="line">	name2 	2023-09-04</span><br><span class="line">SELECT </span><br><span class="line">	name</span><br><span class="line">	,time</span><br><span class="line">	,LEAD(time, 1, &#x27;1970-01-01&#x27;) OVER(PARTITION BY name ORDER BY time) as after_1_time</span><br><span class="line">	,LEAD(time, 2) OVER(PARTITION BY name ORDER BY time) as after_2_time</span><br><span class="line">FROM </span><br><span class="line">	TABLE</span><br><span class="line">	</span><br><span class="line">	name	time		after_1_time	after_2_time</span><br><span class="line">&gt;	name1 	2023-09-01	2023-09-02		2023-09-03</span><br><span class="line">	name1 	2023-09-02	2023-09-03		NULL</span><br><span class="line">	name1 	2023-09-03	1970-01-01		NULL</span><br><span class="line">	name2	2023-09-01	2023-09-02		2023-09-04</span><br><span class="line">	name2	2023-09-02	2023-09-04		NULL</span><br><span class="line">	name2	2023-09-04	1970-01-01		NULL</span><br></pre></td></tr></table></figure>
 
 
 

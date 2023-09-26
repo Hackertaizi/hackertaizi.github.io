@@ -1,30 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hexo报错处理</title>
-    <url>/Hexo/Hexo%E6%8A%A5%E9%94%99%E5%A4%84%E7%90%86/</url>
-    <content><![CDATA[<h1 id="Hexo报错处理"><a href="#Hexo报错处理" class="headerlink" title="Hexo报错处理"></a>Hexo报错处理</h1><ol>
-<li><p>使用部署命令<code>hexo d</code> <code>hexo deploy</code>或测试部署命令<code>hexo s</code> <code>hexo server</code>时出现报错：</p>
-<blockquote>
-<p>end of the stream or a document separator is expected</p>
-</blockquote>
+    <title></title>
+    <url>/ETL/ETL%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/</url>
+    <content><![CDATA[<h1 id="ETL开发流程"><a href="#ETL开发流程" class="headerlink" title="ETL开发流程"></a>ETL开发流程</h1><h2 id="准备阶段"><a href="#准备阶段" class="headerlink" title="准备阶段"></a>准备阶段</h2><h3 id="1-开发架构确定"><a href="#1-开发架构确定" class="headerlink" title="1. 开发架构确定"></a>1. 开发架构确定</h3><p>​	在接收到需求后，首先要弄清楚业务类型，以及数据源类型。在宏观上，ETL是围绕数据开展的工作，不应局限于某种技术或某种数据处理方式，所以，在条件允许的情况下，应该选取最适合业务的开发架构和方式。以下列举了几种开发架构，笔者经验所限，后续将持续更新新的架构。</p>
+<ul>
+<li><p>离线开发：Hadoop+ hive</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">经典的离线开发方式，当需求对数据的实时性要求没那么高时，可以采用此种开发方式。当然该架构对于配置要求较高，需要有Hadoop集群以及数据开发平台。</span><br></pre></td></tr></table></figure>
 </li>
-</ol>
-<p>这种问题一般是因为头标注文件信息缺失而导致的。添加头标注文件即可，可以参考《为文章添加分类和标签》这篇文章进行解决。</p>
-<ol start="2">
-<li><p>为文章添加了标签tags 或分类 categorie，文章部署后，想修改标签或分类的大小写，直接修改了源文件头部标注文件，再次部署后相关tags 和 categories点击出现404空白页。</p>
-<p>原因：自动生成的用于存放对应标签或分类的html文件的文件夹名字没有随源文件的更改而更改，这是由于git忽略了大小写而导致的。</p>
-<p>解决办法：<br>方法一：修改git配置，在博客根目录下，显示隐藏文件，修改<code>.deploy_git/.git/config</code>文件，将该配置文件中的忽略大小写配置项改为false：<code>ignorecase = false</code><br>方法二：删除博客根目录文件夹下.deploy_git目录下tags文件夹或者categories文件夹中对应的标签或分类文件夹，然后重新部署发布，让文件夹重新生成。</p>
+<li><p>实时开发：待补充</p>
 </li>
+<li><p>待补充</p>
+</li>
+</ul>
+<h3 id="2-了解数据源"><a href="#2-了解数据源" class="headerlink" title="2. 了解数据源"></a>2. 了解数据源</h3><p>当拿到一份陌生的数据源&#x2F;数据源表，首先要做的是对该表进行充分的了解：</p>
+<ul>
+<li>表字段、字段类型、字段注释的了解</li>
+<li>表的业务背景、来源、每个字段的含义</li>
+<li>表的更新方式（增量&#x2F;全量）、表格结构（普通表&#x2F;分区&#x2F;分桶）、使用方式（只用最新分区&#x2F;使用部分分区&#x2F;使用全量分区）</li>
+</ul>
+<p>基于对表的这些了解，应该形成文档，对要点做适当的记录，避免下次使用该表时因为疏漏而踩坑。</p>
+<p>然后，需要对数据源表进行数据探查，主要是为了大致评估数据量、数据质量、以及一些其他信息。数据探查的逻辑主要根据业务需求来制定，探查过后应该对资源分配、开发方式、数据源是否符合需求等有一个评估结论</p>
+<h3 id="2-开发逻辑设计"><a href="#2-开发逻辑设计" class="headerlink" title="2. 开发逻辑设计"></a>2. 开发逻辑设计</h3><h3 id="3-表结构设计"><a href="#3-表结构设计" class="headerlink" title="3. 表结构设计"></a>3. 表结构设计</h3><h3 id="4-数据流梳理"><a href="#4-数据流梳理" class="headerlink" title="4. 数据流梳理"></a>4. 数据流梳理</h3><h2 id="开发阶段"><a href="#开发阶段" class="headerlink" title="开发阶段"></a>开发阶段</h2><h3 id="1-离线开发流程"><a href="#1-离线开发流程" class="headerlink" title="1. 离线开发流程"></a>1. 离线开发流程</h3><ol>
+<li><p>了解数据源<br>当拿到一份陌生的数据源&#x2F;数据源表，首先要做的是对该表进行充分的了解：</p>
+<ul>
+<li>表字段、字段类型、字段注释的了解</li>
+<li>表的业务背景、来源、每个字段的含义</li>
+<li>表的更新方式（增量&#x2F;全量）、表格结构（普通表&#x2F;分区&#x2F;分桶）、使用方式（只用最新分区&#x2F;使用部分分区&#x2F;使用全量分区）</li>
+</ul>
+</li>
+<li><p>数据清洗<br>在充分了解了数据源之后，就需要根据业务需求对数据进行处理了：</p>
+<ul>
+<li><p><strong>确定业务数据范围</strong>。包括：</p>
+<ul>
+<li>业务数据范围：<br>在逻辑上对数据源的数据进行截取，例如只需要统计当年的数据，则通过表中的时间字段进行过滤即可。</li>
+<li>字段范围：<br>确定关键的字段有哪些，根据业务抽取需要的字段，对于一些明显用不到的字段，可以舍去，对于以后可能会用到的字段予以保留，避免后续迭代对表结构做改动。</li>
+<li>特别地，如果后续会经常使用该表，可以考虑只对该表做数据范围上的筛选，而不做字段范围上的限制（保留全部字段），加以清洗后形成一张通用明细表</li>
+</ul>
+</li>
+<li><p><strong>脏数据清洗</strong>。</p>
+<ul>
+<li><p>字段内容清洗<br>字段内容清洗是最常见的脏数据处理方式</p>
+<ul>
+<li>某些字段中可能掺杂了一些特殊字符、乱码数据等。这种情况下，一般需要将特殊字符去除，或者将整个值做统一替换处理。处理方式一般为字符串替换、正则表达式替换、或者采用if 、case when 等条件函数进行映射等。</li>
+<li>某些字段中可能存在一些不该存在的值，这种情况一般直接做映射处理，将这些不合适的值替换为其他值，可以采用上面的处理方式进行处理。</li>
+</ul>
+</li>
+<li><p>缺失值处理</p>
+<ul>
+<li><p>缺失值统一转换：<br>对于缺失值，最常规的处理方式就是将缺失值做统一转换，可以转换为某个特定的值，也可以将不同的缺失值统一成一样的缺失值，便于后续处理。处理一般可借助COALESCE、IF、NVL、CASE WHEN等函数。<br>特别地，在处理表时，由于很多字段不能确定是否有缺失值，或者日后是否会产生缺失值，所以在处理时基本可以对所有字段进行缺失值处理，防止出现缺失值。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">空值转换:</span><br><span class="line">	NVL(field, 替换后的值)</span><br><span class="line">	IF(field IS NULL, 替换后的值, field)</span><br><span class="line">空字符串转NULL:</span><br><span class="line">	IF(field = &#x27;&#x27;, 替换后的值, field)</span><br><span class="line">判断字段是否为空或者空字符串:</span><br><span class="line">	COALESCE(field, &#x27;&#x27;) = &#x27;&#x27;    --字段为空或者空字符串</span><br><span class="line">	field IS NULL OR field = &#x27;&#x27; --字段为空或者空字符串</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>详细地址解析<br>当表中只有一个长串的详细地址字段，而没有单独的省市地址字段时，需要使用正则表达式进行解析，表达式书写需要根据具体的数据情况来写，考虑到一般的地址书写格式都比较相似，下面总结了一下地址解析的HIVESQL代码，主要是从详细地址中解析出省份名称和市名称，后续会不断优化，注意代码中语句的顺序十分重要：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CASE</span><br><span class="line">    WHEN install_addr LIKE &#x27;%市%省%&#x27; THEN &#x27;其他&#x27; --异常数据过滤</span><br><span class="line">    WHEN install_addr LIKE &#x27;%北京%&#x27; THEN &#x27;北京市&#x27;</span><br><span class="line">    WHEN install_addr LIKE &#x27;%天津%&#x27; THEN &#x27;天津市&#x27;</span><br><span class="line">    WHEN install_addr LIKE &#x27;%上海%&#x27; THEN &#x27;上海市&#x27;</span><br><span class="line">    WHEN install_addr LIKE &#x27;%重庆%&#x27; THEN &#x27;重庆市&#x27;</span><br><span class="line">    WHEN install_addr LIKE &#x27;%香港%&#x27; THEN &#x27;香港特别行政区&#x27;</span><br><span class="line">    WHEN install_addr LIKE &#x27;%澳门%&#x27; THEN &#x27;澳门特别行政区&#x27;</span><br><span class="line">    WHEN install_addr LIKE &#x27;%自治区%&#x27; THEN REGEXP_EXTRACT(REGEXP_REPLACE(install_addr, &#x27;[ \f\n\r\t\v]&#x27;, &#x27;&#x27;), &#x27;.*?自治区&#x27;, 0)</span><br><span class="line">    WHEN install_addr LIKE &#x27;%省%&#x27; THEN REGEXP_EXTRACT(REGEXP_REPLACE(install_addr, &#x27;[ \f\n\r\t\v]&#x27;, &#x27;&#x27;), &#x27;.*?省&#x27;, 0)</span><br><span class="line">    ELSE &#x27;其他&#x27;</span><br><span class="line">END AS province_desc</span><br><span class="line">,CASE</span><br><span class="line">    WHEN install_addr LIKE &#x27;%北京%&#x27; THEN &#x27;北京市&#x27;</span><br><span class="line">    WHEN install_addr LIKE &#x27;%天津%&#x27; THEN &#x27;天津市&#x27;</span><br><span class="line">    WHEN install_addr LIKE &#x27;%上海%&#x27; THEN &#x27;上海市&#x27;</span><br><span class="line">    WHEN install_addr LIKE &#x27;%重庆%&#x27; THEN &#x27;重庆市&#x27;</span><br><span class="line">    WHEN install_addr LIKE &#x27;%省%自治州%&#x27; THEN REGEXP_EXTRACT(REGEXP_REPLACE(REGEXP_REPLACE(install_addr, &#x27;[ \f\n\r\t\v]&#x27;, &#x27;&#x27;), &#x27;^.*?省&#x27;, &#x27;&#x27;), &#x27;^.*?自治州&#x27;, 0)</span><br><span class="line">    WHEN install_addr LIKE &#x27;%自治区%自治州%&#x27; THEN REGEXP_EXTRACT(REGEXP_REPLACE(REGEXP_REPLACE(install_addr, &#x27;[ \f\n\r\t\v]&#x27;, &#x27;&#x27;), &#x27;^.*?自治区&#x27;, &#x27;&#x27;), &#x27;^.*?自治州&#x27;, 0)</span><br><span class="line">    WHEN install_addr LIKE &#x27;%自治区%地区%&#x27; THEN REGEXP_EXTRACT(REGEXP_REPLACE(REGEXP_REPLACE(install_addr, &#x27;[ \f\n\r\t\v]&#x27;, &#x27;&#x27;), &#x27;^.*?自治区&#x27;, &#x27;&#x27;), &#x27;^.*?地区&#x27;, 0)</span><br><span class="line">    WHEN install_addr LIKE &#x27;%省%地区%&#x27; THEN REGEXP_EXTRACT(REGEXP_REPLACE(REGEXP_REPLACE(install_addr, &#x27;[ \f\n\r\t\v]&#x27;, &#x27;&#x27;), &#x27;^.*?省&#x27;, &#x27;&#x27;), &#x27;^.*?地区&#x27;, 0)</span><br><span class="line">    WHEN install_addr LIKE &#x27;%自治区%盟%市%&#x27; THEN REGEXP_EXTRACT(REGEXP_REPLACE(REGEXP_REPLACE(install_addr, &#x27;[ \f\n\r\t\v]&#x27;, &#x27;&#x27;), &#x27;^.*?自治区&#x27;, &#x27;&#x27;), &#x27;^.*?盟&#x27;, 0)</span><br><span class="line">    WHEN install_addr LIKE &#x27;%自治区%市%&#x27; THEN REGEXP_EXTRACT(REGEXP_REPLACE(REGEXP_REPLACE(install_addr, &#x27;[ \f\n\r\t\v]&#x27;, &#x27;&#x27;), &#x27;^.*?自治区&#x27;, &#x27;&#x27;), &#x27;^.*?市&#x27;, 0)</span><br><span class="line">    WHEN install_addr LIKE &#x27;%自治区%盟%&#x27; THEN REGEXP_EXTRACT(REGEXP_REPLACE(REGEXP_REPLACE(install_addr, &#x27;[ \f\n\r\t\v]&#x27;, &#x27;&#x27;), &#x27;^.*?自治区&#x27;, &#x27;&#x27;), &#x27;^.*?盟&#x27;, 0)</span><br><span class="line">    WHEN install_addr LIKE &#x27;%省%市%&#x27; THEN REGEXP_EXTRACT(REGEXP_REPLACE(REGEXP_REPLACE(install_addr, &#x27;[ \f\n\r\t\v]&#x27;, &#x27;&#x27;), &#x27;^.*?省&#x27;, &#x27;&#x27;), &#x27;^.*?市&#x27;, 0)</span><br><span class="line">    WHEN install_addr LIKE &#x27;%香港%&#x27; THEN &#x27;香港特别行政区&#x27;</span><br><span class="line">    WHEN install_addr LIKE &#x27;%澳门%&#x27; THEN &#x27;澳门特别行政区&#x27;</span><br><span class="line">    WHEN install_addr LIKE &#x27;%神农架林区%&#x27; THEN &#x27;神农架林区&#x27;</span><br><span class="line">    WHEN install_addr LIKE &#x27;%平潭综合实验区%&#x27; THEN &#x27;平潭综合实验区&#x27;</span><br><span class="line">    ELSE &#x27;其他&#x27;</span><br><span class="line">END AS city_desc</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>字段类型转换<br>字段类型转换是一个比较头疼的问题，按规范来说，不同类型的字段应该选取最合适的字段类型。但是在实际开发中，还是推荐尽量在建表时将字段类型都指定为字符串类型，避免因类型转换带来的一系列问题。但一些数字类型的字段例外特别是整形字段，对于需要做数学运算的整形字段，建表时还是指定为整形，因为对字符串数字进行运算，结果常常会出现小数，处理比较麻烦。<br>字段类型转换遵循由简入繁的规则，特别是数值类型的字段，例如，任何整数类型都可以隐式地转换为一个范围更大的类型，TINYINT,SMALLINT,INT,BIGINT,FLOAT,STRING 都可以隐式地转换为DOUBLE，INT类型不能隐式地转换为TINYINT、SMALLINT类型（除非使用cast函数）,BOOLEAN不能转换为任何类型。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li></li>
 </ol>
 ]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>错误处理</tag>
-      </tags>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/IDEA/IDEA%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<h3 id="IDEA基本配置"><a href="#IDEA基本配置" class="headerlink" title="IDEA基本配置"></a>IDEA基本配置</h3><h4 id="1-maven仓库配置-当前项目有效"><a href="#1-maven仓库配置-当前项目有效" class="headerlink" title="1. maven仓库配置(当前项目有效)"></a>1. maven仓库配置(当前项目有效)</h4><p>maven设置打开方式：</p>
+<ul>
+<li>settings→Build,Execution,Deployment→Build Tools→Maven</li>
+<li>最右侧点击maven，然后点击设置图标，点击maven settings</li>
+</ul>
+<p>在maven设置中配置Maven home path，地址为maven的安装文件夹的位置，如</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">E:/Maven/apache-maven-3.8.4</span><br></pre></td></tr></table></figure>
+
+<p>配置maven的配置文件位置，地址为maven安装文件夹下的conf目录下的settings.xml文件，如</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">E:\Maven\apache-maven-3.8.4\conf\settings.xml</span><br></pre></td></tr></table></figure>
+
+<p>本地的maven仓库地址需要自己指定目录，如</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">E:\Maven\MyRepository</span><br></pre></td></tr></table></figure>
+
+<p><strong>如果想使之后的项目都沿用此配置，可以在File→New Projects Setup→Setting for new Projects中进行maven配置</strong></p>
+<h4 id="2-文件的基本模板配置（可选，便利性选项）"><a href="#2-文件的基本模板配置（可选，便利性选项）" class="headerlink" title="2. 文件的基本模板配置（可选，便利性选项）"></a>2. 文件的基本模板配置（可选，便利性选项）</h4><p>文件的基本模板规定了文件的创建格式和创建后文件中的基本内容，除了idea自带的模板外，还可以对经常需要创建的文件类型建立模板。</p>
+<p>配置位置在settings→Editor→File and Code Templates→Files,可以指定模板名称、模板内容以及模板类型（即文件的后缀名）等。</p>
+<p>以下是一些模板，随时更新和增加：</p>
+<p>Mybatis配置文件Mybatis.xml，模板内容：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span> ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">mapper</span></span></span><br><span class="line"><span class="meta">        <span class="keyword">PUBLIC</span> <span class="string">&quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;</span></span></span><br><span class="line"><span class="meta">        <span class="string">&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">&quot;&quot;</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>themeleaf.html</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!doctype <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;ch&quot;</span> <span class="attr">xmlns:th</span>=<span class="string">&quot;http://www.thymeleaf.org&quot;</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="3-文件头设置"><a href="#3-文件头设置" class="headerlink" title="3. 文件头设置"></a>3. 文件头设置</h4><p>文件头即创建文件时自动添加的注释，用于标注代码的创建时间、作者等信息。</p>
+<p>设置位置在settings→Editor→File and Code Templates→Includes→File Header</p>
+<p>内容可以自定义，当前设置的内容为：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Created</span> with IntelliJ IDEA</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span> Kaiyuan Zhang</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Version</span> 1.0.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Since</span> 1.0.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@CreateDate</span> $DATE</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@CreateTime</span> $HOUR:$MINUTE</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="4-共享进程堆大小设置（缓解项目build时idea卡死的问题）"><a href="#4-共享进程堆大小设置（缓解项目build时idea卡死的问题）" class="headerlink" title="4. 共享进程堆大小设置（缓解项目build时idea卡死的问题）"></a>4. 共享进程堆大小设置（缓解项目build时idea卡死的问题）</h4><p>如果要为当前项目设置：</p>
+<ul>
+<li>settings→Build,Execution,Deployment→Complier→Shared build process heap size</li>
+</ul>
+<p>如果要为以后新建的所有项目设置（推荐):</p>
+<ul>
+<li>File→New Projects Setup→Setting for new Projects→Build,Execution,Deployment→Complier→Shared build process heap size</li>
+</ul>
+]]></content>
   </entry>
   <entry>
     <title></title>
@@ -146,6 +231,45 @@
 ]]></content>
   </entry>
   <entry>
+    <title></title>
+    <url>/IDEA/IDEA%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%B1%87%E6%80%BB/</url>
+    <content><![CDATA[<h1 id="IDEA常用快捷键汇总"><a href="#IDEA常用快捷键汇总" class="headerlink" title="IDEA常用快捷键汇总"></a>IDEA常用快捷键汇总</h1><ul>
+<li>Alt + Enter  ：万能快捷键，可用于报错、创建对象等多种情况</li>
+<li>Ctrl + O ：快速重写，在一个类继承了另一个类之后，可以使用此快捷键快速重写父类的方法</li>
+<li>Ctrl + P ：查看参数，用于在方法的参数列表中查看方法有哪些参数</li>
+<li>Alt + Insert ：快速生成set、get方法，以及构造器等，常用语实体类实现以上方法及重写toString‘方法的内容。</li>
+<li>Ctrl+Alt+L：格式化代码，去掉无用代码</li>
+<li>Ctrl+Alt+O：格式化导入文件包，去掉无用的import包</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>Hexo报错处理</title>
+    <url>/Hexo/Hexo%E6%8A%A5%E9%94%99%E5%A4%84%E7%90%86/</url>
+    <content><![CDATA[<h1 id="Hexo报错处理"><a href="#Hexo报错处理" class="headerlink" title="Hexo报错处理"></a>Hexo报错处理</h1><ol>
+<li><p>使用部署命令<code>hexo d</code> <code>hexo deploy</code>或测试部署命令<code>hexo s</code> <code>hexo server</code>时出现报错：</p>
+<blockquote>
+<p>end of the stream or a document separator is expected</p>
+</blockquote>
+</li>
+</ol>
+<p>这种问题一般是因为头标注文件信息缺失而导致的。添加头标注文件即可，可以参考《为文章添加分类和标签》这篇文章进行解决。</p>
+<ol start="2">
+<li><p>为文章添加了标签tags 或分类 categorie，文章部署后，想修改标签或分类的大小写，直接修改了源文件头部标注文件，再次部署后相关tags 和 categories点击出现404空白页。</p>
+<p>原因：自动生成的用于存放对应标签或分类的html文件的文件夹名字没有随源文件的更改而更改，这是由于git忽略了大小写而导致的。</p>
+<p>解决办法：<br>方法一：修改git配置，在博客根目录下，显示隐藏文件，修改<code>.deploy_git/.git/config</code>文件，将该配置文件中的忽略大小写配置项改为false：<code>ignorecase = false</code><br>方法二：删除博客根目录文件夹下.deploy_git目录下tags文件夹或者categories文件夹中对应的标签或分类文件夹，然后重新部署发布，让文件夹重新生成。</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>错误处理</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>为文章添加分类和标签</title>
     <url>/Hexo/%E4%B8%BA%E6%96%87%E7%AB%A0%E6%B7%BB%E5%8A%A0%E5%88%86%E7%B1%BB%E5%92%8C%E6%A0%87%E7%AD%BE/</url>
     <content><![CDATA[<h1 id="为文章添加分类和标签"><a href="#为文章添加分类和标签" class="headerlink" title="为文章添加分类和标签"></a>为文章添加分类和标签</h1><h2 id="一、修改配置文件"><a href="#一、修改配置文件" class="headerlink" title="一、修改配置文件"></a>一、修改配置文件</h2><p>将主题目录下的配置文件中的tags 和 categories配置项置为true，注意冒号后要有空格：</p>
@@ -188,176 +312,6 @@
       <tags>
         <tag>Hexo使用技巧</tag>
       </tags>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/ETL/ETL%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/</url>
-    <content><![CDATA[<h1 id="ETL开发流程"><a href="#ETL开发流程" class="headerlink" title="ETL开发流程"></a>ETL开发流程</h1><h2 id="准备阶段"><a href="#准备阶段" class="headerlink" title="准备阶段"></a>准备阶段</h2><h3 id="1-开发架构确定"><a href="#1-开发架构确定" class="headerlink" title="1. 开发架构确定"></a>1. 开发架构确定</h3><p>​	在接收到需求后，首先要弄清楚业务类型，以及数据源类型。在宏观上，ETL是围绕数据开展的工作，不应局限于某种技术或某种数据处理方式，所以，在条件允许的情况下，应该选取最适合业务的开发架构和方式。以下列举了几种开发架构，笔者经验所限，后续将持续更新新的架构。</p>
-<ul>
-<li><p>离线开发：Hadoop+ hive</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">经典的离线开发方式，当需求对数据的实时性要求没那么高时，可以采用此种开发方式。当然该架构对于配置要求较高，需要有Hadoop集群以及数据开发平台。</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>实时开发：待补充</p>
-</li>
-<li><p>待补充</p>
-</li>
-</ul>
-<h3 id="2-了解数据源"><a href="#2-了解数据源" class="headerlink" title="2. 了解数据源"></a>2. 了解数据源</h3><p>当拿到一份陌生的数据源&#x2F;数据源表，首先要做的是对该表进行充分的了解：</p>
-<ul>
-<li>表字段、字段类型、字段注释的了解</li>
-<li>表的业务背景、来源、每个字段的含义</li>
-<li>表的更新方式（增量&#x2F;全量）、表格结构（普通表&#x2F;分区&#x2F;分桶）、使用方式（只用最新分区&#x2F;使用部分分区&#x2F;使用全量分区）</li>
-</ul>
-<p>基于对表的这些了解，应该形成文档，对要点做适当的记录，避免下次使用该表时因为疏漏而踩坑。</p>
-<p>然后，需要对数据源表进行数据探查，主要是为了大致评估数据量、数据质量、以及一些其他信息。数据探查的逻辑主要根据业务需求来制定，探查过后应该对资源分配、开发方式、数据源是否符合需求等有一个评估结论</p>
-<h3 id="2-开发逻辑设计"><a href="#2-开发逻辑设计" class="headerlink" title="2. 开发逻辑设计"></a>2. 开发逻辑设计</h3><h3 id="3-表结构设计"><a href="#3-表结构设计" class="headerlink" title="3. 表结构设计"></a>3. 表结构设计</h3><h3 id="4-数据流梳理"><a href="#4-数据流梳理" class="headerlink" title="4. 数据流梳理"></a>4. 数据流梳理</h3><h2 id="开发阶段"><a href="#开发阶段" class="headerlink" title="开发阶段"></a>开发阶段</h2><h3 id="1-离线开发流程"><a href="#1-离线开发流程" class="headerlink" title="1. 离线开发流程"></a>1. 离线开发流程</h3><ol>
-<li><p>了解数据源<br>当拿到一份陌生的数据源&#x2F;数据源表，首先要做的是对该表进行充分的了解：</p>
-<ul>
-<li>表字段、字段类型、字段注释的了解</li>
-<li>表的业务背景、来源、每个字段的含义</li>
-<li>表的更新方式（增量&#x2F;全量）、表格结构（普通表&#x2F;分区&#x2F;分桶）、使用方式（只用最新分区&#x2F;使用部分分区&#x2F;使用全量分区）</li>
-</ul>
-</li>
-<li><p>数据清洗<br>在充分了解了数据源之后，就需要根据业务需求对数据进行处理了：</p>
-<ul>
-<li><p><strong>确定业务数据范围</strong>。包括：</p>
-<ul>
-<li>业务数据范围：<br>在逻辑上对数据源的数据进行截取，例如只需要统计当年的数据，则通过表中的时间字段进行过滤即可。</li>
-<li>字段范围：<br>确定关键的字段有哪些，根据业务抽取需要的字段，对于一些明显用不到的字段，可以舍去，对于以后可能会用到的字段予以保留，避免后续迭代对表结构做改动。</li>
-<li>特别地，如果后续会经常使用该表，可以考虑只对该表做数据范围上的筛选，而不做字段范围上的限制（保留全部字段），加以清洗后形成一张通用明细表</li>
-</ul>
-</li>
-<li><p><strong>脏数据清洗</strong>。</p>
-<ul>
-<li><p>字段内容清洗<br>字段内容清洗是最常见的脏数据处理方式</p>
-<ul>
-<li>某些字段中可能掺杂了一些特殊字符、乱码数据等。这种情况下，一般需要将特殊字符去除，或者将整个值做统一替换处理。处理方式一般为字符串替换、正则表达式替换、或者采用if 、case when 等条件函数进行映射等。</li>
-<li>某些字段中可能存在一些不该存在的值，这种情况一般直接做映射处理，将这些不合适的值替换为其他值，可以采用上面的处理方式进行处理。</li>
-</ul>
-</li>
-<li><p>缺失值处理</p>
-<ul>
-<li><p>缺失值统一转换：<br>对于缺失值，最常规的处理方式就是将缺失值做统一转换，可以转换为某个特定的值，也可以将不同的缺失值统一成一样的缺失值，便于后续处理。处理一般可借助COALESCE、IF、NVL、CASE WHEN等函数。<br>特别地，在处理表时，由于很多字段不能确定是否有缺失值，或者日后是否会产生缺失值，所以在处理时基本可以对所有字段进行缺失值处理，防止出现缺失值。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">空值转换:</span><br><span class="line">	NVL(field, 替换后的值)</span><br><span class="line">	IF(field IS NULL, 替换后的值, field)</span><br><span class="line">空字符串转NULL:</span><br><span class="line">	IF(field = &#x27;&#x27;, 替换后的值, field)</span><br><span class="line">判断字段是否为空或者空字符串:</span><br><span class="line">	COALESCE(field, &#x27;&#x27;) = &#x27;&#x27;    --字段为空或者空字符串</span><br><span class="line">	field IS NULL OR field = &#x27;&#x27; --字段为空或者空字符串</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>详细地址解析<br>当表中只有一个长串的详细地址字段，而没有单独的省市地址字段时，需要使用正则表达式进行解析，表达式书写需要根据具体的数据情况来写，考虑到一般的地址书写格式都比较相似，下面总结了一下地址解析的HIVESQL代码，主要是从详细地址中解析出省份名称和市名称，后续会不断优化，注意代码中语句的顺序十分重要：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CASE</span><br><span class="line">    WHEN install_addr LIKE &#x27;%市%省%&#x27; THEN &#x27;其他&#x27; --异常数据过滤</span><br><span class="line">    WHEN install_addr LIKE &#x27;%北京%&#x27; THEN &#x27;北京市&#x27;</span><br><span class="line">    WHEN install_addr LIKE &#x27;%天津%&#x27; THEN &#x27;天津市&#x27;</span><br><span class="line">    WHEN install_addr LIKE &#x27;%上海%&#x27; THEN &#x27;上海市&#x27;</span><br><span class="line">    WHEN install_addr LIKE &#x27;%重庆%&#x27; THEN &#x27;重庆市&#x27;</span><br><span class="line">    WHEN install_addr LIKE &#x27;%香港%&#x27; THEN &#x27;香港特别行政区&#x27;</span><br><span class="line">    WHEN install_addr LIKE &#x27;%澳门%&#x27; THEN &#x27;澳门特别行政区&#x27;</span><br><span class="line">    WHEN install_addr LIKE &#x27;%自治区%&#x27; THEN REGEXP_EXTRACT(REGEXP_REPLACE(install_addr, &#x27;[ \f\n\r\t\v]&#x27;, &#x27;&#x27;), &#x27;.*?自治区&#x27;, 0)</span><br><span class="line">    WHEN install_addr LIKE &#x27;%省%&#x27; THEN REGEXP_EXTRACT(REGEXP_REPLACE(install_addr, &#x27;[ \f\n\r\t\v]&#x27;, &#x27;&#x27;), &#x27;.*?省&#x27;, 0)</span><br><span class="line">    ELSE &#x27;其他&#x27;</span><br><span class="line">END AS province_desc</span><br><span class="line">,CASE</span><br><span class="line">    WHEN install_addr LIKE &#x27;%北京%&#x27; THEN &#x27;北京市&#x27;</span><br><span class="line">    WHEN install_addr LIKE &#x27;%天津%&#x27; THEN &#x27;天津市&#x27;</span><br><span class="line">    WHEN install_addr LIKE &#x27;%上海%&#x27; THEN &#x27;上海市&#x27;</span><br><span class="line">    WHEN install_addr LIKE &#x27;%重庆%&#x27; THEN &#x27;重庆市&#x27;</span><br><span class="line">    WHEN install_addr LIKE &#x27;%省%自治州%&#x27; THEN REGEXP_EXTRACT(REGEXP_REPLACE(REGEXP_REPLACE(install_addr, &#x27;[ \f\n\r\t\v]&#x27;, &#x27;&#x27;), &#x27;^.*?省&#x27;, &#x27;&#x27;), &#x27;^.*?自治州&#x27;, 0)</span><br><span class="line">    WHEN install_addr LIKE &#x27;%自治区%自治州%&#x27; THEN REGEXP_EXTRACT(REGEXP_REPLACE(REGEXP_REPLACE(install_addr, &#x27;[ \f\n\r\t\v]&#x27;, &#x27;&#x27;), &#x27;^.*?自治区&#x27;, &#x27;&#x27;), &#x27;^.*?自治州&#x27;, 0)</span><br><span class="line">    WHEN install_addr LIKE &#x27;%自治区%地区%&#x27; THEN REGEXP_EXTRACT(REGEXP_REPLACE(REGEXP_REPLACE(install_addr, &#x27;[ \f\n\r\t\v]&#x27;, &#x27;&#x27;), &#x27;^.*?自治区&#x27;, &#x27;&#x27;), &#x27;^.*?地区&#x27;, 0)</span><br><span class="line">    WHEN install_addr LIKE &#x27;%省%地区%&#x27; THEN REGEXP_EXTRACT(REGEXP_REPLACE(REGEXP_REPLACE(install_addr, &#x27;[ \f\n\r\t\v]&#x27;, &#x27;&#x27;), &#x27;^.*?省&#x27;, &#x27;&#x27;), &#x27;^.*?地区&#x27;, 0)</span><br><span class="line">    WHEN install_addr LIKE &#x27;%自治区%盟%市%&#x27; THEN REGEXP_EXTRACT(REGEXP_REPLACE(REGEXP_REPLACE(install_addr, &#x27;[ \f\n\r\t\v]&#x27;, &#x27;&#x27;), &#x27;^.*?自治区&#x27;, &#x27;&#x27;), &#x27;^.*?盟&#x27;, 0)</span><br><span class="line">    WHEN install_addr LIKE &#x27;%自治区%市%&#x27; THEN REGEXP_EXTRACT(REGEXP_REPLACE(REGEXP_REPLACE(install_addr, &#x27;[ \f\n\r\t\v]&#x27;, &#x27;&#x27;), &#x27;^.*?自治区&#x27;, &#x27;&#x27;), &#x27;^.*?市&#x27;, 0)</span><br><span class="line">    WHEN install_addr LIKE &#x27;%自治区%盟%&#x27; THEN REGEXP_EXTRACT(REGEXP_REPLACE(REGEXP_REPLACE(install_addr, &#x27;[ \f\n\r\t\v]&#x27;, &#x27;&#x27;), &#x27;^.*?自治区&#x27;, &#x27;&#x27;), &#x27;^.*?盟&#x27;, 0)</span><br><span class="line">    WHEN install_addr LIKE &#x27;%省%市%&#x27; THEN REGEXP_EXTRACT(REGEXP_REPLACE(REGEXP_REPLACE(install_addr, &#x27;[ \f\n\r\t\v]&#x27;, &#x27;&#x27;), &#x27;^.*?省&#x27;, &#x27;&#x27;), &#x27;^.*?市&#x27;, 0)</span><br><span class="line">    WHEN install_addr LIKE &#x27;%香港%&#x27; THEN &#x27;香港特别行政区&#x27;</span><br><span class="line">    WHEN install_addr LIKE &#x27;%澳门%&#x27; THEN &#x27;澳门特别行政区&#x27;</span><br><span class="line">    WHEN install_addr LIKE &#x27;%神农架林区%&#x27; THEN &#x27;神农架林区&#x27;</span><br><span class="line">    WHEN install_addr LIKE &#x27;%平潭综合实验区%&#x27; THEN &#x27;平潭综合实验区&#x27;</span><br><span class="line">    ELSE &#x27;其他&#x27;</span><br><span class="line">END AS city_desc</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>字段类型转换<br>字段类型转换是一个比较头疼的问题，按规范来说，不同类型的字段应该选取最合适的字段类型。但是在实际开发中，还是推荐尽量在建表时将字段类型都指定为字符串类型，避免因类型转换带来的一系列问题。但一些数字类型的字段例外特别是整形字段，对于需要做数学运算的整形字段，建表时还是指定为整形，因为对字符串数字进行运算，结果常常会出现小数，处理比较麻烦。<br>字段类型转换遵循由简入繁的规则，特别是数值类型的字段，例如，任何整数类型都可以隐式地转换为一个范围更大的类型，TINYINT,SMALLINT,INT,BIGINT,FLOAT,STRING 都可以隐式地转换为DOUBLE，INT类型不能隐式地转换为TINYINT、SMALLINT类型（除非使用cast函数）,BOOLEAN不能转换为任何类型。</p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li></li>
-</ol>
-]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/IDEA/IDEA%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<h3 id="IDEA基本配置"><a href="#IDEA基本配置" class="headerlink" title="IDEA基本配置"></a>IDEA基本配置</h3><h4 id="1-maven仓库配置-当前项目有效"><a href="#1-maven仓库配置-当前项目有效" class="headerlink" title="1. maven仓库配置(当前项目有效)"></a>1. maven仓库配置(当前项目有效)</h4><p>maven设置打开方式：</p>
-<ul>
-<li>settings→Build,Execution,Deployment→Build Tools→Maven</li>
-<li>最右侧点击maven，然后点击设置图标，点击maven settings</li>
-</ul>
-<p>在maven设置中配置Maven home path，地址为maven的安装文件夹的位置，如</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">E:/Maven/apache-maven-3.8.4</span><br></pre></td></tr></table></figure>
-
-<p>配置maven的配置文件位置，地址为maven安装文件夹下的conf目录下的settings.xml文件，如</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">E:\Maven\apache-maven-3.8.4\conf\settings.xml</span><br></pre></td></tr></table></figure>
-
-<p>本地的maven仓库地址需要自己指定目录，如</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">E:\Maven\MyRepository</span><br></pre></td></tr></table></figure>
-
-<p><strong>如果想使之后的项目都沿用此配置，可以在File→New Projects Setup→Setting for new Projects中进行maven配置</strong></p>
-<h4 id="2-文件的基本模板配置（可选，便利性选项）"><a href="#2-文件的基本模板配置（可选，便利性选项）" class="headerlink" title="2. 文件的基本模板配置（可选，便利性选项）"></a>2. 文件的基本模板配置（可选，便利性选项）</h4><p>文件的基本模板规定了文件的创建格式和创建后文件中的基本内容，除了idea自带的模板外，还可以对经常需要创建的文件类型建立模板。</p>
-<p>配置位置在settings→Editor→File and Code Templates→Files,可以指定模板名称、模板内容以及模板类型（即文件的后缀名）等。</p>
-<p>以下是一些模板，随时更新和增加：</p>
-<p>Mybatis配置文件Mybatis.xml，模板内容：</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span> ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">mapper</span></span></span><br><span class="line"><span class="meta">        <span class="keyword">PUBLIC</span> <span class="string">&quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;</span></span></span><br><span class="line"><span class="meta">        <span class="string">&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">&quot;&quot;</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>themeleaf.html</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!doctype <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;ch&quot;</span> <span class="attr">xmlns:th</span>=<span class="string">&quot;http://www.thymeleaf.org&quot;</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="3-文件头设置"><a href="#3-文件头设置" class="headerlink" title="3. 文件头设置"></a>3. 文件头设置</h4><p>文件头即创建文件时自动添加的注释，用于标注代码的创建时间、作者等信息。</p>
-<p>设置位置在settings→Editor→File and Code Templates→Includes→File Header</p>
-<p>内容可以自定义，当前设置的内容为：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Created</span> with IntelliJ IDEA</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span> Kaiyuan Zhang</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Version</span> 1.0.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Since</span> 1.0.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@CreateDate</span> $DATE</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@CreateTime</span> $HOUR:$MINUTE</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="4-共享进程堆大小设置（缓解项目build时idea卡死的问题）"><a href="#4-共享进程堆大小设置（缓解项目build时idea卡死的问题）" class="headerlink" title="4. 共享进程堆大小设置（缓解项目build时idea卡死的问题）"></a>4. 共享进程堆大小设置（缓解项目build时idea卡死的问题）</h4><p>如果要为当前项目设置：</p>
-<ul>
-<li>settings→Build,Execution,Deployment→Complier→Shared build process heap size</li>
-</ul>
-<p>如果要为以后新建的所有项目设置（推荐):</p>
-<ul>
-<li>File→New Projects Setup→Setting for new Projects→Build,Execution,Deployment→Complier→Shared build process heap size</li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/IDEA/IDEA%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%B1%87%E6%80%BB/</url>
-    <content><![CDATA[<h1 id="IDEA常用快捷键汇总"><a href="#IDEA常用快捷键汇总" class="headerlink" title="IDEA常用快捷键汇总"></a>IDEA常用快捷键汇总</h1><ul>
-<li>Alt + Enter  ：万能快捷键，可用于报错、创建对象等多种情况</li>
-<li>Ctrl + O ：快速重写，在一个类继承了另一个类之后，可以使用此快捷键快速重写父类的方法</li>
-<li>Ctrl + P ：查看参数，用于在方法的参数列表中查看方法有哪些参数</li>
-<li>Alt + Insert ：快速生成set、get方法，以及构造器等，常用语实体类实现以上方法及重写toString‘方法的内容。</li>
-<li>Ctrl+Alt+L：格式化代码，去掉无用代码</li>
-<li>Ctrl+Alt+O：格式化导入文件包，去掉无用的import包</li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/Python/kats%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</url>
-    <content><![CDATA[<h1 id="kats安装教程"><a href="#kats安装教程" class="headerlink" title="kats安装教程"></a>kats安装教程</h1><p>kats是Facebook开发的时间序列预测服务工具库，集成了多种时间预测模型。</p>
-<h2 id="安装过程（建议单独创建虚拟环境）"><a href="#安装过程（建议单独创建虚拟环境）" class="headerlink" title="安装过程（建议单独创建虚拟环境）"></a>安装过程（建议单独创建虚拟环境）</h2><h3 id="1-fbprophet的安装"><a href="#1-fbprophet的安装" class="headerlink" title="1.fbprophet的安装"></a>1.fbprophet的安装</h3><p>由于直接安装kats会报错，主要原因是fbprophet的安装问题。所以在安装kats之前，首先将fbprophet单独进行安装。</p>
-<p>直接pip install fdprophet也会出错，因此依次执行下面三个命令：</p>
-<blockquote>
-<p>python -m pip install -U pip</p>
-<p>conda install -c conda-forge pystan</p>
-<p>pip install fbprophet</p>
-</blockquote>
-<p>过程中，执行第二条命令conda install -c conda-forge pystan后可能会出现pip命令无法使用的情况，提示错误为ModuleNotFoundError: No module named ‘_sysconfigdata_x86_64_conda_linux_gnu’，这是因为第二条指令使用conda安装了“gxx-linux-64”，在某一个版本的python中丢失了一个备份文件，通常在同一个版本的python下会有两个相同的<code>_sysconfigdata_x86_64_conda_cos6_linux_gnu.py</code>文件和<code>_sysconfigdata_x86_64_conda_linux_gnu.py</code>文件。而在某些程序的运行过程中会依赖于其中的一个，因此我们需要做的就是检索系统中是否存在有这两个文件：</p>
-<blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo find ~ -name _sysconfigdata_x86_64*</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>我发现的问题是在虚拟环境下的anaconda下的python3.8路径下只有一个<code>_sysconfigdata_x86_64_conda_cos6_linux_gnu.py</code>文件而没有</p>
-<p><code>_sysconfigdata_x86_64_conda_linux_gnu.py</code>文件，所以只需要将上面有的文件复制一份成下面文件的名字即可，使用了命令：</p>
-<blockquote>
-<p> <code>cp /opt/anaconda3/envs/kats/lib/python3.8/_sysconfigdata_x86_64_conda_cos6_linux_gnu.py /opt/anaconda3/envs/kats/lib/python3.8/_sysconfigdata_x86_64_conda_linux_gnu.py</code></p>
-</blockquote>
-<p>这里kats是我创建的虚拟环境的名字。</p>
-<p>到此，不出意外的话fbprophet安装完毕。</p>
-<h3 id="2-kats的安装"><a href="#2-kats的安装" class="headerlink" title="2. kats的安装"></a>2. kats的安装</h3><p>由于kats的安装过程中需要安装pytorch，而安装pytorch的过程会导致进程killed，所以安装kats需要添加参数</p>
-<p>“–no-cache-dir”，安装命令为：</p>
-<p><code>pip install kats --no-cache-dir</code></p>
-<p>等待安装完毕即可。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/Linux/Linux%E4%B8%8B%E5%AE%89%E8%A3%85anaconda/</url>
-    <content><![CDATA[<h1 id="Linux下安装anaconda"><a href="#Linux下安装anaconda" class="headerlink" title="Linux下安装anaconda"></a>Linux下安装anaconda</h1><ul>
-<li>首先在anaconda官网下载Linux版本的anaconda的shell包；</li>
-<li>使用bash命令执行.sh脚本文件安装anaconda，注意更改安装路径，一般可以安装在&#x2F;opt目录下；</li>
-<li>安装结束后，在系统中添加环境变量：</li>
-</ul>
-<blockquote>
-<p>sudo vim &#x2F;etc&#x2F;profile</p>
-</blockquote>
-<p>在配置文件最后加入路径：</p>
-<blockquote>
-<p>#Anaconda</p>
-<p>export PATH&#x3D;$PATH:anaconda安装路径&#x2F;bin</p>
-</blockquote>
-]]></content>
   </entry>
   <entry>
     <title></title>
@@ -675,6 +629,35 @@
   </entry>
   <entry>
     <title></title>
+    <url>/Linux/Linux%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<h1 id="Linux基础"><a href="#Linux基础" class="headerlink" title="Linux基础"></a>Linux基础</h1><h2 id="命令格式"><a href="#命令格式" class="headerlink" title="命令格式"></a>命令格式</h2><p>命令名称 [命令参数] [命令对象]</p>
+<p>注意命令名称、命令参数、命令对象之间用空格键分隔，使用时要根据实际情况组合各种命令选择和命令参数。</p>
+<p>命令名称容易理解，命令对象一般指要处理的目标（文件、用户等），命令参数随环境情况的不同而异，需要长期经验积累。</p>
+<h4 id="命令参数"><a href="#命令参数" class="headerlink" title="命令参数"></a>命令参数</h4><p>命令参数可以选用长格式（完整的选项名称），也可以选用短格式（单个子母的缩写），分别用“–”与“-”做前缀，</p>
+<p>长格式如：man –help  </p>
+<p>短格式如：man -h</p>
+<h2 id="Linux-常用命令"><a href="#Linux-常用命令" class="headerlink" title="Linux 常用命令"></a>Linux 常用命令</h2>]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/Linux/Linux%E4%B8%8B%E5%AE%89%E8%A3%85anaconda/</url>
+    <content><![CDATA[<h1 id="Linux下安装anaconda"><a href="#Linux下安装anaconda" class="headerlink" title="Linux下安装anaconda"></a>Linux下安装anaconda</h1><ul>
+<li>首先在anaconda官网下载Linux版本的anaconda的shell包；</li>
+<li>使用bash命令执行.sh脚本文件安装anaconda，注意更改安装路径，一般可以安装在&#x2F;opt目录下；</li>
+<li>安装结束后，在系统中添加环境变量：</li>
+</ul>
+<blockquote>
+<p>sudo vim &#x2F;etc&#x2F;profile</p>
+</blockquote>
+<p>在配置文件最后加入路径：</p>
+<blockquote>
+<p>#Anaconda</p>
+<p>export PATH&#x3D;$PATH:anaconda安装路径&#x2F;bin</p>
+</blockquote>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
     <url>/Linux/Linux%E7%8E%AF%E5%A2%83%E4%B8%8B%E5%AE%89%E8%A3%85Hive/</url>
     <content><![CDATA[<h1 id="Linux环境下安装Hive"><a href="#Linux环境下安装Hive" class="headerlink" title="Linux环境下安装Hive"></a>Linux环境下安装Hive</h1><p><strong>前提：需要虚拟环境中安装了Hadoop才能运行Hive</strong></p>
 <h2 id="一、下载Hive安装包"><a href="#一、下载Hive安装包" class="headerlink" title="一、下载Hive安装包"></a>一、下载Hive安装包</h2><p><a href="https://dlcdn.apache.org/hive/">官方推荐版本下载地址</a></p>
@@ -711,17 +694,6 @@
 
 
 ]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/Linux/Linux%E5%9F%BA%E7%A1%80/</url>
-    <content><![CDATA[<h1 id="Linux基础"><a href="#Linux基础" class="headerlink" title="Linux基础"></a>Linux基础</h1><h2 id="命令格式"><a href="#命令格式" class="headerlink" title="命令格式"></a>命令格式</h2><p>命令名称 [命令参数] [命令对象]</p>
-<p>注意命令名称、命令参数、命令对象之间用空格键分隔，使用时要根据实际情况组合各种命令选择和命令参数。</p>
-<p>命令名称容易理解，命令对象一般指要处理的目标（文件、用户等），命令参数随环境情况的不同而异，需要长期经验积累。</p>
-<h4 id="命令参数"><a href="#命令参数" class="headerlink" title="命令参数"></a>命令参数</h4><p>命令参数可以选用长格式（完整的选项名称），也可以选用短格式（单个子母的缩写），分别用“–”与“-”做前缀，</p>
-<p>长格式如：man –help  </p>
-<p>短格式如：man -h</p>
-<h2 id="Linux-常用命令"><a href="#Linux-常用命令" class="headerlink" title="Linux 常用命令"></a>Linux 常用命令</h2>]]></content>
   </entry>
   <entry>
     <title></title>
@@ -764,6 +736,49 @@
 <p>检查JDK是否安装配置成功：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
 
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/MySQL/MySQL%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<h2 id="MySQL安装"><a href="#MySQL安装" class="headerlink" title="MySQL安装"></a>MySQL安装</h2><h3 id="1-下载安装"><a href="#1-下载安装" class="headerlink" title="1. 下载安装"></a>1. 下载安装</h3><ul>
+<li>MySQL官网:<a href="https://www.mysql.com/cn/">mysql官网链接</a></li>
+</ul>
+<p>在官网中，可以在首页最下方选择需要下载的MySQL版本，通常情况下，下载的是社区版的MySQL：</p>
+<ul>
+<li>MySQL社区版：<a href="https://dev.mysql.com/downloads/mysql/">mysql communtiy downloads</a></li>
+</ul>
+<p>其中x64适用于64位系统，x86适用于32位系统。</p>
+<p>下面教程以5.7版本的MySQL安装为例，下载好后，将压缩包解压到合适位置，比如我当前的解压路径为：<code>E:\MySQL\mysql-5.7.37-winx64</code>，在该目录下新建my.ini文件，文件内容模板如下：</p>
+<figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="section">[mysqld]</span></span><br><span class="line"><span class="comment"># 设置3306端口</span></span><br><span class="line"><span class="attr">port</span>=<span class="number">3306</span></span><br><span class="line"><span class="comment"># 设置mysql的安装目录   ----------是你的文件路径-------------</span></span><br><span class="line"><span class="attr">basedir</span>=E:\MySQL\mysql-<span class="number">5.7</span>.<span class="number">37</span>-winx64</span><br><span class="line"><span class="comment"># 设置mysql数据库的数据的存放目录  ---------是你的文件路径data文件夹自行创建</span></span><br><span class="line"><span class="attr">datadir</span>=E:\MySQL\mysql-<span class="number">5.7</span>.<span class="number">37</span>-winx64\data</span><br><span class="line"><span class="comment"># 允许最大连接数</span></span><br><span class="line"><span class="attr">max_connections</span>=<span class="number">200</span></span><br><span class="line"><span class="comment"># 允许连接失败的次数。</span></span><br><span class="line"><span class="attr">max_connect_errors</span>=<span class="number">10</span></span><br><span class="line"><span class="comment"># 服务端使用的字符集默认为utf8mb4</span></span><br><span class="line"><span class="attr">character-set-server</span>=utf8mb4</span><br><span class="line"><span class="comment"># 创建新表时将使用的默认存储引擎</span></span><br><span class="line"><span class="attr">default-storage-engine</span>=INNODB</span><br><span class="line"><span class="comment"># 默认使用“mysql_native_password”插件认证</span></span><br><span class="line"><span class="comment">#mysql_native_password</span></span><br><span class="line"><span class="attr">default_authentication_plugin</span>=mysql_native_password</span><br><span class="line"><span class="section">[mysql]</span></span><br><span class="line"><span class="comment"># 设置mysql客户端默认字符集</span></span><br><span class="line"><span class="attr">default-character-set</span>=utf8mb4</span><br><span class="line"><span class="section">[client]</span></span><br><span class="line"><span class="comment"># 设置mysql客户端连接服务端时默认使用的端口</span></span><br><span class="line"><span class="attr">port</span>=<span class="number">3306</span></span><br><span class="line"><span class="attr">default-character-set</span>=utf8mb4</span><br></pre></td></tr></table></figure>
+
+<p>文件中主要根据情况修改MySQL的安装目录路径basedir，以及MySQL的数据存放目录datadir。</p>
+<h3 id="2-初始化数据库"><a href="#2-初始化数据库" class="headerlink" title="2. 初始化数据库"></a>2. 初始化数据库</h3><p>使用管理员身份打开命令提示符，进入mysql安装目录下的bin目录，如<code>E:\MySQL\mysql-5.7.37-winx64\bin</code> ,执行命令<code>mysqld  --initialize --console</code> ,进行目录的初始化，此时安装目录下会自动建立配置文件中设置的数据存放目录，同时，命令行中可以看到生成的随机初始化密码，此密码用于首次登录MySQL，需要记住。如果没记住的话，在刚刚生成的MySQL安装目录下的data目录下的以.err为后缀的文件中可以找到MySQL的随机初始密码。</p>
+<h3 id="3-安装数据库"><a href="#3-安装数据库" class="headerlink" title="3. 安装数据库"></a>3. 安装数据库</h3><p>依然是在管理员权限下的MySQL目录的bin目录下，执行命令<code>mysqld  -install</code>，进行mysqld的安装。</p>
+<h3 id="4-启动数据库"><a href="#4-启动数据库" class="headerlink" title="4. 启动数据库"></a>4. 启动数据库</h3><p>使用命令行的管理员权限，在MySQL安装目录的bin目录下，使用命令<code>net start mysql</code> 来启动MySQL数据库。</p>
+<h3 id="5-登录MySQL数据库（注意，登录数据库后，所有命令最后要加分号’；‘）"><a href="#5-登录MySQL数据库（注意，登录数据库后，所有命令最后要加分号’；‘）" class="headerlink" title="5. 登录MySQL数据库（注意，登录数据库后，所有命令最后要加分号’；‘）"></a>5. 登录MySQL数据库（注意，登录数据库后，所有命令最后要加分号’；‘）</h3><ul>
+<li><p>登录命令格式 <code>mysql -u 用户名 -p 密码</code></p>
+<ul>
+<li>一般因为使用了管理员权限，用户名为root，-p后面的密码可以不写，在执行此命令后需要继续输入密码</li>
+</ul>
+</li>
+<li><p>如果是第一次登录：</p>
+<ul>
+<li><p>mysql5.6版本之后，在第一次初始化MySQL数据库的时候会生成随机生成的初始密码，该密码的获取可以参照上面第3条。</p>
+</li>
+<li><p><strong>修改密码</strong>：由于初始密码不方便记忆，第一次登录成功后需要设置自己熟悉的密码，修改密码方式与版本相关：</p>
+<ul>
+<li>5.7.6版本之前：<code>set password for &#39;用户名&#39;@&#39;localhost&#39; = password(&quot;新密码&quot;)</code></li>
+<li>5.7.6版本之后：<code>alter user &#39;用户名&#39;@&#39;localhost&#39;identified with mysql_native_password by &#39;新密码&#39; </code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-配置系统环境变量"><a href="#6-配置系统环境变量" class="headerlink" title="6. 配置系统环境变量"></a>6. 配置系统环境变量</h3><p>在Windows中为MySQL配置系统环境变量，新增系统环境变量 <code>MYSQL_HOME</code>,变量值为msyqld 安装路径，例如我安装了5.7版本路径为<code>E:\MySQL\mysql-5.7.37-winx64</code> ,然后再系统环境变量中的path中添加路径：<code>%MYSQL_HOME%\bin</code></p>
+<h3 id="踩坑"><a href="#踩坑" class="headerlink" title="踩坑"></a>踩坑</h3><ul>
+<li>如果出现如“由于找不到msvcr120.dll，无法继续执行代码……”的问题，说明系统缺少vcredist ，此时需要在官网下载vcredist,arm架构系统选择arm版本，64位系统选择x64版本，32位系统选择x86版本，vcredist官网链接:<a href="https://www.microsoft.com/zh-CN/download/details.aspx?id=40784">vcredist官网</a>,下载安装后，运行该程序，点击修复按钮，修复完成即可正常安装MySQL</li>
+</ul>
 ]]></content>
   </entry>
   <entry>
@@ -910,96 +925,77 @@
   </entry>
   <entry>
     <title></title>
-    <url>/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/CNN%E7%B3%BB%E5%88%97%E6%A8%A1%E5%9E%8B/</url>
-    <content><![CDATA[<h1 id="CNN系列模型"><a href="#CNN系列模型" class="headerlink" title="CNN系列模型"></a>CNN系列模型</h1><h2 id="一、卷积神经网络-Convolutional-Neural-Network-CNN"><a href="#一、卷积神经网络-Convolutional-Neural-Network-CNN" class="headerlink" title="一、卷积神经网络(Convolutional Neural Network, CNN)"></a>一、卷积神经网络(Convolutional Neural Network, CNN)</h2><h3 id="1-1-互相关运算"><a href="#1-1-互相关运算" class="headerlink" title="1.1 互相关运算"></a>1.1 互相关运算</h3><p>卷积层中，使用输入数据与卷积核的二维互相关运算来得到输出，二维互相关运算示例如下：</p>
-<p><img src="/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/CNN%E7%B3%BB%E5%88%97%E6%A8%A1%E5%9E%8B/Users\21036043\AppData\Roaming\Typora\typora-user-images\image-20211119110444452.png" alt="image-20211119110444452"></p>
-<p>卷积核从输入矩阵的左上方开始，按从左往右、从上往下的顺序在矩阵上滑动，每滑动到一个位置，卷积核中对应位置的元素与输入矩阵对应位置的元素相乘并求和，以图中的例子来说，二维互相关的计算过程为：</p>
-<p>​														0×0+1×1+3×2+4×3&#x3D;19</p>
-<h3 id="1-2-二维卷积层"><a href="#1-2-二维卷积层" class="headerlink" title="1.2 二维卷积层"></a>1.2 二维卷积层</h3><p>卷积神经网络常用来处理图像数据，二维卷积层将输入的二维图像和卷积核做互相关运算，然后加上一个偏差来得到输出。卷积核和偏差是超参数。在训练模型时，通常先对卷积核做随机初始化，然后不断迭代卷积核和偏差。</p>
-<h3 id="1-3-特征图和感受野"><a href="#1-3-特征图和感受野" class="headerlink" title="1.3 特征图和感受野"></a>1.3 特征图和感受野</h3><p>特征图是输入在空间维度上某一级的表征，也即二维卷积层的输出。感受野是特征图中某一点在输入矩阵对应的一块区域。</p>
-<h3 id="1-4-填充和步幅"><a href="#1-4-填充和步幅" class="headerlink" title="1.4 填充和步幅"></a>1.4 填充和步幅</h3><p>对于一个卷积层来说，设输入形状是x1×x2,卷积核形状是k1×K2，则输出特征图的形状将是：</p>
-<pre><code>                                                             (x1-k1+1)×(x2-k2+1)
-</code></pre>
-<p>即卷积层的输出形状由输入形状和卷积核形状决定，除此之外，卷积层的两个超参数填充和步幅可以在输入形状和卷积核形状确定的情况下改变输出的形状。</p>
-<p>填充是指在输入的高和宽两侧填充元素，一般填充的是0元素。一般来说，如果在高的两侧填充h行，在宽的两侧填充w列，输出形状将是：</p>
-<p>​															  (x1-k1+h+1)×(x2-k2+w+1)</p>
-<p>步幅即卷积核在数据矩阵上每次滑动的距离，当高上的步幅为sh，宽上的步幅为sw时，输出形状为：</p>
-<p>​														⌊(x1-k1+h+1)⌋&#x2F;sh×⌊(x2-k2+w+1)⌋&#x2F;sw</p>
-<p>​																	</p>
-<h3 id="1-5-多输入-x2F-输出通道"><a href="#1-5-多输入-x2F-输出通道" class="headerlink" title="1.5 多输入&#x2F;输出通道"></a>1.5 多输入&#x2F;输出通道</h3><p>输入数据有多个通道时，需要构造通道数相同的卷积核。最后按通道相加得到输出，示例图如下：</p>
-<p><img src="/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/CNN%E7%B3%BB%E5%88%97%E6%A8%A1%E5%9E%8B/Users\21036043\AppData\Roaming\Typora\typora-user-images\image-20211119131850815.png" alt="image-20211119131850815"></p>
-<p>输入通道有多个时，由于我们对每个通道的输出进行了累加，所以输出通道总是1。如果希望得到多通道的输出，我们设输入通道数为in，输出通道数为out，为了匹配输入通道数，核数组形状应该为k1×k2×in,为了继续匹配输出通道数，卷积核的最终形状应该为k1×k2×in×out,即对于每个输出通道，我们都为其分配一个形状为k1×k2×in的卷积核。</p>
-<h3 id="1-6-1×1卷积层"><a href="#1-6-1×1卷积层" class="headerlink" title="1.6 1×1卷积层"></a>1.6 1×1卷积层</h3><p>当卷积核的形状为1×1时，相应的卷积层称为1×1卷积层，在宽和高两个维度上 ，1×1卷积层无法识别相邻元素的构成模式，1×1卷积的主要计算发生在通道维上，输出的形状与输入的形状相同，输出中的每个元素都是输入中每个元素在不同通道上按权重的累加。假设我们将通道维当作特征维，将高和宽维度上的元素当成数据样本，那么1×1卷积层的作用与全连接层等价。1×1卷积层通常用来调整网络层之间的通道数，并控制模型复杂度。</p>
-<h3 id="2-1-池化层"><a href="#2-1-池化层" class="headerlink" title="2.1 池化层"></a>2.1 池化层</h3><p>池化层的提出是为了缓解卷积层对目标在图像中的位置的过度敏感性。</p>
-<p>池化层的操作类似于卷积层，这里的核数组称为池化窗口，不同于卷积核，池化窗口只是一个尺寸，里面没有数据，池化窗口在输入的特征图上从左上到右下滑动，一般取其中的最大值或平均值，即最大池化和平均池化。</p>
-<p>在处理多输入通道数据时，池化层对每个通道的输入分别进行池化操作，这使得池化层的输出通道数与输入通道数相等。</p>
-<h2 id="二、卷积神经网络LeNet"><a href="#二、卷积神经网络LeNet" class="headerlink" title="二、卷积神经网络LeNet"></a>二、卷积神经网络LeNet</h2><p>LeNet是早期用来实现手写数字识别的卷积神经网络，网络的训练使用了梯度下降法，LeNet的网络结构如下图所示：</p>
-<p><img src="/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/CNN%E7%B3%BB%E5%88%97%E6%A8%A1%E5%9E%8B/Users\21036043\AppData\Roaming\Typora\typora-user-images\image-20211119144434419.png" alt="image-20211119144434419"></p>
-<p>LeNet分为卷积层块和全连接层块两个部分，卷积层块中的基本单位是卷积层后接一个最大池化层：卷积层用来识别图像中的空间模式，池化层用来降低卷积层对位置的敏感性。在卷积层块中，每个卷积层都使用5×5的卷积核，并在输出上使用sigmoid激活函数。第一个卷积层为6通道输出，第二个卷积层为16通道输出，因为第二个卷积层的输入比第一个卷积层的输入小，所以增加第二个卷积层的输出通道数是两个卷积层的参数尺寸类似。卷积层块中两个最大池化窗口的形状都为2×2，步幅为2，池化窗口每次滑动时覆盖的区域互不重叠。</p>
-<p>卷积层块的输出形状为：批量大小×通道数×高×宽。当卷积层块的输出传入全连接层块时，全连接层块会将小批量中每个样本变平（flatten）。也就是说，全连接层的输入形状将变成二维，其中第一维是小批量中的样本，第二维是每个样本变平后的向量表示，且向量长度为通道、高和宽的乘积。全连接层块含3个全连接层。它们的输出个数分别是120、84和10，其中10为输出的类别个数。</p>
-<h2 id="三、深度卷积神经网络AlexNet"><a href="#三、深度卷积神经网络AlexNet" class="headerlink" title="三、深度卷积神经网络AlexNet"></a>三、深度卷积神经网络AlexNet</h2><p>AlexNet与LeNet的设计理念非常相似，但也有显著的区别。</p>
-<p>第一，与相对较小的LeNet相比，AlexNet包含8层变换，其中有5层卷积和2层全连接隐藏层，以及1个全连接输出层。下面我们来详细描述这些层的设计。</p>
-<p>首先给出AlexNet的网络结构：</p>
-<p><img src="/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/CNN%E7%B3%BB%E5%88%97%E6%A8%A1%E5%9E%8B/Users\21036043\AppData\Roaming\Typora\typora-user-images\image-20211119151852935.png" alt="image-20211119151852935"></p>
-<p>AlexNet第一层中的卷积窗口形状是11×11。因为ImageNet中绝大多数图像的高和宽均比MNIST图像的高和宽大10倍以上，ImageNet图像的物体占用更多的像素，所以需要更大的卷积窗口来捕获物体。第二层中的卷积窗口形状减小到5×5，之后全采用3×3。此外，第一、第二和第五个卷积层之后都使用了窗口形状为3×3、步幅为2的最大池化层。而且，AlexNet使用的卷积通道数也大于LeNet中的卷积通道数数十倍。</p>
-<p>紧接着最后一个卷积层的是两个输出个数为4096的全连接层。这两个巨大的全连接层带来将近1GB的模型参数。由于早期显存的限制，最早的AlexNet使用双数据流的设计使一个GPU只需要处理一半模型。幸运的是，显存在过去几年得到了长足的发展，因此通常我们不再需要这样的特别设计了。</p>
-<p>第二，AlexNet将sigmoid激活函数改成了更加简单的ReLU激活函数。一方面，ReLU激活函数的计算更简单，例如它并没有sigmoid激活函数中的求幂运算。另一方面，ReLU激活函数在不同的参数初始化方法下使模型更容易训练。这是由于当sigmoid激活函数输出极接近0或1时，这些区域的梯度几乎为0，从而造成反向传播无法继续更新部分模型参数；而ReLU激活函数在正区间的梯度恒为1。因此，若模型参数初始化不当，sigmoid函数可能在正区间得到几乎为0的梯度，从而令模型无法得到有效训练。</p>
-<p>第三，AlexNet通过丢弃法来控制全连接层的模型复杂度。而LeNet并没有使用丢弃法。</p>
-<p>第四，AlexNet引入了大量的图像增广，如翻转、裁剪和颜色变化，从而进一步扩大数据集来缓解过拟合。</p>
-<h2 id="四、使用重复元素的网络-VGG"><a href="#四、使用重复元素的网络-VGG" class="headerlink" title="四、使用重复元素的网络(VGG)"></a>四、使用重复元素的网络(VGG)</h2>]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/MySQL/MySQL%E5%AE%89%E8%A3%85/</url>
-    <content><![CDATA[<h2 id="MySQL安装"><a href="#MySQL安装" class="headerlink" title="MySQL安装"></a>MySQL安装</h2><h3 id="1-下载安装"><a href="#1-下载安装" class="headerlink" title="1. 下载安装"></a>1. 下载安装</h3><ul>
-<li>MySQL官网:<a href="https://www.mysql.com/cn/">mysql官网链接</a></li>
-</ul>
-<p>在官网中，可以在首页最下方选择需要下载的MySQL版本，通常情况下，下载的是社区版的MySQL：</p>
+    <url>/MySQL/MySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2/</url>
+    <content><![CDATA[<h1 id="MySQL数据检索"><a href="#MySQL数据检索" class="headerlink" title="MySQL数据检索"></a>MySQL数据检索</h1><h2 id="1-联表查询"><a href="#1-联表查询" class="headerlink" title="1. 联表查询"></a>1. 联表查询</h2><p>下面给出两个表，在此基础上介绍联表查询的知识：</p>
+<p>​          user_name 表                                  user_age 表</p>
+<p><img src="/MySQL/MySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2/.%5CMySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2%5Cimage-20220602095148006.png" alt="image-20220602095148006">     <img src="/MySQL/MySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2/.%5CMySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2%5Cimage-20220602095233457.png" alt="image-20220602095233457"></p>
 <ul>
-<li>MySQL社区版：<a href="https://dev.mysql.com/downloads/mysql/">mysql communtiy downloads</a></li>
+<li><p>内连接：</p>
+<blockquote>
+<p>内连接只会输出两表关联条件匹配到的数据。<strong>相当于按条件获取两个表的交集。</strong></p>
+</blockquote>
+<ul>
+<li><p>显式内连接</p>
+<blockquote>
+<p>显式内连接使用INNER JOIN 或 JOIN关键字，适用于两表及多表查询的情况</p>
+</blockquote>
+<p>如以下查询:</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> a.`name`,b.age</span><br><span class="line"><span class="keyword">from</span> user_name a <span class="keyword">INNER</span> <span class="keyword">JOIN</span> user_age b</span><br><span class="line"><span class="keyword">ON</span> a.id <span class="operator">=</span> b.id</span><br></pre></td></tr></table></figure></li>
 </ul>
-<p>其中x64适用于64位系统，x86适用于32位系统。</p>
-<p>下面教程以5.7版本的MySQL安装为例，下载好后，将压缩包解压到合适位置，比如我当前的解压路径为：<code>E:\MySQL\mysql-5.7.37-winx64</code>，在该目录下新建my.ini文件，文件内容模板如下：</p>
-<figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="section">[mysqld]</span></span><br><span class="line"><span class="comment"># 设置3306端口</span></span><br><span class="line"><span class="attr">port</span>=<span class="number">3306</span></span><br><span class="line"><span class="comment"># 设置mysql的安装目录   ----------是你的文件路径-------------</span></span><br><span class="line"><span class="attr">basedir</span>=E:\MySQL\mysql-<span class="number">5.7</span>.<span class="number">37</span>-winx64</span><br><span class="line"><span class="comment"># 设置mysql数据库的数据的存放目录  ---------是你的文件路径data文件夹自行创建</span></span><br><span class="line"><span class="attr">datadir</span>=E:\MySQL\mysql-<span class="number">5.7</span>.<span class="number">37</span>-winx64\data</span><br><span class="line"><span class="comment"># 允许最大连接数</span></span><br><span class="line"><span class="attr">max_connections</span>=<span class="number">200</span></span><br><span class="line"><span class="comment"># 允许连接失败的次数。</span></span><br><span class="line"><span class="attr">max_connect_errors</span>=<span class="number">10</span></span><br><span class="line"><span class="comment"># 服务端使用的字符集默认为utf8mb4</span></span><br><span class="line"><span class="attr">character-set-server</span>=utf8mb4</span><br><span class="line"><span class="comment"># 创建新表时将使用的默认存储引擎</span></span><br><span class="line"><span class="attr">default-storage-engine</span>=INNODB</span><br><span class="line"><span class="comment"># 默认使用“mysql_native_password”插件认证</span></span><br><span class="line"><span class="comment">#mysql_native_password</span></span><br><span class="line"><span class="attr">default_authentication_plugin</span>=mysql_native_password</span><br><span class="line"><span class="section">[mysql]</span></span><br><span class="line"><span class="comment"># 设置mysql客户端默认字符集</span></span><br><span class="line"><span class="attr">default-character-set</span>=utf8mb4</span><br><span class="line"><span class="section">[client]</span></span><br><span class="line"><span class="comment"># 设置mysql客户端连接服务端时默认使用的端口</span></span><br><span class="line"><span class="attr">port</span>=<span class="number">3306</span></span><br><span class="line"><span class="attr">default-character-set</span>=utf8mb4</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>​				连接结果为：<img src="/MySQL/MySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2/.%5CMySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2%5Cimage-20220602100454645.png" alt="image-20220602100454645"></p>
+<p>* </p>
+<ul>
+<li><p>隐式内连接（等值连接）</p>
+<blockquote>
+<p>隐式内连接不需要显示的写出连接关键字，在FROM条件中声明要连接的表，WHERE子句中说明连接的条件即可，隐式内连接在多表连接时容易出错，需要注意。</p>
+</blockquote>
+<p>如以下查询：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> a.`name`,b.age</span><br><span class="line"><span class="keyword">from</span> user_name a , user_age b</span><br><span class="line"><span class="keyword">where</span> a.id <span class="operator">=</span> b.id</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>外连接：</p>
+</li>
+</ul>
+<blockquote>
+<p>外连接对于两表关联条件匹配不到的数据，也会输出并将关联不到的列显示为NULL。</p>
+<p>外连接包括左连接&#x2F;左外连接、右连接&#x2F;右外连接、全连接。这里的左连接&#x2F;左外连接是同义的，右连接&#x2F;右外连接也是同义的。</p>
+</blockquote>
+<ul>
+<li>左连接&#x2F;左外连接：</li>
+</ul>
+<blockquote>
+<p>左连接将左表作为主表，主表的数据会全部显示处理，从表根据连接条件进行匹配，匹配不到的行展示为NULL</p>
+</blockquote>
+<p>如以下查询：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> a.`name`,b.age</span><br><span class="line"><span class="keyword">from</span> user_name a <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> user_age b</span><br><span class="line"><span class="keyword">ON</span> a.id <span class="operator">=</span> b.id</span><br></pre></td></tr></table></figure>
 
-<p>文件中主要根据情况修改MySQL的安装目录路径basedir，以及MySQL的数据存放目录datadir。</p>
-<h3 id="2-初始化数据库"><a href="#2-初始化数据库" class="headerlink" title="2. 初始化数据库"></a>2. 初始化数据库</h3><p>使用管理员身份打开命令提示符，进入mysql安装目录下的bin目录，如<code>E:\MySQL\mysql-5.7.37-winx64\bin</code> ,执行命令<code>mysqld  --initialize --console</code> ,进行目录的初始化，此时安装目录下会自动建立配置文件中设置的数据存放目录，同时，命令行中可以看到生成的随机初始化密码，此密码用于首次登录MySQL，需要记住。如果没记住的话，在刚刚生成的MySQL安装目录下的data目录下的以.err为后缀的文件中可以找到MySQL的随机初始密码。</p>
-<h3 id="3-安装数据库"><a href="#3-安装数据库" class="headerlink" title="3. 安装数据库"></a>3. 安装数据库</h3><p>依然是在管理员权限下的MySQL目录的bin目录下，执行命令<code>mysqld  -install</code>，进行mysqld的安装。</p>
-<h3 id="4-启动数据库"><a href="#4-启动数据库" class="headerlink" title="4. 启动数据库"></a>4. 启动数据库</h3><p>使用命令行的管理员权限，在MySQL安装目录的bin目录下，使用命令<code>net start mysql</code> 来启动MySQL数据库。</p>
-<h3 id="5-登录MySQL数据库（注意，登录数据库后，所有命令最后要加分号’；‘）"><a href="#5-登录MySQL数据库（注意，登录数据库后，所有命令最后要加分号’；‘）" class="headerlink" title="5. 登录MySQL数据库（注意，登录数据库后，所有命令最后要加分号’；‘）"></a>5. 登录MySQL数据库（注意，登录数据库后，所有命令最后要加分号’；‘）</h3><ul>
-<li><p>登录命令格式 <code>mysql -u 用户名 -p 密码</code></p>
+<p>连接结果为：<img src="/MySQL/MySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2/.%5CMySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2%5Cimage-20220602101210493.png" alt="image-20220602101210493"></p>
 <ul>
-<li>一般因为使用了管理员权限，用户名为root，-p后面的密码可以不写，在执行此命令后需要继续输入密码</li>
+<li>右连接&#x2F;右外连接：</li>
 </ul>
-</li>
-<li><p>如果是第一次登录：</p>
+<blockquote>
+<p>右连接将右表作为主表，主表的数据会全部显示处理，从表根据连接条件进行匹配，匹配不到的行展示为NULL</p>
+</blockquote>
+<p>如以下查询：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> a.`name`,b.age</span><br><span class="line"><span class="keyword">from</span> user_name a <span class="keyword">RIGHT</span> <span class="keyword">JOIN</span> user_age b</span><br><span class="line"><span class="keyword">ON</span> a.id <span class="operator">=</span> b.id</span><br></pre></td></tr></table></figure>
+
+<p>连接结果为：<img src="/MySQL/MySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2/.%5CMySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2%5Cimage-20220602101953139.png" alt="image-20220602101953139"></p>
 <ul>
-<li><p>mysql5.6版本之后，在第一次初始化MySQL数据库的时候会生成随机生成的初始密码，该密码的获取可以参照上面第3条。</p>
-</li>
-<li><p><strong>修改密码</strong>：由于初始密码不方便记忆，第一次登录成功后需要设置自己熟悉的密码，修改密码方式与版本相关：</p>
+<li>全连接：</li>
+</ul>
+<blockquote>
+<p>全连接是将两张表的所有行按连接做匹配，匹配缺失之处使用NULL填充。<strong>相当于按条件获取两个表的并集。</strong></p>
+<p><strong>注意：MySQL不支FULL JOIN的语法，MySQL实现全连接的方式是将左连接和右连接的结果做联合，注意连接条件应该一致</strong></p>
+</blockquote>
+<p>如以下查询：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> a.`name`,b.age <span class="keyword">from</span> user_name a <span class="keyword">RIGHT</span> <span class="keyword">JOIN</span> user_age b <span class="keyword">ON</span> a.id <span class="operator">=</span> b.id</span><br><span class="line"><span class="keyword">UNION</span></span><br><span class="line"><span class="keyword">select</span> a.`name`,b.age <span class="keyword">from</span> user_name a <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> user_age b <span class="keyword">ON</span> a.id <span class="operator">=</span> b.id</span><br></pre></td></tr></table></figure>
+
+<p>连接结果为：<img src="/MySQL/MySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2/.%5CMySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2%5Cimage-20220602103440328.png" alt="image-20220602103440328"></p>
 <ul>
-<li>5.7.6版本之前：<code>set password for &#39;用户名&#39;@&#39;localhost&#39; = password(&quot;新密码&quot;)</code></li>
-<li>5.7.6版本之后：<code>alter user &#39;用户名&#39;@&#39;localhost&#39;identified with mysql_native_password by &#39;新密码&#39; </code></li>
+<li><strong>注意点：</strong></li>
 </ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="6-配置系统环境变量"><a href="#6-配置系统环境变量" class="headerlink" title="6. 配置系统环境变量"></a>6. 配置系统环境变量</h3><p>在Windows中为MySQL配置系统环境变量，新增系统环境变量 <code>MYSQL_HOME</code>,变量值为msyqld 安装路径，例如我安装了5.7版本路径为<code>E:\MySQL\mysql-5.7.37-winx64</code> ,然后再系统环境变量中的path中添加路径：<code>%MYSQL_HOME%\bin</code></p>
-<h3 id="踩坑"><a href="#踩坑" class="headerlink" title="踩坑"></a>踩坑</h3><ul>
-<li>如果出现如“由于找不到msvcr120.dll，无法继续执行代码……”的问题，说明系统缺少vcredist ，此时需要在官网下载vcredist,arm架构系统选择arm版本，64位系统选择x64版本，32位系统选择x86版本，vcredist官网链接:<a href="https://www.microsoft.com/zh-CN/download/details.aspx?id=40784">vcredist官网</a>,下载安装后，运行该程序，点击修复按钮，修复完成即可正常安装MySQL</li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/Pipeline/</url>
-    <content><![CDATA[<h1 id="Pipeline"><a href="#Pipeline" class="headerlink" title="Pipeline"></a>Pipeline</h1><h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>在模型的构建过程中，一般存在着数据读取、数据处理，模型构建、模型评估、模型调参等步骤，这些步骤可以抽象为模型，执行从输入到输出的整个过程，这个过程称为pipeline。</p>
-<h2 id="二、Sklearn中的pipeline机制"><a href="#二、Sklearn中的pipeline机制" class="headerlink" title="二、Sklearn中的pipeline机制"></a>二、Sklearn中的pipeline机制</h2><p><img src="https://img2018.cnblogs.com/blog/1353331/201909/1353331-20190930100556877-641502489.png" alt="img"></p>
-<p>sklearn中把机器学习处理过程抽象为estimator，其中estimator都有fit方法，表示数据进行初始化or训练。<strong>estimator</strong>有2种：</p>
-<p>1、特征变换（transformer）<br>可以理解为特征工程，即：特征标准化、特征正则化、特征离散化、特征平滑、onehot编码等。该类型统一由一个transform方法，用于fit数据之后，输入新的数据，进行特征变换。</p>
-<p>2、预测器（predictor）<br>即各种模型，所有模型fit进行训练之后，都要经过测试集进行predict所有，有一个predict的公共方法。</p>
-<p>上面的抽象的好处即可实现机器学习的pipeline，显然特征变换是可能并行的，通过FeatureUnion实现。特征变换在训练集、测试集之间都需要统一，所以pipeline可以达到模块化的目的。</p>
+<p>注意，表连接时会产生一个暂时表，对于暂时表的过滤应该使用 ON 关键字而非 WHERE 关键字，暂时表完成过滤后会产生连接的结果，此时可以使用WHERE 子句对连接结果进行过滤。</p>
 ]]></content>
   </entry>
   <entry>
@@ -1536,6 +1532,85 @@
   </entry>
   <entry>
     <title></title>
+    <url>/Python/kats%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<h1 id="kats安装教程"><a href="#kats安装教程" class="headerlink" title="kats安装教程"></a>kats安装教程</h1><p>kats是Facebook开发的时间序列预测服务工具库，集成了多种时间预测模型。</p>
+<h2 id="安装过程（建议单独创建虚拟环境）"><a href="#安装过程（建议单独创建虚拟环境）" class="headerlink" title="安装过程（建议单独创建虚拟环境）"></a>安装过程（建议单独创建虚拟环境）</h2><h3 id="1-fbprophet的安装"><a href="#1-fbprophet的安装" class="headerlink" title="1.fbprophet的安装"></a>1.fbprophet的安装</h3><p>由于直接安装kats会报错，主要原因是fbprophet的安装问题。所以在安装kats之前，首先将fbprophet单独进行安装。</p>
+<p>直接pip install fdprophet也会出错，因此依次执行下面三个命令：</p>
+<blockquote>
+<p>python -m pip install -U pip</p>
+<p>conda install -c conda-forge pystan</p>
+<p>pip install fbprophet</p>
+</blockquote>
+<p>过程中，执行第二条命令conda install -c conda-forge pystan后可能会出现pip命令无法使用的情况，提示错误为ModuleNotFoundError: No module named ‘_sysconfigdata_x86_64_conda_linux_gnu’，这是因为第二条指令使用conda安装了“gxx-linux-64”，在某一个版本的python中丢失了一个备份文件，通常在同一个版本的python下会有两个相同的<code>_sysconfigdata_x86_64_conda_cos6_linux_gnu.py</code>文件和<code>_sysconfigdata_x86_64_conda_linux_gnu.py</code>文件。而在某些程序的运行过程中会依赖于其中的一个，因此我们需要做的就是检索系统中是否存在有这两个文件：</p>
+<blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo find ~ -name _sysconfigdata_x86_64*</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>我发现的问题是在虚拟环境下的anaconda下的python3.8路径下只有一个<code>_sysconfigdata_x86_64_conda_cos6_linux_gnu.py</code>文件而没有</p>
+<p><code>_sysconfigdata_x86_64_conda_linux_gnu.py</code>文件，所以只需要将上面有的文件复制一份成下面文件的名字即可，使用了命令：</p>
+<blockquote>
+<p> <code>cp /opt/anaconda3/envs/kats/lib/python3.8/_sysconfigdata_x86_64_conda_cos6_linux_gnu.py /opt/anaconda3/envs/kats/lib/python3.8/_sysconfigdata_x86_64_conda_linux_gnu.py</code></p>
+</blockquote>
+<p>这里kats是我创建的虚拟环境的名字。</p>
+<p>到此，不出意外的话fbprophet安装完毕。</p>
+<h3 id="2-kats的安装"><a href="#2-kats的安装" class="headerlink" title="2. kats的安装"></a>2. kats的安装</h3><p>由于kats的安装过程中需要安装pytorch，而安装pytorch的过程会导致进程killed，所以安装kats需要添加参数</p>
+<p>“–no-cache-dir”，安装命令为：</p>
+<p><code>pip install kats --no-cache-dir</code></p>
+<p>等待安装完毕即可。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/CNN%E7%B3%BB%E5%88%97%E6%A8%A1%E5%9E%8B/</url>
+    <content><![CDATA[<h1 id="CNN系列模型"><a href="#CNN系列模型" class="headerlink" title="CNN系列模型"></a>CNN系列模型</h1><h2 id="一、卷积神经网络-Convolutional-Neural-Network-CNN"><a href="#一、卷积神经网络-Convolutional-Neural-Network-CNN" class="headerlink" title="一、卷积神经网络(Convolutional Neural Network, CNN)"></a>一、卷积神经网络(Convolutional Neural Network, CNN)</h2><h3 id="1-1-互相关运算"><a href="#1-1-互相关运算" class="headerlink" title="1.1 互相关运算"></a>1.1 互相关运算</h3><p>卷积层中，使用输入数据与卷积核的二维互相关运算来得到输出，二维互相关运算示例如下：</p>
+<p><img src="/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/CNN%E7%B3%BB%E5%88%97%E6%A8%A1%E5%9E%8B/Users\21036043\AppData\Roaming\Typora\typora-user-images\image-20211119110444452.png" alt="image-20211119110444452"></p>
+<p>卷积核从输入矩阵的左上方开始，按从左往右、从上往下的顺序在矩阵上滑动，每滑动到一个位置，卷积核中对应位置的元素与输入矩阵对应位置的元素相乘并求和，以图中的例子来说，二维互相关的计算过程为：</p>
+<p>​														0×0+1×1+3×2+4×3&#x3D;19</p>
+<h3 id="1-2-二维卷积层"><a href="#1-2-二维卷积层" class="headerlink" title="1.2 二维卷积层"></a>1.2 二维卷积层</h3><p>卷积神经网络常用来处理图像数据，二维卷积层将输入的二维图像和卷积核做互相关运算，然后加上一个偏差来得到输出。卷积核和偏差是超参数。在训练模型时，通常先对卷积核做随机初始化，然后不断迭代卷积核和偏差。</p>
+<h3 id="1-3-特征图和感受野"><a href="#1-3-特征图和感受野" class="headerlink" title="1.3 特征图和感受野"></a>1.3 特征图和感受野</h3><p>特征图是输入在空间维度上某一级的表征，也即二维卷积层的输出。感受野是特征图中某一点在输入矩阵对应的一块区域。</p>
+<h3 id="1-4-填充和步幅"><a href="#1-4-填充和步幅" class="headerlink" title="1.4 填充和步幅"></a>1.4 填充和步幅</h3><p>对于一个卷积层来说，设输入形状是x1×x2,卷积核形状是k1×K2，则输出特征图的形状将是：</p>
+<pre><code>                                                             (x1-k1+1)×(x2-k2+1)
+</code></pre>
+<p>即卷积层的输出形状由输入形状和卷积核形状决定，除此之外，卷积层的两个超参数填充和步幅可以在输入形状和卷积核形状确定的情况下改变输出的形状。</p>
+<p>填充是指在输入的高和宽两侧填充元素，一般填充的是0元素。一般来说，如果在高的两侧填充h行，在宽的两侧填充w列，输出形状将是：</p>
+<p>​															  (x1-k1+h+1)×(x2-k2+w+1)</p>
+<p>步幅即卷积核在数据矩阵上每次滑动的距离，当高上的步幅为sh，宽上的步幅为sw时，输出形状为：</p>
+<p>​														⌊(x1-k1+h+1)⌋&#x2F;sh×⌊(x2-k2+w+1)⌋&#x2F;sw</p>
+<p>​																	</p>
+<h3 id="1-5-多输入-x2F-输出通道"><a href="#1-5-多输入-x2F-输出通道" class="headerlink" title="1.5 多输入&#x2F;输出通道"></a>1.5 多输入&#x2F;输出通道</h3><p>输入数据有多个通道时，需要构造通道数相同的卷积核。最后按通道相加得到输出，示例图如下：</p>
+<p><img src="/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/CNN%E7%B3%BB%E5%88%97%E6%A8%A1%E5%9E%8B/Users\21036043\AppData\Roaming\Typora\typora-user-images\image-20211119131850815.png" alt="image-20211119131850815"></p>
+<p>输入通道有多个时，由于我们对每个通道的输出进行了累加，所以输出通道总是1。如果希望得到多通道的输出，我们设输入通道数为in，输出通道数为out，为了匹配输入通道数，核数组形状应该为k1×k2×in,为了继续匹配输出通道数，卷积核的最终形状应该为k1×k2×in×out,即对于每个输出通道，我们都为其分配一个形状为k1×k2×in的卷积核。</p>
+<h3 id="1-6-1×1卷积层"><a href="#1-6-1×1卷积层" class="headerlink" title="1.6 1×1卷积层"></a>1.6 1×1卷积层</h3><p>当卷积核的形状为1×1时，相应的卷积层称为1×1卷积层，在宽和高两个维度上 ，1×1卷积层无法识别相邻元素的构成模式，1×1卷积的主要计算发生在通道维上，输出的形状与输入的形状相同，输出中的每个元素都是输入中每个元素在不同通道上按权重的累加。假设我们将通道维当作特征维，将高和宽维度上的元素当成数据样本，那么1×1卷积层的作用与全连接层等价。1×1卷积层通常用来调整网络层之间的通道数，并控制模型复杂度。</p>
+<h3 id="2-1-池化层"><a href="#2-1-池化层" class="headerlink" title="2.1 池化层"></a>2.1 池化层</h3><p>池化层的提出是为了缓解卷积层对目标在图像中的位置的过度敏感性。</p>
+<p>池化层的操作类似于卷积层，这里的核数组称为池化窗口，不同于卷积核，池化窗口只是一个尺寸，里面没有数据，池化窗口在输入的特征图上从左上到右下滑动，一般取其中的最大值或平均值，即最大池化和平均池化。</p>
+<p>在处理多输入通道数据时，池化层对每个通道的输入分别进行池化操作，这使得池化层的输出通道数与输入通道数相等。</p>
+<h2 id="二、卷积神经网络LeNet"><a href="#二、卷积神经网络LeNet" class="headerlink" title="二、卷积神经网络LeNet"></a>二、卷积神经网络LeNet</h2><p>LeNet是早期用来实现手写数字识别的卷积神经网络，网络的训练使用了梯度下降法，LeNet的网络结构如下图所示：</p>
+<p><img src="/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/CNN%E7%B3%BB%E5%88%97%E6%A8%A1%E5%9E%8B/Users\21036043\AppData\Roaming\Typora\typora-user-images\image-20211119144434419.png" alt="image-20211119144434419"></p>
+<p>LeNet分为卷积层块和全连接层块两个部分，卷积层块中的基本单位是卷积层后接一个最大池化层：卷积层用来识别图像中的空间模式，池化层用来降低卷积层对位置的敏感性。在卷积层块中，每个卷积层都使用5×5的卷积核，并在输出上使用sigmoid激活函数。第一个卷积层为6通道输出，第二个卷积层为16通道输出，因为第二个卷积层的输入比第一个卷积层的输入小，所以增加第二个卷积层的输出通道数是两个卷积层的参数尺寸类似。卷积层块中两个最大池化窗口的形状都为2×2，步幅为2，池化窗口每次滑动时覆盖的区域互不重叠。</p>
+<p>卷积层块的输出形状为：批量大小×通道数×高×宽。当卷积层块的输出传入全连接层块时，全连接层块会将小批量中每个样本变平（flatten）。也就是说，全连接层的输入形状将变成二维，其中第一维是小批量中的样本，第二维是每个样本变平后的向量表示，且向量长度为通道、高和宽的乘积。全连接层块含3个全连接层。它们的输出个数分别是120、84和10，其中10为输出的类别个数。</p>
+<h2 id="三、深度卷积神经网络AlexNet"><a href="#三、深度卷积神经网络AlexNet" class="headerlink" title="三、深度卷积神经网络AlexNet"></a>三、深度卷积神经网络AlexNet</h2><p>AlexNet与LeNet的设计理念非常相似，但也有显著的区别。</p>
+<p>第一，与相对较小的LeNet相比，AlexNet包含8层变换，其中有5层卷积和2层全连接隐藏层，以及1个全连接输出层。下面我们来详细描述这些层的设计。</p>
+<p>首先给出AlexNet的网络结构：</p>
+<p><img src="/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/CNN%E7%B3%BB%E5%88%97%E6%A8%A1%E5%9E%8B/Users\21036043\AppData\Roaming\Typora\typora-user-images\image-20211119151852935.png" alt="image-20211119151852935"></p>
+<p>AlexNet第一层中的卷积窗口形状是11×11。因为ImageNet中绝大多数图像的高和宽均比MNIST图像的高和宽大10倍以上，ImageNet图像的物体占用更多的像素，所以需要更大的卷积窗口来捕获物体。第二层中的卷积窗口形状减小到5×5，之后全采用3×3。此外，第一、第二和第五个卷积层之后都使用了窗口形状为3×3、步幅为2的最大池化层。而且，AlexNet使用的卷积通道数也大于LeNet中的卷积通道数数十倍。</p>
+<p>紧接着最后一个卷积层的是两个输出个数为4096的全连接层。这两个巨大的全连接层带来将近1GB的模型参数。由于早期显存的限制，最早的AlexNet使用双数据流的设计使一个GPU只需要处理一半模型。幸运的是，显存在过去几年得到了长足的发展，因此通常我们不再需要这样的特别设计了。</p>
+<p>第二，AlexNet将sigmoid激活函数改成了更加简单的ReLU激活函数。一方面，ReLU激活函数的计算更简单，例如它并没有sigmoid激活函数中的求幂运算。另一方面，ReLU激活函数在不同的参数初始化方法下使模型更容易训练。这是由于当sigmoid激活函数输出极接近0或1时，这些区域的梯度几乎为0，从而造成反向传播无法继续更新部分模型参数；而ReLU激活函数在正区间的梯度恒为1。因此，若模型参数初始化不当，sigmoid函数可能在正区间得到几乎为0的梯度，从而令模型无法得到有效训练。</p>
+<p>第三，AlexNet通过丢弃法来控制全连接层的模型复杂度。而LeNet并没有使用丢弃法。</p>
+<p>第四，AlexNet引入了大量的图像增广，如翻转、裁剪和颜色变化，从而进一步扩大数据集来缓解过拟合。</p>
+<h2 id="四、使用重复元素的网络-VGG"><a href="#四、使用重复元素的网络-VGG" class="headerlink" title="四、使用重复元素的网络(VGG)"></a>四、使用重复元素的网络(VGG)</h2>]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/Pipeline/</url>
+    <content><![CDATA[<h1 id="Pipeline"><a href="#Pipeline" class="headerlink" title="Pipeline"></a>Pipeline</h1><h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>在模型的构建过程中，一般存在着数据读取、数据处理，模型构建、模型评估、模型调参等步骤，这些步骤可以抽象为模型，执行从输入到输出的整个过程，这个过程称为pipeline。</p>
+<h2 id="二、Sklearn中的pipeline机制"><a href="#二、Sklearn中的pipeline机制" class="headerlink" title="二、Sklearn中的pipeline机制"></a>二、Sklearn中的pipeline机制</h2><p><img src="https://img2018.cnblogs.com/blog/1353331/201909/1353331-20190930100556877-641502489.png" alt="img"></p>
+<p>sklearn中把机器学习处理过程抽象为estimator，其中estimator都有fit方法，表示数据进行初始化or训练。<strong>estimator</strong>有2种：</p>
+<p>1、特征变换（transformer）<br>可以理解为特征工程，即：特征标准化、特征正则化、特征离散化、特征平滑、onehot编码等。该类型统一由一个transform方法，用于fit数据之后，输入新的数据，进行特征变换。</p>
+<p>2、预测器（predictor）<br>即各种模型，所有模型fit进行训练之后，都要经过测试集进行predict所有，有一个predict的公共方法。</p>
+<p>上面的抽象的好处即可实现机器学习的pipeline，显然特征变换是可能并行的，通过FeatureUnion实现。特征变换在训练集、测试集之间都需要统一，所以pipeline可以达到模块化的目的。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
     <url>/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E7%AE%97%E6%B3%95/</url>
     <content><![CDATA[<h1 id="反向传播算法"><a href="#反向传播算法" class="headerlink" title="反向传播算法"></a>反向传播算法</h1><h3 id="前向传播和反向传播的概念"><a href="#前向传播和反向传播的概念" class="headerlink" title="前向传播和反向传播的概念"></a>前向传播和反向传播的概念</h3><p>在神经网络中，输入信息x通过输入层、中间层、一直向前传递直到产生输出，这个过程叫做前向传播。在训练过程中，信息一直向前传播直到产生一个代价函数。反向传播的思想是让来自代价函数的信息通过网络向后流动，以便计算梯度。</p>
 <h3 id="反向传播"><a href="#反向传播" class="headerlink" title="反向传播"></a>反向传播</h3><p>反向传播是用来计算梯度的方法，使用简单的程序从数值上求解梯度表达式。反向传播计算好梯度，提供给梯度下降算法进行学习。</p>
@@ -1583,81 +1658,6 @@
   </entry>
   <entry>
     <title></title>
-    <url>/MySQL/MySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2/</url>
-    <content><![CDATA[<h1 id="MySQL数据检索"><a href="#MySQL数据检索" class="headerlink" title="MySQL数据检索"></a>MySQL数据检索</h1><h2 id="1-联表查询"><a href="#1-联表查询" class="headerlink" title="1. 联表查询"></a>1. 联表查询</h2><p>下面给出两个表，在此基础上介绍联表查询的知识：</p>
-<p>​          user_name 表                                  user_age 表</p>
-<p><img src="/MySQL/MySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2/.%5CMySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2%5Cimage-20220602095148006.png" alt="image-20220602095148006">     <img src="/MySQL/MySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2/.%5CMySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2%5Cimage-20220602095233457.png" alt="image-20220602095233457"></p>
-<ul>
-<li><p>内连接：</p>
-<blockquote>
-<p>内连接只会输出两表关联条件匹配到的数据。<strong>相当于按条件获取两个表的交集。</strong></p>
-</blockquote>
-<ul>
-<li><p>显式内连接</p>
-<blockquote>
-<p>显式内连接使用INNER JOIN 或 JOIN关键字，适用于两表及多表查询的情况</p>
-</blockquote>
-<p>如以下查询:</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> a.`name`,b.age</span><br><span class="line"><span class="keyword">from</span> user_name a <span class="keyword">INNER</span> <span class="keyword">JOIN</span> user_age b</span><br><span class="line"><span class="keyword">ON</span> a.id <span class="operator">=</span> b.id</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-<p>​				连接结果为：<img src="/MySQL/MySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2/.%5CMySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2%5Cimage-20220602100454645.png" alt="image-20220602100454645"></p>
-<p>* </p>
-<ul>
-<li><p>隐式内连接（等值连接）</p>
-<blockquote>
-<p>隐式内连接不需要显示的写出连接关键字，在FROM条件中声明要连接的表，WHERE子句中说明连接的条件即可，隐式内连接在多表连接时容易出错，需要注意。</p>
-</blockquote>
-<p>如以下查询：</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> a.`name`,b.age</span><br><span class="line"><span class="keyword">from</span> user_name a , user_age b</span><br><span class="line"><span class="keyword">where</span> a.id <span class="operator">=</span> b.id</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>外连接：</p>
-</li>
-</ul>
-<blockquote>
-<p>外连接对于两表关联条件匹配不到的数据，也会输出并将关联不到的列显示为NULL。</p>
-<p>外连接包括左连接&#x2F;左外连接、右连接&#x2F;右外连接、全连接。这里的左连接&#x2F;左外连接是同义的，右连接&#x2F;右外连接也是同义的。</p>
-</blockquote>
-<ul>
-<li>左连接&#x2F;左外连接：</li>
-</ul>
-<blockquote>
-<p>左连接将左表作为主表，主表的数据会全部显示处理，从表根据连接条件进行匹配，匹配不到的行展示为NULL</p>
-</blockquote>
-<p>如以下查询：</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> a.`name`,b.age</span><br><span class="line"><span class="keyword">from</span> user_name a <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> user_age b</span><br><span class="line"><span class="keyword">ON</span> a.id <span class="operator">=</span> b.id</span><br></pre></td></tr></table></figure>
-
-<p>连接结果为：<img src="/MySQL/MySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2/.%5CMySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2%5Cimage-20220602101210493.png" alt="image-20220602101210493"></p>
-<ul>
-<li>右连接&#x2F;右外连接：</li>
-</ul>
-<blockquote>
-<p>右连接将右表作为主表，主表的数据会全部显示处理，从表根据连接条件进行匹配，匹配不到的行展示为NULL</p>
-</blockquote>
-<p>如以下查询：</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> a.`name`,b.age</span><br><span class="line"><span class="keyword">from</span> user_name a <span class="keyword">RIGHT</span> <span class="keyword">JOIN</span> user_age b</span><br><span class="line"><span class="keyword">ON</span> a.id <span class="operator">=</span> b.id</span><br></pre></td></tr></table></figure>
-
-<p>连接结果为：<img src="/MySQL/MySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2/.%5CMySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2%5Cimage-20220602101953139.png" alt="image-20220602101953139"></p>
-<ul>
-<li>全连接：</li>
-</ul>
-<blockquote>
-<p>全连接是将两张表的所有行按连接做匹配，匹配缺失之处使用NULL填充。<strong>相当于按条件获取两个表的并集。</strong></p>
-<p><strong>注意：MySQL不支FULL JOIN的语法，MySQL实现全连接的方式是将左连接和右连接的结果做联合，注意连接条件应该一致</strong></p>
-</blockquote>
-<p>如以下查询：</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> a.`name`,b.age <span class="keyword">from</span> user_name a <span class="keyword">RIGHT</span> <span class="keyword">JOIN</span> user_age b <span class="keyword">ON</span> a.id <span class="operator">=</span> b.id</span><br><span class="line"><span class="keyword">UNION</span></span><br><span class="line"><span class="keyword">select</span> a.`name`,b.age <span class="keyword">from</span> user_name a <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> user_age b <span class="keyword">ON</span> a.id <span class="operator">=</span> b.id</span><br></pre></td></tr></table></figure>
-
-<p>连接结果为：<img src="/MySQL/MySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2/.%5CMySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2%5Cimage-20220602103440328.png" alt="image-20220602103440328"></p>
-<ul>
-<li><strong>注意点：</strong></li>
-</ul>
-<p>注意，表连接时会产生一个暂时表，对于暂时表的过滤应该使用 ON 关键字而非 WHERE 关键字，暂时表完成过滤后会产生连接的结果，此时可以使用WHERE 子句对连接结果进行过滤。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title></title>
     <url>/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%A4%9A%E5%B1%82%E6%84%9F%E7%9F%A5%E6%9C%BA%E6%B7%B1%E5%BA%A6%E5%89%8D%E9%A6%88%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A8%E8%BF%9E%E6%8E%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</url>
     <content><![CDATA[<h1 id="多层感知机-x2F-深度前馈神经网络-x2F-人工神经网络-x2F-全连接神经网络"><a href="#多层感知机-x2F-深度前馈神经网络-x2F-人工神经网络-x2F-全连接神经网络" class="headerlink" title="多层感知机&#x2F;深度前馈神经网络&#x2F;人工神经网络&#x2F;全连接神经网络"></a>多层感知机&#x2F;深度前馈神经网络&#x2F;人工神经网络&#x2F;全连接神经网络</h1>]]></content>
   </entry>
@@ -1680,52 +1680,6 @@
 <p>即K折交叉验证中K等于数据集规模的情况，每一份划分只有一个数据，每次选取一个数据用于测试，其余数据用于训练，这样能够得到最贴近原始数据集的训练结果，但是训练复杂度较大。留一法适用于数据集规模较小的情况。</p>
 <h3 id="8-随机梯度下降法"><a href="#8-随机梯度下降法" class="headerlink" title="8.随机梯度下降法"></a>8.随机梯度下降法</h3><h4 id="梯度下降"><a href="#梯度下降" class="headerlink" title="梯度下降"></a>梯度下降</h4><p>导数公式f(x + ϵ) ≈ f(x) + ϵf′(x)，表明了如何缩放输入的小变化才能在输出得到相应的变化，当我们需要求目标函数的最小值（即代价函数）时，我们可以通过将x向目标函数的导数反方向移动来减小目标函数，这种技术叫做梯度下降。</p>
 <h4 id="随机梯度下降"><a href="#随机梯度下降" class="headerlink" title="随机梯度下降"></a>随机梯度下降</h4><p>搁置—–梯度下降系列：梯度下降法–随机梯度下降–小批量梯度下降</p>
-]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/K%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0%EF%BC%88k-Nearest%20Neighbor%20,kNN)/</url>
-    <content><![CDATA[<h1 id="K近邻算法概述（k-Nearest-Neighbor-kNN"><a href="#K近邻算法概述（k-Nearest-Neighbor-kNN" class="headerlink" title="K近邻算法概述（k-Nearest Neighbor ,kNN)"></a>K近邻算法概述（k-Nearest Neighbor ,kNN)</h1><h2 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h2><p>k近邻学习是一种监督学习方法，常用于分类和回归任务。</p>
-<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>给定一个要预测类别的测试样本，基于某种距离度量方法找到训练集中与其最靠近的k个训练样本，然后根据这 k个训练样本的信息做预测。在分类时，可以使用投票法，即选择这k个训练样本中最多的类别作为预测的结果；在回归时，可以使用平均法，即将这k个样本的实值输出标记的平均值作为预测结果；还可以基于距离远近进行加权平均或者加权投票，距离越近的样本权重越大。</p>
-<h2 id="kNN是一种懒惰学习"><a href="#kNN是一种懒惰学习" class="headerlink" title="kNN是一种懒惰学习"></a>kNN是一种懒惰学习</h2><p>k近邻学习没有显示的学习过程，在训练过程仅仅是把样本保存起来，训练时间开销为零，待收集到测试样本后再做处理，是一种懒惰学习（lazy learning）方法。相反地，在训练阶段就对数据集进行处理的算法称为急切学习（eager learning）方法。</p>
-<h2 id="kNN算法性能"><a href="#kNN算法性能" class="headerlink" title="kNN算法性能"></a>kNN算法性能</h2><p>kNN分类器的泛化错误率不超过贝叶斯最优分类器的两倍。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%9C%80(%E6%9E%81)%E5%A4%A7%E4%BC%BC%E7%84%B6%E6%B3%95/</url>
-    <content><![CDATA[<h1 id="最-极-大似然法"><a href="#最-极-大似然法" class="headerlink" title="最(极)大似然法"></a>最(极)大似然法</h1><h2 id="1-用极大似然法进行参数估计-x2F-最大似然估计-Maximum-likelihood-estimation-MLE"><a href="#1-用极大似然法进行参数估计-x2F-最大似然估计-Maximum-likelihood-estimation-MLE" class="headerlink" title="1.用极大似然法进行参数估计&#x2F;最大似然估计(Maximum likelihood estimation, MLE)"></a>1.用极大似然法进行参数估计&#x2F;最大似然估计(Maximum likelihood estimation, MLE)</h2><p>极大似然法的估计场景是模型已知而参数未知的情况，也就是使用已知的样本结果信息来反推出最有可能(概率最大)导致这些样本结果出现的模型参数值。</p>
-<p>使用极大似然估计的前提是所有样本的采样必须都是独立同分布的。</p>
-<h3 id="关于概率和统计"><a href="#关于概率和统计" class="headerlink" title="关于概率和统计"></a>关于概率和统计</h3><p>概率问题是已知模型和参数，求结果数据。</p>
-<p>统计问题时已知数据，求模型和参数。</p>
-<h3 id="极大似然"><a href="#极大似然" class="headerlink" title="极大似然"></a>极大似然</h3><p>首先给出一个函数形式P(x|θ)</p>
-<p>这是一个条件概率函数，如果θ是已知的，x是未知的。则该函数称为概率函数。表示对于不同的样本点x，其出现概率的大小。</p>
-<p>如果x是已知的，θ是未知的，该函数称为似然函数。表示对于不同的参数θ，出现样本点x概率的大小。</p>
-<p>对于极大似然，使用一个例子来解释。设一个罐子中有若干白球和黑球，现要求白球与黑球的比例，每次取出若干球并记录其颜色，然后放回罐子。重复这个过程，通过记录的颜色数据来推断黑白球的比例。假设每次取一个球，取100次，其中白球出现了70次，那么我们可以推测白球占70%，其理论依据是我们抽取的数据样本是独立同分布的。设白球出现的概率为p，第n次抽取结果为xn，则抽取100次出现70次白球的概率是：P(样本结果|模型参数)&#x3D;P(x1,x2…x100|模型参数)&#x3D;P(x1|模型参数)* P(x2|模型参数)*…P(x100|模型参数) &#x3D; p·70·(1-p)·30</p>
-<p>现在我们已经拥有了结果的概率表达式了，如何求式中的p呢?p具有无数种分布，极大似然法的思想是令当前结果的分布概率出现最大，即让p·70·(1-p)·30的出现概率最大。</p>
-<p>这时只需要对概率公式求导，并令导数为0，即可求得p&#x3D;70%</p>
-<p>总结：</p>
-<p>对于要估计的目标，我们先假定其具有某种概率分布P(x|θ)，然后再基于训练集D对概率分布的参数θ做估计。我们假设这些样本是独立同分布的，参数θ对于数据集D的似然是：P(D|θ)&#x3D;∏P(x|θ)（x∈D）</p>
-<p>对θ进行极大似然估计，就是寻找能最大化似然函数P(D|θ)的参数值θ，考虑到数值计算问题，连乘操作容易造成数值下溢，所以通常使用对数似然：</p>
-<p><img src="/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%9C%80(%E6%9E%81)%E5%A4%A7%E4%BC%BC%E7%84%B6%E6%B3%95/Users\21036043\AppData\Roaming\Typora\typora-user-images\image-20211112153910001.png" alt="image-20211112153910001"></p>
-<p>此时参数的极大似然估计为：</p>
-<p><img src="/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%9C%80(%E6%9E%81)%E5%A4%A7%E4%BC%BC%E7%84%B6%E6%B3%95/Users\21036043\AppData\Roaming\Typora\typora-user-images\image-20211112154000411.png" alt="image-20211112154000411"></p>
-<p>需要注意的是，这种参数化估计方法严重依赖于预先设定的概率分布形式是否符合潜在的真实数据分布，现实中，要想给出好的预先分布，需要结合任务本身的经验知识。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%99%8D%E7%BB%B4/</url>
-    <content><![CDATA[<h1 id="降维"><a href="#降维" class="headerlink" title="降维"></a>降维</h1><h2 id="维数灾难"><a href="#维数灾难" class="headerlink" title="维数灾难"></a>维数灾难</h2><p>在高维空间中，机器学习方法会面临数据样本稀疏、距离计算困难等问题，这种问题被称为维数灾难。</p>
-<h2 id="低维嵌入"><a href="#低维嵌入" class="headerlink" title="低维嵌入"></a>低维嵌入</h2><p>解决位数灾难的方法是降维，或称为维数约减，即通过某种数学变换将原始高维属性空间转变为一个低维的子空间，在子空间中样本密度大幅提高，距离计算也变得更为容易。能进行降维操作是因为在很多时候，人们观测或收集到的数据样本虽然是高维的，但与学习任务密切相关的也许仅是某个低维分布，即高维空间中的一个低维嵌入。</p>
-<h2 id="内积矩阵与协方差矩阵"><a href="#内积矩阵与协方差矩阵" class="headerlink" title="内积矩阵与协方差矩阵"></a>内积矩阵与协方差矩阵</h2><p><img src="https://upload-images.jianshu.io/upload_images/6408339-0589fea7e7628379.png" alt="https://upload-images.jianshu.io/upload_images/6408339-0589fea7e7628379.png"></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/6408339-99b9b248e1bf24d5.png" alt="https://upload-images.jianshu.io/upload_images/6408339-99b9b248e1bf24d5.png"></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/6408339-5c8ee49fd58481b0.png" alt="https://upload-images.jianshu.io/upload_images/6408339-5c8ee49fd58481b0.png"></p>
-<h2 id="MDS降维算法-Multiple-Dimensional-Scaling"><a href="#MDS降维算法-Multiple-Dimensional-Scaling" class="headerlink" title="MDS降维算法(Multiple Dimensional Scaling)"></a>MDS降维算法(Multiple Dimensional Scaling)</h2><h3 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h3><p>MDS算法是一种低维嵌入算法，其思路是在保障原始空间与低维空间样本距离一致的前提下，将高维数据进行降维。</p>
-<h3 id="原理推导"><a href="#原理推导" class="headerlink" title="原理推导"></a>原理推导</h3><p><img src="/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%99%8D%E7%BB%B4/Users\21036043\AppData\Roaming\Typora\typora-user-images\image-20211115150934768.png" alt="image-20211115150934768"></p>
-<p><img src="/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%99%8D%E7%BB%B4/Users\21036043\AppData\Roaming\Typora\typora-user-images\image-20211115150959558.png" alt="image-20211115150959558"></p>
-<p><img src="/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%99%8D%E7%BB%B4/Users\21036043\AppData\Roaming\Typora\typora-user-images\image-20211115151046800.png" alt="image-20211115151046800"></p>
-<p><img src="/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%99%8D%E7%BB%B4/Users\21036043\AppData\Roaming\Typora\typora-user-images\image-20211115151136176.png" alt="image-20211115151136176"></p>
 ]]></content>
   </entry>
   <entry>
@@ -1769,87 +1723,35 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Hadoop学习笔记</title>
-    <url>/Hadoop/Hadoop%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Hadoop%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h1 id="Hadoop学习笔记"><a href="#Hadoop学习笔记" class="headerlink" title="Hadoop学习笔记"></a>Hadoop学习笔记</h1><h3 id="1-一些基本命令"><a href="#1-一些基本命令" class="headerlink" title="1. 一些基本命令"></a>1. 一些基本命令</h3><p>启动hadoop：<br>1)开启SSH传输服务：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">service ssh start</span><br></pre></td></tr></table></figure>
-
-<p>2)启动hadoop：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">一次启动</span><br><span class="line">[bash] hadoop安装路径/sbin/start-all.sh</span><br><span class="line">也可以手动多次启动</span><br></pre></td></tr></table></figure>
-
-<p>操作HDFS系统：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hadoop 2.x版本</span><br><span class="line">hadoop安装路径/bin/hdfs dfs -命令</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hadoop 3.x版本</span><br><span class="line">hadoop安装路径/bin/hdfs fs -命令</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-mapreduce样例运行时的文件系统切换"><a href="#2-mapreduce样例运行时的文件系统切换" class="headerlink" title="2. mapreduce样例运行时的文件系统切换"></a>2. mapreduce样例运行时的文件系统切换</h3><p>在运行诸如mapreduce样例中的grep、wordcount等功能时，很重要的一点是指定文件的输入文件夹路径和输出文件夹（注意输出文件夹不需要提前创建），此时，我们指定的路径是本地路径还是HDFS中的路径呢？需要在Hadoop的配置文件core-site.xml进行指定，当不配置路径时，默认文件系统的路径是Hadoop的安装文件夹下，此外，可以通过配置将文件系统切换为HDFS，在core-site.xml中添加以下配置指定HDFS中NameNode的地址即可：</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">name</span>&gt;</span>fs.defaultFS<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">value</span>&gt;</span>hdfs://localhost:9000<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>添加此配置后，运行wordcount等案例时，指定的输入输出路径就是HDFS中的路径了。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.2.jar wordcount /user/root/input /user/root/output</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-hadoop50070监控界面中无法下载HDFS中的文件"><a href="#3-hadoop50070监控界面中无法下载HDFS中的文件" class="headerlink" title="3. hadoop50070监控界面中无法下载HDFS中的文件"></a>3. hadoop50070监控界面中无法下载HDFS中的文件</h3><p>添加主机到虚拟机集群的IP映射，将虚拟机hosts文件中的内容添加到windows主机中<br>虚拟机hosts文件路径：<code>/etc/hosts</code><br>windows hosts文件路径：<code>C:\Windows\System32\drivers\etc\hosts</code></p>
-<p>添加后重启服务器或虚拟机即可。</p>
-<h3 id="4-格式化NameNode（首次启动集群时格式化，不要总格式化）"><a href="#4-格式化NameNode（首次启动集群时格式化，不要总格式化）" class="headerlink" title="4. 格式化NameNode（首次启动集群时格式化，不要总格式化）"></a>4. 格式化NameNode（首次启动集群时格式化，不要总格式化）</h3><p><strong>注意：格式化NameNode，会产生新的集群id,导致NameNode和DataNode的集群id不一致，集群找不到已往数据。所以，格式NameNode时，一定要先删除data数据和log日志，然后再格式化NameNode。(集群id不一致将导致DataNode和NameNode不能同时启动)</strong></p>
-<p><strong>提示：NameNode和DataNode的集群id可以在<code>安装路径/data/tmp/dfs/name/current/VERSION</code> <code>安装路径/data/tmp/dfs/data/current/</code>中或者<code>安装路径/tmp/dfs/name/current/VERSION</code> <code>安装路径/tmp/dfs/data/current/VERSION</code>中查看</strong></p>
-<p>查看java进程，查看NameNode和DataNode是否关闭(jps是JDK中的命令，非linux自带命令)</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jps</span><br></pre></td></tr></table></figure>
-
-<p>将hadoop安装目录下的data文件夹 和 logs文件夹删除</p>
-<p>格式化NameNode：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hadoop安装目录下/bin/hdfs namenode -format</span><br></pre></td></tr></table></figure>
-
-<h3 id="5-通过yarn运行MapReduce程序时的问题处理"><a href="#5-通过yarn运行MapReduce程序时的问题处理" class="headerlink" title="5. 通过yarn运行MapReduce程序时的问题处理"></a>5. 通过yarn运行MapReduce程序时的问题处理</h3><ul>
-<li>资源监控页面配置</li>
-</ul>
-<p>yarn资源监控界面需要在yarn-site.xml中配置主机名称，默认名称为0.0.0.0,默认端口号为8088，在启动yarn（ResourceManager和NodeManager）后可以访问资源监控页面，查看MapReduce任务的执行情况和资源使用情况。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;property&gt;</span><br><span class="line">	&lt;name&gt;yarn.resourcemanager.hostname&lt;/name&gt;</span><br><span class="line">	&lt;value&gt;主机名称，自己指定&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>运行失败时classpath配置</li>
-</ul>
-<p>通过yarn运行MR程序时，可能出现运行失败的情况，可以在hadoop安装目录&#x2F;logs&#x2F;userlogs&#x2F;目录下，根据报错信息找到出错应用日志的位置。如报错信息中显示：<code>Error: Could not find or load main class org.apache.hadoop.mapreduce.v2.app.</code>，需要将hadoop的classpath信息写入配置。在命令行中执行<code>hadoop classpath</code>,得到路径将其复制，然后写入yarn-site.xml以及mapred-site.xml中:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;property&gt;</span><br><span class="line">	&lt;name&gt;yarn.application.classpath&lt;/name&gt;</span><br><span class="line">	&lt;value&gt;classpath内容&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>虚拟内存超限配置</li>
-</ul>
-<p>如果运行任务遇到虚拟内存使用超过限制的报错，可以在yarn-site.xml中添加参数，使程序运行时跳过内存检查：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;property&gt;</span><br><span class="line">	&lt;name&gt;yarn.nodemanager.pmem-check-enabled&lt;/name&gt;</span><br><span class="line">	&lt;value&gt;false&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">	&lt;name&gt;yarn.nodemanager.vmem-check-enabled&lt;/name&gt;</span><br><span class="line">	&lt;value&gt;false&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>由于NameNode开启了安全模式（safe-mode）导致程序运行时DataNode权限不足的问题</li>
-</ul>
-<p>退出安全模式：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hdfs dfsadmin -safemode leave</span><br></pre></td></tr></table></figure>
-
-
-
+    <title></title>
+    <url>/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/K%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0%EF%BC%88k-Nearest%20Neighbor%20,kNN)/</url>
+    <content><![CDATA[<h1 id="K近邻算法概述（k-Nearest-Neighbor-kNN"><a href="#K近邻算法概述（k-Nearest-Neighbor-kNN" class="headerlink" title="K近邻算法概述（k-Nearest Neighbor ,kNN)"></a>K近邻算法概述（k-Nearest Neighbor ,kNN)</h1><h2 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h2><p>k近邻学习是一种监督学习方法，常用于分类和回归任务。</p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>给定一个要预测类别的测试样本，基于某种距离度量方法找到训练集中与其最靠近的k个训练样本，然后根据这 k个训练样本的信息做预测。在分类时，可以使用投票法，即选择这k个训练样本中最多的类别作为预测的结果；在回归时，可以使用平均法，即将这k个样本的实值输出标记的平均值作为预测结果；还可以基于距离远近进行加权平均或者加权投票，距离越近的样本权重越大。</p>
+<h2 id="kNN是一种懒惰学习"><a href="#kNN是一种懒惰学习" class="headerlink" title="kNN是一种懒惰学习"></a>kNN是一种懒惰学习</h2><p>k近邻学习没有显示的学习过程，在训练过程仅仅是把样本保存起来，训练时间开销为零，待收集到测试样本后再做处理，是一种懒惰学习（lazy learning）方法。相反地，在训练阶段就对数据集进行处理的算法称为急切学习（eager learning）方法。</p>
+<h2 id="kNN算法性能"><a href="#kNN算法性能" class="headerlink" title="kNN算法性能"></a>kNN算法性能</h2><p>kNN分类器的泛化错误率不超过贝叶斯最优分类器的两倍。</p>
 ]]></content>
-      <categories>
-        <category>Hadoop</category>
-      </categories>
-      <tags>
-        <tag>-学习笔记 -Hadoop</tag>
-      </tags>
   </entry>
   <entry>
     <title></title>
-    <url>/Hadoop/Hive/Hive%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/</url>
-    <content><![CDATA[<h1 id="Hive基本知识"><a href="#Hive基本知识" class="headerlink" title="Hive基本知识"></a>Hive基本知识</h1><h2 id="一、分区表"><a href="#一、分区表" class="headerlink" title="一、分区表"></a>一、分区表</h2><p>分区表是指按照数据表的某列或某些列分为多个区，区从形式上可以理解为文件夹，分区是手动进行的。</p>
-<p>注意，不通与传统数据库，hive在创建分区表时 CREATE TABLE 下的字段中不能包含分区表字段，分区表字段只在PARTITION BY中定义，创建后，分区字段是表中的最后字段。</p>
-<p>如果对表进行分区，即数据分分割存放在若干子目录下，则既可以将分区指向各个子目录，也可以采用递归分区使一个表访问所有子目录。当子目录无法满足这两个中的任何中情况，则会出现错误或者查询为空。</p>
-<p>分区最佳实践：</p>
-<ul>
-<li>挑选一列作为分区键，其唯一值的个数应该在较低值到中间值之间。</li>
-<li>避免分区小于1G(越大越好）。</li>
-<li>当分区数量较多时，调整HiveServer2和Hive Metastore的内存。</li>
-<li>当使用多列作为分区键时，对于每一个分区键列的组合都要创建一个子目录的嵌套树。应避免深入嵌套，因为这会导致太多的分区，进而是创建的文件非常小。</li>
-<li>当使用Hive流处理插入数据时，如果多个会话向相同的分区写入数据，那么就会导致锁闭。</li>
-<li>你可以修改某一分区表的模式，然而，一旦结构发生改变，你就无法在已有分区中修改数据了。</li>
-<li>如果要将数据并行插入到多个分区，应该将<code>hive.optimize.sort.dynamic.partition</code>设置为true。</li>
-</ul>
-<h2 id="二、分桶表"><a href="#二、分桶表" class="headerlink" title="二、分桶表"></a>二、分桶表</h2>]]></content>
+    <url>/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%9C%80(%E6%9E%81)%E5%A4%A7%E4%BC%BC%E7%84%B6%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="最-极-大似然法"><a href="#最-极-大似然法" class="headerlink" title="最(极)大似然法"></a>最(极)大似然法</h1><h2 id="1-用极大似然法进行参数估计-x2F-最大似然估计-Maximum-likelihood-estimation-MLE"><a href="#1-用极大似然法进行参数估计-x2F-最大似然估计-Maximum-likelihood-estimation-MLE" class="headerlink" title="1.用极大似然法进行参数估计&#x2F;最大似然估计(Maximum likelihood estimation, MLE)"></a>1.用极大似然法进行参数估计&#x2F;最大似然估计(Maximum likelihood estimation, MLE)</h2><p>极大似然法的估计场景是模型已知而参数未知的情况，也就是使用已知的样本结果信息来反推出最有可能(概率最大)导致这些样本结果出现的模型参数值。</p>
+<p>使用极大似然估计的前提是所有样本的采样必须都是独立同分布的。</p>
+<h3 id="关于概率和统计"><a href="#关于概率和统计" class="headerlink" title="关于概率和统计"></a>关于概率和统计</h3><p>概率问题是已知模型和参数，求结果数据。</p>
+<p>统计问题时已知数据，求模型和参数。</p>
+<h3 id="极大似然"><a href="#极大似然" class="headerlink" title="极大似然"></a>极大似然</h3><p>首先给出一个函数形式P(x|θ)</p>
+<p>这是一个条件概率函数，如果θ是已知的，x是未知的。则该函数称为概率函数。表示对于不同的样本点x，其出现概率的大小。</p>
+<p>如果x是已知的，θ是未知的，该函数称为似然函数。表示对于不同的参数θ，出现样本点x概率的大小。</p>
+<p>对于极大似然，使用一个例子来解释。设一个罐子中有若干白球和黑球，现要求白球与黑球的比例，每次取出若干球并记录其颜色，然后放回罐子。重复这个过程，通过记录的颜色数据来推断黑白球的比例。假设每次取一个球，取100次，其中白球出现了70次，那么我们可以推测白球占70%，其理论依据是我们抽取的数据样本是独立同分布的。设白球出现的概率为p，第n次抽取结果为xn，则抽取100次出现70次白球的概率是：P(样本结果|模型参数)&#x3D;P(x1,x2…x100|模型参数)&#x3D;P(x1|模型参数)* P(x2|模型参数)*…P(x100|模型参数) &#x3D; p·70·(1-p)·30</p>
+<p>现在我们已经拥有了结果的概率表达式了，如何求式中的p呢?p具有无数种分布，极大似然法的思想是令当前结果的分布概率出现最大，即让p·70·(1-p)·30的出现概率最大。</p>
+<p>这时只需要对概率公式求导，并令导数为0，即可求得p&#x3D;70%</p>
+<p>总结：</p>
+<p>对于要估计的目标，我们先假定其具有某种概率分布P(x|θ)，然后再基于训练集D对概率分布的参数θ做估计。我们假设这些样本是独立同分布的，参数θ对于数据集D的似然是：P(D|θ)&#x3D;∏P(x|θ)（x∈D）</p>
+<p>对θ进行极大似然估计，就是寻找能最大化似然函数P(D|θ)的参数值θ，考虑到数值计算问题，连乘操作容易造成数值下溢，所以通常使用对数似然：</p>
+<p><img src="/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%9C%80(%E6%9E%81)%E5%A4%A7%E4%BC%BC%E7%84%B6%E6%B3%95/Users\21036043\AppData\Roaming\Typora\typora-user-images\image-20211112153910001.png" alt="image-20211112153910001"></p>
+<p>此时参数的极大似然估计为：</p>
+<p><img src="/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%9C%80(%E6%9E%81)%E5%A4%A7%E4%BC%BC%E7%84%B6%E6%B3%95/Users\21036043\AppData\Roaming\Typora\typora-user-images\image-20211112154000411.png" alt="image-20211112154000411"></p>
+<p>需要注意的是，这种参数化估计方法严重依赖于预先设定的概率分布形式是否符合潜在的真实数据分布，现实中，要想给出好的预先分布，需要结合任务本身的经验知识。</p>
+]]></content>
   </entry>
   <entry>
     <title></title>
@@ -1989,6 +1891,104 @@
 <p>（2）查看详细执行计划</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">hive (<span class="keyword">default</span>)<span class="operator">&gt;</span> explain extended <span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> emp;</span><br><span class="line"></span><br><span class="line">hive (<span class="keyword">default</span>)<span class="operator">&gt;</span> explain extended <span class="keyword">select</span> deptno, <span class="built_in">avg</span>(sal) avg_sal <span class="keyword">from</span> emp <span class="keyword">group</span> <span class="keyword">by</span> deptno;</span><br></pre></td></tr></table></figure>
 ]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%99%8D%E7%BB%B4/</url>
+    <content><![CDATA[<h1 id="降维"><a href="#降维" class="headerlink" title="降维"></a>降维</h1><h2 id="维数灾难"><a href="#维数灾难" class="headerlink" title="维数灾难"></a>维数灾难</h2><p>在高维空间中，机器学习方法会面临数据样本稀疏、距离计算困难等问题，这种问题被称为维数灾难。</p>
+<h2 id="低维嵌入"><a href="#低维嵌入" class="headerlink" title="低维嵌入"></a>低维嵌入</h2><p>解决位数灾难的方法是降维，或称为维数约减，即通过某种数学变换将原始高维属性空间转变为一个低维的子空间，在子空间中样本密度大幅提高，距离计算也变得更为容易。能进行降维操作是因为在很多时候，人们观测或收集到的数据样本虽然是高维的，但与学习任务密切相关的也许仅是某个低维分布，即高维空间中的一个低维嵌入。</p>
+<h2 id="内积矩阵与协方差矩阵"><a href="#内积矩阵与协方差矩阵" class="headerlink" title="内积矩阵与协方差矩阵"></a>内积矩阵与协方差矩阵</h2><p><img src="https://upload-images.jianshu.io/upload_images/6408339-0589fea7e7628379.png" alt="https://upload-images.jianshu.io/upload_images/6408339-0589fea7e7628379.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6408339-99b9b248e1bf24d5.png" alt="https://upload-images.jianshu.io/upload_images/6408339-99b9b248e1bf24d5.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6408339-5c8ee49fd58481b0.png" alt="https://upload-images.jianshu.io/upload_images/6408339-5c8ee49fd58481b0.png"></p>
+<h2 id="MDS降维算法-Multiple-Dimensional-Scaling"><a href="#MDS降维算法-Multiple-Dimensional-Scaling" class="headerlink" title="MDS降维算法(Multiple Dimensional Scaling)"></a>MDS降维算法(Multiple Dimensional Scaling)</h2><h3 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h3><p>MDS算法是一种低维嵌入算法，其思路是在保障原始空间与低维空间样本距离一致的前提下，将高维数据进行降维。</p>
+<h3 id="原理推导"><a href="#原理推导" class="headerlink" title="原理推导"></a>原理推导</h3><p><img src="/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%99%8D%E7%BB%B4/Users\21036043\AppData\Roaming\Typora\typora-user-images\image-20211115150934768.png" alt="image-20211115150934768"></p>
+<p><img src="/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%99%8D%E7%BB%B4/Users\21036043\AppData\Roaming\Typora\typora-user-images\image-20211115150959558.png" alt="image-20211115150959558"></p>
+<p><img src="/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%99%8D%E7%BB%B4/Users\21036043\AppData\Roaming\Typora\typora-user-images\image-20211115151046800.png" alt="image-20211115151046800"></p>
+<p><img src="/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%99%8D%E7%BB%B4/Users\21036043\AppData\Roaming\Typora\typora-user-images\image-20211115151136176.png" alt="image-20211115151136176"></p>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/Hadoop/Hive/Hive%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/</url>
+    <content><![CDATA[<h1 id="Hive基本知识"><a href="#Hive基本知识" class="headerlink" title="Hive基本知识"></a>Hive基本知识</h1><h2 id="一、分区表"><a href="#一、分区表" class="headerlink" title="一、分区表"></a>一、分区表</h2><p>分区表是指按照数据表的某列或某些列分为多个区，区从形式上可以理解为文件夹，分区是手动进行的。</p>
+<p>注意，不通与传统数据库，hive在创建分区表时 CREATE TABLE 下的字段中不能包含分区表字段，分区表字段只在PARTITION BY中定义，创建后，分区字段是表中的最后字段。</p>
+<p>如果对表进行分区，即数据分分割存放在若干子目录下，则既可以将分区指向各个子目录，也可以采用递归分区使一个表访问所有子目录。当子目录无法满足这两个中的任何中情况，则会出现错误或者查询为空。</p>
+<p>分区最佳实践：</p>
+<ul>
+<li>挑选一列作为分区键，其唯一值的个数应该在较低值到中间值之间。</li>
+<li>避免分区小于1G(越大越好）。</li>
+<li>当分区数量较多时，调整HiveServer2和Hive Metastore的内存。</li>
+<li>当使用多列作为分区键时，对于每一个分区键列的组合都要创建一个子目录的嵌套树。应避免深入嵌套，因为这会导致太多的分区，进而是创建的文件非常小。</li>
+<li>当使用Hive流处理插入数据时，如果多个会话向相同的分区写入数据，那么就会导致锁闭。</li>
+<li>你可以修改某一分区表的模式，然而，一旦结构发生改变，你就无法在已有分区中修改数据了。</li>
+<li>如果要将数据并行插入到多个分区，应该将<code>hive.optimize.sort.dynamic.partition</code>设置为true。</li>
+</ul>
+<h2 id="二、分桶表"><a href="#二、分桶表" class="headerlink" title="二、分桶表"></a>二、分桶表</h2>]]></content>
+  </entry>
+  <entry>
+    <title>Hadoop学习笔记</title>
+    <url>/Hadoop/Hadoop%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Hadoop%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="Hadoop学习笔记"><a href="#Hadoop学习笔记" class="headerlink" title="Hadoop学习笔记"></a>Hadoop学习笔记</h1><h3 id="1-一些基本命令"><a href="#1-一些基本命令" class="headerlink" title="1. 一些基本命令"></a>1. 一些基本命令</h3><p>启动hadoop：<br>1)开启SSH传输服务：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">service ssh start</span><br></pre></td></tr></table></figure>
+
+<p>2)启动hadoop：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">一次启动</span><br><span class="line">[bash] hadoop安装路径/sbin/start-all.sh</span><br><span class="line">也可以手动多次启动</span><br></pre></td></tr></table></figure>
+
+<p>操作HDFS系统：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hadoop 2.x版本</span><br><span class="line">hadoop安装路径/bin/hdfs dfs -命令</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hadoop 3.x版本</span><br><span class="line">hadoop安装路径/bin/hdfs fs -命令</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-mapreduce样例运行时的文件系统切换"><a href="#2-mapreduce样例运行时的文件系统切换" class="headerlink" title="2. mapreduce样例运行时的文件系统切换"></a>2. mapreduce样例运行时的文件系统切换</h3><p>在运行诸如mapreduce样例中的grep、wordcount等功能时，很重要的一点是指定文件的输入文件夹路径和输出文件夹（注意输出文件夹不需要提前创建），此时，我们指定的路径是本地路径还是HDFS中的路径呢？需要在Hadoop的配置文件core-site.xml进行指定，当不配置路径时，默认文件系统的路径是Hadoop的安装文件夹下，此外，可以通过配置将文件系统切换为HDFS，在core-site.xml中添加以下配置指定HDFS中NameNode的地址即可：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">name</span>&gt;</span>fs.defaultFS<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">value</span>&gt;</span>hdfs://localhost:9000<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>添加此配置后，运行wordcount等案例时，指定的输入输出路径就是HDFS中的路径了。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.2.jar wordcount /user/root/input /user/root/output</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-hadoop50070监控界面中无法下载HDFS中的文件"><a href="#3-hadoop50070监控界面中无法下载HDFS中的文件" class="headerlink" title="3. hadoop50070监控界面中无法下载HDFS中的文件"></a>3. hadoop50070监控界面中无法下载HDFS中的文件</h3><p>添加主机到虚拟机集群的IP映射，将虚拟机hosts文件中的内容添加到windows主机中<br>虚拟机hosts文件路径：<code>/etc/hosts</code><br>windows hosts文件路径：<code>C:\Windows\System32\drivers\etc\hosts</code></p>
+<p>添加后重启服务器或虚拟机即可。</p>
+<h3 id="4-格式化NameNode（首次启动集群时格式化，不要总格式化）"><a href="#4-格式化NameNode（首次启动集群时格式化，不要总格式化）" class="headerlink" title="4. 格式化NameNode（首次启动集群时格式化，不要总格式化）"></a>4. 格式化NameNode（首次启动集群时格式化，不要总格式化）</h3><p><strong>注意：格式化NameNode，会产生新的集群id,导致NameNode和DataNode的集群id不一致，集群找不到已往数据。所以，格式NameNode时，一定要先删除data数据和log日志，然后再格式化NameNode。(集群id不一致将导致DataNode和NameNode不能同时启动)</strong></p>
+<p><strong>提示：NameNode和DataNode的集群id可以在<code>安装路径/data/tmp/dfs/name/current/VERSION</code> <code>安装路径/data/tmp/dfs/data/current/</code>中或者<code>安装路径/tmp/dfs/name/current/VERSION</code> <code>安装路径/tmp/dfs/data/current/VERSION</code>中查看</strong></p>
+<p>查看java进程，查看NameNode和DataNode是否关闭(jps是JDK中的命令，非linux自带命令)</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jps</span><br></pre></td></tr></table></figure>
+
+<p>将hadoop安装目录下的data文件夹 和 logs文件夹删除</p>
+<p>格式化NameNode：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hadoop安装目录下/bin/hdfs namenode -format</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-通过yarn运行MapReduce程序时的问题处理"><a href="#5-通过yarn运行MapReduce程序时的问题处理" class="headerlink" title="5. 通过yarn运行MapReduce程序时的问题处理"></a>5. 通过yarn运行MapReduce程序时的问题处理</h3><ul>
+<li>资源监控页面配置</li>
+</ul>
+<p>yarn资源监控界面需要在yarn-site.xml中配置主机名称，默认名称为0.0.0.0,默认端口号为8088，在启动yarn（ResourceManager和NodeManager）后可以访问资源监控页面，查看MapReduce任务的执行情况和资源使用情况。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;property&gt;</span><br><span class="line">	&lt;name&gt;yarn.resourcemanager.hostname&lt;/name&gt;</span><br><span class="line">	&lt;value&gt;主机名称，自己指定&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>运行失败时classpath配置</li>
+</ul>
+<p>通过yarn运行MR程序时，可能出现运行失败的情况，可以在hadoop安装目录&#x2F;logs&#x2F;userlogs&#x2F;目录下，根据报错信息找到出错应用日志的位置。如报错信息中显示：<code>Error: Could not find or load main class org.apache.hadoop.mapreduce.v2.app.</code>，需要将hadoop的classpath信息写入配置。在命令行中执行<code>hadoop classpath</code>,得到路径将其复制，然后写入yarn-site.xml以及mapred-site.xml中:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;property&gt;</span><br><span class="line">	&lt;name&gt;yarn.application.classpath&lt;/name&gt;</span><br><span class="line">	&lt;value&gt;classpath内容&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>虚拟内存超限配置</li>
+</ul>
+<p>如果运行任务遇到虚拟内存使用超过限制的报错，可以在yarn-site.xml中添加参数，使程序运行时跳过内存检查：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;property&gt;</span><br><span class="line">	&lt;name&gt;yarn.nodemanager.pmem-check-enabled&lt;/name&gt;</span><br><span class="line">	&lt;value&gt;false&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">	&lt;name&gt;yarn.nodemanager.vmem-check-enabled&lt;/name&gt;</span><br><span class="line">	&lt;value&gt;false&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>由于NameNode开启了安全模式（safe-mode）导致程序运行时DataNode权限不足的问题</li>
+</ul>
+<p>退出安全模式：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hdfs dfsadmin -safemode leave</span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>Hadoop</category>
+      </categories>
+      <tags>
+        <tag>-学习笔记 -Hadoop</tag>
+      </tags>
   </entry>
   <entry>
     <title></title>
@@ -3005,148 +3005,6 @@
   </entry>
   <entry>
     <title></title>
-    <url>/Hadoop/Hive/Hive%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F/</url>
-    <content><![CDATA[<h1 id="Hive-文件格式"><a href="#Hive-文件格式" class="headerlink" title="Hive 文件格式"></a>Hive 文件格式</h1><h2 id="一、-ORC-Files"><a href="#一、-ORC-Files" class="headerlink" title="一、 ORC Files"></a>一、 ORC Files</h2><h3 id="1-ORC文件格式概述"><a href="#1-ORC文件格式概述" class="headerlink" title="1. ORC文件格式概述"></a>1. ORC文件格式概述</h3><p>ORC(<em>Optimized Row Columnar</em>)文件格式提供了一种非常高效的方式来存储hive数据。它旨在克服其他Hive文件格式的限制。使用ORC文件可以提升Hive在读、写、处理数据时的性能。</p>
-<p>以RCFile 格式做比较，ORC文件格式有许多有优点，例如：</p>
-<blockquote>
-<ul>
-<li><p>单个文件作为每个任务的输出，这减少了NameNode的负载 .</p>
-</li>
-<li><p>Hive类型支持datetime,decimal,以及一些复杂类型（struct, list, map, and union）.</p>
-</li>
-<li><p>文件中存储了轻量级的索引：</p>
-<ul>
-<li>跳过那些没有通过谓词筛选的行组</li>
-<li>查询给定行</li>
-</ul>
-</li>
-<li><p>基于数据类型的块模式压缩 </p>
-</li>
-<li><p>Integer类型的列用行程长度编码(Run Length Encoding)</p>
-</li>
-<li><p>String类型的列用字典编码(Dictionary Encoding)；</p>
-</li>
-<li><p>使用单独的RecordReader并发读取同一文件 </p>
-</li>
-<li><p>无需扫描标记即可拆分文件 </p>
-</li>
-<li><p>绑定读写所需的内存量 </p>
-</li>
-<li><p>使用协议缓冲区存储元数据，允许添加和删除字段</p>
-</li>
-</ul>
-</blockquote>
-<h3 id="2-ORC文件结构"><a href="#2-ORC文件结构" class="headerlink" title="2. ORC文件结构"></a>2. ORC文件结构</h3><p>ORC文件包含一组称为条纹(<strong>stripes</strong>)的行数据，以及FileFooter中的辅助信息。在文件末尾，postscript保存压缩参数和压缩页脚的大小。</p>
-<p>默认的 stripes 大小为250MB，大的stripes使得Hive能够对HDFS进行高效的读取。</p>
-<p>FileFooter包含文件中的stripes列表、每个stripes的行数以及每列的数据类型。它还包含了列级聚合count、min、max和sum。 </p>
-<p>下图说明了ORC文件结构： </p>
-<p><img src="/Hadoop/Hive/Hive%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F/.%5CHive%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%5Cimage-20220530141339875.png" alt="image-20220530141339875"></p>
-<h3 id="3-Stripe结构："><a href="#3-Stripe结构：" class="headerlink" title="3. Stripe结构："></a>3. Stripe结构：</h3><p>从上图可以看出，ORC文件中的每个stripe都包括索引数据(Index Data)、行数据(Row Data)以及Stripe Footer。</p>
-<p><code>Stripe Footer</code>包含了流数据位置的目录，<code>Row Data</code>则用于表的扫描。</p>
-<p><code>Index data</code>中包含了每一列中的最大和最小值，以及每列所在的行（还可以包括位字段或布隆过滤器），行索引里面提供了偏移量，它可以跳到正确的压缩块位置以及解压缩块的字节位置。请注意，ORC索引仅用于选择 <code>Stripe</code> 和行组，而不用于查询。</p>
-<p>Stripe中具有相对频繁的行索引、能够跳过行来进行快速读取，尽管Stripe很大。默认情况下最大可以跳过10000行。</p>
-<p>通过谓词筛选器跳过大量行集，你可以使用表的第二主键来进行分类从而减少大量的执行时间。例如，你的表的主分区是交易日期，那么你可以在 state、zip code以及last name 上进行排序。然后在一个 state 中查找记录将跳过所有其他 state 的记录。</p>
-<h3 id="4-使用语法"><a href="#4-使用语法" class="headerlink" title="4. 使用语法"></a>4. 使用语法</h3><p>文件类型是在表级（或分区级）上确定的，通过HiveQL,你可以将文件形式定义为ORC,例如：</p>
-<ul>
-<li><code>CREATE TABLE ... STORED AS ORC</code></li>
-<li><code>ALTER TABLE ... [PARTITION partition_spec] SET FILEFORMAT ORC</code></li>
-<li><code>SET hive.default.fileformat=ORC</code></li>
-</ul>
-<p><strong>高级设置：</strong></p>
-<p>下面的参数都被放在 <code>TBLPROPERTIES </code>中:</p>
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Default</th>
-<th>Notes</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>orc.bloom.filter.columns</td>
-<td>“”</td>
-<td>comma separated list of column names for which bloom filter should be created<br>应为其创建bloom筛选器的列名的逗号分隔列表</td>
-</tr>
-<tr>
-<td>orc.bloom.filter.fpp</td>
-<td>0.05</td>
-<td>false positive probability for bloom filter (must &gt;0.0 and &lt;1.0)<br>布隆过滤器的误报概率，大小在0和1之间</td>
-</tr>
-<tr>
-<td>orc.compress</td>
-<td>ZLIB</td>
-<td>high level compression (one of NONE, ZLIB, SNAPPY)<br>高级压缩，为表指定压缩算法，默认为ZLIB</td>
-</tr>
-<tr>
-<td>orc.compress.size</td>
-<td>262,144</td>
-<td>number of bytes in each compression chunk<br>每个压缩区块包含的字节数</td>
-</tr>
-<tr>
-<td>orc.create.index</td>
-<td>true</td>
-<td>whether to create row indexes<br>是否要创建行索引</td>
-</tr>
-<tr>
-<td>orc.row.index.stride</td>
-<td>10,000</td>
-<td>number of rows between index entries (must be &gt;&#x3D; 1000)<br>索引项之间的行数，必须大于1000</td>
-</tr>
-<tr>
-<td>orc.stripe.size</td>
-<td>67,108,864</td>
-<td>number of bytes in each stripe<br>每个stripe包含的字节数</td>
-</tr>
-</tbody></table>
-<p>例如，创建一个不带压缩方式的ORC存储的表：</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> Addresses (</span><br><span class="line">  name string,</span><br><span class="line">  street string,</span><br><span class="line">  city string,</span><br><span class="line">  state string,</span><br><span class="line">  zip <span class="type">int</span></span><br><span class="line">) stored <span class="keyword">as</span> orc tblproperties (&quot;orc.compress&quot;<span class="operator">=</span>&quot;NONE&quot;);</span><br></pre></td></tr></table></figure>
-
-<h3 id="5-序列化-Serialization-和压缩-Compression"><a href="#5-序列化-Serialization-和压缩-Compression" class="headerlink" title="5. 序列化(Serialization )和压缩(Compression)"></a>5. 序列化(Serialization )和压缩(Compression)</h3><h4 id="5-1-序列化"><a href="#5-1-序列化" class="headerlink" title="5.1 序列化"></a>5.1 序列化</h4><p>ORC 文件中的序列化取决于列数据是否为Integer或者String类型的。</p>
-<ul>
-<li>Integer列的序列化：</li>
-</ul>
-<blockquote>
-<p>Integer 列在两个流中序列化：</p>
-<ol>
-<li>当前位流：值是否非空？</li>
-<li>数据流：Integers流</li>
-</ol>
-<p>整形数据的序列化方式采用了数字常见分布的优点：</p>
-<ul>
-<li>整数编码才用可变宽度编码，这使得小整形数字占用更少的字节</li>
-<li>重复值采用行程编码（Run-Length Encoding，RLE）</li>
-<li>在-128到127范围内的常数使用的是行程编码</li>
-</ul>
-</blockquote>
-<p>知识拓展：</p>
-<p>可变宽度编码（<em>variable-width encoding</em>）<strong>待补充</strong></p>
-<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">可变宽度编码基于Google的协议缓冲区，并使用高位表示该字节是否不是编码数据的最后一位和低位7位来编码。为了对附属进行编码，0, -1, 1, -2, 和 2 被映射为 0, 1, 2, 3, 4, 和 5 respectively.</span><br><span class="line"></span><br><span class="line">每个集合中的数是按以下方式编码的：</span><br><span class="line"><span class="emphasis">*如果第一个字节b0是负数：</span></span><br><span class="line"><span class="emphasis">	*</span> b0后是可变长度整数</span><br><span class="line"><span class="emphasis">*如果第一个字节b0是正数：</span></span><br><span class="line"><span class="emphasis">	</span></span><br><span class="line"><span class="emphasis"></span></span><br></pre></td></tr></table></figure>
-
-
-
-<p>行程编码（<em>Run-Length Encoding</em>，RLE）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">行程编码（RLE）是一种无损数据压缩形式，其中数据的runs（即，在许多连续数据元素中出现相同数据值的序列）被存储为单个数据值和计数，而不是原来的runs。这对包含许多此类runs的数据最有用。例如，考虑简单的图形图像，如图标，线条图。它对于没有很多runs的文件没有用，因为它可能会大大增加文件大小。</span><br><span class="line">例如，考虑在纯白色背景上包含纯黑色文本的屏幕。空白区域中会有很多长白色像素，文本中会有很多短黑色像素。假设的扫描线，B代表黑色像素，W代表白色，可能如下所示：</span><br><span class="line"></span><br><span class="line">WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW</span><br><span class="line"></span><br><span class="line">通过应用于上述假设扫描线的行程编码（RLE）数据压缩算法，可以如下呈现：</span><br><span class="line"></span><br><span class="line">12W1B12W3B24W1B14W</span><br><span class="line"></span><br><span class="line">这可以解释为12个W,1个B，12个W，3个B，24个W，1个B，14个W的序列。</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>String列的序列化</li>
-</ul>
-<blockquote>
-<p>字符串列的序列化使用字典来形成唯一的列值。对字典进行排序以加快谓词过滤并提高压缩比。</p>
-<p>String 列在四个流中序列化：</p>
-<ol>
-<li>当前位流：值是否非空？</li>
-<li>字典数据：字符串的字节数</li>
-<li>字典长度：每个条目的长度</li>
-<li>行数据：行中的数据</li>
-</ol>
-<p>字典长度和行数据都是Integer中的行程编码。</p>
-</blockquote>
-<h4 id="5-2-压缩"><a href="#5-2-压缩" class="headerlink" title="5.2 压缩"></a>5.2 压缩</h4><p>流使用编解码器进行压缩，编解码器被指定为该表中所有流的表属性。为了优化内存的使用，压缩是在每个块生成的时候以增量的方式进行的。可以直接跳过压缩块，而无需先解压再扫描。流中的位置使用块的开始位置和块中的偏移来表示。</p>
-<p>编码解码器可以是Snappy，Zlib，或者none。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title></title>
     <url>/Hadoop/Hive/Hive%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E8%AF%AD%E6%B3%95/</url>
     <content><![CDATA[<h1 id="Hive-基本语法"><a href="#Hive-基本语法" class="headerlink" title="Hive 基本语法"></a>Hive 基本语法</h1><h2 id="一、DDL"><a href="#一、DDL" class="headerlink" title="一、DDL"></a>一、DDL</h2><h3 id="1-数据库操作"><a href="#1-数据库操作" class="headerlink" title="1. 数据库操作"></a>1. 数据库操作</h3><h4 id="1-1-创建数据库"><a href="#1-1-创建数据库" class="headerlink" title="1.1 创建数据库"></a>1.1 创建数据库</h4><p>语法格式：</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> [REMOTE] (DATABASE<span class="operator">|</span>SCHEMA) [IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span>] database_name</span><br><span class="line">  [COMMENT database_comment]<span class="comment">-- 数据库注释信息</span></span><br><span class="line">  [LOCATION hdfs_path] <span class="comment">-- 内部表数据存储路径 在hive4.0版本一下内外部表都用此命令设置存储路径</span></span><br><span class="line">  [MANAGEDLOCATION hdfs_path] <span class="comment">-- 外部表存储路径 hive4.0版本后可用</span></span><br><span class="line">  [<span class="keyword">WITH</span> DBPROPERTIES (property_name<span class="operator">=</span>property_value, ...)]; <span class="comment">-- 指派自定义属性</span></span><br></pre></td></tr></table></figure>
@@ -3466,6 +3324,148 @@
   </entry>
   <entry>
     <title></title>
+    <url>/Hadoop/Hive/Hive%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F/</url>
+    <content><![CDATA[<h1 id="Hive-文件格式"><a href="#Hive-文件格式" class="headerlink" title="Hive 文件格式"></a>Hive 文件格式</h1><h2 id="一、-ORC-Files"><a href="#一、-ORC-Files" class="headerlink" title="一、 ORC Files"></a>一、 ORC Files</h2><h3 id="1-ORC文件格式概述"><a href="#1-ORC文件格式概述" class="headerlink" title="1. ORC文件格式概述"></a>1. ORC文件格式概述</h3><p>ORC(<em>Optimized Row Columnar</em>)文件格式提供了一种非常高效的方式来存储hive数据。它旨在克服其他Hive文件格式的限制。使用ORC文件可以提升Hive在读、写、处理数据时的性能。</p>
+<p>以RCFile 格式做比较，ORC文件格式有许多有优点，例如：</p>
+<blockquote>
+<ul>
+<li><p>单个文件作为每个任务的输出，这减少了NameNode的负载 .</p>
+</li>
+<li><p>Hive类型支持datetime,decimal,以及一些复杂类型（struct, list, map, and union）.</p>
+</li>
+<li><p>文件中存储了轻量级的索引：</p>
+<ul>
+<li>跳过那些没有通过谓词筛选的行组</li>
+<li>查询给定行</li>
+</ul>
+</li>
+<li><p>基于数据类型的块模式压缩 </p>
+</li>
+<li><p>Integer类型的列用行程长度编码(Run Length Encoding)</p>
+</li>
+<li><p>String类型的列用字典编码(Dictionary Encoding)；</p>
+</li>
+<li><p>使用单独的RecordReader并发读取同一文件 </p>
+</li>
+<li><p>无需扫描标记即可拆分文件 </p>
+</li>
+<li><p>绑定读写所需的内存量 </p>
+</li>
+<li><p>使用协议缓冲区存储元数据，允许添加和删除字段</p>
+</li>
+</ul>
+</blockquote>
+<h3 id="2-ORC文件结构"><a href="#2-ORC文件结构" class="headerlink" title="2. ORC文件结构"></a>2. ORC文件结构</h3><p>ORC文件包含一组称为条纹(<strong>stripes</strong>)的行数据，以及FileFooter中的辅助信息。在文件末尾，postscript保存压缩参数和压缩页脚的大小。</p>
+<p>默认的 stripes 大小为250MB，大的stripes使得Hive能够对HDFS进行高效的读取。</p>
+<p>FileFooter包含文件中的stripes列表、每个stripes的行数以及每列的数据类型。它还包含了列级聚合count、min、max和sum。 </p>
+<p>下图说明了ORC文件结构： </p>
+<p><img src="/Hadoop/Hive/Hive%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F/.%5CHive%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%5Cimage-20220530141339875.png" alt="image-20220530141339875"></p>
+<h3 id="3-Stripe结构："><a href="#3-Stripe结构：" class="headerlink" title="3. Stripe结构："></a>3. Stripe结构：</h3><p>从上图可以看出，ORC文件中的每个stripe都包括索引数据(Index Data)、行数据(Row Data)以及Stripe Footer。</p>
+<p><code>Stripe Footer</code>包含了流数据位置的目录，<code>Row Data</code>则用于表的扫描。</p>
+<p><code>Index data</code>中包含了每一列中的最大和最小值，以及每列所在的行（还可以包括位字段或布隆过滤器），行索引里面提供了偏移量，它可以跳到正确的压缩块位置以及解压缩块的字节位置。请注意，ORC索引仅用于选择 <code>Stripe</code> 和行组，而不用于查询。</p>
+<p>Stripe中具有相对频繁的行索引、能够跳过行来进行快速读取，尽管Stripe很大。默认情况下最大可以跳过10000行。</p>
+<p>通过谓词筛选器跳过大量行集，你可以使用表的第二主键来进行分类从而减少大量的执行时间。例如，你的表的主分区是交易日期，那么你可以在 state、zip code以及last name 上进行排序。然后在一个 state 中查找记录将跳过所有其他 state 的记录。</p>
+<h3 id="4-使用语法"><a href="#4-使用语法" class="headerlink" title="4. 使用语法"></a>4. 使用语法</h3><p>文件类型是在表级（或分区级）上确定的，通过HiveQL,你可以将文件形式定义为ORC,例如：</p>
+<ul>
+<li><code>CREATE TABLE ... STORED AS ORC</code></li>
+<li><code>ALTER TABLE ... [PARTITION partition_spec] SET FILEFORMAT ORC</code></li>
+<li><code>SET hive.default.fileformat=ORC</code></li>
+</ul>
+<p><strong>高级设置：</strong></p>
+<p>下面的参数都被放在 <code>TBLPROPERTIES </code>中:</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>orc.bloom.filter.columns</td>
+<td>“”</td>
+<td>comma separated list of column names for which bloom filter should be created<br>应为其创建bloom筛选器的列名的逗号分隔列表</td>
+</tr>
+<tr>
+<td>orc.bloom.filter.fpp</td>
+<td>0.05</td>
+<td>false positive probability for bloom filter (must &gt;0.0 and &lt;1.0)<br>布隆过滤器的误报概率，大小在0和1之间</td>
+</tr>
+<tr>
+<td>orc.compress</td>
+<td>ZLIB</td>
+<td>high level compression (one of NONE, ZLIB, SNAPPY)<br>高级压缩，为表指定压缩算法，默认为ZLIB</td>
+</tr>
+<tr>
+<td>orc.compress.size</td>
+<td>262,144</td>
+<td>number of bytes in each compression chunk<br>每个压缩区块包含的字节数</td>
+</tr>
+<tr>
+<td>orc.create.index</td>
+<td>true</td>
+<td>whether to create row indexes<br>是否要创建行索引</td>
+</tr>
+<tr>
+<td>orc.row.index.stride</td>
+<td>10,000</td>
+<td>number of rows between index entries (must be &gt;&#x3D; 1000)<br>索引项之间的行数，必须大于1000</td>
+</tr>
+<tr>
+<td>orc.stripe.size</td>
+<td>67,108,864</td>
+<td>number of bytes in each stripe<br>每个stripe包含的字节数</td>
+</tr>
+</tbody></table>
+<p>例如，创建一个不带压缩方式的ORC存储的表：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> Addresses (</span><br><span class="line">  name string,</span><br><span class="line">  street string,</span><br><span class="line">  city string,</span><br><span class="line">  state string,</span><br><span class="line">  zip <span class="type">int</span></span><br><span class="line">) stored <span class="keyword">as</span> orc tblproperties (&quot;orc.compress&quot;<span class="operator">=</span>&quot;NONE&quot;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-序列化-Serialization-和压缩-Compression"><a href="#5-序列化-Serialization-和压缩-Compression" class="headerlink" title="5. 序列化(Serialization )和压缩(Compression)"></a>5. 序列化(Serialization )和压缩(Compression)</h3><h4 id="5-1-序列化"><a href="#5-1-序列化" class="headerlink" title="5.1 序列化"></a>5.1 序列化</h4><p>ORC 文件中的序列化取决于列数据是否为Integer或者String类型的。</p>
+<ul>
+<li>Integer列的序列化：</li>
+</ul>
+<blockquote>
+<p>Integer 列在两个流中序列化：</p>
+<ol>
+<li>当前位流：值是否非空？</li>
+<li>数据流：Integers流</li>
+</ol>
+<p>整形数据的序列化方式采用了数字常见分布的优点：</p>
+<ul>
+<li>整数编码才用可变宽度编码，这使得小整形数字占用更少的字节</li>
+<li>重复值采用行程编码（Run-Length Encoding，RLE）</li>
+<li>在-128到127范围内的常数使用的是行程编码</li>
+</ul>
+</blockquote>
+<p>知识拓展：</p>
+<p>可变宽度编码（<em>variable-width encoding</em>）<strong>待补充</strong></p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">可变宽度编码基于Google的协议缓冲区，并使用高位表示该字节是否不是编码数据的最后一位和低位7位来编码。为了对附属进行编码，0, -1, 1, -2, 和 2 被映射为 0, 1, 2, 3, 4, 和 5 respectively.</span><br><span class="line"></span><br><span class="line">每个集合中的数是按以下方式编码的：</span><br><span class="line"><span class="emphasis">*如果第一个字节b0是负数：</span></span><br><span class="line"><span class="emphasis">	*</span> b0后是可变长度整数</span><br><span class="line"><span class="emphasis">*如果第一个字节b0是正数：</span></span><br><span class="line"><span class="emphasis">	</span></span><br><span class="line"><span class="emphasis"></span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>行程编码（<em>Run-Length Encoding</em>，RLE）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">行程编码（RLE）是一种无损数据压缩形式，其中数据的runs（即，在许多连续数据元素中出现相同数据值的序列）被存储为单个数据值和计数，而不是原来的runs。这对包含许多此类runs的数据最有用。例如，考虑简单的图形图像，如图标，线条图。它对于没有很多runs的文件没有用，因为它可能会大大增加文件大小。</span><br><span class="line">例如，考虑在纯白色背景上包含纯黑色文本的屏幕。空白区域中会有很多长白色像素，文本中会有很多短黑色像素。假设的扫描线，B代表黑色像素，W代表白色，可能如下所示：</span><br><span class="line"></span><br><span class="line">WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW</span><br><span class="line"></span><br><span class="line">通过应用于上述假设扫描线的行程编码（RLE）数据压缩算法，可以如下呈现：</span><br><span class="line"></span><br><span class="line">12W1B12W3B24W1B14W</span><br><span class="line"></span><br><span class="line">这可以解释为12个W,1个B，12个W，3个B，24个W，1个B，14个W的序列。</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>String列的序列化</li>
+</ul>
+<blockquote>
+<p>字符串列的序列化使用字典来形成唯一的列值。对字典进行排序以加快谓词过滤并提高压缩比。</p>
+<p>String 列在四个流中序列化：</p>
+<ol>
+<li>当前位流：值是否非空？</li>
+<li>字典数据：字符串的字节数</li>
+<li>字典长度：每个条目的长度</li>
+<li>行数据：行中的数据</li>
+</ol>
+<p>字典长度和行数据都是Integer中的行程编码。</p>
+</blockquote>
+<h4 id="5-2-压缩"><a href="#5-2-压缩" class="headerlink" title="5.2 压缩"></a>5.2 压缩</h4><p>流使用编解码器进行压缩，编解码器被指定为该表中所有流的表属性。为了优化内存的使用，压缩是在每个块生成的时候以增量的方式进行的。可以直接跳过压缩块，而无需先解压再扫描。流中的位置使用块的开始位置和块中的偏移来表示。</p>
+<p>编码解码器可以是Snappy，Zlib，或者none。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
     <url>/Hadoop/Hive/Hive%E8%AF%AD%E6%B3%95%E7%B2%BE%E7%82%BC/</url>
     <content><![CDATA[<h1 id="Hive语法精炼"><a href="#Hive语法精炼" class="headerlink" title="Hive语法精炼"></a>Hive语法精炼</h1><p>以下语法精简可用，但不一定是最全的语法格式，某些可选项可能被忽略，随时补充。</p>
 <ul>
@@ -3646,6 +3646,27 @@
   </entry>
   <entry>
     <title></title>
+    <url>/Hadoop/Hive/%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E8%A6%81%E7%82%B9/</url>
+    <content><![CDATA[<h1 id="数据开发要点"><a href="#数据开发要点" class="headerlink" title="数据开发要点"></a>数据开发要点</h1><ul>
+<li><p>多表连接时，首行连接语句中指明分区，动态分区则指明变量(如：pdate&#x3D;’${a}’),指明分区后，主体的select语句中不必再写分区字段。</p>
+</li>
+<li><p>多表连接时，需要特别注意主表的连接字段是否为NULL或空字符串，需要的时候可以进行过滤，以下是一种过滤方式：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="built_in">coalesce</span>(join_field,<span class="string">&#x27;&#x27;</span>)<span class="operator">!=</span><span class="string">&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>分区表的多表连接，因为一般要指定两个表的分区字段相同，所以两个表的select语句中都要包含分区字段。</p>
+</li>
+<li><p>建表语句末尾加分号。</p>
+</li>
+<li><p>注意变量命名，特别是在使用了函数处理之后，在多表联查时很容易出现问题，查每个表时，要保证字段名字正确，使用函数处理的字段在处理结束后要使用<code>as</code>关键字命名，例如：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">insert</span> overwrite <span class="keyword">table</span> hdw_opnwp.purify_water_unnet_device_bind_details_model <span class="keyword">partition</span>(pdate <span class="operator">=</span> <span class="string">&#x27;$&#123;a&#125;&#x27;</span>)</span><br><span class="line"><span class="keyword">select</span> </span><br><span class="line">t1.bind_unbind_ind</span><br><span class="line">,<span class="built_in">coalesce</span>(t1.net_unnet_flag,t2.net_unnet_flag)</span><br><span class="line">,t1.l_bind_user_num <span class="keyword">as</span> user_num</span><br><span class="line">,t1.l_bind_machine_seq_num <span class="keyword">as</span> machine_seq_num</span><br><span class="line">,if(<span class="built_in">coalesce</span>(t1.l_bind_device_model_num,<span class="string">&#x27;&#x27;</span>)<span class="operator">=</span><span class="string">&#x27;&#x27;</span>,if(length(t1.l_bind_machine_seq_num)<span class="operator">=</span><span class="number">20</span>,substr(t1.l_bind_machine_seq_num,<span class="number">1</span>,<span class="number">9</span>),if(length(t1.l_bind_machine_seq_num)<span class="operator">=</span><span class="number">22</span>,substr(t1.l_bind_machine_seq_num,<span class="number">1</span>,<span class="number">11</span>),<span class="keyword">NULL</span>)),t1.l_bind_device_model_num) <span class="keyword">as</span> device_model_num<span class="comment">--如果设备型号为空，从机编中补全设备型号</span></span><br><span class="line">,t1.l_bind_bind_tm</span><br><span class="line">,t1.l_bind_unbind_tm</span><br><span class="line">,t2.industry_cd</span><br><span class="line">,t2.industry_desc</span><br><span class="line">,t2.device_model_desc</span><br><span class="line"><span class="keyword">from</span> (</span><br><span class="line">    <span class="keyword">select</span> bind_unbind_ind</span><br><span class="line">    ,net_unnet_flag</span><br><span class="line">    ,l_bind_user_num</span><br><span class="line">    ,l_bind_machine_seq_num</span><br><span class="line">    ,l_bind_device_model_num</span><br><span class="line">    ,l_bind_bind_tm</span><br><span class="line">    ,l_bind_unbind_tm</span><br><span class="line">    ,pdate</span><br><span class="line">    <span class="keyword">from</span> hdw_opnwp.purify_water_unnet_device_bind_details</span><br><span class="line">    <span class="keyword">where</span> pdate <span class="operator">=</span> <span class="string">&#x27;$&#123;a&#125;&#x27;</span></span><br><span class="line">) t1</span><br><span class="line"><span class="keyword">left</span> <span class="keyword">join</span>(</span><br><span class="line">    <span class="keyword">select</span> if(device_model_num <span class="operator">=</span> <span class="string">&#x27;&#x27;</span>, <span class="keyword">NULL</span>, device_model_num) <span class="keyword">as</span> device_model_num</span><br><span class="line">    ,industry_cd</span><br><span class="line">    ,if(industry_desc <span class="operator">=</span> <span class="string">&#x27;&#x27;</span>, <span class="keyword">NULL</span>, industry_desc) <span class="keyword">as</span> industry_desc <span class="comment">----如果这里没有重新命名，上面连接会出错，提示非法字段</span></span><br><span class="line">    ,if(net_unnet_flag <span class="operator">=</span> <span class="string">&#x27;&#x27;</span>, <span class="keyword">NULL</span>, net_unnet_flag) <span class="keyword">as</span> net_unnet_flag<span class="comment">----如果这里没有重新命名，上面连接会出错，提示非法字段</span></span><br><span class="line">    ,if(device_model_desc <span class="operator">=</span> <span class="string">&#x27;&#x27;</span>, <span class="keyword">NULL</span>, device_model_desc) <span class="keyword">as</span> device_model_desc<span class="comment">----如果这里没有重新命名，上面连接会出错，提示非法字段</span></span><br><span class="line">    ,pdate</span><br><span class="line">    <span class="keyword">from</span> hdw_dwb.t02_dim_dev_prod</span><br><span class="line">    <span class="keyword">where</span> pdate <span class="operator">=</span> <span class="string">&#x27;$&#123;a&#125;&#x27;</span></span><br><span class="line">    <span class="keyword">and</span> industry_cd <span class="operator">=</span> <span class="string">&#x27;V1441&#x27;</span></span><br><span class="line">) t2</span><br><span class="line"><span class="keyword">on</span> t1.l_bind_device_model_num <span class="operator">=</span> t2.device_model_num<span class="comment">--条件中使用的字段名需要注意</span></span><br><span class="line"><span class="keyword">where</span> t1.pdate <span class="operator">=</span> t2.pdate </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>建表时，注释内也不要出现英文分号“ ; ”，因为分号代表建表语句的结束，会引发错误。</p>
+</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
     <url>/Hadoop/Hive/%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E6%80%9D%E8%B7%AF/</url>
     <content><![CDATA[<h2 id="数据开发思路"><a href="#数据开发思路" class="headerlink" title="数据开发思路"></a>数据开发思路</h2><h3 id="需求（作图分析）"><a href="#需求（作图分析）" class="headerlink" title="需求（作图分析）"></a>需求（作图分析）</h3><ul>
 <li>开发内容涉及到哪几个模块的功能，针对每个模块进行分析：<ul>
@@ -3675,27 +3696,6 @@
   </entry>
   <entry>
     <title></title>
-    <url>/Hadoop/Hive/%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E8%A6%81%E7%82%B9/</url>
-    <content><![CDATA[<h1 id="数据开发要点"><a href="#数据开发要点" class="headerlink" title="数据开发要点"></a>数据开发要点</h1><ul>
-<li><p>多表连接时，首行连接语句中指明分区，动态分区则指明变量(如：pdate&#x3D;’${a}’),指明分区后，主体的select语句中不必再写分区字段。</p>
-</li>
-<li><p>多表连接时，需要特别注意主表的连接字段是否为NULL或空字符串，需要的时候可以进行过滤，以下是一种过滤方式：</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="built_in">coalesce</span>(join_field,<span class="string">&#x27;&#x27;</span>)<span class="operator">!=</span><span class="string">&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>分区表的多表连接，因为一般要指定两个表的分区字段相同，所以两个表的select语句中都要包含分区字段。</p>
-</li>
-<li><p>建表语句末尾加分号。</p>
-</li>
-<li><p>注意变量命名，特别是在使用了函数处理之后，在多表联查时很容易出现问题，查每个表时，要保证字段名字正确，使用函数处理的字段在处理结束后要使用<code>as</code>关键字命名，例如：</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">insert</span> overwrite <span class="keyword">table</span> hdw_opnwp.purify_water_unnet_device_bind_details_model <span class="keyword">partition</span>(pdate <span class="operator">=</span> <span class="string">&#x27;$&#123;a&#125;&#x27;</span>)</span><br><span class="line"><span class="keyword">select</span> </span><br><span class="line">t1.bind_unbind_ind</span><br><span class="line">,<span class="built_in">coalesce</span>(t1.net_unnet_flag,t2.net_unnet_flag)</span><br><span class="line">,t1.l_bind_user_num <span class="keyword">as</span> user_num</span><br><span class="line">,t1.l_bind_machine_seq_num <span class="keyword">as</span> machine_seq_num</span><br><span class="line">,if(<span class="built_in">coalesce</span>(t1.l_bind_device_model_num,<span class="string">&#x27;&#x27;</span>)<span class="operator">=</span><span class="string">&#x27;&#x27;</span>,if(length(t1.l_bind_machine_seq_num)<span class="operator">=</span><span class="number">20</span>,substr(t1.l_bind_machine_seq_num,<span class="number">1</span>,<span class="number">9</span>),if(length(t1.l_bind_machine_seq_num)<span class="operator">=</span><span class="number">22</span>,substr(t1.l_bind_machine_seq_num,<span class="number">1</span>,<span class="number">11</span>),<span class="keyword">NULL</span>)),t1.l_bind_device_model_num) <span class="keyword">as</span> device_model_num<span class="comment">--如果设备型号为空，从机编中补全设备型号</span></span><br><span class="line">,t1.l_bind_bind_tm</span><br><span class="line">,t1.l_bind_unbind_tm</span><br><span class="line">,t2.industry_cd</span><br><span class="line">,t2.industry_desc</span><br><span class="line">,t2.device_model_desc</span><br><span class="line"><span class="keyword">from</span> (</span><br><span class="line">    <span class="keyword">select</span> bind_unbind_ind</span><br><span class="line">    ,net_unnet_flag</span><br><span class="line">    ,l_bind_user_num</span><br><span class="line">    ,l_bind_machine_seq_num</span><br><span class="line">    ,l_bind_device_model_num</span><br><span class="line">    ,l_bind_bind_tm</span><br><span class="line">    ,l_bind_unbind_tm</span><br><span class="line">    ,pdate</span><br><span class="line">    <span class="keyword">from</span> hdw_opnwp.purify_water_unnet_device_bind_details</span><br><span class="line">    <span class="keyword">where</span> pdate <span class="operator">=</span> <span class="string">&#x27;$&#123;a&#125;&#x27;</span></span><br><span class="line">) t1</span><br><span class="line"><span class="keyword">left</span> <span class="keyword">join</span>(</span><br><span class="line">    <span class="keyword">select</span> if(device_model_num <span class="operator">=</span> <span class="string">&#x27;&#x27;</span>, <span class="keyword">NULL</span>, device_model_num) <span class="keyword">as</span> device_model_num</span><br><span class="line">    ,industry_cd</span><br><span class="line">    ,if(industry_desc <span class="operator">=</span> <span class="string">&#x27;&#x27;</span>, <span class="keyword">NULL</span>, industry_desc) <span class="keyword">as</span> industry_desc <span class="comment">----如果这里没有重新命名，上面连接会出错，提示非法字段</span></span><br><span class="line">    ,if(net_unnet_flag <span class="operator">=</span> <span class="string">&#x27;&#x27;</span>, <span class="keyword">NULL</span>, net_unnet_flag) <span class="keyword">as</span> net_unnet_flag<span class="comment">----如果这里没有重新命名，上面连接会出错，提示非法字段</span></span><br><span class="line">    ,if(device_model_desc <span class="operator">=</span> <span class="string">&#x27;&#x27;</span>, <span class="keyword">NULL</span>, device_model_desc) <span class="keyword">as</span> device_model_desc<span class="comment">----如果这里没有重新命名，上面连接会出错，提示非法字段</span></span><br><span class="line">    ,pdate</span><br><span class="line">    <span class="keyword">from</span> hdw_dwb.t02_dim_dev_prod</span><br><span class="line">    <span class="keyword">where</span> pdate <span class="operator">=</span> <span class="string">&#x27;$&#123;a&#125;&#x27;</span></span><br><span class="line">    <span class="keyword">and</span> industry_cd <span class="operator">=</span> <span class="string">&#x27;V1441&#x27;</span></span><br><span class="line">) t2</span><br><span class="line"><span class="keyword">on</span> t1.l_bind_device_model_num <span class="operator">=</span> t2.device_model_num<span class="comment">--条件中使用的字段名需要注意</span></span><br><span class="line"><span class="keyword">where</span> t1.pdate <span class="operator">=</span> t2.pdate </span><br></pre></td></tr></table></figure>
-</li>
-<li><p>建表时，注释内也不要出现英文分号“ ; ”，因为分号代表建表语句的结束，会引发错误。</p>
-</li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
-    <title></title>
     <url>/Java/JDK/JDK%E7%9A%84%E5%8D%B8%E8%BD%BD%E4%B8%8E%E5%AE%89%E8%A3%85/</url>
     <content><![CDATA[<h1 id="JDK的卸载与安装"><a href="#JDK的卸载与安装" class="headerlink" title="JDK的卸载与安装"></a>JDK的卸载与安装</h1><h2 id="1-JDK安装"><a href="#1-JDK安装" class="headerlink" title="1.JDK安装"></a>1.JDK安装</h2><blockquote>
 <ul>
@@ -3714,6 +3714,30 @@
 <li>命令提示符中运行 java -version 命令，查询不到版本信息，说明jdk卸载成功</li>
 </ul>
 </blockquote>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/Java/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/1.Java%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%8E%AF%E5%A2%83/</url>
+    <content><![CDATA[<h1 id="1-Java程序设计环境"><a href="#1-Java程序设计环境" class="headerlink" title="1. Java程序设计环境"></a>1. Java程序设计环境</h1><h2 id="一些术语"><a href="#一些术语" class="headerlink" title="一些术语"></a>一些术语</h2><ul>
+<li>JDK：Java Development Kit（Java开发工具包）</li>
+<li>JRE: Java Runtime Environment （Java运行时环境）</li>
+<li>Java SE：Java Standard Edition（Java标准版，用于桌面或简单服务器应用的Java平台）</li>
+<li>Java EE:   Java Enterprise Edition（Java企业版，用于复杂服务器应用的Java平台）</li>
+<li>Java ME:  Java Micro Edition （Java 微型版，用于小型设备的Java平台）</li>
+</ul>
+<h2 id="使用命令行工具对Java代码进行编译"><a href="#使用命令行工具对Java代码进行编译" class="headerlink" title="使用命令行工具对Java代码进行编译"></a>使用命令行工具对Java代码进行编译</h2><ol>
+<li>首先必须安装JDK，并且配置好环境变量</li>
+<li>Java 代码存放在以   .java结尾的文档中</li>
+<li>使用命令  <code>javac ClassName.java</code> ,  javac程序是一个Java编译器，它将.java文件编译成字节码文件.class, 所以编译后将得到ClassName.class字节码文件。</li>
+<li>使用命令<code>java ClassName</code>, java 程序启动Java虚拟机，虚拟机执行编译器编译到类文件中的字节码。</li>
+</ol>
+<p><strong>注意点：</strong></p>
+<ul>
+<li>注意JDK版本，以及环境变量的配置</li>
+<li><strong>Java区分大小写，类名第一个字母需要大写</strong></li>
+<li>javac 编译器需要一个文件名（ClassName.java),  而Java程序运行时只需要指定类名（ClassName), 不需要带扩展名.java或.class。</li>
+</ul>
 ]]></content>
   </entry>
   <entry>
@@ -3769,54 +3793,6 @@
 <p><strong>例如：SELECT CONCAT(‘2022’ - 1, ‘-11-09’), 期望的结果应该是’2021-11-09’, 但得到的结果实际上是’2021.0-11-09’.此时运算的结果会是一个浮点数。出现此bug的原因尚不清楚。</strong></p>
 </blockquote>
 </li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/Java/Maven/maven%E5%AE%89%E8%A3%85/</url>
-    <content><![CDATA[<h1 id="maven安装"><a href="#maven安装" class="headerlink" title="maven安装"></a>maven安装</h1><ul>
-<li>官网下载maven压缩包，link下的zip包</li>
-<li>解压安装包到特定目录</li>
-<li>添加系统环境变量，命名为MAVEN_HOME,路径为解压后的文件夹目录</li>
-<li>在Path中添加路径，MAVEN_HOME下的bin目录，即：</li>
-</ul>
-<blockquote>
-<p>%MAVEN_HOME%\bin</p>
-</blockquote>
-<h1 id="maven配置"><a href="#maven配置" class="headerlink" title="maven配置"></a>maven配置</h1><ul>
-<li><h3 id="settings-xml的配置"><a href="#settings-xml的配置" class="headerlink" title="settings.xml的配置"></a>settings.xml的配置</h3></li>
-</ul>
-<p>maven常常因为源仓库在国外而导致maven包下载慢或者无法下载的问题，解决方案之一是将maven配置文件中的仓库源换成阿里云仓库。该配置文件在%MAVEN_HOME%\conf\settings.xml，换源时可将配置文件中的<mirrors></mirrors>标签及标签中的所有内容注释掉，然后添加以下内容：</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mirrors</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>aliyunmaven<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>阿里云公共仓库<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://maven.aliyun.com/repository/public<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>*<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mirrors</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>即可完成换源。</p>
-<p>同时，maven的本地仓库位置也可以在配置文件中进行指定，添加以下路径配置即可：</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">localRepository</span>&gt;</span>本地仓库路径<span class="tag">&lt;/<span class="name">localRepository</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/Java/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/1.Java%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%8E%AF%E5%A2%83/</url>
-    <content><![CDATA[<h1 id="1-Java程序设计环境"><a href="#1-Java程序设计环境" class="headerlink" title="1. Java程序设计环境"></a>1. Java程序设计环境</h1><h2 id="一些术语"><a href="#一些术语" class="headerlink" title="一些术语"></a>一些术语</h2><ul>
-<li>JDK：Java Development Kit（Java开发工具包）</li>
-<li>JRE: Java Runtime Environment （Java运行时环境）</li>
-<li>Java SE：Java Standard Edition（Java标准版，用于桌面或简单服务器应用的Java平台）</li>
-<li>Java EE:   Java Enterprise Edition（Java企业版，用于复杂服务器应用的Java平台）</li>
-<li>Java ME:  Java Micro Edition （Java 微型版，用于小型设备的Java平台）</li>
-</ul>
-<h2 id="使用命令行工具对Java代码进行编译"><a href="#使用命令行工具对Java代码进行编译" class="headerlink" title="使用命令行工具对Java代码进行编译"></a>使用命令行工具对Java代码进行编译</h2><ol>
-<li>首先必须安装JDK，并且配置好环境变量</li>
-<li>Java 代码存放在以   .java结尾的文档中</li>
-<li>使用命令  <code>javac ClassName.java</code> ,  javac程序是一个Java编译器，它将.java文件编译成字节码文件.class, 所以编译后将得到ClassName.class字节码文件。</li>
-<li>使用命令<code>java ClassName</code>, java 程序启动Java虚拟机，虚拟机执行编译器编译到类文件中的字节码。</li>
-</ol>
-<p><strong>注意点：</strong></p>
-<ul>
-<li>注意JDK版本，以及环境变量的配置</li>
-<li><strong>Java区分大小写，类名第一个字母需要大写</strong></li>
-<li>javac 编译器需要一个文件名（ClassName.java),  而Java程序运行时只需要指定类名（ClassName), 不需要带扩展名.java或.class。</li>
 </ul>
 ]]></content>
   </entry>
@@ -4345,6 +4321,30 @@
   </entry>
   <entry>
     <title></title>
+    <url>/Java/Maven/maven%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<h1 id="maven安装"><a href="#maven安装" class="headerlink" title="maven安装"></a>maven安装</h1><ul>
+<li>官网下载maven压缩包，link下的zip包</li>
+<li>解压安装包到特定目录</li>
+<li>添加系统环境变量，命名为MAVEN_HOME,路径为解压后的文件夹目录</li>
+<li>在Path中添加路径，MAVEN_HOME下的bin目录，即：</li>
+</ul>
+<blockquote>
+<p>%MAVEN_HOME%\bin</p>
+</blockquote>
+<h1 id="maven配置"><a href="#maven配置" class="headerlink" title="maven配置"></a>maven配置</h1><ul>
+<li><h3 id="settings-xml的配置"><a href="#settings-xml的配置" class="headerlink" title="settings.xml的配置"></a>settings.xml的配置</h3></li>
+</ul>
+<p>maven常常因为源仓库在国外而导致maven包下载慢或者无法下载的问题，解决方案之一是将maven配置文件中的仓库源换成阿里云仓库。该配置文件在%MAVEN_HOME%\conf\settings.xml，换源时可将配置文件中的<mirrors></mirrors>标签及标签中的所有内容注释掉，然后添加以下内容：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mirrors</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>aliyunmaven<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>阿里云公共仓库<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://maven.aliyun.com/repository/public<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>*<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mirrors</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>即可完成换源。</p>
+<p>同时，maven的本地仓库位置也可以在配置文件中进行指定，添加以下路径配置即可：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">localRepository</span>&gt;</span>本地仓库路径<span class="tag">&lt;/<span class="name">localRepository</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
     <url>/Java/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/Java%E5%AE%9E%E6%88%98%E7%BB%8F%E9%AA%8C/</url>
     <content><![CDATA[<h1 id="Java实战经验"><a href="#Java实战经验" class="headerlink" title="Java实战经验"></a>Java实战经验</h1><blockquote>
 <p> 本文内容完全来自于个人理解与开发经验</p>
@@ -4378,6 +4378,42 @@
 <li>如果接口需要传参，当参数有多个时，将这些参数封装成DTO实体类，然后传输给Service和ServiceImpl层，如果有需要，通过ServiceImpl调用Mapper&#x2F;Dao层的时候，如果对数据库的操作需要传递多个参数，则也需要将这些DTO封装成实体类进行传输。查询数据库表之前需要依据数据库字段创建DO实体类，用来接收返回结果（<strong>一些简单的接口可以直接用VO实体类接收数据库查询结果并返回，这种情况上面已经叙述过了，此处不再赘述</strong>）。在ServiceImpl接收到这些DO时，由于实际业务，这些数据库查询结果是为了参与某些逻辑计算而非作为接口返回结果，所以通常，在Service层经过逻辑处理后的结果，需要封装在VO类里返回给Controller。</li>
 </ul>
 <h2 id="对象的创建"><a href="#对象的创建" class="headerlink" title="对象的创建"></a>对象的创建</h2><h3 id="对象创建的本质"><a href="#对象创建的本质" class="headerlink" title="对象创建的本质"></a>对象创建的本质</h3><h3 id="在循环中创建对象踩坑实例"><a href="#在循环中创建对象踩坑实例" class="headerlink" title="在循环中创建对象踩坑实例"></a>在循环中创建对象踩坑实例</h3><h2 id="对象的复制"><a href="#对象的复制" class="headerlink" title="对象的复制"></a>对象的复制</h2><h3 id="列表对象复制踩坑实例"><a href="#列表对象复制踩坑实例" class="headerlink" title="列表对象复制踩坑实例"></a>列表对象复制踩坑实例</h3><h2 id="对象的判空"><a href="#对象的判空" class="headerlink" title="对象的判空"></a>对象的判空</h2><h3 id="一般对象的判空"><a href="#一般对象的判空" class="headerlink" title="一般对象的判空"></a>一般对象的判空</h3><h3 id="Mapper层-x2F-Dao层返回实例的判空"><a href="#Mapper层-x2F-Dao层返回实例的判空" class="headerlink" title="Mapper层&#x2F;Dao层返回实例的判空"></a>Mapper层&#x2F;Dao层返回实例的判空</h3><h3 id="缓存的使用"><a href="#缓存的使用" class="headerlink" title="缓存的使用"></a>缓存的使用</h3><h3 id="缓存的优点"><a href="#缓存的优点" class="headerlink" title="缓存的优点"></a>缓存的优点</h3><h3 id="缓存的缺点"><a href="#缓存的缺点" class="headerlink" title="缓存的缺点"></a>缓存的缺点</h3><h3 id="如何权衡使用缓存"><a href="#如何权衡使用缓存" class="headerlink" title="如何权衡使用缓存"></a>如何权衡使用缓存</h3><h2 id="开发规范"><a href="#开发规范" class="headerlink" title="开发规范"></a>开发规范</h2><h3 id="基础格式规范-见阿里巴巴Java开发代码规范"><a href="#基础格式规范-见阿里巴巴Java开发代码规范" class="headerlink" title="基础格式规范 见阿里巴巴Java开发代码规范"></a>基础格式规范 见阿里巴巴Java开发代码规范</h3><h3 id="实战中的开发规范"><a href="#实战中的开发规范" class="headerlink" title="实战中的开发规范"></a>实战中的开发规范</h3><h2 id="其他知识"><a href="#其他知识" class="headerlink" title="其他知识"></a>其他知识</h2><h3 id="MyBatis-x2F-iBatis-中resultMap的作用"><a href="#MyBatis-x2F-iBatis-中resultMap的作用" class="headerlink" title="MyBatis&#x2F;iBatis 中resultMap的作用"></a>MyBatis&#x2F;iBatis 中resultMap的作用</h3>]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/Java/%E6%B3%A8%E8%A7%A3/%E4%B8%80%E4%BA%9B%E6%B3%A8%E8%A7%A3/</url>
+    <content><![CDATA[<h1 id="一些注解"><a href="#一些注解" class="headerlink" title="一些注解"></a>一些注解</h1><h2 id="1、-Autowired-（Spring注解）"><a href="#1、-Autowired-（Spring注解）" class="headerlink" title="1、@Autowired （Spring注解）"></a>1、@Autowired （Spring注解）</h2><p>@Autowired注解用于对象的自动装配，默认先通过类型进行装配，类型装配不成功时再通过名字进行装配，如果都不成功，可以使用@Qualifier(value&#x3D;“ ”）注解来指定名字协助装配，否则报错。</p>
+<h2 id="2-Resource-（Java注解）"><a href="#2-Resource-（Java注解）" class="headerlink" title="2. @Resource  （Java注解）"></a>2. @Resource  （Java注解）</h2><p>@Resource注解用于对象的自动装配，默认先通过名字进行装配，当名字装配不成功时再通过类型进行装配，如果都不成功，可以使用其name属性指定对象名字进行装配，格式如：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Resource(name=&quot;&quot;)</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-Nullable"><a href="#3-Nullable" class="headerlink" title="3.  @Nullable"></a>3.  @Nullable</h2><p>使用该注解标记的字段可以为null。</p>
+<h2 id="4-Component"><a href="#4-Component" class="headerlink" title="4. @Component"></a>4. @Component</h2><p>把普通的实体类pojo配置到spring容器中，相当于配置文件中的</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;&quot;</span> <span class="attr">class</span>=<span class="string">&quot;&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>该注解泛指各种组件，就是当某个类不属于各种归类的时候（不属于controller、service等的时候），就可以使用@Component来标注这个类。</p>
+<p><strong>注意：</strong>使用该注解时，需要先在配置文件中使用</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">”包路径”</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>指定了要扫描的包后，这个包下的类的@Component注解才会生效。</p>
+<h2 id="5-Value"><a href="#5-Value" class="headerlink" title="5. @Value"></a>5. @Value</h2><p>上面的@Component注解只能配置类，当需要配置类的属性时，需要用到@Value注解，此注解可以声明在类的属性或者属性的set方法上，括号中跟值，例如：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Value(&quot;值&quot;)</span></span><br></pre></td></tr></table></figure>
+
+<p>相当于在配置文件中进行了属性配置：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;name&quot;</span> <span class="attr">value</span>=<span class="string">&quot;值&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="6-Repository（-Component衍生注解）"><a href="#6-Repository（-Component衍生注解）" class="headerlink" title="6. @Repository（@Component衍生注解）"></a>6. @Repository（@Component衍生注解）</h2><p>@Component的衍生注解，作用于@Component相同，<strong>用于装配Dao层下的类。</strong></p>
+<h2 id="7-Service（-Component衍生注解）"><a href="#7-Service（-Component衍生注解）" class="headerlink" title="7. @Service（@Component衍生注解）"></a>7. @Service（@Component衍生注解）</h2><p>@Component的衍生注解，作用于@Component相同，<strong>用于装配Service层下的类。</strong></p>
+<h2 id="8-Controller（-Component衍生注解）"><a href="#8-Controller（-Component衍生注解）" class="headerlink" title="8. @Controller（@Component衍生注解）"></a>8. @Controller（@Component衍生注解）</h2><p>@Component的衍生注解，作用于@Component相同，<strong>用于装配Controller层下的类。</strong></p>
+<h2 id="9-Scope"><a href="#9-Scope" class="headerlink" title="9. @Scope"></a>9. @Scope</h2><p>置于类上，用于配置类的作用域，如单例模式、原型模式等。例如：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Scope(&quot;singleton&quot;)</span> <span class="comment">//单例模式</span></span><br><span class="line"><span class="meta">@Scope(&quot;prototype&quot;)</span> <span class="comment">//原型模式</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="10-Configration"><a href="#10-Configration" class="headerlink" title="10. @Configration"></a>10. @Configration</h2><p>写在类前，声明一个类是Java 配置类，声明后，该java类的作用与xml配置文件相同。</p>
+<h2 id="11-ComponentScan"><a href="#11-ComponentScan" class="headerlink" title="11. @ComponentScan"></a>11. @ComponentScan</h2><p>配合@Configration注解为java配置类设置扫描路径，相当于xml配置文件中的&lt;context:component-scan base-package&#x3D;”包路径”&gt;语句，用法如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@ComponentScan(&quot;扫描路径&quot;)</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="12-Import"><a href="#12-Import" class="headerlink" title="12. @Import"></a>12. @Import</h2><p>配合<br>@Configration注解将多个java配置类集合到一起，相当于xml配置文件中的import语句。</p>
+<h2 id="13-Bean"><a href="#13-Bean" class="headerlink" title="13. @Bean"></a>13. @Bean</h2><p>用于方法前，注册一个bean，相当于配置文件中的bean标签，方法的名字就相当于bean标签中的id属性，方法的返回值就相当于bean标签中的class属性</p>
+]]></content>
   </entry>
   <entry>
     <title></title>
@@ -4445,6 +4481,13 @@
 <h2 id="6、编写测试用例"><a href="#6、编写测试用例" class="headerlink" title="6、编写测试用例"></a>6、编写测试用例</h2><h3 id="6-1、构建sqlSessionFactory"><a href="#6-1、构建sqlSessionFactory" class="headerlink" title="6.1、构建sqlSessionFactory"></a>6.1、构建sqlSessionFactory</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 指定全局配置文件</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">resource</span> <span class="operator">=</span> <span class="string">&quot;mybatis-config.xml&quot;</span>;</span><br><span class="line">        <span class="comment">// 读取配置文件</span></span><br><span class="line">        <span class="type">InputStream</span> <span class="variable">inputStream</span> <span class="operator">=</span> Resources.getResourceAsStream(resource);</span><br><span class="line">        <span class="comment">// 构建sqlSessionFactory</span></span><br><span class="line">        <span class="type">SqlSessionFactory</span> <span class="variable">sqlSessionFactory</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SqlSessionFactoryBuilder</span>().build(inputStream);</span><br></pre></td></tr></table></figure>
 
 <h3 id="6-2、-打开sqlSession会话，并执行增删改查等操作"><a href="#6-2、-打开sqlSession会话，并执行增删改查等操作" class="headerlink" title="6.2、 打开sqlSession会话，并执行增删改查等操作"></a>6.2、 打开sqlSession会话，并执行增删改查等操作</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 获取sqlSession</span></span><br><span class="line">        <span class="type">SqlSession</span> <span class="variable">sqlSession</span> <span class="operator">=</span> sqlSessionFactory.openSession();</span><br><span class="line">        <span class="comment">// 操作CRUD，第一个参数：指定statement，规则：命名空间+“.”+statementId</span></span><br><span class="line">        <span class="comment">// 第二个参数：指定传入sql的参数：这里是用户id</span></span><br><span class="line">        <span class="comment">//插入表数据</span></span><br><span class="line">        <span class="type">User</span> <span class="variable">user5</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">User</span>(<span class="string">&quot;xiaoming&quot;</span>, <span class="number">12</span>, <span class="string">&quot;00000001&quot;</span>);</span><br><span class="line">        userDao.insertUser(user5);</span><br><span class="line"><span class="comment">//按照id删除表数据</span></span><br><span class="line">        userDao.deleteUser(<span class="string">&quot;00000001&quot;</span>);</span><br><span class="line"><span class="comment">//按照id查询数据</span></span><br><span class="line">        System.out.println(userDao.queryUserById(<span class="string">&quot;00000001&quot;</span>));</span><br><span class="line"><span class="comment">//修改表数据</span></span><br><span class="line">        <span class="type">User</span> <span class="variable">user1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">User</span>(<span class="string">&quot;xiaoming&quot;</span>,<span class="number">12</span>,<span class="string">&quot;00000001&quot;</span>);</span><br><span class="line">        userDao.updateUser(user1);</span><br><span class="line"><span class="comment">//查询表中所有数据</span></span><br><span class="line">        <span class="keyword">for</span>(User user: userDao.queryUserAll())&#123;</span><br><span class="line">            System.out.println(user);</span><br><span class="line">        &#125;</span><br><span class="line">        sqlSession.commit();  <span class="comment">//注意涉及到对表的改动时（更改、删除、插入),必须执行commit操作</span></span><br><span class="line">        sqlSession.close();</span><br></pre></td></tr></table></figure>
+
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/Java/%E6%B3%A8%E6%84%8F%E7%82%B9/%E8%A7%A3%E5%86%B3%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%97%A0%E6%B3%95%E7%94%9F%E6%95%88%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%88pom.xml%E4%B8%AD%E8%BF%9B%E8%A1%8C%E9%85%8D%E7%BD%AE%EF%BC%89/</url>
+    <content><![CDATA[<h1 id="解决配置文件无法生效的问题（pom-xml中进行配置）"><a href="#解决配置文件无法生效的问题（pom-xml中进行配置）" class="headerlink" title="解决配置文件无法生效的问题（pom.xml中进行配置）"></a>解决配置文件无法生效的问题（pom.xml中进行配置）</h1><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--在build中配置resources，来防止我们资源导出失败的问题--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">directory</span>&gt;</span>src/main/resources<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">includes</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">include</span>&gt;</span>**/*.properties<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">include</span>&gt;</span>**/*.xml<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">includes</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">filtering</span>&gt;</span>true<span class="tag">&lt;/<span class="name">filtering</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">directory</span>&gt;</span>src/main/java<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">includes</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">include</span>&gt;</span>**/*.properties<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">include</span>&gt;</span>**/*.xml<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">includes</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">filtering</span>&gt;</span>true<span class="tag">&lt;/<span class="name">filtering</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 ]]></content>
   </entry>
@@ -4532,13 +4575,6 @@
   </entry>
   <entry>
     <title></title>
-    <url>/Java/%E6%B3%A8%E6%84%8F%E7%82%B9/%E8%A7%A3%E5%86%B3%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%97%A0%E6%B3%95%E7%94%9F%E6%95%88%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%88pom.xml%E4%B8%AD%E8%BF%9B%E8%A1%8C%E9%85%8D%E7%BD%AE%EF%BC%89/</url>
-    <content><![CDATA[<h1 id="解决配置文件无法生效的问题（pom-xml中进行配置）"><a href="#解决配置文件无法生效的问题（pom-xml中进行配置）" class="headerlink" title="解决配置文件无法生效的问题（pom.xml中进行配置）"></a>解决配置文件无法生效的问题（pom.xml中进行配置）</h1><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--在build中配置resources，来防止我们资源导出失败的问题--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">directory</span>&gt;</span>src/main/resources<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">includes</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">include</span>&gt;</span>**/*.properties<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">include</span>&gt;</span>**/*.xml<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">includes</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">filtering</span>&gt;</span>true<span class="tag">&lt;/<span class="name">filtering</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">directory</span>&gt;</span>src/main/java<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">includes</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">include</span>&gt;</span>**/*.properties<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">include</span>&gt;</span>**/*.xml<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">includes</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">filtering</span>&gt;</span>true<span class="tag">&lt;/<span class="name">filtering</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-]]></content>
-  </entry>
-  <entry>
-    <title></title>
     <url>/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E2%80%94%E2%80%94JavaDoc%E7%94%9F%E6%88%90%E6%96%87%E6%A1%A3/</url>
     <content><![CDATA[<h1 id="Java基本语法——JavaDoc生成文档"><a href="#Java基本语法——JavaDoc生成文档" class="headerlink" title="Java基本语法——JavaDoc生成文档"></a>Java基本语法——JavaDoc生成文档</h1><h3 id="Javadoc的用途"><a href="#Javadoc的用途" class="headerlink" title="Javadoc的用途"></a>Javadoc的用途</h3><p>用于生成自己的API文档</p>
 <h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><p>可以使用文档注释格式&#x2F;**  *&#x2F;来添加参数</p>
@@ -4575,6 +4611,21 @@
   </entry>
   <entry>
     <title></title>
+    <url>/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95--%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%89%A9%E5%B1%95/</url>
+    <content><![CDATA[<h1 id="Java基础语法–数据类型扩展"><a href="#Java基础语法–数据类型扩展" class="headerlink" title="Java基础语法–数据类型扩展"></a>Java基础语法–数据类型扩展</h1><h2 id="整数扩展"><a href="#整数扩展" class="headerlink" title="整数扩展"></a>整数扩展</h2><p>二进制：0b</p>
+<p>八进制：0</p>
+<p>十六进制：0x</p>
+<h2 id="浮点数扩展"><a href="#浮点数扩展" class="headerlink" title="浮点数扩展"></a>浮点数扩展</h2><p>最好避免使用浮点数进行比较</p>
+<h2 id="字符扩展"><a href="#字符扩展" class="headerlink" title="字符扩展"></a>字符扩展</h2><ul>
+<li><p>所有的字符本质上是数字，可以使用int进行强制类型转换，得到对应的ascii码或unicode码</p>
+</li>
+<li><p>反斜线加某些字符表示转义字符</p>
+</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
     <url>/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95--%E6%A0%87%E8%AF%86%E7%AC%A6/</url>
     <content><![CDATA[<h1 id="Java基础语法–标识符"><a href="#Java基础语法–标识符" class="headerlink" title="Java基础语法–标识符"></a>Java基础语法–标识符</h1><h2 id="标识符范围"><a href="#标识符范围" class="headerlink" title="标识符范围"></a>标识符范围</h2><p>包括变量名、类名、方法名等</p>
 <h2 id="Java关键字"><a href="#Java关键字" class="headerlink" title="Java关键字"></a>Java关键字</h2><p><img src="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95--%E6%A0%87%E8%AF%86%E7%AC%A6/Users\21036043\AppData\Roaming\Typora\typora-user-images\image-20211229171909687.png" alt="image-20211229171909687"></p>
@@ -4591,21 +4642,6 @@
   </entry>
   <entry>
     <title></title>
-    <url>/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95--%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%89%A9%E5%B1%95/</url>
-    <content><![CDATA[<h1 id="Java基础语法–数据类型扩展"><a href="#Java基础语法–数据类型扩展" class="headerlink" title="Java基础语法–数据类型扩展"></a>Java基础语法–数据类型扩展</h1><h2 id="整数扩展"><a href="#整数扩展" class="headerlink" title="整数扩展"></a>整数扩展</h2><p>二进制：0b</p>
-<p>八进制：0</p>
-<p>十六进制：0x</p>
-<h2 id="浮点数扩展"><a href="#浮点数扩展" class="headerlink" title="浮点数扩展"></a>浮点数扩展</h2><p>最好避免使用浮点数进行比较</p>
-<h2 id="字符扩展"><a href="#字符扩展" class="headerlink" title="字符扩展"></a>字符扩展</h2><ul>
-<li><p>所有的字符本质上是数字，可以使用int进行强制类型转换，得到对应的ascii码或unicode码</p>
-</li>
-<li><p>反斜线加某些字符表示转义字符</p>
-</li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
-    <title></title>
     <url>/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95--%E6%B3%A8%E9%87%8A/</url>
     <content><![CDATA[<h1 id="Java基础语法–注释"><a href="#Java基础语法–注释" class="headerlink" title="Java基础语法–注释"></a>Java基础语法–注释</h1><h2 id="单行注释"><a href="#单行注释" class="headerlink" title="单行注释"></a>单行注释</h2><p>语法格式：&#x2F;&#x2F;</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//注释内容</span></span><br></pre></td></tr></table></figure>
@@ -4618,6 +4654,47 @@
 
 
 
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E6%96%B9%E6%B3%95%E2%80%94%E2%80%94%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%BC%A0%E5%8F%82/</url>
+    <content><![CDATA[<h1 id="Java方法——命令行传参"><a href="#Java方法——命令行传参" class="headerlink" title="Java方法——命令行传参"></a>Java方法——命令行传参</h1><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>相当于给main方法传参，当需要在执行程序时再给它传递消息时，可以将命令行参数传递给main函数实现，具体说来，在命令行中，先编译（javac）程序，然后在执行程序的命令行后面加上参数即可，例如：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">在命令行中：</span><br><span class="line">    首先：javac 程序名.java</span><br><span class="line">    然后：java 程序名.class 参数</span><br></pre></td></tr></table></figure>
+
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E6%96%B9%E6%B3%95%E2%80%94%E2%80%94%E6%96%B9%E6%B3%95%E7%9A%84%E9%87%8D%E8%BD%BD/</url>
+    <content><![CDATA[<h1 id="Java方法——方法的重载"><a href="#Java方法——方法的重载" class="headerlink" title="Java方法——方法的重载"></a>Java方法——方法的重载</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>重载就是在一个类中，有相同的函数名称，但形参不同的函数。</p>
+<h2 id="重载规则"><a href="#重载规则" class="headerlink" title="重载规则"></a>重载规则</h2><ul>
+<li>方法名称必须相同</li>
+<li>参数列表必须不同（个数不同、或类型不同、参数排列顺序不同等）</li>
+<li>方法的返回类型可以相同也可以不同</li>
+<li>仅仅返回类型不同不足以称为方法的重载</li>
+</ul>
+<h2 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h2><p>方法名称相同时，编译器会根据调用方法的参数个数、参数类型等去逐个匹配，以选择对应的方法，如果匹配失败，则编译器报错。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E2%80%94%E2%80%94Scanner/</url>
+    <content><![CDATA[<h1 id="Java流程控制——Scanner"><a href="#Java流程控制——Scanner" class="headerlink" title="Java流程控制——Scanner"></a>Java流程控制——Scanner</h1><h2 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h2><p>获取用户输入，实现人机交互。</p>
+<h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">Scanner</span> <span class="variable">s</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br></pre></td></tr></table></figure>
+
+<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p>通过Scanner类的next()与nextLine()方法获取输入的字符串，读取前一般需要使用hasNext()与hasNextLine()判断是否还有输入的数据。</p>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>由于Scanner属于I&#x2F;O流的类，不关闭会一直占用资源，所以用完后需要调用Scanner的close()方法将Scanner关闭。<strong>对于IO流的类都要注用完后及时关闭。</strong></p>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><h4 id="next"><a href="#next" class="headerlink" title="next()"></a>next()</h4><ul>
+<li>读取到有效字符后才可以结束输入</li>
+<li>对输入有效字符之前遇到的空白，next()方法会自动将其去掉。</li>
+<li>只有输入有效字符后才将其后面的空白作为分隔符或者结束符。</li>
+<li><strong>next()不能得到带有空格的字符串</strong></li>
+</ul>
+<h4 id="nextLine"><a href="#nextLine" class="headerlink" title="nextLine()"></a>nextLine()</h4><ul>
+<li>nextLine()方法以enter作为结束符，即该方法返回回车键之前的所有字符。</li>
+<li>该方法可以获取空白。</li>
+</ul>
 ]]></content>
   </entry>
   <entry>
@@ -4653,56 +4730,6 @@
 <li>数组元素必须是相同类型的；</li>
 <li>数组中的元素可以是任意类型，包括基本类型和引用类型；</li>
 <li>数组变量属于引用类型，数组也可以看成是对象，数组中的每个元素相当于该对象的成员变量。数组本身就是对象，Java中对象是在堆中的，因此数组无论保存原始类型还是其他对象类型，数组对象本身是在堆中的。</li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E6%96%B9%E6%B3%95%E2%80%94%E2%80%94%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%BC%A0%E5%8F%82/</url>
-    <content><![CDATA[<h1 id="Java方法——命令行传参"><a href="#Java方法——命令行传参" class="headerlink" title="Java方法——命令行传参"></a>Java方法——命令行传参</h1><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>相当于给main方法传参，当需要在执行程序时再给它传递消息时，可以将命令行参数传递给main函数实现，具体说来，在命令行中，先编译（javac）程序，然后在执行程序的命令行后面加上参数即可，例如：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">在命令行中：</span><br><span class="line">    首先：javac 程序名.java</span><br><span class="line">    然后：java 程序名.class 参数</span><br></pre></td></tr></table></figure>
-
-]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E6%96%B9%E6%B3%95%E2%80%94%E2%80%94%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/</url>
-    <content><![CDATA[<h1 id="Java方法——可变参数"><a href="#Java方法——可变参数" class="headerlink" title="Java方法——可变参数"></a>Java方法——可变参数</h1><h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p>在方法声明中，在指定参数类型后加一个省略号“ …”，如：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">function</span><span class="params">(<span class="type">int</span>... )</span></span><br></pre></td></tr></table></figure>
-
-<p>一个方法中只能指定一个可变参数，且它必须是方法的最后一个参数，普通参数必须在它之前声明。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E6%96%B9%E6%B3%95%E2%80%94%E2%80%94%E6%96%B9%E6%B3%95%E7%9A%84%E9%87%8D%E8%BD%BD/</url>
-    <content><![CDATA[<h1 id="Java方法——方法的重载"><a href="#Java方法——方法的重载" class="headerlink" title="Java方法——方法的重载"></a>Java方法——方法的重载</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>重载就是在一个类中，有相同的函数名称，但形参不同的函数。</p>
-<h2 id="重载规则"><a href="#重载规则" class="headerlink" title="重载规则"></a>重载规则</h2><ul>
-<li>方法名称必须相同</li>
-<li>参数列表必须不同（个数不同、或类型不同、参数排列顺序不同等）</li>
-<li>方法的返回类型可以相同也可以不同</li>
-<li>仅仅返回类型不同不足以称为方法的重载</li>
-</ul>
-<h2 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h2><p>方法名称相同时，编译器会根据调用方法的参数个数、参数类型等去逐个匹配，以选择对应的方法，如果匹配失败，则编译器报错。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E2%80%94%E2%80%94Scanner/</url>
-    <content><![CDATA[<h1 id="Java流程控制——Scanner"><a href="#Java流程控制——Scanner" class="headerlink" title="Java流程控制——Scanner"></a>Java流程控制——Scanner</h1><h2 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h2><p>获取用户输入，实现人机交互。</p>
-<h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">Scanner</span> <span class="variable">s</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br></pre></td></tr></table></figure>
-
-<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p>通过Scanner类的next()与nextLine()方法获取输入的字符串，读取前一般需要使用hasNext()与hasNextLine()判断是否还有输入的数据。</p>
-<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>由于Scanner属于I&#x2F;O流的类，不关闭会一直占用资源，所以用完后需要调用Scanner的close()方法将Scanner关闭。<strong>对于IO流的类都要注用完后及时关闭。</strong></p>
-<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><h4 id="next"><a href="#next" class="headerlink" title="next()"></a>next()</h4><ul>
-<li>读取到有效字符后才可以结束输入</li>
-<li>对输入有效字符之前遇到的空白，next()方法会自动将其去掉。</li>
-<li>只有输入有效字符后才将其后面的空白作为分隔符或者结束符。</li>
-<li><strong>next()不能得到带有空格的字符串</strong></li>
-</ul>
-<h4 id="nextLine"><a href="#nextLine" class="headerlink" title="nextLine()"></a>nextLine()</h4><ul>
-<li>nextLine()方法以enter作为结束符，即该方法返回回车键之前的所有字符。</li>
-<li>该方法可以获取空白。</li>
 </ul>
 ]]></content>
   </entry>
@@ -4761,31 +4788,11 @@
   </entry>
   <entry>
     <title></title>
-    <url>/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Static%E5%85%B3%E9%94%AE%E5%AD%97/</url>
-    <content><![CDATA[<h1 id="Static关键字"><a href="#Static关键字" class="headerlink" title="Static关键字"></a>Static关键字</h1><p>stastic关键字声明了方法或属性是静态存储的，在类中有专门的静态存储区用来存储静态方法和变量，静态方法和属性可以直接通过类名进行调用，而一般的方法和属性只能再类实例化之后通过实例化的类进行调用，这是因为使用static声明的静态方法和属性是和类同时加载的，属于类属性和类方法。</p>
-<h2 id="类中的加载顺序："><a href="#类中的加载顺序：" class="headerlink" title="类中的加载顺序："></a>类中的加载顺序：</h2><blockquote>
-<p>静态代码块(使用static声明的代码块&gt;匿名代码块&gt;构造方法)</p>
-</blockquote>
-<p>例如：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> Test&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;构造方法&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    stastic &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;静态代码块&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;匿名代码块&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">Test</span> <span class="variable">test</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Test</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <url>/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E6%96%B9%E6%B3%95%E2%80%94%E2%80%94%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/</url>
+    <content><![CDATA[<h1 id="Java方法——可变参数"><a href="#Java方法——可变参数" class="headerlink" title="Java方法——可变参数"></a>Java方法——可变参数</h1><h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p>在方法声明中，在指定参数类型后加一个省略号“ …”，如：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">function</span><span class="params">(<span class="type">int</span>... )</span></span><br></pre></td></tr></table></figure>
 
-<p>输出顺序为：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">静态代码块</span><br><span class="line">匿名代码块</span><br><span class="line">构造方法</span><br></pre></td></tr></table></figure>
-
-<p>其中静态代码块只执行一次，匿名代码块和构造方法在每次实例化类时都会执行。</p>
-<h2 id="静态导入包"><a href="#静态导入包" class="headerlink" title="静态导入包"></a>静态导入包</h2><p>语法格式：import static 包名&#x2F;包名.方法名</p>
-]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E5%86%85%E9%83%A8%E7%B1%BB/</url>
-    <content><![CDATA[<h1 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h1><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>内部类就是在一个类的内部再定义一个类，如在A类中定义了B类，B类就是A类的内部类，A是B的外部类；</p>
-<h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><ul>
-<li>成员内部类（一个类定义在另一个类中）</li>
-<li>静态内部类（有static关键字声明的成员内部类）</li>
-<li>局部内部类（一个雷定义在另一个类的方法中)</li>
-<li>匿名内部类（定义在另一个类的方法中的类</li>
-</ul>
+<p>一个方法中只能指定一个可变参数，且它必须是方法的最后一个参数，普通参数必须在它之前声明。</p>
 ]]></content>
   </entry>
   <entry>
@@ -4803,29 +4810,14 @@
   </entry>
   <entry>
     <title></title>
-    <url>/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E6%8E%A5%E5%8F%A3/</url>
-    <content><![CDATA[<h1 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h1><h4 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h4><blockquote>
-<p>普通类：只有具体实现</p>
-<p>抽象类：具体实现和规范（抽象方法）都有</p>
-<p>接口：只有规范</p>
-</blockquote>
-<h4 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h4><ul>
-<li>接口就是规范，定义的是一组规则；</li>
-<li>接口的本质是契约</li>
+    <url>/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E5%86%85%E9%83%A8%E7%B1%BB/</url>
+    <content><![CDATA[<h1 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h1><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>内部类就是在一个类的内部再定义一个类，如在A类中定义了B类，B类就是A类的内部类，A是B的外部类；</p>
+<h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><ul>
+<li>成员内部类（一个类定义在另一个类中）</li>
+<li>静态内部类（有static关键字声明的成员内部类）</li>
+<li>局部内部类（一个雷定义在另一个类的方法中)</li>
+<li>匿名内部类（定义在另一个类的方法中的类</li>
 </ul>
-<h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><p>[修饰符] interface [接口名]</p>
-<h4 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h4><ul>
-<li>接口中的所有方法都是抽象的（public abstract），所有属性都是静态常量（static final）</li>
-<li>接口需要通过类来实现，使用implements关键字，如</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> <span class="keyword">implements</span> <span class="title class_">Interf</span>&#123;<span class="comment">//Interf是接口，Test是实现接口的类</span></span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>实现了接口的类，需要重写接口中的抽象方法；</li>
-<li>接口可以是多继承的 ，如</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> <span class="keyword">implements</span> <span class="title class_">Interf1</span>,Interf2&#123;<span class="comment">//Interf1,Interf2都是接口</span></span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 ]]></content>
   </entry>
   <entry>
@@ -4854,6 +4846,23 @@
   </entry>
   <entry>
     <title></title>
+    <url>/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Static%E5%85%B3%E9%94%AE%E5%AD%97/</url>
+    <content><![CDATA[<h1 id="Static关键字"><a href="#Static关键字" class="headerlink" title="Static关键字"></a>Static关键字</h1><p>stastic关键字声明了方法或属性是静态存储的，在类中有专门的静态存储区用来存储静态方法和变量，静态方法和属性可以直接通过类名进行调用，而一般的方法和属性只能再类实例化之后通过实例化的类进行调用，这是因为使用static声明的静态方法和属性是和类同时加载的，属于类属性和类方法。</p>
+<h2 id="类中的加载顺序："><a href="#类中的加载顺序：" class="headerlink" title="类中的加载顺序："></a>类中的加载顺序：</h2><blockquote>
+<p>静态代码块(使用static声明的代码块&gt;匿名代码块&gt;构造方法)</p>
+</blockquote>
+<p>例如：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> Test&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;构造方法&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    stastic &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;静态代码块&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;匿名代码块&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">Test</span> <span class="variable">test</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Test</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出顺序为：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">静态代码块</span><br><span class="line">匿名代码块</span><br><span class="line">构造方法</span><br></pre></td></tr></table></figure>
+
+<p>其中静态代码块只执行一次，匿名代码块和构造方法在每次实例化类时都会执行。</p>
+<h2 id="静态导入包"><a href="#静态导入包" class="headerlink" title="静态导入包"></a>静态导入包</h2><p>语法格式：import static 包名&#x2F;包名.方法名</p>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
     <url>/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E6%8A%BD%E8%B1%A1%E7%B1%BB/</url>
     <content><![CDATA[<h1 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h1><ul>
 <li><p>Java使用abstract关键字来声明抽象类或者抽象方法</p>
@@ -4871,6 +4880,63 @@
 <li><p>一个类只能继承一个抽象类，但可以实现多个接口；</p>
 </li>
 </ul>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E6%B3%9B%E5%9E%8B/</url>
+    <content><![CDATA[<h1 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h1><h2 id="一、泛型介绍"><a href="#一、泛型介绍" class="headerlink" title="一、泛型介绍"></a>一、泛型介绍</h2><p>Java 泛型（generics）是 JDK 5 中引入的一个新特性, 泛型提供了编译时类型安全检测机制，该机制允许程序员在编译时检测到非法的类型。</p>
+<p><strong>泛型的本质是参数化类型，也就是说所操作的数据类型被指定为一个参数。</strong></p>
+<p>泛型可以理解为“广泛的类型”，也就是说定义时类型是未定的，需要使用时实际指定。</p>
+<h2 id="二、泛型方法"><a href="#二、泛型方法" class="headerlink" title="二、泛型方法"></a>二、泛型方法</h2><p>声明泛型方法时，类型参数声明部分（尖括号部分）要放在方法的返回类型声明之前，类型参数声明部分（尖括号部分）可以包括一个或者多个参数，中间用逗号分隔，一个泛型参数，也被称为一个类型变量，是用于指定一个泛型类型名称的标识符。</p>
+<p>类型参数能被用来声明返回值类型，并且能作为泛型方法得到的实际参数类型的占位符。</p>
+<p>泛型方法体的声明和其他方法一样。注意类型参数只能代表引用型类型，不能是原始类型（像 <strong>int、double、char</strong> 等）。</p>
+<h3 id="java-中泛型标记符："><a href="#java-中泛型标记符：" class="headerlink" title="java 中泛型标记符："></a>java 中泛型标记符：</h3><ul>
+<li><strong>E</strong> - Element (在集合中使用，因为集合中存放的是元素)</li>
+<li><strong>T</strong> - Type（Java 类）</li>
+<li><strong>K</strong> - Key（键）</li>
+<li><strong>V</strong> - Value（值）</li>
+<li><strong>N</strong> - Number（数值类型）</li>
+<li><strong>？</strong> - 表示不确定的 java 类型</li>
+</ul>
+<h2 id="三、有界的类型参数"><a href="#三、有界的类型参数" class="headerlink" title="三、有界的类型参数"></a>三、有界的类型参数</h2><p>当需要限制那些被允许传递到一个类型参数的类型种类范围时，例如，一个操作数字的方法可能只希望接受Number或者Number子类的实例。就会用到有界类型参数。 </p>
+<p>要声明一个有上界的类型参数，首先列出类型参数的名称，后跟extends关键字，最后紧跟它的上界，例如：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> stitic &lt;T <span class="keyword">extends</span> <span class="title class_">Number</span>&gt; <span class="keyword">void</span> test&#123;T t&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="四、泛型类"><a href="#四、泛型类" class="headerlink" title="四、泛型类"></a>四、泛型类</h2><p>泛型类的声明和非泛型类的声明类似，除了<strong>在类名后面</strong>添加了类型参数声明部分。</p>
+<p>和泛型方法一样，泛型类的类型参数声明部分也包含一个或多个类型参数，参数间用逗号隔开。一个泛型参数，也被称为一个类型变量，是用于指定一个泛型类型名称的标识符。因为他们接受一个或多个参数，这些类被称为参数化的类或参数化的类型。</p>
+<h2 id="五、类型通配符"><a href="#五、类型通配符" class="headerlink" title="五、类型通配符"></a>五、类型通配符</h2><p>类型通配符一般是使用 ? 代替具体的类型参数。例如 <strong>List&lt;?&gt;</strong> 在逻辑上是 <strong>List&lt;String&gt;,List&lt;Integer&gt;</strong> 等所有 <strong>List&lt;具体类型实参&gt;</strong> 的父类。</p>
+<h4 id="类型通配符的上下界"><a href="#类型通配符的上下界" class="headerlink" title="类型通配符的上下界"></a>类型通配符的上下界</h4><p>类型通配符上限通过形如**List&lt;? extends Number&gt;**来定义，如此定义就是通配符泛型值接受Number及其下层子类类型。</p>
+<p>类型通配符下限通过形如 <strong>List&lt;? super Number&gt;</strong> 来定义，表示类型只能接受 <strong>Number</strong> 及其上层父类类型，如 <strong>Object</strong> 类型的实例</p>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E6%8E%A5%E5%8F%A3/</url>
+    <content><![CDATA[<h1 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h1><h4 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h4><blockquote>
+<p>普通类：只有具体实现</p>
+<p>抽象类：具体实现和规范（抽象方法）都有</p>
+<p>接口：只有规范</p>
+</blockquote>
+<h4 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h4><ul>
+<li>接口就是规范，定义的是一组规则；</li>
+<li>接口的本质是契约</li>
+</ul>
+<h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><p>[修饰符] interface [接口名]</p>
+<h4 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h4><ul>
+<li>接口中的所有方法都是抽象的（public abstract），所有属性都是静态常量（static final）</li>
+<li>接口需要通过类来实现，使用implements关键字，如</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> <span class="keyword">implements</span> <span class="title class_">Interf</span>&#123;<span class="comment">//Interf是接口，Test是实现接口的类</span></span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>实现了接口的类，需要重写接口中的抽象方法；</li>
+<li>接口可以是多继承的 ，如</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> <span class="keyword">implements</span> <span class="title class_">Interf1</span>,Interf2&#123;<span class="comment">//Interf1,Interf2都是接口</span></span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 ]]></content>
   </entry>
   <entry>
@@ -4907,36 +4973,6 @@
 </ul>
 <blockquote>
 </blockquote>
-]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E6%B3%9B%E5%9E%8B/</url>
-    <content><![CDATA[<h1 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h1><h2 id="一、泛型介绍"><a href="#一、泛型介绍" class="headerlink" title="一、泛型介绍"></a>一、泛型介绍</h2><p>Java 泛型（generics）是 JDK 5 中引入的一个新特性, 泛型提供了编译时类型安全检测机制，该机制允许程序员在编译时检测到非法的类型。</p>
-<p><strong>泛型的本质是参数化类型，也就是说所操作的数据类型被指定为一个参数。</strong></p>
-<p>泛型可以理解为“广泛的类型”，也就是说定义时类型是未定的，需要使用时实际指定。</p>
-<h2 id="二、泛型方法"><a href="#二、泛型方法" class="headerlink" title="二、泛型方法"></a>二、泛型方法</h2><p>声明泛型方法时，类型参数声明部分（尖括号部分）要放在方法的返回类型声明之前，类型参数声明部分（尖括号部分）可以包括一个或者多个参数，中间用逗号分隔，一个泛型参数，也被称为一个类型变量，是用于指定一个泛型类型名称的标识符。</p>
-<p>类型参数能被用来声明返回值类型，并且能作为泛型方法得到的实际参数类型的占位符。</p>
-<p>泛型方法体的声明和其他方法一样。注意类型参数只能代表引用型类型，不能是原始类型（像 <strong>int、double、char</strong> 等）。</p>
-<h3 id="java-中泛型标记符："><a href="#java-中泛型标记符：" class="headerlink" title="java 中泛型标记符："></a>java 中泛型标记符：</h3><ul>
-<li><strong>E</strong> - Element (在集合中使用，因为集合中存放的是元素)</li>
-<li><strong>T</strong> - Type（Java 类）</li>
-<li><strong>K</strong> - Key（键）</li>
-<li><strong>V</strong> - Value（值）</li>
-<li><strong>N</strong> - Number（数值类型）</li>
-<li><strong>？</strong> - 表示不确定的 java 类型</li>
-</ul>
-<h2 id="三、有界的类型参数"><a href="#三、有界的类型参数" class="headerlink" title="三、有界的类型参数"></a>三、有界的类型参数</h2><p>当需要限制那些被允许传递到一个类型参数的类型种类范围时，例如，一个操作数字的方法可能只希望接受Number或者Number子类的实例。就会用到有界类型参数。 </p>
-<p>要声明一个有上界的类型参数，首先列出类型参数的名称，后跟extends关键字，最后紧跟它的上界，例如：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> stitic &lt;T <span class="keyword">extends</span> <span class="title class_">Number</span>&gt; <span class="keyword">void</span> test&#123;T t&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="四、泛型类"><a href="#四、泛型类" class="headerlink" title="四、泛型类"></a>四、泛型类</h2><p>泛型类的声明和非泛型类的声明类似，除了<strong>在类名后面</strong>添加了类型参数声明部分。</p>
-<p>和泛型方法一样，泛型类的类型参数声明部分也包含一个或多个类型参数，参数间用逗号隔开。一个泛型参数，也被称为一个类型变量，是用于指定一个泛型类型名称的标识符。因为他们接受一个或多个参数，这些类被称为参数化的类或参数化的类型。</p>
-<h2 id="五、类型通配符"><a href="#五、类型通配符" class="headerlink" title="五、类型通配符"></a>五、类型通配符</h2><p>类型通配符一般是使用 ? 代替具体的类型参数。例如 <strong>List&lt;?&gt;</strong> 在逻辑上是 <strong>List&lt;String&gt;,List&lt;Integer&gt;</strong> 等所有 <strong>List&lt;具体类型实参&gt;</strong> 的父类。</p>
-<h4 id="类型通配符的上下界"><a href="#类型通配符的上下界" class="headerlink" title="类型通配符的上下界"></a>类型通配符的上下界</h4><p>类型通配符上限通过形如**List&lt;? extends Number&gt;**来定义，如此定义就是通配符泛型值接受Number及其下层子类类型。</p>
-<p>类型通配符下限通过形如 <strong>List&lt;? super Number&gt;</strong> 来定义，表示类型只能接受 <strong>Number</strong> 及其上层父类类型，如 <strong>Object</strong> 类型的实例</p>
 ]]></content>
   </entry>
   <entry>
@@ -5484,42 +5520,6 @@
 <p>高辈分类转换为低辈分类，需要进行强制类型转换，但可能丢失一些方法，如</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">Father</span> <span class="variable">a</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Son</span>;<span class="comment">//低转高</span></span><br><span class="line"><span class="type">Son</span> <span class="variable">b</span> <span class="operator">=</span> <span class="keyword">new</span> (Son)a;<span class="comment">//高辈分类a转化为低辈分类b，需要对a作强制类型转换</span></span><br></pre></td></tr></table></figure>
 
-]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/Java/%E6%B3%A8%E8%A7%A3/%E4%B8%80%E4%BA%9B%E6%B3%A8%E8%A7%A3/</url>
-    <content><![CDATA[<h1 id="一些注解"><a href="#一些注解" class="headerlink" title="一些注解"></a>一些注解</h1><h2 id="1、-Autowired-（Spring注解）"><a href="#1、-Autowired-（Spring注解）" class="headerlink" title="1、@Autowired （Spring注解）"></a>1、@Autowired （Spring注解）</h2><p>@Autowired注解用于对象的自动装配，默认先通过类型进行装配，类型装配不成功时再通过名字进行装配，如果都不成功，可以使用@Qualifier(value&#x3D;“ ”）注解来指定名字协助装配，否则报错。</p>
-<h2 id="2-Resource-（Java注解）"><a href="#2-Resource-（Java注解）" class="headerlink" title="2. @Resource  （Java注解）"></a>2. @Resource  （Java注解）</h2><p>@Resource注解用于对象的自动装配，默认先通过名字进行装配，当名字装配不成功时再通过类型进行装配，如果都不成功，可以使用其name属性指定对象名字进行装配，格式如：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Resource(name=&quot;&quot;)</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="3-Nullable"><a href="#3-Nullable" class="headerlink" title="3.  @Nullable"></a>3.  @Nullable</h2><p>使用该注解标记的字段可以为null。</p>
-<h2 id="4-Component"><a href="#4-Component" class="headerlink" title="4. @Component"></a>4. @Component</h2><p>把普通的实体类pojo配置到spring容器中，相当于配置文件中的</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;&quot;</span> <span class="attr">class</span>=<span class="string">&quot;&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>该注解泛指各种组件，就是当某个类不属于各种归类的时候（不属于controller、service等的时候），就可以使用@Component来标注这个类。</p>
-<p><strong>注意：</strong>使用该注解时，需要先在配置文件中使用</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">”包路径”</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>指定了要扫描的包后，这个包下的类的@Component注解才会生效。</p>
-<h2 id="5-Value"><a href="#5-Value" class="headerlink" title="5. @Value"></a>5. @Value</h2><p>上面的@Component注解只能配置类，当需要配置类的属性时，需要用到@Value注解，此注解可以声明在类的属性或者属性的set方法上，括号中跟值，例如：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Value(&quot;值&quot;)</span></span><br></pre></td></tr></table></figure>
-
-<p>相当于在配置文件中进行了属性配置：</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;name&quot;</span> <span class="attr">value</span>=<span class="string">&quot;值&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="6-Repository（-Component衍生注解）"><a href="#6-Repository（-Component衍生注解）" class="headerlink" title="6. @Repository（@Component衍生注解）"></a>6. @Repository（@Component衍生注解）</h2><p>@Component的衍生注解，作用于@Component相同，<strong>用于装配Dao层下的类。</strong></p>
-<h2 id="7-Service（-Component衍生注解）"><a href="#7-Service（-Component衍生注解）" class="headerlink" title="7. @Service（@Component衍生注解）"></a>7. @Service（@Component衍生注解）</h2><p>@Component的衍生注解，作用于@Component相同，<strong>用于装配Service层下的类。</strong></p>
-<h2 id="8-Controller（-Component衍生注解）"><a href="#8-Controller（-Component衍生注解）" class="headerlink" title="8. @Controller（@Component衍生注解）"></a>8. @Controller（@Component衍生注解）</h2><p>@Component的衍生注解，作用于@Component相同，<strong>用于装配Controller层下的类。</strong></p>
-<h2 id="9-Scope"><a href="#9-Scope" class="headerlink" title="9. @Scope"></a>9. @Scope</h2><p>置于类上，用于配置类的作用域，如单例模式、原型模式等。例如：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Scope(&quot;singleton&quot;)</span> <span class="comment">//单例模式</span></span><br><span class="line"><span class="meta">@Scope(&quot;prototype&quot;)</span> <span class="comment">//原型模式</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="10-Configration"><a href="#10-Configration" class="headerlink" title="10. @Configration"></a>10. @Configration</h2><p>写在类前，声明一个类是Java 配置类，声明后，该java类的作用与xml配置文件相同。</p>
-<h2 id="11-ComponentScan"><a href="#11-ComponentScan" class="headerlink" title="11. @ComponentScan"></a>11. @ComponentScan</h2><p>配合@Configration注解为java配置类设置扫描路径，相当于xml配置文件中的&lt;context:component-scan base-package&#x3D;”包路径”&gt;语句，用法如下：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@ComponentScan(&quot;扫描路径&quot;)</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="12-Import"><a href="#12-Import" class="headerlink" title="12. @Import"></a>12. @Import</h2><p>配合<br>@Configration注解将多个java配置类集合到一起，相当于xml配置文件中的import语句。</p>
-<h2 id="13-Bean"><a href="#13-Bean" class="headerlink" title="13. @Bean"></a>13. @Bean</h2><p>用于方法前，注册一个bean，相当于配置文件中的bean标签，方法的名字就相当于bean标签中的id属性，方法的返回值就相当于bean标签中的class属性</p>
 ]]></content>
   </entry>
   <entry>

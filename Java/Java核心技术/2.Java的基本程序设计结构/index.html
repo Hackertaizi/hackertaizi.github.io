@@ -21,15 +21,18 @@
 
     <meta name="description" content="2. Java的基本程序设计结构一些基本知识 Java区分大小写 Java应用程序中的全部内容都必须放置在类中 Java命名规范 名字必须以字母开头，后面可以跟字母和数字的任意组合，无长度限制，但是不能使用Java保留字做类名 Java的类名和变量名使用驼峰命名法（CamelCase），类名的首字母需要大写   使用 Java ClassName 运行已编译的程序时，Java 虚拟机总是从指定类中">
 <meta property="og:type" content="article">
-<meta property="og:title" content="太子的个人博客">
+<meta property="og:title" content="2.Java的基本程序设计结构">
 <meta property="og:url" content="https://hackertaizi.gitee.io/Java/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/2.Java%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/index.html">
 <meta property="og:site_name" content="太子的个人博客">
 <meta property="og:description" content="2. Java的基本程序设计结构一些基本知识 Java区分大小写 Java应用程序中的全部内容都必须放置在类中 Java命名规范 名字必须以字母开头，后面可以跟字母和数字的任意组合，无长度限制，但是不能使用Java保留字做类名 Java的类名和变量名使用驼峰命名法（CamelCase），类名的首字母需要大写   使用 Java ClassName 运行已编译的程序时，Java 虚拟机总是从指定类中">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://hackertaizi.gitee.io/Java/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/2.Java%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/image-20230918164655559.png">
 <meta property="article:published_time" content="2023-09-16T05:48:25.558Z">
-<meta property="article:modified_time" content="2023-09-23T06:41:40.709Z">
+<meta property="article:modified_time" content="2023-09-28T09:52:43.191Z">
 <meta property="article:author" content="Taizi">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="Java核心技术">
+<meta property="article:tag" content="JavaEE">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://hackertaizi.gitee.io/Java/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/2.Java%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/image-20230918164655559.png">
 
@@ -38,10 +41,10 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hackertaizi.gitee.io/Java/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/2.Java%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/","path":"Java/Java核心技术/2.Java的基本程序设计结构/","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hackertaizi.gitee.io/Java/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/2.Java%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/","path":"Java/Java核心技术/2.Java的基本程序设计结构/","title":"2.Java的基本程序设计结构"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title> | 太子的个人博客</title>
+<title>2.Java的基本程序设计结构 | 太子的个人博客</title>
   
 
 
@@ -141,7 +144,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Java%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84"><span class="nav-number">1.</span> <span class="nav-text">2. Java的基本程序设计结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86"><span class="nav-number">1.1.</span> <span class="nav-text">一些基本知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java%E6%B3%A8%E9%87%8A"><span class="nav-number">1.2.</span> <span class="nav-text">Java注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.3.</span> <span class="nav-text">Java数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%95%B4%E5%9E%8B"><span class="nav-number">1.3.1.</span> <span class="nav-text">1. 整型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%B5%AE%E7%82%B9%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.3.2.</span> <span class="nav-text">2. 浮点类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-char%E7%B1%BB%E5%9E%8B%E5%92%8CUnicode"><span class="nav-number">1.3.3.</span> <span class="nav-text">3. char类型和Unicode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-boolean%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.3.4.</span> <span class="nav-text">4. boolean类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E4%B8%8E%E5%B8%B8%E9%87%8F"><span class="nav-number">1.4.</span> <span class="nav-text">变量与常量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%A3%B0%E6%98%8E%E5%8F%98%E9%87%8F"><span class="nav-number">1.4.1.</span> <span class="nav-text">1. 声明变量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A3%B0%E6%98%8E%E5%8F%98%E9%87%8F%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%9A"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">声明变量的方法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E5%90%8D%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99%EF%BC%9A"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">变量名命名规则：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%8F%98%E9%87%8F%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">1.4.2.</span> <span class="nav-text">2. 变量初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%B8%B8%E9%87%8F"><span class="nav-number">1.4.3.</span> <span class="nav-text">3. 常量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E6%9E%9A%E4%B8%BE%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.4.4.</span> <span class="nav-text">4. 枚举类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.4.5.</span> <span class="nav-text">5. 运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.4.5.1.</span> <span class="nav-text">算术运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E5%AD%A6%E5%87%BD%E6%95%B0%E4%B8%8E%E5%B8%B8%E9%87%8F"><span class="nav-number">1.4.5.2.</span> <span class="nav-text">数学函数与常量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E5%80%BC%E7%B1%BB%E5%9E%8B%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2-%E9%9A%90%E5%BC%8F%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.4.5.3.</span> <span class="nav-text">数值类型之间的转换(隐式类型转换)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%BA%E5%88%B6%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.4.5.4.</span> <span class="nav-text">强制类型转换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%93%E5%90%88%E8%B5%8B%E5%80%BC%E5%92%8C%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.4.5.5.</span> <span class="nav-text">结合赋值和运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%87%AA%E5%A2%9E%E8%87%AA%E5%87%8F%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.4.5.6.</span> <span class="nav-text">自增自减运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E7%B3%BB%E5%92%8Cboolean%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.4.5.7.</span> <span class="nav-text">关系和boolean运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.4.5.8.</span> <span class="nav-text">位运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8B%AC%E5%8F%B7%E4%B8%8E%E8%BF%90%E7%AE%97%E7%AC%A6%E7%BA%A7%E5%88%AB"><span class="nav-number">1.4.5.9.</span> <span class="nav-text">括号与运算符级别</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">1.4.6.</span> <span class="nav-text">6. 字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%90%E4%B8%B2"><span class="nav-number">1.4.6.1.</span> <span class="nav-text">子串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%BC%E6%8E%A5"><span class="nav-number">1.4.6.2.</span> <span class="nav-text">字符串拼接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8D%E5%8F%AF%E8%A7%81%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">1.4.6.3.</span> <span class="nav-text">不可见字符串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A4%E6%96%AD%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%98%AF%E5%90%A6%E7%9B%B8%E7%AD%89"><span class="nav-number">1.4.6.4.</span> <span class="nav-text">判断字符串是否相等</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A9%BA%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8Enull%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">1.4.6.5.</span> <span class="nav-text">空字符串与null字符串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A0%81%E7%82%B9%E5%92%8C%E4%BB%A3%E7%A0%81%E5%8D%95%E5%85%83"><span class="nav-number">1.4.6.6.</span> <span class="nav-text">码点和代码单元</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#StringAPI"><span class="nav-number">1.4.6.7.</span> <span class="nav-text">StringAPI</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%81%94%E6%9C%BAAPI%E6%96%87%E6%A1%A3"><span class="nav-number">1.4.6.8.</span> <span class="nav-text">联机API文档</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9E%84%E5%BB%BA%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">1.4.6.9.</span> <span class="nav-text">构建字符串</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA"><span class="nav-number">1.4.7.</span> <span class="nav-text">7. 输入与输出</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96%E8%BE%93%E5%85%A5"><span class="nav-number">1.4.7.1.</span> <span class="nav-text">读取输入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%87%E5%87%86%E8%BE%93%E5%87%BA%E6%B5%81%EF%BC%88%E6%8E%A7%E5%88%B6%E5%8F%B0%E7%AA%97%E5%8F%A3%EF%BC%89"><span class="nav-number">1.4.7.2.</span> <span class="nav-text">标准输出流（控制台窗口）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA"><span class="nav-number">1.4.7.3.</span> <span class="nav-text">格式化输出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E7%9A%84%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA"><span class="nav-number">1.4.7.4.</span> <span class="nav-text">文件的输入与输出</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Java%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84"><span class="nav-number">1.</span> <span class="nav-text">2. Java的基本程序设计结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86"><span class="nav-number">1.1.</span> <span class="nav-text">一些基本知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java%E6%B3%A8%E9%87%8A"><span class="nav-number">1.2.</span> <span class="nav-text">Java注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.3.</span> <span class="nav-text">Java数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%95%B4%E5%9E%8B"><span class="nav-number">1.3.1.</span> <span class="nav-text">1. 整型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%B5%AE%E7%82%B9%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.3.2.</span> <span class="nav-text">2. 浮点类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-char%E7%B1%BB%E5%9E%8B%E5%92%8CUnicode"><span class="nav-number">1.3.3.</span> <span class="nav-text">3. char类型和Unicode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-boolean%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.3.4.</span> <span class="nav-text">4. boolean类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E4%B8%8E%E5%B8%B8%E9%87%8F"><span class="nav-number">1.4.</span> <span class="nav-text">变量与常量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%A3%B0%E6%98%8E%E5%8F%98%E9%87%8F"><span class="nav-number">1.4.1.</span> <span class="nav-text">1. 声明变量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A3%B0%E6%98%8E%E5%8F%98%E9%87%8F%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%9A"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">声明变量的方法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E5%90%8D%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99%EF%BC%9A"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">变量名命名规则：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%8F%98%E9%87%8F%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">1.4.2.</span> <span class="nav-text">2. 变量初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%B8%B8%E9%87%8F"><span class="nav-number">1.4.3.</span> <span class="nav-text">3. 常量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E6%9E%9A%E4%B8%BE%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.4.4.</span> <span class="nav-text">4. 枚举类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.4.5.</span> <span class="nav-text">5. 运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.4.5.1.</span> <span class="nav-text">算术运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E5%AD%A6%E5%87%BD%E6%95%B0%E4%B8%8E%E5%B8%B8%E9%87%8F"><span class="nav-number">1.4.5.2.</span> <span class="nav-text">数学函数与常量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E5%80%BC%E7%B1%BB%E5%9E%8B%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2-%E9%9A%90%E5%BC%8F%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.4.5.3.</span> <span class="nav-text">数值类型之间的转换(隐式类型转换)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%BA%E5%88%B6%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.4.5.4.</span> <span class="nav-text">强制类型转换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%93%E5%90%88%E8%B5%8B%E5%80%BC%E5%92%8C%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.4.5.5.</span> <span class="nav-text">结合赋值和运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%87%AA%E5%A2%9E%E8%87%AA%E5%87%8F%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.4.5.6.</span> <span class="nav-text">自增自减运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E7%B3%BB%E5%92%8Cboolean%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.4.5.7.</span> <span class="nav-text">关系和boolean运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.4.5.8.</span> <span class="nav-text">位运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8B%AC%E5%8F%B7%E4%B8%8E%E8%BF%90%E7%AE%97%E7%AC%A6%E7%BA%A7%E5%88%AB"><span class="nav-number">1.4.5.9.</span> <span class="nav-text">括号与运算符级别</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">1.4.6.</span> <span class="nav-text">6. 字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%90%E4%B8%B2"><span class="nav-number">1.4.6.1.</span> <span class="nav-text">子串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%BC%E6%8E%A5"><span class="nav-number">1.4.6.2.</span> <span class="nav-text">字符串拼接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8D%E5%8F%AF%E8%A7%81%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">1.4.6.3.</span> <span class="nav-text">不可见字符串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A4%E6%96%AD%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%98%AF%E5%90%A6%E7%9B%B8%E7%AD%89"><span class="nav-number">1.4.6.4.</span> <span class="nav-text">判断字符串是否相等</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A9%BA%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8Enull%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">1.4.6.5.</span> <span class="nav-text">空字符串与null字符串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A0%81%E7%82%B9%E5%92%8C%E4%BB%A3%E7%A0%81%E5%8D%95%E5%85%83"><span class="nav-number">1.4.6.6.</span> <span class="nav-text">码点和代码单元</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#StringAPI"><span class="nav-number">1.4.6.7.</span> <span class="nav-text">StringAPI</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%81%94%E6%9C%BAAPI%E6%96%87%E6%A1%A3"><span class="nav-number">1.4.6.8.</span> <span class="nav-text">联机API文档</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9E%84%E5%BB%BA%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">1.4.6.9.</span> <span class="nav-text">构建字符串</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA"><span class="nav-number">1.4.7.</span> <span class="nav-text">7. 输入与输出</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96%E8%BE%93%E5%85%A5"><span class="nav-number">1.4.7.1.</span> <span class="nav-text">读取输入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%87%E5%87%86%E8%BE%93%E5%87%BA%E6%B5%81%EF%BC%88%E6%8E%A7%E5%88%B6%E5%8F%B0%E7%AA%97%E5%8F%A3%EF%BC%89"><span class="nav-number">1.4.7.2.</span> <span class="nav-text">标准输出流（控制台窗口）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA"><span class="nav-number">1.4.7.3.</span> <span class="nav-text">格式化输出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E7%9A%84%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA"><span class="nav-number">1.4.7.4.</span> <span class="nav-text">文件的输入与输出</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-%E6%8E%A7%E5%88%B6%E6%B5%81%E7%A8%8B"><span class="nav-number">1.4.8.</span> <span class="nav-text">8. 控制流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-%E5%A4%A7%E6%95%B0"><span class="nav-number">1.4.9.</span> <span class="nav-text">9. 大数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-%E6%95%B0%E7%BB%84"><span class="nav-number">1.4.10.</span> <span class="nav-text">10. 数组</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -154,18 +157,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">78</span>
+          <span class="site-state-item-count">43</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">21</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">28</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -205,12 +208,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | 太子的个人博客">
+      <meta itemprop="name" content="2.Java的基本程序设计结构 | 太子的个人博客">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          
+          2.Java的基本程序设计结构
         </h1>
 
         <div class="post-meta-container">
@@ -228,7 +231,20 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-09-23 14:41:40" itemprop="dateModified" datetime="2023-09-23T14:41:40+08:00">2023-09-23</time>
+      <time title="修改时间：2023-09-28 17:52:43" itemprop="dateModified" datetime="2023-09-28T17:52:43+08:00">2023-09-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">Java核心技术</span></a>
+        </span>
     </span>
 
   
@@ -245,14 +261,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>9.3k</span>
+      <span>11k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>17 分钟</span>
+      <span>20 分钟</span>
     </span>
 </div>
 
@@ -759,7 +775,72 @@
 <p>使用PrintWriter类写入文件的一种方式：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	构建一个PrintWriter构造器，并在构造方法中传入文件路径以及编码方式参数，这里的文件路径可以直接使用字符串，注意，如果使用全路径，要使用两个\\进行转义，如果使用相对路径，则文件需要放在解释器当前所在目录。如果文件名不存在，java就会在路径下创建该文件。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="type">PrintWriter</span> <span class="variable">out</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">PrintWriter</span>(<span class="string">&quot;test.txt&quot;</span>, StandardCharsets.UTF_8.toString());</span><br><span class="line">out.write(<span class="string">&quot;Hello World&quot;</span>);</span><br><span class="line">out.close();  <span class="comment">// 最后必须调用close方法，将缓存中的内容刷新保存在文件中</span></span><br></pre></td></tr></table></figure></li>
 </ul>
-<p>​	</p>
+<h3 id="8-控制流程"><a href="#8-控制流程" class="headerlink" title="8. 控制流程"></a>8. 控制流程</h3><ul>
+<li><p>块作用域</p>
+<p>含义：块是指由若干条Java语句组成的语句，并用一对大括号括起来。块确定了变量的作用域，一个块可以嵌套在另一个块中，但是不能在嵌套的两个块中声明同名的变量。</p>
+</li>
+<li><p>条件语句</p>
+<p>经典的if-else不再赘述</p>
+</li>
+<li><p>循环</p>
+<p>经典的while、do-while不再赘述</p>
+</li>
+<li><p>确定循环</p>
+<p>for循环采用计数器进行循环控制，因此可以做到确定次数的循环。</p>
+<p>for语句的第一部分通常是对计数器进行初始化；第二部分给出循环的结束条件；第三部分对计数器进行更新。</p>
+<p>建议for语句的3个部分对同一个计数器变量进行初始化、检测和更新，避免循环晦涩难懂。</p>
+<p>灵活使用for循环（通常不建议使用）：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 不设置结束条件:</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; ; i++) &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 不设置结束条件和更新语句:</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; ;) &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 什么都不设置:</span></span><br><span class="line"><span class="keyword">for</span> (;;) &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意，对于多重嵌套的循环，如果使用了break语句，只会结束break所在的那一层循环。例如一个双层循环，如果内层循环中有break语句，则执行到break时只会中断该内层循环，外层循环不受影响。</p>
+</li>
+<li><p>多条件选择：switch语句</p>
+<p>Java 的 switch语句同 c++，示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(choice)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">       ...</span><br><span class="line">       <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">       ...</span><br><span class="line">       <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">       ...</span><br><span class="line">       <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">       ...</span><br><span class="line">       <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意，switch语句的结束条件为碰到break；或者执行到整个switch语句的结束处。<strong>多数情况下，我们希望条件匹配到某个case，然后只执行该case下的逻辑，所以需要在每个case语句的末尾加上break语句。</strong></p>
+</li>
+<li><p>中断控制流程的语句</p>
+<ul>
+<li><p>break：中断并退出当前循环。</p>
+</li>
+<li><p>带标签的break：退出多重循环，标签必须在希望跳出的最外层循环之前，并且必须紧跟一个冒号：</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">escape_mark: <span class="comment">//break标签</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">10</span>; i ++)&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; <span class="number">10</span>; j++) &#123;</span><br><span class="line">        System.out.println(i + <span class="string">&quot;, &quot;</span> + j);</span><br><span class="line">        <span class="keyword">if</span> (i == <span class="number">5</span> &amp;&amp; j == <span class="number">5</span>)</span><br><span class="line">            <span class="keyword">break</span> escape_mark; <span class="comment">//跳出两层循环</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>标签也可用到if语句和块语句中，但只能跳出语句块，不能跳入语句块</p>
+<ul>
+<li>continue: 跳过当前循环体的剩余部分，立刻跳到循环首部。</li>
+</ul>
+</li>
+</ul>
+<h3 id="9-大数"><a href="#9-大数" class="headerlink" title="9. 大数"></a>9. 大数</h3><p>如果基本的整数和浮点数的精度无法满足要求，可以使用 java.math 包中的两个类：BigInteger 和 BigDecimal 。这两个类本别可以实现任意精度的整数运算 和 任意精度的浮点数运算。</p>
+<h3 id="10-数组"><a href="#10-数组" class="headerlink" title="10. 数组"></a>10. 数组</h3><ul>
+<li><p>数组的声明：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>[] a;</span><br><span class="line">或</span><br><span class="line"><span class="type">int</span> a[];</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>数组的创建：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用new</span></span><br><span class="line"><span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">100</span>]; <span class="comment">// 创建了一个长度为100的数组a</span></span><br></pre></td></tr></table></figure>
+
+<p>注意，数组的长度在创建后就无法改变，如果需要经常改变数组的大小，应该使用另一种数据结构——数组列表（array list）。</p>
+</li>
+<li><p>数组的初始化</p>
+<p>默认初始化值：创建一个数字数组时，所有元素都默认初始化为0；创建一个boolean数组时，所有元素都默认初始化为false；创建一个对象数组时，所有元素都默认初始化为null。</p>
+<p>可以先创建一个数组，然后使用循环语句对每个元素赋值。</p>
+<p>创建数组同时初始化：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>声明一个匿名数组：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">int</span>[] &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>可以使用这种匿名数组的方式重新初始化一个已有数组，而不需要创建新的数组：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">b</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">int</span>[] &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>访问数组元素</p>
+<p>数组元素下标从0开始。</p>
+</li>
+</ul>
 
     </div>
 
@@ -768,18 +849,23 @@
     
 
     <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+              <a href="/tags/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/" rel="tag"># Java核心技术</a>
+              <a href="/tags/JavaEE/" rel="tag"># JavaEE</a>
+          </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/IDEA/IDEA%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/" rel="prev" title="">
-                  <i class="fa fa-angle-left"></i> 
+                <a href="/Java/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/1.Java%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%8E%AF%E5%A2%83/" rel="prev" title="1.Java程序设计环境">
+                  <i class="fa fa-angle-left"></i> 1.Java程序设计环境
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/Java/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/1.Java%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%8E%AF%E5%A2%83/" rel="next" title="">
-                   <i class="fa fa-angle-right"></i>
+                <a href="/Java/JDK/JDK%E7%9A%84%E5%8D%B8%E8%BD%BD%E4%B8%8E%E5%AE%89%E8%A3%85/" rel="next" title="JDK的卸载与安装">
+                  JDK的卸载与安装 <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>
@@ -811,13 +897,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">167k</span>
+    <span title="站点总字数">145k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">5:04</span>
+    <span title="站点阅读时长">4:24</span>
   </span>
 </div>
 <div class="busuanzi-count">

@@ -147,18 +147,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">78</span>
+          <span class="site-state-item-count">43</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">21</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">28</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -184,7 +184,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Linux/Linux%E4%B8%8B%E5%AE%89%E8%A3%85anaconda/">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Java/JDK/JDK%E7%9A%84%E5%8D%B8%E8%BD%BD%E4%B8%8E%E5%AE%89%E8%A3%85/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -202,7 +202,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/Linux/Linux%E4%B8%8B%E5%AE%89%E8%A3%85anaconda/" class="post-title-link" itemprop="url">未命名</a>
+          <a href="/Java/JDK/JDK%E7%9A%84%E5%8D%B8%E8%BD%BD%E4%B8%8E%E5%AE%89%E8%A3%85/" class="post-title-link" itemprop="url">JDK的卸载与安装</a>
         </h2>
 
         <div class="post-meta-container">
@@ -220,7 +220,20 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-05-06 13:41:53" itemprop="dateModified" datetime="2022-05-06T13:41:53+08:00">2022-05-06</time>
+      <time title="修改时间：2023-09-27 18:45:56" itemprop="dateModified" datetime="2023-09-27T18:45:56+08:00">2023-09-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/JDK/" itemprop="url" rel="index"><span itemprop="name">JDK</span></a>
+        </span>
     </span>
 
   
@@ -230,7 +243,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>222</span>
+      <span>427</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -248,18 +261,22 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="Linux下安装anaconda"><a href="#Linux下安装anaconda" class="headerlink" title="Linux下安装anaconda"></a>Linux下安装anaconda</h1><ul>
-<li>首先在anaconda官网下载Linux版本的anaconda的shell包；</li>
-<li>使用bash命令执行.sh脚本文件安装anaconda，注意更改安装路径，一般可以安装在&#x2F;opt目录下；</li>
-<li>安装结束后，在系统中添加环境变量：</li>
+          <h1 id="JDK的卸载与安装"><a href="#JDK的卸载与安装" class="headerlink" title="JDK的卸载与安装"></a>JDK的卸载与安装</h1><h2 id="1-JDK安装"><a href="#1-JDK安装" class="headerlink" title="1.JDK安装"></a>1.JDK安装</h2><blockquote>
+<ul>
+<li>百度搜索  JDK+版本号  ，根据系统版本，在oracle官网上下载对应版本的JDK（需要登录oracle账号）</li>
+<li>双击安装jdk，注意配置好安装路径，路径在配置环境变量时要使用  </li>
+<li>配置系统环境变量，在系统环境变量中新建名为“JAVA_HOME”的环境变量，变量值为JDK的安装路径</li>
+<li>配置path环境变量，在系统环境变量中的path变量中新建两个变量，分别为<br>%JAVA_HOME%\bin<br>%JAVA_HOME%\jre\bin</li>
+<li>注意在高版本的JDK中，可能不存在jre目录，需要查询进一步的解决方法</li>
+<li>命令提示符中运行 java -version 命令，查询到版本信息，说明jdk安装成功</li>
 </ul>
-<blockquote>
-<p>sudo vim &#x2F;etc&#x2F;profile</p>
 </blockquote>
-<p>在配置文件最后加入路径：</p>
-<blockquote>
-<p>#Anaconda</p>
-<p>export PATH&#x3D;$PATH:anaconda安装路径&#x2F;bin</p>
+<h2 id="2-JDK卸载"><a href="#2-JDK卸载" class="headerlink" title="2.JDK卸载"></a>2.JDK卸载</h2><blockquote>
+<ul>
+<li>查找并卸载JDK安装目录，可通过系统环境变量中的JavaHome环境变量中查找安装目录，然后将其删除</li>
+<li>删除环境变量，将系统环境变量中与JavaHome有关的环境变量删除</li>
+<li>命令提示符中运行 java -version 命令，查询不到版本信息，说明jdk卸载成功</li>
+</ul>
 </blockquote>
 
       
@@ -287,7 +304,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Java/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/2.Java%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -305,7 +322,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-title-link" itemprop="url">未命名</a>
+          <a href="/Java/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/2.Java%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/" class="post-title-link" itemprop="url">2.Java的基本程序设计结构</a>
         </h2>
 
         <div class="post-meta-container">
@@ -323,7 +340,20 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-05-06 13:41:50" itemprop="dateModified" datetime="2022-05-06T13:41:50+08:00">2022-05-06</time>
+      <time title="修改时间：2023-09-28 17:52:43" itemprop="dateModified" datetime="2023-09-28T17:52:43+08:00">2023-09-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">Java核心技术</span></a>
+        </span>
     </span>
 
   
@@ -333,7 +363,673 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>373</span>
+      <span>11k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>20 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="2-Java的基本程序设计结构"><a href="#2-Java的基本程序设计结构" class="headerlink" title="2. Java的基本程序设计结构"></a>2. Java的基本程序设计结构</h1><h2 id="一些基本知识"><a href="#一些基本知识" class="headerlink" title="一些基本知识"></a>一些基本知识</h2><ul>
+<li>Java区分大小写</li>
+<li>Java应用程序中的全部内容都必须放置在类中</li>
+<li>Java命名规范<ul>
+<li>名字必须以字母开头，后面可以跟字母和数字的任意组合，无长度限制，但是不能使用Java保留字做类名</li>
+<li>Java的类名和变量名使用驼峰命名法（CamelCase），类名的首字母需要大写</li>
+</ul>
+</li>
+<li>使用 <code>Java ClassName</code> 运行已编译的程序时，Java 虚拟机总是从指定类中的main方法开始执行，因此为了代码能够执行，<strong>在类的源文件中必须包含一个main方法。main方法必须被声明为public。</strong></li>
+</ul>
+<h2 id="Java注释"><a href="#Java注释" class="headerlink" title="Java注释"></a>Java注释</h2><ol>
+<li><p>单行注释：在要注释的一行代码起始位置使用 <code>//</code></p>
+</li>
+<li><p>多行注释：再要注释的一段代码的始末位置分别使用  <code>/*</code> 和 <code>*/</code></p>
+</li>
+<li><p>Javadoc注释：可以用来自动生成文档</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *	一段Java说明文档	</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="Java数据类型"><a href="#Java数据类型" class="headerlink" title="Java数据类型"></a>Java数据类型</h2><p><strong>Java是一种强类型语言，这意味着必须为每一个变量声明一种类型。</strong></p>
+<p><strong>Java一共有8种基本类型，包括4种整形、2种浮点型、1种字符型char(用于标识Unicode编码的代码单元)和1种用于表示真值的boolean类型。</strong></p>
+<h3 id="1-整型"><a href="#1-整型" class="headerlink" title="1. 整型"></a>1. 整型</h3><p>java整形：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>存储需求</th>
+<th>取值范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>int</td>
+<td>4字节</td>
+<td>-2147483648 ~ 2147483647</td>
+</tr>
+<tr>
+<td>short</td>
+<td>2字节</td>
+<td>-32768 ~ 32767</td>
+</tr>
+<tr>
+<td>long</td>
+<td>8字节</td>
+<td>-9 223 372 036 854 775 808 ~ 9 223 372 036 854 775 807</td>
+</tr>
+<tr>
+<td>byte</td>
+<td>1字节</td>
+<td>-128 ~ 127</td>
+</tr>
+</tbody></table>
+<ul>
+<li>长整形数值有一个后缀L 或 l，例如：2000000L</li>
+<li>十六进制数字有一个前缀 0X 或 0x，例如： 0xCAFE</li>
+<li>八进制数字有一个前缀0，例如：010 对应十进制中的8</li>
+<li>从Java7开始，加上前缀 0B 或 0b 就可以写二进制数</li>
+<li>从Java7开始，为了方便阅读，可以为数字字面量加下划线，Java编译器会去除这些下划线。例如：可以用1_000_000 表示一百万</li>
+<li>Java没有任何无符号（unsigned）形式的int,long,short或byte类型</li>
+</ul>
+<h3 id="2-浮点类型"><a href="#2-浮点类型" class="headerlink" title="2. 浮点类型"></a>2. 浮点类型</h3><p>java浮点类型：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>存储需求</th>
+<th>取值范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>float</td>
+<td>4字节</td>
+<td>大约 ± 3.402 823 47E+38F （有效位数为 6 ~ 7位）</td>
+</tr>
+<tr>
+<td>double</td>
+<td>8字节</td>
+<td>大约 ± 1.797 693 134 862 315 70E+308 （有效位数为15位）</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>float类型的数值有一个后缀F 或 f</p>
+</li>
+<li><p>没有后缀F的浮点数值总是默认为double类型， 当然也可以在浮点数值后面增加后缀D 或 d</p>
+</li>
+<li><p>在十进制表示法中，可以使用E或e表示指数。而在十六进制表示法中，则使用p表示指数，例如，0.125 &#x3D; 2﹣³ 可以表示成0x1.0p-3。注意，尾数采用十六进制，指数采用十进制，指数的基数是2，而不是10.</p>
+</li>
+<li><p>表示溢出和出错有三个特殊的浮点数值：</p>
+<ul>
+<li>正无穷大   (可以用Double.POSITIVE_INFINITY表示)</li>
+<li>负无穷大   (可以用Double.NEGATIVE_INFINITY表示)</li>
+<li>NaN   （不是一个数字，Not a Number)   (可以用Double.NaN表示)</li>
+</ul>
+</li>
+<li><p>可以使用Double.isNaN(x) 方法判断一个数x是否为NaN</p>
+</li>
+</ul>
+<h3 id="3-char类型和Unicode"><a href="#3-char类型和Unicode" class="headerlink" title="3. char类型和Unicode"></a>3. char类型和Unicode</h3><p>char类型使用较少并且不建议在实际代码开发中使用</p>
+<ul>
+<li>注意注释中的\u转义序列，可能会造成错误。</li>
+</ul>
+<h3 id="4-boolean类型"><a href="#4-boolean类型" class="headerlink" title="4. boolean类型"></a>4. boolean类型</h3><p>boolean类型只有两个值：true 和 false，用来判定逻辑条件。</p>
+<h2 id="变量与常量"><a href="#变量与常量" class="headerlink" title="变量与常量"></a>变量与常量</h2><h3 id="1-声明变量"><a href="#1-声明变量" class="headerlink" title="1. 声明变量"></a>1. 声明变量</h3><ul>
+<li><h4 id="声明变量的方法："><a href="#声明变量的方法：" class="headerlink" title="声明变量的方法："></a>声明变量的方法：</h4><p><code>变量类型 变量名;</code>, 例如 int a; 声明了一个整形变量a</p>
+</li>
+<li><h4 id="变量名命名规则："><a href="#变量名命名规则：" class="headerlink" title="变量名命名规则："></a>变量名命名规则：</h4><ul>
+<li>变量名必须是一个由字母开头并由字母或数字构成的序列。</li>
+<li>与其他程序设计语言相比，Java中的 “字母” 或 “数字”的范围更大。字母包括 ‘A’<del>‘Z’、’a’</del>‘z’、’_’、’$’或在某种语言中表示字母的任何Unicode字符；同样，数字包括’0’~’9’或在某种语言中表示字母的任何Unicode字符。变量名中的所有字符都是有意义的，并且大小写敏感，变量名长度基本上没有限制。<br>如果想要知道哪些Unicode字符属于Java中的“字母”，可以使用Character类中的isJavaIdentifierStart 和 isJjavaIdentifierPart方法来检查。<br>尽管$是一个合法Java字符，但尽量不要在自己的代码中使用这个字符，它只用在Java编译器或其他工具生成的名字中。</li>
+<li>不能使用Java保留字作为变量名</li>
+</ul>
+</li>
+<li><p>可以在一行中声明多个变量</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> i,j;</span><br></pre></td></tr></table></figure>
+
+<p>从程序可读性角度上不提倡这样的声明。</p>
+</li>
+</ul>
+<h3 id="2-变量初始化"><a href="#2-变量初始化" class="headerlink" title="2. 变量初始化"></a>2. 变量初始化</h3><p>在声明一个变量之后，必须用复制语句对该变量进行显式的初始化，千万不要使用未初始化的变量的值，否则会报错。</p>
+<p>变量初始化方式：</p>
+<ul>
+<li><p>先声明再初始化：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a;</span><br><span class="line">a = <span class="number">5</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>声明的同时进行初始化：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">5</span>;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong>从Java10开始</strong>，对于局部变量，如果可以从变量的初始值推断出它的类型，就不再需要声明类型，只需要使用关键字var而无须指定类型：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">var</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">12</span>; <span class="comment">// a is an int</span></span><br><span class="line"><span class="type">var</span> <span class="variable">b</span> <span class="operator">=</span> <span class="string">&quot;Hello&quot;</span>; <span class="comment">// b is a String</span></span><br></pre></td></tr></table></figure>
+
+<p>C 和 C++区分变量的声明和定义，而Java对此并不作区分。</p>
+<h3 id="3-常量"><a href="#3-常量" class="headerlink" title="3. 常量"></a>3. 常量</h3><p>在Java中，使用<code>final</code>关键字指示常量。常量只能被赋值一次，习惯上，常量名使用全大写。</p>
+<p>在Java中，经常希望某个常量可以在一个类的多个方法中使用，通常将这些常量成为<strong>类常量</strong>，可以使用关键字<code>static final</code>设置一个类常量。</p>
+<p>如果一个类的常量声明为public，那么其他类的方法也可以使用这个常量。</p>
+<h3 id="4-枚举类型"><a href="#4-枚举类型" class="headerlink" title="4. 枚举类型"></a>4. 枚举类型</h3><p>自定义枚举类型：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="title class_">Size</span> &#123;SMALL, MEDIUM, LARGE, EXTRA_LARGE&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>然后可以声明这种类型的变量:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Size</span> <span class="variable">s</span> <span class="operator">=</span> Size.MEDIUM;</span><br></pre></td></tr></table></figure>
+
+<p>枚举类型的变量只能存储枚举类型中给定的某个枚举值，或者null，null表示这个变量没有设置任何值。</p>
+<h3 id="5-运算符"><a href="#5-运算符" class="headerlink" title="5. 运算符"></a>5. 运算符</h3><ul>
+<li><h4 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h4></li>
+</ul>
+<p>​	加（+）、减（-）、乘（*）、除（&#x2F;）、求余（%）<br>​	当参与除法运算的两个操作数都是整数时，表示整数除法，否则表示浮点数除法。<br>​	整数被0除会产生一个异常，而浮点数被0除会得到无穷大或NaN结果。</p>
+<ul>
+<li><h4 id="数学函数与常量"><a href="#数学函数与常量" class="headerlink" title="数学函数与常量"></a>数学函数与常量</h4><p>在Math类中，包含了许多数学函数，例如：</p>
+<ul>
+<li>求平方根：Math.sqrt()</li>
+<li>幂运算：Math.pow(x, a)</li>
+<li>三角函数：Math.sin、Math.cos、Math.tan、Math.atan、Math.atan2</li>
+<li>指数函数及其反函数——自然对数以及以10为底的对数：Math.exp、Math.log、Math.log10</li>
+<li>常量π 以及 常量e：Math.PI、Math.E</li>
+</ul>
+<p>导入Math类时按以下方式导入，可以在使用数学函数时不指定类名前缀：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> java.lang.Math.*</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><h4 id="数值类型之间的转换-隐式类型转换"><a href="#数值类型之间的转换-隐式类型转换" class="headerlink" title="数值类型之间的转换(隐式类型转换)"></a>数值类型之间的转换(隐式类型转换)</h4><p><img src="/Java/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/2.Java%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/image-20230918164655559.png" alt="image-20230918164655559"><br>如图，实线箭头表示无信息丢失的转换，虚线箭头表示有精度损失的转换。例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> <span class="number">123456789</span>;</span><br><span class="line"><span class="type">float</span> <span class="variable">f</span> <span class="operator">=</span> n; <span class="comment">// f = 1.23456792E8  该大整数包含的位数比float能够表示的位数多</span></span><br></pre></td></tr></table></figure>
+
+<p>二元运算符中包含的隐式转换：</p>
+<blockquote>
+<p>两个操作数中有一个double类型，另一个就会自动转换为double类型；<br>否则，如果其中一个运算符是float类型，另一个会自动转换为float类型；<br>否则，如果其中一个运算符是long类型，另一个会自动转换为long类型；<br>否则，两个操作数都被转换为int类型。</p>
+</blockquote>
+</li>
+<li><h4 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h4><p>有时需要强制类型转换，例如将int转换为double，这种转换可能会造成信息损失，强制类型转换的语法格式是在圆括号内给出想要转换的数据类型，例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">double</span> <span class="variable">x</span> <span class="operator">=</span> <span class="number">1.833</span>;</span><br><span class="line"><span class="type">int</span> <span class="variable">y</span> <span class="operator">=</span> (<span class="type">int</span>) x; <span class="comment">// y = 1</span></span><br></pre></td></tr></table></figure>
+
+<p>这样，数值y通过强制类型转换将x的小数部分截断而得到整形数值。<br>如果相对浮点类型进行舍入运算，得到最接近的整数，可以使用Math.round()方法，需要注意的是，Math.round()方法返回结果为long类型，所以如果要用该方法转换整数，还是需要使用强制类型转换：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">double</span> <span class="variable">x</span> <span class="operator">=</span> <span class="number">1.833</span>;</span><br><span class="line"><span class="type">int</span> <span class="variable">y</span> <span class="operator">=</span> (<span class="type">int</span>)Math.round(x); <span class="comment">// y = 2</span></span><br></pre></td></tr></table></figure>
+
+<p>强制类型转换时如果超出了目标的标识范围，则结果会截断成一个完全不同的值。</p>
+<p>不要在boolean类型与任何类型之间进行强制类型转换，必要时可以使用三元运算符：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">boolean</span> <span class="variable">a</span> <span class="operator">=</span> <span class="literal">true</span>;</span><br><span class="line"><span class="type">int</span> <span class="variable">b</span> <span class="operator">=</span> a ? <span class="number">1</span> : <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><h4 id="结合赋值和运算符"><a href="#结合赋值和运算符" class="headerlink" title="结合赋值和运算符"></a>结合赋值和运算符</h4><p>同C++，有+&#x3D; 、-&#x3D;、&#x2F;&#x3D;、*&#x3D;、%&#x3D;等等一系列结合运算符，使用例如：</p>
+<p>x +&#x3D; 4; 等价于 x &#x3D; x + 4;</p>
+</li>
+<li><h4 id="自增自减运算符"><a href="#自增自减运算符" class="headerlink" title="自增自减运算符"></a>自增自减运算符</h4><p>同C++，自增运算：++、自减运算：–，表示数值加一或减一，其中</p>
+<p>运算符放在操作数前面，表示先加一再参与运算；运算符放在操作数后面，表示先参与运算再加一，例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">m</span> <span class="operator">=</span> <span class="number">7</span>;</span><br><span class="line"><span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> <span class="number">7</span>;</span><br><span class="line"><span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">2</span> * ++m; <span class="comment">// a = 16, m = 8</span></span><br><span class="line"><span class="type">int</span> <span class="variable">b</span> <span class="operator">=</span> <span class="number">2</span> * n++; <span class="comment">// a = 14, n = 8</span></span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><h4 id="关系和boolean运算符"><a href="#关系和boolean运算符" class="headerlink" title="关系和boolean运算符"></a>关系和boolean运算符</h4><p>数值比较：相等（&#x3D;&#x3D;）、不等（!&#x3D;）、&lt;、 &gt;、&lt;&#x3D;、&gt;&#x3D;</p>
+<p>逻辑运算：与（&amp;&amp;）、或（||）、非（!），<strong>逻辑运算按照“短路”方式求值</strong>，例如：a &amp;&amp; b, 如果表达式a为false，则直接返回false，不会去计算表达式b。</p>
+<p>三元运算符：contition ? expression1 : expression2    contition为true时，返回expression1，否则返回expression2</p>
+</li>
+<li><h4 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h4><p>位运算符包括：<br><code>&amp;</code>(“and”)、<br><code>|</code>(“or”)、<br><code>^</code>(“xor”)、<br><code>~</code>(“not”)、<br><code>&gt;&gt;</code>(算术右移，用符号位填充高位)、<br><code>&lt;&lt;</code>(算术左移，用0填充低位，高位舍弃)、<br><code>&gt;&gt;&gt;</code>(逻辑右移，用0填充高位)</p>
+<p><strong>不存在  &lt;&lt;&lt; 运算符</strong></p>
+<p>处理整形类型时，可以直接对组成整数的各个位完成操作，这意味着可以使用掩码技术得到整数中的各个位。</p>
+<p>应用在布尔类型上时，&amp; 和 | 运算符也会得到一个布尔类型值，不过同&amp;&amp; 和 || 等逻辑运算符不同的是，**&amp; 和 | 位运算符不采用“短路”的方式来求值，也就是说得到运算结果前两个操作数都需要计算。**</p>
+</li>
+<li><h4 id="括号与运算符级别"><a href="#括号与运算符级别" class="headerlink" title="括号与运算符级别"></a>括号与运算符级别</h4><table>
+<thead>
+<tr>
+<th>优先级</th>
+<th>运算符</th>
+<th>描述</th>
+<th>结合顺序</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>()</td>
+<td>圆括号</td>
+<td>从左到右</td>
+</tr>
+<tr>
+<td>2</td>
+<td>++ –</td>
+<td>后缀自增自减</td>
+<td>从左到右</td>
+</tr>
+<tr>
+<td>3</td>
+<td>++ – + - ~ !</td>
+<td>前缀自增自减、正负号、位取反、逻辑非</td>
+<td>从右到左</td>
+</tr>
+<tr>
+<td>4</td>
+<td>* &#x2F; %</td>
+<td>乘、除、取模</td>
+<td>从左到右</td>
+</tr>
+<tr>
+<td>5</td>
+<td>+ -</td>
+<td>加、减</td>
+<td>从左到右</td>
+</tr>
+<tr>
+<td>6</td>
+<td>&lt;&lt; &gt;&gt; &gt;&gt;&gt;</td>
+<td>左移、右移、无符号右移</td>
+<td>从左到右</td>
+</tr>
+<tr>
+<td>7</td>
+<td>&lt; &lt;&#x3D; &gt; &gt;&#x3D; instanceof</td>
+<td>小于、小于等于、大于、大于等于、instanceof</td>
+<td>从左到右</td>
+</tr>
+<tr>
+<td>8</td>
+<td>&#x3D;&#x3D; !&#x3D;</td>
+<td>等于、不等于</td>
+<td>从左到右</td>
+</tr>
+<tr>
+<td>9</td>
+<td>&amp;</td>
+<td>按位与</td>
+<td>从左到右</td>
+</tr>
+<tr>
+<td>10</td>
+<td>^</td>
+<td>按位异或</td>
+<td>从左到右</td>
+</tr>
+<tr>
+<td>11</td>
+<td>|</td>
+<td>按位或</td>
+<td>从左到右</td>
+</tr>
+<tr>
+<td>12</td>
+<td>&amp;&amp;</td>
+<td>逻辑与</td>
+<td>从左到右</td>
+</tr>
+<tr>
+<td>13</td>
+<td>||</td>
+<td>逻辑或</td>
+<td>从左到右</td>
+</tr>
+<tr>
+<td>14</td>
+<td>?:</td>
+<td>三元运算符</td>
+<td>从右到左</td>
+</tr>
+<tr>
+<td>15</td>
+<td>&#x3D; +&#x3D; -&#x3D; *&#x3D; &#x2F;&#x3D; %&#x3D; &amp;&#x3D; ^&#x3D; |&#x3D; &lt;&lt;&#x3D; &gt;&gt;&#x3D; &gt;&gt;&gt;&#x3D;</td>
+<td>赋值、复合赋值</td>
+<td>从右到左</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<p>圆括号可以改变运算符的优先级。</p>
+<h3 id="6-字符串"><a href="#6-字符串" class="headerlink" title="6. 字符串"></a>6. 字符串</h3><ul>
+<li><h4 id="子串"><a href="#子串" class="headerlink" title="子串"></a>子串</h4><p>Java的字符串与C和C++类似，代码单元和代码点都是从0开始计数。可以使用substring()方法获取子串，方法内可以传递两个参数，表示要截取字符串的开始位置和结束位置，且截取区间为左闭右开区间，也就是不包括结束位置的那一个字符，也可以只传递一个开始位置，此时结束位置默认到整个字符串结束：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> <span class="string">&quot;Hello&quot;</span>;</span><br><span class="line"><span class="type">String</span> <span class="variable">subs</span> <span class="operator">=</span> s.substring(<span class="number">0</span>, <span class="number">2</span>); <span class="comment">// subs = &quot;He&quot;</span></span><br><span class="line"><span class="type">String</span> <span class="variable">subss</span> <span class="operator">=</span> s.substring(<span class="number">2</span>); <span class="comment">// subss = &quot;llo&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="字符串拼接"><a href="#字符串拼接" class="headerlink" title="字符串拼接"></a>字符串拼接</h4><p>可以使用 <code>+</code>拼接两个字符串。</p>
+<p>当一个非字符串的值与一个字符串进行拼接时，该非字符串会转换成字符串。</p>
+</li>
+<li><h4 id="不可见字符串"><a href="#不可见字符串" class="headerlink" title="不可见字符串"></a>不可见字符串</h4><p>Java的String类没有提供直接修改字符串中某个字符的方法。如果希望修改字符串，只能对字符串变量重新进行赋值。</p>
+<p>这种不可变字符串有一个有点：<strong>编译器可以让字符串共享，可以想象各种字符串存放在公共的存储池中，字符串变量指向存储池中相应的位置，如果赋值一个字符串变量，原始字符串与复制的字符串共享相同的字符，也就是内存地址相同。</strong></p>
+<blockquote>
+<p>与C或C++不同的是，Java的字符串不是字符数组，其类似于C或C++ 中的char*指针</p>
+</blockquote>
+</li>
+<li><h4 id="判断字符串是否相等"><a href="#判断字符串是否相等" class="headerlink" title="判断字符串是否相等"></a>判断字符串是否相等</h4><p>可以使用<code>equals()</code>方法判断两个字符串是否相等，例如：s.equals(t), 如果字符串s 与 字符串t相等，返回true，否则返回false。如过要判断两个字符串是否相等，而且不区分大小写，可以使用<code>equalsIgnoreCase()</code>方法。</p>
+<p><strong>注意，不要使用 <code>==</code> 判断两个字符串是否相等！这个运算符只能判断两个字符串是否在同一个内存位置上，如果在同一个内存位置上当然相等，但是完全有可能两个相同的字符串存储在不同的位置上！</strong></p>
+</li>
+<li><h4 id="空字符串与null字符串"><a href="#空字符串与null字符串" class="headerlink" title="空字符串与null字符串"></a>空字符串与null字符串</h4><p>空字符串””是长度为零的字符串。可以用一下方式检查一个字符串是否为空：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (str.length() == <span class="number">0</span>)</span><br><span class="line">    或者</span><br><span class="line"><span class="keyword">if</span> (str.equals(<span class="string">&quot;&quot;</span>))</span><br></pre></td></tr></table></figure>
+
+<p>要检查一个字符串是否为null，可以使用以下方式：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (str == <span class="literal">null</span>)</span><br></pre></td></tr></table></figure>
+
+<p>如果要检查一个字符串既不是null也不是空字符串，可以使用以下方式：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (str != <span class="literal">null</span> &amp;&amp; str.length() != <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="码点和代码单元"><a href="#码点和代码单元" class="headerlink" title="码点和代码单元"></a>码点和代码单元</h4><p><strong>java字符串由char值序列组成。</strong>char类型是一个采用UTF-16编码表示Unicode码点的代码单元，常用的Unicode字符使用一个代码单元就可以表示，而一些后增加的辅助字符（大于U+FFFF）则需要两个代码单元来表示，当字符串中存在辅助字符时，如果使用char类型只能获取到辅助字符两个代码单元中的一个，所以<strong>非必要不要使用char类型</strong>。</p>
+</li>
+<li><h4 id="StringAPI"><a href="#StringAPI" class="headerlink" title="StringAPI"></a>StringAPI</h4><p>String类提供了非常多的用于操作字符串的方法，可以阅读联机API文档获取详细信息。</p>
+</li>
+<li><h4 id="联机API文档"><a href="#联机API文档" class="headerlink" title="联机API文档"></a>联机API文档</h4><p><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/9/docs/api/">https://docs.oracle.com/javase/9/docs/api/</a></p>
+</li>
+<li><h4 id="构建字符串"><a href="#构建字符串" class="headerlink" title="构建字符串"></a>构建字符串</h4><p>有时需要用较短的字符串来构建字符串，如果使用字符串拼接，效率会比较低，每次拼接字符串时，都会构建一个新的String对象，既耗时又浪费空间。使用StringBuilder 或者 StringBuffer类就可以避免这个问题的发生。</p>
+<p>以StringBuilder为例，展示如何使用一些较短的字符串来构建一个字符串。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1.创建一个字符串构造器</span></span><br><span class="line"><span class="type">StringBuilder</span> <span class="variable">builder</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line"><span class="comment">// 2.每当要添加一部分内容时，就调用append方法</span></span><br><span class="line">builder.append(part1);</span><br><span class="line">builder.append(part2);</span><br><span class="line"><span class="comment">// 3.字符串构建完成时调用toString方法，得到一个字符串对象</span></span><br><span class="line"><span class="type">String</span> <span class="variable">completedString</span> <span class="operator">=</span> builder.toString();</span><br></pre></td></tr></table></figure>
+
+<p>StringBuilder 与 StringBuffer的区别：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Java中的StringBuffer和StringBuilder都是可变字符串，它们的主要区别在于线程安全性和性能。</span><br><span class="line"></span><br><span class="line">StringBuffer是线程安全的，因为它的所有公共方法都是同步的，这意味着多个线程可以同时访问一个StringBuffer对象而不会导致数据不一致的问题。但是，由于同步会带来额外的开销，因此StringBuffer的性能可能会比StringBuilder差一些。</span><br><span class="line"></span><br><span class="line">StringBuilder是非线程安全的，因为它的方法没有同步，这意味着在多线程环境下使用StringBuilder可能会导致数据不一致的问题。但是，由于没有同步的开销，StringBuilder的性能通常比StringBuffer更好。</span><br><span class="line"></span><br><span class="line">因此，如果需要在多线程环境下使用可变字符串，应该使用StringBuffer，否则建议使用StringBuilder以获得更好的性能。</span><br></pre></td></tr></table></figure>
+
+<p>StringBuilder 常用API:</p>
+<ol>
+<li>append(String str)：将指定的字符串追加到此字符序列。</li>
+<li>insert(int offset, String str)：将指定的字符串插入此字符序列中的指定位置。</li>
+<li>delete(int start, int end)：删除此字符序列中指定位置的字符。</li>
+<li>replace(int start, int end, String str)：使用指定的字符串替换此字符序列中从start到end-1的字符。</li>
+<li>reverse()：将此字符序列用其反转形式取代。</li>
+<li>length()：返回此字符序列的长度。</li>
+<li>toString()：返回此字符序列的字符串表示形式。</li>
+</ol>
+</li>
+</ul>
+<h3 id="7-输入与输出"><a href="#7-输入与输出" class="headerlink" title="7. 输入与输出"></a>7. 输入与输出</h3><ul>
+<li><h4 id="读取输入"><a href="#读取输入" class="headerlink" title="读取输入"></a>读取输入</h4><p>读取输入依赖于Scanner类，需要创建一个与标准输入流System.in关联的Scanner对象：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Scanner</span> <span class="variable">in</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br></pre></td></tr></table></figure>
+
+<p>然后就可以使用Scanner类的各种方法读取输入了，例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> in.nextLine(); <span class="comment">//读取一行输入，回车结束</span></span><br><span class="line"><span class="type">String</span> <span class="variable">firstName</span> <span class="operator">=</span> in.next(); <span class="comment">//读取一个单词（以空白符作为分隔符）</span></span><br><span class="line"><span class="type">int</span> <span class="variable">number</span> <span class="operator">=</span> in.nextInt(); <span class="comment">// 读取一个整数</span></span><br><span class="line"><span class="type">double</span> <span class="variable">number</span> <span class="operator">=</span> in.nextDouble(); <span class="comment">//读取一个浮点数</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="标准输出流（控制台窗口）"><a href="#标准输出流（控制台窗口）" class="headerlink" title="标准输出流（控制台窗口）"></a>标准输出流（控制台窗口）</h4><p>将输出打印到标准输出流（控制台窗口），只需要调用标准输出流System.out的下列方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">System.out.print(text); <span class="comment">// 将内容text打印到控制台窗口</span></span><br><span class="line">System.out.println(text); <span class="comment">// 将内容text打印到控制台窗口,然后另起一行</span></span><br><span class="line">System.out.printf(); <span class="comment">// 格式化输出内容</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="格式化输出"><a href="#格式化输出" class="headerlink" title="格式化输出"></a>格式化输出</h4><p>Java5沿用了C语言函数库中的方法<code>printf()</code>, 用来格式化输出内容。下面是一个例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.printf(<span class="string">&quot;Hello, %s. Next year, you&#x27;ll be %d&quot;</span>, name, age);</span><br></pre></td></tr></table></figure>
+
+<p>其中，%为<strong>格式说明符</strong>，格式说明符尾部的<strong>转换符</strong>提示了要格式化的数值的类型，每一个以%字符开始的格式说明符都用相应的参数替换，以下是所有的转换符：</p>
+<table>
+<thead>
+<tr>
+<th>转换符</th>
+<th>描述</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>%d</td>
+<td>十进制整数</td>
+<td>printf(“%d”, 42); &#x2F;&#x2F; 输出 42</td>
+</tr>
+<tr>
+<td>%o</td>
+<td>八进制整数</td>
+<td>printf(“%o”, 42); &#x2F;&#x2F; 输出 52</td>
+</tr>
+<tr>
+<td>%x, %X</td>
+<td>十六进制整数</td>
+<td>printf(“%x”, 42); &#x2F;&#x2F; 输出 2a</td>
+</tr>
+<tr>
+<td>%f</td>
+<td>十进制浮点数</td>
+<td>printf(“%f”, 3.14159); &#x2F;&#x2F; 输出 3.141590</td>
+</tr>
+<tr>
+<td>%e, %E</td>
+<td>科学计数法表示的浮点数</td>
+<td>printf(“%e”, 3.14159); &#x2F;&#x2F; 输出 3.141590e+00</td>
+</tr>
+<tr>
+<td>%g, %G</td>
+<td>根据值的大小自动选择%f或%e</td>
+<td>printf(“%g”, 3.14159); &#x2F;&#x2F; 输出 3.14159</td>
+</tr>
+<tr>
+<td>%c</td>
+<td>字符</td>
+<td>printf(“%c”, ‘A’); &#x2F;&#x2F; 输出 A</td>
+</tr>
+<tr>
+<td>%s</td>
+<td>字符串</td>
+<td>printf(“%s”, “Hello, World!”); &#x2F;&#x2F; 输出 Hello, World!</td>
+</tr>
+<tr>
+<td>%b</td>
+<td>布尔值</td>
+<td>printf(“%b”, true); &#x2F;&#x2F; 输出 true</td>
+</tr>
+<tr>
+<td>%n</td>
+<td>换行符（与平台有关）</td>
+<td>printf(“Hello,%nWorld!”); &#x2F;&#x2F; 输出 Hello, World!</td>
+</tr>
+<tr>
+<td>%h</td>
+<td>散列码</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>还可以指定控制格式化输出外观的各种标志，例如逗号标志可以增加分组分隔符:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(<span class="string">&quot;%,.2f&quot;</span>, <span class="number">10000.0</span> / <span class="number">3.0</span>); <span class="comment">// 输出 3,333.33</span></span><br></pre></td></tr></table></figure>
+
+<p>以下是用于printf 的标志：</p>
+<table>
+<thead>
+<tr>
+<th>标志</th>
+<th>目的</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>+</td>
+<td>打印正数和负数的符号</td>
+<td>+3333.33</td>
+</tr>
+<tr>
+<td>空格</td>
+<td>在正数之前添加空格</td>
+<td>| 3333.33|</td>
+</tr>
+<tr>
+<td>0</td>
+<td>数字签名补 0</td>
+<td>3333.33</td>
+</tr>
+<tr>
+<td>-</td>
+<td>左补齐</td>
+<td>|3333.33 |</td>
+</tr>
+<tr>
+<td>(</td>
+<td>将负数括在括号内</td>
+<td>( 3,333,33)</td>
+</tr>
+<tr>
+<td>,</td>
+<td>添加分组分割符</td>
+<td>3,333,33</td>
+</tr>
+<tr>
+<td>#(对于 f 格式)</td>
+<td>包含小数点</td>
+<td>3,333.</td>
+</tr>
+<tr>
+<td>#(对于 x 或 0 格式)</td>
+<td>添加前缀 0x 或 0</td>
+<td>0xcafe</td>
+</tr>
+<tr>
+<td>$</td>
+<td>给定被格式化的参数索引。例如 %1d,%1x 将以十进制和十六进制格式打印第一个参数</td>
+<td>159 9F</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>格式化前面说明的数值。例如 % d%&lt;x 以十进制和十六进制打印同一个数值</td>
+<td>159 9F</td>
+</tr>
+</tbody></table>
+<p>还可以使用静态的String.format 方法创建一个格式化的字符串，而不打印输出：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">message</span> <span class="operator">=</span> String.format(<span class="string">&quot;Hello, %s. Next year, you&#x27;ll be %d&quot;</span>, name, age);</span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="文件的输入与输出"><a href="#文件的输入与输出" class="headerlink" title="文件的输入与输出"></a>文件的输入与输出</h4><p>在java中，读取文件的方式有很多种，下面介绍使用Scanner类读取文件的一种方式：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 构造一个Scanner对象，在构造方法中声明Path文件路径参数，以及编码格式</span></span><br><span class="line">	<span class="comment">//Java8 使用Paths.get获取文件路径</span></span><br><span class="line"><span class="type">Scanner</span> <span class="variable">in</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(Paths.get(<span class="string">&quot;e:\\test.txt&quot;</span>), StandardCharsets.UTF_8.toString());</span><br><span class="line">	<span class="comment">//Java11之后，使用Path.of()方法获取文件路径</span></span><br><span class="line"><span class="type">Scanner</span> <span class="variable">in</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(Path.of(<span class="string">&quot;e:\\test.txt&quot;</span>), StandardCharsets.UTF_8.toString());</span><br><span class="line"><span class="comment">// 然后可以使用前面介绍的Scanner方法读取文件中的内容，例如</span></span><br><span class="line">System.out.println(in.nextLine()); <span class="comment">// 读取并输出文件中一行的内容</span></span><br></pre></td></tr></table></figure>
+
+<p>使用PrintWriter类写入文件的一种方式：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	构建一个PrintWriter构造器，并在构造方法中传入文件路径以及编码方式参数，这里的文件路径可以直接使用字符串，注意，如果使用全路径，要使用两个\\进行转义，如果使用相对路径，则文件需要放在解释器当前所在目录。如果文件名不存在，java就会在路径下创建该文件。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="type">PrintWriter</span> <span class="variable">out</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">PrintWriter</span>(<span class="string">&quot;test.txt&quot;</span>, StandardCharsets.UTF_8.toString());</span><br><span class="line">out.write(<span class="string">&quot;Hello World&quot;</span>);</span><br><span class="line">out.close();  <span class="comment">// 最后必须调用close方法，将缓存中的内容刷新保存在文件中</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="8-控制流程"><a href="#8-控制流程" class="headerlink" title="8. 控制流程"></a>8. 控制流程</h3><ul>
+<li><p>块作用域</p>
+<p>含义：块是指由若干条Java语句组成的语句，并用一对大括号括起来。块确定了变量的作用域，一个块可以嵌套在另一个块中，但是不能在嵌套的两个块中声明同名的变量。</p>
+</li>
+<li><p>条件语句</p>
+<p>经典的if-else不再赘述</p>
+</li>
+<li><p>循环</p>
+<p>经典的while、do-while不再赘述</p>
+</li>
+<li><p>确定循环</p>
+<p>for循环采用计数器进行循环控制，因此可以做到确定次数的循环。</p>
+<p>for语句的第一部分通常是对计数器进行初始化；第二部分给出循环的结束条件；第三部分对计数器进行更新。</p>
+<p>建议for语句的3个部分对同一个计数器变量进行初始化、检测和更新，避免循环晦涩难懂。</p>
+<p>灵活使用for循环（通常不建议使用）：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 不设置结束条件:</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; ; i++) &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 不设置结束条件和更新语句:</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; ;) &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 什么都不设置:</span></span><br><span class="line"><span class="keyword">for</span> (;;) &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意，对于多重嵌套的循环，如果使用了break语句，只会结束break所在的那一层循环。例如一个双层循环，如果内层循环中有break语句，则执行到break时只会中断该内层循环，外层循环不受影响。</p>
+</li>
+<li><p>多条件选择：switch语句</p>
+<p>Java 的 switch语句同 c++，示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(choice)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">       ...</span><br><span class="line">       <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">       ...</span><br><span class="line">       <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">       ...</span><br><span class="line">       <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">       ...</span><br><span class="line">       <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意，switch语句的结束条件为碰到break；或者执行到整个switch语句的结束处。<strong>多数情况下，我们希望条件匹配到某个case，然后只执行该case下的逻辑，所以需要在每个case语句的末尾加上break语句。</strong></p>
+</li>
+<li><p>中断控制流程的语句</p>
+<ul>
+<li><p>break：中断并退出当前循环。</p>
+</li>
+<li><p>带标签的break：退出多重循环，标签必须在希望跳出的最外层循环之前，并且必须紧跟一个冒号：</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">escape_mark: <span class="comment">//break标签</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">10</span>; i ++)&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; <span class="number">10</span>; j++) &#123;</span><br><span class="line">        System.out.println(i + <span class="string">&quot;, &quot;</span> + j);</span><br><span class="line">        <span class="keyword">if</span> (i == <span class="number">5</span> &amp;&amp; j == <span class="number">5</span>)</span><br><span class="line">            <span class="keyword">break</span> escape_mark; <span class="comment">//跳出两层循环</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>标签也可用到if语句和块语句中，但只能跳出语句块，不能跳入语句块</p>
+<ul>
+<li>continue: 跳过当前循环体的剩余部分，立刻跳到循环首部。</li>
+</ul>
+</li>
+</ul>
+<h3 id="9-大数"><a href="#9-大数" class="headerlink" title="9. 大数"></a>9. 大数</h3><p>如果基本的整数和浮点数的精度无法满足要求，可以使用 java.math 包中的两个类：BigInteger 和 BigDecimal 。这两个类本别可以实现任意精度的整数运算 和 任意精度的浮点数运算。</p>
+<h3 id="10-数组"><a href="#10-数组" class="headerlink" title="10. 数组"></a>10. 数组</h3><ul>
+<li><p>数组的声明：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>[] a;</span><br><span class="line">或</span><br><span class="line"><span class="type">int</span> a[];</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>数组的创建：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用new</span></span><br><span class="line"><span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">100</span>]; <span class="comment">// 创建了一个长度为100的数组a</span></span><br></pre></td></tr></table></figure>
+
+<p>注意，数组的长度在创建后就无法改变，如果需要经常改变数组的大小，应该使用另一种数据结构——数组列表（array list）。</p>
+</li>
+<li><p>数组的初始化</p>
+<p>默认初始化值：创建一个数字数组时，所有元素都默认初始化为0；创建一个boolean数组时，所有元素都默认初始化为false；创建一个对象数组时，所有元素都默认初始化为null。</p>
+<p>可以先创建一个数组，然后使用循环语句对每个元素赋值。</p>
+<p>创建数组同时初始化：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>声明一个匿名数组：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">int</span>[] &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>可以使用这种匿名数组的方式重新初始化一个已有数组，而不需要创建新的数组：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">b</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">int</span>[] &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>访问数组元素</p>
+<p>数组元素下标从0开始。</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Java/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/1.Java%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%8E%AF%E5%A2%83/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Taizi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/Java/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/1.Java%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%8E%AF%E5%A2%83/" class="post-title-link" itemprop="url">1.Java程序设计环境</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-09-27 18:42:13" itemprop="dateModified" datetime="2023-09-27T18:42:13+08:00">2023-09-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">Java核心技术</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>571</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -351,37 +1047,25 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h1><h2 id="设计模式分类"><a href="#设计模式分类" class="headerlink" title="设计模式分类"></a>设计模式分类</h2><ul>
-<li>创建型模式（ 如何创建对象，让对象的创建和使用分离）<ul>
-<li>单例模式、工厂模式、抽象工厂模式、建造者模式、原型模式</li>
+          <h1 id="1-Java程序设计环境"><a href="#1-Java程序设计环境" class="headerlink" title="1. Java程序设计环境"></a>1. Java程序设计环境</h1><h2 id="一些术语"><a href="#一些术语" class="headerlink" title="一些术语"></a>一些术语</h2><ul>
+<li>JDK：Java Development Kit（Java开发工具包）</li>
+<li>JRE: Java Runtime Environment （Java运行时环境）</li>
+<li>Java SE：Java Standard Edition（Java标准版，用于桌面或简单服务器应用的Java平台）</li>
+<li>Java EE:   Java Enterprise Edition（Java企业版，用于复杂服务器应用的Java平台）</li>
+<li>Java ME:  Java Micro Edition （Java 微型版，用于小型设备的Java平台）</li>
 </ul>
-</li>
-<li>结构型模式（ 将对象和类组合成一定的结构）<ul>
-<li>适配器模式、桥接模式、装饰模式、组合模式、外观模式、享元模式、代理模式</li>
-</ul>
-</li>
-<li>行为型模式（对象间如何相互协作，完成单个对象无法完成的任务）<ul>
-<li>模板方法模式、命令模式、迭代器模式、观察者模式、中介者模式、备忘录模式、解释器模式、状态模式、策略模式、职责链模式、访问者模式</li>
-</ul>
-</li>
-</ul>
-<h2 id="OOP（面向对象）七大原则"><a href="#OOP（面向对象）七大原则" class="headerlink" title="OOP（面向对象）七大原则"></a>OOP（面向对象）七大原则</h2><ul>
-<li><strong>开闭原则</strong>：对扩展开放，对修改关闭。</li>
-</ul>
-<blockquote>
-<p>当应用需求发生变化时，能够尽量在原有代码上进行扩展，而不修改原有代码。</p>
-</blockquote>
+<h2 id="使用命令行工具对Java代码进行编译"><a href="#使用命令行工具对Java代码进行编译" class="headerlink" title="使用命令行工具对Java代码进行编译"></a>使用命令行工具对Java代码进行编译</h2><ol>
+<li>首先必须安装JDK，并且配置好环境变量</li>
+<li>Java 代码存放在以   .java结尾的文档中</li>
+<li>使用命令  <code>javac ClassName.java</code> ,  javac程序是一个Java编译器，它将.java文件编译成字节码文件.class, 所以编译后将得到ClassName.class字节码文件。</li>
+<li>使用命令<code>java ClassName</code>, java 程序启动Java虚拟机，虚拟机执行编译器编译到类文件中的字节码。</li>
+</ol>
+<p><strong>注意点：</strong></p>
 <ul>
-<li><strong>里氏替换原则</strong>：继承必须保证父类所拥有的性质在子类中仍然成立。</li>
+<li>注意JDK版本，以及环境变量的配置</li>
+<li><strong>Java区分大小写，类名第一个字母需要大写</strong></li>
+<li>javac 编译器需要一个文件名（ClassName.java),  而Java程序运行时只需要指定类名（ClassName), 不需要带扩展名.java或.class。</li>
 </ul>
-<blockquote>
-<p>子类尽量在继承父类方法的基础上，添加自己的方法来实现新的功能，尽量不重写父类已有的方法。</p>
-</blockquote>
-<ul>
-<li><strong>依赖倒置原则</strong>：要面向接口编程，不要面向实现编程。</li>
-</ul>
-<blockquote>
-</blockquote>
 
       
     </div>
@@ -408,7 +1092,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/IDEA/IDEA%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -426,7 +1110,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/" class="post-title-link" itemprop="url">未命名</a>
+          <a href="/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/IDEA/IDEA%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/" class="post-title-link" itemprop="url">IDEA基本配置</a>
         </h2>
 
         <div class="post-meta-container">
@@ -444,7 +1128,20 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-05-06 13:41:50" itemprop="dateModified" datetime="2022-05-06T13:41:50+08:00">2022-05-06</time>
+      <time title="修改时间：2023-09-27 18:38:50" itemprop="dateModified" datetime="2023-09-27T18:38:50+08:00">2023-09-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">开发工具</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/IDEA/" itemprop="url" rel="index"><span itemprop="name">IDEA</span></a>
+        </span>
     </span>
 
   
@@ -454,14 +1151,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>5.2k</span>
+      <span>1.5k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>9 分钟</span>
+      <span>3 分钟</span>
     </span>
 </div>
 
@@ -472,484 +1169,47 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="集合框架"><a href="#集合框架" class="headerlink" title="集合框架"></a>集合框架</h1><h2 id="一、集合框架图"><a href="#一、集合框架图" class="headerlink" title="一、集合框架图"></a>一、集合框架图</h2><p><img src="https://www.runoob.com/wp-content/uploads/2014/01/2243690-9cd9c896e0d512ed.gif" alt="img"></p>
-<h3 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h3><p>从上面的集合框架图中可以看出，语法形式上来看，集合框架主要有三种形式，首先是接口（图中的原点虚线框），最主要的集合接口是Collection，其次有List、Set、Map、Queue等，然后是抽象类（短横线虚线框），抽象类部分实现了接口中的方法，最后是具体的实现类(实线框），如ArrayList、LinkedList、HashSet、TreeSet、HashMap、TreeMap等。此外，还有一些集合算法，即实现集合接口的对象中的一些方法，如搜索、排序等方法。</p>
-<h2 id="二、Set和List的区别"><a href="#二、Set和List的区别" class="headerlink" title="二、Set和List的区别"></a>二、Set和List的区别</h2><ul>
-<li><ol>
-<li>Set 接口实例存储的是无序的，不重复的数据。List 接口实例存储的是有序的，可以重复的元素。</li>
-</ol>
-</li>
-<li><ol start="2">
-<li>Set检索效率低下，删除和插入效率高，插入和删除不会引起元素位置改变 **&lt;实现类有HashSet,TreeSet&gt;**。</li>
-</ol>
-</li>
-<li><ol start="3">
-<li>List和数组类似，可以动态增长，根据实际存储的数据的长度自动增长List的长度。查找元素效率高，插入删除效率低，因为会引起其他元素位置改变 <strong>&lt;实现类有ArrayList,LinkedList,Vector&gt;</strong> 。</li>
-</ol>
-</li>
-</ul>
-<h2 id="三、常用集合介绍"><a href="#三、常用集合介绍" class="headerlink" title="三、常用集合介绍"></a>三、常用集合介绍</h2><h3 id="3-1-ArrayList"><a href="#3-1-ArrayList" class="headerlink" title="3.1 ArrayList"></a>3.1 ArrayList</h3><p><img src="https://www.runoob.com/wp-content/uploads/2020/06/ArrayList-1-768x406-1.png" alt="img"></p>
-<h4 id="3-1-1-引入和初始化"><a href="#3-1-1-引入和初始化" class="headerlink" title="3.1.1 引入和初始化"></a>3.1.1 引入和初始化</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList; <span class="comment">// 引入 ArrayList 类</span></span><br><span class="line"></span><br><span class="line">ArrayList&lt;E&gt; objectName =<span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();　 <span class="comment">// 初始化</span></span><br></pre></td></tr></table></figure>
-
-<pre><code>#### 	3.1.2 实现方法
-</code></pre>
+          <h3 id="IDEA基本配置"><a href="#IDEA基本配置" class="headerlink" title="IDEA基本配置"></a>IDEA基本配置</h3><h4 id="1-maven仓库配置-当前项目有效"><a href="#1-maven仓库配置-当前项目有效" class="headerlink" title="1. maven仓库配置(当前项目有效)"></a>1. maven仓库配置(当前项目有效)</h4><p>maven设置打开方式：</p>
 <ul>
-<li><p>添加元素： list名.add(要添加的元素)</p>
-</li>
-<li><p>访问元素： list名.get(元素索引)</p>
-</li>
-<li><p>修改元素： list名.get(元素索引，要修改的值)</p>
-</li>
-<li><p>删除元素： list名.remove(元素索引)</p>
-</li>
-<li><p>获取list中元素的数量： list名.size()</p>
-</li>
-<li><p>遍历：</p>
+<li>settings→Build,Execution,Deployment→Build Tools→Maven</li>
+<li>最右侧点击maven，然后点击设置图标，点击maven settings</li>
+</ul>
+<p>在maven设置中配置Maven home path，地址为maven的安装文件夹的位置，如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E:/Maven/apache-maven-3.8.4</span><br></pre></td></tr></table></figure>
+
+<p>配置maven的配置文件位置，地址为maven安装文件夹下的conf目录下的settings.xml文件，如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E:\Maven\apache-maven-3.8.4\conf\settings.xml</span><br></pre></td></tr></table></figure>
+
+<p>本地的maven仓库地址需要自己指定目录，如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E:\Maven\MyRepository</span><br></pre></td></tr></table></figure>
+
+<p><strong>如果想使之后的项目都沿用此配置，可以在File→New Projects Setup→Setting for new Projects中进行maven配置</strong></p>
+<h4 id="2-文件的基本模板配置（可选，便利性选项）"><a href="#2-文件的基本模板配置（可选，便利性选项）" class="headerlink" title="2. 文件的基本模板配置（可选，便利性选项）"></a>2. 文件的基本模板配置（可选，便利性选项）</h4><p>文件的基本模板规定了文件的创建格式和创建后文件中的基本内容，除了idea自带的模板外，还可以对经常需要创建的文件类型建立模板。</p>
+<p>配置位置在settings→Editor→File and Code Templates→Files,可以指定模板名称、模板内容以及模板类型（即文件的后缀名）等。</p>
+<p>以下是一些模板，随时更新和增加：</p>
+<p>Mybatis配置文件Mybatis.xml，模板内容：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span> ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">mapper</span></span></span><br><span class="line"><span class="meta">        <span class="keyword">PUBLIC</span> <span class="string">&quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;</span></span></span><br><span class="line"><span class="meta">        <span class="string">&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">&quot;&quot;</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>themeleaf.html</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!doctype <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;ch&quot;</span> <span class="attr">xmlns:th</span>=<span class="string">&quot;http://www.thymeleaf.org&quot;</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="3-文件头设置"><a href="#3-文件头设置" class="headerlink" title="3. 文件头设置"></a>3. 文件头设置</h4><p>文件头即创建文件时自动添加的注释，用于标注代码的创建时间、作者等信息。</p>
+<p>设置位置在settings→Editor→File and Code Templates→Includes→File Header</p>
+<p>内容可以自定义，当前设置的内容为：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Created</span> with IntelliJ IDEA</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span> Kaiyuan Zhang</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Version</span> 1.0.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Since</span> 1.0.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@CreateDate</span> $DATE</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@CreateTime</span> $HOUR:$MINUTE</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="4-共享进程堆大小设置（缓解项目build时idea卡死的问题）"><a href="#4-共享进程堆大小设置（缓解项目build时idea卡死的问题）" class="headerlink" title="4. 共享进程堆大小设置（缓解项目build时idea卡死的问题）"></a>4. 共享进程堆大小设置（缓解项目build时idea卡死的问题）</h4><p>如果要为当前项目设置：</p>
 <ul>
-<li>使用foreach（增强for循环）</li>
-<li>使用for循环</li>
-<li>使用迭代器</li>
+<li>settings→Build,Execution,Deployment→Complier→Shared build process heap size</li>
 </ul>
-</li>
-<li><p>常用操作</p>
-</li>
-<li><table>
-<thead>
-<tr>
-<th>方法</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-arraylist-add.html">add()</a></td>
-<td>将元素插入到指定位置的 arraylist 中</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-arraylist-addall.html">addAll()</a></td>
-<td>添加集合中的所有元素到 arraylist 中</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-arraylist-clear.html">clear()</a></td>
-<td>删除 arraylist 中的所有元素</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-arraylist-clone.html">clone()</a></td>
-<td>复制一份 arraylist</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-arraylist-contains.html">contains()</a></td>
-<td>判断元素是否在 arraylist</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-arraylist-get.html">get()</a></td>
-<td>通过索引值获取 arraylist 中的元素</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-arraylist-indexof.html">indexOf()</a></td>
-<td>返回 arraylist 中元素的索引值</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-arraylist-removeall.html">removeAll()</a></td>
-<td>删除存在于指定集合中的 arraylist 里的所有元素</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-arraylist-remove.html">remove()</a></td>
-<td>删除 arraylist 里的单个元素</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-arraylist-size.html">size()</a></td>
-<td>返回 arraylist 里元素数量</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-arraylist-isempty.html">isEmpty()</a></td>
-<td>判断 arraylist 是否为空</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-arraylist-sublist.html">subList()</a></td>
-<td>截取部分 arraylist 的元素</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-arraylist-set.html">set()</a></td>
-<td>替换 arraylist 中指定索引的元素</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-arraylist-sort.html">sort()</a></td>
-<td>对 arraylist 元素进行排序</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-arraylist-toarray.html">toArray()</a></td>
-<td>将 arraylist 转换为数组</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-arraylist-tostring.html">toString()</a></td>
-<td>将 arraylist 转换为字符串</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-arraylist-surecapacity.html">ensureCapacity</a>()</td>
-<td>设置指定容量大小的 arraylist</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-arraylist-lastindexof.html">lastIndexOf()</a></td>
-<td>返回指定元素在 arraylist 中最后一次出现的位置</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-arraylist-retainall.html">retainAll()</a></td>
-<td>保留 arraylist 中在指定集合中也存在的那些元素</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-arraylist-containsall.html">containsAll()</a></td>
-<td>查看 arraylist 是否包含指定集合中的所有元素</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-arraylist-trimtosize.html">trimToSize()</a></td>
-<td>将 arraylist 中的容量调整为数组中的元素个数</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-arraylist-removerange.html">removeRange()</a></td>
-<td>删除 arraylist 中指定索引之间存在的元素</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-arraylist-replaceall.html">replaceAll()</a></td>
-<td>将给定的操作内容替换掉数组中每一个元素</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-arraylist-removeif.html">removeIf()</a></td>
-<td>删除所有满足特定条件的 arraylist 元素</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-arraylist-foreach.html">forEach()</a></td>
-<td>遍历 arraylist 中每一个元素并执行特定操作</td>
-</tr>
-</tbody></table>
-</li>
+<p>如果要为以后新建的所有项目设置（推荐):</p>
+<ul>
+<li>File→New Projects Setup→Setting for new Projects→Build,Execution,Deployment→Complier→Shared build process heap size</li>
 </ul>
-<h3 id="3-2-LinkedList"><a href="#3-2-LinkedList" class="headerlink" title="3.2 LinkedList"></a>3.2 LinkedList</h3><p><img src="https://www.runoob.com/wp-content/uploads/2020/06/linkedlist-2020-11-16.png" alt="img"></p>
-<h4 id="3-2-1-引入和初始化"><a href="#3-2-1-引入和初始化" class="headerlink" title="3.2.1 引入和初始化"></a>3.2.1 引入和初始化</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入 LinkedList 类</span></span><br><span class="line"><span class="keyword">import</span> java.util.LinkedList; </span><br><span class="line"></span><br><span class="line">LinkedList&lt;E&gt; list = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;E&gt;();   <span class="comment">// 普通创建方法</span></span><br><span class="line">或者</span><br><span class="line">LinkedList&lt;E&gt; list = <span class="keyword">new</span> <span class="title class_">LinkedList</span>(Collection&lt;? <span class="keyword">extends</span> <span class="title class_">E</span>&gt; c); <span class="comment">// 使用集合创建链表</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="3-2-2-迭代"><a href="#3-2-2-迭代" class="headerlink" title="3.2.2 迭代"></a>3.2.2 迭代</h4><ul>
-<li>使用foreach增强for循环</li>
-<li>使用for循环配合size()方法</li>
-</ul>
-<h4 id="3-2-3-常用方法"><a href="#3-2-3-常用方法" class="headerlink" title="3.2.3 常用方法"></a>3.2.3 常用方法</h4><table>
-<thead>
-<tr>
-<th>方法</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>public boolean add(E e)</td>
-<td>链表末尾添加元素，返回是否成功，成功为 true，失败为 false。</td>
-</tr>
-<tr>
-<td>public void add(int index, E element)</td>
-<td>向指定位置插入元素。</td>
-</tr>
-<tr>
-<td>public boolean addAll(Collection c)</td>
-<td>将一个集合的所有元素添加到链表后面，返回是否成功，成功为 true，失败为 false。</td>
-</tr>
-<tr>
-<td>public boolean addAll(int index, Collection c)</td>
-<td>将一个集合的所有元素添加到链表的指定位置后面，返回是否成功，成功为 true，失败为 false。</td>
-</tr>
-<tr>
-<td>public void addFirst(E e)</td>
-<td>元素添加到头部。</td>
-</tr>
-<tr>
-<td>public void addLast(E e)</td>
-<td>元素添加到尾部。</td>
-</tr>
-<tr>
-<td>public boolean offer(E e)</td>
-<td>向链表末尾添加元素，返回是否成功，成功为 true，失败为 false。</td>
-</tr>
-<tr>
-<td>public boolean offerFirst(E e)</td>
-<td>头部插入元素，返回是否成功，成功为 true，失败为 false。</td>
-</tr>
-<tr>
-<td>public boolean offerLast(E e)</td>
-<td>尾部插入元素，返回是否成功，成功为 true，失败为 false。</td>
-</tr>
-<tr>
-<td>public void clear()</td>
-<td>清空链表。</td>
-</tr>
-<tr>
-<td>public E removeFirst()</td>
-<td>删除并返回第一个元素。</td>
-</tr>
-<tr>
-<td>public E removeLast()</td>
-<td>删除并返回最后一个元素。</td>
-</tr>
-<tr>
-<td>public boolean remove(Object o)</td>
-<td>删除某一元素，返回是否成功，成功为 true，失败为 false。</td>
-</tr>
-<tr>
-<td>public E remove(int index)</td>
-<td>删除指定位置的元素。</td>
-</tr>
-<tr>
-<td>public E poll()</td>
-<td>删除并返回第一个元素。</td>
-</tr>
-<tr>
-<td>public E remove()</td>
-<td>删除并返回第一个元素。</td>
-</tr>
-<tr>
-<td>public boolean contains(Object o)</td>
-<td>判断是否含有某一元素。</td>
-</tr>
-<tr>
-<td>public E get(int index)</td>
-<td>返回指定位置的元素。</td>
-</tr>
-<tr>
-<td>public E getFirst()</td>
-<td>返回第一个元素。</td>
-</tr>
-<tr>
-<td>public E getLast()</td>
-<td>返回最后一个元素。</td>
-</tr>
-<tr>
-<td>public int indexOf(Object o)</td>
-<td>查找指定元素从前往后第一次出现的索引。</td>
-</tr>
-<tr>
-<td>public int lastIndexOf(Object o)</td>
-<td>查找指定元素最后一次出现的索引。</td>
-</tr>
-<tr>
-<td>public E peek()</td>
-<td>返回第一个元素。</td>
-</tr>
-<tr>
-<td>public E element()</td>
-<td>返回第一个元素。</td>
-</tr>
-<tr>
-<td>public E peekFirst()</td>
-<td>返回头部元素。</td>
-</tr>
-<tr>
-<td>public E peekLast()</td>
-<td>返回尾部元素。</td>
-</tr>
-<tr>
-<td>public E set(int index, E element)</td>
-<td>设置指定位置的元素。</td>
-</tr>
-<tr>
-<td>public Object clone()</td>
-<td>克隆该列表。</td>
-</tr>
-<tr>
-<td>public Iterator descendingIterator()</td>
-<td>返回倒序迭代器。</td>
-</tr>
-<tr>
-<td>public int size()</td>
-<td>返回链表元素个数。</td>
-</tr>
-<tr>
-<td>public ListIterator listIterator(int index)</td>
-<td>返回从指定位置开始到末尾的迭代器。</td>
-</tr>
-<tr>
-<td>public Object[] toArray()</td>
-<td>返回一个由链表元素组成的数组。</td>
-</tr>
-<tr>
-<td>public  T[] toArray(T[] a)</td>
-<td>返回一个由链表元素转换类型而成的数组。</td>
-</tr>
-</tbody></table>
-<h3 id="3-3-HashMap"><a href="#3-3-HashMap" class="headerlink" title="3.3 HashMap"></a>3.3 HashMap</h3><p><img src="https://www.runoob.com/wp-content/uploads/2020/07/WV9wXLl.png" alt="img"></p>
-<p>HashMap 是一个散列表，它存储的内容是键值对(key-value)映射。</p>
-<p>HashMap 实现了 Map 接口，根据键的 HashCode 值存储数据，具有很快的访问速度，最多允许一条记录的键为 null，不支持线程同步。</p>
-<p>HashMap 是无序的，即不会记录插入的顺序。</p>
-<p>HashMap 继承于AbstractMap，实现了 Map、Cloneable、java.io.Serializable 接口。</p>
-<h4 id="3-3-1-引入和初始化"><a href="#3-3-1-引入和初始化" class="headerlink" title="3.3.1 引入和初始化"></a>3.3.1 引入和初始化</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.HashMap; <span class="comment">// 引入 HashMap 类</span></span><br><span class="line">HashMap&lt;Integer, String&gt; Sites = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;Integer, String&gt;();</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-3-2-迭代方法"><a href="#3-3-2-迭代方法" class="headerlink" title="3.3.2 迭代方法"></a>3.3.2 迭代方法</h4><ul>
-<li>使用foreach增强for循环</li>
-</ul>
-<p>如果你只想获取 key，可以使用 keySet() 方法，然后可以通过 get(key) 获取对应的 value，如果你只想获取 value，可以使用 values() 方法。</p>
-<h4 id="3-3-3-常用方法"><a href="#3-3-3-常用方法" class="headerlink" title="3.3.3 常用方法"></a>3.3.3 常用方法</h4><table>
-<thead>
-<tr>
-<th>方法</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-clear.html">clear()</a></td>
-<td>删除 hashMap 中的所有键&#x2F;值对</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-clone.html">clone()</a></td>
-<td>复制一份 hashMap</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-isempty.html">isEmpty()</a></td>
-<td>判断 hashMap 是否为空</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-size.html">size()</a></td>
-<td>计算 hashMap 中键&#x2F;值对的数量</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-put.html">put()</a></td>
-<td>将键&#x2F;值对添加到 hashMap 中</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-putall.html">putAll()</a></td>
-<td>将所有键&#x2F;值对添加到 hashMap 中</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-putifabsent.html">putIfAbsent()</a></td>
-<td>如果 hashMap 中不存在指定的键，则将指定的键&#x2F;值对插入到 hashMap 中。</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-remove.html">remove()</a></td>
-<td>删除 hashMap 中指定键 key 的映射关系</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-containskey.html">containsKey()</a></td>
-<td>检查 hashMap 中是否存在指定的 key 对应的映射关系。</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-containsvalue.html">containsValue()</a></td>
-<td>检查 hashMap 中是否存在指定的 value 对应的映射关系。</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-replace.html">replace()</a></td>
-<td>替换 hashMap 中是指定的 key 对应的 value。</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-replaceall.html">replaceAll()</a></td>
-<td>将 hashMap 中的所有映射关系替换成给定的函数所执行的结果。</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-get.html">get()</a></td>
-<td>获取指定 key 对应对 value</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-getordefault.html">getOrDefault()</a></td>
-<td>获取指定 key 对应对 value，如果找不到 key ，则返回设置的默认值</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-foreach.html">forEach()</a></td>
-<td>对 hashMap 中的每个映射执行指定的操作。</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-entryset.html">entrySet()</a></td>
-<td>返回 hashMap 中所有映射项的集合集合视图。</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-keyset.html">keySet</a>()</td>
-<td>返回 hashMap 中所有 key 组成的集合视图。</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-values.html">values()</a></td>
-<td>返回 hashMap 中存在的所有 value 值。</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-merge.html">merge()</a></td>
-<td>添加键值对到 hashMap 中</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-compute.html">compute()</a></td>
-<td>对 hashMap 中指定 key 的值进行重新计算</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-computeifabsent.html">computeIfAbsent()</a></td>
-<td>对 hashMap 中指定 key 的值进行重新计算，如果不存在这个 key，则添加到 hasMap 中</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-computeifpresent.html">computeIfPresent()</a></td>
-<td>对 hashMap 中指定 key 的值进行重新计算，前提是该 key 存在于 hashMap 中。</td>
-</tr>
-</tbody></table>
-<h3 id="3-4-HashSet"><a href="#3-4-HashSet" class="headerlink" title="3.4 HashSet"></a>3.4 HashSet</h3><p><img src="https://www.runoob.com/wp-content/uploads/2020/07/java-hashset-hierarchy.png" alt="img"></p>
-<p>HashSet 基于 HashMap 来实现的，是一个不允许有重复元素的集合。</p>
-<p>​    HashSet 允许有 null 值。</p>
-<p>HashSet 是无序的，即不会记录插入的顺序。</p>
-<p>HashSet 不是线程安全的， 如果多个线程尝试同时修改 HashSet，则最终结果是不确定的。 您必须在多线程访问时显式同步对 HashSet 的并发访问。</p>
-<p> HashSet 实现了 Set 接口。</p>
-<h4 id="3-4-1-引入和初始化"><a href="#3-4-1-引入和初始化" class="headerlink" title="3.4.1 引入和初始化"></a>3.4.1 引入和初始化</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.HashSet; <span class="comment">// 引入 HashSet 类</span></span><br><span class="line">HashSet&lt;String&gt; sites = <span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;String&gt;();</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-4-2-迭代方法"><a href="#3-4-2-迭代方法" class="headerlink" title="3.4.2 迭代方法"></a>3.4.2 迭代方法</h4><ul>
-<li>使用foreach增强for循环</li>
-</ul>
-<h4 id="3-4-3-常用方法"><a href="#3-4-3-常用方法" class="headerlink" title="3.4.3 常用方法"></a>3.4.3 常用方法</h4><table>
-<thead>
-<tr>
-<th>变量和类型</th>
-<th>方法</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>boolean</code></td>
-<td><code>add(E e)</code></td>
-<td>如果指定的元素尚不存在，则将其添加到此集合中。</td>
-</tr>
-<tr>
-<td><code>void</code></td>
-<td><code>clear()</code></td>
-<td>从该集中删除所有元素。</td>
-</tr>
-<tr>
-<td><code>Object</code></td>
-<td><code>clone()</code></td>
-<td>返回此 <code>HashSet</code>实例的浅表副本：未克隆元素本身。</td>
-</tr>
-<tr>
-<td><code>boolean</code></td>
-<td><code>contains(Object o)</code></td>
-<td>如果此set包含指定的元素，则返回<code>true</code> 。</td>
-</tr>
-<tr>
-<td><code>boolean</code></td>
-<td><code>isEmpty()</code></td>
-<td>如果此集合不包含任何元素，则返回true&#96; 。</td>
-</tr>
-<tr>
-<td><code>Iterator&lt;E&gt;</code></td>
-<td><code>iterator()</code></td>
-<td>返回此set中元素的迭代器。</td>
-</tr>
-<tr>
-<td><code>boolean</code></td>
-<td><code>remove(Object o)</code></td>
-<td>如果存在，则从该集合中移除指定的元素。</td>
-</tr>
-<tr>
-<td><code>int</code></td>
-<td><code>size()</code></td>
-<td>返回此集合中的元素数（基数）。</td>
-</tr>
-<tr>
-<td><code>Spliterator&lt;E&gt;</code></td>
-<td><code>spliterator()</code></td>
-<td>在此集合中的元素上创建*<a target="_blank" rel="noopener" href="https://www.runoob.com/manual/jdk11api/java.base/java/util/Spliterator.html#binding">late-binding</a><em>和</em>失败快速* <a target="_blank" rel="noopener" href="https://www.runoob.com/manual/jdk11api/java.base/java/util/Spliterator.html"><code>Spliterator</code></a> 。</td>
-</tr>
-</tbody></table>
-<h3 id="3-5-Iterator-（访问集合的方法）"><a href="#3-5-Iterator-（访问集合的方法）" class="headerlink" title="3.5 Iterator （访问集合的方法）"></a>3.5 Iterator （访问集合的方法）</h3><p><img src="https://www.runoob.com/wp-content/uploads/2020/07/ListIterator-Class-Diagram.jpg" alt="img"></p>
-<h4 id="3-5-1-引入"><a href="#3-5-1-引入" class="headerlink" title="3.5.1 引入"></a>3.5.1 引入</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Iterator; <span class="comment">// 引入 Iterator 类</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="3-5-2-构建"><a href="#3-5-2-构建" class="headerlink" title="3.5.2 构建"></a>3.5.2 构建</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Iterator&lt;String&gt; it = sites.iterator();</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-5-3-遍历集合元素"><a href="#3-5-3-遍历集合元素" class="headerlink" title="3.5.3 遍历集合元素"></a>3.5.3 遍历集合元素</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(it.hasNext()) &#123;</span><br><span class="line">    System.out.println(it.next());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-5-4-删除元素"><a href="#3-5-4-删除元素" class="headerlink" title="3.5.4 删除元素"></a>3.5.4 删除元素</h4><p>可以在迭代集合元素的过程中删除集合元素，使用迭代器对象的remove方法（<strong>注意不是集合的remove方法！</strong>）即可。</p>
 
       
     </div>
@@ -976,7 +1236,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/IDEA/IDEA%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%B1%87%E6%80%BB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -994,7 +1254,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" class="post-title-link" itemprop="url">未命名</a>
+          <a href="/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/IDEA/IDEA%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%B1%87%E6%80%BB/" class="post-title-link" itemprop="url">IDEA常用快捷键汇总</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1012,7 +1272,344 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-10-22 14:08:01" itemprop="dateModified" datetime="2022-10-22T14:08:01+08:00">2022-10-22</time>
+      <time title="修改时间：2023-09-27 18:38:20" itemprop="dateModified" datetime="2023-09-27T18:38:20+08:00">2023-09-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">开发工具</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/IDEA/" itemprop="url" rel="index"><span itemprop="name">IDEA</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>234</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="IDEA常用快捷键汇总"><a href="#IDEA常用快捷键汇总" class="headerlink" title="IDEA常用快捷键汇总"></a>IDEA常用快捷键汇总</h1><ul>
+<li>Alt + Enter  ：万能快捷键，可用于报错、创建对象等多种情况</li>
+<li>Ctrl + O ：快速重写，在一个类继承了另一个类之后，可以使用此快捷键快速重写父类的方法</li>
+<li>Ctrl + P ：查看参数，用于在方法的参数列表中查看方法有哪些参数</li>
+<li>Alt + Insert ：快速生成set、get方法，以及构造器等，常用语实体类实现以上方法及重写toString‘方法的内容。</li>
+<li>Ctrl+Alt+L：格式化代码，去掉无用代码</li>
+<li>Ctrl+Alt+O：格式化导入文件包，去掉无用的import包</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Hexo/Hexo%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E6%B5%81%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Taizi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/Hexo/Hexo%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E6%B5%81%E7%A8%8B/" class="post-title-link" itemprop="url">Hexo基本配置流程</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-09-27 18:35:26" itemprop="dateModified" datetime="2023-09-27T18:35:26+08:00">2023-09-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.2k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h1><h2 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h2><p>​	具体教程待补充，先到网上找，注意修改安装路径即可。</p>
+<h2 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a>安装Node.js</h2><ol>
+<li><p>下载地址<a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn/download/">https://nodejs.org/zh-cn/download/</a></p>
+</li>
+<li><p>选择系统对应的版本，windows选择.msi安装包</p>
+<img src="/Hexo/Hexo%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E6%B5%81%E7%A8%8B/image-20221115150935423.png" alt="image-20221115150935423" style="zoom: 80%;"></li>
+</ol>
+<p>​	3. 安装过程中组件选项选择下面四个就可以，其他页面选项可以默认</p>
+<p>​						<img src="/Hexo/Hexo%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E6%B5%81%E7%A8%8B/image-20221115151530738.png" alt="image-20221115151530738" style="zoom:80%;"></p>
+<ol start="4">
+<li><p>安装完毕后在控制台中分别输入<code>node -v</code>和<code>npm -v</code>，如能输出版本信息，证明安装成功，npm是Node.js自带的依赖包管理工具。安装完毕后目录如下所示：</p>
+<p><img src="/Hexo/Hexo%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E6%B5%81%E7%A8%8B/image-20221115152502084.png" alt="image-20221115152502084"></p>
+</li>
+<li><p>环境配置</p>
+<ol>
+<li><p>进入Node.js的安装路径</p>
+</li>
+<li><p>新建node_global 和 node_cache 文件夹，然后在node_global文件夹下再新建一个node_modules文件夹</p>
+</li>
+<li><p>创建完两个空文件夹后，在cmd命令窗口中输入：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> prefix &quot;node_global文件夹的全路径&quot;</span><br><span class="line">npm config <span class="built_in">set</span> cache &quot;node_cache文件夹的全路径&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置环境变量</p>
+<p>在”我的电脑“右键-”属性“-”高级系统设置“-”高级“-”环境变量“中，系统变量中新增NODE_PATH，值为Node.js的安装文件夹下的node_modules文件夹全路径</p>
+<p><img src="/Hexo/Hexo%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E6%B5%81%E7%A8%8B/image-20221115153517234.png" alt="image-20221115153517234"></p>
+<p>在<strong>用户变量</strong>中的Path新增三个路径，值分别为Node.js的路径，Node.js下node_global的路径以及Node.js下node_global下的node_modules文件夹的全路径</p>
+<p><img src="/Hexo/Hexo%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E6%B5%81%E7%A8%8B/image-20221115154004782.png" alt="image-20221115154004782"></p>
+<p>设置完毕后保存即可。</p>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><ul>
+<li><p>Hexo中文官方文档：<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">https://hexo.io/zh-cn/docs/</a></p>
+</li>
+<li><p>npm下载慢，换源（换成淘宝的镜像源）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config set registry=https://registry.npm.taobao.org/</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>安装、配置、使用流程可以参考官方文档，下面简述Windows系统下安装Hexo的流程：</p>
+<ul>
+<li><strong>如果遇到npm指令报错的情况，请使用管理员身份打开控制台窗口</strong></li>
+</ul>
+<ol>
+<li><p>打开cmd命令行窗口，使用npm安装Hexo: </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在电脑上建立一个Hexo的工作文件夹（里面存放Hexo配置包，文件，以及博客文件等）或选择一个已有的空文件夹，在命令行中使用hexo指令初始化该文件夹：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init &quot;文件夹路径&quot;</span><br></pre></td></tr></table></figure>
+
+<p>执行完毕后，hexo相关配置文件和依赖包会拉到本地，此时Hexo即安装完成。</p>
+</li>
+</ol>
+<h2 id="Hexo配置"><a href="#Hexo配置" class="headerlink" title="Hexo配置"></a>Hexo配置</h2><p>Hexo的配置文件是工作文件夹中的_comfig.yml文件，打开后可以进行配置。具体每个参数的含义可以在hexo官方文档上进行查看，下面介绍一些常要改的参数：</p>
+<ol>
+<li><p>基本网站配置，一般需要修改，使其符合自己的风格。</p>
+<p><img src="/Hexo/Hexo%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E6%B5%81%E7%A8%8B/image-20221115165231949.png" alt="image-20221115165231949"></p>
+</li>
+<li><p>网站URL和root路径</p>
+<p>网站的url就是GitHubPage开通后生成的访问地址，如果没有二级目录，则root默认即可。如果有耳机目录，如：<a target="_blank" rel="noopener" href="https://example.github.io/blog">https://example.github.io/blog</a>, 则root路径需要设置为：<code>root: /blog/</code></p>
+</li>
+<li><p>网站的永久连接形式permalink：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">默认值：</span><br><span class="line">	permalink: :year/:month/:day/:title/</span><br><span class="line">改为 ：</span><br><span class="line">	permalink: :title/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>_post文件夹中的外部文件夹是否上传，默认false，需要改为true以显示图片</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">post_asset_folder: true</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>主题</p>
+<p>如果要更换主题，theme参数的值需要改为新主题的名称，默认主题为landscape， <code>theme: landscape</code></p>
+</li>
+<li><p>部署</p>
+<p>部署这里采用Git部署，仓库地址根据传输方式在github仓库上复制即可，分支branch一般需要由master改为main，因为github仓库的默认分支名称是main</p>
+<p><img src="/Hexo/Hexo%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E6%B5%81%E7%A8%8B/image-20221115170856565.png" alt="image-20221115170856565"></p>
+</li>
+</ol>
+<h2 id="Hexo部署"><a href="#Hexo部署" class="headerlink" title="Hexo部署"></a>Hexo部署</h2><h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>由于国内网络访问github受限，直接使用HTTPS发布博客很容易失败，所以一般使用SSH通信进行传输：</p>
+<ol>
+<li><p>git中配置用户名和邮箱，github的用户名和邮箱即可：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;github用户名&quot;</span><br><span class="line">git config --global user.email &quot;github注册邮箱&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>可以检查配置的用户名和邮箱：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config user.name</span><br><span class="line">git config user.email</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>生成ssh秘钥文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;GitHub注册邮箱&quot;</span><br></pre></td></tr></table></figure>
+
+<p>不设置密码，三个回车即可。</p>
+</li>
+<li><p>复制生成的秘钥：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
+
+<p>复制输出的秘钥</p>
+</li>
+<li><p>在github上新建SSHkey</p>
+<blockquote>
+<p>github头像-settings-SSH and GPG keys，填写标题以及秘钥即可。</p>
+</blockquote>
+</li>
+</ol>
+<p>​		<img src="/Hexo/Hexo%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E6%B5%81%E7%A8%8B/image-20221115181308617.png" alt="image-20221115181308617"></p>
+<ol start="6">
+<li><p>修改配置文件</p>
+<p>配置文件的配置信息在配置了SSH后，仓库地址需要修改为SSH地址，可以从github仓库中获取:</p>
+<p><img src="/Hexo/Hexo%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E6%B5%81%E7%A8%8B/image-20221115181940100.png" alt="image-20221115181940100"></p>
+</li>
+</ol>
+<h3 id="部署命令"><a href="#部署命令" class="headerlink" title="部署命令"></a>部署命令</h3><p>使用以下命令生成静态页面以及将博客部署到网站上：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean  #清除缓存</span><br><span class="line">hexo g      #生成静态页面</span><br><span class="line">hexo d      #部署到网页  也可以使用全拼hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>此外，在静态页面生成后，可以先在本地启动服务并查看网页</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s      #本地启动服务，也可以hexo server</span><br></pre></td></tr></table></figure>
+
+<p>通过使用debug参数，可以实时修改配置并查看效果，只需要刷新页面即可看到修改后的结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d --debug</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Hadoop/Hive/%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E8%AF%AD%E6%B3%95%E7%BB%86%E8%8A%82%E2%80%94%E2%80%94%E5%AE%9E%E6%88%98%E7%BB%8F%E9%AA%8C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Taizi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/Hadoop/Hive/%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E8%AF%AD%E6%B3%95%E7%BB%86%E8%8A%82%E2%80%94%E2%80%94%E5%AE%9E%E6%88%98%E7%BB%8F%E9%AA%8C/" class="post-title-link" itemprop="url">数据开发语法细节--实战经验</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-09-27 18:31:27" itemprop="dateModified" datetime="2023-09-27T18:31:27+08:00">2023-09-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Hadoop/" itemprop="url" rel="index"><span itemprop="name">Hadoop</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Hadoop/Hive/" itemprop="url" rel="index"><span itemprop="name">Hive</span></a>
+        </span>
     </span>
 
   
@@ -1040,725 +1637,543 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h1><h2 id="类和对象"><a href="#类和对象" class="headerlink" title="类和对象"></a>类和对象</h2><p>类是对象的抽象，类是对象的模板，对象是类的示例，类实例化后就是对象。</p>
-<h2 id="创建和初始化对象"><a href="#创建和初始化对象" class="headerlink" title="创建和初始化对象"></a>创建和初始化对象</h2><p>创建对象使用new关键字，语法为：类名 对象名 &#x3D; new 类名();</p>
-<p>使用new关键字创建的时候，处理分配内存空间之外，还会给创建好的对象进行默认的初始化以及对类中构造器的调用。</p>
-<h2 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h2><h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><p>类中的构造器也称为构造方法，是在进行创建对象的时候必须要调用的。构造器有如下两个特点：</p>
-<ul>
-<li>1 . 必须和类的名字相同</li>
-<li>2 . 没有返回类型，也不写void</li>
-</ul>
-<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><ul>
-<li>使用new关键字，本质上是在调用构造器。</li>
-<li>可以在构造器中初始化对象的值。</li>
-</ul>
-<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>一旦定义了有参数的构造器，如果要使用无参数的构造器，就必须显示定义无参数的构造器。有参数的构造器是对无参构造器的重载。</p>
-<h3 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h3><p>Alt+insert快速创建构造器。</p>
-<h2 id="面向对象的特点"><a href="#面向对象的特点" class="headerlink" title="面向对象的特点"></a>面向对象的特点</h2><h3 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h3><p>使用private标识符可以将类中的属性和方法设置为私有类，从而不能被直接调用，可以定义某些方法来作为调用私有属性和类的接口。</p>
-<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><h4 id="语法格式："><a href="#语法格式：" class="headerlink" title="语法格式："></a>语法格式：</h4><p>标识符 class 子类名 extends 父类名</p>
-<p>如：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Son</span> <span class="keyword">extends</span> <span class="title class_">Father</span>&#123;</span><br><span class="line">    <span class="comment">//Son是子类，继承父类Father</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h4><ul>
-<li>Java中只有单继承，没有多继承。</li>
-<li>继承是类和类之间的一种关系。除此之外，类和类之间的关系还有依赖、组合、聚合等。</li>
-<li>子类继承父类，也就继承了父类中的所有公有属性和方法。</li>
-</ul>
-<h4 id="super方法"><a href="#super方法" class="headerlink" title="super方法"></a>super方法</h4><ul>
-<li>super调用父类的构造方法，必须在子类构造方法的第一行</li>
-<li>super必须只能出现在子类的方法或构造方法中</li>
-<li>super和this不能同时调用构造方法，因为this也必须在构造方法的第一行</li>
-</ul>
-<h4 id="特殊"><a href="#特殊" class="headerlink" title="特殊"></a>特殊</h4><p><strong>object类默认是所有类的父类</strong></p>
-<h4 id="方法重写"><a href="#方法重写" class="headerlink" title="方法重写"></a>方法重写</h4><h5 id="重写的意义"><a href="#重写的意义" class="headerlink" title="重写的意义"></a>重写的意义</h5><p>当某些父类方法的功能不能满足子类的需要时，子类需要对父类的方法进行重写</p>
-<h5 id="重写规则"><a href="#重写规则" class="headerlink" title="重写规则"></a>重写规则</h5><ul>
-<li><p>重写是建立在有几成关系的两个类间的，子类可以重写父类的方法。</p>
-</li>
-<li><p>要重写的方法是非静态方法，静态方法不会被重写成功</p>
-</li>
-<li><p>要重写的方法的方法名和参数列表必须和父类的相同</p>
-</li>
-<li><p>修饰符：范围可以扩大不可以缩小(public&gt;protected&gt;default&gt;private)</p>
-</li>
-<li><p>抛出的异常：范围可以缩小不能扩大</p>
-</li>
-</ul>
-<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p>同一方法可以根据发送对象的不同而采用多种不同的行为方式。多态是方法的特性，属性没有多态性。</p>
-<h4 id="知识引入"><a href="#知识引入" class="headerlink" title="知识引入"></a>知识引入</h4><p>一个对象的实际类型是确定的，但可以指向对象的引用的类型有很多，例如，父类的引用可以指向子类对象：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Father是Son的父类</span></span><br><span class="line"><span class="type">Father</span> <span class="variable">func</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Son</span>;<span class="comment">//父类的引用指向了子类的对象</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="多态存在条件"><a href="#多态存在条件" class="headerlink" title="多态存在条件"></a>多态存在条件</h4><ul>
-<li>有继承关系</li>
-<li>子类重写了父类的方法</li>
-<li>父类的引用指向了子类的对象</li>
-</ul>
-<h4 id="instanceof"><a href="#instanceof" class="headerlink" title="instanceof"></a>instanceof</h4><p>判断类型是否相同，可以用于判断类之间的关系，当两个类A和B之间为父子关系时，A instanceof B等于true，否则为false。</p>
-<h4 id="类之间的转换"><a href="#类之间的转换" class="headerlink" title="类之间的转换"></a>类之间的转换</h4><p>假设Father是Son的父类，低辈分类转高辈分类，可以直接转换，如 </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Father</span> <span class="variable">a</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Son</span>;</span><br></pre></td></tr></table></figure>
-
-<p>高辈分类转换为低辈分类，需要进行强制类型转换，但可能丢失一些方法，如</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Father</span> <span class="variable">a</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Son</span>;<span class="comment">//低转高</span></span><br><span class="line"><span class="type">Son</span> <span class="variable">b</span> <span class="operator">=</span> <span class="keyword">new</span> (Son)a;<span class="comment">//高辈分类a转化为低辈分类b，需要对a作强制类型转换</span></span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E5%A2%9E%E5%BC%BAfor%E5%BE%AA%E7%8E%AF/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Taizi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E5%A2%9E%E5%BC%BAfor%E5%BE%AA%E7%8E%AF/" class="post-title-link" itemprop="url">未命名</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-10-22 14:08:12" itemprop="dateModified" datetime="2022-10-22T14:08:12+08:00">2022-10-22</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>309</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="增强for循环"><a href="#增强for循环" class="headerlink" title="增强for循环"></a>增强for循环</h1><h3 id="语法格式"><a href="#语法格式" class="headerlink" title="语法格式"></a>语法格式</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(声明语句：表达式)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>声明语句：声明新的局部变量，该变量的类型必须与数组元素的类型匹配。其作用域限定在循环块内，其值与此时数组元素的值相等。</li>
-<li>表达式：要访问的数组名，或返回值为数组的方法</li>
-</ul>
-<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>[] num =&#123;<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>,<span class="number">40</span>,<span class="number">50</span>&#125;;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> x:num)&#123;</span><br><span class="line">    System.out.println(x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//以上程序会将num数组中的值依次输出，相当于以下的传统写法</span></span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;len(num);i++)&#123;</span><br><span class="line">    System.out.println(x);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E5%BC%82%E5%B8%B8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Taizi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E5%BC%82%E5%B8%B8/" class="post-title-link" itemprop="url">未命名</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-10-22 14:08:07" itemprop="dateModified" datetime="2022-10-22T14:08:07+08:00">2022-10-22</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>803</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h1><h3 id="Error和Execption"><a href="#Error和Execption" class="headerlink" title="Error和Execption"></a>Error和Execption</h3><ul>
-<li>Error通常是灾难性的致命的错误，是程序无法控制和处理的，当出现这些异常时，Java虚拟机（JVM）一般会选择终止线程；</li>
-<li>Exception通常情况下是可以通过程序处理的。</li>
-</ul>
-<h3 id="异常类的层次"><a href="#异常类的层次" class="headerlink" title="异常类的层次"></a>异常类的层次</h3><p><img src="https://www.runoob.com/wp-content/uploads/2013/12/exception-hierarchy.png" alt="img"></p>
-<h3 id="异常处理机制"><a href="#异常处理机制" class="headerlink" title="异常处理机制"></a>异常处理机制</h3><h4 id="捕获异常"><a href="#捕获异常" class="headerlink" title="捕获异常"></a>捕获异常</h4><p>使用try和catch关键字可以捕获异常，try&#x2F;catch代码块放在可能发生异常的地方，其语法格式如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//可能发生异常的程序代码块</span></span><br><span class="line">&#125;<span class="keyword">catch</span>(ExceptionName e1)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//catch块，如果捕获了catch块声明的异常，异常被传递到catch中，同时执行catch块中的代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>try后面可以跟多个catch块，哪个catch块声明的异常发生，哪个catch块就捕获到异常，值得一提的是，catch块的顺序不是随意的，要根据异常类的层次从小到大书写，否则后面的catch块会被前面的catch块所覆盖，导致错误。</p>
-<h4 id="throw-x2F-throws关键字"><a href="#throw-x2F-throws关键字" class="headerlink" title="throw&#x2F;throws关键字"></a>throw&#x2F;throws关键字</h4><p>throw关键字用于主动抛出异常，语法格式为：throw new 异常类（）；</p>
-<p>如果一个方法没有捕获到一个检查性异常，那么该方法必须使用 throws 关键字来声明。throws 关键字放在方法签名的尾部。</p>
-<h4 id="ctrl-alt-T"><a href="#ctrl-alt-T" class="headerlink" title="ctrl+alt+T"></a>ctrl+alt+T</h4><p>选中代码块，使用上述快捷键，可以快速将代码块使用关键字包裹（例如 if，else，try，catch等）</p>
-<h4 id="finally关键字"><a href="#finally关键字" class="headerlink" title="finally关键字"></a>finally关键字</h4><p>finally代码块用来放在try&#x2F;catch代码块的最后面，无论是否发生异常，finally代码块中的代码总会被执行，finally代码块中主要写一些处理善后性质的语句。</p>
-<h3 id="自定义异常"><a href="#自定义异常" class="headerlink" title="自定义异常"></a>自定义异常</h3><p>java中可以自定义异常，需要记住一下几点：</p>
-<ul>
-<li>所有异常都必须是Throwable的子类</li>
-<li>如果要自定义检查性异常类，需要继承Exception类</li>
-<li>如果要自定义运行异常类，需要进程RuntimeException类</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E6%8A%BD%E8%B1%A1%E7%B1%BB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Taizi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" class="post-title-link" itemprop="url">未命名</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-10-22 14:08:05" itemprop="dateModified" datetime="2022-10-22T14:08:05+08:00">2022-10-22</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>236</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h1><ul>
-<li><p>Java使用abstract关键字来声明抽象类或者抽象方法</p>
-</li>
-<li><p>抽象类中可以没有抽象方法，但是有抽象方法的类一定要声明为抽象类。</p>
-</li>
-<li><p>抽象类不能使用new关键字来实例化为对象，只能被继承；</p>
-</li>
-<li><p>抽象类处理不能实例化对象之外，其他功能依然存在，属性、方法和构造方法的访问方式和普通类一样；</p>
-</li>
-<li><p>抽象方法只有方法的声明，没有方法的实现，它是用来让继承的子类来实现的。</p>
-</li>
-<li><p>子类继承抽象类，就必须要实现抽象类没有实现的抽象方法，否则该子类也要声明为抽象类。</p>
-</li>
-<li><p>一个类只能继承一个抽象类，但可以实现多个接口；</p>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E6%B3%9B%E5%9E%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Taizi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E6%B3%9B%E5%9E%8B/" class="post-title-link" itemprop="url">未命名</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-05-06 13:41:51" itemprop="dateModified" datetime="2022-05-06T13:41:51+08:00">2022-05-06</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.1k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h1><h2 id="一、泛型介绍"><a href="#一、泛型介绍" class="headerlink" title="一、泛型介绍"></a>一、泛型介绍</h2><p>Java 泛型（generics）是 JDK 5 中引入的一个新特性, 泛型提供了编译时类型安全检测机制，该机制允许程序员在编译时检测到非法的类型。</p>
-<p><strong>泛型的本质是参数化类型，也就是说所操作的数据类型被指定为一个参数。</strong></p>
-<p>泛型可以理解为“广泛的类型”，也就是说定义时类型是未定的，需要使用时实际指定。</p>
-<h2 id="二、泛型方法"><a href="#二、泛型方法" class="headerlink" title="二、泛型方法"></a>二、泛型方法</h2><p>声明泛型方法时，类型参数声明部分（尖括号部分）要放在方法的返回类型声明之前，类型参数声明部分（尖括号部分）可以包括一个或者多个参数，中间用逗号分隔，一个泛型参数，也被称为一个类型变量，是用于指定一个泛型类型名称的标识符。</p>
-<p>类型参数能被用来声明返回值类型，并且能作为泛型方法得到的实际参数类型的占位符。</p>
-<p>泛型方法体的声明和其他方法一样。注意类型参数只能代表引用型类型，不能是原始类型（像 <strong>int、double、char</strong> 等）。</p>
-<h3 id="java-中泛型标记符："><a href="#java-中泛型标记符：" class="headerlink" title="java 中泛型标记符："></a>java 中泛型标记符：</h3><ul>
-<li><strong>E</strong> - Element (在集合中使用，因为集合中存放的是元素)</li>
-<li><strong>T</strong> - Type（Java 类）</li>
-<li><strong>K</strong> - Key（键）</li>
-<li><strong>V</strong> - Value（值）</li>
-<li><strong>N</strong> - Number（数值类型）</li>
-<li><strong>？</strong> - 表示不确定的 java 类型</li>
-</ul>
-<h2 id="三、有界的类型参数"><a href="#三、有界的类型参数" class="headerlink" title="三、有界的类型参数"></a>三、有界的类型参数</h2><p>当需要限制那些被允许传递到一个类型参数的类型种类范围时，例如，一个操作数字的方法可能只希望接受Number或者Number子类的实例。就会用到有界类型参数。 </p>
-<p>要声明一个有上界的类型参数，首先列出类型参数的名称，后跟extends关键字，最后紧跟它的上界，例如：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> stitic &lt;T <span class="keyword">extends</span> <span class="title class_">Number</span>&gt; <span class="keyword">void</span> test&#123;T t&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="四、泛型类"><a href="#四、泛型类" class="headerlink" title="四、泛型类"></a>四、泛型类</h2><p>泛型类的声明和非泛型类的声明类似，除了<strong>在类名后面</strong>添加了类型参数声明部分。</p>
-<p>和泛型方法一样，泛型类的类型参数声明部分也包含一个或多个类型参数，参数间用逗号隔开。一个泛型参数，也被称为一个类型变量，是用于指定一个泛型类型名称的标识符。因为他们接受一个或多个参数，这些类被称为参数化的类或参数化的类型。</p>
-<h2 id="五、类型通配符"><a href="#五、类型通配符" class="headerlink" title="五、类型通配符"></a>五、类型通配符</h2><p>类型通配符一般是使用 ? 代替具体的类型参数。例如 <strong>List&lt;?&gt;</strong> 在逻辑上是 <strong>List&lt;String&gt;,List&lt;Integer&gt;</strong> 等所有 <strong>List&lt;具体类型实参&gt;</strong> 的父类。</p>
-<h4 id="类型通配符的上下界"><a href="#类型通配符的上下界" class="headerlink" title="类型通配符的上下界"></a>类型通配符的上下界</h4><p>类型通配符上限通过形如**List&lt;? extends Number&gt;**来定义，如此定义就是通配符泛型值接受Number及其下层子类类型。</p>
-<p>类型通配符下限通过形如 <strong>List&lt;? super Number&gt;</strong> 来定义，表示类型只能接受 <strong>Number</strong> 及其上层父类类型，如 <strong>Object</strong> 类型的实例</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E6%8E%A5%E5%8F%A3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Taizi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/%E6%8E%A5%E5%8F%A3/" class="post-title-link" itemprop="url">未命名</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-10-22 14:08:03" itemprop="dateModified" datetime="2022-10-22T14:08:03+08:00">2022-10-22</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>347</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h1><h4 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h4><blockquote>
-<p>普通类：只有具体实现</p>
-<p>抽象类：具体实现和规范（抽象方法）都有</p>
-<p>接口：只有规范</p>
-</blockquote>
-<h4 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h4><ul>
-<li>接口就是规范，定义的是一组规则；</li>
-<li>接口的本质是契约</li>
-</ul>
-<h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><p>[修饰符] interface [接口名]</p>
-<h4 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h4><ul>
-<li>接口中的所有方法都是抽象的（public abstract），所有属性都是静态常量（static final）</li>
-<li>接口需要通过类来实现，使用implements关键字，如</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> <span class="keyword">implements</span> <span class="title class_">Interf</span>&#123;<span class="comment">//Interf是接口，Test是实现接口的类</span></span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>实现了接口的类，需要重写接口中的抽象方法；</li>
-<li>接口可以是多继承的 ，如</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> <span class="keyword">implements</span> <span class="title class_">Interf1</span>,Interf2&#123;<span class="comment">//Interf1,Interf2都是接口</span></span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Taizi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/Java/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/Java%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="post-title-link" itemprop="url">未命名</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-10-22 14:08:13" itemprop="dateModified" datetime="2022-10-22T14:08:13+08:00">2022-10-22</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>206</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Java语法基础——数据类型"><a href="#Java语法基础——数据类型" class="headerlink" title="Java语法基础——数据类型"></a>Java语法基础——数据类型</h1><p><strong>Java是强类型语言，所有变量使用前必须先定义，定义时必须指定数据类型</strong></p>
+          <h1 id="数据开发语法细节——实战经验"><a href="#数据开发语法细节——实战经验" class="headerlink" title="数据开发语法细节——实战经验"></a>数据开发语法细节——实战经验</h1><h2 id="SQL执行顺序问题"><a href="#SQL执行顺序问题" class="headerlink" title="SQL执行顺序问题"></a>SQL执行顺序问题</h2><ul>
+<li><p>hiveSQL</p>
 <blockquote>
-<h2 id="Java数据类型"><a href="#Java数据类型" class="headerlink" title="Java数据类型"></a>Java数据类型</h2><blockquote>
-<h3 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h3><blockquote>
-<h4 id="数值类型"><a href="#数值类型" class="headerlink" title="数值类型"></a>数值类型</h4><blockquote>
-<h5 id="整数类型"><a href="#整数类型" class="headerlink" title="整数类型"></a>整数类型</h5><blockquote>
-<p>byte: 1字节</p>
-<p>short:2字节</p>
-<p>int: 4字节</p>
-<p>long：8字节  ，Long类型数字后加“L”</p>
+<p><strong>from .. where .. join .. on .. select .. group by .. select .. having .. distinct .. order by .. limit .. union&#x2F;union all</strong></p>
+<p>Hive 是默认开启 map 端的 group by 分组的，所以<strong>在 map 端是 select 先执行，在 reduce 端是 group by 先执行</strong></p>
 </blockquote>
-<h5 id="浮点类型"><a href="#浮点类型" class="headerlink" title="浮点类型"></a>浮点类型</h5><blockquote>
-<p>float:4字节</p>
-<p>double: 8字节</p>
+</li>
+</ul>
+<h2 id="别名问题"><a href="#别名问题" class="headerlink" title="别名问题"></a>别名问题</h2><p>别名问题本质上也是SQL的执行顺序的问题，每个语句在书写时是否应该使用别名应该从SQL执行顺序的角度出发，当语句中需要用到有别名的字段时，遵循以下原则：</p>
+<p>​        <strong>如果当前语句优先于字段添加别名这一动作先执行，则当前语句使用该字段不应该使用别名，因为执行到该语句时字段还没有别名。如果当前语句执行前字段添加别名这一动作已经执行完成，则当前语句可以使用该字段的别名。</strong></p>
+<h2 id="连接中的问题"><a href="#连接中的问题" class="headerlink" title="连接中的问题"></a>连接中的问题</h2><p>连接可以是多表连接，也可以是子查询的连接</p>
+<ul>
+<li><p>字段名问题</p>
+<blockquote>
+<p>连接中的一个注意点是如果连接的两个表或子查询有相同的字段，则需要通过起别名的方式使其区分开来</p>
+<p><strong>但是在等值连接中（隐式内连接），不需要考虑字段名相同的问题，只要连接的两表或子查询的名字能区分开来即可。</strong></p>
 </blockquote>
-<h5 id="字符类型"><a href="#字符类型" class="headerlink" title="字符类型"></a>字符类型</h5><blockquote>
-<p>char: 2字节</p>
+</li>
+<li><p>on 、where 概念区分</p>
+<blockquote>
+<p>连接中的on是两表的连接条件，符合条件的两条数据会连接形成一条数据</p>
+<p>连接的每个表中都可以带有一个where子句，这两个where子句限定了各自的数据范围</p>
+<p>整个连接后还可以加一个where子句，这个where子句可以对连接后形成的临时表进行再次过滤。</p>
 </blockquote>
+</li>
+<li><p>多表连接问题</p>
+<blockquote>
+<p>设有3张表t1, t2, t3, 字段为id，注意多表连接只有一个主表，如果以t1作为主表，则连接条件应为 <code>t1.id = t2.id and t1.id = t3.id </code></p>
 </blockquote>
-<h4 id="布尔类型"><a href="#布尔类型" class="headerlink" title="布尔类型"></a>布尔类型</h4><blockquote>
-<p>boolean:1bit,即1位，1&#x2F;8字节，只有true ,  false两个值</p>
+</li>
+</ul>
+<h2 id="条件格式问题"><a href="#条件格式问题" class="headerlink" title="条件格式问题"></a>条件格式问题</h2><ul>
+<li><p>where&#x2F;on条件语句中的and 、or的关系</p>
+<blockquote>
+<p>很多情况下仅使用and无法形成条件，可以使用or配合完成，但多数情况下，or和and并不是并行的关系，而是or是and的子条件，即 or 需要写在and后的括号中，如果将or 写成与and并行，在条件比较多时，很容易出现错误。</p>
 </blockquote>
+</li>
+</ul>
+<h2 id="数据类型问题"><a href="#数据类型问题" class="headerlink" title="数据类型问题"></a>数据类型问题</h2><ul>
+<li><p>STRING类型存储INT类型数据的问题</p>
+<blockquote>
+<p>一般情况可以使用string类型存储数字型的数据，并在需要的时候转换为int类型。然而使用string类型存储的数字，在聚合时数据格式可能会出现问题，比如使用sum聚合后得到的结果可能会变成浮点数，即多了小数位，导致无法直接转换为int。这时需要先转换为INT类型再做聚合。</p>
 </blockquote>
-<h3 id="引用类型"><a href="#引用类型" class="headerlink" title="引用类型"></a>引用类型</h3><blockquote>
-<p>类</p>
-<p>接口</p>
-<p>数组</p>
+</li>
+<li><p>使用STRING类型存储整数进行运算的问题</p>
+<blockquote>
+<p>使用string类型存储的整型数据，在直接计算时不会出错，例如 select ‘5’ + ‘5’ ,结果为10，或者select ‘5’ + 5 ,结果也为10.但如果是在其他字符串处理函数中使用，则可能出现问题。</p>
+<p><strong>例如：SELECT CONCAT(‘2022’ - 1, ‘-11-09’), 期望的结果应该是’2021-11-09’, 但得到的结果实际上是’2021.0-11-09’.此时运算的结果会是一个浮点数。出现此bug的原因尚不清楚。</strong></p>
 </blockquote>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Hadoop/Hive/%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E6%80%9D%E8%B7%AF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Taizi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/Hadoop/Hive/%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E6%80%9D%E8%B7%AF/" class="post-title-link" itemprop="url">数据开发思路</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-09-27 18:30:22" itemprop="dateModified" datetime="2023-09-27T18:30:22+08:00">2023-09-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Hadoop/" itemprop="url" rel="index"><span itemprop="name">Hadoop</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Hadoop/Hive/" itemprop="url" rel="index"><span itemprop="name">Hive</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>393</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="数据开发思路"><a href="#数据开发思路" class="headerlink" title="数据开发思路"></a>数据开发思路</h2><h3 id="需求（作图分析）"><a href="#需求（作图分析）" class="headerlink" title="需求（作图分析）"></a>需求（作图分析）</h3><ul>
+<li>开发内容涉及到哪几个模块的功能，针对每个模块进行分析：<ul>
+<li>该模块功能在哪里实现？Hive、gp、报表工具？</li>
+<li>该模块间是否与其他模块有关联？如果存在关联？因为此关联每个模块需要注意哪些问题？</li>
+<li>需要哪些上层表的支持，针对每张上层表进行分析：<ul>
+<li>使用该表的目的是什么？该表本身的逻辑是什么？是否需要连接其他表？如何连接？功能实现需要使用哪些字段？数据集成时分布分区又需要哪些字段？分区需要那些字段？由于该表的性质，是否需要新增标识字段（比如网器工单表可以增加网器标识字段）？针对该表以及需要连接的表的字段进行分析：<ul>
+<li>字段是否有空值？空值如何处理？字段的格式和含义是什么？连接键是否为空？字段取值是否有需求之外的值（脏数据）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="开发"><a href="#开发" class="headerlink" title="开发"></a>开发</h3><ul>
+<li>注意代码格式规范</li>
+<li>注意语法正确性：<ul>
+<li>标点符号使用英文标点</li>
+<li>子句中有多个字段时，中间的字段不要丢失逗号，最后的字段不要加逗号</li>
+<li>打字不宜过快，保证字段名表名的正确性</li>
+<li></li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Hadoop/Hive/%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E8%A6%81%E7%82%B9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Taizi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/Hadoop/Hive/%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E8%A6%81%E7%82%B9/" class="post-title-link" itemprop="url">数据开发要点</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-09-27 18:30:53" itemprop="dateModified" datetime="2023-09-27T18:30:53+08:00">2023-09-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Hadoop/" itemprop="url" rel="index"><span itemprop="name">Hadoop</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Hadoop/Hive/" itemprop="url" rel="index"><span itemprop="name">Hive</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.9k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="数据开发要点"><a href="#数据开发要点" class="headerlink" title="数据开发要点"></a>数据开发要点</h1><ul>
+<li><p>多表连接时，首行连接语句中指明分区，动态分区则指明变量(如：pdate&#x3D;’${a}’),指明分区后，主体的select语句中不必再写分区字段。</p>
+</li>
+<li><p>多表连接时，需要特别注意主表的连接字段是否为NULL或空字符串，需要的时候可以进行过滤，以下是一种过滤方式：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">coalesce</span>(join_field,<span class="string">&#x27;&#x27;</span>)<span class="operator">!=</span><span class="string">&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>分区表的多表连接，因为一般要指定两个表的分区字段相同，所以两个表的select语句中都要包含分区字段。</p>
+</li>
+<li><p>建表语句末尾加分号。</p>
+</li>
+<li><p>注意变量命名，特别是在使用了函数处理之后，在多表联查时很容易出现问题，查每个表时，要保证字段名字正确，使用函数处理的字段在处理结束后要使用<code>as</code>关键字命名，例如：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> overwrite <span class="keyword">table</span> hdw_opnwp.purify_water_unnet_device_bind_details_model <span class="keyword">partition</span>(pdate <span class="operator">=</span> <span class="string">&#x27;$&#123;a&#125;&#x27;</span>)</span><br><span class="line"><span class="keyword">select</span> </span><br><span class="line">t1.bind_unbind_ind</span><br><span class="line">,<span class="built_in">coalesce</span>(t1.net_unnet_flag,t2.net_unnet_flag)</span><br><span class="line">,t1.l_bind_user_num <span class="keyword">as</span> user_num</span><br><span class="line">,t1.l_bind_machine_seq_num <span class="keyword">as</span> machine_seq_num</span><br><span class="line">,if(<span class="built_in">coalesce</span>(t1.l_bind_device_model_num,<span class="string">&#x27;&#x27;</span>)<span class="operator">=</span><span class="string">&#x27;&#x27;</span>,if(length(t1.l_bind_machine_seq_num)<span class="operator">=</span><span class="number">20</span>,substr(t1.l_bind_machine_seq_num,<span class="number">1</span>,<span class="number">9</span>),if(length(t1.l_bind_machine_seq_num)<span class="operator">=</span><span class="number">22</span>,substr(t1.l_bind_machine_seq_num,<span class="number">1</span>,<span class="number">11</span>),<span class="keyword">NULL</span>)),t1.l_bind_device_model_num) <span class="keyword">as</span> device_model_num<span class="comment">--如果设备型号为空，从机编中补全设备型号</span></span><br><span class="line">,t1.l_bind_bind_tm</span><br><span class="line">,t1.l_bind_unbind_tm</span><br><span class="line">,t2.industry_cd</span><br><span class="line">,t2.industry_desc</span><br><span class="line">,t2.device_model_desc</span><br><span class="line"><span class="keyword">from</span> (</span><br><span class="line">    <span class="keyword">select</span> bind_unbind_ind</span><br><span class="line">    ,net_unnet_flag</span><br><span class="line">    ,l_bind_user_num</span><br><span class="line">    ,l_bind_machine_seq_num</span><br><span class="line">    ,l_bind_device_model_num</span><br><span class="line">    ,l_bind_bind_tm</span><br><span class="line">    ,l_bind_unbind_tm</span><br><span class="line">    ,pdate</span><br><span class="line">    <span class="keyword">from</span> hdw_opnwp.purify_water_unnet_device_bind_details</span><br><span class="line">    <span class="keyword">where</span> pdate <span class="operator">=</span> <span class="string">&#x27;$&#123;a&#125;&#x27;</span></span><br><span class="line">) t1</span><br><span class="line"><span class="keyword">left</span> <span class="keyword">join</span>(</span><br><span class="line">    <span class="keyword">select</span> if(device_model_num <span class="operator">=</span> <span class="string">&#x27;&#x27;</span>, <span class="keyword">NULL</span>, device_model_num) <span class="keyword">as</span> device_model_num</span><br><span class="line">    ,industry_cd</span><br><span class="line">    ,if(industry_desc <span class="operator">=</span> <span class="string">&#x27;&#x27;</span>, <span class="keyword">NULL</span>, industry_desc) <span class="keyword">as</span> industry_desc <span class="comment">----如果这里没有重新命名，上面连接会出错，提示非法字段</span></span><br><span class="line">    ,if(net_unnet_flag <span class="operator">=</span> <span class="string">&#x27;&#x27;</span>, <span class="keyword">NULL</span>, net_unnet_flag) <span class="keyword">as</span> net_unnet_flag<span class="comment">----如果这里没有重新命名，上面连接会出错，提示非法字段</span></span><br><span class="line">    ,if(device_model_desc <span class="operator">=</span> <span class="string">&#x27;&#x27;</span>, <span class="keyword">NULL</span>, device_model_desc) <span class="keyword">as</span> device_model_desc<span class="comment">----如果这里没有重新命名，上面连接会出错，提示非法字段</span></span><br><span class="line">    ,pdate</span><br><span class="line">    <span class="keyword">from</span> hdw_dwb.t02_dim_dev_prod</span><br><span class="line">    <span class="keyword">where</span> pdate <span class="operator">=</span> <span class="string">&#x27;$&#123;a&#125;&#x27;</span></span><br><span class="line">    <span class="keyword">and</span> industry_cd <span class="operator">=</span> <span class="string">&#x27;V1441&#x27;</span></span><br><span class="line">) t2</span><br><span class="line"><span class="keyword">on</span> t1.l_bind_device_model_num <span class="operator">=</span> t2.device_model_num<span class="comment">--条件中使用的字段名需要注意</span></span><br><span class="line"><span class="keyword">where</span> t1.pdate <span class="operator">=</span> t2.pdate </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>建表时，注释内也不要出现英文分号“ ; ”，因为分号代表建表语句的结束，会引发错误。</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Hadoop/Hive/Hive%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Taizi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/Hadoop/Hive/Hive%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F/" class="post-title-link" itemprop="url">Hive文件格式</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-09-27 18:32:56" itemprop="dateModified" datetime="2023-09-27T18:32:56+08:00">2023-09-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Hadoop/" itemprop="url" rel="index"><span itemprop="name">Hadoop</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Hadoop/Hive/" itemprop="url" rel="index"><span itemprop="name">Hive</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.2k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>6 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Hive-文件格式"><a href="#Hive-文件格式" class="headerlink" title="Hive 文件格式"></a>Hive 文件格式</h1><h2 id="一、-ORC-Files"><a href="#一、-ORC-Files" class="headerlink" title="一、 ORC Files"></a>一、 ORC Files</h2><h3 id="1-ORC文件格式概述"><a href="#1-ORC文件格式概述" class="headerlink" title="1. ORC文件格式概述"></a>1. ORC文件格式概述</h3><p>ORC(<em>Optimized Row Columnar</em>)文件格式提供了一种非常高效的方式来存储hive数据。它旨在克服其他Hive文件格式的限制。使用ORC文件可以提升Hive在读、写、处理数据时的性能。</p>
+<p>以RCFile 格式做比较，ORC文件格式有许多有优点，例如：</p>
+<blockquote>
+<ul>
+<li><p>单个文件作为每个任务的输出，这减少了NameNode的负载 .</p>
+</li>
+<li><p>Hive类型支持datetime,decimal,以及一些复杂类型（struct, list, map, and union）.</p>
+</li>
+<li><p>文件中存储了轻量级的索引：</p>
+<ul>
+<li>跳过那些没有通过谓词筛选的行组</li>
+<li>查询给定行</li>
+</ul>
+</li>
+<li><p>基于数据类型的块模式压缩 </p>
+</li>
+<li><p>Integer类型的列用行程长度编码(Run Length Encoding)</p>
+</li>
+<li><p>String类型的列用字典编码(Dictionary Encoding)；</p>
+</li>
+<li><p>使用单独的RecordReader并发读取同一文件 </p>
+</li>
+<li><p>无需扫描标记即可拆分文件 </p>
+</li>
+<li><p>绑定读写所需的内存量 </p>
+</li>
+<li><p>使用协议缓冲区存储元数据，允许添加和删除字段</p>
+</li>
+</ul>
 </blockquote>
+<h3 id="2-ORC文件结构"><a href="#2-ORC文件结构" class="headerlink" title="2. ORC文件结构"></a>2. ORC文件结构</h3><p>ORC文件包含一组称为条纹(<strong>stripes</strong>)的行数据，以及FileFooter中的辅助信息。在文件末尾，postscript保存压缩参数和压缩页脚的大小。</p>
+<p>默认的 stripes 大小为250MB，大的stripes使得Hive能够对HDFS进行高效的读取。</p>
+<p>FileFooter包含文件中的stripes列表、每个stripes的行数以及每列的数据类型。它还包含了列级聚合count、min、max和sum。 </p>
+<p>下图说明了ORC文件结构： </p>
+<p><img src="/Hadoop/Hive/Hive%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F/.%5CHive%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%5Cimage-20220530141339875.png" alt="image-20220530141339875"></p>
+<h3 id="3-Stripe结构："><a href="#3-Stripe结构：" class="headerlink" title="3. Stripe结构："></a>3. Stripe结构：</h3><p>从上图可以看出，ORC文件中的每个stripe都包括索引数据(Index Data)、行数据(Row Data)以及Stripe Footer。</p>
+<p><code>Stripe Footer</code>包含了流数据位置的目录，<code>Row Data</code>则用于表的扫描。</p>
+<p><code>Index data</code>中包含了每一列中的最大和最小值，以及每列所在的行（还可以包括位字段或布隆过滤器），行索引里面提供了偏移量，它可以跳到正确的压缩块位置以及解压缩块的字节位置。请注意，ORC索引仅用于选择 <code>Stripe</code> 和行组，而不用于查询。</p>
+<p>Stripe中具有相对频繁的行索引、能够跳过行来进行快速读取，尽管Stripe很大。默认情况下最大可以跳过10000行。</p>
+<p>通过谓词筛选器跳过大量行集，你可以使用表的第二主键来进行分类从而减少大量的执行时间。例如，你的表的主分区是交易日期，那么你可以在 state、zip code以及last name 上进行排序。然后在一个 state 中查找记录将跳过所有其他 state 的记录。</p>
+<h3 id="4-使用语法"><a href="#4-使用语法" class="headerlink" title="4. 使用语法"></a>4. 使用语法</h3><p>文件类型是在表级（或分区级）上确定的，通过HiveQL,你可以将文件形式定义为ORC,例如：</p>
+<ul>
+<li><code>CREATE TABLE ... STORED AS ORC</code></li>
+<li><code>ALTER TABLE ... [PARTITION partition_spec] SET FILEFORMAT ORC</code></li>
+<li><code>SET hive.default.fileformat=ORC</code></li>
+</ul>
+<p><strong>高级设置：</strong></p>
+<p>下面的参数都被放在 <code>TBLPROPERTIES </code>中:</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>orc.bloom.filter.columns</td>
+<td>“”</td>
+<td>comma separated list of column names for which bloom filter should be created<br>应为其创建bloom筛选器的列名的逗号分隔列表</td>
+</tr>
+<tr>
+<td>orc.bloom.filter.fpp</td>
+<td>0.05</td>
+<td>false positive probability for bloom filter (must &gt;0.0 and &lt;1.0)<br>布隆过滤器的误报概率，大小在0和1之间</td>
+</tr>
+<tr>
+<td>orc.compress</td>
+<td>ZLIB</td>
+<td>high level compression (one of NONE, ZLIB, SNAPPY)<br>高级压缩，为表指定压缩算法，默认为ZLIB</td>
+</tr>
+<tr>
+<td>orc.compress.size</td>
+<td>262,144</td>
+<td>number of bytes in each compression chunk<br>每个压缩区块包含的字节数</td>
+</tr>
+<tr>
+<td>orc.create.index</td>
+<td>true</td>
+<td>whether to create row indexes<br>是否要创建行索引</td>
+</tr>
+<tr>
+<td>orc.row.index.stride</td>
+<td>10,000</td>
+<td>number of rows between index entries (must be &gt;&#x3D; 1000)<br>索引项之间的行数，必须大于1000</td>
+</tr>
+<tr>
+<td>orc.stripe.size</td>
+<td>67,108,864</td>
+<td>number of bytes in each stripe<br>每个stripe包含的字节数</td>
+</tr>
+</tbody></table>
+<p>例如，创建一个不带压缩方式的ORC存储的表：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> Addresses (</span><br><span class="line">  name string,</span><br><span class="line">  street string,</span><br><span class="line">  city string,</span><br><span class="line">  state string,</span><br><span class="line">  zip <span class="type">int</span></span><br><span class="line">) stored <span class="keyword">as</span> orc tblproperties (&quot;orc.compress&quot;<span class="operator">=</span>&quot;NONE&quot;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-序列化-Serialization-和压缩-Compression"><a href="#5-序列化-Serialization-和压缩-Compression" class="headerlink" title="5. 序列化(Serialization )和压缩(Compression)"></a>5. 序列化(Serialization )和压缩(Compression)</h3><h4 id="5-1-序列化"><a href="#5-1-序列化" class="headerlink" title="5.1 序列化"></a>5.1 序列化</h4><p>ORC 文件中的序列化取决于列数据是否为Integer或者String类型的。</p>
+<ul>
+<li>Integer列的序列化：</li>
+</ul>
+<blockquote>
+<p>Integer 列在两个流中序列化：</p>
+<ol>
+<li>当前位流：值是否非空？</li>
+<li>数据流：Integers流</li>
+</ol>
+<p>整形数据的序列化方式采用了数字常见分布的优点：</p>
+<ul>
+<li>整数编码才用可变宽度编码，这使得小整形数字占用更少的字节</li>
+<li>重复值采用行程编码（Run-Length Encoding，RLE）</li>
+<li>在-128到127范围内的常数使用的是行程编码</li>
+</ul>
 </blockquote>
+<p>知识拓展：</p>
+<p>可变宽度编码（<em>variable-width encoding</em>）<strong>待补充</strong></p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">可变宽度编码基于Google的协议缓冲区，并使用高位表示该字节是否不是编码数据的最后一位和低位7位来编码。为了对附属进行编码，0, -1, 1, -2, 和 2 被映射为 0, 1, 2, 3, 4, 和 5 respectively.</span><br><span class="line"></span><br><span class="line">每个集合中的数是按以下方式编码的：</span><br><span class="line"><span class="emphasis">*如果第一个字节b0是负数：</span></span><br><span class="line"><span class="emphasis">	*</span> b0后是可变长度整数</span><br><span class="line"><span class="emphasis">*如果第一个字节b0是正数：</span></span><br><span class="line"><span class="emphasis">	</span></span><br><span class="line"><span class="emphasis"></span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>行程编码（<em>Run-Length Encoding</em>，RLE）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">行程编码（RLE）是一种无损数据压缩形式，其中数据的runs（即，在许多连续数据元素中出现相同数据值的序列）被存储为单个数据值和计数，而不是原来的runs。这对包含许多此类runs的数据最有用。例如，考虑简单的图形图像，如图标，线条图。它对于没有很多runs的文件没有用，因为它可能会大大增加文件大小。</span><br><span class="line">例如，考虑在纯白色背景上包含纯黑色文本的屏幕。空白区域中会有很多长白色像素，文本中会有很多短黑色像素。假设的扫描线，B代表黑色像素，W代表白色，可能如下所示：</span><br><span class="line"></span><br><span class="line">WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW</span><br><span class="line"></span><br><span class="line">通过应用于上述假设扫描线的行程编码（RLE）数据压缩算法，可以如下呈现：</span><br><span class="line"></span><br><span class="line">12W1B12W3B24W1B14W</span><br><span class="line"></span><br><span class="line">这可以解释为12个W,1个B，12个W，3个B，24个W，1个B，14个W的序列。</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>String列的序列化</li>
+</ul>
+<blockquote>
+<p>字符串列的序列化使用字典来形成唯一的列值。对字典进行排序以加快谓词过滤并提高压缩比。</p>
+<p>String 列在四个流中序列化：</p>
+<ol>
+<li>当前位流：值是否非空？</li>
+<li>字典数据：字符串的字节数</li>
+<li>字典长度：每个条目的长度</li>
+<li>行数据：行中的数据</li>
+</ol>
+<p>字典长度和行数据都是Integer中的行程编码。</p>
+</blockquote>
+<h4 id="5-2-压缩"><a href="#5-2-压缩" class="headerlink" title="5.2 压缩"></a>5.2 压缩</h4><p>流使用编解码器进行压缩，编解码器被指定为该表中所有流的表属性。为了优化内存的使用，压缩是在每个块生成的时候以增量的方式进行的。可以直接跳过压缩块，而无需先解压再扫描。流中的位置使用块的开始位置和块中的偏移来表示。</p>
+<p>编码解码器可以是Snappy，Zlib，或者none。</p>
 
       
     </div>
@@ -1778,7 +2193,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>
@@ -1800,13 +2215,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">167k</span>
+    <span title="站点总字数">145k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">5:04</span>
+    <span title="站点阅读时长">4:24</span>
   </span>
 </div>
 <div class="busuanzi-count">

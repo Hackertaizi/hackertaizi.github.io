@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"hackertaizi.gitee.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="IDEA基本配置1. maven仓库配置(当前项目有效)maven设置打开方式：  settings→Build,Execution,Deployment→Build Tools→Maven 最右侧点击maven，然后点击设置图标，点击maven settings  在maven设置中配置Maven home path，地址为maven的安装文件夹的位置，如 1E:&#x2F;Maven&#x2F;apache-ma">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IDEA基本配置">
+<meta property="og:url" content="https://hackertaizi.gitee.io/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/IDEA/IDEA%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:site_name" content="太子的个人博客">
+<meta property="og:description" content="IDEA基本配置1. maven仓库配置(当前项目有效)maven设置打开方式：  settings→Build,Execution,Deployment→Build Tools→Maven 最右侧点击maven，然后点击设置图标，点击maven settings  在maven设置中配置Maven home path，地址为maven的安装文件夹的位置，如 1E:&#x2F;Maven&#x2F;apache-ma">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-09-16T05:48:25.541Z">
+<meta property="article:modified_time" content="2023-09-27T10:38:50.419Z">
+<meta property="article:author" content="Taizi">
+<meta property="article:tag" content="开发工具">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://hackertaizi.gitee.io/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/IDEA/IDEA%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hackertaizi.gitee.io/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/IDEA/IDEA%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/","path":"开发工具/IDEA/IDEA基本配置/","title":"IDEA基本配置"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>IDEA基本配置 | 太子的个人博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">太子的个人博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Have a nice day !</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#IDEA%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">IDEA基本配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-maven%E4%BB%93%E5%BA%93%E9%85%8D%E7%BD%AE-%E5%BD%93%E5%89%8D%E9%A1%B9%E7%9B%AE%E6%9C%89%E6%95%88"><span class="nav-number">1.1.</span> <span class="nav-text">1. maven仓库配置(当前项目有效)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%96%87%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A8%A1%E6%9D%BF%E9%85%8D%E7%BD%AE%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%8C%E4%BE%BF%E5%88%A9%E6%80%A7%E9%80%89%E9%A1%B9%EF%BC%89"><span class="nav-number">1.2.</span> <span class="nav-text">2. 文件的基本模板配置（可选，便利性选项）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E6%96%87%E4%BB%B6%E5%A4%B4%E8%AE%BE%E7%BD%AE"><span class="nav-number">1.3.</span> <span class="nav-text">3. 文件头设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E5%85%B1%E4%BA%AB%E8%BF%9B%E7%A8%8B%E5%A0%86%E5%A4%A7%E5%B0%8F%E8%AE%BE%E7%BD%AE%EF%BC%88%E7%BC%93%E8%A7%A3%E9%A1%B9%E7%9B%AEbuild%E6%97%B6idea%E5%8D%A1%E6%AD%BB%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%89"><span class="nav-number">1.4.</span> <span class="nav-text">4. 共享进程堆大小设置（缓解项目build时idea卡死的问题）</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Taizi</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/IDEA/IDEA%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Taizi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="IDEA基本配置 | 太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          IDEA基本配置
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-09-27 18:38:50" itemprop="dateModified" datetime="2023-09-27T18:38:50+08:00">2023-09-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">开发工具</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/IDEA/" itemprop="url" rel="index"><span itemprop="name">IDEA</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.5k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h3 id="IDEA基本配置"><a href="#IDEA基本配置" class="headerlink" title="IDEA基本配置"></a>IDEA基本配置</h3><h4 id="1-maven仓库配置-当前项目有效"><a href="#1-maven仓库配置-当前项目有效" class="headerlink" title="1. maven仓库配置(当前项目有效)"></a>1. maven仓库配置(当前项目有效)</h4><p>maven设置打开方式：</p>
+<ul>
+<li>settings→Build,Execution,Deployment→Build Tools→Maven</li>
+<li>最右侧点击maven，然后点击设置图标，点击maven settings</li>
+</ul>
+<p>在maven设置中配置Maven home path，地址为maven的安装文件夹的位置，如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E:/Maven/apache-maven-3.8.4</span><br></pre></td></tr></table></figure>
+
+<p>配置maven的配置文件位置，地址为maven安装文件夹下的conf目录下的settings.xml文件，如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E:\Maven\apache-maven-3.8.4\conf\settings.xml</span><br></pre></td></tr></table></figure>
+
+<p>本地的maven仓库地址需要自己指定目录，如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E:\Maven\MyRepository</span><br></pre></td></tr></table></figure>
+
+<p><strong>如果想使之后的项目都沿用此配置，可以在File→New Projects Setup→Setting for new Projects中进行maven配置</strong></p>
+<h4 id="2-文件的基本模板配置（可选，便利性选项）"><a href="#2-文件的基本模板配置（可选，便利性选项）" class="headerlink" title="2. 文件的基本模板配置（可选，便利性选项）"></a>2. 文件的基本模板配置（可选，便利性选项）</h4><p>文件的基本模板规定了文件的创建格式和创建后文件中的基本内容，除了idea自带的模板外，还可以对经常需要创建的文件类型建立模板。</p>
+<p>配置位置在settings→Editor→File and Code Templates→Files,可以指定模板名称、模板内容以及模板类型（即文件的后缀名）等。</p>
+<p>以下是一些模板，随时更新和增加：</p>
+<p>Mybatis配置文件Mybatis.xml，模板内容：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span> ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">mapper</span></span></span><br><span class="line"><span class="meta">        <span class="keyword">PUBLIC</span> <span class="string">&quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;</span></span></span><br><span class="line"><span class="meta">        <span class="string">&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">&quot;&quot;</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>themeleaf.html</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!doctype <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;ch&quot;</span> <span class="attr">xmlns:th</span>=<span class="string">&quot;http://www.thymeleaf.org&quot;</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="3-文件头设置"><a href="#3-文件头设置" class="headerlink" title="3. 文件头设置"></a>3. 文件头设置</h4><p>文件头即创建文件时自动添加的注释，用于标注代码的创建时间、作者等信息。</p>
+<p>设置位置在settings→Editor→File and Code Templates→Includes→File Header</p>
+<p>内容可以自定义，当前设置的内容为：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Created</span> with IntelliJ IDEA</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span> Kaiyuan Zhang</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Version</span> 1.0.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Since</span> 1.0.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@CreateDate</span> $DATE</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@CreateTime</span> $HOUR:$MINUTE</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="4-共享进程堆大小设置（缓解项目build时idea卡死的问题）"><a href="#4-共享进程堆大小设置（缓解项目build时idea卡死的问题）" class="headerlink" title="4. 共享进程堆大小设置（缓解项目build时idea卡死的问题）"></a>4. 共享进程堆大小设置（缓解项目build时idea卡死的问题）</h4><p>如果要为当前项目设置：</p>
+<ul>
+<li>settings→Build,Execution,Deployment→Complier→Shared build process heap size</li>
+</ul>
+<p>如果要为以后新建的所有项目设置（推荐):</p>
+<ul>
+<li>File→New Projects Setup→Setting for new Projects→Build,Execution,Deployment→Complier→Shared build process heap size</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" rel="tag"># 开发工具</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/IDEA/IDEA%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%B1%87%E6%80%BB/" rel="prev" title="IDEA常用快捷键汇总">
+                  <i class="fa fa-angle-left"></i> IDEA常用快捷键汇总
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/Java/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/1.Java%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%8E%AF%E5%A2%83/" rel="next" title="1.Java程序设计环境">
+                  1.Java程序设计环境 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Powered by Hackertaizi</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">145k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">4:24</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

@@ -147,18 +147,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">78</span>
+          <span class="site-state-item-count">43</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">21</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">28</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -184,7 +184,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/K%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0%EF%BC%88k-Nearest%20Neighbor%20,kNN)/">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Linux/Linux%E4%B8%8B%E5%AE%89%E8%A3%85anaconda/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -202,7 +202,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/K%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0%EF%BC%88k-Nearest%20Neighbor%20,kNN)/" class="post-title-link" itemprop="url">未命名</a>
+          <a href="/Linux/Linux%E4%B8%8B%E5%AE%89%E8%A3%85anaconda/" class="post-title-link" itemprop="url">Linux环境下安装anaconda</a>
         </h2>
 
         <div class="post-meta-container">
@@ -220,7 +220,16 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2021-11-15 10:31:18" itemprop="dateModified" datetime="2021-11-15T10:31:18+08:00">2021-11-15</time>
+      <time title="修改时间：2023-09-28 15:02:15" itemprop="dateModified" datetime="2023-09-28T15:02:15+08:00">2023-09-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+        </span>
     </span>
 
   
@@ -230,7 +239,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>398</span>
+      <span>222</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -248,10 +257,19 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="K近邻算法概述（k-Nearest-Neighbor-kNN"><a href="#K近邻算法概述（k-Nearest-Neighbor-kNN" class="headerlink" title="K近邻算法概述（k-Nearest Neighbor ,kNN)"></a>K近邻算法概述（k-Nearest Neighbor ,kNN)</h1><h2 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h2><p>k近邻学习是一种监督学习方法，常用于分类和回归任务。</p>
-<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>给定一个要预测类别的测试样本，基于某种距离度量方法找到训练集中与其最靠近的k个训练样本，然后根据这 k个训练样本的信息做预测。在分类时，可以使用投票法，即选择这k个训练样本中最多的类别作为预测的结果；在回归时，可以使用平均法，即将这k个样本的实值输出标记的平均值作为预测结果；还可以基于距离远近进行加权平均或者加权投票，距离越近的样本权重越大。</p>
-<h2 id="kNN是一种懒惰学习"><a href="#kNN是一种懒惰学习" class="headerlink" title="kNN是一种懒惰学习"></a>kNN是一种懒惰学习</h2><p>k近邻学习没有显示的学习过程，在训练过程仅仅是把样本保存起来，训练时间开销为零，待收集到测试样本后再做处理，是一种懒惰学习（lazy learning）方法。相反地，在训练阶段就对数据集进行处理的算法称为急切学习（eager learning）方法。</p>
-<h2 id="kNN算法性能"><a href="#kNN算法性能" class="headerlink" title="kNN算法性能"></a>kNN算法性能</h2><p>kNN分类器的泛化错误率不超过贝叶斯最优分类器的两倍。</p>
+          <h1 id="Linux下安装anaconda"><a href="#Linux下安装anaconda" class="headerlink" title="Linux下安装anaconda"></a>Linux下安装anaconda</h1><ul>
+<li>首先在anaconda官网下载Linux版本的anaconda的shell包；</li>
+<li>使用bash命令执行.sh脚本文件安装anaconda，注意更改安装路径，一般可以安装在&#x2F;opt目录下；</li>
+<li>安装结束后，在系统中添加环境变量：</li>
+</ul>
+<blockquote>
+<p>sudo vim &#x2F;etc&#x2F;profile</p>
+</blockquote>
+<p>在配置文件最后加入路径：</p>
+<blockquote>
+<p>#Anaconda</p>
+<p>export PATH&#x3D;$PATH:anaconda安装路径&#x2F;bin</p>
+</blockquote>
 
       
     </div>
@@ -278,7 +296,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/%E5%85%B6%E4%BB%96/Cron%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E8%A1%A8%E8%BE%BE%E5%BC%8F/Cron%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Java/Java%E6%B3%A8%E8%A7%A3/Java%E6%B3%A8%E8%A7%A3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -296,7 +314,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/%E5%85%B6%E4%BB%96/Cron%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E8%A1%A8%E8%BE%BE%E5%BC%8F/Cron%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="post-title-link" itemprop="url">未命名</a>
+          <a href="/Java/Java%E6%B3%A8%E8%A7%A3/Java%E6%B3%A8%E8%A7%A3/" class="post-title-link" itemprop="url">Java注解</a>
         </h2>
 
         <div class="post-meta-container">
@@ -314,7 +332,20 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-06-25 10:24:48" itemprop="dateModified" datetime="2022-06-25T10:24:48+08:00">2022-06-25</time>
+      <time title="修改时间：2023-09-27 18:55:41" itemprop="dateModified" datetime="2023-09-27T18:55:41+08:00">2023-09-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/Java%E6%B3%A8%E8%A7%A3/" itemprop="url" rel="index"><span itemprop="name">Java注解</span></a>
+        </span>
     </span>
 
   
@@ -324,14 +355,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1.9k</span>
+      <span>1.5k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>4 分钟</span>
+      <span>3 分钟</span>
     </span>
 </div>
 
@@ -342,211 +373,37 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="Cron表达式"><a href="#Cron表达式" class="headerlink" title="Cron表达式"></a>Cron表达式</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Cron表达式是一个具有时间含义的字符串，字符串以5<del>6个空格隔开，分为6</del>7个域，格式为<code>X X X X X X X</code>。其中<code>X</code>是一个域的占位符。最后一个代表年份的域非必须，可省略。单个域有多个取值时，使用半角逗号<code>,</code>隔开取值。每个域可以是确定的取值，也可以是具有逻辑意义的特殊字符。每个域最多支持一个前导零。</p>
-<h2 id="语法格式"><a href="#语法格式" class="headerlink" title="语法格式"></a>语法格式</h2><ul>
-<li><p>当为7个域时：</p>
-<p><code>Seconds Minutes Hours DayofMonth Month DayofWeek Year</code></p>
-</li>
-<li><p>当为6个域时：</p>
-<p><code>Seconds Minutes Hours DayofMonth Month DayofWeek</code></p>
-</li>
-</ul>
-<h2 id="域取值"><a href="#域取值" class="headerlink" title="域取值"></a>域取值</h2><p>下表为Cron表达式中六个域能够取的值以及支持的特殊字符。</p>
-<table>
-<thead>
-<tr>
-<th>域</th>
-<th>是否必需</th>
-<th>取值范围</th>
-<th>特殊字符</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>秒</td>
-<td>是</td>
-<td>[0, 59]</td>
-<td>* , - &#x2F;</td>
-</tr>
-<tr>
-<td>分钟</td>
-<td>是</td>
-<td>[0, 59]</td>
-<td>* , - &#x2F;</td>
-</tr>
-<tr>
-<td>小时</td>
-<td>是</td>
-<td>[0, 23]</td>
-<td>* , - &#x2F;</td>
-</tr>
-<tr>
-<td>日期</td>
-<td>是</td>
-<td>[1, 31]</td>
-<td>* , - &#x2F; ? L W</td>
-</tr>
-<tr>
-<td>月份</td>
-<td>是</td>
-<td>[1, 12]或[JAN, DEC]</td>
-<td>* , - &#x2F;</td>
-</tr>
-<tr>
-<td>星期</td>
-<td>是</td>
-<td>[1, 7]或[MON, SUN]。若您使用[1, 7]表达方式，<code>1</code>代表星期一，<code>7</code>代表星期日。</td>
-<td>* , - &#x2F; ? L #</td>
-</tr>
-<tr>
-<td>年</td>
-<td>否</td>
-<td>[当前年份，2099]</td>
-<td>* , - &#x2F;</td>
-</tr>
-</tbody></table>
-<h2 id="特殊字符"><a href="#特殊字符" class="headerlink" title="特殊字符"></a>特殊字符</h2><p>Cron表达式中的每个域都支持一定数量的特殊字符，每个特殊字符有其特殊含义。</p>
-<table>
-<thead>
-<tr>
-<th>特殊字符</th>
-<th>含义</th>
-<th>示例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>*</code></td>
-<td>所有可能的值。</td>
-<td>在月域中，<code>*</code>表示每个月；在星期域中，<code>*</code>表示星期的每一天。</td>
-</tr>
-<tr>
-<td><code>,</code></td>
-<td>列出枚举值。</td>
-<td>在分钟域中，<code>5,20</code>表示分别在5分钟和20分钟触发一次。</td>
-</tr>
-<tr>
-<td><code>-</code></td>
-<td>范围。</td>
-<td>在分钟域中，<code>5-20</code>表示从5分钟到20分钟之间每隔一分钟触发一次。</td>
-</tr>
-<tr>
-<td><code>/</code></td>
-<td>指定数值的增量。</td>
-<td>在分钟域中，<code>0/15</code>表示从第0分钟开始，每15分钟。在分钟域中<code>3/20</code>表示从第3分钟开始，每20分钟。</td>
-</tr>
-<tr>
-<td><code>?</code></td>
-<td>不指定值，仅日期和星期域支持该字符。</td>
-<td>当日期或星期域其中之一被指定了值以后，为了避免冲突，需要将另一个域的值设为<code>?</code>。</td>
-</tr>
-<tr>
-<td><code>L</code></td>
-<td>单词Last的首字母，表示最后一天，仅日期和星期域支持该字符。                                                                                                 <strong>说明</strong> 指定<code>L</code>字符时，避免指定列表或者范围，否则，会导致逻辑问题。</td>
-<td>在日期域中，<code>L</code>表示某个月的最后一天。在星期域中，<code>L</code>表示一个星期的最后一天，也就是星期日（<code>SUN</code>）。                                                                  如果在<code>L</code>前有具体的内容，例如，在星期域中的<code>6L</code>表示这个月的最后一个星期六。</td>
-</tr>
-<tr>
-<td><code>W</code></td>
-<td>除周末以外的有效工作日，在离指定日期的最近的有效工作日触发事件。<code>W</code>字符寻找最近有效工作日时不会跨过当前月份，连用字符<code>LW</code>时表示为指定月份的最后一个工作日。</td>
-<td>在日期域中<code>5W</code>，如果5日是星期六，则将在最近的工作日星期五，即4日触发。如果5日是星期天，则将在最近的工作日星期一，即6日触发；如果5日在星期一到星期五中的一天，则就在5日触发。</td>
-</tr>
-<tr>
-<td><code>#</code></td>
-<td>确定每个月第几个星期几，仅星期域支持该字符。</td>
-<td>在星期域中，<code>4#2</code>表示某月的第二个星期四。</td>
-</tr>
-</tbody></table>
-<h2 id="取值示例"><a href="#取值示例" class="headerlink" title="取值示例"></a>取值示例</h2><p>以下为Cron表达式的取值示例。</p>
-<table>
-<thead>
-<tr>
-<th>示例</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>0 15 10 ? * *</code></td>
-<td>每天上午10:15执行任务</td>
-</tr>
-<tr>
-<td><code>0 15 10 * * ?</code></td>
-<td>每天上午10:15执行任务</td>
-</tr>
-<tr>
-<td><code>0 0 12 * * ?</code></td>
-<td>每天中午12:00执行任务</td>
-</tr>
-<tr>
-<td><code>0 0 10,14,16 * * ?</code></td>
-<td>每天上午10:00点、下午14:00以及下午16:00执行任务</td>
-</tr>
-<tr>
-<td><code>0 0/30 9-17 * * ?</code></td>
-<td>每天上午09:00到下午17:00时间段内每隔半小时执行任务</td>
-</tr>
-<tr>
-<td><code>0 * 14 * * ?</code></td>
-<td>每天下午14:00到下午14:59时间段内每隔1分钟执行任务</td>
-</tr>
-<tr>
-<td><code>0 0-5 14 * * ?</code></td>
-<td>每天下午14:00到下午14:05时间段内每隔1分钟执行任务</td>
-</tr>
-<tr>
-<td><code>0 0/5 14 * * ?</code></td>
-<td>每天下午14:00到下午14:55时间段内每隔5分钟执行任务</td>
-</tr>
-<tr>
-<td><code>0 0/5 14,18 * * ?</code></td>
-<td>每天下午14:00到下午14:55、下午18:00到下午18:55时间段内每隔5分钟执行任务</td>
-</tr>
-<tr>
-<td><code>0 0 12 ? * WED</code></td>
-<td>每个星期三中午12:00执行任务</td>
-</tr>
-<tr>
-<td><code>0 15 10 15 * ?</code></td>
-<td>每月15日上午10:15执行任务</td>
-</tr>
-<tr>
-<td><code>0 15 10 L * ?</code></td>
-<td>每月最后一日上午10:15执行任务</td>
-</tr>
-<tr>
-<td><code>0 15 10 ? * 6L</code></td>
-<td>每月最后一个星期六上午10:15执行任务</td>
-</tr>
-<tr>
-<td><code>0 15 10 ? * 6#3</code></td>
-<td>每月第三个星期六上午10:15执行任务</td>
-</tr>
-<tr>
-<td><code>0 10,44 14 ? 3 WED</code></td>
-<td>每年3月的每个星期三下午14:10和14:44执行任务</td>
-</tr>
-<tr>
-<td><code>0 15 10 ? * * 2022</code></td>
-<td>2022年每天上午10:15执行任务</td>
-</tr>
-<tr>
-<td><code>0 15 10 ? * * *</code></td>
-<td>每年每天上午10:15执行任务</td>
-</tr>
-<tr>
-<td><code>0 0/5 14,18 * * ? 2022</code></td>
-<td>2022年每天下午14:00到下午14:55、下午18:00到下午18:55时间段内每隔5分钟执行任务</td>
-</tr>
-<tr>
-<td><code>0 15 10 ? * 6#3 2022,2023</code></td>
-<td>2022年至2023年每月第三个星期六上午10:15执行任务</td>
-</tr>
-<tr>
-<td><code>0 0/30 9-17 * * ? 2022-2025</code></td>
-<td>2022年至2025年每天上午09:00到下午17:30时间段内每隔半小时执行任务</td>
-</tr>
-<tr>
-<td><code>0 10,44 14 ? 3 WED 2022/2</code></td>
-<td>从2022年开始，每隔两年3月的每个星期三下午14:10和14:44执行任务</td>
-</tr>
-</tbody></table>
+          <h1 id="Java注解"><a href="#Java注解" class="headerlink" title="Java注解"></a>Java注解</h1><h2 id="1、-Autowired-（Spring注解）"><a href="#1、-Autowired-（Spring注解）" class="headerlink" title="1、@Autowired （Spring注解）"></a>1、@Autowired （Spring注解）</h2><p>@Autowired注解用于对象的自动装配，默认先通过类型进行装配，类型装配不成功时再通过名字进行装配，如果都不成功，可以使用@Qualifier(value&#x3D;“ ”）注解来指定名字协助装配，否则报错。</p>
+<h2 id="2-Resource-（Java注解）"><a href="#2-Resource-（Java注解）" class="headerlink" title="2. @Resource  （Java注解）"></a>2. @Resource  （Java注解）</h2><p>@Resource注解用于对象的自动装配，默认先通过名字进行装配，当名字装配不成功时再通过类型进行装配，如果都不成功，可以使用其name属性指定对象名字进行装配，格式如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Resource(name=&quot;&quot;)</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-Nullable"><a href="#3-Nullable" class="headerlink" title="3.  @Nullable"></a>3.  @Nullable</h2><p>使用该注解标记的字段可以为null。</p>
+<h2 id="4-Component"><a href="#4-Component" class="headerlink" title="4. @Component"></a>4. @Component</h2><p>把普通的实体类pojo配置到spring容器中，相当于配置文件中的</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;&quot;</span> <span class="attr">class</span>=<span class="string">&quot;&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>该注解泛指各种组件，就是当某个类不属于各种归类的时候（不属于controller、service等的时候），就可以使用@Component来标注这个类。</p>
+<p><strong>注意：</strong>使用该注解时，需要先在配置文件中使用</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">”包路径”</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>指定了要扫描的包后，这个包下的类的@Component注解才会生效。</p>
+<h2 id="5-Value"><a href="#5-Value" class="headerlink" title="5. @Value"></a>5. @Value</h2><p>上面的@Component注解只能配置类，当需要配置类的属性时，需要用到@Value注解，此注解可以声明在类的属性或者属性的set方法上，括号中跟值，例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Value(&quot;值&quot;)</span></span><br></pre></td></tr></table></figure>
+
+<p>相当于在配置文件中进行了属性配置：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;name&quot;</span> <span class="attr">value</span>=<span class="string">&quot;值&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="6-Repository（-Component衍生注解）"><a href="#6-Repository（-Component衍生注解）" class="headerlink" title="6. @Repository（@Component衍生注解）"></a>6. @Repository（@Component衍生注解）</h2><p>@Component的衍生注解，作用于@Component相同，<strong>用于装配Dao层下的类。</strong></p>
+<h2 id="7-Service（-Component衍生注解）"><a href="#7-Service（-Component衍生注解）" class="headerlink" title="7. @Service（@Component衍生注解）"></a>7. @Service（@Component衍生注解）</h2><p>@Component的衍生注解，作用于@Component相同，<strong>用于装配Service层下的类。</strong></p>
+<h2 id="8-Controller（-Component衍生注解）"><a href="#8-Controller（-Component衍生注解）" class="headerlink" title="8. @Controller（@Component衍生注解）"></a>8. @Controller（@Component衍生注解）</h2><p>@Component的衍生注解，作用于@Component相同，<strong>用于装配Controller层下的类。</strong></p>
+<h2 id="9-Scope"><a href="#9-Scope" class="headerlink" title="9. @Scope"></a>9. @Scope</h2><p>置于类上，用于配置类的作用域，如单例模式、原型模式等。例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Scope(&quot;singleton&quot;)</span> <span class="comment">//单例模式</span></span><br><span class="line"><span class="meta">@Scope(&quot;prototype&quot;)</span> <span class="comment">//原型模式</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="10-Configration"><a href="#10-Configration" class="headerlink" title="10. @Configration"></a>10. @Configration</h2><p>写在类前，声明一个类是Java 配置类，声明后，该java类的作用与xml配置文件相同。</p>
+<h2 id="11-ComponentScan"><a href="#11-ComponentScan" class="headerlink" title="11. @ComponentScan"></a>11. @ComponentScan</h2><p>配合@Configration注解为java配置类设置扫描路径，相当于xml配置文件中的&lt;context:component-scan base-package&#x3D;”包路径”&gt;语句，用法如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ComponentScan(&quot;扫描路径&quot;)</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="12-Import"><a href="#12-Import" class="headerlink" title="12. @Import"></a>12. @Import</h2><p>配合<br>@Configration注解将多个java配置类集合到一起，相当于xml配置文件中的import语句。</p>
+<h2 id="13-Bean"><a href="#13-Bean" class="headerlink" title="13. @Bean"></a>13. @Bean</h2><p>用于方法前，注册一个bean，相当于配置文件中的bean标签，方法的名字就相当于bean标签中的id属性，方法的返回值就相当于bean标签中的class属性</p>
 
       
     </div>
@@ -573,7 +430,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Python/kats%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Java/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/%E9%80%BB%E8%BE%91%E5%B1%82%E5%85%B3%E7%B3%BB%E6%A2%B3%E7%90%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -591,7 +448,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/Python/kats%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">未命名</a>
+          <a href="/Java/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/%E9%80%BB%E8%BE%91%E5%B1%82%E5%85%B3%E7%B3%BB%E6%A2%B3%E7%90%86/" class="post-title-link" itemprop="url">逻辑层关系梳理</a>
         </h2>
 
         <div class="post-meta-container">
@@ -609,7 +466,377 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2021-12-09 17:11:53" itemprop="dateModified" datetime="2021-12-09T17:11:53+08:00">2021-12-09</time>
+      <time title="修改时间：2023-09-27 18:58:01" itemprop="dateModified" datetime="2023-09-27T18:58:01+08:00">2023-09-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/" itemprop="url" rel="index"><span itemprop="name">开发经验</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>213</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="Mapper层"><a href="#Mapper层" class="headerlink" title="Mapper层"></a>Mapper层</h2><ul>
+<li>查询用户已经使用的次数</li>
+<li>查询城市白名单</li>
+<li>为用户添加一次使用记录</li>
+</ul>
+<h2 id="Service层"><a href="#Service层" class="headerlink" title="Service层"></a>Service层</h2><ul>
+<li>调用mapper层，获取用户已经使用的次数</li>
+<li>调用mapper层，获取城市白名单，判断用户所在城市是否支持</li>
+<li>调用mapper层，为用户添加一次使用记录</li>
+</ul>
+<h2 id="Controller层"><a href="#Controller层" class="headerlink" title="Controller层"></a>Controller层</h2><ul>
+<li>调用Service层，根据使用次数返回结果</li>
+<li>调用Service层，根据service的判断结果返回结果</li>
+<li>如果前两次返回结果都为成功，则调用Service层为用户添加一次使用记录</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Java/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/Java%E5%AE%9E%E6%88%98%E7%BB%8F%E9%AA%8C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Taizi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/Java/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/Java%E5%AE%9E%E6%88%98%E7%BB%8F%E9%AA%8C/" class="post-title-link" itemprop="url">Java实战经验</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-09-27 18:56:57" itemprop="dateModified" datetime="2023-09-27T18:56:57+08:00">2023-09-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/" itemprop="url" rel="index"><span itemprop="name">开发经验</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.3k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>6 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Java实战经验"><a href="#Java实战经验" class="headerlink" title="Java实战经验"></a>Java实战经验</h1><blockquote>
+<p> 本文内容完全来自于个人理解与开发经验</p>
+</blockquote>
+<h2 id="实体类的建立与分层"><a href="#实体类的建立与分层" class="headerlink" title="实体类的建立与分层"></a>实体类的建立与分层</h2><h3 id="什么是实体类？为什么要创建实体类？"><a href="#什么是实体类？为什么要创建实体类？" class="headerlink" title="什么是实体类？为什么要创建实体类？"></a>什么是实体类？为什么要创建实体类？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">在实际业务开发中，会发现我们的逻辑其实是在给一个个或大或小的“对象”或者“模块”之前建立联系，例如现在要书写一个返回全国各级省市区对应关系的接口，其中包括行政区域编码和行政区域名称两个要素，这种接口很常见，在很多应用上我们都可以看见，可以一级一级地选择省、市、区县，比较方便；那么这时候要如何来做呢？由于一般接口返回给前端的都是一个JSON字符串，我们很容易想到使用JSON工具包对信息进行封装，创建一个省JSON对象，然后再创建一个市JSON对象，将市JSON对象put到省JSON对象中...以此类推。</span><br><span class="line"></span><br><span class="line">在这个过程中，我们可以发现省、市、区县是相对独立的部分，因为我们对这三个部分，每一部分都创建了一个JSON对象。使用JSON对象的一个优点是比较方便和灵活，毕竟我们可以随意地将数据put进去；但另一方面，当实际的业务场景非常复杂时，例如现在不仅仅有名称和编码，还有20个其他属性，此时在进行操作时就会出现很多问题，例如很容易忘记将某个属性put进去，而且，后期在查看代码时，也难以分辨每一部分需要包含哪些属性，当这些部分涉及到重复使用时操作也会比较麻烦。</span><br><span class="line"></span><br><span class="line">因此，创建一个合适的Java对象是必要的，这也正是Java对象的存在意义，将事实上或逻辑上存在的事物抽象成一个Java对象，这样一来，业务模块的独立性就立马显现出来，模块的内容(Java对象的属性)也一目了然，无论是开发还是后续的迭代都很方便。</span><br><span class="line"></span><br><span class="line">如果为这个Java对象中的每一个属性都添加内置的getter/setter方法(用来取属性值，或为属性赋值)，这样就可以通过该对象进行交互，为整个对象添加一个内置的toString()方法, 这样就能够清晰的输出和查看对象包含的内容。</span><br><span class="line"></span><br><span class="line">包含了属性、getter/setter方法、toString()方法的Java对象，我们称之为实体类，在实际开发中，为了方便可以使用 lombok包下的@Data注解，但最好还是要了解这些方法的实现，如果使用IEDA开发工具，也可以使用Alt + Insert快捷键快速生成这些方法。</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建实体类注意点"><a href="#创建实体类注意点" class="headerlink" title="创建实体类注意点"></a>创建实体类注意点</h3><p><strong>创建实体类时，要注意属性的类型不能使用基本类型，而应使用包装类。</strong>因为包装类可以为属性提供更多的功能，例如可以为null值提供支持，可以用equals方法进行比较等。本质上还是因为包装类把属性声明为了一个类，而Java对类的支持比较完善；而基本类型是Java语言的预定义数据类型，没有提供任何方法和字段。</p>
+<h2 id="实体类的序列化"><a href="#实体类的序列化" class="headerlink" title="实体类的序列化"></a>实体类的序列化</h2><h3 id="什么是序列化？"><a href="#什么是序列化？" class="headerlink" title="什么是序列化？"></a>什么是序列化？</h3><p>实体类的序列化是指将Java实体类对象转换为字节流的过程，以便在网络上传输或将其保存到磁盘上。</p>
+<h3 id="如何对实体类进行序列化？"><a href="#如何对实体类进行序列化？" class="headerlink" title="如何对实体类进行序列化？"></a>如何对实体类进行序列化？</h3><p>对实体类进行序列化，只需要先让实体类实现Serializable接口，然后生成序列化ID即可。使用IDEA生成序列化ID，需要进行设置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">新版：</span><br><span class="line">进入“Settings”界面，然后选择“Editor”-&gt;“Inspections”-&gt;“JVM languages”-&gt;“Serialization issues”，勾选“Serializable class without ’serialVersionUID’” 。这样，IDEA就会在编辑器中提醒你对于没有显式指定序列化ID的类，自动生成ID的风险。</span><br><span class="line"></span><br><span class="line">旧版：</span><br><span class="line">进入“Settings”界面，然后选择“Editor”-&gt;“Inspections”-&gt;“Java”-&gt;“Serialization issues”，勾选“Serializable class without ’serialVersionUID’” 。这样，IDEA就会在编辑器中提醒你对于没有显式指定序列化ID的类，自动生成ID的风险。</span><br></pre></td></tr></table></figure>
+
+<p>设置完毕后，先让实体类实现Serializable接口，将鼠标光标放在实体类类名上，可以等待提示窗口出现，然后选择添加序列化id，也可以直接点击类名，然后按下Alt + Enter组合快捷键，选择生成序列化id。</p>
+<h3 id="什么情况下需要对实体类进行序列化？"><a href="#什么情况下需要对实体类进行序列化？" class="headerlink" title="什么情况下需要对实体类进行序列化？"></a>什么情况下需要对实体类进行序列化？</h3><p>对Java实体类进行序列化的主要原因是为了在分布式系统中进行数据传输和持久化。在分布式系统中，不同的应用程序可能运行在不同的计算机上，它们需要通过网络进行通信。在这种情况下，Java实体类对象需要被序列化为字节流，以便在网络上传输。另外，Java实体类对象也可以被序列化并保存到磁盘上，以便在需要时进行读取和恢复。</p>
+<p>例如在Dubbo架构项目中，Controller层 和 Service层是分离的，即在实际部署时，两个部分是部署在不同服务器上的。而一些数据传输实体是通过调用Controller的接口，传递给Service层进行逻辑处理的。这个传递过程中，需要先将数据传输实体（DTO）序列化为字节流在网络上传输，然后接收方再将字节流反序列化为实体类用于逻辑处理。</p>
+<p><strong>总之，需要通过网络传输的实体类都需要进行序列化。</strong></p>
+<h2 id="实体类的用途分类"><a href="#实体类的用途分类" class="headerlink" title="实体类的用途分类"></a>实体类的用途分类</h2><h3 id="个人常用的几种实体类"><a href="#个人常用的几种实体类" class="headerlink" title="个人常用的几种实体类"></a>个人常用的几种实体类</h3><ul>
+<li><p>DO（Data Object）：数据层对象，用于持久化数据。按照规范，DO对象中的属性需要与数据库的字段一一对应。</p>
+<p>在实际开发中，DO用来接收查询返回结果；<br><strong>但有时我们只需要数据库中的某几个字段，而非全部字段</strong>，在这种情况下：</p>
+<ul>
+<li>如果数据库的查询结果可以直接作为接口调用结果返回，则创建一个VO实体类进行接收，然后该VO实体类经由Service层直接返回给Controller层</li>
+<li>如果数据库的查询结果不能直接作为接口调用结果，而是要参与Service层的逻辑计算，则建议使用DO来接收返回结果，而不是再创建新的类。比如数据库有10个字段，对应的DO类也有10个字段，但某个查询只需要查询其中的3个字段，那么我们依然使用该DO来接收返回数据，这时返回结果中其他7个字段的值为null，只需要在处理时只调用这三个字段即可。避免在处理时由于一会儿用两个、一会儿用三个这种情况创建大量的类，只要查询的是同一张表，就用该表对应的DO来接收返回结果。</li>
+</ul>
+</li>
+<li><p>DTO（Data Transfer Object）：数据传输对象，用于在不同层之间传输数据，以及封装从数据库中查询出来的数据。</p>
+<p>在实际开发中，DTO用来接收从接口传来的数据，也就是Controller层传来的数据，然后传递到Service、ServiceImpl层。也可以从<br>ServiceImpl层传递到Mapper&#x2F;Dao层。</p>
+</li>
+<li><p>VO （Value Object）: 值对象，用于封装业务逻辑层返回的数据。<br>在实际开发中，VO用来将处理完的数据进行封装，然后返回计算结果。也就是说，VO用来将数据处理结果进行封装返回给接口调用者，VO的结构就是接口调用者看到的结构</p>
+</li>
+</ul>
+<h3 id="这几种实体类之间的数据传输与类型转换"><a href="#这几种实体类之间的数据传输与类型转换" class="headerlink" title="这几种实体类之间的数据传输与类型转换"></a>这几种实体类之间的数据传输与类型转换</h3><ul>
+<li>如果接口需要传参，当参数有多个时，将这些参数封装成DTO实体类，然后传输给Service和ServiceImpl层，如果有需要，通过ServiceImpl调用Mapper&#x2F;Dao层的时候，如果对数据库的操作需要传递多个参数，则也需要将这些DTO封装成实体类进行传输。查询数据库表之前需要依据数据库字段创建DO实体类，用来接收返回结果（<strong>一些简单的接口可以直接用VO实体类接收数据库查询结果并返回，这种情况上面已经叙述过了，此处不再赘述</strong>）。在ServiceImpl接收到这些DO时，由于实际业务，这些数据库查询结果是为了参与某些逻辑计算而非作为接口返回结果，所以通常，在Service层经过逻辑处理后的结果，需要封装在VO类里返回给Controller。</li>
+</ul>
+<h2 id="对象的创建"><a href="#对象的创建" class="headerlink" title="对象的创建"></a>对象的创建</h2><h3 id="对象创建的本质"><a href="#对象创建的本质" class="headerlink" title="对象创建的本质"></a>对象创建的本质</h3><h3 id="在循环中创建对象踩坑实例"><a href="#在循环中创建对象踩坑实例" class="headerlink" title="在循环中创建对象踩坑实例"></a>在循环中创建对象踩坑实例</h3><h2 id="对象的复制"><a href="#对象的复制" class="headerlink" title="对象的复制"></a>对象的复制</h2><h3 id="列表对象复制踩坑实例"><a href="#列表对象复制踩坑实例" class="headerlink" title="列表对象复制踩坑实例"></a>列表对象复制踩坑实例</h3><h2 id="对象的判空"><a href="#对象的判空" class="headerlink" title="对象的判空"></a>对象的判空</h2><h3 id="一般对象的判空"><a href="#一般对象的判空" class="headerlink" title="一般对象的判空"></a>一般对象的判空</h3><h3 id="Mapper层-x2F-Dao层返回实例的判空"><a href="#Mapper层-x2F-Dao层返回实例的判空" class="headerlink" title="Mapper层&#x2F;Dao层返回实例的判空"></a>Mapper层&#x2F;Dao层返回实例的判空</h3><h3 id="缓存的使用"><a href="#缓存的使用" class="headerlink" title="缓存的使用"></a>缓存的使用</h3><h3 id="缓存的优点"><a href="#缓存的优点" class="headerlink" title="缓存的优点"></a>缓存的优点</h3><h3 id="缓存的缺点"><a href="#缓存的缺点" class="headerlink" title="缓存的缺点"></a>缓存的缺点</h3><h3 id="如何权衡使用缓存"><a href="#如何权衡使用缓存" class="headerlink" title="如何权衡使用缓存"></a>如何权衡使用缓存</h3><h2 id="开发规范"><a href="#开发规范" class="headerlink" title="开发规范"></a>开发规范</h2><h3 id="基础格式规范-见阿里巴巴Java开发代码规范"><a href="#基础格式规范-见阿里巴巴Java开发代码规范" class="headerlink" title="基础格式规范 见阿里巴巴Java开发代码规范"></a>基础格式规范 见阿里巴巴Java开发代码规范</h3><h3 id="实战中的开发规范"><a href="#实战中的开发规范" class="headerlink" title="实战中的开发规范"></a>实战中的开发规范</h3><h2 id="其他知识"><a href="#其他知识" class="headerlink" title="其他知识"></a>其他知识</h2><h3 id="MyBatis-x2F-iBatis-中resultMap的作用"><a href="#MyBatis-x2F-iBatis-中resultMap的作用" class="headerlink" title="MyBatis&#x2F;iBatis 中resultMap的作用"></a>MyBatis&#x2F;iBatis 中resultMap的作用</h3>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Java/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/%E8%A7%A3%E5%86%B3%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%97%A0%E6%B3%95%E7%94%9F%E6%95%88%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%88pom.xml%E4%B8%AD%E8%BF%9B%E8%A1%8C%E9%85%8D%E7%BD%AE%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Taizi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/Java/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/%E8%A7%A3%E5%86%B3%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%97%A0%E6%B3%95%E7%94%9F%E6%95%88%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%88pom.xml%E4%B8%AD%E8%BF%9B%E8%A1%8C%E9%85%8D%E7%BD%AE%EF%BC%89/" class="post-title-link" itemprop="url">配置文件无法生效的问题解决</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-09-27 18:57:27" itemprop="dateModified" datetime="2023-09-27T18:57:27+08:00">2023-09-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/" itemprop="url" rel="index"><span itemprop="name">开发经验</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>649</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="解决配置文件无法生效的问题（pom-xml中进行配置）"><a href="#解决配置文件无法生效的问题（pom-xml中进行配置）" class="headerlink" title="解决配置文件无法生效的问题（pom.xml中进行配置）"></a>解决配置文件无法生效的问题（pom.xml中进行配置）</h1><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--在build中配置resources，来防止我们资源导出失败的问题--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">directory</span>&gt;</span>src/main/resources<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">includes</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">include</span>&gt;</span>**/*.properties<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">include</span>&gt;</span>**/*.xml<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">includes</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">filtering</span>&gt;</span>true<span class="tag">&lt;/<span class="name">filtering</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">directory</span>&gt;</span>src/main/java<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">includes</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">include</span>&gt;</span>**/*.properties<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">include</span>&gt;</span>**/*.xml<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">includes</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">filtering</span>&gt;</span>true<span class="tag">&lt;/<span class="name">filtering</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Java/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/%E7%A9%BA%E5%80%BC%E5%88%A4%E6%96%AD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Taizi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/Java/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/%E7%A9%BA%E5%80%BC%E5%88%A4%E6%96%AD/" class="post-title-link" itemprop="url">空值判断</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-09-27 18:57:47" itemprop="dateModified" datetime="2023-09-27T18:57:47+08:00">2023-09-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/" itemprop="url" rel="index"><span itemprop="name">开发经验</span></a>
+        </span>
     </span>
 
   
@@ -637,555 +864,41 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="kats安装教程"><a href="#kats安装教程" class="headerlink" title="kats安装教程"></a>kats安装教程</h1><p>kats是Facebook开发的时间序列预测服务工具库，集成了多种时间预测模型。</p>
-<h2 id="安装过程（建议单独创建虚拟环境）"><a href="#安装过程（建议单独创建虚拟环境）" class="headerlink" title="安装过程（建议单独创建虚拟环境）"></a>安装过程（建议单独创建虚拟环境）</h2><h3 id="1-fbprophet的安装"><a href="#1-fbprophet的安装" class="headerlink" title="1.fbprophet的安装"></a>1.fbprophet的安装</h3><p>由于直接安装kats会报错，主要原因是fbprophet的安装问题。所以在安装kats之前，首先将fbprophet单独进行安装。</p>
-<p>直接pip install fdprophet也会出错，因此依次执行下面三个命令：</p>
+          <h1 id="空值判断"><a href="#空值判断" class="headerlink" title="空值判断"></a>空值判断</h1><h2 id="数据库查询"><a href="#数据库查询" class="headerlink" title="数据库查询"></a>数据库查询</h2><ul>
+<li>在Mybatis中，如果数据查询select语句根据where条件找不到要找的数据时，将会<strong>返回null</strong>，无论接收返回值的类型是什么。如果要查询单个字段的一个值，应该使用<strong>包装类型</strong>而不是基本类型来接收返回值，因为基本类型接收null会报错。</li>
+</ul>
+<h2 id="集合遍历"><a href="#集合遍历" class="headerlink" title="集合遍历"></a>集合遍历</h2><ul>
+<li>当我们需要遍历一个集合时，<strong>首先应该判断该集合是否为空</strong>，一般可以通过集合的大小来判断。尤其是当我们通过SQL查询到一个列表，使用foreach语法对集合进行遍历时，如果不判断集合内是否有元素，遍历会返回空指针异常。</li>
+</ul>
+<h2 id="对象是否为空的判断"><a href="#对象是否为空的判断" class="headerlink" title="对象是否为空的判断"></a>对象是否为空的判断</h2><p>当前有很多工具类可以对对象是否为空进行判断，如：</p>
 <blockquote>
-<p>python -m pip install -U pip</p>
-<p>conda install -c conda-forge pystan</p>
-<p>pip install fbprophet</p>
+<p>ObjectUtil.isNull()   &#x2F;    ObjuctUtils.isNull()</p>
+<p>ObjectUtil.isEmpty()  &#x2F;  ObjectUtils.isEmpty()</p>
+<p>StringUtil.isNull()  &#x2F;  StringUtil.isEmpty()</p>
 </blockquote>
-<p>过程中，执行第二条命令conda install -c conda-forge pystan后可能会出现pip命令无法使用的情况，提示错误为ModuleNotFoundError: No module named ‘_sysconfigdata_x86_64_conda_linux_gnu’，这是因为第二条指令使用conda安装了“gxx-linux-64”，在某一个版本的python中丢失了一个备份文件，通常在同一个版本的python下会有两个相同的<code>_sysconfigdata_x86_64_conda_cos6_linux_gnu.py</code>文件和<code>_sysconfigdata_x86_64_conda_linux_gnu.py</code>文件。而在某些程序的运行过程中会依赖于其中的一个，因此我们需要做的就是检索系统中是否存在有这两个文件：</p>
-<blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo find ~ -name _sysconfigdata_x86_64*</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>我发现的问题是在虚拟环境下的anaconda下的python3.8路径下只有一个<code>_sysconfigdata_x86_64_conda_cos6_linux_gnu.py</code>文件而没有</p>
-<p><code>_sysconfigdata_x86_64_conda_linux_gnu.py</code>文件，所以只需要将上面有的文件复制一份成下面文件的名字即可，使用了命令：</p>
-<blockquote>
-<p> <code>cp /opt/anaconda3/envs/kats/lib/python3.8/_sysconfigdata_x86_64_conda_cos6_linux_gnu.py /opt/anaconda3/envs/kats/lib/python3.8/_sysconfigdata_x86_64_conda_linux_gnu.py</code></p>
-</blockquote>
-<p>这里kats是我创建的虚拟环境的名字。</p>
-<p>到此，不出意外的话fbprophet安装完毕。</p>
-<h3 id="2-kats的安装"><a href="#2-kats的安装" class="headerlink" title="2. kats的安装"></a>2. kats的安装</h3><p>由于kats的安装过程中需要安装pytorch，而安装pytorch的过程会导致进程killed，所以安装kats需要添加参数</p>
-<p>“–no-cache-dir”，安装命令为：</p>
-<p><code>pip install kats --no-cache-dir</code></p>
-<p>等待安装完毕即可。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Markdown/Markdown%20%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Taizi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/Markdown/Markdown%20%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" class="post-title-link" itemprop="url">未命名</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2021-12-01 18:10:21" itemprop="dateModified" datetime="2021-12-01T18:10:21+08:00">2021-12-01</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>8k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>15 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Markdown-基本语法"><a href="#Markdown-基本语法" class="headerlink" title="Markdown 基本语法"></a>Markdown 基本语法</h1><h2 id="一、标题"><a href="#一、标题" class="headerlink" title="一、标题"></a>一、标题</h2><h3 id="1、使用-x3D-和-标记一级和二级标题"><a href="#1、使用-x3D-和-标记一级和二级标题" class="headerlink" title="1、使用 &#x3D; 和 - 标记一级和二级标题"></a>1、使用 &#x3D; 和 - 标记一级和二级标题</h3><p>例如 ：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">我展示的是一级标题</span></span><br><span class="line"><span class="section">===============</span></span><br><span class="line"><span class="section">我展示的是二级标题</span></span><br><span class="line"><span class="section">---------------</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="2、使用-号标记"><a href="#2、使用-号标记" class="headerlink" title="2、使用#号标记"></a>2、使用#号标记</h3><p>例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 一级标题</span><br><span class="line">## 二级标题</span><br><span class="line">### 三级标题</span><br><span class="line">#### 四级标题</span><br><span class="line">##### 五级标题</span><br><span class="line">###### 六级标题</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="二、段落"><a href="#二、段落" class="headerlink" title="二、段落"></a>二、段落</h2><h3 id="1、Markdown-段落没有特殊的格式，直接编写文字就好，段落的换行是使用两个以上空格加上回车-shift-回车-。当然也可以在段落后面使用一个空行来表示重新开始一个段落。"><a href="#1、Markdown-段落没有特殊的格式，直接编写文字就好，段落的换行是使用两个以上空格加上回车-shift-回车-。当然也可以在段落后面使用一个空行来表示重新开始一个段落。" class="headerlink" title="1、Markdown 段落没有特殊的格式，直接编写文字就好，段落的换行是使用两个以上空格加上回车(shift+回车)。当然也可以在段落后面使用一个空行来表示重新开始一个段落。"></a>1、Markdown 段落没有特殊的格式，直接编写文字就好，段落的换行是使用两个以上空格加上回车(shift+回车)。当然也可以在段落后面使用一个空行来表示重新开始一个段落。</h3><p>例如：</p>
-<p>第一行   </p>
-<p>第二行</p>
-<h1 id="三、字体"><a href="#三、字体" class="headerlink" title="三、字体"></a>三、字体</h1><h2 id="1、Markdown-可以使用以下几种字体："><a href="#1、Markdown-可以使用以下几种字体：" class="headerlink" title="1、Markdown 可以使用以下几种字体："></a>1、Markdown 可以使用以下几种字体：</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">*斜体文本*</span><br><span class="line">_斜体文本_</span><br><span class="line">**粗体文本**</span><br><span class="line">__粗体文本__</span><br><span class="line">***粗斜体文本***</span><br><span class="line">___粗斜体文本___</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="四、线"><a href="#四、线" class="headerlink" title="四、线"></a>四、线</h1><h2 id="1、分割线"><a href="#1、分割线" class="headerlink" title="1、分割线"></a>1、分割线</h2><p>你可以在一行中用三个以上的星号、减号、底线来建立一个分隔线，行内不能有其他东西。你也可以在星号或是减号中间插入空格。下面每种写法都可以建立分隔线：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">***</span><br><span class="line"></span><br><span class="line">* * *</span><br><span class="line"></span><br><span class="line">*****</span><br><span class="line"></span><br><span class="line">- - -</span><br><span class="line"></span><br><span class="line">----------</span><br></pre></td></tr></table></figure>
-
-<h2 id="2、删除线"><a href="#2、删除线" class="headerlink" title="2、删除线"></a>2、删除线</h2><p>如果段落上的文字要添加删除线，只需要在文字的两端加上两个波浪线 ~~ 即可，实例如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">~~RUNOOB.COM~~</span><br><span class="line">~~GOOGLE.COM~~</span><br><span class="line">~~BAIDU.COM~~</span><br></pre></td></tr></table></figure>
-
-<h2 id="3、下划线"><a href="#3、下划线" class="headerlink" title="3、下划线"></a>3、下划线</h2><p>下划线可以通过 HTML 的 <u> 标签来实现：</u></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;u&gt;带下划线文本&lt;/u&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="4、脚注"><a href="#4、脚注" class="headerlink" title="4、脚注"></a>4、脚注</h2><p>脚注是对文本的补充说明。</p>
-<p>Markdown 脚注的格式如下:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[^要注明的文本]</span><br></pre></td></tr></table></figure>
-
-<p>以下实例演示了脚注的用法：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">创建脚注格式类似这样 [^RUNOOB]。</span><br><span class="line"></span><br><span class="line">[^RUNOOB]: 菜鸟教程 -- 学的不仅是技术，更是梦想！！！</span><br></pre></td></tr></table></figure>
-
-<p>演示效果如下：</p>
-<p>创建脚注格式类似这样 [^RUNOOB]。</p>
-<p>[^RUNOOB]: 菜鸟教程 – 学的不仅是技术，更是梦想！！！</p>
-<h1 id="五、列表"><a href="#五、列表" class="headerlink" title="五、列表"></a>五、列表</h1><h1 id="Markdown-列表"><a href="#Markdown-列表" class="headerlink" title="Markdown 列表"></a>Markdown 列表</h1><p>Markdown 支持有序列表和无序列表。</p>
-<p>无序列表使用星号(*)、加号(+)或是减号(-)作为列表标记，这些标记后面要添加一个空格，然后再填写内容：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">* 第一项</span><br><span class="line">* 第二项</span><br><span class="line">* 第三项</span><br><span class="line"></span><br><span class="line">+ 第一项</span><br><span class="line">+ 第二项</span><br><span class="line">+ 第三项</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">- 第一项</span><br><span class="line">- 第二项</span><br><span class="line">- 第三项</span><br></pre></td></tr></table></figure>
-
-<p>演示效果如下：</p>
 <ul>
-<li>第一项</li>
-<li>第二项</li>
-<li>第三项</li>
-</ul>
-<ul>
-<li>第一项</li>
-<li>第二项</li>
-<li>第三项</li>
-</ul>
-<ul>
-<li>第一项</li>
-<li>第二项</li>
-<li>第三项</li>
-</ul>
-<p>有序列表使用数字并加上 . 号来表示，如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. 第一项</span><br><span class="line">2. 第二项</span><br><span class="line">3. 第三项</span><br></pre></td></tr></table></figure>
-
-<p>显示结果如下：</p>
-<ol>
-<li>第一项</li>
-<li>第二项</li>
-<li>第三项</li>
-</ol>
-<h3 id="列表嵌套"><a href="#列表嵌套" class="headerlink" title="列表嵌套"></a>列表嵌套</h3><p>列表嵌套只需在子列表中的选项前面添加四个空格即可：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1. 第一项：</span><br><span class="line">    - 第一项嵌套的第一个元素</span><br><span class="line">    - 第一项嵌套的第二个元素</span><br><span class="line">2. 第二项：</span><br><span class="line">    - 第二项嵌套的第一个元素</span><br><span class="line">    - 第二项嵌套的第二个元素</span><br></pre></td></tr></table></figure>
-
-<p>显示结果如下：</p>
-<ol>
-<li>第一项：<ul>
-<li>第一项嵌套的第一个元素</li>
-<li>第一项嵌套的第二个元素</li>
-</ul>
+<li><h5 id="对于使用new实例化的类"><a href="#对于使用new实例化的类" class="headerlink" title="对于使用new实例化的类"></a>对于使用new实例化的类</h5><p>类在没有进行实例化时是空的，即isNull 和 isEmpty的判断结果会返回true。一旦对象进行了实例化，也就是使用了new操作创建了实例，对象就不再是空的了。</p>
+<p>对于基本类型的包装类，如果实例化(new)后没有初始化(赋值)，则此时对象依旧是空的，isNull 和 isEmpty的判断结果都为true。</p>
+<p>对于自己定义的类，实例化(new)之后就不再是空的了，此时isNull 和 isEmpty的判断结果都为false。</p>
 </li>
-<li>第二项：<ul>
-<li>第二项嵌套的第一个元素</li>
-<li>第二项嵌套的第二个元素</li>
-</ul>
+<li><h5 id="对于通过赋值来实例化的类"><a href="#对于通过赋值来实例化的类" class="headerlink" title="对于通过赋值来实例化的类"></a>对于通过赋值来实例化的类</h5><ul>
+<li><p>通过Mapper层方法查询得到的类：例如  object &#x3D; testMapper.getObject(fields)</p>
+<p>如果查询结果为空，即没有查询到数据或者数据本身为null，此时object为空，使用isNull 和 isEmpty的判断结果都为空。</p>
+<p>如果查询结果不为空，则isNull 和 isEmpty 的判断结果都为 false.</p>
 </li>
-</ol>
-<h1 id="六、区块"><a href="#六、区块" class="headerlink" title="六、区块"></a>六、区块</h1><h1 id="Markdown-区块"><a href="#Markdown-区块" class="headerlink" title="Markdown 区块"></a>Markdown 区块</h1><p>Markdown 区块引用是在段落开头使用 &gt; 符号 ，然后后面紧跟一个<strong>空格</strong>符号：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; 区块引用</span><br><span class="line">&gt; 菜鸟教程</span><br><span class="line">&gt; 学的不仅是技术更是梦想</span><br></pre></td></tr></table></figure>
-
-<p>显示结果如下：</p>
-<blockquote>
-<p>区块引用<br>菜鸟教程<br>学的不仅是技术更是梦想</p>
-</blockquote>
-<p>另外区块是可以嵌套的，一个 &gt; 符号是最外层，两个 &gt; 符号是第一层嵌套，以此类推：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; 最外层</span><br><span class="line">&gt; &gt; 第一层嵌套</span><br><span class="line">&gt; &gt; &gt; 第二层嵌套</span><br></pre></td></tr></table></figure>
-
-<p>显示结果如下：</p>
-<blockquote>
-<p>最外层</p>
-<blockquote>
-<p>第一层嵌套</p>
-<blockquote>
-<p>第二层嵌套</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<h3 id="区块中使用列表"><a href="#区块中使用列表" class="headerlink" title="区块中使用列表"></a>区块中使用列表</h3><p>区块中使用列表实例如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; 区块中使用列表</span><br><span class="line">&gt; 1. 第一项</span><br><span class="line">&gt; 2. 第二项</span><br><span class="line">&gt; + 第一项</span><br><span class="line">&gt; + 第二项</span><br><span class="line">&gt; + 第三项</span><br></pre></td></tr></table></figure>
-
-<p>显示结果如下：</p>
-<blockquote>
-<p>区块中使用列表</p>
-<ol>
-<li>第一项</li>
-<li>第二项</li>
-</ol>
-<ul>
-<li>第一项</li>
-<li>第二项</li>
-<li>第三项</li>
-</ul>
-</blockquote>
-<h3 id="列表中使用区块"><a href="#列表中使用区块" class="headerlink" title="列表中使用区块"></a>列表中使用区块</h3><p>如果要在列表项目内放进区块，那么就需要在 &gt; 前添加四个空格的缩进。</p>
-<p>列表中使用区块实例如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">* 第一项</span><br><span class="line">    &gt; 菜鸟教程</span><br><span class="line">    &gt; 学的不仅是技术更是梦想</span><br><span class="line">* 第二项</span><br></pre></td></tr></table></figure>
-
-<p>显示结果如下：</p>
-<ul>
-<li>第一项<blockquote>
-<p>菜鸟教程<br>学的不仅是技术更是梦想</p>
-</blockquote>
-</li>
-<li>第二项</li>
-</ul>
-<h1 id="七、代码"><a href="#七、代码" class="headerlink" title="七、代码"></a>七、代码</h1><h1 id="Markdown-代码"><a href="#Markdown-代码" class="headerlink" title="Markdown 代码"></a>Markdown 代码</h1><p>如果是段落上的一个函数或片段的代码可以用反引号把它包起来（&#96;），例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`printf()` 函数</span><br></pre></td></tr></table></figure>
-
-<p>显示结果如下:</p>
-<p><code>printf()</code> 函数</p>
-<h3 id="代码区块"><a href="#代码区块" class="headerlink" title="代码区块"></a>代码区块</h3><p>代码区块使用 <strong>4 个空格</strong>或者一个<strong>制表符（Tab 键）</strong>。</p>
-<p>实例如下：</p>
-<p>​	#include <iostream></iostream></p>
-<p>​    using namespace std;</p>
-<p>​    int main()</p>
-<p>​    {</p>
-<p>​    	return 0</p>
-<p>​    }</p>
-<p>显示结果如下:	</p>
-<p>​    #include <iostream></iostream></p>
-<p>​    using namespace std;</p>
-<p>​    int main()</p>
-<p>​    {</p>
-<p>​    	return 0</p>
-<p>​    }</p>
-<p>你也可以用 &#96;&#96;&#96; 包裹一段代码，并指定一种语言（也可以不指定）：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">```javascript</span><br><span class="line">$(document).ready(function () &#123;</span><br><span class="line">    alert(&#x27;RUNOOB&#x27;);</span><br><span class="line">&#125;);</span><br><span class="line">```</span><br></pre></td></tr></table></figure>
-
-<p>显示结果如下：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="variable language_">document</span>).<span class="title function_">ready</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title function_">alert</span>(<span class="string">&#x27;RUNOOB&#x27;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="八、链接"><a href="#八、链接" class="headerlink" title="八、链接"></a>八、链接</h1><h1 id="Markdown-链接"><a href="#Markdown-链接" class="headerlink" title="Markdown 链接"></a>Markdown 链接</h1><p>链接使用方法如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[链接名称](链接地址)</span><br><span class="line"></span><br><span class="line">或者</span><br><span class="line"></span><br><span class="line">&lt;链接地址&gt;</span><br></pre></td></tr></table></figure>
-
-<p>例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这是一个链接 [菜鸟教程](https://www.runoob.com)</span><br></pre></td></tr></table></figure>
-
-<p>显示结果如下：</p>
-<p>这是一个链接 <a target="_blank" rel="noopener" href="https://www.runoob.com/">菜鸟教程</a></p>
-<p>直接使用链接地址：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;https://www.runoob.com&gt;</span><br></pre></td></tr></table></figure>
-
-<p>显示结果如下：</p>
-<p><a target="_blank" rel="noopener" href="https://www.runoob.com/">https://www.runoob.com</a></p>
-<h3 id="高级链接"><a href="#高级链接" class="headerlink" title="高级链接"></a>高级链接</h3><p>我们可以通过变量来设置一个链接，变量赋值在文档末尾进行：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">这个链接用 1 作为网址变量 [Google][1]</span><br><span class="line">这个链接用 runoob 作为网址变量 [Runoob][runoob]</span><br><span class="line">然后在文档的结尾为变量赋值（网址）</span><br><span class="line"></span><br><span class="line">  [1]: http://www.google.com/</span><br><span class="line">  [runoob]: http://www.runoob.com/</span><br></pre></td></tr></table></figure>
-
-<p>显示结果如下：</p>
-<p>这个链接用 1 作为网址变量 <a target="_blank" rel="noopener" href="http://www.google.com/">Google</a><br>这个链接用 runoob 作为网址变量 <a target="_blank" rel="noopener" href="http://www.runoob.com/">Runoob</a><br>然后在文档的结尾为变量赋值（网址）</p>
-<h1 id="九、图片"><a href="#九、图片" class="headerlink" title="九、图片"></a>九、图片</h1><h1 id="Markdown-图片"><a href="#Markdown-图片" class="headerlink" title="Markdown 图片"></a>Markdown 图片</h1><p>Markdown 图片语法格式如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">![alt 属性文本](图片地址)</span><br><span class="line"></span><br><span class="line">![alt 属性文本](图片地址 &quot;可选标题&quot;)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>开头一个感叹号 !</li>
-<li>接着一个方括号，里面放上图片的替代文字</li>
-<li>接着一个普通括号，里面放上图片的网址，最后还可以用引号包住并加上选择性的 ‘title’ 属性的文字。</li>
-</ul>
-<p>使用实例：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">![RUNOOB 图标](http://static.runoob.com/images/runoob-logo.png)</span><br><span class="line"></span><br><span class="line">![RUNOOB 图标](http://static.runoob.com/images/runoob-logo.png &quot;RUNOOB&quot;)</span><br></pre></td></tr></table></figure>
-
-<p>显示结果如下：</p>
-<p><img src="http://static.runoob.com/images/runoob-logo.png" alt="RUNOOB 图标"></p>
-<p><img src="http://static.runoob.com/images/runoob-logo.png" alt="RUNOOB 图标" title="RUNOOB"></p>
-<p>当然，你也可以像网址那样对图片网址使用变量:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">这个链接用 1 作为网址变量 [RUNOOB][1].</span><br><span class="line">然后在文档的结尾为变量赋值（网址）</span><br><span class="line"></span><br><span class="line">[1]: http://static.runoob.com/images/runoob-logo.png</span><br></pre></td></tr></table></figure>
-
-<p>显示结果如下：</p>
-<p>这个链接用 1 作为网址变量 <a target="_blank" rel="noopener" href="http://www.google.com/">RUNOOB</a>.<br>然后在文档的结尾为变量赋值（网址）</p>
-<p>Markdown 还没有办法指定图片的高度与宽度，如果你需要的话，你可以使用普通的 <img> 标签。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;http://static.runoob.com/images/runoob-logo.png&quot; width=&quot;50%&quot;&gt;</span><br></pre></td></tr></table></figure>
-
-<p>显示结果如下：</p>
-<img src="http://static.runoob.com/images/runoob-logo.png" width="50%">
-
-
-
-<h1 id="十、表格"><a href="#十、表格" class="headerlink" title="十、表格"></a>十、表格</h1><h1 id="Markdown-表格"><a href="#Markdown-表格" class="headerlink" title="Markdown 表格"></a>Markdown 表格</h1><p>Markdown 制作表格使用 | 来分隔不同的单元格，使用 - 来分隔表头和其他行。</p>
-<p>语法格式如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">|  表头   | 表头  |</span><br><span class="line">|  ----  | ----  |</span><br><span class="line">| 单元格  | 单元格 |</span><br><span class="line">| 单元格  | 单元格 |</span><br></pre></td></tr></table></figure>
-
-<p>以上代码显示结果如下：</p>
-<table>
-<thead>
-<tr>
-<th>表头</th>
-<th>表头</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>单元格</td>
-<td>单元格</td>
-</tr>
-<tr>
-<td>单元格</td>
-<td>单元格</td>
-</tr>
-</tbody></table>
-<p><strong>我们可以设置表格的对齐方式：</strong></p>
-<ul>
-<li>-: 设置内容和标题栏居右对齐。</li>
-<li>:- 设置内容和标题栏居左对齐。</li>
-<li>:-: 设置内容和标题栏居中对齐。</li>
-</ul>
-<p>实例如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">| 左对齐 | 右对齐 | 居中对齐 |</span><br><span class="line">| :-----| ----: | :----: |</span><br><span class="line">| 单元格 | 单元格 | 单元格 |</span><br><span class="line">| 单元格 | 单元格 | 单元格 |</span><br></pre></td></tr></table></figure>
-
-<p>以上代码显示结果如下：</p>
-<table>
-<thead>
-<tr>
-<th align="left">左对齐</th>
-<th align="right">右对齐</th>
-<th align="center">居中对齐</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">单元格</td>
-<td align="right">单元格</td>
-<td align="center">单元格</td>
-</tr>
-<tr>
-<td align="left">单元格</td>
-<td align="right">单元格</td>
-<td align="center">单元格</td>
-</tr>
-</tbody></table>
-<h1 id="十一、高级技巧"><a href="#十一、高级技巧" class="headerlink" title="十一、高级技巧"></a>十一、高级技巧</h1><h1 id="Markdown-高级技巧"><a href="#Markdown-高级技巧" class="headerlink" title="Markdown 高级技巧"></a>Markdown 高级技巧</h1><h3 id="支持的-HTML-元素"><a href="#支持的-HTML-元素" class="headerlink" title="支持的 HTML 元素"></a>支持的 HTML 元素</h3><p>不在 Markdown 涵盖范围之内的标签，都可以直接在文档里面用 HTML 撰写。</p>
-<p>目前支持的 HTML 元素有：<code>&lt;kbd&gt; &lt;b&gt; &lt;i&gt; &lt;em&gt; &lt;sup&gt; &lt;sub&gt; &lt;br&gt;</code>等 ，如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">使用 &lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Alt&lt;/kbd&gt;+&lt;kbd&gt;Del&lt;/kbd&gt; 重启电脑</span><br></pre></td></tr></table></figure>
-
-<p>输出结果为：</p>
-<p>使用 <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd> 重启电脑</p>
-<h3 id="转义"><a href="#转义" class="headerlink" title="转义"></a>转义</h3><p>Markdown 使用了很多特殊符号来表示特定的意义，如果需要显示特定的符号则需要使用转义字符，Markdown 使用反斜杠转义特殊字符：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">**文本加粗** </span><br><span class="line">\*\* 正常显示星号 \*\*</span><br></pre></td></tr></table></figure>
-
-<p>输出结果为：</p>
-<p><strong>文本加粗</strong><br>** 正常显示星号 **</p>
-<p>Markdown 支持以下这些符号前面加上反斜杠来帮助插入普通的符号：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">\   反斜线</span><br><span class="line">`   反引号</span><br><span class="line">*   星号</span><br><span class="line">_   下划线</span><br><span class="line">&#123;&#125;  花括号</span><br><span class="line">[]  方括号</span><br><span class="line">()  小括号</span><br><span class="line">#   井字号</span><br><span class="line">+   加号</span><br><span class="line">-   减号</span><br><span class="line">.   英文句点</span><br><span class="line">!   感叹号</span><br></pre></td></tr></table></figure>
-
-<h3 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h3><p>当你需要在编辑器中插入数学公式时，可以使用两个美元符 $$ 包裹 TeX 或 LaTeX 格式的数学公式来实现。提交后，问答和文章页会根据需要加载 Mathjax 对数学公式进行渲染。如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$$</span><br><span class="line">\mathbf&#123;V&#125;_1 \times \mathbf&#123;V&#125;_2 =  \begin&#123;vmatrix&#125; </span><br><span class="line">\mathbf&#123;i&#125; &amp; \mathbf&#123;j&#125; &amp; \mathbf&#123;k&#125; \\</span><br><span class="line">\frac&#123;\partial X&#125;&#123;\partial u&#125; &amp;  \frac&#123;\partial Y&#125;&#123;\partial u&#125; &amp; 0 \\</span><br><span class="line">\frac&#123;\partial X&#125;&#123;\partial v&#125; &amp;  \frac&#123;\partial Y&#125;&#123;\partial v&#125; &amp; 0 \\</span><br><span class="line">\end&#123;vmatrix&#125;</span><br><span class="line">$&#123;$tep1&#125;&#123;\style&#123;visibility:hidden&#125;&#123;(x+1)(x+1)&#125;&#125;</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
-
-<p>输出结果为：<br>$$<br>\mathbf{V}_1 \times \mathbf{V}_2 &#x3D;  \begin{vmatrix}<br>\mathbf{i} &amp; \mathbf{j} &amp; \mathbf{k} \<br>\frac{\partial X}{\partial u} &amp;  \frac{\partial Y}{\partial u} &amp; 0 \<br>\frac{\partial X}{\partial v} &amp;  \frac{\partial Y}{\partial v} &amp; 0 \<br>\end{vmatrix}<br>${$tep1}{\style{visibility:hidden}{(x+1)(x+1)}}<br>$$</p>
-<h2 id="画流程图、时序图、甘特图"><a href="#画流程图、时序图、甘特图" class="headerlink" title="画流程图、时序图、甘特图"></a>画流程图、时序图、甘特图</h2><p>在typora上方工具栏的‘视图’选项卡中选择“源代码格式”，然后可以按以下示例画流程图、时序图、甘特图。</p>
-<p>以下几个实例效果图如下：</p>
-<p><strong>1、横向流程图源码格式：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">```mermaid</span><br><span class="line">graph LR</span><br><span class="line">A[方形] --&gt;B(圆角)</span><br><span class="line">    B --&gt; C&#123;条件a&#125;</span><br><span class="line">    C --&gt;|a=1| D[结果1]</span><br><span class="line">    C --&gt;|a=2| E[结果2]</span><br><span class="line">    F[横向流程图]</span><br><span class="line">```</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">A[方形] --&gt;B(圆角)</span><br><span class="line">    B --&gt; C&#123;条件a&#125;</span><br><span class="line">    C --&gt;|a=1| D[结果1]</span><br><span class="line">    C --&gt;|a=2| E[结果2]</span><br><span class="line">    F[横向流程图]</span><br></pre></td></tr></table></figure>
-
-<p><strong>2、竖向流程图源码格式：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">```mermaid</span><br><span class="line">graph TD</span><br><span class="line">A[方形] --&gt; B(圆角)</span><br><span class="line">    B --&gt; C&#123;条件a&#125;</span><br><span class="line">    C --&gt; |a=1| D[结果1]</span><br><span class="line">    C --&gt; |a=2| E[结果2]</span><br><span class="line">    F[竖向流程图]</span><br><span class="line">```</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line">A[方形] --&gt; B(圆角)</span><br><span class="line">    B --&gt; C&#123;条件a&#125;</span><br><span class="line">    C --&gt; |a=1| D[结果1]</span><br><span class="line">    C --&gt; |a=2| E[结果2]</span><br><span class="line">    F[竖向流程图]</span><br></pre></td></tr></table></figure>
-
-<p><strong>3、标准流程图源码格式：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">```flow</span><br><span class="line">st=&gt;start: 开始框</span><br><span class="line">op=&gt;operation: 处理框</span><br><span class="line">cond=&gt;condition: 判断框(是或否?)</span><br><span class="line">sub1=&gt;subroutine: 子流程</span><br><span class="line">io=&gt;inputoutput: 输入输出框</span><br><span class="line">e=&gt;end: 结束框</span><br><span class="line">st-&gt;op-&gt;cond</span><br><span class="line">cond(yes)-&gt;io-&gt;e</span><br><span class="line">cond(no)-&gt;sub1(right)-&gt;op</span><br><span class="line">```</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">st=&gt;start: 开始框</span><br><span class="line">op=&gt;operation: 处理框</span><br><span class="line">cond=&gt;condition: 判断框(是或否?)</span><br><span class="line">sub1=&gt;subroutine: 子流程</span><br><span class="line">io=&gt;inputoutput: 输入输出框</span><br><span class="line">e=&gt;end: 结束框</span><br><span class="line">st-&gt;op-&gt;cond</span><br><span class="line">cond(yes)-&gt;io-&gt;e</span><br><span class="line">cond(no)-&gt;sub1(right)-&gt;op</span><br></pre></td></tr></table></figure>
-
-<p><strong>4、标准流程图源码格式（横向）：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">```flow</span><br><span class="line">st=&gt;start: 开始框</span><br><span class="line">op=&gt;operation: 处理框</span><br><span class="line">cond=&gt;condition: 判断框(是或否?)</span><br><span class="line">sub1=&gt;subroutine: 子流程</span><br><span class="line">io=&gt;inputoutput: 输入输出框</span><br><span class="line">e=&gt;end: 结束框</span><br><span class="line">st(right)-&gt;op(right)-&gt;cond</span><br><span class="line">cond(yes)-&gt;io(bottom)-&gt;e</span><br><span class="line">cond(no)-&gt;sub1(right)-&gt;op</span><br><span class="line">```</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">st=&gt;start: 开始框</span><br><span class="line">op=&gt;operation: 处理框</span><br><span class="line">cond=&gt;condition: 判断框(是或否?)</span><br><span class="line">sub1=&gt;subroutine: 子流程</span><br><span class="line">io=&gt;inputoutput: 输入输出框</span><br><span class="line">e=&gt;end: 结束框</span><br><span class="line">st(right)-&gt;op(right)-&gt;cond</span><br><span class="line">cond(yes)-&gt;io(bottom)-&gt;e</span><br><span class="line">cond(no)-&gt;sub1(right)-&gt;op</span><br></pre></td></tr></table></figure>
-
-<p><strong>5、UML时序图源码样例：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">```sequence</span><br><span class="line">对象A-&gt;对象B: 对象B你好吗?（请求）</span><br><span class="line">Note right of 对象B: 对象B的描述</span><br><span class="line">Note left of 对象A: 对象A的描述(提示)</span><br><span class="line">对象B--&gt;对象A: 我很好(响应)</span><br><span class="line">对象A-&gt;对象B: 你真的好吗？</span><br><span class="line">```</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">对象A-&gt;对象B: 对象B你好吗?（请求）</span><br><span class="line">Note right of 对象B: 对象B的描述</span><br><span class="line">Note left of 对象A: 对象A的描述(提示)</span><br><span class="line">对象B--&gt;对象A: 我很好(响应)</span><br><span class="line">对象A-&gt;对象B: 你真的好吗？</span><br></pre></td></tr></table></figure>
-
-<p><strong>6、UML时序图源码复杂样例：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">```sequence</span><br><span class="line">Title: 标题：复杂使用</span><br><span class="line">对象A-&gt;对象B: 对象B你好吗?（请求）</span><br><span class="line">Note right of 对象B: 对象B的描述</span><br><span class="line">Note left of 对象A: 对象A的描述(提示)</span><br><span class="line">对象B--&gt;对象A: 我很好(响应)</span><br><span class="line">对象B-&gt;小三: 你好吗</span><br><span class="line">小三--&gt;&gt;对象A: 对象B找我了</span><br><span class="line">对象A-&gt;对象B: 你真的好吗？</span><br><span class="line">Note over 小三,对象B: 我们是朋友</span><br><span class="line">participant C</span><br><span class="line">Note right of C: 没人陪我玩</span><br><span class="line">```</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Title: 标题：复杂使用</span><br><span class="line">对象A-&gt;对象B: 对象B你好吗?（请求）</span><br><span class="line">Note right of 对象B: 对象B的描述</span><br><span class="line">Note left of 对象A: 对象A的描述(提示)</span><br><span class="line">对象B--&gt;对象A: 我很好(响应)</span><br><span class="line">对象B-&gt;小三: 你好吗</span><br><span class="line">小三--&gt;&gt;对象A: 对象B找我了</span><br><span class="line">对象A-&gt;对象B: 你真的好吗？</span><br><span class="line">Note over 小三,对象B: 我们是朋友</span><br><span class="line">participant C</span><br><span class="line">Note right of C: 没人陪我玩</span><br></pre></td></tr></table></figure>
-
-<p><strong>7、UML标准时序图样例：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">```mermaid</span><br><span class="line">%% 时序图例子,-&gt; 直线，--&gt;虚线，-&gt;&gt;实线箭头</span><br><span class="line">  sequenceDiagram</span><br><span class="line">    participant 张三</span><br><span class="line">    participant 李四</span><br><span class="line">    张三-&gt;王五: 王五你好吗？</span><br><span class="line">    loop 健康检查</span><br><span class="line">        王五-&gt;王五: 与疾病战斗</span><br><span class="line">    end</span><br><span class="line">    Note right of 王五: 合理 食物 &lt;br/&gt;看医生...</span><br><span class="line">    李四--&gt;&gt;张三: 很好!</span><br><span class="line">    王五-&gt;李四: 你怎么样?</span><br><span class="line">    李四--&gt;王五: 很好!</span><br><span class="line">```</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">%% 时序图例子,-&gt; 直线，--&gt;虚线，-&gt;&gt;实线箭头</span><br><span class="line">  sequenceDiagram</span><br><span class="line">    participant 张三</span><br><span class="line">    participant 李四</span><br><span class="line">    张三-&gt;王五: 王五你好吗？</span><br><span class="line">    loop 健康检查</span><br><span class="line">        王五-&gt;王五: 与疾病战斗</span><br><span class="line">    end</span><br><span class="line">    Note right of 王五: 合理 食物 &lt;br/&gt;看医生...</span><br><span class="line">    李四--&gt;&gt;张三: 很好!</span><br><span class="line">    王五-&gt;李四: 你怎么样?</span><br><span class="line">    李四--&gt;王五: 很好!</span><br></pre></td></tr></table></figure>
-
-<p><strong>8、甘特图样例：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">```mermaid</span><br><span class="line">%% 语法示例</span><br><span class="line">        gantt</span><br><span class="line">        dateFormat  YYYY-MM-DD</span><br><span class="line">        title 软件开发甘特图</span><br><span class="line">        section 设计</span><br><span class="line">        需求                      :done,    des1, 2014-01-06,2014-01-08</span><br><span class="line">        原型                      :active,  des2, 2014-01-09, 3d</span><br><span class="line">        UI设计                     :         des3, after des2, 5d</span><br><span class="line">    未来任务                     :         des4, after des3, 5d</span><br><span class="line">        section 开发</span><br><span class="line">        学习准备理解需求                      :crit, done, 2014-01-06,24h</span><br><span class="line">        设计框架                             :crit, done, after des2, 2d</span><br><span class="line">        开发                                 :crit, active, 3d</span><br><span class="line">        未来任务                              :crit, 5d</span><br><span class="line">        耍                                   :2d</span><br><span class="line">        section 测试</span><br><span class="line">        功能测试                              :active, a1, after des3, 3d</span><br><span class="line">        压力测试                               :after a1  , 20h</span><br><span class="line">        测试报告                               : 48h</span><br><span class="line">```</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">%% 语法示例</span><br><span class="line">        gantt</span><br><span class="line">        dateFormat  YYYY-MM-DD</span><br><span class="line">        title 软件开发甘特图</span><br><span class="line">        section 设计</span><br><span class="line">        需求                      :done,    des1, 2014-01-06,2014-01-08</span><br><span class="line">        原型                      :active,  des2, 2014-01-09, 3d</span><br><span class="line">        UI设计                     :         des3, after des2, 5d</span><br><span class="line">    未来任务                     :         des4, after des3, 5d</span><br><span class="line">        section 开发</span><br><span class="line">        学习准备理解需求                      :crit, done, 2014-01-06,24h</span><br><span class="line">        设计框架                             :crit, done, after des2, 2d</span><br><span class="line">        开发                                 :crit, active, 3d</span><br><span class="line">        未来任务                              :crit, 5d</span><br><span class="line">        耍                                   :2d</span><br><span class="line">        section 测试</span><br><span class="line">        功能测试                              :active, a1, after des3, 3d</span><br><span class="line">        压力测试                               :after a1  , 20h</span><br><span class="line">        测试报告                               : 48h</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/MySQL/MySQL%E5%AE%89%E8%A3%85/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Taizi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/MySQL/MySQL%E5%AE%89%E8%A3%85/" class="post-title-link" itemprop="url">未命名</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-05-09 13:49:10" itemprop="dateModified" datetime="2022-05-09T13:49:10+08:00">2022-05-09</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>2k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>4 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="MySQL安装"><a href="#MySQL安装" class="headerlink" title="MySQL安装"></a>MySQL安装</h2><h3 id="1-下载安装"><a href="#1-下载安装" class="headerlink" title="1. 下载安装"></a>1. 下载安装</h3><ul>
-<li>MySQL官网:<a target="_blank" rel="noopener" href="https://www.mysql.com/cn/">mysql官网链接</a></li>
-</ul>
-<p>在官网中，可以在首页最下方选择需要下载的MySQL版本，通常情况下，下载的是社区版的MySQL：</p>
-<ul>
-<li>MySQL社区版：<a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/mysql/">mysql communtiy downloads</a></li>
-</ul>
-<p>其中x64适用于64位系统，x86适用于32位系统。</p>
-<p>下面教程以5.7版本的MySQL安装为例，下载好后，将压缩包解压到合适位置，比如我当前的解压路径为：<code>E:\MySQL\mysql-5.7.37-winx64</code>，在该目录下新建my.ini文件，文件内容模板如下：</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[mysqld]</span></span><br><span class="line"><span class="comment"># 设置3306端口</span></span><br><span class="line"><span class="attr">port</span>=<span class="number">3306</span></span><br><span class="line"><span class="comment"># 设置mysql的安装目录   ----------是你的文件路径-------------</span></span><br><span class="line"><span class="attr">basedir</span>=E:\MySQL\mysql-<span class="number">5.7</span>.<span class="number">37</span>-winx64</span><br><span class="line"><span class="comment"># 设置mysql数据库的数据的存放目录  ---------是你的文件路径data文件夹自行创建</span></span><br><span class="line"><span class="attr">datadir</span>=E:\MySQL\mysql-<span class="number">5.7</span>.<span class="number">37</span>-winx64\data</span><br><span class="line"><span class="comment"># 允许最大连接数</span></span><br><span class="line"><span class="attr">max_connections</span>=<span class="number">200</span></span><br><span class="line"><span class="comment"># 允许连接失败的次数。</span></span><br><span class="line"><span class="attr">max_connect_errors</span>=<span class="number">10</span></span><br><span class="line"><span class="comment"># 服务端使用的字符集默认为utf8mb4</span></span><br><span class="line"><span class="attr">character-set-server</span>=utf8mb4</span><br><span class="line"><span class="comment"># 创建新表时将使用的默认存储引擎</span></span><br><span class="line"><span class="attr">default-storage-engine</span>=INNODB</span><br><span class="line"><span class="comment"># 默认使用“mysql_native_password”插件认证</span></span><br><span class="line"><span class="comment">#mysql_native_password</span></span><br><span class="line"><span class="attr">default_authentication_plugin</span>=mysql_native_password</span><br><span class="line"><span class="section">[mysql]</span></span><br><span class="line"><span class="comment"># 设置mysql客户端默认字符集</span></span><br><span class="line"><span class="attr">default-character-set</span>=utf8mb4</span><br><span class="line"><span class="section">[client]</span></span><br><span class="line"><span class="comment"># 设置mysql客户端连接服务端时默认使用的端口</span></span><br><span class="line"><span class="attr">port</span>=<span class="number">3306</span></span><br><span class="line"><span class="attr">default-character-set</span>=utf8mb4</span><br></pre></td></tr></table></figure>
-
-<p>文件中主要根据情况修改MySQL的安装目录路径basedir，以及MySQL的数据存放目录datadir。</p>
-<h3 id="2-初始化数据库"><a href="#2-初始化数据库" class="headerlink" title="2. 初始化数据库"></a>2. 初始化数据库</h3><p>使用管理员身份打开命令提示符，进入mysql安装目录下的bin目录，如<code>E:\MySQL\mysql-5.7.37-winx64\bin</code> ,执行命令<code>mysqld  --initialize --console</code> ,进行目录的初始化，此时安装目录下会自动建立配置文件中设置的数据存放目录，同时，命令行中可以看到生成的随机初始化密码，此密码用于首次登录MySQL，需要记住。如果没记住的话，在刚刚生成的MySQL安装目录下的data目录下的以.err为后缀的文件中可以找到MySQL的随机初始密码。</p>
-<h3 id="3-安装数据库"><a href="#3-安装数据库" class="headerlink" title="3. 安装数据库"></a>3. 安装数据库</h3><p>依然是在管理员权限下的MySQL目录的bin目录下，执行命令<code>mysqld  -install</code>，进行mysqld的安装。</p>
-<h3 id="4-启动数据库"><a href="#4-启动数据库" class="headerlink" title="4. 启动数据库"></a>4. 启动数据库</h3><p>使用命令行的管理员权限，在MySQL安装目录的bin目录下，使用命令<code>net start mysql</code> 来启动MySQL数据库。</p>
-<h3 id="5-登录MySQL数据库（注意，登录数据库后，所有命令最后要加分号’；‘）"><a href="#5-登录MySQL数据库（注意，登录数据库后，所有命令最后要加分号’；‘）" class="headerlink" title="5. 登录MySQL数据库（注意，登录数据库后，所有命令最后要加分号’；‘）"></a>5. 登录MySQL数据库（注意，登录数据库后，所有命令最后要加分号’；‘）</h3><ul>
-<li><p>登录命令格式 <code>mysql -u 用户名 -p 密码</code></p>
-<ul>
-<li>一般因为使用了管理员权限，用户名为root，-p后面的密码可以不写，在执行此命令后需要继续输入密码</li>
-</ul>
-</li>
-<li><p>如果是第一次登录：</p>
-<ul>
-<li><p>mysql5.6版本之后，在第一次初始化MySQL数据库的时候会生成随机生成的初始密码，该密码的获取可以参照上面第3条。</p>
-</li>
-<li><p><strong>修改密码</strong>：由于初始密码不方便记忆，第一次登录成功后需要设置自己熟悉的密码，修改密码方式与版本相关：</p>
-<ul>
-<li>5.7.6版本之前：<code>set password for &#39;用户名&#39;@&#39;localhost&#39; = password(&quot;新密码&quot;)</code></li>
-<li>5.7.6版本之后：<code>alter user &#39;用户名&#39;@&#39;localhost&#39;identified with mysql_native_password by &#39;新密码&#39; </code></li>
-</ul>
+<li><p>通过其他方式得到的类，如从json中解析得到的类，如果类本身不是null，则isNull 和 isEmpty的判断结果都为false。</p>
 </li>
 </ul>
 </li>
 </ul>
-<h3 id="6-配置系统环境变量"><a href="#6-配置系统环境变量" class="headerlink" title="6. 配置系统环境变量"></a>6. 配置系统环境变量</h3><p>在Windows中为MySQL配置系统环境变量，新增系统环境变量 <code>MYSQL_HOME</code>,变量值为msyqld 安装路径，例如我安装了5.7版本路径为<code>E:\MySQL\mysql-5.7.37-winx64</code> ,然后再系统环境变量中的path中添加路径：<code>%MYSQL_HOME%\bin</code></p>
-<h3 id="踩坑"><a href="#踩坑" class="headerlink" title="踩坑"></a>踩坑</h3><ul>
-<li>如果出现如“由于找不到msvcr120.dll，无法继续执行代码……”的问题，说明系统缺少vcredist ，此时需要在官网下载vcredist,arm架构系统选择arm版本，64位系统选择x64版本，32位系统选择x86版本，vcredist官网链接:<a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-CN/download/details.aspx?id=40784">vcredist官网</a>,下载安装后，运行该程序，点击修复按钮，修复完成即可正常安装MySQL</li>
+<h4 id="另一维度来看"><a href="#另一维度来看" class="headerlink" title="另一维度来看"></a>另一维度来看</h4><ul>
+<li><h5 id="ObjectUtil-isNull-x2F-ObjectUtils-isNull"><a href="#ObjectUtil-isNull-x2F-ObjectUtils-isNull" class="headerlink" title="ObjectUtil.isNull  &#x2F;  ObjectUtils.isNull"></a>ObjectUtil.isNull  &#x2F;  ObjectUtils.isNull</h5><p>该方法用于判断类对象是否为空，注意一旦类进行了实例化，也就是给类对象分配了内存，该类就不再是空的了，除非类对象被实例化为null。</p>
+</li>
+<li><h5 id="ObjectUtil-isEmpty-x2F-ObjectUtils-isEmpty"><a href="#ObjectUtil-isEmpty-x2F-ObjectUtils-isEmpty" class="headerlink" title="ObjectUtil.isEmpty  &#x2F;  ObjectUtils.isEmpty"></a>ObjectUtil.isEmpty  &#x2F;  ObjectUtils.isEmpty</h5><p>该方法用于判断类对象中的值是否为空，当一个类只分配了内存而没有赋值的时候，isEmpty判断结果为true。</p>
+</li>
+<li><h5 id="StringUtils-isNull-x2F-StringUtils-isEmpty"><a href="#StringUtils-isNull-x2F-StringUtils-isEmpty" class="headerlink" title="StringUtils.isNull  &#x2F;  StringUtils.isEmpty"></a>StringUtils.isNull  &#x2F;  StringUtils.isEmpty</h5><p>StringUtils.isNull 用于判断对象是否为空，一般使用很少。</p>
+<p>StringUtils.isEmpty 用于判断一个字符串是否为空字符串或者为null，<strong>注意在Spring5.3之后该方法被弃用</strong>。</p>
+</li>
 </ul>
 
       
@@ -1213,7 +926,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/MySQL/MySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2/">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Java/Java%E4%B8%AD%E9%97%B4%E4%BB%B6/MyBatis/Mybatis/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -1231,7 +944,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/MySQL/MySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2/" class="post-title-link" itemprop="url">未命名</a>
+          <a href="/Java/Java%E4%B8%AD%E9%97%B4%E4%BB%B6/MyBatis/Mybatis/" class="post-title-link" itemprop="url">MyBatis</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1249,7 +962,24 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-01-29 18:09:12" itemprop="dateModified" datetime="2023-01-29T18:09:12+08:00">2023-01-29</time>
+      <time title="修改时间：2023-09-28 14:53:56" itemprop="dateModified" datetime="2023-09-28T14:53:56+08:00">2023-09-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/Java%E4%B8%AD%E9%97%B4%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">Java中间件</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/Java%E4%B8%AD%E9%97%B4%E4%BB%B6/MyBatis/" itemprop="url" rel="index"><span itemprop="name">MyBatis</span></a>
+        </span>
     </span>
 
   
@@ -1259,167 +989,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1.1k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="MySQL数据检索"><a href="#MySQL数据检索" class="headerlink" title="MySQL数据检索"></a>MySQL数据检索</h1><h2 id="1-联表查询"><a href="#1-联表查询" class="headerlink" title="1. 联表查询"></a>1. 联表查询</h2><p>下面给出两个表，在此基础上介绍联表查询的知识：</p>
-<p>​          user_name 表                                  user_age 表</p>
-<p><img src="/MySQL/MySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2/.%5CMySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2%5Cimage-20220602095148006.png" alt="image-20220602095148006">     <img src="/MySQL/MySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2/.%5CMySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2%5Cimage-20220602095233457.png" alt="image-20220602095233457"></p>
-<ul>
-<li><p>内连接：</p>
-<blockquote>
-<p>内连接只会输出两表关联条件匹配到的数据。<strong>相当于按条件获取两个表的交集。</strong></p>
-</blockquote>
-<ul>
-<li><p>显式内连接</p>
-<blockquote>
-<p>显式内连接使用INNER JOIN 或 JOIN关键字，适用于两表及多表查询的情况</p>
-</blockquote>
-<p>如以下查询:</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> a.`name`,b.age</span><br><span class="line"><span class="keyword">from</span> user_name a <span class="keyword">INNER</span> <span class="keyword">JOIN</span> user_age b</span><br><span class="line"><span class="keyword">ON</span> a.id <span class="operator">=</span> b.id</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-<p>​				连接结果为：<img src="/MySQL/MySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2/.%5CMySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2%5Cimage-20220602100454645.png" alt="image-20220602100454645"></p>
-<p>* </p>
-<ul>
-<li><p>隐式内连接（等值连接）</p>
-<blockquote>
-<p>隐式内连接不需要显示的写出连接关键字，在FROM条件中声明要连接的表，WHERE子句中说明连接的条件即可，隐式内连接在多表连接时容易出错，需要注意。</p>
-</blockquote>
-<p>如以下查询：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> a.`name`,b.age</span><br><span class="line"><span class="keyword">from</span> user_name a , user_age b</span><br><span class="line"><span class="keyword">where</span> a.id <span class="operator">=</span> b.id</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>外连接：</p>
-</li>
-</ul>
-<blockquote>
-<p>外连接对于两表关联条件匹配不到的数据，也会输出并将关联不到的列显示为NULL。</p>
-<p>外连接包括左连接&#x2F;左外连接、右连接&#x2F;右外连接、全连接。这里的左连接&#x2F;左外连接是同义的，右连接&#x2F;右外连接也是同义的。</p>
-</blockquote>
-<ul>
-<li>左连接&#x2F;左外连接：</li>
-</ul>
-<blockquote>
-<p>左连接将左表作为主表，主表的数据会全部显示处理，从表根据连接条件进行匹配，匹配不到的行展示为NULL</p>
-</blockquote>
-<p>如以下查询：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> a.`name`,b.age</span><br><span class="line"><span class="keyword">from</span> user_name a <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> user_age b</span><br><span class="line"><span class="keyword">ON</span> a.id <span class="operator">=</span> b.id</span><br></pre></td></tr></table></figure>
-
-<p>连接结果为：<img src="/MySQL/MySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2/.%5CMySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2%5Cimage-20220602101210493.png" alt="image-20220602101210493"></p>
-<ul>
-<li>右连接&#x2F;右外连接：</li>
-</ul>
-<blockquote>
-<p>右连接将右表作为主表，主表的数据会全部显示处理，从表根据连接条件进行匹配，匹配不到的行展示为NULL</p>
-</blockquote>
-<p>如以下查询：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> a.`name`,b.age</span><br><span class="line"><span class="keyword">from</span> user_name a <span class="keyword">RIGHT</span> <span class="keyword">JOIN</span> user_age b</span><br><span class="line"><span class="keyword">ON</span> a.id <span class="operator">=</span> b.id</span><br></pre></td></tr></table></figure>
-
-<p>连接结果为：<img src="/MySQL/MySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2/.%5CMySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2%5Cimage-20220602101953139.png" alt="image-20220602101953139"></p>
-<ul>
-<li>全连接：</li>
-</ul>
-<blockquote>
-<p>全连接是将两张表的所有行按连接做匹配，匹配缺失之处使用NULL填充。<strong>相当于按条件获取两个表的并集。</strong></p>
-<p><strong>注意：MySQL不支FULL JOIN的语法，MySQL实现全连接的方式是将左连接和右连接的结果做联合，注意连接条件应该一致</strong></p>
-</blockquote>
-<p>如以下查询：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> a.`name`,b.age <span class="keyword">from</span> user_name a <span class="keyword">RIGHT</span> <span class="keyword">JOIN</span> user_age b <span class="keyword">ON</span> a.id <span class="operator">=</span> b.id</span><br><span class="line"><span class="keyword">UNION</span></span><br><span class="line"><span class="keyword">select</span> a.`name`,b.age <span class="keyword">from</span> user_name a <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> user_age b <span class="keyword">ON</span> a.id <span class="operator">=</span> b.id</span><br></pre></td></tr></table></figure>
-
-<p>连接结果为：<img src="/MySQL/MySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2/.%5CMySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2%5Cimage-20220602103440328.png" alt="image-20220602103440328"></p>
-<ul>
-<li><strong>注意点：</strong></li>
-</ul>
-<p>注意，表连接时会产生一个暂时表，对于暂时表的过滤应该使用 ON 关键字而非 WHERE 关键字，暂时表完成过滤后会产生连接的结果，此时可以使用WHERE 子句对连接结果进行过滤。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Linux/Linux%E7%8E%AF%E5%A2%83%E4%B8%8B%E5%AE%89%E8%A3%85Hive/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Taizi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/Linux/Linux%E7%8E%AF%E5%A2%83%E4%B8%8B%E5%AE%89%E8%A3%85Hive/" class="post-title-link" itemprop="url">未命名</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-01-09 18:49:15" itemprop="dateModified" datetime="2023-01-09T18:49:15+08:00">2023-01-09</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>818</span>
+      <span>372</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -1437,41 +1007,32 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="Linux环境下安装Hive"><a href="#Linux环境下安装Hive" class="headerlink" title="Linux环境下安装Hive"></a>Linux环境下安装Hive</h1><p><strong>前提：需要虚拟环境中安装了Hadoop才能运行Hive</strong></p>
-<h2 id="一、下载Hive安装包"><a href="#一、下载Hive安装包" class="headerlink" title="一、下载Hive安装包"></a>一、下载Hive安装包</h2><p><a target="_blank" rel="noopener" href="https://dlcdn.apache.org/hive/">官方推荐版本下载地址</a></p>
-<p><a target="_blank" rel="noopener" href="http://archive.apache.org/dist/hive/">历史发行版本的下载地址</a></p>
-<p>选择好版本后，选择-bin.tar.gz 格式的安装包进行下载</p>
-<h2 id="二、解压安装包"><a href="#二、解压安装包" class="headerlink" title="二、解压安装包"></a>二、解压安装包</h2><p>提前创建好存放安装包以及存放解压文件的目录，便于解压和环境配置时使用。</p>
-<p>将安装包解压到指定安装目录中：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf 安装包路径 -C 安装目录</span><br></pre></td></tr></table></figure>
-
-<h2 id="三、配置全局环境变量"><a href="#三、配置全局环境变量" class="headerlink" title="三、配置全局环境变量"></a>三、配置全局环境变量</h2><p>编辑全局配置文件：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/profile</span><br></pre></td></tr></table></figure>
-
-<p>在文件末尾增加环境变量配置：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#hive environment</span><br><span class="line">export HIVE_HOME=解压文件安装路径</span><br><span class="line">export PATH=$PATH:$HIVE_HOME/bin</span><br></pre></td></tr></table></figure>
-
-<p>退出编辑，用以下命令使配置文件生效：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
-
-<h2 id="四、配置Hive环境变量"><a href="#四、配置Hive环境变量" class="headerlink" title="四、配置Hive环境变量"></a>四、配置Hive环境变量</h2><p>进入hive安装目录下的conf目录配置hive环境变量</p>
-<p>进入目录：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd $HIVE_HOME/conf</span><br></pre></td></tr></table></figure>
-
-<p>从环境变量模板文件复制一份环境变量文件：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp hive-env.sh.template hive-env.sh</span><br></pre></td></tr></table></figure>
-
-<p>编辑环境变量文件，向其中写入Hadoop路径以及Hive配置文件目录路径：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Set HADOOP_HOME to point to a specific hadoop install directory</span><br><span class="line"># HADOOP_HOME=$&#123;bin&#125;/../../hadoop</span><br><span class="line">export HADOOP_HOME=/opt/module/hadoop-2.7.2</span><br><span class="line"># Hive Configuration Directory can be controlled by:</span><br><span class="line"># export HIVE_CONF_DIR=</span><br><span class="line">export HIVE_CONF_DIR=/opt/module/hive/conf</span><br></pre></td></tr></table></figure>
-
-<p>配置hive-site.xml, 从模板中复制一份作为配置文件：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp hive-default.xml.template hive-site.xml</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
+          <h1 id="Mybatis"><a href="#Mybatis" class="headerlink" title="Mybatis"></a>Mybatis</h1><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h2><p>MyBatis 是一款优秀的持久层框架，它支持自定义 SQL、存储过程以及高级映射。</p>
+<p>MyBatis免除了几乎所有的 JDBC 代码以及设置参数和获取结果集的工作。MyBatis可以通过简单的 XML 或注解来配置和映射原始类型、接口和 Java POJO（Plain Old Java Objects，普通老式 Java 对象）为数据库中的记录。</p>
+<h2 id="2-获取方式"><a href="#2-获取方式" class="headerlink" title="2.获取方式"></a>2.获取方式</h2><ul>
+<li><p>Github</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/mybatis/bmybatis3/releases">https://github.com/mybatis/bmybatis3/releases</a></p>
+</li>
+<li><p>中文文档</p>
+</li>
+</ul>
+<p>​		<a target="_blank" rel="noopener" href="https://mybatis.org/mybatis-3/zh/index.html">https://mybatis.org/mybatis-3/zh/index.html</a></p>
+<ul>
+<li><p>maven</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">  </span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="3-持久化"><a href="#3-持久化" class="headerlink" title="3. 持久化"></a>3. 持久化</h2><p>数据持久化：</p>
+<ul>
+<li><p>持久化就是将程序的数据在持久状态和瞬时状态转化的过程</p>
+</li>
+<li><p>内存是断电即失的；</p>
+</li>
+<li><p>数据库、io文件支持持久化</p>
+</li>
+</ul>
+<h3 id="意义"><a href="#意义" class="headerlink" title="意义"></a>意义</h3><p>保留某些重要的数据</p>
+<h3 id="持久层"><a href="#持久层" class="headerlink" title="持久层"></a>持久层</h3><p>完成持久化工作的代码块</p>
+<h1 id="4-环境搭建"><a href="#4-环境搭建" class="headerlink" title="4. 环境搭建"></a>4. 环境搭建</h1>
       
     </div>
 
@@ -1497,7 +1058,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Linux/Linux%E7%8E%AF%E5%A2%83%E4%B8%8B%E5%AE%89%E8%A3%85JDK/">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Java/Java%E4%B8%AD%E9%97%B4%E4%BB%B6/MyBatis/Mybatis%E4%BD%BF%E7%94%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -1515,7 +1076,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/Linux/Linux%E7%8E%AF%E5%A2%83%E4%B8%8B%E5%AE%89%E8%A3%85JDK/" class="post-title-link" itemprop="url">未命名</a>
+          <a href="/Java/Java%E4%B8%AD%E9%97%B4%E4%BB%B6/MyBatis/Mybatis%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">MyBatis使用</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1533,7 +1094,24 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-01-07 14:18:40" itemprop="dateModified" datetime="2023-01-07T14:18:40+08:00">2023-01-07</time>
+      <time title="修改时间：2023-09-28 14:53:53" itemprop="dateModified" datetime="2023-09-28T14:53:53+08:00">2023-09-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/Java%E4%B8%AD%E9%97%B4%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">Java中间件</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/Java%E4%B8%AD%E9%97%B4%E4%BB%B6/MyBatis/" itemprop="url" rel="index"><span itemprop="name">MyBatis</span></a>
+        </span>
     </span>
 
   
@@ -1543,14 +1121,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>884</span>
+      <span>7.2k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
+      <span>13 分钟</span>
     </span>
 </div>
 
@@ -1561,43 +1139,29 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="Linux环境下安装JDK"><a href="#Linux环境下安装JDK" class="headerlink" title="Linux环境下安装JDK"></a>Linux环境下安装JDK</h1><h2 id="一、卸载系统自带的OpenJDK及相关java文件"><a href="#一、卸载系统自带的OpenJDK及相关java文件" class="headerlink" title="一、卸载系统自带的OpenJDK及相关java文件"></a>一、卸载系统自带的OpenJDK及相关java文件</h2><p>安装JDK之前，先确保没有默认安装JDK，执行以下命令检查：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
+          <h1 id="MyBatis使用"><a href="#MyBatis使用" class="headerlink" title="MyBatis使用"></a>MyBatis使用</h1><h2 id="1、依赖文件配置"><a href="#1、依赖文件配置" class="headerlink" title="1、依赖文件配置"></a>1、依赖文件配置</h2><p>使用maven或者jar包都可，配置mybatis包以及mysql依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- https://mvnrepository.com/artifact/org.mybatis/mybatis --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.5.9<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>8.0.27<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- https://mvnrepository.com/artifact/junit/junit --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.12<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>如果有信息显示，可以看到系统自带的OpenJDK版本信息，然后查询相关的Java文件：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa | grep java</span><br></pre></td></tr></table></figure>
+<h2 id="2、配置文件编写"><a href="#2、配置文件编写" class="headerlink" title="2、配置文件编写"></a>2、配置文件编写</h2><p>命名为mybatis-config.xml，放置在resources目录下，配置文件内容如下(可以在mybatis官方文档上找到)：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-------文件头-------&gt;</span></span><br><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span> ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">configuration</span></span></span><br><span class="line"><span class="meta">  <span class="keyword">PUBLIC</span> <span class="string">&quot;-//mybatis.org//DTD Config 3.0//EN&quot;</span></span></span><br><span class="line"><span class="meta">  <span class="string">&quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-------配置内容----------&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-------环境名可以自拟-----&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">environments</span> <span class="attr">default</span>=<span class="string">&quot;development&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">environment</span> <span class="attr">id</span>=<span class="string">&quot;development&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">transactionManager</span> <span class="attr">type</span>=<span class="string">&quot;JDBC&quot;</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">dataSource</span> <span class="attr">type</span>=<span class="string">&quot;POOLED&quot;</span>&gt;</span></span><br><span class="line">          <span class="comment">&lt;!------driver一般为：com.mysql.jdbc.Driver-----&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;driver&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;driver&#125;&quot;</span>/&gt;</span></span><br><span class="line">          <span class="comment">&lt;!----url是链接数据库时的url，默认为jdbc:mysql://localhost:3306/数据表名称?useSSL=true&amp;amp;useUnicode=true&amp;amp;characterEncoding=UTF-8--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;url&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;url&#125;&quot;</span>/&gt;</span></span><br><span class="line">          <span class="comment">&lt;!--username即用户名----&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;username&#125;&quot;</span>/&gt;</span></span><br><span class="line">          <span class="comment">&lt;!-----password密码------&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;password&#125;&quot;</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">dataSource</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">environment</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">environments</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!------mappers用于在映射文件编写之后----&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">mappers</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mapper</span> <span class="attr">resource</span>=<span class="string">&quot;org/mybatis/example/BlogMapper.xml&quot;</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">mappers</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<p>命令说明：<br>rpm 　管理套件<br>-qa 　使用询问模式，查询所有套件<br>grep　　查找文件里符合条件的字符串<br>java 　查找包含java字符串的文件</p>
-</blockquote>
-<p>查询到的文件中，与OpenJDK相关的可以删除：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -e --nodeps 文件名</span><br></pre></td></tr></table></figure>
+<h2 id="3、编写数据库表对应的实体类"><a href="#3、编写数据库表对应的实体类" class="headerlink" title="3、编写数据库表对应的实体类"></a>3、编写数据库表对应的实体类</h2><p>表中字段对应着实体类的私有属性，实体类中还要包含无参构造器和有参构造器，以及属性的set、get方法，最后要重写toString方法方便打印实体类。示例如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">User</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String name;<span class="comment">//私有属性对应数据库字段</span></span><br><span class="line">    <span class="keyword">private</span> Integer age;</span><br><span class="line">    <span class="keyword">private</span> String id;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">User</span><span class="params">()</span> &#123;<span class="comment">//无参构造</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">User</span><span class="params">(String name, Integer age, String id)</span> &#123;<span class="comment">//有参构造</span></span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">        <span class="built_in">this</span>.age = age;</span><br><span class="line">        <span class="built_in">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span> &#123;<span class="comment">// get、set系列方法</span></span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Integer <span class="title function_">getAge</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getId</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setName</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setAge</span><span class="params">(Integer age)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setId</span><span class="params">(String id)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line">    								<span class="comment">//重写toString方法 </span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;User&#123;&quot;</span> +</span><br><span class="line">                <span class="string">&quot;name=&#x27;&quot;</span> + name + <span class="string">&#x27;\&#x27;&#x27;</span> +</span><br><span class="line">                <span class="string">&quot;, age=&quot;</span> + age +</span><br><span class="line">                <span class="string">&quot;, id=&#x27;&quot;</span> + id + <span class="string">&#x27;\&#x27;&#x27;</span> +</span><br><span class="line">                <span class="string">&#x27;&#125;&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<p>命令介绍：<br>rpm 　　　管理套件<br>-e　　　　　删除指定的套件<br>–nodeps　　不验证套件档的相互关联性</p>
-</blockquote>
-<p>再次运行版本信息命令，验证是否已经删除成功：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
+<h2 id="4、创建数据库接口，包含增删改查等"><a href="#4、创建数据库接口，包含增删改查等" class="headerlink" title="4、创建数据库接口，包含增删改查等"></a>4、创建数据库接口，包含增删改查等</h2><p>示例如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zky.dao;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.zky.entity.User;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">UserDao</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据id查询用户信息</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> id</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> User <span class="title function_">queryUserById</span><span class="params">(String id)</span>;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 查询所有用户信息</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;User&gt; <span class="title function_">queryUserAll</span><span class="params">()</span>;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 新增用户信息</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> user</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">insertUser</span><span class="params">(User user)</span>;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 更新用户信息</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> user</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">updateUser</span><span class="params">(User user)</span>;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 删除用户信息</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> id </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">deleteUser</span><span class="params">(String id)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>无信息提示或提示未找到Java命令，标识删除成功。</p>
-<h2 id="二、下载JDK"><a href="#二、下载JDK" class="headerlink" title="二、下载JDK"></a>二、下载JDK</h2><p>下载地址：<a target="_blank" rel="noopener" href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">最新版下载地址</a></p>
-<p><a target="_blank" rel="noopener" href="http://www.oracle.com/technetwork/java/javase/archive-139210.html">历史版本下载地址</a></p>
-<p>根据系统版本，选择下载tar.gz格式的压缩包</p>
-<h2 id="三、安装JDK"><a href="#三、安装JDK" class="headerlink" title="三、安装JDK"></a>三、安装JDK</h2><p>提前创建好存放安装包的目录和存放解压文件的目录。一般我会在&#x2F;opt目录下创建两个目录，&#x2F;opt&#x2F;module里用于存放解压文件，&#x2F;opt&#x2F;software用于存放压缩包，只需要在这两个目录下在创建子目录即可。</p>
-<p>首先解压安装包：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf 安装包路径 -C 要解压到的目录</span><br></pre></td></tr></table></figure>
 
-<h2 id="四、配置环境变量"><a href="#四、配置环境变量" class="headerlink" title="四、配置环境变量"></a>四、配置环境变量</h2><p>编辑系统配置文件：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/profile</span><br></pre></td></tr></table></figure>
 
-<p>在文件末尾添加Java环境变量（解压路径可以通过pwd 命令获取）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#java environment</span><br><span class="line">export JAVA_HOME=JDK解压路径</span><br><span class="line">export JRE_HOME=JDK解压路径/jre</span><br><span class="line">export CLASS_PATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JRE_HOME/lib</span><br><span class="line">export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin</span><br></pre></td></tr></table></figure>
+<h2 id="5、编写映射文件，对应于接口文件"><a href="#5、编写映射文件，对应于接口文件" class="headerlink" title="5、编写映射文件，对应于接口文件"></a>5、编写映射文件，对应于接口文件</h2><p>示例如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span> ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">mapper</span></span></span><br><span class="line"><span class="meta">        <span class="keyword">PUBLIC</span> <span class="string">&quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;</span></span></span><br><span class="line"><span class="meta">        <span class="string">&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- mapper:根标签，namespace：命名空间，随便写，一般保证命名空间唯一 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">&quot;UserDao&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- statement，内容：sql语句。id：唯一标识，随便写，在同一个命名空间下保持唯一</span></span><br><span class="line"><span class="comment">       resultType：sql语句查询结果集的封装类型,tb_user即为数据库中的表</span></span><br><span class="line"><span class="comment">     --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--&lt;select id=&quot;queryUserById&quot; resultType=&quot;com.zpc.mybatis.pojo.User&quot;&gt;--&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--select * from tb_user where id = #&#123;id&#125;--&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--&lt;/select&gt;--&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--使用别名--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;queryUserById&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;com.zpc.mybatis.pojo.User&quot;</span>&gt;</span></span><br><span class="line">      select</span><br><span class="line">       tuser.id as id,</span><br><span class="line">       tuser.user_name as userName,</span><br><span class="line">       tuser.password as password,</span><br><span class="line">       tuser.name as name,</span><br><span class="line">       tuser.age as age,</span><br><span class="line">       tuser.birthday as birthday,</span><br><span class="line">       tuser.sex as sex,</span><br><span class="line">       tuser.created as created,</span><br><span class="line">       tuser.updated as updated</span><br><span class="line">       from</span><br><span class="line">       tb_user tuser</span><br><span class="line">       where tuser.id = #&#123;id&#125;;</span><br><span class="line">   <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;queryUserAll&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;com.zpc.mybatis.pojo.User&quot;</span>&gt;</span></span><br><span class="line">        select * from tb_user;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--插入数据--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span>=<span class="string">&quot;insertUser&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;com.zpc.mybatis.pojo.User&quot;</span>&gt;</span></span><br><span class="line">        INSERT INTO tb_user (</span><br><span class="line">        user_name,</span><br><span class="line">        password,</span><br><span class="line">        name,</span><br><span class="line">        age,</span><br><span class="line">        sex,</span><br><span class="line">        birthday,</span><br><span class="line">        created,</span><br><span class="line">        updated</span><br><span class="line">        )</span><br><span class="line">        VALUES</span><br><span class="line">        (</span><br><span class="line">        #&#123;userName&#125;,</span><br><span class="line">        #&#123;password&#125;,</span><br><span class="line">        #&#123;name&#125;,</span><br><span class="line">        #&#123;age&#125;,</span><br><span class="line">        #&#123;sex&#125;,</span><br><span class="line">        #&#123;birthday&#125;,</span><br><span class="line">        now(),</span><br><span class="line">        now()</span><br><span class="line">        );</span><br><span class="line">    <span class="tag">&lt;/<span class="name">insert</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">update</span> <span class="attr">id</span>=<span class="string">&quot;updateUser&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;com.zpc.mybatis.pojo.User&quot;</span>&gt;</span></span><br><span class="line">        UPDATE tb_user</span><br><span class="line">        <span class="tag">&lt;<span class="name">trim</span> <span class="attr">prefix</span>=<span class="string">&quot;set&quot;</span> <span class="attr">suffixOverrides</span>=<span class="string">&quot;,&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;userName!=null&quot;</span>&gt;</span>user_name = #&#123;userName&#125;,<span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;password!=null&quot;</span>&gt;</span>password = #&#123;password&#125;,<span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;name!=null&quot;</span>&gt;</span>name = #&#123;name&#125;,<span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;age!=null&quot;</span>&gt;</span>age = #&#123;age&#125;,<span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;sex!=null&quot;</span>&gt;</span>sex = #&#123;sex&#125;,<span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;birthday!=null&quot;</span>&gt;</span>birthday = #&#123;birthday&#125;,<span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">            updated = now(),</span><br><span class="line">        <span class="tag">&lt;/<span class="name">trim</span>&gt;</span></span><br><span class="line">        WHERE</span><br><span class="line">        (id = #&#123;id&#125;);</span><br><span class="line">    <span class="tag">&lt;/<span class="name">update</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">delete</span> <span class="attr">id</span>=<span class="string">&quot;deleteUser&quot;</span>&gt;</span></span><br><span class="line">        delete from tb_user where id=#&#123;id&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">delete</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>编辑后退出编辑器，并使配置文件生效：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
+<p>然后在mybatis-config.xml配置文件中添加配置：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mappers</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--mapper文件的全路径-----&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mapper</span> <span class="attr">resource</span>=<span class="string">&quot;com/zky/mapper/UserDao.xml&quot;</span>/&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">mapper</span> <span class="attr">resource</span>=<span class="string">&quot;mappers/UserDaoMapper.xml&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mappers</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>检查JDK是否安装配置成功：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
+<h2 id="6、编写测试用例"><a href="#6、编写测试用例" class="headerlink" title="6、编写测试用例"></a>6、编写测试用例</h2><h3 id="6-1、构建sqlSessionFactory"><a href="#6-1、构建sqlSessionFactory" class="headerlink" title="6.1、构建sqlSessionFactory"></a>6.1、构建sqlSessionFactory</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 指定全局配置文件</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">resource</span> <span class="operator">=</span> <span class="string">&quot;mybatis-config.xml&quot;</span>;</span><br><span class="line">        <span class="comment">// 读取配置文件</span></span><br><span class="line">        <span class="type">InputStream</span> <span class="variable">inputStream</span> <span class="operator">=</span> Resources.getResourceAsStream(resource);</span><br><span class="line">        <span class="comment">// 构建sqlSessionFactory</span></span><br><span class="line">        <span class="type">SqlSessionFactory</span> <span class="variable">sqlSessionFactory</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SqlSessionFactoryBuilder</span>().build(inputStream);</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-2、-打开sqlSession会话，并执行增删改查等操作"><a href="#6-2、-打开sqlSession会话，并执行增删改查等操作" class="headerlink" title="6.2、 打开sqlSession会话，并执行增删改查等操作"></a>6.2、 打开sqlSession会话，并执行增删改查等操作</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取sqlSession</span></span><br><span class="line">        <span class="type">SqlSession</span> <span class="variable">sqlSession</span> <span class="operator">=</span> sqlSessionFactory.openSession();</span><br><span class="line">        <span class="comment">// 操作CRUD，第一个参数：指定statement，规则：命名空间+“.”+statementId</span></span><br><span class="line">        <span class="comment">// 第二个参数：指定传入sql的参数：这里是用户id</span></span><br><span class="line">        <span class="comment">//插入表数据</span></span><br><span class="line">        <span class="type">User</span> <span class="variable">user5</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">User</span>(<span class="string">&quot;xiaoming&quot;</span>, <span class="number">12</span>, <span class="string">&quot;00000001&quot;</span>);</span><br><span class="line">        userDao.insertUser(user5);</span><br><span class="line"><span class="comment">//按照id删除表数据</span></span><br><span class="line">        userDao.deleteUser(<span class="string">&quot;00000001&quot;</span>);</span><br><span class="line"><span class="comment">//按照id查询数据</span></span><br><span class="line">        System.out.println(userDao.queryUserById(<span class="string">&quot;00000001&quot;</span>));</span><br><span class="line"><span class="comment">//修改表数据</span></span><br><span class="line">        <span class="type">User</span> <span class="variable">user1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">User</span>(<span class="string">&quot;xiaoming&quot;</span>,<span class="number">12</span>,<span class="string">&quot;00000001&quot;</span>);</span><br><span class="line">        userDao.updateUser(user1);</span><br><span class="line"><span class="comment">//查询表中所有数据</span></span><br><span class="line">        <span class="keyword">for</span>(User user: userDao.queryUserAll())&#123;</span><br><span class="line">            System.out.println(user);</span><br><span class="line">        &#125;</span><br><span class="line">        sqlSession.commit();  <span class="comment">//注意涉及到对表的改动时（更改、删除、插入),必须执行commit操作</span></span><br><span class="line">        sqlSession.close();</span><br></pre></td></tr></table></figure>
 
 
       
@@ -1625,7 +1189,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Linux/MySQL%E5%AE%89%E8%A3%85(Linux)/">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Java/Java%E4%B8%AD%E9%97%B4%E4%BB%B6/MyBatis/MyBatis%20@Param%E6%B3%A8%E8%A7%A3%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E8%AF%B4%E6%98%8E/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -1643,7 +1207,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/Linux/MySQL%E5%AE%89%E8%A3%85(Linux)/" class="post-title-link" itemprop="url">未命名</a>
+          <a href="/Java/Java%E4%B8%AD%E9%97%B4%E4%BB%B6/MyBatis/MyBatis%20@Param%E6%B3%A8%E8%A7%A3%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E8%AF%B4%E6%98%8E/" class="post-title-link" itemprop="url">MyBatis注解</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1661,7 +1225,24 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-02-13 18:37:45" itemprop="dateModified" datetime="2023-02-13T18:37:45+08:00">2023-02-13</time>
+      <time title="修改时间：2023-09-28 14:53:59" itemprop="dateModified" datetime="2023-09-28T14:53:59+08:00">2023-09-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/Java%E4%B8%AD%E9%97%B4%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">Java中间件</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/Java%E4%B8%AD%E9%97%B4%E4%BB%B6/MyBatis/" itemprop="url" rel="index"><span itemprop="name">MyBatis</span></a>
+        </span>
     </span>
 
   
@@ -1671,234 +1252,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>4k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>7 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="MySQL安装-Linux"><a href="#MySQL安装-Linux" class="headerlink" title="MySQL安装(Linux)"></a>MySQL安装(Linux)</h1><p>说明：本教程案例为CentOS7系统下安装MySQL8.0.31版本</p>
-<h2 id="一、下载MySQL安装包"><a href="#一、下载MySQL安装包" class="headerlink" title="一、下载MySQL安装包"></a>一、下载MySQL安装包</h2><p>安装包需要根据系统版本选择</p>
-<p><a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/mysql/">下载地址</a></p>
-<h2 id="二、安装MySQL"><a href="#二、安装MySQL" class="headerlink" title="二、安装MySQL"></a>二、安装MySQL</h2><p>安装新版mysql之前，需要先将系统自带的Mariadb-lib卸载</p>
-<p>查询mariadb：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa|grep mariadb</span><br></pre></td></tr></table></figure>
-
-<p>删除自带的mariadb：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -e --nodeps mariadb-libs-5.5.68-1.el7.x86_64</span><br></pre></td></tr></table></figure>
-
-<p>提前建立好存放MySQL安装包，以及存放解压文件的目录，然后将下载的压缩包解压，此处以CentOS7系统为例：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf mysql-8.0.31-1.el7.x86_64.rpm-bundle.tar</span><br><span class="line">[tar -xvf 包路径 -C 安装路径]</span><br></pre></td></tr></table></figure>
-
-<p>解压后，严格按照以下下顺序安装解压后的其中四个包：<br>mysql-community-common-8.0.31-1.el7.x86_64.rpm、mysql-community-libs-8.0.31-1.el7.x86_64.rpm、mysql-community-client-8.0.31-1.el7.x86_64.rpm、mysql-community-server-8.0.31-1.el7.x86_64.rpm</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh mysql-community-common-8.0.31-1.el7.x86_64.rpm</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh mysql-community-libs-8.0.31-1.el7.x86_64.rpm</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh mysql-community-client-8.0.31-1.el7.x86_64.rpm</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh mysql-community-server-8.0.31-1.el7.x86_64.rpm</span><br></pre></td></tr></table></figure>
-
-<p>安装过程中可能会出现报错：<br><img src="/Linux/MySQL%E5%AE%89%E8%A3%85(Linux)/image-20230112184038119.png" alt="image-20230112184038119"></p>
-<p>如果安装过程中出现这个错误就在后面添加 –force –nodeps，这可能是由于yum安装了旧版本的GPG keys造成的，当然，通过报错信息也可以解决，不难看出安装这个依赖包需要先安装mysql-community-client-plugins-8这个包，我们的解压目录里是有这个包的。使用相同的安装命令先安装这个plugins这个包，然后再安装libs包即可。</p>
-<p>之后安装 mysql-community-server-8.0.31-1.el7.x86_64.rpm也可能会出错：<br><img src="/Linux/MySQL%E5%AE%89%E8%A3%85(Linux)/image-20230112185019036.png" alt="image-20230112185019036"></p>
-<p>通过命令后加参数–force –nodeps依旧可以强制安装，也可以按照提示先把这些需要的依赖包安装上。如图，第一部分是perl相关的包，可以使用yum进行下载安装：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y perl-Module-Install.noarch</span><br></pre></td></tr></table></figure>
-
-<p>第二个包是libaio相关的包，由于我们解压目录里没有相关包，依旧使用yum进行下载：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install libaio</span><br></pre></td></tr></table></figure>
-
-<p>第三个包是我们的压缩目录里有的包，使用rpm进行安装即可：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh mysql-community-icu-data-files-8.0.31-1.el7.x86_64.rpm</span><br></pre></td></tr></table></figure>
-
-<p>所需要的包都安装完毕后，再安装mysql-community-server-8.0.31-1.el7.x86_64.rpm即可。</p>
-<h2 id="三、配置数据库"><a href="#三、配置数据库" class="headerlink" title="三、配置数据库"></a>三、配置数据库</h2><p>编辑mysql配置文件：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/my.cnf</span><br></pre></td></tr></table></figure>
-
-<p>可以在文件最上方增加一些配置，一下仅供参考，不配置也可以：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">#跳过登录验证</span><br><span class="line">skip-grant-tables</span><br><span class="line">#设置默认字符集UTF-8</span><br><span class="line">character_set_server=utf8</span><br><span class="line">init_connect=&#x27;SET NAMES utf8&#x27;</span><br></pre></td></tr></table></figure>
-
-<h2 id="四、操作MySQL服务"><a href="#四、操作MySQL服务" class="headerlink" title="四、操作MySQL服务"></a>四、操作MySQL服务</h2><p>以下命令可以用来操作MySQL服务：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 启动MySQL服务</span><br><span class="line">systemctl start mysqld.service   或  systemctl start mysqld</span><br><span class="line">// 关闭MySQL服务</span><br><span class="line">systemctl stop mysqld.service  或  systemctl stop mysqld</span><br><span class="line">// MySQL服务运行状态，正常运行状态下 active应为running</span><br><span class="line">systemctl status mysqld.service 或 systemctl status mysqld</span><br></pre></td></tr></table></figure>
-
-<h2 id="五、启动MySQL以及设置密码"><a href="#五、启动MySQL以及设置密码" class="headerlink" title="五、启动MySQL以及设置密码"></a>五、启动MySQL以及设置密码</h2><p>查询随机生成的MySQL密码：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /var/log/mysqld.log | grep password</span><br></pre></td></tr></table></figure>
-
-<p>启动MySQL服务后，使用一下命令登录mysql：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
-
-<p>然后粘贴刚刚查询的密码。</p>
-<p>注意登录mysql的指令可能会出现报错：</p>
-<p><code>Can&#39;t connect to local MySQL server through socket &#39;/var/lib/mysql/mysql.sock&#39;</code></p>
-<p>遇到报错，首先查看mysql的报错日志：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /var/log/mysqld.log</span><br></pre></td></tr></table></figure>
-
-<p>我遇到的错误如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[ERROR] [MY-010262] [Server] Can&#x27;t start server: Bind on TCP/IP port: Address already in use</span><br><span class="line">[ERROR] [MY-010257] [Server] Do you already have another mysqld server running on port: 3306 ?</span><br><span class="line">[ERROR] [MY-010119] [Server] Aborting</span><br></pre></td></tr></table></figure>
-
-<p>显然是3306端口被占用，Linux环境下查看端口占用情况：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -tunlp</span><br></pre></td></tr></table></figure>
-
-<p>如果有结果，找到3306的那个进程的进程号，然后杀掉进程即可：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill -9 进程号</span><br></pre></td></tr></table></figure>
-
-<p>但我的实际错误是由于CentOS系统是安装在WSL（windows的linux子系统）下的，因为windows里安装了mysql占用了3306端口号而导致linux下无法启动mysql服务。需要杀死占用windows下3306端口的进程，使用管理员身份打开windows下的命令行窗口，查询所有占用端口的进程：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">netstat -ano</span><br><span class="line">netstat -ano | findstr 3306</span><br></pre></td></tr></table></figure>
-
-<p>找到占用3306端口的进程号，然后杀死进程：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TASKKILL /F /PID 进程号</span><br></pre></td></tr></table></figure>
-
-<p>其中&#x2F;F是强制杀死进程。此时返回linux系统下，重启mysql服务即可成功登录。</p>
-<p>还有可能在日志中看到报错：<code>Plugin mysqlx reported: &#39;Setup of socket: &#39;/var/run/mysqld/mysqlx.sock&#39; failed, can&#39;t create lock file /var/run/mysqld/mysqlx.sock.lock&#39;</code></p>
-<p>遇到这种情况，创建目录：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir /var/run/mysqld</span><br></pre></td></tr></table></figure>
-
-<p>然后为mysql赋予目录权限</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chown mysql:mysql /var/run/mysqld</span><br><span class="line">chmod 750 /var/run/mysqld</span><br></pre></td></tr></table></figure>
-
-<p>之后重新启动mysql服务即可。</p>
-<p>进入mysql后，设置一个自己的登录密码，例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SET PASSWORD = &#x27;123456&#x27;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h2 id="Ubuntu系统安装MySQL"><a href="#Ubuntu系统安装MySQL" class="headerlink" title="Ubuntu系统安装MySQL"></a>Ubuntu系统安装MySQL</h2><h3 id="首先彻底删除环境中的MySQL"><a href="#首先彻底删除环境中的MySQL" class="headerlink" title="首先彻底删除环境中的MySQL"></a>首先彻底删除环境中的MySQL</h3><ol>
-<li><p>删除mysql的配置文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo rm /var/lib/mysql/ -R</span><br><span class="line">sudo rm /etc/mysql/ -R</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>自动卸载MySQL</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get autoremove mysql* --purge</span><br><span class="line">sudo apt-get remove apparmor</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>终端中查看MySQL的依赖项</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpkg --list|grep mysql</span><br></pre></td></tr></table></figure>
-
-<p>如果还有依赖项，则继续执行卸载命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get autoremove mysql* --purge</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>卸载</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get remove php7.0-mysql</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>清除残留数据</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpkg -l|grep ^rc|awk ‘&#123;print$2&#125;’|sudo xargs dpkg -P</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看剩余依赖项</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpkg --list|grep mysql</span><br></pre></td></tr></table></figure>
-
-<p>没有依赖项时，删除成功。</p>
-</li>
-</ol>
-<h3 id="更新源"><a href="#更新源" class="headerlink" title="更新源"></a>更新源</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt upgrade</span><br></pre></td></tr></table></figure>
-
-<h3 id="安装MySQL服务器"><a href="#安装MySQL服务器" class="headerlink" title="安装MySQL服务器"></a>安装MySQL服务器</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install mysql-server</span><br></pre></td></tr></table></figure>
-
-<h3 id="启动MySQL（WSL环境下需要先杀死Windows中的3306端口进程）"><a href="#启动MySQL（WSL环境下需要先杀死Windows中的3306端口进程）" class="headerlink" title="启动MySQL（WSL环境下需要先杀死Windows中的3306端口进程）"></a>启动MySQL（WSL环境下需要先杀死Windows中的3306端口进程）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service mysql start</span><br></pre></td></tr></table></figure>
-
-<h3 id="设置用户名和密码"><a href="#设置用户名和密码" class="headerlink" title="设置用户名和密码"></a>设置用户名和密码</h3><p>查看系统默认的用户名和密码：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cat /etc/mysql/debian.cnf</span><br></pre></td></tr></table></figure>
-
-<p>用默认用户名和密码登录MySQL：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u默认用户名 -p默认密码</span><br></pre></td></tr></table></figure>
-
-<h3 id="重置用户名和密码"><a href="#重置用户名和密码" class="headerlink" title="重置用户名和密码"></a>重置用户名和密码</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">use mysql;  </span><br><span class="line">update mysql.user set authentication_string=password(&#x27;123456&#x27;) where user=&#x27;root&#x27; and Host =&#x27;localhost&#x27;; </span><br><span class="line">update user set  plugin=&quot;mysql_native_password&quot;;     </span><br><span class="line">flush privileges;      </span><br><span class="line">quit;     </span><br></pre></td></tr></table></figure>
-
-<p>MySQL80使用一下方式设置：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">use mysql;    </span><br><span class="line">alter user &#x27;root&#x27;@&#x27;localhost&#x27; identified with mysql_native_password by &#x27;123456&#x27;;   </span><br><span class="line">flush privileges; </span><br></pre></td></tr></table></figure>
-
-<h3 id="初始化MySQL"><a href="#初始化MySQL" class="headerlink" title="初始化MySQL"></a>初始化MySQL</h3><p>命令行中初始化MySQL：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mysql_secure_installation</span><br></pre></td></tr></table></figure>
-
-<h3 id="配置字符集"><a href="#配置字符集" class="headerlink" title="配置字符集"></a>配置字符集</h3><p>编辑配置文件：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf</span><br></pre></td></tr></table></figure>
-
-<p>在[mysqld]下加入一行：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">character_set_server=utf8</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Linux/Linux%E5%9F%BA%E7%A1%80/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Taizi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/Linux/Linux%E5%9F%BA%E7%A1%80/" class="post-title-link" itemprop="url">未命名</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2021-11-26 17:16:14" itemprop="dateModified" datetime="2021-11-26T17:16:14+08:00">2021-11-26</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>220</span>
+      <span>344</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -1916,13 +1270,138 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="Linux基础"><a href="#Linux基础" class="headerlink" title="Linux基础"></a>Linux基础</h1><h2 id="命令格式"><a href="#命令格式" class="headerlink" title="命令格式"></a>命令格式</h2><p>命令名称 [命令参数] [命令对象]</p>
-<p>注意命令名称、命令参数、命令对象之间用空格键分隔，使用时要根据实际情况组合各种命令选择和命令参数。</p>
-<p>命令名称容易理解，命令对象一般指要处理的目标（文件、用户等），命令参数随环境情况的不同而异，需要长期经验积累。</p>
-<h4 id="命令参数"><a href="#命令参数" class="headerlink" title="命令参数"></a>命令参数</h4><p>命令参数可以选用长格式（完整的选项名称），也可以选用短格式（单个子母的缩写），分别用“–”与“-”做前缀，</p>
-<p>长格式如：man –help  </p>
-<p>短格式如：man -h</p>
-<h2 id="Linux-常用命令"><a href="#Linux-常用命令" class="headerlink" title="Linux 常用命令"></a>Linux 常用命令</h2>
+          <h1 id="MyBatis-注解"><a href="#MyBatis-注解" class="headerlink" title="MyBatis 注解"></a>MyBatis 注解</h1><h2 id="Param注解"><a href="#Param注解" class="headerlink" title="@Param注解"></a>@Param注解</h2><h3 id="一、有多个基本类型参数"><a href="#一、有多个基本类型参数" class="headerlink" title="一、有多个基本类型参数"></a>一、有多个基本类型参数</h3><p>有多个基本类型参数时，需要在每个参数前添加@Param注解。</p>
+<h3 id="二、方法参数需要起别名时"><a href="#二、方法参数需要起别名时" class="headerlink" title="二、方法参数需要起别名时"></a>二、方法参数需要起别名时</h3><p>当方法参数需要起别名时，需要在参数前添加@Param注解，注解内说明参数的别名。</p>
+<h3 id="三、当XML配置文件中存在-符号时"><a href="#三、当XML配置文件中存在-符号时" class="headerlink" title="三、当XML配置文件中存在$符号时"></a>三、当XML配置文件中存在$符号时</h3><p>虽然在XML使用$符号传参会有SQL注入的风险，但当不得不使用$符号传参时，必须在Mapper层方法的参数前添加@Param注解。</p>
+<h3 id="四、在动态SQL中使用了参数作为判断条件"><a href="#四、在动态SQL中使用了参数作为判断条件" class="headerlink" title="四、在动态SQL中使用了参数作为判断条件"></a>四、在动态SQL中使用了参数作为判断条件</h3><p>如果在动态SQL中使用了参数作为判断条件，则在mapper层的该参数前必须使用@Param注解。</p>
+<h3 id="五、一般情况下，单个参数不需要加-Param注解"><a href="#五、一般情况下，单个参数不需要加-Param注解" class="headerlink" title="五、一般情况下，单个参数不需要加@Param注解"></a>五、一般情况下，单个参数不需要加@Param注解</h3><p>如果只传入了一个参数，并且该参数没有被特殊使用（如需要起别名、被用作动态SQL的判断条件等），可以不加@Param注解。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Java/Java%E4%B8%AD%E9%97%B4%E4%BB%B6/Maven/maven%E5%AE%89%E8%A3%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Taizi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/Java/Java%E4%B8%AD%E9%97%B4%E4%BB%B6/Maven/maven%E5%AE%89%E8%A3%85/" class="post-title-link" itemprop="url">maven安装</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-09-28 14:53:34" itemprop="dateModified" datetime="2023-09-28T14:53:34+08:00">2023-09-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/Java%E4%B8%AD%E9%97%B4%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">Java中间件</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/Java%E4%B8%AD%E9%97%B4%E4%BB%B6/Maven/" itemprop="url" rel="index"><span itemprop="name">Maven</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>615</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="maven安装"><a href="#maven安装" class="headerlink" title="maven安装"></a>maven安装</h1><ul>
+<li>官网下载maven压缩包，link下的zip包</li>
+<li>解压安装包到特定目录</li>
+<li>添加系统环境变量，命名为MAVEN_HOME,路径为解压后的文件夹目录</li>
+<li>在Path中添加路径，MAVEN_HOME下的bin目录，即：</li>
+</ul>
+<blockquote>
+<p>%MAVEN_HOME%\bin</p>
+</blockquote>
+<h1 id="maven配置"><a href="#maven配置" class="headerlink" title="maven配置"></a>maven配置</h1><ul>
+<li><h3 id="settings-xml的配置"><a href="#settings-xml的配置" class="headerlink" title="settings.xml的配置"></a>settings.xml的配置</h3></li>
+</ul>
+<p>maven常常因为源仓库在国外而导致maven包下载慢或者无法下载的问题，解决方案之一是将maven配置文件中的仓库源换成阿里云仓库。该配置文件在%MAVEN_HOME%\conf\settings.xml，换源时可将配置文件中的<mirrors></mirrors>标签及标签中的所有内容注释掉，然后添加以下内容：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mirrors</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>aliyunmaven<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>阿里云公共仓库<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://maven.aliyun.com/repository/public<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>*<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mirrors</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>即可完成换源。</p>
+<p>同时，maven的本地仓库位置也可以在配置文件中进行指定，添加以下路径配置即可：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">localRepository</span>&gt;</span>本地仓库路径<span class="tag">&lt;/<span class="name">localRepository</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
       
     </div>
 
@@ -1941,7 +1420,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>
@@ -1963,13 +1442,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">167k</span>
+    <span title="站点总字数">145k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">5:04</span>
+    <span title="站点阅读时长">4:24</span>
   </span>
 </div>
 <div class="busuanzi-count">

@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"hackertaizi.gitee.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Java注解1、@Autowired （Spring注解）@Autowired注解用于对象的自动装配，默认先通过类型进行装配，类型装配不成功时再通过名字进行装配，如果都不成功，可以使用@Qualifier(value&#x3D;“ ”）注解来指定名字协助装配，否则报错。 2. @Resource  （Java注解）@Resource注解用于对象的自动装配，默认先通过名字进行装配，当名字装配不成功时">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java注解">
+<meta property="og:url" content="https://hackertaizi.gitee.io/Java/Java%E6%B3%A8%E8%A7%A3/Java%E6%B3%A8%E8%A7%A3/index.html">
+<meta property="og:site_name" content="太子的个人博客">
+<meta property="og:description" content="Java注解1、@Autowired （Spring注解）@Autowired注解用于对象的自动装配，默认先通过类型进行装配，类型装配不成功时再通过名字进行装配，如果都不成功，可以使用@Qualifier(value&#x3D;“ ”）注解来指定名字协助装配，否则报错。 2. @Resource  （Java注解）@Resource注解用于对象的自动装配，默认先通过名字进行装配，当名字装配不成功时">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-09-16T05:48:25.611Z">
+<meta property="article:modified_time" content="2023-09-27T10:55:41.440Z">
+<meta property="article:author" content="Taizi">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="Java注解">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://hackertaizi.gitee.io/Java/Java%E6%B3%A8%E8%A7%A3/Java%E6%B3%A8%E8%A7%A3/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hackertaizi.gitee.io/Java/Java%E6%B3%A8%E8%A7%A3/Java%E6%B3%A8%E8%A7%A3/","path":"Java/Java注解/Java注解/","title":"Java注解"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Java注解 | 太子的个人博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">太子的个人博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Have a nice day !</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java%E6%B3%A8%E8%A7%A3"><span class="nav-number">1.</span> <span class="nav-text">Java注解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81-Autowired-%EF%BC%88Spring%E6%B3%A8%E8%A7%A3%EF%BC%89"><span class="nav-number">1.1.</span> <span class="nav-text">1、@Autowired （Spring注解）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Resource-%EF%BC%88Java%E6%B3%A8%E8%A7%A3%EF%BC%89"><span class="nav-number">1.2.</span> <span class="nav-text">2. @Resource  （Java注解）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Nullable"><span class="nav-number">1.3.</span> <span class="nav-text">3.  @Nullable</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Component"><span class="nav-number">1.4.</span> <span class="nav-text">4. @Component</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Value"><span class="nav-number">1.5.</span> <span class="nav-text">5. @Value</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-Repository%EF%BC%88-Component%E8%A1%8D%E7%94%9F%E6%B3%A8%E8%A7%A3%EF%BC%89"><span class="nav-number">1.6.</span> <span class="nav-text">6. @Repository（@Component衍生注解）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-Service%EF%BC%88-Component%E8%A1%8D%E7%94%9F%E6%B3%A8%E8%A7%A3%EF%BC%89"><span class="nav-number">1.7.</span> <span class="nav-text">7. @Service（@Component衍生注解）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-Controller%EF%BC%88-Component%E8%A1%8D%E7%94%9F%E6%B3%A8%E8%A7%A3%EF%BC%89"><span class="nav-number">1.8.</span> <span class="nav-text">8. @Controller（@Component衍生注解）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-Scope"><span class="nav-number">1.9.</span> <span class="nav-text">9. @Scope</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-Configration"><span class="nav-number">1.10.</span> <span class="nav-text">10. @Configration</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-ComponentScan"><span class="nav-number">1.11.</span> <span class="nav-text">11. @ComponentScan</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-Import"><span class="nav-number">1.12.</span> <span class="nav-text">12. @Import</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-Bean"><span class="nav-number">1.13.</span> <span class="nav-text">13. @Bean</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Taizi</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Java/Java%E6%B3%A8%E8%A7%A3/Java%E6%B3%A8%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Taizi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Java注解 | 太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java注解
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-09-27 18:55:41" itemprop="dateModified" datetime="2023-09-27T18:55:41+08:00">2023-09-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/Java%E6%B3%A8%E8%A7%A3/" itemprop="url" rel="index"><span itemprop="name">Java注解</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.5k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="Java注解"><a href="#Java注解" class="headerlink" title="Java注解"></a>Java注解</h1><h2 id="1、-Autowired-（Spring注解）"><a href="#1、-Autowired-（Spring注解）" class="headerlink" title="1、@Autowired （Spring注解）"></a>1、@Autowired （Spring注解）</h2><p>@Autowired注解用于对象的自动装配，默认先通过类型进行装配，类型装配不成功时再通过名字进行装配，如果都不成功，可以使用@Qualifier(value&#x3D;“ ”）注解来指定名字协助装配，否则报错。</p>
+<h2 id="2-Resource-（Java注解）"><a href="#2-Resource-（Java注解）" class="headerlink" title="2. @Resource  （Java注解）"></a>2. @Resource  （Java注解）</h2><p>@Resource注解用于对象的自动装配，默认先通过名字进行装配，当名字装配不成功时再通过类型进行装配，如果都不成功，可以使用其name属性指定对象名字进行装配，格式如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Resource(name=&quot;&quot;)</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-Nullable"><a href="#3-Nullable" class="headerlink" title="3.  @Nullable"></a>3.  @Nullable</h2><p>使用该注解标记的字段可以为null。</p>
+<h2 id="4-Component"><a href="#4-Component" class="headerlink" title="4. @Component"></a>4. @Component</h2><p>把普通的实体类pojo配置到spring容器中，相当于配置文件中的</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;&quot;</span> <span class="attr">class</span>=<span class="string">&quot;&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>该注解泛指各种组件，就是当某个类不属于各种归类的时候（不属于controller、service等的时候），就可以使用@Component来标注这个类。</p>
+<p><strong>注意：</strong>使用该注解时，需要先在配置文件中使用</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">”包路径”</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>指定了要扫描的包后，这个包下的类的@Component注解才会生效。</p>
+<h2 id="5-Value"><a href="#5-Value" class="headerlink" title="5. @Value"></a>5. @Value</h2><p>上面的@Component注解只能配置类，当需要配置类的属性时，需要用到@Value注解，此注解可以声明在类的属性或者属性的set方法上，括号中跟值，例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Value(&quot;值&quot;)</span></span><br></pre></td></tr></table></figure>
+
+<p>相当于在配置文件中进行了属性配置：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;name&quot;</span> <span class="attr">value</span>=<span class="string">&quot;值&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="6-Repository（-Component衍生注解）"><a href="#6-Repository（-Component衍生注解）" class="headerlink" title="6. @Repository（@Component衍生注解）"></a>6. @Repository（@Component衍生注解）</h2><p>@Component的衍生注解，作用于@Component相同，<strong>用于装配Dao层下的类。</strong></p>
+<h2 id="7-Service（-Component衍生注解）"><a href="#7-Service（-Component衍生注解）" class="headerlink" title="7. @Service（@Component衍生注解）"></a>7. @Service（@Component衍生注解）</h2><p>@Component的衍生注解，作用于@Component相同，<strong>用于装配Service层下的类。</strong></p>
+<h2 id="8-Controller（-Component衍生注解）"><a href="#8-Controller（-Component衍生注解）" class="headerlink" title="8. @Controller（@Component衍生注解）"></a>8. @Controller（@Component衍生注解）</h2><p>@Component的衍生注解，作用于@Component相同，<strong>用于装配Controller层下的类。</strong></p>
+<h2 id="9-Scope"><a href="#9-Scope" class="headerlink" title="9. @Scope"></a>9. @Scope</h2><p>置于类上，用于配置类的作用域，如单例模式、原型模式等。例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Scope(&quot;singleton&quot;)</span> <span class="comment">//单例模式</span></span><br><span class="line"><span class="meta">@Scope(&quot;prototype&quot;)</span> <span class="comment">//原型模式</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="10-Configration"><a href="#10-Configration" class="headerlink" title="10. @Configration"></a>10. @Configration</h2><p>写在类前，声明一个类是Java 配置类，声明后，该java类的作用与xml配置文件相同。</p>
+<h2 id="11-ComponentScan"><a href="#11-ComponentScan" class="headerlink" title="11. @ComponentScan"></a>11. @ComponentScan</h2><p>配合@Configration注解为java配置类设置扫描路径，相当于xml配置文件中的&lt;context:component-scan base-package&#x3D;”包路径”&gt;语句，用法如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ComponentScan(&quot;扫描路径&quot;)</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="12-Import"><a href="#12-Import" class="headerlink" title="12. @Import"></a>12. @Import</h2><p>配合<br>@Configration注解将多个java配置类集合到一起，相当于xml配置文件中的import语句。</p>
+<h2 id="13-Bean"><a href="#13-Bean" class="headerlink" title="13. @Bean"></a>13. @Bean</h2><p>用于方法前，注册一个bean，相当于配置文件中的bean标签，方法的名字就相当于bean标签中的id属性，方法的返回值就相当于bean标签中的class属性</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+              <a href="/tags/Java%E6%B3%A8%E8%A7%A3/" rel="tag"># Java注解</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/Java/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/%E9%80%BB%E8%BE%91%E5%B1%82%E5%85%B3%E7%B3%BB%E6%A2%B3%E7%90%86/" rel="prev" title="逻辑层关系梳理">
+                  <i class="fa fa-angle-left"></i> 逻辑层关系梳理
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/Linux/Linux%E4%B8%8B%E5%AE%89%E8%A3%85anaconda/" rel="next" title="Linux环境下安装anaconda">
+                  Linux环境下安装anaconda <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Powered by Hackertaizi</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">145k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">4:24</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

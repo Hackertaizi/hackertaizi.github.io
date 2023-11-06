@@ -147,7 +147,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-count">45</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -158,7 +158,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-count">30</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -175,6 +175,244 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Java/Java%E4%B8%AD%E9%97%B4%E4%BB%B6/MyBatis/MyBatis%20@Param%E6%B3%A8%E8%A7%A3%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E8%AF%B4%E6%98%8E/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Taizi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/Java/Java%E4%B8%AD%E9%97%B4%E4%BB%B6/MyBatis/MyBatis%20@Param%E6%B3%A8%E8%A7%A3%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E8%AF%B4%E6%98%8E/" class="post-title-link" itemprop="url">MyBatis注解</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-09-28 14:53:59" itemprop="dateModified" datetime="2023-09-28T14:53:59+08:00">2023-09-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/Java%E4%B8%AD%E9%97%B4%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">Java中间件</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/Java%E4%B8%AD%E9%97%B4%E4%BB%B6/MyBatis/" itemprop="url" rel="index"><span itemprop="name">MyBatis</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>344</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="MyBatis-注解"><a href="#MyBatis-注解" class="headerlink" title="MyBatis 注解"></a>MyBatis 注解</h1><h2 id="Param注解"><a href="#Param注解" class="headerlink" title="@Param注解"></a>@Param注解</h2><h3 id="一、有多个基本类型参数"><a href="#一、有多个基本类型参数" class="headerlink" title="一、有多个基本类型参数"></a>一、有多个基本类型参数</h3><p>有多个基本类型参数时，需要在每个参数前添加@Param注解。</p>
+<h3 id="二、方法参数需要起别名时"><a href="#二、方法参数需要起别名时" class="headerlink" title="二、方法参数需要起别名时"></a>二、方法参数需要起别名时</h3><p>当方法参数需要起别名时，需要在参数前添加@Param注解，注解内说明参数的别名。</p>
+<h3 id="三、当XML配置文件中存在-符号时"><a href="#三、当XML配置文件中存在-符号时" class="headerlink" title="三、当XML配置文件中存在$符号时"></a>三、当XML配置文件中存在$符号时</h3><p>虽然在XML使用$符号传参会有SQL注入的风险，但当不得不使用$符号传参时，必须在Mapper层方法的参数前添加@Param注解。</p>
+<h3 id="四、在动态SQL中使用了参数作为判断条件"><a href="#四、在动态SQL中使用了参数作为判断条件" class="headerlink" title="四、在动态SQL中使用了参数作为判断条件"></a>四、在动态SQL中使用了参数作为判断条件</h3><p>如果在动态SQL中使用了参数作为判断条件，则在mapper层的该参数前必须使用@Param注解。</p>
+<h3 id="五、一般情况下，单个参数不需要加-Param注解"><a href="#五、一般情况下，单个参数不需要加-Param注解" class="headerlink" title="五、一般情况下，单个参数不需要加@Param注解"></a>五、一般情况下，单个参数不需要加@Param注解</h3><p>如果只传入了一个参数，并且该参数没有被特殊使用（如需要起别名、被用作动态SQL的判断条件等），可以不加@Param注解。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Java/Java%E4%B8%AD%E9%97%B4%E4%BB%B6/Maven/maven%E5%AE%89%E8%A3%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Taizi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/Java/Java%E4%B8%AD%E9%97%B4%E4%BB%B6/Maven/maven%E5%AE%89%E8%A3%85/" class="post-title-link" itemprop="url">maven安装</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-09-28 14:53:34" itemprop="dateModified" datetime="2023-09-28T14:53:34+08:00">2023-09-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/Java%E4%B8%AD%E9%97%B4%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">Java中间件</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/Java%E4%B8%AD%E9%97%B4%E4%BB%B6/Maven/" itemprop="url" rel="index"><span itemprop="name">Maven</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>615</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="maven安装"><a href="#maven安装" class="headerlink" title="maven安装"></a>maven安装</h1><ul>
+<li>官网下载maven压缩包，link下的zip包</li>
+<li>解压安装包到特定目录</li>
+<li>添加系统环境变量，命名为MAVEN_HOME,路径为解压后的文件夹目录</li>
+<li>在Path中添加路径，MAVEN_HOME下的bin目录，即：</li>
+</ul>
+<blockquote>
+<p>%MAVEN_HOME%\bin</p>
+</blockquote>
+<h1 id="maven配置"><a href="#maven配置" class="headerlink" title="maven配置"></a>maven配置</h1><ul>
+<li><h3 id="settings-xml的配置"><a href="#settings-xml的配置" class="headerlink" title="settings.xml的配置"></a>settings.xml的配置</h3></li>
+</ul>
+<p>maven常常因为源仓库在国外而导致maven包下载慢或者无法下载的问题，解决方案之一是将maven配置文件中的仓库源换成阿里云仓库。该配置文件在%MAVEN_HOME%\conf\settings.xml，换源时可将配置文件中的<mirrors></mirrors>标签及标签中的所有内容注释掉，然后添加以下内容：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mirrors</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>aliyunmaven<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>阿里云公共仓库<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://maven.aliyun.com/repository/public<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>*<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mirrors</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>即可完成换源。</p>
+<p>同时，maven的本地仓库位置也可以在配置文件中进行指定，添加以下路径配置即可：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">localRepository</span>&gt;</span>本地仓库路径<span class="tag">&lt;/<span class="name">localRepository</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -278,6 +516,128 @@
 <li>命令提示符中运行 java -version 命令，查询不到版本信息，说明jdk卸载成功</li>
 </ul>
 </blockquote>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Java/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/1.Java%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%8E%AF%E5%A2%83/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Taizi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/Java/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/1.Java%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%8E%AF%E5%A2%83/" class="post-title-link" itemprop="url">1.Java程序设计环境</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-09-27 18:42:13" itemprop="dateModified" datetime="2023-09-27T18:42:13+08:00">2023-09-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">Java核心技术</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>571</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="1-Java程序设计环境"><a href="#1-Java程序设计环境" class="headerlink" title="1. Java程序设计环境"></a>1. Java程序设计环境</h1><h2 id="一些术语"><a href="#一些术语" class="headerlink" title="一些术语"></a>一些术语</h2><ul>
+<li>JDK：Java Development Kit（Java开发工具包）</li>
+<li>JRE: Java Runtime Environment （Java运行时环境）</li>
+<li>Java SE：Java Standard Edition（Java标准版，用于桌面或简单服务器应用的Java平台）</li>
+<li>Java EE:   Java Enterprise Edition（Java企业版，用于复杂服务器应用的Java平台）</li>
+<li>Java ME:  Java Micro Edition （Java 微型版，用于小型设备的Java平台）</li>
+</ul>
+<h2 id="使用命令行工具对Java代码进行编译"><a href="#使用命令行工具对Java代码进行编译" class="headerlink" title="使用命令行工具对Java代码进行编译"></a>使用命令行工具对Java代码进行编译</h2><ol>
+<li>首先必须安装JDK，并且配置好环境变量</li>
+<li>Java 代码存放在以   .java结尾的文档中</li>
+<li>使用命令  <code>javac ClassName.java</code> ,  javac程序是一个Java编译器，它将.java文件编译成字节码文件.class, 所以编译后将得到ClassName.class字节码文件。</li>
+<li>使用命令<code>java ClassName</code>, java 程序启动Java虚拟机，虚拟机执行编译器编译到类文件中的字节码。</li>
+</ol>
+<p><strong>注意点：</strong></p>
+<ul>
+<li>注意JDK版本，以及环境变量的配置</li>
+<li><strong>Java区分大小写，类名第一个字母需要大写</strong></li>
+<li>javac 编译器需要一个文件名（ClassName.java),  而Java程序运行时只需要指定类名（ClassName), 不需要带扩展名.java或.class。</li>
+</ul>
 
       
     </div>
@@ -970,128 +1330,6 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Java/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/1.Java%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%8E%AF%E5%A2%83/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Taizi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/Java/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/1.Java%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%8E%AF%E5%A2%83/" class="post-title-link" itemprop="url">1.Java程序设计环境</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-09-27 18:42:13" itemprop="dateModified" datetime="2023-09-27T18:42:13+08:00">2023-09-27</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Java/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">Java核心技术</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>571</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="1-Java程序设计环境"><a href="#1-Java程序设计环境" class="headerlink" title="1. Java程序设计环境"></a>1. Java程序设计环境</h1><h2 id="一些术语"><a href="#一些术语" class="headerlink" title="一些术语"></a>一些术语</h2><ul>
-<li>JDK：Java Development Kit（Java开发工具包）</li>
-<li>JRE: Java Runtime Environment （Java运行时环境）</li>
-<li>Java SE：Java Standard Edition（Java标准版，用于桌面或简单服务器应用的Java平台）</li>
-<li>Java EE:   Java Enterprise Edition（Java企业版，用于复杂服务器应用的Java平台）</li>
-<li>Java ME:  Java Micro Edition （Java 微型版，用于小型设备的Java平台）</li>
-</ul>
-<h2 id="使用命令行工具对Java代码进行编译"><a href="#使用命令行工具对Java代码进行编译" class="headerlink" title="使用命令行工具对Java代码进行编译"></a>使用命令行工具对Java代码进行编译</h2><ol>
-<li>首先必须安装JDK，并且配置好环境变量</li>
-<li>Java 代码存放在以   .java结尾的文档中</li>
-<li>使用命令  <code>javac ClassName.java</code> ,  javac程序是一个Java编译器，它将.java文件编译成字节码文件.class, 所以编译后将得到ClassName.class字节码文件。</li>
-<li>使用命令<code>java ClassName</code>, java 程序启动Java虚拟机，虚拟机执行编译器编译到类文件中的字节码。</li>
-</ol>
-<p><strong>注意点：</strong></p>
-<ul>
-<li>注意JDK版本，以及环境变量的配置</li>
-<li><strong>Java区分大小写，类名第一个字母需要大写</strong></li>
-<li>javac 编译器需要一个文件名（ClassName.java),  而Java程序运行时只需要指定类名（ClassName), 不需要带扩展名.java或.class。</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/IDEA/IDEA%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1714,133 +1952,6 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Hadoop/Hive/%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E6%80%9D%E8%B7%AF/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Taizi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/Hadoop/Hive/%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E6%80%9D%E8%B7%AF/" class="post-title-link" itemprop="url">数据开发思路</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-09-27 18:30:22" itemprop="dateModified" datetime="2023-09-27T18:30:22+08:00">2023-09-27</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Hadoop/" itemprop="url" rel="index"><span itemprop="name">Hadoop</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Hadoop/Hive/" itemprop="url" rel="index"><span itemprop="name">Hive</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>393</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="数据开发思路"><a href="#数据开发思路" class="headerlink" title="数据开发思路"></a>数据开发思路</h2><h3 id="需求（作图分析）"><a href="#需求（作图分析）" class="headerlink" title="需求（作图分析）"></a>需求（作图分析）</h3><ul>
-<li>开发内容涉及到哪几个模块的功能，针对每个模块进行分析：<ul>
-<li>该模块功能在哪里实现？Hive、gp、报表工具？</li>
-<li>该模块间是否与其他模块有关联？如果存在关联？因为此关联每个模块需要注意哪些问题？</li>
-<li>需要哪些上层表的支持，针对每张上层表进行分析：<ul>
-<li>使用该表的目的是什么？该表本身的逻辑是什么？是否需要连接其他表？如何连接？功能实现需要使用哪些字段？数据集成时分布分区又需要哪些字段？分区需要那些字段？由于该表的性质，是否需要新增标识字段（比如网器工单表可以增加网器标识字段）？针对该表以及需要连接的表的字段进行分析：<ul>
-<li>字段是否有空值？空值如何处理？字段的格式和含义是什么？连接键是否为空？字段取值是否有需求之外的值（脏数据）</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="开发"><a href="#开发" class="headerlink" title="开发"></a>开发</h3><ul>
-<li>注意代码格式规范</li>
-<li>注意语法正确性：<ul>
-<li>标点符号使用英文标点</li>
-<li>子句中有多个字段时，中间的字段不要丢失逗号，最后的字段不要加逗号</li>
-<li>打字不宜过快，保证字段名表名的正确性</li>
-<li></li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Hadoop/Hive/%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E8%A6%81%E7%82%B9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1952,246 +2063,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Hadoop/Hive/Hive%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Taizi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/Hadoop/Hive/Hive%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F/" class="post-title-link" itemprop="url">Hive文件格式</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-09-27 18:32:56" itemprop="dateModified" datetime="2023-09-27T18:32:56+08:00">2023-09-27</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Hadoop/" itemprop="url" rel="index"><span itemprop="name">Hadoop</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Hadoop/Hive/" itemprop="url" rel="index"><span itemprop="name">Hive</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>3.2k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>6 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Hive-文件格式"><a href="#Hive-文件格式" class="headerlink" title="Hive 文件格式"></a>Hive 文件格式</h1><h2 id="一、-ORC-Files"><a href="#一、-ORC-Files" class="headerlink" title="一、 ORC Files"></a>一、 ORC Files</h2><h3 id="1-ORC文件格式概述"><a href="#1-ORC文件格式概述" class="headerlink" title="1. ORC文件格式概述"></a>1. ORC文件格式概述</h3><p>ORC(<em>Optimized Row Columnar</em>)文件格式提供了一种非常高效的方式来存储hive数据。它旨在克服其他Hive文件格式的限制。使用ORC文件可以提升Hive在读、写、处理数据时的性能。</p>
-<p>以RCFile 格式做比较，ORC文件格式有许多有优点，例如：</p>
-<blockquote>
-<ul>
-<li><p>单个文件作为每个任务的输出，这减少了NameNode的负载 .</p>
-</li>
-<li><p>Hive类型支持datetime,decimal,以及一些复杂类型（struct, list, map, and union）.</p>
-</li>
-<li><p>文件中存储了轻量级的索引：</p>
-<ul>
-<li>跳过那些没有通过谓词筛选的行组</li>
-<li>查询给定行</li>
-</ul>
-</li>
-<li><p>基于数据类型的块模式压缩 </p>
-</li>
-<li><p>Integer类型的列用行程长度编码(Run Length Encoding)</p>
-</li>
-<li><p>String类型的列用字典编码(Dictionary Encoding)；</p>
-</li>
-<li><p>使用单独的RecordReader并发读取同一文件 </p>
-</li>
-<li><p>无需扫描标记即可拆分文件 </p>
-</li>
-<li><p>绑定读写所需的内存量 </p>
-</li>
-<li><p>使用协议缓冲区存储元数据，允许添加和删除字段</p>
-</li>
-</ul>
-</blockquote>
-<h3 id="2-ORC文件结构"><a href="#2-ORC文件结构" class="headerlink" title="2. ORC文件结构"></a>2. ORC文件结构</h3><p>ORC文件包含一组称为条纹(<strong>stripes</strong>)的行数据，以及FileFooter中的辅助信息。在文件末尾，postscript保存压缩参数和压缩页脚的大小。</p>
-<p>默认的 stripes 大小为250MB，大的stripes使得Hive能够对HDFS进行高效的读取。</p>
-<p>FileFooter包含文件中的stripes列表、每个stripes的行数以及每列的数据类型。它还包含了列级聚合count、min、max和sum。 </p>
-<p>下图说明了ORC文件结构： </p>
-<p><img src="/Hadoop/Hive/Hive%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F/.%5CHive%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%5Cimage-20220530141339875.png" alt="image-20220530141339875"></p>
-<h3 id="3-Stripe结构："><a href="#3-Stripe结构：" class="headerlink" title="3. Stripe结构："></a>3. Stripe结构：</h3><p>从上图可以看出，ORC文件中的每个stripe都包括索引数据(Index Data)、行数据(Row Data)以及Stripe Footer。</p>
-<p><code>Stripe Footer</code>包含了流数据位置的目录，<code>Row Data</code>则用于表的扫描。</p>
-<p><code>Index data</code>中包含了每一列中的最大和最小值，以及每列所在的行（还可以包括位字段或布隆过滤器），行索引里面提供了偏移量，它可以跳到正确的压缩块位置以及解压缩块的字节位置。请注意，ORC索引仅用于选择 <code>Stripe</code> 和行组，而不用于查询。</p>
-<p>Stripe中具有相对频繁的行索引、能够跳过行来进行快速读取，尽管Stripe很大。默认情况下最大可以跳过10000行。</p>
-<p>通过谓词筛选器跳过大量行集，你可以使用表的第二主键来进行分类从而减少大量的执行时间。例如，你的表的主分区是交易日期，那么你可以在 state、zip code以及last name 上进行排序。然后在一个 state 中查找记录将跳过所有其他 state 的记录。</p>
-<h3 id="4-使用语法"><a href="#4-使用语法" class="headerlink" title="4. 使用语法"></a>4. 使用语法</h3><p>文件类型是在表级（或分区级）上确定的，通过HiveQL,你可以将文件形式定义为ORC,例如：</p>
-<ul>
-<li><code>CREATE TABLE ... STORED AS ORC</code></li>
-<li><code>ALTER TABLE ... [PARTITION partition_spec] SET FILEFORMAT ORC</code></li>
-<li><code>SET hive.default.fileformat=ORC</code></li>
-</ul>
-<p><strong>高级设置：</strong></p>
-<p>下面的参数都被放在 <code>TBLPROPERTIES </code>中:</p>
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Default</th>
-<th>Notes</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>orc.bloom.filter.columns</td>
-<td>“”</td>
-<td>comma separated list of column names for which bloom filter should be created<br>应为其创建bloom筛选器的列名的逗号分隔列表</td>
-</tr>
-<tr>
-<td>orc.bloom.filter.fpp</td>
-<td>0.05</td>
-<td>false positive probability for bloom filter (must &gt;0.0 and &lt;1.0)<br>布隆过滤器的误报概率，大小在0和1之间</td>
-</tr>
-<tr>
-<td>orc.compress</td>
-<td>ZLIB</td>
-<td>high level compression (one of NONE, ZLIB, SNAPPY)<br>高级压缩，为表指定压缩算法，默认为ZLIB</td>
-</tr>
-<tr>
-<td>orc.compress.size</td>
-<td>262,144</td>
-<td>number of bytes in each compression chunk<br>每个压缩区块包含的字节数</td>
-</tr>
-<tr>
-<td>orc.create.index</td>
-<td>true</td>
-<td>whether to create row indexes<br>是否要创建行索引</td>
-</tr>
-<tr>
-<td>orc.row.index.stride</td>
-<td>10,000</td>
-<td>number of rows between index entries (must be &gt;&#x3D; 1000)<br>索引项之间的行数，必须大于1000</td>
-</tr>
-<tr>
-<td>orc.stripe.size</td>
-<td>67,108,864</td>
-<td>number of bytes in each stripe<br>每个stripe包含的字节数</td>
-</tr>
-</tbody></table>
-<p>例如，创建一个不带压缩方式的ORC存储的表：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> Addresses (</span><br><span class="line">  name string,</span><br><span class="line">  street string,</span><br><span class="line">  city string,</span><br><span class="line">  state string,</span><br><span class="line">  zip <span class="type">int</span></span><br><span class="line">) stored <span class="keyword">as</span> orc tblproperties (&quot;orc.compress&quot;<span class="operator">=</span>&quot;NONE&quot;);</span><br></pre></td></tr></table></figure>
-
-<h3 id="5-序列化-Serialization-和压缩-Compression"><a href="#5-序列化-Serialization-和压缩-Compression" class="headerlink" title="5. 序列化(Serialization )和压缩(Compression)"></a>5. 序列化(Serialization )和压缩(Compression)</h3><h4 id="5-1-序列化"><a href="#5-1-序列化" class="headerlink" title="5.1 序列化"></a>5.1 序列化</h4><p>ORC 文件中的序列化取决于列数据是否为Integer或者String类型的。</p>
-<ul>
-<li>Integer列的序列化：</li>
-</ul>
-<blockquote>
-<p>Integer 列在两个流中序列化：</p>
-<ol>
-<li>当前位流：值是否非空？</li>
-<li>数据流：Integers流</li>
-</ol>
-<p>整形数据的序列化方式采用了数字常见分布的优点：</p>
-<ul>
-<li>整数编码才用可变宽度编码，这使得小整形数字占用更少的字节</li>
-<li>重复值采用行程编码（Run-Length Encoding，RLE）</li>
-<li>在-128到127范围内的常数使用的是行程编码</li>
-</ul>
-</blockquote>
-<p>知识拓展：</p>
-<p>可变宽度编码（<em>variable-width encoding</em>）<strong>待补充</strong></p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">可变宽度编码基于Google的协议缓冲区，并使用高位表示该字节是否不是编码数据的最后一位和低位7位来编码。为了对附属进行编码，0, -1, 1, -2, 和 2 被映射为 0, 1, 2, 3, 4, 和 5 respectively.</span><br><span class="line"></span><br><span class="line">每个集合中的数是按以下方式编码的：</span><br><span class="line"><span class="emphasis">*如果第一个字节b0是负数：</span></span><br><span class="line"><span class="emphasis">	*</span> b0后是可变长度整数</span><br><span class="line"><span class="emphasis">*如果第一个字节b0是正数：</span></span><br><span class="line"><span class="emphasis">	</span></span><br><span class="line"><span class="emphasis"></span></span><br></pre></td></tr></table></figure>
-
-
-
-<p>行程编码（<em>Run-Length Encoding</em>，RLE）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">行程编码（RLE）是一种无损数据压缩形式，其中数据的runs（即，在许多连续数据元素中出现相同数据值的序列）被存储为单个数据值和计数，而不是原来的runs。这对包含许多此类runs的数据最有用。例如，考虑简单的图形图像，如图标，线条图。它对于没有很多runs的文件没有用，因为它可能会大大增加文件大小。</span><br><span class="line">例如，考虑在纯白色背景上包含纯黑色文本的屏幕。空白区域中会有很多长白色像素，文本中会有很多短黑色像素。假设的扫描线，B代表黑色像素，W代表白色，可能如下所示：</span><br><span class="line"></span><br><span class="line">WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW</span><br><span class="line"></span><br><span class="line">通过应用于上述假设扫描线的行程编码（RLE）数据压缩算法，可以如下呈现：</span><br><span class="line"></span><br><span class="line">12W1B12W3B24W1B14W</span><br><span class="line"></span><br><span class="line">这可以解释为12个W,1个B，12个W，3个B，24个W，1个B，14个W的序列。</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>String列的序列化</li>
-</ul>
-<blockquote>
-<p>字符串列的序列化使用字典来形成唯一的列值。对字典进行排序以加快谓词过滤并提高压缩比。</p>
-<p>String 列在四个流中序列化：</p>
-<ol>
-<li>当前位流：值是否非空？</li>
-<li>字典数据：字符串的字节数</li>
-<li>字典长度：每个条目的长度</li>
-<li>行数据：行中的数据</li>
-</ol>
-<p>字典长度和行数据都是Integer中的行程编码。</p>
-</blockquote>
-<h4 id="5-2-压缩"><a href="#5-2-压缩" class="headerlink" title="5.2 压缩"></a>5.2 压缩</h4><p>流使用编解码器进行压缩，编解码器被指定为该表中所有流的表属性。为了优化内存的使用，压缩是在每个块生成的时候以增量的方式进行的。可以直接跳过压缩块，而无需先解压再扫描。流中的位置使用块的开始位置和块中的偏移来表示。</p>
-<p>编码解码器可以是Snappy，Zlib，或者none。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -2215,13 +2086,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">145k</span>
+    <span title="站点总字数">150k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:24</span>
+    <span title="站点阅读时长">4:33</span>
   </span>
 </div>
 <div class="busuanzi-count">

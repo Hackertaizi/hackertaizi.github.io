@@ -27,7 +27,7 @@
 <meta property="og:description" content="ETL开发流程准备阶段1. 开发架构确定​	在接收到需求后，首先要弄清楚业务类型，以及数据源类型。在宏观上，ETL是围绕数据开展的工作，不应局限于某种技术或某种数据处理方式，所以，在条件允许的情况下，应该选取最适合业务的开发架构和方式。以下列举了几种开发架构，笔者经验所限，后续将持续更新新的架构。  离线开发：Hadoop+ hive 1经典的离线开发方式，当需求对数据的实时性要求没那么高时，可以">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-09-16T05:48:25.420Z">
-<meta property="article:modified_time" content="2023-09-27T09:02:41.462Z">
+<meta property="article:modified_time" content="2023-11-02T11:06:17.700Z">
 <meta property="article:author" content="Taizi">
 <meta property="article:tag" content="大数据">
 <meta property="article:tag" content="开发经验">
@@ -141,7 +141,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ETL%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">ETL开发流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E9%98%B6%E6%AE%B5"><span class="nav-number">1.1.</span> <span class="nav-text">准备阶段</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%BC%80%E5%8F%91%E6%9E%B6%E6%9E%84%E7%A1%AE%E5%AE%9A"><span class="nav-number">1.1.1.</span> <span class="nav-text">1. 开发架构确定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E4%BA%86%E8%A7%A3%E6%95%B0%E6%8D%AE%E6%BA%90"><span class="nav-number">1.1.2.</span> <span class="nav-text">2. 了解数据源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%BC%80%E5%8F%91%E9%80%BB%E8%BE%91%E8%AE%BE%E8%AE%A1"><span class="nav-number">1.1.3.</span> <span class="nav-text">2. 开发逻辑设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E8%A1%A8%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1"><span class="nav-number">1.1.4.</span> <span class="nav-text">3. 表结构设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E6%95%B0%E6%8D%AE%E6%B5%81%E6%A2%B3%E7%90%86"><span class="nav-number">1.1.5.</span> <span class="nav-text">4. 数据流梳理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E9%98%B6%E6%AE%B5"><span class="nav-number">1.2.</span> <span class="nav-text">开发阶段</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%A6%BB%E7%BA%BF%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B"><span class="nav-number">1.2.1.</span> <span class="nav-text">1. 离线开发流程</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ETL%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">ETL开发流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E9%98%B6%E6%AE%B5"><span class="nav-number">1.1.</span> <span class="nav-text">准备阶段</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%BC%80%E5%8F%91%E6%9E%B6%E6%9E%84%E7%A1%AE%E5%AE%9A"><span class="nav-number">1.1.1.</span> <span class="nav-text">1. 开发架构确定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E4%BA%86%E8%A7%A3%E6%95%B0%E6%8D%AE%E6%BA%90"><span class="nav-number">1.1.2.</span> <span class="nav-text">2. 了解数据源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%BC%80%E5%8F%91%E9%80%BB%E8%BE%91%E8%AE%BE%E8%AE%A1"><span class="nav-number">1.1.3.</span> <span class="nav-text">2. 开发逻辑设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E8%A1%A8%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1"><span class="nav-number">1.1.4.</span> <span class="nav-text">3. 表结构设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E6%95%B0%E6%8D%AE%E6%B5%81%E6%A2%B3%E7%90%86"><span class="nav-number">1.1.5.</span> <span class="nav-text">4. 数据流梳理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E9%98%B6%E6%AE%B5"><span class="nav-number">1.2.</span> <span class="nav-text">开发阶段</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%A6%BB%E7%BA%BF%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B"><span class="nav-number">1.2.1.</span> <span class="nav-text">1. 离线开发流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-%E6%95%B0%E6%8D%AE%E6%8E%A2%E6%9F%A5%EF%BC%88%E4%BA%86%E8%A7%A3%E6%95%B0%E6%8D%AE%E6%BA%90%EF%BC%89"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">1.1 数据探查（了解数据源）</span></a></li></ol></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -154,7 +154,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-count">45</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -165,7 +165,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-count">30</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -228,7 +228,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-09-27 17:02:41" itemprop="dateModified" datetime="2023-09-27T17:02:41+08:00">2023-09-27</time>
+      <time title="修改时间：2023-11-02 19:06:17" itemprop="dateModified" datetime="2023-11-02T19:06:17+08:00">2023-11-02</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -254,14 +254,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>4.9k</span>
+      <span>6k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>9 分钟</span>
+      <span>11 分钟</span>
     </span>
 </div>
 
@@ -289,14 +289,29 @@
 </ul>
 <p>基于对表的这些了解，应该形成文档，对要点做适当的记录，避免下次使用该表时因为疏漏而踩坑。</p>
 <p>然后，需要对数据源表进行数据探查，主要是为了大致评估数据量、数据质量、以及一些其他信息。数据探查的逻辑主要根据业务需求来制定，探查过后应该对资源分配、开发方式、数据源是否符合需求等有一个评估结论</p>
-<h3 id="2-开发逻辑设计"><a href="#2-开发逻辑设计" class="headerlink" title="2. 开发逻辑设计"></a>2. 开发逻辑设计</h3><h3 id="3-表结构设计"><a href="#3-表结构设计" class="headerlink" title="3. 表结构设计"></a>3. 表结构设计</h3><h3 id="4-数据流梳理"><a href="#4-数据流梳理" class="headerlink" title="4. 数据流梳理"></a>4. 数据流梳理</h3><h2 id="开发阶段"><a href="#开发阶段" class="headerlink" title="开发阶段"></a>开发阶段</h2><h3 id="1-离线开发流程"><a href="#1-离线开发流程" class="headerlink" title="1. 离线开发流程"></a>1. 离线开发流程</h3><ol>
-<li><p>了解数据源<br>当拿到一份陌生的数据源&#x2F;数据源表，首先要做的是对该表进行充分的了解：</p>
+<h3 id="2-开发逻辑设计"><a href="#2-开发逻辑设计" class="headerlink" title="2. 开发逻辑设计"></a>2. 开发逻辑设计</h3><h3 id="3-表结构设计"><a href="#3-表结构设计" class="headerlink" title="3. 表结构设计"></a>3. 表结构设计</h3><h3 id="4-数据流梳理"><a href="#4-数据流梳理" class="headerlink" title="4. 数据流梳理"></a>4. 数据流梳理</h3><h2 id="开发阶段"><a href="#开发阶段" class="headerlink" title="开发阶段"></a>开发阶段</h2><h3 id="1-离线开发流程"><a href="#1-离线开发流程" class="headerlink" title="1. 离线开发流程"></a>1. 离线开发流程</h3><h4 id="1-1-数据探查（了解数据源）"><a href="#1-1-数据探查（了解数据源）" class="headerlink" title="1.1 数据探查（了解数据源）"></a>1.1 数据探查（了解数据源）</h4><p>当拿到一份陌生的数据源&#x2F;数据源表，首先要做的是对该表进行充分的了解，主要了解方式为数据探查：</p>
 <ul>
-<li>表字段、字段类型、字段注释的了解</li>
-<li>表的业务背景、来源、每个字段的含义</li>
-<li>表的更新方式（增量&#x2F;全量）、表格结构（普通表&#x2F;分区&#x2F;分桶）、使用方式（只用最新分区&#x2F;使用部分分区&#x2F;使用全量分区）</li>
+<li><p><strong>表的业务背景、来源</strong></p>
+<ul>
+<li>使用数据前，必须了解数据源的来源及业务背景，这有助于理解业务，了解业务是开发的前提，否则成果将是充满隐患的。</li>
+<li>这些知识可以从产品经理处获取，也可以联系数据源的创建者或相关人员，总之，为了理解业务可以联系一切业务相关的人。</li>
 </ul>
 </li>
+<li><p><strong>了解表字段、字段类型、字段注释</strong></p>
+<ul>
+<li><strong>表字段</strong>：<br>表中总会有一些关键字段（类似于主键的字段）和一些维度字段，这些字段和业务息息相关。<br>① 了解这些字段的业务含义<br>② 关键字段需要探查一下是否有重复值，分析是否符合业务需求，并做好记录。<br>③ 维度字段需要探查一下字段值的组成，分析是否符合业务需求，并做好记录。<br>④ 还要关注这些字段的数据质量，例如是否有脏数据、缺失值等，并做好记录。<br>⑤ 待补充</li>
+<li><strong>字段类型</strong>：<br>抽取表的一部分数据，查看各字段值的情况：<br>① 字段值形式上为集合数据类型的（例如数组、map、struct等），需要关注实际类型是否为集合类型，如果不是，则使用的时候大概率需要做类型转换，此处要做好记录。<br>② 字段值为时间或者时间戳的，需要关注一下实际类型，还要记录一下时间格式，以及时间戳的位数（10位 or 13位）。<br>③ 待补充</li>
+<li><strong>字段注释</strong>：<br>字段注释是数据开发人员给出的字段简要解释，在某些情况下具有及其重要的解释意义：<br>① 有些字段是标识性的，其取值一般带有标识意义，例如用0， 1表示不同的意义，理解这些字段的关键就在于查看字段注释或者字段名称。<br>② 待补充</li>
+</ul>
+</li>
+<li><p><strong>表的更新方式（增量&#x2F;全量）、表类型（普通表&#x2F;分区&#x2F;分桶）</strong></p>
+<ul>
+<li><strong>数据更新方式：</strong><br>数据更新方式有两种：增量更新和全量更新。<br>① 增量更新：以分区表为例，增量更新的表，分区内的数据只与该分区有关。例如一个天分区内只存储该天的数据。一般增量更新的表，使用的时候需要跨分区使用多个分区的数据。<br>② 全量更新：以分区表为例，全量更新的表，每个分区内都存储了截止到该分区的全量历史数据，一般全量更新的表，使用的时候只需要取最新分区的数据即可。</li>
+<li><strong>表类型：</strong><br>以hive为例，介绍一下表类型：<br>① 内部表（Internal Table）：这是Hive默认创建的表类型，数据存储在Hive的数据仓库中，当删除表时，数据也会被删除。<br>② 外部表（External Table）：这种表类型的数据存储在Hive之外，例如HDFS或本地文件系统。当删除表时，数据不会被删除。③ 索引表（Index Table）：这种表类型是在Hive 0.8.0版本中引入的，它可以加速查询操作。索引表是基于内部表或外部表创建的，它们包含了指向原始表数据的指针。<br>④ 分区表（Partitioned Table）：这种表类型将数据按照指定的列分成不同的分区，可以提高查询效率。分区表可以是内部表或外部表。<br>⑤ 桶表（Bucketed Table）：这种表类型将数据按照指定的列分成不同的桶，每个桶中包含相同数量的数据。桶表可以是内部表或外部表。</li>
+</ul>
+</li>
+</ul>
+<ol>
 <li><p>数据清洗<br>在充分了解了数据源之后，就需要根据业务需求对数据进行处理了：</p>
 <ul>
 <li><p><strong>确定业务数据范围</strong>。包括：</p>
@@ -386,13 +401,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">145k</span>
+    <span title="站点总字数">150k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:24</span>
+    <span title="站点阅读时长">4:33</span>
   </span>
 </div>
 <div class="busuanzi-count">

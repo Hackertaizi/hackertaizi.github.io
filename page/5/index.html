@@ -147,7 +147,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-count">46</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -175,6 +175,180 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/ETL/ETL%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Taizi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/ETL/ETL%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/" class="post-title-link" itemprop="url">ETL开发流程</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-11-02 19:06:17" itemprop="dateModified" datetime="2023-11-02T19:06:17+08:00">2023-11-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/ETL/" itemprop="url" rel="index"><span itemprop="name">ETL</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>6k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>11 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="ETL开发流程"><a href="#ETL开发流程" class="headerlink" title="ETL开发流程"></a>ETL开发流程</h1><h2 id="准备阶段"><a href="#准备阶段" class="headerlink" title="准备阶段"></a>准备阶段</h2><h3 id="1-开发架构确定"><a href="#1-开发架构确定" class="headerlink" title="1. 开发架构确定"></a>1. 开发架构确定</h3><p>​	在接收到需求后，首先要弄清楚业务类型，以及数据源类型。在宏观上，ETL是围绕数据开展的工作，不应局限于某种技术或某种数据处理方式，所以，在条件允许的情况下，应该选取最适合业务的开发架构和方式。以下列举了几种开发架构，笔者经验所限，后续将持续更新新的架构。</p>
+<ul>
+<li><p>离线开发：Hadoop+ hive</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">经典的离线开发方式，当需求对数据的实时性要求没那么高时，可以采用此种开发方式。当然该架构对于配置要求较高，需要有Hadoop集群以及数据开发平台。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实时开发：待补充</p>
+</li>
+<li><p>待补充</p>
+</li>
+</ul>
+<h3 id="2-了解数据源"><a href="#2-了解数据源" class="headerlink" title="2. 了解数据源"></a>2. 了解数据源</h3><p>当拿到一份陌生的数据源&#x2F;数据源表，首先要做的是对该表进行充分的了解：</p>
+<ul>
+<li>表字段、字段类型、字段注释的了解</li>
+<li>表的业务背景、来源、每个字段的含义</li>
+<li>表的更新方式（增量&#x2F;全量）、表格结构（普通表&#x2F;分区&#x2F;分桶）、使用方式（只用最新分区&#x2F;使用部分分区&#x2F;使用全量分区）</li>
+</ul>
+<p>基于对表的这些了解，应该形成文档，对要点做适当的记录，避免下次使用该表时因为疏漏而踩坑。</p>
+<p>然后，需要对数据源表进行数据探查，主要是为了大致评估数据量、数据质量、以及一些其他信息。数据探查的逻辑主要根据业务需求来制定，探查过后应该对资源分配、开发方式、数据源是否符合需求等有一个评估结论</p>
+<h3 id="2-开发逻辑设计"><a href="#2-开发逻辑设计" class="headerlink" title="2. 开发逻辑设计"></a>2. 开发逻辑设计</h3><h3 id="3-表结构设计"><a href="#3-表结构设计" class="headerlink" title="3. 表结构设计"></a>3. 表结构设计</h3><h3 id="4-数据流梳理"><a href="#4-数据流梳理" class="headerlink" title="4. 数据流梳理"></a>4. 数据流梳理</h3><h2 id="开发阶段"><a href="#开发阶段" class="headerlink" title="开发阶段"></a>开发阶段</h2><h3 id="1-离线开发流程"><a href="#1-离线开发流程" class="headerlink" title="1. 离线开发流程"></a>1. 离线开发流程</h3><h4 id="1-1-数据探查（了解数据源）"><a href="#1-1-数据探查（了解数据源）" class="headerlink" title="1.1 数据探查（了解数据源）"></a>1.1 数据探查（了解数据源）</h4><p>当拿到一份陌生的数据源&#x2F;数据源表，首先要做的是对该表进行充分的了解，主要了解方式为数据探查：</p>
+<ul>
+<li><p><strong>表的业务背景、来源</strong></p>
+<ul>
+<li>使用数据前，必须了解数据源的来源及业务背景，这有助于理解业务，了解业务是开发的前提，否则成果将是充满隐患的。</li>
+<li>这些知识可以从产品经理处获取，也可以联系数据源的创建者或相关人员，总之，为了理解业务可以联系一切业务相关的人。</li>
+</ul>
+</li>
+<li><p><strong>了解表字段、字段类型、字段注释</strong></p>
+<ul>
+<li><strong>表字段</strong>：<br>表中总会有一些关键字段（类似于主键的字段）和一些维度字段，这些字段和业务息息相关。<br>① 了解这些字段的业务含义<br>② 关键字段需要探查一下是否有重复值，分析是否符合业务需求，并做好记录。<br>③ 维度字段需要探查一下字段值的组成，分析是否符合业务需求，并做好记录。<br>④ 还要关注这些字段的数据质量，例如是否有脏数据、缺失值等，并做好记录。<br>⑤ 待补充</li>
+<li><strong>字段类型</strong>：<br>抽取表的一部分数据，查看各字段值的情况：<br>① 字段值形式上为集合数据类型的（例如数组、map、struct等），需要关注实际类型是否为集合类型，如果不是，则使用的时候大概率需要做类型转换，此处要做好记录。<br>② 字段值为时间或者时间戳的，需要关注一下实际类型，还要记录一下时间格式，以及时间戳的位数（10位 or 13位）。<br>③ 待补充</li>
+<li><strong>字段注释</strong>：<br>字段注释是数据开发人员给出的字段简要解释，在某些情况下具有及其重要的解释意义：<br>① 有些字段是标识性的，其取值一般带有标识意义，例如用0， 1表示不同的意义，理解这些字段的关键就在于查看字段注释或者字段名称。<br>② 待补充</li>
+</ul>
+</li>
+<li><p><strong>表的更新方式（增量&#x2F;全量）、表类型（普通表&#x2F;分区&#x2F;分桶）</strong></p>
+<ul>
+<li><strong>数据更新方式：</strong><br>数据更新方式有两种：增量更新和全量更新。<br>① 增量更新：以分区表为例，增量更新的表，分区内的数据只与该分区有关。例如一个天分区内只存储该天的数据。一般增量更新的表，使用的时候需要跨分区使用多个分区的数据。<br>② 全量更新：以分区表为例，全量更新的表，每个分区内都存储了截止到该分区的全量历史数据，一般全量更新的表，使用的时候只需要取最新分区的数据即可。</li>
+<li><strong>表类型：</strong><br>以hive为例，介绍一下表类型：<br>① 内部表（Internal Table）：这是Hive默认创建的表类型，数据存储在Hive的数据仓库中，当删除表时，数据也会被删除。<br>② 外部表（External Table）：这种表类型的数据存储在Hive之外，例如HDFS或本地文件系统。当删除表时，数据不会被删除。③ 索引表（Index Table）：这种表类型是在Hive 0.8.0版本中引入的，它可以加速查询操作。索引表是基于内部表或外部表创建的，它们包含了指向原始表数据的指针。<br>④ 分区表（Partitioned Table）：这种表类型将数据按照指定的列分成不同的分区，可以提高查询效率。分区表可以是内部表或外部表。<br>⑤ 桶表（Bucketed Table）：这种表类型将数据按照指定的列分成不同的桶，每个桶中包含相同数量的数据。桶表可以是内部表或外部表。</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li><p>数据清洗<br>在充分了解了数据源之后，就需要根据业务需求对数据进行处理了：</p>
+<ul>
+<li><p><strong>确定业务数据范围</strong>。包括：</p>
+<ul>
+<li>业务数据范围：<br>在逻辑上对数据源的数据进行截取，例如只需要统计当年的数据，则通过表中的时间字段进行过滤即可。</li>
+<li>字段范围：<br>确定关键的字段有哪些，根据业务抽取需要的字段，对于一些明显用不到的字段，可以舍去，对于以后可能会用到的字段予以保留，避免后续迭代对表结构做改动。</li>
+<li>特别地，如果后续会经常使用该表，可以考虑只对该表做数据范围上的筛选，而不做字段范围上的限制（保留全部字段），加以清洗后形成一张通用明细表</li>
+</ul>
+</li>
+<li><p><strong>脏数据清洗</strong>。</p>
+<ul>
+<li><p>字段内容清洗<br>字段内容清洗是最常见的脏数据处理方式</p>
+<ul>
+<li>某些字段中可能掺杂了一些特殊字符、乱码数据等。这种情况下，一般需要将特殊字符去除，或者将整个值做统一替换处理。处理方式一般为字符串替换、正则表达式替换、或者采用if 、case when 等条件函数进行映射等。</li>
+<li>某些字段中可能存在一些不该存在的值，这种情况一般直接做映射处理，将这些不合适的值替换为其他值，可以采用上面的处理方式进行处理。</li>
+</ul>
+</li>
+<li><p>缺失值处理</p>
+<ul>
+<li><p>缺失值统一转换：<br>对于缺失值，最常规的处理方式就是将缺失值做统一转换，可以转换为某个特定的值，也可以将不同的缺失值统一成一样的缺失值，便于后续处理。处理一般可借助COALESCE、IF、NVL、CASE WHEN等函数。<br>特别地，在处理表时，由于很多字段不能确定是否有缺失值，或者日后是否会产生缺失值，所以在处理时基本可以对所有字段进行缺失值处理，防止出现缺失值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">空值转换:</span><br><span class="line">	NVL(field, 替换后的值)</span><br><span class="line">	IF(field IS NULL, 替换后的值, field)</span><br><span class="line">空字符串转NULL:</span><br><span class="line">	IF(field = &#x27;&#x27;, 替换后的值, field)</span><br><span class="line">判断字段是否为空或者空字符串:</span><br><span class="line">	COALESCE(field, &#x27;&#x27;) = &#x27;&#x27;    --字段为空或者空字符串</span><br><span class="line">	field IS NULL OR field = &#x27;&#x27; --字段为空或者空字符串</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>详细地址解析<br>当表中只有一个长串的详细地址字段，而没有单独的省市地址字段时，需要使用正则表达式进行解析，表达式书写需要根据具体的数据情况来写，考虑到一般的地址书写格式都比较相似，下面总结了一下地址解析的HIVESQL代码，主要是从详细地址中解析出省份名称和市名称，后续会不断优化，注意代码中语句的顺序十分重要：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">CASE</span><br><span class="line">    WHEN install_addr LIKE &#x27;%市%省%&#x27; THEN &#x27;其他&#x27; --异常数据过滤</span><br><span class="line">    WHEN install_addr LIKE &#x27;%北京%&#x27; THEN &#x27;北京市&#x27;</span><br><span class="line">    WHEN install_addr LIKE &#x27;%天津%&#x27; THEN &#x27;天津市&#x27;</span><br><span class="line">    WHEN install_addr LIKE &#x27;%上海%&#x27; THEN &#x27;上海市&#x27;</span><br><span class="line">    WHEN install_addr LIKE &#x27;%重庆%&#x27; THEN &#x27;重庆市&#x27;</span><br><span class="line">    WHEN install_addr LIKE &#x27;%香港%&#x27; THEN &#x27;香港特别行政区&#x27;</span><br><span class="line">    WHEN install_addr LIKE &#x27;%澳门%&#x27; THEN &#x27;澳门特别行政区&#x27;</span><br><span class="line">    WHEN install_addr LIKE &#x27;%自治区%&#x27; THEN REGEXP_EXTRACT(REGEXP_REPLACE(install_addr, &#x27;[ \f\n\r\t\v]&#x27;, &#x27;&#x27;), &#x27;.*?自治区&#x27;, 0)</span><br><span class="line">    WHEN install_addr LIKE &#x27;%省%&#x27; THEN REGEXP_EXTRACT(REGEXP_REPLACE(install_addr, &#x27;[ \f\n\r\t\v]&#x27;, &#x27;&#x27;), &#x27;.*?省&#x27;, 0)</span><br><span class="line">    ELSE &#x27;其他&#x27;</span><br><span class="line">END AS province_desc</span><br><span class="line">,CASE</span><br><span class="line">    WHEN install_addr LIKE &#x27;%北京%&#x27; THEN &#x27;北京市&#x27;</span><br><span class="line">    WHEN install_addr LIKE &#x27;%天津%&#x27; THEN &#x27;天津市&#x27;</span><br><span class="line">    WHEN install_addr LIKE &#x27;%上海%&#x27; THEN &#x27;上海市&#x27;</span><br><span class="line">    WHEN install_addr LIKE &#x27;%重庆%&#x27; THEN &#x27;重庆市&#x27;</span><br><span class="line">    WHEN install_addr LIKE &#x27;%省%自治州%&#x27; THEN REGEXP_EXTRACT(REGEXP_REPLACE(REGEXP_REPLACE(install_addr, &#x27;[ \f\n\r\t\v]&#x27;, &#x27;&#x27;), &#x27;^.*?省&#x27;, &#x27;&#x27;), &#x27;^.*?自治州&#x27;, 0)</span><br><span class="line">    WHEN install_addr LIKE &#x27;%自治区%自治州%&#x27; THEN REGEXP_EXTRACT(REGEXP_REPLACE(REGEXP_REPLACE(install_addr, &#x27;[ \f\n\r\t\v]&#x27;, &#x27;&#x27;), &#x27;^.*?自治区&#x27;, &#x27;&#x27;), &#x27;^.*?自治州&#x27;, 0)</span><br><span class="line">    WHEN install_addr LIKE &#x27;%自治区%地区%&#x27; THEN REGEXP_EXTRACT(REGEXP_REPLACE(REGEXP_REPLACE(install_addr, &#x27;[ \f\n\r\t\v]&#x27;, &#x27;&#x27;), &#x27;^.*?自治区&#x27;, &#x27;&#x27;), &#x27;^.*?地区&#x27;, 0)</span><br><span class="line">    WHEN install_addr LIKE &#x27;%省%地区%&#x27; THEN REGEXP_EXTRACT(REGEXP_REPLACE(REGEXP_REPLACE(install_addr, &#x27;[ \f\n\r\t\v]&#x27;, &#x27;&#x27;), &#x27;^.*?省&#x27;, &#x27;&#x27;), &#x27;^.*?地区&#x27;, 0)</span><br><span class="line">    WHEN install_addr LIKE &#x27;%自治区%盟%市%&#x27; THEN REGEXP_EXTRACT(REGEXP_REPLACE(REGEXP_REPLACE(install_addr, &#x27;[ \f\n\r\t\v]&#x27;, &#x27;&#x27;), &#x27;^.*?自治区&#x27;, &#x27;&#x27;), &#x27;^.*?盟&#x27;, 0)</span><br><span class="line">    WHEN install_addr LIKE &#x27;%自治区%市%&#x27; THEN REGEXP_EXTRACT(REGEXP_REPLACE(REGEXP_REPLACE(install_addr, &#x27;[ \f\n\r\t\v]&#x27;, &#x27;&#x27;), &#x27;^.*?自治区&#x27;, &#x27;&#x27;), &#x27;^.*?市&#x27;, 0)</span><br><span class="line">    WHEN install_addr LIKE &#x27;%自治区%盟%&#x27; THEN REGEXP_EXTRACT(REGEXP_REPLACE(REGEXP_REPLACE(install_addr, &#x27;[ \f\n\r\t\v]&#x27;, &#x27;&#x27;), &#x27;^.*?自治区&#x27;, &#x27;&#x27;), &#x27;^.*?盟&#x27;, 0)</span><br><span class="line">    WHEN install_addr LIKE &#x27;%省%市%&#x27; THEN REGEXP_EXTRACT(REGEXP_REPLACE(REGEXP_REPLACE(install_addr, &#x27;[ \f\n\r\t\v]&#x27;, &#x27;&#x27;), &#x27;^.*?省&#x27;, &#x27;&#x27;), &#x27;^.*?市&#x27;, 0)</span><br><span class="line">    WHEN install_addr LIKE &#x27;%香港%&#x27; THEN &#x27;香港特别行政区&#x27;</span><br><span class="line">    WHEN install_addr LIKE &#x27;%澳门%&#x27; THEN &#x27;澳门特别行政区&#x27;</span><br><span class="line">    WHEN install_addr LIKE &#x27;%神农架林区%&#x27; THEN &#x27;神农架林区&#x27;</span><br><span class="line">    WHEN install_addr LIKE &#x27;%平潭综合实验区%&#x27; THEN &#x27;平潭综合实验区&#x27;</span><br><span class="line">    ELSE &#x27;其他&#x27;</span><br><span class="line">END AS city_desc</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>字段类型转换<br>字段类型转换是一个比较头疼的问题，按规范来说，不同类型的字段应该选取最合适的字段类型。但是在实际开发中，还是推荐尽量在建表时将字段类型都指定为字符串类型，避免因类型转换带来的一系列问题。但一些数字类型的字段例外特别是整形字段，对于需要做数学运算的整形字段，建表时还是指定为整形，因为对字符串数字进行运算，结果常常会出现小数，处理比较麻烦。<br>字段类型转换遵循由简入繁的规则，特别是数值类型的字段，例如，任何整数类型都可以隐式地转换为一个范围更大的类型，TINYINT,SMALLINT,INT,BIGINT,FLOAT,STRING 都可以隐式地转换为DOUBLE，INT类型不能隐式地转换为TINYINT、SMALLINT类型（除非使用cast函数）,BOOLEAN不能转换为任何类型。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li></li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1806,13 +1980,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">154k</span>
+    <span title="站点总字数">157k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:40</span>
+    <span title="站点阅读时长">4:46</span>
   </span>
 </div>
 <div class="busuanzi-count">

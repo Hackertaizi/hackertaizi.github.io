@@ -19,15 +19,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"hackertaizi.gitee.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="1. Java程序设计环境一些术语 JDK：Java Development Kit（Java开发工具包） JRE: Java Runtime Environment （Java运行时环境） Java SE：Java Standard Edition（Java标准版，用于桌面或简单服务器应用的Java平台） Java EE:   Java Enterprise Edition（Java企业版，用于">
+    <meta name="description" content="3. 对象和类面向对象程序设计概述面向对象适合解决规模较大的问题，规模较小的问题可以分解为面向过程的程序化设计问题来解决。 类1. 一些基本概念 类：类是构造对象的模板或蓝图，由类构造对象的过程称为创建类的实例（即对象是类的示例）。  类的部分特性： 封装：将数据和行为组合在一个包中，并对对象的使用者隐藏具体的实现方式。对象中的数据称为实例字段，操作数据的过程称为方法，作为一个类的实例，特定对象都">
 <meta property="og:type" content="article">
-<meta property="og:title" content="1.Java程序设计环境">
-<meta property="og:url" content="https://hackertaizi.gitee.io/Java/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/1.Java%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%8E%AF%E5%A2%83/index.html">
+<meta property="og:title" content="3.对象和类">
+<meta property="og:url" content="https://hackertaizi.gitee.io/Java/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/3.%E5%AF%B9%E8%B1%A1%E5%92%8C%E7%B1%BB/index.html">
 <meta property="og:site_name" content="太子的个人博客">
-<meta property="og:description" content="1. Java程序设计环境一些术语 JDK：Java Development Kit（Java开发工具包） JRE: Java Runtime Environment （Java运行时环境） Java SE：Java Standard Edition（Java标准版，用于桌面或简单服务器应用的Java平台） Java EE:   Java Enterprise Edition（Java企业版，用于">
+<meta property="og:description" content="3. 对象和类面向对象程序设计概述面向对象适合解决规模较大的问题，规模较小的问题可以分解为面向过程的程序化设计问题来解决。 类1. 一些基本概念 类：类是构造对象的模板或蓝图，由类构造对象的过程称为创建类的实例（即对象是类的示例）。  类的部分特性： 封装：将数据和行为组合在一个包中，并对对象的使用者隐藏具体的实现方式。对象中的数据称为实例字段，操作数据的过程称为方法，作为一个类的实例，特定对象都">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-09-16T05:48:25.558Z">
-<meta property="article:modified_time" content="2023-09-27T10:42:13.176Z">
+<meta property="article:published_time" content="2023-11-20T10:51:18.584Z">
+<meta property="article:modified_time" content="2023-11-21T11:05:17.854Z">
 <meta property="article:author" content="Taizi">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="Java核心技术">
@@ -35,14 +35,14 @@
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://hackertaizi.gitee.io/Java/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/1.Java%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%8E%AF%E5%A2%83/">
+<link rel="canonical" href="https://hackertaizi.gitee.io/Java/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/3.%E5%AF%B9%E8%B1%A1%E5%92%8C%E7%B1%BB/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hackertaizi.gitee.io/Java/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/1.Java%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%8E%AF%E5%A2%83/","path":"Java/Java核心技术/1.Java程序设计环境/","title":"1.Java程序设计环境"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hackertaizi.gitee.io/Java/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/3.%E5%AF%B9%E8%B1%A1%E5%92%8C%E7%B1%BB/","path":"Java/Java核心技术/3.对象和类/","title":"3.对象和类"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>1.Java程序设计环境 | 太子的个人博客</title>
+<title>3.对象和类 | 太子的个人博客</title>
   
 
 
@@ -142,7 +142,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Java%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%8E%AF%E5%A2%83"><span class="nav-number">1.</span> <span class="nav-text">1. Java程序设计环境</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E6%9C%AF%E8%AF%AD"><span class="nav-number">1.1.</span> <span class="nav-text">一些术语</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7%E5%AF%B9Java%E4%BB%A3%E7%A0%81%E8%BF%9B%E8%A1%8C%E7%BC%96%E8%AF%91"><span class="nav-number">1.2.</span> <span class="nav-text">使用命令行工具对Java代码进行编译</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%E5%AF%B9%E8%B1%A1%E5%92%8C%E7%B1%BB"><span class="nav-number">1.</span> <span class="nav-text">3. 对象和类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E6%A6%82%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">面向对象程序设计概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB"><span class="nav-number">1.2.</span> <span class="nav-text">类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%B8%80%E4%BA%9B%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.2.1.</span> <span class="nav-text">1. 一些基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B1%BB%EF%BC%9A"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">类：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B1%BB%E7%9A%84%E9%83%A8%E5%88%86%E7%89%B9%E6%80%A7%EF%BC%9A"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">类的部分特性：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%B8%BB%E8%A6%81%E7%89%B9%E6%80%A7%EF%BC%9A"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">对象的主要特性：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E7%B1%BB%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">1.2.1.4.</span> <span class="nav-text">常见的类之间的关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java%E4%B8%AD%E7%9A%84%E9%A2%84%E5%AE%9A%E4%B9%89%E7%B1%BB"><span class="nav-number">1.2.1.5.</span> <span class="nav-text">Java中的预定义类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.2.1.6.</span> <span class="nav-text">构造对象</span></a></li></ol></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -193,7 +193,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Java/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/1.Java%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%8E%AF%E5%A2%83/">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Java/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/3.%E5%AF%B9%E8%B1%A1%E5%92%8C%E7%B1%BB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -206,12 +206,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="1.Java程序设计环境 | 太子的个人博客">
+      <meta itemprop="name" content="3.对象和类 | 太子的个人博客">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          1.Java程序设计环境
+          3.对象和类
         </h1>
 
         <div class="post-meta-container">
@@ -222,14 +222,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
+      <time title="创建时间：2023-11-20 18:51:18" itemprop="dateCreated datePublished" datetime="2023-11-20T18:51:18+08:00">2023-11-20</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-09-27 18:42:13" itemprop="dateModified" datetime="2023-09-27T18:42:13+08:00">2023-09-27</time>
+      <time title="修改时间：2023-11-21 19:05:17" itemprop="dateModified" datetime="2023-11-21T19:05:17+08:00">2023-11-21</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -259,14 +259,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>571</span>
+      <span>1.4k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
+      <span>3 分钟</span>
     </span>
 </div>
 
@@ -276,24 +276,47 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h1 id="1-Java程序设计环境"><a href="#1-Java程序设计环境" class="headerlink" title="1. Java程序设计环境"></a>1. Java程序设计环境</h1><h2 id="一些术语"><a href="#一些术语" class="headerlink" title="一些术语"></a>一些术语</h2><ul>
-<li>JDK：Java Development Kit（Java开发工具包）</li>
-<li>JRE: Java Runtime Environment （Java运行时环境）</li>
-<li>Java SE：Java Standard Edition（Java标准版，用于桌面或简单服务器应用的Java平台）</li>
-<li>Java EE:   Java Enterprise Edition（Java企业版，用于复杂服务器应用的Java平台）</li>
-<li>Java ME:  Java Micro Edition （Java 微型版，用于小型设备的Java平台）</li>
+    <div class="post-body" itemprop="articleBody"><h1 id="3-对象和类"><a href="#3-对象和类" class="headerlink" title="3. 对象和类"></a>3. 对象和类</h1><h2 id="面向对象程序设计概述"><a href="#面向对象程序设计概述" class="headerlink" title="面向对象程序设计概述"></a>面向对象程序设计概述</h2><p>面向对象适合解决规模较大的问题，规模较小的问题可以分解为面向过程的程序化设计问题来解决。</p>
+<h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><h3 id="1-一些基本概念"><a href="#1-一些基本概念" class="headerlink" title="1. 一些基本概念"></a>1. 一些基本概念</h3><ul>
+<li><h4 id="类："><a href="#类：" class="headerlink" title="类："></a>类：</h4><p>类是构造对象的模板或蓝图，由类构造对象的过程称为创建类的实例（即对象是类的示例）。</p>
+</li>
+<li><h4 id="类的部分特性："><a href="#类的部分特性：" class="headerlink" title="类的部分特性："></a>类的部分特性：</h4><ul>
+<li>封装：将数据和行为组合在一个包中，并对对象的使用者隐藏具体的实现方式。对象中的数据称为<strong>实例字段</strong>，操作数据的过程称为<strong>方法</strong>，作为一个类的实例，特定对象都有一组特定的实例字段值，这些值的集合就是对象的当前<strong>状态</strong>。<br><strong>实现封装的关键在于：不能让类的方法直接访问其他类中的实例字段</strong>。</li>
+<li>继承：<strong>可以通过扩展其他类来构建新类。</strong>Java中所有的类都扩展自Object类，拓展后的新类具有被扩展类的全部属性和方法，只需要在新类中提供适用于这个新类的新方法和新数据字段即可。</li>
 </ul>
-<h2 id="使用命令行工具对Java代码进行编译"><a href="#使用命令行工具对Java代码进行编译" class="headerlink" title="使用命令行工具对Java代码进行编译"></a>使用命令行工具对Java代码进行编译</h2><ol>
-<li>首先必须安装JDK，并且配置好环境变量</li>
-<li>Java 代码存放在以   .java结尾的文档中</li>
-<li>使用命令  <code>javac ClassName.java</code> ,  javac程序是一个Java编译器，它将.java文件编译成字节码文件.class, 所以编译后将得到ClassName.class字节码文件。</li>
-<li>使用命令<code>java ClassName</code>, java 程序启动Java虚拟机，虚拟机执行编译器编译到类文件中的字节码。</li>
-</ol>
-<p><strong>注意点：</strong></p>
-<ul>
-<li>注意JDK版本，以及环境变量的配置</li>
-<li><strong>Java区分大小写，类名第一个字母需要大写</strong></li>
-<li>javac 编译器需要一个文件名（ClassName.java),  而Java程序运行时只需要指定类名（ClassName), 不需要带扩展名.java或.class。</li>
+</li>
+<li><h4 id="对象的主要特性："><a href="#对象的主要特性：" class="headerlink" title="对象的主要特性："></a>对象的主要特性：</h4><ul>
+<li>对象的行为：可以对对象完成哪些操作？或者可以对对象应用哪些方法？<br>用对象的可调用方法来定义。</li>
+<li>对象的状态：当调用那些方法时，对象会如何响应？<br>对象保存着描述当前状况的信息，这就是对象的状态。</li>
+<li>对象的标识：如何区分具有相同行为与状态的不同对象？</li>
+</ul>
+</li>
+<li><h4 id="常见的类之间的关系"><a href="#常见的类之间的关系" class="headerlink" title="常见的类之间的关系"></a>常见的类之间的关系</h4><ul>
+<li>依赖（“uses-a”）关系：<br>类的依赖关系是指一个类的实现要依赖于其他类的实现，即如果一个类的方法使用或者操纵另一个类的对象，就说一个类依赖于另一个类。<br><strong>应该尽可能地将相互依赖的类减至最少，也就是减少类之间的耦合。</strong></li>
+<li>聚合（“has-a”）关系：<br>类的聚合关系是指一个类包含另一个类的对象作为其成员变量，这个成员变量可以被多个方法使用，但是这个成员变量的生命周期不受包含它的类的生命周期的影响。</li>
+<li>继承（“is-a”）关系：<br>一个类继承另一个类。</li>
+</ul>
+</li>
+<li><h4 id="Java中的预定义类"><a href="#Java中的预定义类" class="headerlink" title="Java中的预定义类"></a>Java中的预定义类</h4><p>Java的JDK中封装了很多基础的类，可以直接调用</p>
+</li>
+<li><h4 id="构造对象"><a href="#构造对象" class="headerlink" title="构造对象"></a>构造对象</h4><p>使用对象的前提，是要先构造对象，然后指定其初始状态。完成这一操作的是<strong>构造器</strong>（或叫构造函数），即构造器主要用来构造并初始化对象。<br>构造器的名字应该与类名相同，构造一个对象，需要在构造器前面加上<code>new</code>操作符, 例如:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">Date</span>();</span><br></pre></td></tr></table></figure>
+
+<p>如果希望构造的对象可以多次使用，可以将对象存放在一个变量中：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Date</span> <span class="variable">birthday</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br></pre></td></tr></table></figure>
+
+<p><strong>对象和对象变量之间存在的重要的区别</strong>，例如以下语句：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Date deadline;</span><br></pre></td></tr></table></figure>
+
+<p>定义了一个对象变量deadline，它可以引用Date类型的对象。但是，deadline本身不是一个对象，而且它也没有引用任何对象，所以还不能在这个变量使用任何Date方法。<br>要想使用对象变量deadline，必须初始化该变量，有两种初始化方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">deadline = <span class="keyword">new</span> <span class="title class_">Date</span>(); <span class="comment">// 引用一个新构造的对象</span></span><br><span class="line">deadline = birthday; <span class="comment">// 引用一个已有的对象，此时这两个变量都引用同一个对象</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>要认识到：对象变量并没有包含一个对象，它只是引用一个对象</strong>。<strong>在Java中，任何对象变量的值都是对存储在另外一个地方的某个对象的引用。new操作符的返回值也是一个引用。</strong><br>下列语句：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Date</span> <span class="variable">deadline</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br></pre></td></tr></table></figure>
+
+<p>有两个部分，new Date()构造了一个Date类型的对象，它的值是对新创建对象的一个引用。这个引用存储在对象变量deadline中。</p>
+<p>可以显式地将对象变量设置为null，表示这个对象变量目前没有引用任何对象：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Date</span> <span class="variable">deadline</span> <span class="operator">=</span> <span class="literal">null</span>; <span class="comment">//显式表达</span></span><br><span class="line">Date deadline; <span class="comment">// 隐式表达</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 
     </div>
@@ -313,14 +336,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/Java/JDK/JDK%E7%9A%84%E5%8D%B8%E8%BD%BD%E4%B8%8E%E5%AE%89%E8%A3%85/" rel="prev" title="JDK的卸载与安装">
-                  <i class="fa fa-angle-left"></i> JDK的卸载与安装
+                <a href="/%E5%85%B6%E4%BB%96/TreeMap/" rel="prev" title="TreeMap">
+                  <i class="fa fa-angle-left"></i> TreeMap
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/Java/Java%E4%B8%AD%E9%97%B4%E4%BB%B6/Maven/maven%E5%AE%89%E8%A3%85/" rel="next" title="maven安装">
-                  maven安装 <i class="fa fa-angle-right"></i>
-                </a>
             </div>
           </div>
     </footer>

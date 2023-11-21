@@ -147,7 +147,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-count">46</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -175,6 +175,151 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Java/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/3.%E5%AF%B9%E8%B1%A1%E5%92%8C%E7%B1%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Taizi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/Java/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/3.%E5%AF%B9%E8%B1%A1%E5%92%8C%E7%B1%BB/" class="post-title-link" itemprop="url">3.对象和类</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-11-20 18:51:18" itemprop="dateCreated datePublished" datetime="2023-11-20T18:51:18+08:00">2023-11-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-11-21 19:05:17" itemprop="dateModified" datetime="2023-11-21T19:05:17+08:00">2023-11-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">Java核心技术</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.4k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="3-对象和类"><a href="#3-对象和类" class="headerlink" title="3. 对象和类"></a>3. 对象和类</h1><h2 id="面向对象程序设计概述"><a href="#面向对象程序设计概述" class="headerlink" title="面向对象程序设计概述"></a>面向对象程序设计概述</h2><p>面向对象适合解决规模较大的问题，规模较小的问题可以分解为面向过程的程序化设计问题来解决。</p>
+<h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><h3 id="1-一些基本概念"><a href="#1-一些基本概念" class="headerlink" title="1. 一些基本概念"></a>1. 一些基本概念</h3><ul>
+<li><h4 id="类："><a href="#类：" class="headerlink" title="类："></a>类：</h4><p>类是构造对象的模板或蓝图，由类构造对象的过程称为创建类的实例（即对象是类的示例）。</p>
+</li>
+<li><h4 id="类的部分特性："><a href="#类的部分特性：" class="headerlink" title="类的部分特性："></a>类的部分特性：</h4><ul>
+<li>封装：将数据和行为组合在一个包中，并对对象的使用者隐藏具体的实现方式。对象中的数据称为<strong>实例字段</strong>，操作数据的过程称为<strong>方法</strong>，作为一个类的实例，特定对象都有一组特定的实例字段值，这些值的集合就是对象的当前<strong>状态</strong>。<br><strong>实现封装的关键在于：不能让类的方法直接访问其他类中的实例字段</strong>。</li>
+<li>继承：<strong>可以通过扩展其他类来构建新类。</strong>Java中所有的类都扩展自Object类，拓展后的新类具有被扩展类的全部属性和方法，只需要在新类中提供适用于这个新类的新方法和新数据字段即可。</li>
+</ul>
+</li>
+<li><h4 id="对象的主要特性："><a href="#对象的主要特性：" class="headerlink" title="对象的主要特性："></a>对象的主要特性：</h4><ul>
+<li>对象的行为：可以对对象完成哪些操作？或者可以对对象应用哪些方法？<br>用对象的可调用方法来定义。</li>
+<li>对象的状态：当调用那些方法时，对象会如何响应？<br>对象保存着描述当前状况的信息，这就是对象的状态。</li>
+<li>对象的标识：如何区分具有相同行为与状态的不同对象？</li>
+</ul>
+</li>
+<li><h4 id="常见的类之间的关系"><a href="#常见的类之间的关系" class="headerlink" title="常见的类之间的关系"></a>常见的类之间的关系</h4><ul>
+<li>依赖（“uses-a”）关系：<br>类的依赖关系是指一个类的实现要依赖于其他类的实现，即如果一个类的方法使用或者操纵另一个类的对象，就说一个类依赖于另一个类。<br><strong>应该尽可能地将相互依赖的类减至最少，也就是减少类之间的耦合。</strong></li>
+<li>聚合（“has-a”）关系：<br>类的聚合关系是指一个类包含另一个类的对象作为其成员变量，这个成员变量可以被多个方法使用，但是这个成员变量的生命周期不受包含它的类的生命周期的影响。</li>
+<li>继承（“is-a”）关系：<br>一个类继承另一个类。</li>
+</ul>
+</li>
+<li><h4 id="Java中的预定义类"><a href="#Java中的预定义类" class="headerlink" title="Java中的预定义类"></a>Java中的预定义类</h4><p>Java的JDK中封装了很多基础的类，可以直接调用</p>
+</li>
+<li><h4 id="构造对象"><a href="#构造对象" class="headerlink" title="构造对象"></a>构造对象</h4><p>使用对象的前提，是要先构造对象，然后指定其初始状态。完成这一操作的是<strong>构造器</strong>（或叫构造函数），即构造器主要用来构造并初始化对象。<br>构造器的名字应该与类名相同，构造一个对象，需要在构造器前面加上<code>new</code>操作符, 例如:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">Date</span>();</span><br></pre></td></tr></table></figure>
+
+<p>如果希望构造的对象可以多次使用，可以将对象存放在一个变量中：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Date</span> <span class="variable">birthday</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br></pre></td></tr></table></figure>
+
+<p><strong>对象和对象变量之间存在的重要的区别</strong>，例如以下语句：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Date deadline;</span><br></pre></td></tr></table></figure>
+
+<p>定义了一个对象变量deadline，它可以引用Date类型的对象。但是，deadline本身不是一个对象，而且它也没有引用任何对象，所以还不能在这个变量使用任何Date方法。<br>要想使用对象变量deadline，必须初始化该变量，有两种初始化方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">deadline = <span class="keyword">new</span> <span class="title class_">Date</span>(); <span class="comment">// 引用一个新构造的对象</span></span><br><span class="line">deadline = birthday; <span class="comment">// 引用一个已有的对象，此时这两个变量都引用同一个对象</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>要认识到：对象变量并没有包含一个对象，它只是引用一个对象</strong>。<strong>在Java中，任何对象变量的值都是对存储在另外一个地方的某个对象的引用。new操作符的返回值也是一个引用。</strong><br>下列语句：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Date</span> <span class="variable">deadline</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br></pre></td></tr></table></figure>
+
+<p>有两个部分，new Date()构造了一个Date类型的对象，它的值是对新创建对象的一个引用。这个引用存储在对象变量deadline中。</p>
+<p>可以显式地将对象变量设置为null，表示这个对象变量目前没有引用任何对象：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Date</span> <span class="variable">deadline</span> <span class="operator">=</span> <span class="literal">null</span>; <span class="comment">//显式表达</span></span><br><span class="line">Date deadline; <span class="comment">// 隐式表达</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -668,310 +813,6 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/%E5%85%B6%E4%BB%96/Cron%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E8%A1%A8%E8%BE%BE%E5%BC%8F/Cron%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Taizi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/%E5%85%B6%E4%BB%96/Cron%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E8%A1%A8%E8%BE%BE%E5%BC%8F/Cron%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="post-title-link" itemprop="url">Cron表达式</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-09-28 15:41:03" itemprop="dateModified" datetime="2023-09-28T15:41:03+08:00">2023-09-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%85%B6%E4%BB%96/" itemprop="url" rel="index"><span itemprop="name">其他</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.9k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>4 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Cron表达式"><a href="#Cron表达式" class="headerlink" title="Cron表达式"></a>Cron表达式</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Cron表达式是一个具有时间含义的字符串，字符串以5<del>6个空格隔开，分为6</del>7个域，格式为<code>X X X X X X X</code>。其中<code>X</code>是一个域的占位符。最后一个代表年份的域非必须，可省略。单个域有多个取值时，使用半角逗号<code>,</code>隔开取值。每个域可以是确定的取值，也可以是具有逻辑意义的特殊字符。每个域最多支持一个前导零。</p>
-<h2 id="语法格式"><a href="#语法格式" class="headerlink" title="语法格式"></a>语法格式</h2><ul>
-<li><p>当为7个域时：</p>
-<p><code>Seconds Minutes Hours DayofMonth Month DayofWeek Year</code></p>
-</li>
-<li><p>当为6个域时：</p>
-<p><code>Seconds Minutes Hours DayofMonth Month DayofWeek</code></p>
-</li>
-</ul>
-<h2 id="域取值"><a href="#域取值" class="headerlink" title="域取值"></a>域取值</h2><p>下表为Cron表达式中六个域能够取的值以及支持的特殊字符。</p>
-<table>
-<thead>
-<tr>
-<th>域</th>
-<th>是否必需</th>
-<th>取值范围</th>
-<th>特殊字符</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>秒</td>
-<td>是</td>
-<td>[0, 59]</td>
-<td>* , - &#x2F;</td>
-</tr>
-<tr>
-<td>分钟</td>
-<td>是</td>
-<td>[0, 59]</td>
-<td>* , - &#x2F;</td>
-</tr>
-<tr>
-<td>小时</td>
-<td>是</td>
-<td>[0, 23]</td>
-<td>* , - &#x2F;</td>
-</tr>
-<tr>
-<td>日期</td>
-<td>是</td>
-<td>[1, 31]</td>
-<td>* , - &#x2F; ? L W</td>
-</tr>
-<tr>
-<td>月份</td>
-<td>是</td>
-<td>[1, 12]或[JAN, DEC]</td>
-<td>* , - &#x2F;</td>
-</tr>
-<tr>
-<td>星期</td>
-<td>是</td>
-<td>[1, 7]或[MON, SUN]。若您使用[1, 7]表达方式，<code>1</code>代表星期一，<code>7</code>代表星期日。</td>
-<td>* , - &#x2F; ? L #</td>
-</tr>
-<tr>
-<td>年</td>
-<td>否</td>
-<td>[当前年份，2099]</td>
-<td>* , - &#x2F;</td>
-</tr>
-</tbody></table>
-<h2 id="特殊字符"><a href="#特殊字符" class="headerlink" title="特殊字符"></a>特殊字符</h2><p>Cron表达式中的每个域都支持一定数量的特殊字符，每个特殊字符有其特殊含义。</p>
-<table>
-<thead>
-<tr>
-<th>特殊字符</th>
-<th>含义</th>
-<th>示例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>*</code></td>
-<td>所有可能的值。</td>
-<td>在月域中，<code>*</code>表示每个月；在星期域中，<code>*</code>表示星期的每一天。</td>
-</tr>
-<tr>
-<td><code>,</code></td>
-<td>列出枚举值。</td>
-<td>在分钟域中，<code>5,20</code>表示分别在5分钟和20分钟触发一次。</td>
-</tr>
-<tr>
-<td><code>-</code></td>
-<td>范围。</td>
-<td>在分钟域中，<code>5-20</code>表示从5分钟到20分钟之间每隔一分钟触发一次。</td>
-</tr>
-<tr>
-<td><code>/</code></td>
-<td>指定数值的增量。</td>
-<td>在分钟域中，<code>0/15</code>表示从第0分钟开始，每15分钟。在分钟域中<code>3/20</code>表示从第3分钟开始，每20分钟。</td>
-</tr>
-<tr>
-<td><code>?</code></td>
-<td>不指定值，仅日期和星期域支持该字符。</td>
-<td>当日期或星期域其中之一被指定了值以后，为了避免冲突，需要将另一个域的值设为<code>?</code>。</td>
-</tr>
-<tr>
-<td><code>L</code></td>
-<td>单词Last的首字母，表示最后一天，仅日期和星期域支持该字符。                                                                                                 <strong>说明</strong> 指定<code>L</code>字符时，避免指定列表或者范围，否则，会导致逻辑问题。</td>
-<td>在日期域中，<code>L</code>表示某个月的最后一天。在星期域中，<code>L</code>表示一个星期的最后一天，也就是星期日（<code>SUN</code>）。                                                                  如果在<code>L</code>前有具体的内容，例如，在星期域中的<code>6L</code>表示这个月的最后一个星期六。</td>
-</tr>
-<tr>
-<td><code>W</code></td>
-<td>除周末以外的有效工作日，在离指定日期的最近的有效工作日触发事件。<code>W</code>字符寻找最近有效工作日时不会跨过当前月份，连用字符<code>LW</code>时表示为指定月份的最后一个工作日。</td>
-<td>在日期域中<code>5W</code>，如果5日是星期六，则将在最近的工作日星期五，即4日触发。如果5日是星期天，则将在最近的工作日星期一，即6日触发；如果5日在星期一到星期五中的一天，则就在5日触发。</td>
-</tr>
-<tr>
-<td><code>#</code></td>
-<td>确定每个月第几个星期几，仅星期域支持该字符。</td>
-<td>在星期域中，<code>4#2</code>表示某月的第二个星期四。</td>
-</tr>
-</tbody></table>
-<h2 id="取值示例"><a href="#取值示例" class="headerlink" title="取值示例"></a>取值示例</h2><p>以下为Cron表达式的取值示例。</p>
-<table>
-<thead>
-<tr>
-<th>示例</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>0 15 10 ? * *</code></td>
-<td>每天上午10:15执行任务</td>
-</tr>
-<tr>
-<td><code>0 15 10 * * ?</code></td>
-<td>每天上午10:15执行任务</td>
-</tr>
-<tr>
-<td><code>0 0 12 * * ?</code></td>
-<td>每天中午12:00执行任务</td>
-</tr>
-<tr>
-<td><code>0 0 10,14,16 * * ?</code></td>
-<td>每天上午10:00点、下午14:00以及下午16:00执行任务</td>
-</tr>
-<tr>
-<td><code>0 0/30 9-17 * * ?</code></td>
-<td>每天上午09:00到下午17:00时间段内每隔半小时执行任务</td>
-</tr>
-<tr>
-<td><code>0 * 14 * * ?</code></td>
-<td>每天下午14:00到下午14:59时间段内每隔1分钟执行任务</td>
-</tr>
-<tr>
-<td><code>0 0-5 14 * * ?</code></td>
-<td>每天下午14:00到下午14:05时间段内每隔1分钟执行任务</td>
-</tr>
-<tr>
-<td><code>0 0/5 14 * * ?</code></td>
-<td>每天下午14:00到下午14:55时间段内每隔5分钟执行任务</td>
-</tr>
-<tr>
-<td><code>0 0/5 14,18 * * ?</code></td>
-<td>每天下午14:00到下午14:55、下午18:00到下午18:55时间段内每隔5分钟执行任务</td>
-</tr>
-<tr>
-<td><code>0 0 12 ? * WED</code></td>
-<td>每个星期三中午12:00执行任务</td>
-</tr>
-<tr>
-<td><code>0 15 10 15 * ?</code></td>
-<td>每月15日上午10:15执行任务</td>
-</tr>
-<tr>
-<td><code>0 15 10 L * ?</code></td>
-<td>每月最后一日上午10:15执行任务</td>
-</tr>
-<tr>
-<td><code>0 15 10 ? * 6L</code></td>
-<td>每月最后一个星期六上午10:15执行任务</td>
-</tr>
-<tr>
-<td><code>0 15 10 ? * 6#3</code></td>
-<td>每月第三个星期六上午10:15执行任务</td>
-</tr>
-<tr>
-<td><code>0 10,44 14 ? 3 WED</code></td>
-<td>每年3月的每个星期三下午14:10和14:44执行任务</td>
-</tr>
-<tr>
-<td><code>0 15 10 ? * * 2022</code></td>
-<td>2022年每天上午10:15执行任务</td>
-</tr>
-<tr>
-<td><code>0 15 10 ? * * *</code></td>
-<td>每年每天上午10:15执行任务</td>
-</tr>
-<tr>
-<td><code>0 0/5 14,18 * * ? 2022</code></td>
-<td>2022年每天下午14:00到下午14:55、下午18:00到下午18:55时间段内每隔5分钟执行任务</td>
-</tr>
-<tr>
-<td><code>0 15 10 ? * 6#3 2022,2023</code></td>
-<td>2022年至2023年每月第三个星期六上午10:15执行任务</td>
-</tr>
-<tr>
-<td><code>0 0/30 9-17 * * ? 2022-2025</code></td>
-<td>2022年至2025年每天上午09:00到下午17:30时间段内每隔半小时执行任务</td>
-</tr>
-<tr>
-<td><code>0 10,44 14 ? 3 WED 2022/2</code></td>
-<td>从2022年开始，每隔两年3月的每个星期三下午14:10和14:44执行任务</td>
-</tr>
-</tbody></table>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/%E5%85%B6%E4%BB%96/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AF%AD%E6%B3%95%E8%A7%84%E5%88%99/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1259,6 +1100,310 @@
 <p><img src="/%E5%85%B6%E4%BB%96/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AF%AD%E6%B3%95%E8%A7%84%E5%88%99/reg-444.jpg" alt="img"></p>
 </li>
 </ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/%E5%85%B6%E4%BB%96/Cron%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E8%A1%A8%E8%BE%BE%E5%BC%8F/Cron%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Taizi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/%E5%85%B6%E4%BB%96/Cron%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E8%A1%A8%E8%BE%BE%E5%BC%8F/Cron%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="post-title-link" itemprop="url">Cron表达式</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-09-28 15:41:03" itemprop="dateModified" datetime="2023-09-28T15:41:03+08:00">2023-09-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%85%B6%E4%BB%96/" itemprop="url" rel="index"><span itemprop="name">其他</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.9k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Cron表达式"><a href="#Cron表达式" class="headerlink" title="Cron表达式"></a>Cron表达式</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Cron表达式是一个具有时间含义的字符串，字符串以5<del>6个空格隔开，分为6</del>7个域，格式为<code>X X X X X X X</code>。其中<code>X</code>是一个域的占位符。最后一个代表年份的域非必须，可省略。单个域有多个取值时，使用半角逗号<code>,</code>隔开取值。每个域可以是确定的取值，也可以是具有逻辑意义的特殊字符。每个域最多支持一个前导零。</p>
+<h2 id="语法格式"><a href="#语法格式" class="headerlink" title="语法格式"></a>语法格式</h2><ul>
+<li><p>当为7个域时：</p>
+<p><code>Seconds Minutes Hours DayofMonth Month DayofWeek Year</code></p>
+</li>
+<li><p>当为6个域时：</p>
+<p><code>Seconds Minutes Hours DayofMonth Month DayofWeek</code></p>
+</li>
+</ul>
+<h2 id="域取值"><a href="#域取值" class="headerlink" title="域取值"></a>域取值</h2><p>下表为Cron表达式中六个域能够取的值以及支持的特殊字符。</p>
+<table>
+<thead>
+<tr>
+<th>域</th>
+<th>是否必需</th>
+<th>取值范围</th>
+<th>特殊字符</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>秒</td>
+<td>是</td>
+<td>[0, 59]</td>
+<td>* , - &#x2F;</td>
+</tr>
+<tr>
+<td>分钟</td>
+<td>是</td>
+<td>[0, 59]</td>
+<td>* , - &#x2F;</td>
+</tr>
+<tr>
+<td>小时</td>
+<td>是</td>
+<td>[0, 23]</td>
+<td>* , - &#x2F;</td>
+</tr>
+<tr>
+<td>日期</td>
+<td>是</td>
+<td>[1, 31]</td>
+<td>* , - &#x2F; ? L W</td>
+</tr>
+<tr>
+<td>月份</td>
+<td>是</td>
+<td>[1, 12]或[JAN, DEC]</td>
+<td>* , - &#x2F;</td>
+</tr>
+<tr>
+<td>星期</td>
+<td>是</td>
+<td>[1, 7]或[MON, SUN]。若您使用[1, 7]表达方式，<code>1</code>代表星期一，<code>7</code>代表星期日。</td>
+<td>* , - &#x2F; ? L #</td>
+</tr>
+<tr>
+<td>年</td>
+<td>否</td>
+<td>[当前年份，2099]</td>
+<td>* , - &#x2F;</td>
+</tr>
+</tbody></table>
+<h2 id="特殊字符"><a href="#特殊字符" class="headerlink" title="特殊字符"></a>特殊字符</h2><p>Cron表达式中的每个域都支持一定数量的特殊字符，每个特殊字符有其特殊含义。</p>
+<table>
+<thead>
+<tr>
+<th>特殊字符</th>
+<th>含义</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>*</code></td>
+<td>所有可能的值。</td>
+<td>在月域中，<code>*</code>表示每个月；在星期域中，<code>*</code>表示星期的每一天。</td>
+</tr>
+<tr>
+<td><code>,</code></td>
+<td>列出枚举值。</td>
+<td>在分钟域中，<code>5,20</code>表示分别在5分钟和20分钟触发一次。</td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td>范围。</td>
+<td>在分钟域中，<code>5-20</code>表示从5分钟到20分钟之间每隔一分钟触发一次。</td>
+</tr>
+<tr>
+<td><code>/</code></td>
+<td>指定数值的增量。</td>
+<td>在分钟域中，<code>0/15</code>表示从第0分钟开始，每15分钟。在分钟域中<code>3/20</code>表示从第3分钟开始，每20分钟。</td>
+</tr>
+<tr>
+<td><code>?</code></td>
+<td>不指定值，仅日期和星期域支持该字符。</td>
+<td>当日期或星期域其中之一被指定了值以后，为了避免冲突，需要将另一个域的值设为<code>?</code>。</td>
+</tr>
+<tr>
+<td><code>L</code></td>
+<td>单词Last的首字母，表示最后一天，仅日期和星期域支持该字符。                                                                                                 <strong>说明</strong> 指定<code>L</code>字符时，避免指定列表或者范围，否则，会导致逻辑问题。</td>
+<td>在日期域中，<code>L</code>表示某个月的最后一天。在星期域中，<code>L</code>表示一个星期的最后一天，也就是星期日（<code>SUN</code>）。                                                                  如果在<code>L</code>前有具体的内容，例如，在星期域中的<code>6L</code>表示这个月的最后一个星期六。</td>
+</tr>
+<tr>
+<td><code>W</code></td>
+<td>除周末以外的有效工作日，在离指定日期的最近的有效工作日触发事件。<code>W</code>字符寻找最近有效工作日时不会跨过当前月份，连用字符<code>LW</code>时表示为指定月份的最后一个工作日。</td>
+<td>在日期域中<code>5W</code>，如果5日是星期六，则将在最近的工作日星期五，即4日触发。如果5日是星期天，则将在最近的工作日星期一，即6日触发；如果5日在星期一到星期五中的一天，则就在5日触发。</td>
+</tr>
+<tr>
+<td><code>#</code></td>
+<td>确定每个月第几个星期几，仅星期域支持该字符。</td>
+<td>在星期域中，<code>4#2</code>表示某月的第二个星期四。</td>
+</tr>
+</tbody></table>
+<h2 id="取值示例"><a href="#取值示例" class="headerlink" title="取值示例"></a>取值示例</h2><p>以下为Cron表达式的取值示例。</p>
+<table>
+<thead>
+<tr>
+<th>示例</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>0 15 10 ? * *</code></td>
+<td>每天上午10:15执行任务</td>
+</tr>
+<tr>
+<td><code>0 15 10 * * ?</code></td>
+<td>每天上午10:15执行任务</td>
+</tr>
+<tr>
+<td><code>0 0 12 * * ?</code></td>
+<td>每天中午12:00执行任务</td>
+</tr>
+<tr>
+<td><code>0 0 10,14,16 * * ?</code></td>
+<td>每天上午10:00点、下午14:00以及下午16:00执行任务</td>
+</tr>
+<tr>
+<td><code>0 0/30 9-17 * * ?</code></td>
+<td>每天上午09:00到下午17:00时间段内每隔半小时执行任务</td>
+</tr>
+<tr>
+<td><code>0 * 14 * * ?</code></td>
+<td>每天下午14:00到下午14:59时间段内每隔1分钟执行任务</td>
+</tr>
+<tr>
+<td><code>0 0-5 14 * * ?</code></td>
+<td>每天下午14:00到下午14:05时间段内每隔1分钟执行任务</td>
+</tr>
+<tr>
+<td><code>0 0/5 14 * * ?</code></td>
+<td>每天下午14:00到下午14:55时间段内每隔5分钟执行任务</td>
+</tr>
+<tr>
+<td><code>0 0/5 14,18 * * ?</code></td>
+<td>每天下午14:00到下午14:55、下午18:00到下午18:55时间段内每隔5分钟执行任务</td>
+</tr>
+<tr>
+<td><code>0 0 12 ? * WED</code></td>
+<td>每个星期三中午12:00执行任务</td>
+</tr>
+<tr>
+<td><code>0 15 10 15 * ?</code></td>
+<td>每月15日上午10:15执行任务</td>
+</tr>
+<tr>
+<td><code>0 15 10 L * ?</code></td>
+<td>每月最后一日上午10:15执行任务</td>
+</tr>
+<tr>
+<td><code>0 15 10 ? * 6L</code></td>
+<td>每月最后一个星期六上午10:15执行任务</td>
+</tr>
+<tr>
+<td><code>0 15 10 ? * 6#3</code></td>
+<td>每月第三个星期六上午10:15执行任务</td>
+</tr>
+<tr>
+<td><code>0 10,44 14 ? 3 WED</code></td>
+<td>每年3月的每个星期三下午14:10和14:44执行任务</td>
+</tr>
+<tr>
+<td><code>0 15 10 ? * * 2022</code></td>
+<td>2022年每天上午10:15执行任务</td>
+</tr>
+<tr>
+<td><code>0 15 10 ? * * *</code></td>
+<td>每年每天上午10:15执行任务</td>
+</tr>
+<tr>
+<td><code>0 0/5 14,18 * * ? 2022</code></td>
+<td>2022年每天下午14:00到下午14:55、下午18:00到下午18:55时间段内每隔5分钟执行任务</td>
+</tr>
+<tr>
+<td><code>0 15 10 ? * 6#3 2022,2023</code></td>
+<td>2022年至2023年每月第三个星期六上午10:15执行任务</td>
+</tr>
+<tr>
+<td><code>0 0/30 9-17 * * ? 2022-2025</code></td>
+<td>2022年至2025年每天上午09:00到下午17:30时间段内每隔半小时执行任务</td>
+</tr>
+<tr>
+<td><code>0 10,44 14 ? 3 WED 2022/2</code></td>
+<td>从2022年开始，每隔两年3月的每个星期三下午14:10和14:44执行任务</td>
+</tr>
+</tbody></table>
 
       
     </div>
@@ -2121,143 +2266,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Linux/Linux%E7%8E%AF%E5%A2%83%E4%B8%8B%E5%AE%89%E8%A3%85JDK/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Taizi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/Linux/Linux%E7%8E%AF%E5%A2%83%E4%B8%8B%E5%AE%89%E8%A3%85JDK/" class="post-title-link" itemprop="url">Linux环境下安装JDK</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-09-28 15:00:30" itemprop="dateModified" datetime="2023-09-28T15:00:30+08:00">2023-09-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>884</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Linux环境下安装JDK"><a href="#Linux环境下安装JDK" class="headerlink" title="Linux环境下安装JDK"></a>Linux环境下安装JDK</h1><h2 id="一、卸载系统自带的OpenJDK及相关java文件"><a href="#一、卸载系统自带的OpenJDK及相关java文件" class="headerlink" title="一、卸载系统自带的OpenJDK及相关java文件"></a>一、卸载系统自带的OpenJDK及相关java文件</h2><p>安装JDK之前，先确保没有默认安装JDK，执行以下命令检查：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
-
-<p>如果有信息显示，可以看到系统自带的OpenJDK版本信息，然后查询相关的Java文件：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa | grep java</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>命令说明：<br>rpm 　管理套件<br>-qa 　使用询问模式，查询所有套件<br>grep　　查找文件里符合条件的字符串<br>java 　查找包含java字符串的文件</p>
-</blockquote>
-<p>查询到的文件中，与OpenJDK相关的可以删除：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -e --nodeps 文件名</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>命令介绍：<br>rpm 　　　管理套件<br>-e　　　　　删除指定的套件<br>–nodeps　　不验证套件档的相互关联性</p>
-</blockquote>
-<p>再次运行版本信息命令，验证是否已经删除成功：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
-
-<p>无信息提示或提示未找到Java命令，标识删除成功。</p>
-<h2 id="二、下载JDK"><a href="#二、下载JDK" class="headerlink" title="二、下载JDK"></a>二、下载JDK</h2><p>下载地址：<a target="_blank" rel="noopener" href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">最新版下载地址</a></p>
-<p><a target="_blank" rel="noopener" href="http://www.oracle.com/technetwork/java/javase/archive-139210.html">历史版本下载地址</a></p>
-<p>根据系统版本，选择下载tar.gz格式的压缩包</p>
-<h2 id="三、安装JDK"><a href="#三、安装JDK" class="headerlink" title="三、安装JDK"></a>三、安装JDK</h2><p>提前创建好存放安装包的目录和存放解压文件的目录。一般我会在&#x2F;opt目录下创建两个目录，&#x2F;opt&#x2F;module里用于存放解压文件，&#x2F;opt&#x2F;software用于存放压缩包，只需要在这两个目录下在创建子目录即可。</p>
-<p>首先解压安装包：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf 安装包路径 -C 要解压到的目录</span><br></pre></td></tr></table></figure>
-
-<h2 id="四、配置环境变量"><a href="#四、配置环境变量" class="headerlink" title="四、配置环境变量"></a>四、配置环境变量</h2><p>编辑系统配置文件：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/profile</span><br></pre></td></tr></table></figure>
-
-<p>在文件末尾添加Java环境变量（解压路径可以通过pwd 命令获取）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#java environment</span><br><span class="line">export JAVA_HOME=JDK解压路径</span><br><span class="line">export JRE_HOME=JDK解压路径/jre</span><br><span class="line">export CLASS_PATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JRE_HOME/lib</span><br><span class="line">export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin</span><br></pre></td></tr></table></figure>
-
-<p>编辑后退出编辑器，并使配置文件生效：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
-
-<p>检查JDK是否安装配置成功：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -2281,13 +2289,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">154k</span>
+    <span title="站点总字数">157k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:40</span>
+    <span title="站点阅读时长">4:46</span>
   </span>
 </div>
 <div class="busuanzi-count">

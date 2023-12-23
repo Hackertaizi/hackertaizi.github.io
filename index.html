@@ -147,7 +147,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-count">47</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -175,6 +175,102 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/ETL/%E5%B8%B8%E7%94%A8%E7%9A%84%E4%B8%9A%E5%8A%A1%E5%BC%80%E5%8F%91%E9%80%BB%E8%BE%91%E6%B1%87%E6%80%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Taizi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/ETL/%E5%B8%B8%E7%94%A8%E7%9A%84%E4%B8%9A%E5%8A%A1%E5%BC%80%E5%8F%91%E9%80%BB%E8%BE%91%E6%B1%87%E6%80%BB/" class="post-title-link" itemprop="url">常用的业务开发逻辑汇总</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-12-22 17:25:57 / 修改时间：17:28:53" itemprop="dateCreated datePublished" datetime="2023-12-22T17:25:57+08:00">2023-12-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/ETL/" itemprop="url" rel="index"><span itemprop="name">ETL</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>4k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>7 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="常用的业务开发逻辑汇总"><a href="#常用的业务开发逻辑汇总" class="headerlink" title="常用的业务开发逻辑汇总"></a>常用的业务开发逻辑汇总</h1><h2 id="时间相关的计算"><a href="#时间相关的计算" class="headerlink" title="时间相关的计算"></a>时间相关的计算</h2><p>包括怎么求日期间的差值、怎么转换日期格式、怎么获取年初月初年末月末，怎么确定某天是周几，是一年中的第几天等等等等一系列有关于时间的计算，可以从下面的例子中有所启发</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">SELECT </span><br><span class="line">    standard_daytime</span><br><span class="line">    ,abbreviated_daytime</span><br><span class="line">    ,CONCAT(YEAR(standard_daytime), &#x27;年&#x27;) AS year_unit  --所在年份(xxxx年)</span><br><span class="line">    ,CONCAT(</span><br><span class="line">        YEAR(standard_daytime)</span><br><span class="line">        ,&#x27;年第&#x27;</span><br><span class="line">        ,CASE </span><br><span class="line">            WHEN MONTH(standard_daytime) &lt;= 3 THEN &#x27;1&#x27;</span><br><span class="line">            WHEN MONTH(standard_daytime) &lt;= 6 THEN &#x27;2&#x27;</span><br><span class="line">            WHEN MONTH(standard_daytime) &lt;= 9 THEN &#x27;3&#x27;</span><br><span class="line">            WHEN MONTH(standard_daytime) &lt;= 12 THEN &#x27;4&#x27;</span><br><span class="line">            ELSE NULL </span><br><span class="line">            END</span><br><span class="line">        ,&#x27;季度&#x27;</span><br><span class="line">    ) AS quarter_unit  --所在季度(xxx年第x季度)</span><br><span class="line">    ,CONCAT(YEAR(standard_daytime), &#x27;年&#x27;, LPAD(MONTH(standard_daytime), 2, 0), &#x27;月&#x27;) AS month_unit  --所在月份(xxxx年xx月)</span><br><span class="line">    ,CONCAT(</span><br><span class="line">        CASE </span><br><span class="line">            WHEN WEEKOFYEAR(standard_daytime) = 1 AND MONTH(standard_daytime) = 12 THEN YEAR(standard_daytime)+1</span><br><span class="line">            WHEN WEEKOFYEAR(standard_daytime) &gt; 50 AND MONTH(standard_daytime) = 1 THEN YEAR(standard_daytime)-1</span><br><span class="line">            ELSE YEAR(standard_daytime)  --跨年周处理</span><br><span class="line">            END</span><br><span class="line">        ,&#x27;年第&#x27;</span><br><span class="line">        ,LPAD(WEEKOFYEAR(standard_daytime), 2, 0)</span><br><span class="line">        ,&#x27;周&#x27;</span><br><span class="line">    ) AS week_unit  --所在周(xxxx年第xx周)</span><br><span class="line">    ,DATEDIFF(CONCAT(YEAR(standard_daytime), &#x27;-12-31&#x27;), CONCAT(YEAR(standard_daytime), &#x27;-01-01&#x27;)) + 1 AS days_in_a_year  --所在年总天数</span><br><span class="line">    ,CASE </span><br><span class="line">        WHEN MONTH(standard_daytime) &lt;= 3 THEN DATEDIFF(CONCAT(YEAR(standard_daytime), &#x27;-03-31&#x27;), CONCAT(YEAR(standard_daytime), &#x27;-01-01&#x27;)) + 1</span><br><span class="line">        WHEN MONTH(standard_daytime) &lt;= 6 THEN DATEDIFF(CONCAT(YEAR(standard_daytime), &#x27;-06-30&#x27;), CONCAT(YEAR(standard_daytime), &#x27;-04-01&#x27;)) + 1</span><br><span class="line">        WHEN MONTH(standard_daytime) &lt;= 9 THEN DATEDIFF(CONCAT(YEAR(standard_daytime), &#x27;-09-30&#x27;), CONCAT(YEAR(standard_daytime), &#x27;-07-01&#x27;)) + 1</span><br><span class="line">        WHEN MONTH(standard_daytime) &lt;= 12 THEN DATEDIFF(CONCAT(YEAR(standard_daytime), &#x27;-12-31&#x27;), CONCAT(YEAR(standard_daytime), &#x27;-10-01&#x27;)) + 1</span><br><span class="line">        ELSE 91</span><br><span class="line">        END </span><br><span class="line">    AS days_in_a_quarter  --所在季度总天数</span><br><span class="line">    ,DAY(LAST_DAY(standard_daytime)) AS days_in_a_month  --所在月总天数</span><br><span class="line">    ,7 AS days_in_a_week  --所在周总天数</span><br><span class="line">    ,DATEDIFF(standard_daytime, CONCAT(YEAR(standard_daytime), &#x27;-01-01&#x27;)) + 1 AS passed_days_in_year  --年累天数(包含当天)</span><br><span class="line">    ,CASE </span><br><span class="line">        WHEN MONTH(standard_daytime) &lt;= 3 THEN DATEDIFF(standard_daytime, CONCAT(YEAR(standard_daytime), &#x27;-01-01&#x27;)) + 1 </span><br><span class="line">        WHEN MONTH(standard_daytime) &lt;= 6 THEN DATEDIFF(standard_daytime, CONCAT(YEAR(standard_daytime), &#x27;-04-01&#x27;)) + 1 </span><br><span class="line">        WHEN MONTH(standard_daytime) &lt;= 9 THEN DATEDIFF(standard_daytime, CONCAT(YEAR(standard_daytime), &#x27;-07-01&#x27;)) + 1 </span><br><span class="line">        WHEN MONTH(standard_daytime) &lt;= 12 THEN DATEDIFF(standard_daytime, CONCAT(YEAR(standard_daytime), &#x27;-10-01&#x27;)) + 1 </span><br><span class="line">        ELSE 0</span><br><span class="line">        END </span><br><span class="line">    AS passed_days_in_quarter --季度累天数(包含当天)</span><br><span class="line">    ,DATEDIFF(standard_daytime, TRUNC(standard_daytime, &#x27;MM&#x27;)) +1 AS passed_days_in_month --月累天数(包含当天)</span><br><span class="line">    ,CASE PMOD(DATEDIFF(standard_daytime,&#x27;1970-01-05&#x27;) + 1, 7)</span><br><span class="line">        WHEN 0 THEN 7</span><br><span class="line">        ELSE  PMOD(DATEDIFF(standard_daytime,&#x27;1970-01-05&#x27;) + 1, 7)</span><br><span class="line">        END</span><br><span class="line">    AS passed_days_in_week  --周累天数(包含当天)</span><br><span class="line">    ,DATEDIFF(CONCAT(YEAR(standard_daytime), &#x27;-12-31&#x27;), standard_daytime) + 1 AS remaining_days_of_year  --到年末的天数(包含当天)</span><br><span class="line">    ,CASE </span><br><span class="line">        WHEN MONTH(standard_daytime) &lt;= 3 THEN DATEDIFF(CONCAT(YEAR(standard_daytime), &#x27;-03-31&#x27;), standard_daytime) + 1 </span><br><span class="line">        WHEN MONTH(standard_daytime) &lt;= 6 THEN DATEDIFF(CONCAT(YEAR(standard_daytime), &#x27;-06-30&#x27;), standard_daytime) + 1 </span><br><span class="line">        WHEN MONTH(standard_daytime) &lt;= 9 THEN DATEDIFF(CONCAT(YEAR(standard_daytime), &#x27;-09-30&#x27;), standard_daytime) + 1 </span><br><span class="line">        WHEN MONTH(standard_daytime) &lt;= 12 THEN DATEDIFF(CONCAT(YEAR(standard_daytime), &#x27;-12-31&#x27;), standard_daytime) + 1 </span><br><span class="line">        ELSE 0</span><br><span class="line">        END </span><br><span class="line">    AS passed_days_in_quarter --到季度末的天数(包含当天)</span><br><span class="line">    ,DATEDIFF(LAST_DAY(standard_daytime), standard_daytime) + 1 AS remaining_days_of_month  --到月末的天数(包含当天)</span><br><span class="line">    ,7 - CASE PMOD(DATEDIFF(standard_daytime,&#x27;1970-01-05&#x27;) + 1, 7)</span><br><span class="line">        WHEN 0 THEN 7</span><br><span class="line">        ELSE  PMOD(DATEDIFF(standard_daytime,&#x27;1970-01-05&#x27;) + 1, 7)</span><br><span class="line">        END + 1</span><br><span class="line">    AS remaining_days_of_week --到周末的天数(包含当天)</span><br><span class="line">    ,CASE PMOD(DATEDIFF(standard_daytime,&#x27;1970-01-05&#x27;) + 1, 7)</span><br><span class="line">        WHEN 0 THEN 7</span><br><span class="line">        ELSE  PMOD(DATEDIFF(standard_daytime,&#x27;1970-01-05&#x27;) + 1, 7)</span><br><span class="line">        END</span><br><span class="line">    AS day_of_week  --星期几</span><br><span class="line">    , IF(PMOD(DATEDIFF(standard_daytime,&#x27;1970-01-05&#x27;) + 1, 7) IN(0, 6), 1, 0) AS is_weekday --是否周末</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -220,7 +316,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-11-21 19:05:17" itemprop="dateModified" datetime="2023-11-21T19:05:17+08:00">2023-11-21</time>
+      <time title="修改时间：2023-11-23 19:00:11" itemprop="dateModified" datetime="2023-11-23T19:00:11+08:00">2023-11-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -243,14 +339,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1.4k</span>
+      <span>4.4k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>3 分钟</span>
+      <span>8 分钟</span>
     </span>
 </div>
 
@@ -301,7 +397,99 @@
 
 <p>有两个部分，new Date()构造了一个Date类型的对象，它的值是对新创建对象的一个引用。这个引用存储在对象变量deadline中。</p>
 <p>可以显式地将对象变量设置为null，表示这个对象变量目前没有引用任何对象：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Date</span> <span class="variable">deadline</span> <span class="operator">=</span> <span class="literal">null</span>; <span class="comment">//显式表达</span></span><br><span class="line">Date deadline; <span class="comment">// 隐式表达</span></span><br></pre></td></tr></table></figure></li>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Date</span> <span class="variable">deadline</span> <span class="operator">=</span> <span class="literal">null</span>; <span class="comment">//显式表达</span></span><br><span class="line">Date deadline; <span class="comment">// 隐式表达</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="更改器方法和访问器方法"><a href="#更改器方法和访问器方法" class="headerlink" title="更改器方法和访问器方法"></a>更改器方法和访问器方法</h4><p>只访问对象而不修改对象的方法称为<strong>访问器方法</strong>，修改对象状态的方法称为<strong>更改器方法</strong>。</p>
+<p>访问器方法举例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">LocalDate</span> <span class="variable">aThousandDaysLater</span> <span class="operator">=</span> newYearsEve.plusDays(<span class="number">1000</span>); <span class="comment">// plusDays方法会生成一个新对象，然后把新对象赋给aThousandDaysLater，原来的对象newYearsEve不作任何改动</span></span><br><span class="line"><span class="type">String</span> <span class="variable">stra</span> <span class="operator">=</span> <span class="string">&quot;aaa&quot;</span>;</span><br><span class="line"><span class="type">String</span> <span class="variable">strb</span> <span class="operator">=</span> stra.toUpperCase(); <span class="comment">// toUpperCase方法会生成一个新对象，然后赋给strb，原来的字符串对象stra不作任何改变。</span></span><br></pre></td></tr></table></figure>
+
+<p>更改器方法举例：</p>
+<p>例如实体类中的getter&#x2F;setter方法，调用后会改变对象的状态，这种方法都是更改器方法。</p>
+</li>
+<li><h4 id="用户自定义类"><a href="#用户自定义类" class="headerlink" title="用户自定义类"></a>用户自定义类</h4><ul>
+<li><h5 id="使用单个源文件："><a href="#使用单个源文件：" class="headerlink" title="使用单个源文件："></a>使用单个源文件：</h5><p>在源文件中，只能有一个公共类（public修饰），可以有任意数目的非公共类。</p>
+</li>
+<li><h5 id="使用多个源文件："><a href="#使用多个源文件：" class="headerlink" title="使用多个源文件："></a>使用多个源文件：</h5><p>也可以将多个类放在多个原文件中，例如有Employee和EmployeeTest两个类，<strong>其中EmployeeTest类对象中使用到了Employee类的对象</strong>，分别存放在Employee.java和EmployeeTest.java两个源文件中，这时可以有两种编译源程序的方法：一种是使用通配符调用Java编译器：<code>javac Employee*.java</code>.这时所有与通配符匹配的源文件都将编译成类文件。或者可以使用一下命令：<code>javac EmployeeTest.java</code> 这种方式并没有显式地编译Employee.java.但是当编译器发现EmployeeTest.java中使用到了Employee类时，他会查找名为Employee.class的类文件，如果没有找到就查找Employee.java源文件并对其进行编译。更重要的是，如果Employee.java的版本较已有的Employee.class文件版本更新，Java编译器就会自动地重新编译这个文件。</p>
+</li>
+<li><h5 id="关于public、private："><a href="#关于public、private：" class="headerlink" title="关于public、private："></a>关于public、private：</h5><ul>
+<li>public：关键字public意味着任何类的任何方法都可以调用</li>
+<li>private：关键字private确保了只有类自身的方法可以调用，而其他类不能调用</li>
+</ul>
+</li>
+<li><h5 id="关于构造器："><a href="#关于构造器：" class="headerlink" title="关于构造器："></a>关于构造器：</h5><ul>
+<li>构造器与类同名</li>
+<li>每个类可以有一个以上的构造器</li>
+<li>构造器可以有0个、1个或多个参数</li>
+<li>构造器没有返回值</li>
+<li>构造器总是伴随着new操作符一期使用</li>
+</ul>
+<p><strong>注意不要在构造器内定义与实例字段同名的局部变量，否则这些变量会屏蔽同名的实例字段。</strong></p>
+</li>
+<li><h5 id="使用var声明局部变量："><a href="#使用var声明局部变量：" class="headerlink" title="使用var声明局部变量："></a>使用var声明局部变量：</h5><p>在Java10中，如果可以从变量的初始值推导出他们的类型，那么可以用var关键字声明局部变量，而无需指定类型。例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">var</span> <span class="variable">str</span> <span class="operator">=</span> <span class="string">&quot;Hello, World!&quot;</span>; <span class="comment">// 推断str的类型为String</span></span><br><span class="line"><span class="type">var</span> <span class="variable">num</span> <span class="operator">=</span> <span class="number">10</span>; <span class="comment">// 推断num的类型为int</span></span><br><span class="line"><span class="type">var</span> <span class="variable">list</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;String&gt;(); <span class="comment">// 推断list的类型为ArrayList&lt;String&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>注意var关键字只能用于方法中的局部变量。参数和字段的类型必须声明。</strong></p>
+</li>
+<li><h5 id="使用null引用："><a href="#使用null引用：" class="headerlink" title="使用null引用："></a>使用null引用：</h5><p>当对象变量为null时，如果对该对象变量调用方法，会产生空指针异常。为了避免这种情况，可以将null参数转化为一个适当的非null值。</p>
+</li>
+<li><h5 id="显式参数与隐式参数："><a href="#显式参数与隐式参数：" class="headerlink" title="显式参数与隐式参数："></a>显式参数与隐式参数：</h5><ul>
+<li><p>显式参数：位于方法名后面括号中的参数就是显式参数</p>
+</li>
+<li><p>隐式参数：隐式参数是指在方法调用时自动传递给方法的参数，不需要在方法调用中显式地指定。通常用关键字this指示隐式参数。一般的getter方法中就有隐式参数：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.name; <span class="comment">//name就是一个隐式参数</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><h5 id="封装的优点"><a href="#封装的优点" class="headerlink" title="封装的优点:"></a>封装的优点:</h5><p>一般地，如果想要获取或设置一个对象中的实例字段的值，可以在类定义时提供以下内容：</p>
+<ul>
+<li>一个私有的数据字段</li>
+<li>一个公有的字段访问器方法（如getter方法）</li>
+<li>一个公有的字段更改器方法（如setter方法）</li>
+</ul>
+<p>相对于将字段直接设置为公有字段，这种方式有以下好处：</p>
+<ul>
+<li>该变内部实现时除了该类的方法外，不会影响其他代码</li>
+<li>更改器方法可以完成（进行）错误检查</li>
+</ul>
+</li>
+<li><h5 id="基于类的访问权限："><a href="#基于类的访问权限：" class="headerlink" title="基于类的访问权限："></a>基于类的访问权限：</h5><p><strong>一个方法可以访问所属类的所有对象的私有数据。</strong></p>
+</li>
+<li><h5 id="私有方法"><a href="#私有方法" class="headerlink" title="私有方法"></a>私有方法</h5><p>特殊情况下，方法可以设置成私有的。例如可能希望将一个计算代码分解成若干个独立的辅助方法，这些辅助方法不应该成为公共接口的一部分，这时最好将这些辅助的方法设置为私有。</p>
+</li>
+<li><h5 id="final实例字段"><a href="#final实例字段" class="headerlink" title="final实例字段"></a>final实例字段</h5><p>定义为final的实例字段必须在构造对象时初始化，必须确保在每个构造器执行之后，这个字段的值已经设置，并且之后不能再修改这个字段。</p>
+<p>final修饰符对于基本类型和不可变类（类中的所有方法都不会改变对象，也就是没有更改器方法，例如String类）的字段尤其有用。</p>
+<p>对于可变的类，使用final修饰符可能会造成混乱，例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> StringBuilder evaluations;</span><br><span class="line">evaluations = <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line"><span class="comment">// final 关键字只是表示存储在evaluations变量中的对象引用不会再指示另一个不同的StringBuilder对象，但这个对象仍然是可以修改的</span></span><br><span class="line">evaluations.append(<span class="string">&quot;Hello&quot;</span>);</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><h4 id="静态字段与静态方法"><a href="#静态字段与静态方法" class="headerlink" title="静态字段与静态方法"></a>静态字段与静态方法</h4><ul>
+<li><h5 id="静态字段"><a href="#静态字段" class="headerlink" title="静态字段"></a>静态字段</h5><p>可以使用<code>static</code>修饰符将字段指定为静态的。静态字段属于类而不属于任何的单个对象。而对于非静态的实例字段，每个对象都有自己的一个副本。</p>
+</li>
+<li><h5 id="静态常量"><a href="#静态常量" class="headerlink" title="静态常量"></a>静态常量</h5><p>可以同时使用<code>static</code>和<code>final</code>修饰符来定义一个<strong>静态常量</strong>，这表示该量既是不可修改的，也是直接属于类的。例如，Math中有静态常量：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Math</span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">double</span> <span class="variable">PI</span> <span class="operator">=</span> <span class="number">3.14159265358979323846</span>;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在程序中，可以使用Math.PI来访问这个静态常量。经常使用的System.out也是一个静态常量。</p>
+</li>
+<li><h5 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h5><p>静态方法是不在对象上执行的方法（直接通过类执行），例如，Math.pow(x,a)会计算x的a次幂。在完成运算时，它不是用任何Math类的对象，换句话说，它没有隐式参数。</p>
+<p>以下两种情况可以使用静态方法：</p>
+<ul>
+<li>方法不需要访问对象的状态，它需要的所有参数都通过显示参数提供（例如Math.pow)</li>
+<li>方法只需要访问类的静态字段。</li>
+</ul>
+</li>
+<li><h5 id="工厂方法"><a href="#工厂方法" class="headerlink" title="工厂方法"></a>工厂方法</h5><p>静态方法还有另外一种常见的用途。类似LocalDate和NumberFormat的类使用静态工厂方法来构造对象。例如有工厂方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">LocalDate.now()</span><br><span class="line">LocalDate.of()</span><br><span class="line">NumberFormat.getCurrencyInstance()</span><br><span class="line">NumberFormat.getPercentInstance()</span><br></pre></td></tr></table></figure>
+
+<p>不使用构造器的方式主要有两个原因：</p>
+<ol>
+<li>无法命名构造器：因为构造器名称必须与类名相同，但这里希望有两个不同的名字。</li>
+<li>使用构造器时，无法改变所构造的对象的类型。而上面的NumberFormat的工厂方法，实际上返回的是DeciamlFormat类的对象，这是NumberFormat类的一个子类。</li>
+</ol>
+</li>
+<li><h5 id="main方法"><a href="#main方法" class="headerlink" title="main方法"></a>main方法</h5><p>main方法也是一个静态方法，它不对任何对象进行操作。事实上，在程序启动时还没有任何对象，静态的main方法将执行并构造程序所需要的对象。</p>
+</li>
+</ul>
+</li>
+<li><h4 id="方法参数"><a href="#方法参数" class="headerlink" title="方法参数"></a>方法参数</h4></li>
 </ul>
 
       
@@ -813,6 +1001,310 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/%E5%85%B6%E4%BB%96/Cron%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E8%A1%A8%E8%BE%BE%E5%BC%8F/Cron%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Taizi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/%E5%85%B6%E4%BB%96/Cron%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E8%A1%A8%E8%BE%BE%E5%BC%8F/Cron%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="post-title-link" itemprop="url">Cron表达式</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-09-28 15:41:03" itemprop="dateModified" datetime="2023-09-28T15:41:03+08:00">2023-09-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%85%B6%E4%BB%96/" itemprop="url" rel="index"><span itemprop="name">其他</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.9k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Cron表达式"><a href="#Cron表达式" class="headerlink" title="Cron表达式"></a>Cron表达式</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Cron表达式是一个具有时间含义的字符串，字符串以5<del>6个空格隔开，分为6</del>7个域，格式为<code>X X X X X X X</code>。其中<code>X</code>是一个域的占位符。最后一个代表年份的域非必须，可省略。单个域有多个取值时，使用半角逗号<code>,</code>隔开取值。每个域可以是确定的取值，也可以是具有逻辑意义的特殊字符。每个域最多支持一个前导零。</p>
+<h2 id="语法格式"><a href="#语法格式" class="headerlink" title="语法格式"></a>语法格式</h2><ul>
+<li><p>当为7个域时：</p>
+<p><code>Seconds Minutes Hours DayofMonth Month DayofWeek Year</code></p>
+</li>
+<li><p>当为6个域时：</p>
+<p><code>Seconds Minutes Hours DayofMonth Month DayofWeek</code></p>
+</li>
+</ul>
+<h2 id="域取值"><a href="#域取值" class="headerlink" title="域取值"></a>域取值</h2><p>下表为Cron表达式中六个域能够取的值以及支持的特殊字符。</p>
+<table>
+<thead>
+<tr>
+<th>域</th>
+<th>是否必需</th>
+<th>取值范围</th>
+<th>特殊字符</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>秒</td>
+<td>是</td>
+<td>[0, 59]</td>
+<td>* , - &#x2F;</td>
+</tr>
+<tr>
+<td>分钟</td>
+<td>是</td>
+<td>[0, 59]</td>
+<td>* , - &#x2F;</td>
+</tr>
+<tr>
+<td>小时</td>
+<td>是</td>
+<td>[0, 23]</td>
+<td>* , - &#x2F;</td>
+</tr>
+<tr>
+<td>日期</td>
+<td>是</td>
+<td>[1, 31]</td>
+<td>* , - &#x2F; ? L W</td>
+</tr>
+<tr>
+<td>月份</td>
+<td>是</td>
+<td>[1, 12]或[JAN, DEC]</td>
+<td>* , - &#x2F;</td>
+</tr>
+<tr>
+<td>星期</td>
+<td>是</td>
+<td>[1, 7]或[MON, SUN]。若您使用[1, 7]表达方式，<code>1</code>代表星期一，<code>7</code>代表星期日。</td>
+<td>* , - &#x2F; ? L #</td>
+</tr>
+<tr>
+<td>年</td>
+<td>否</td>
+<td>[当前年份，2099]</td>
+<td>* , - &#x2F;</td>
+</tr>
+</tbody></table>
+<h2 id="特殊字符"><a href="#特殊字符" class="headerlink" title="特殊字符"></a>特殊字符</h2><p>Cron表达式中的每个域都支持一定数量的特殊字符，每个特殊字符有其特殊含义。</p>
+<table>
+<thead>
+<tr>
+<th>特殊字符</th>
+<th>含义</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>*</code></td>
+<td>所有可能的值。</td>
+<td>在月域中，<code>*</code>表示每个月；在星期域中，<code>*</code>表示星期的每一天。</td>
+</tr>
+<tr>
+<td><code>,</code></td>
+<td>列出枚举值。</td>
+<td>在分钟域中，<code>5,20</code>表示分别在5分钟和20分钟触发一次。</td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td>范围。</td>
+<td>在分钟域中，<code>5-20</code>表示从5分钟到20分钟之间每隔一分钟触发一次。</td>
+</tr>
+<tr>
+<td><code>/</code></td>
+<td>指定数值的增量。</td>
+<td>在分钟域中，<code>0/15</code>表示从第0分钟开始，每15分钟。在分钟域中<code>3/20</code>表示从第3分钟开始，每20分钟。</td>
+</tr>
+<tr>
+<td><code>?</code></td>
+<td>不指定值，仅日期和星期域支持该字符。</td>
+<td>当日期或星期域其中之一被指定了值以后，为了避免冲突，需要将另一个域的值设为<code>?</code>。</td>
+</tr>
+<tr>
+<td><code>L</code></td>
+<td>单词Last的首字母，表示最后一天，仅日期和星期域支持该字符。                                                                                                 <strong>说明</strong> 指定<code>L</code>字符时，避免指定列表或者范围，否则，会导致逻辑问题。</td>
+<td>在日期域中，<code>L</code>表示某个月的最后一天。在星期域中，<code>L</code>表示一个星期的最后一天，也就是星期日（<code>SUN</code>）。                                                                  如果在<code>L</code>前有具体的内容，例如，在星期域中的<code>6L</code>表示这个月的最后一个星期六。</td>
+</tr>
+<tr>
+<td><code>W</code></td>
+<td>除周末以外的有效工作日，在离指定日期的最近的有效工作日触发事件。<code>W</code>字符寻找最近有效工作日时不会跨过当前月份，连用字符<code>LW</code>时表示为指定月份的最后一个工作日。</td>
+<td>在日期域中<code>5W</code>，如果5日是星期六，则将在最近的工作日星期五，即4日触发。如果5日是星期天，则将在最近的工作日星期一，即6日触发；如果5日在星期一到星期五中的一天，则就在5日触发。</td>
+</tr>
+<tr>
+<td><code>#</code></td>
+<td>确定每个月第几个星期几，仅星期域支持该字符。</td>
+<td>在星期域中，<code>4#2</code>表示某月的第二个星期四。</td>
+</tr>
+</tbody></table>
+<h2 id="取值示例"><a href="#取值示例" class="headerlink" title="取值示例"></a>取值示例</h2><p>以下为Cron表达式的取值示例。</p>
+<table>
+<thead>
+<tr>
+<th>示例</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>0 15 10 ? * *</code></td>
+<td>每天上午10:15执行任务</td>
+</tr>
+<tr>
+<td><code>0 15 10 * * ?</code></td>
+<td>每天上午10:15执行任务</td>
+</tr>
+<tr>
+<td><code>0 0 12 * * ?</code></td>
+<td>每天中午12:00执行任务</td>
+</tr>
+<tr>
+<td><code>0 0 10,14,16 * * ?</code></td>
+<td>每天上午10:00点、下午14:00以及下午16:00执行任务</td>
+</tr>
+<tr>
+<td><code>0 0/30 9-17 * * ?</code></td>
+<td>每天上午09:00到下午17:00时间段内每隔半小时执行任务</td>
+</tr>
+<tr>
+<td><code>0 * 14 * * ?</code></td>
+<td>每天下午14:00到下午14:59时间段内每隔1分钟执行任务</td>
+</tr>
+<tr>
+<td><code>0 0-5 14 * * ?</code></td>
+<td>每天下午14:00到下午14:05时间段内每隔1分钟执行任务</td>
+</tr>
+<tr>
+<td><code>0 0/5 14 * * ?</code></td>
+<td>每天下午14:00到下午14:55时间段内每隔5分钟执行任务</td>
+</tr>
+<tr>
+<td><code>0 0/5 14,18 * * ?</code></td>
+<td>每天下午14:00到下午14:55、下午18:00到下午18:55时间段内每隔5分钟执行任务</td>
+</tr>
+<tr>
+<td><code>0 0 12 ? * WED</code></td>
+<td>每个星期三中午12:00执行任务</td>
+</tr>
+<tr>
+<td><code>0 15 10 15 * ?</code></td>
+<td>每月15日上午10:15执行任务</td>
+</tr>
+<tr>
+<td><code>0 15 10 L * ?</code></td>
+<td>每月最后一日上午10:15执行任务</td>
+</tr>
+<tr>
+<td><code>0 15 10 ? * 6L</code></td>
+<td>每月最后一个星期六上午10:15执行任务</td>
+</tr>
+<tr>
+<td><code>0 15 10 ? * 6#3</code></td>
+<td>每月第三个星期六上午10:15执行任务</td>
+</tr>
+<tr>
+<td><code>0 10,44 14 ? 3 WED</code></td>
+<td>每年3月的每个星期三下午14:10和14:44执行任务</td>
+</tr>
+<tr>
+<td><code>0 15 10 ? * * 2022</code></td>
+<td>2022年每天上午10:15执行任务</td>
+</tr>
+<tr>
+<td><code>0 15 10 ? * * *</code></td>
+<td>每年每天上午10:15执行任务</td>
+</tr>
+<tr>
+<td><code>0 0/5 14,18 * * ? 2022</code></td>
+<td>2022年每天下午14:00到下午14:55、下午18:00到下午18:55时间段内每隔5分钟执行任务</td>
+</tr>
+<tr>
+<td><code>0 15 10 ? * 6#3 2022,2023</code></td>
+<td>2022年至2023年每月第三个星期六上午10:15执行任务</td>
+</tr>
+<tr>
+<td><code>0 0/30 9-17 * * ? 2022-2025</code></td>
+<td>2022年至2025年每天上午09:00到下午17:30时间段内每隔半小时执行任务</td>
+</tr>
+<tr>
+<td><code>0 10,44 14 ? 3 WED 2022/2</code></td>
+<td>从2022年开始，每隔两年3月的每个星期三下午14:10和14:44执行任务</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/%E5%85%B6%E4%BB%96/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AF%AD%E6%B3%95%E8%A7%84%E5%88%99/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1100,310 +1592,6 @@
 <p><img src="/%E5%85%B6%E4%BB%96/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AF%AD%E6%B3%95%E8%A7%84%E5%88%99/reg-444.jpg" alt="img"></p>
 </li>
 </ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/%E5%85%B6%E4%BB%96/Cron%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E8%A1%A8%E8%BE%BE%E5%BC%8F/Cron%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Taizi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/%E5%85%B6%E4%BB%96/Cron%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E8%A1%A8%E8%BE%BE%E5%BC%8F/Cron%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="post-title-link" itemprop="url">Cron表达式</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-09-28 15:41:03" itemprop="dateModified" datetime="2023-09-28T15:41:03+08:00">2023-09-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%85%B6%E4%BB%96/" itemprop="url" rel="index"><span itemprop="name">其他</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.9k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>4 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Cron表达式"><a href="#Cron表达式" class="headerlink" title="Cron表达式"></a>Cron表达式</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Cron表达式是一个具有时间含义的字符串，字符串以5<del>6个空格隔开，分为6</del>7个域，格式为<code>X X X X X X X</code>。其中<code>X</code>是一个域的占位符。最后一个代表年份的域非必须，可省略。单个域有多个取值时，使用半角逗号<code>,</code>隔开取值。每个域可以是确定的取值，也可以是具有逻辑意义的特殊字符。每个域最多支持一个前导零。</p>
-<h2 id="语法格式"><a href="#语法格式" class="headerlink" title="语法格式"></a>语法格式</h2><ul>
-<li><p>当为7个域时：</p>
-<p><code>Seconds Minutes Hours DayofMonth Month DayofWeek Year</code></p>
-</li>
-<li><p>当为6个域时：</p>
-<p><code>Seconds Minutes Hours DayofMonth Month DayofWeek</code></p>
-</li>
-</ul>
-<h2 id="域取值"><a href="#域取值" class="headerlink" title="域取值"></a>域取值</h2><p>下表为Cron表达式中六个域能够取的值以及支持的特殊字符。</p>
-<table>
-<thead>
-<tr>
-<th>域</th>
-<th>是否必需</th>
-<th>取值范围</th>
-<th>特殊字符</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>秒</td>
-<td>是</td>
-<td>[0, 59]</td>
-<td>* , - &#x2F;</td>
-</tr>
-<tr>
-<td>分钟</td>
-<td>是</td>
-<td>[0, 59]</td>
-<td>* , - &#x2F;</td>
-</tr>
-<tr>
-<td>小时</td>
-<td>是</td>
-<td>[0, 23]</td>
-<td>* , - &#x2F;</td>
-</tr>
-<tr>
-<td>日期</td>
-<td>是</td>
-<td>[1, 31]</td>
-<td>* , - &#x2F; ? L W</td>
-</tr>
-<tr>
-<td>月份</td>
-<td>是</td>
-<td>[1, 12]或[JAN, DEC]</td>
-<td>* , - &#x2F;</td>
-</tr>
-<tr>
-<td>星期</td>
-<td>是</td>
-<td>[1, 7]或[MON, SUN]。若您使用[1, 7]表达方式，<code>1</code>代表星期一，<code>7</code>代表星期日。</td>
-<td>* , - &#x2F; ? L #</td>
-</tr>
-<tr>
-<td>年</td>
-<td>否</td>
-<td>[当前年份，2099]</td>
-<td>* , - &#x2F;</td>
-</tr>
-</tbody></table>
-<h2 id="特殊字符"><a href="#特殊字符" class="headerlink" title="特殊字符"></a>特殊字符</h2><p>Cron表达式中的每个域都支持一定数量的特殊字符，每个特殊字符有其特殊含义。</p>
-<table>
-<thead>
-<tr>
-<th>特殊字符</th>
-<th>含义</th>
-<th>示例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>*</code></td>
-<td>所有可能的值。</td>
-<td>在月域中，<code>*</code>表示每个月；在星期域中，<code>*</code>表示星期的每一天。</td>
-</tr>
-<tr>
-<td><code>,</code></td>
-<td>列出枚举值。</td>
-<td>在分钟域中，<code>5,20</code>表示分别在5分钟和20分钟触发一次。</td>
-</tr>
-<tr>
-<td><code>-</code></td>
-<td>范围。</td>
-<td>在分钟域中，<code>5-20</code>表示从5分钟到20分钟之间每隔一分钟触发一次。</td>
-</tr>
-<tr>
-<td><code>/</code></td>
-<td>指定数值的增量。</td>
-<td>在分钟域中，<code>0/15</code>表示从第0分钟开始，每15分钟。在分钟域中<code>3/20</code>表示从第3分钟开始，每20分钟。</td>
-</tr>
-<tr>
-<td><code>?</code></td>
-<td>不指定值，仅日期和星期域支持该字符。</td>
-<td>当日期或星期域其中之一被指定了值以后，为了避免冲突，需要将另一个域的值设为<code>?</code>。</td>
-</tr>
-<tr>
-<td><code>L</code></td>
-<td>单词Last的首字母，表示最后一天，仅日期和星期域支持该字符。                                                                                                 <strong>说明</strong> 指定<code>L</code>字符时，避免指定列表或者范围，否则，会导致逻辑问题。</td>
-<td>在日期域中，<code>L</code>表示某个月的最后一天。在星期域中，<code>L</code>表示一个星期的最后一天，也就是星期日（<code>SUN</code>）。                                                                  如果在<code>L</code>前有具体的内容，例如，在星期域中的<code>6L</code>表示这个月的最后一个星期六。</td>
-</tr>
-<tr>
-<td><code>W</code></td>
-<td>除周末以外的有效工作日，在离指定日期的最近的有效工作日触发事件。<code>W</code>字符寻找最近有效工作日时不会跨过当前月份，连用字符<code>LW</code>时表示为指定月份的最后一个工作日。</td>
-<td>在日期域中<code>5W</code>，如果5日是星期六，则将在最近的工作日星期五，即4日触发。如果5日是星期天，则将在最近的工作日星期一，即6日触发；如果5日在星期一到星期五中的一天，则就在5日触发。</td>
-</tr>
-<tr>
-<td><code>#</code></td>
-<td>确定每个月第几个星期几，仅星期域支持该字符。</td>
-<td>在星期域中，<code>4#2</code>表示某月的第二个星期四。</td>
-</tr>
-</tbody></table>
-<h2 id="取值示例"><a href="#取值示例" class="headerlink" title="取值示例"></a>取值示例</h2><p>以下为Cron表达式的取值示例。</p>
-<table>
-<thead>
-<tr>
-<th>示例</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>0 15 10 ? * *</code></td>
-<td>每天上午10:15执行任务</td>
-</tr>
-<tr>
-<td><code>0 15 10 * * ?</code></td>
-<td>每天上午10:15执行任务</td>
-</tr>
-<tr>
-<td><code>0 0 12 * * ?</code></td>
-<td>每天中午12:00执行任务</td>
-</tr>
-<tr>
-<td><code>0 0 10,14,16 * * ?</code></td>
-<td>每天上午10:00点、下午14:00以及下午16:00执行任务</td>
-</tr>
-<tr>
-<td><code>0 0/30 9-17 * * ?</code></td>
-<td>每天上午09:00到下午17:00时间段内每隔半小时执行任务</td>
-</tr>
-<tr>
-<td><code>0 * 14 * * ?</code></td>
-<td>每天下午14:00到下午14:59时间段内每隔1分钟执行任务</td>
-</tr>
-<tr>
-<td><code>0 0-5 14 * * ?</code></td>
-<td>每天下午14:00到下午14:05时间段内每隔1分钟执行任务</td>
-</tr>
-<tr>
-<td><code>0 0/5 14 * * ?</code></td>
-<td>每天下午14:00到下午14:55时间段内每隔5分钟执行任务</td>
-</tr>
-<tr>
-<td><code>0 0/5 14,18 * * ?</code></td>
-<td>每天下午14:00到下午14:55、下午18:00到下午18:55时间段内每隔5分钟执行任务</td>
-</tr>
-<tr>
-<td><code>0 0 12 ? * WED</code></td>
-<td>每个星期三中午12:00执行任务</td>
-</tr>
-<tr>
-<td><code>0 15 10 15 * ?</code></td>
-<td>每月15日上午10:15执行任务</td>
-</tr>
-<tr>
-<td><code>0 15 10 L * ?</code></td>
-<td>每月最后一日上午10:15执行任务</td>
-</tr>
-<tr>
-<td><code>0 15 10 ? * 6L</code></td>
-<td>每月最后一个星期六上午10:15执行任务</td>
-</tr>
-<tr>
-<td><code>0 15 10 ? * 6#3</code></td>
-<td>每月第三个星期六上午10:15执行任务</td>
-</tr>
-<tr>
-<td><code>0 10,44 14 ? 3 WED</code></td>
-<td>每年3月的每个星期三下午14:10和14:44执行任务</td>
-</tr>
-<tr>
-<td><code>0 15 10 ? * * 2022</code></td>
-<td>2022年每天上午10:15执行任务</td>
-</tr>
-<tr>
-<td><code>0 15 10 ? * * *</code></td>
-<td>每年每天上午10:15执行任务</td>
-</tr>
-<tr>
-<td><code>0 0/5 14,18 * * ? 2022</code></td>
-<td>2022年每天下午14:00到下午14:55、下午18:00到下午18:55时间段内每隔5分钟执行任务</td>
-</tr>
-<tr>
-<td><code>0 15 10 ? * 6#3 2022,2023</code></td>
-<td>2022年至2023年每月第三个星期六上午10:15执行任务</td>
-</tr>
-<tr>
-<td><code>0 0/30 9-17 * * ? 2022-2025</code></td>
-<td>2022年至2025年每天上午09:00到下午17:30时间段内每隔半小时执行任务</td>
-</tr>
-<tr>
-<td><code>0 10,44 14 ? 3 WED 2022/2</code></td>
-<td>从2022年开始，每隔两年3月的每个星期三下午14:10和14:44执行任务</td>
-</tr>
-</tbody></table>
 
       
     </div>
@@ -1960,147 +2148,6 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E5%AE%89%E8%A3%85/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Taizi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E5%AE%89%E8%A3%85/" class="post-title-link" itemprop="url">在Windows操作系统下安装MySQL</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-09-28 15:09:02" itemprop="dateModified" datetime="2023-09-28T15:09:02+08:00">2023-09-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>2k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>4 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="MySQL安装"><a href="#MySQL安装" class="headerlink" title="MySQL安装"></a>MySQL安装</h2><h3 id="1-下载安装"><a href="#1-下载安装" class="headerlink" title="1. 下载安装"></a>1. 下载安装</h3><ul>
-<li>MySQL官网:<a target="_blank" rel="noopener" href="https://www.mysql.com/cn/">mysql官网链接</a></li>
-</ul>
-<p>在官网中，可以在首页最下方选择需要下载的MySQL版本，通常情况下，下载的是社区版的MySQL：</p>
-<ul>
-<li>MySQL社区版：<a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/mysql/">mysql communtiy downloads</a></li>
-</ul>
-<p>其中x64适用于64位系统，x86适用于32位系统。</p>
-<p>下面教程以5.7版本的MySQL安装为例，下载好后，将压缩包解压到合适位置，比如我当前的解压路径为：<code>E:\MySQL\mysql-5.7.37-winx64</code>，在该目录下新建my.ini文件，文件内容模板如下：</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[mysqld]</span></span><br><span class="line"><span class="comment"># 设置3306端口</span></span><br><span class="line"><span class="attr">port</span>=<span class="number">3306</span></span><br><span class="line"><span class="comment"># 设置mysql的安装目录   ----------是你的文件路径-------------</span></span><br><span class="line"><span class="attr">basedir</span>=E:\MySQL\mysql-<span class="number">5.7</span>.<span class="number">37</span>-winx64</span><br><span class="line"><span class="comment"># 设置mysql数据库的数据的存放目录  ---------是你的文件路径data文件夹自行创建</span></span><br><span class="line"><span class="attr">datadir</span>=E:\MySQL\mysql-<span class="number">5.7</span>.<span class="number">37</span>-winx64\data</span><br><span class="line"><span class="comment"># 允许最大连接数</span></span><br><span class="line"><span class="attr">max_connections</span>=<span class="number">200</span></span><br><span class="line"><span class="comment"># 允许连接失败的次数。</span></span><br><span class="line"><span class="attr">max_connect_errors</span>=<span class="number">10</span></span><br><span class="line"><span class="comment"># 服务端使用的字符集默认为utf8mb4</span></span><br><span class="line"><span class="attr">character-set-server</span>=utf8mb4</span><br><span class="line"><span class="comment"># 创建新表时将使用的默认存储引擎</span></span><br><span class="line"><span class="attr">default-storage-engine</span>=INNODB</span><br><span class="line"><span class="comment"># 默认使用“mysql_native_password”插件认证</span></span><br><span class="line"><span class="comment">#mysql_native_password</span></span><br><span class="line"><span class="attr">default_authentication_plugin</span>=mysql_native_password</span><br><span class="line"><span class="section">[mysql]</span></span><br><span class="line"><span class="comment"># 设置mysql客户端默认字符集</span></span><br><span class="line"><span class="attr">default-character-set</span>=utf8mb4</span><br><span class="line"><span class="section">[client]</span></span><br><span class="line"><span class="comment"># 设置mysql客户端连接服务端时默认使用的端口</span></span><br><span class="line"><span class="attr">port</span>=<span class="number">3306</span></span><br><span class="line"><span class="attr">default-character-set</span>=utf8mb4</span><br></pre></td></tr></table></figure>
-
-<p>文件中主要根据情况修改MySQL的安装目录路径basedir，以及MySQL的数据存放目录datadir。</p>
-<h3 id="2-初始化数据库"><a href="#2-初始化数据库" class="headerlink" title="2. 初始化数据库"></a>2. 初始化数据库</h3><p>使用管理员身份打开命令提示符，进入mysql安装目录下的bin目录，如<code>E:\MySQL\mysql-5.7.37-winx64\bin</code> ,执行命令<code>mysqld  --initialize --console</code> ,进行目录的初始化，此时安装目录下会自动建立配置文件中设置的数据存放目录，同时，命令行中可以看到生成的随机初始化密码，此密码用于首次登录MySQL，需要记住。如果没记住的话，在刚刚生成的MySQL安装目录下的data目录下的以.err为后缀的文件中可以找到MySQL的随机初始密码。</p>
-<h3 id="3-安装数据库"><a href="#3-安装数据库" class="headerlink" title="3. 安装数据库"></a>3. 安装数据库</h3><p>依然是在管理员权限下的MySQL目录的bin目录下，执行命令<code>mysqld  -install</code>，进行mysqld的安装。</p>
-<h3 id="4-启动数据库"><a href="#4-启动数据库" class="headerlink" title="4. 启动数据库"></a>4. 启动数据库</h3><p>使用命令行的管理员权限，在MySQL安装目录的bin目录下，使用命令<code>net start mysql</code> 来启动MySQL数据库。</p>
-<h3 id="5-登录MySQL数据库（注意，登录数据库后，所有命令最后要加分号’；‘）"><a href="#5-登录MySQL数据库（注意，登录数据库后，所有命令最后要加分号’；‘）" class="headerlink" title="5. 登录MySQL数据库（注意，登录数据库后，所有命令最后要加分号’；‘）"></a>5. 登录MySQL数据库（注意，登录数据库后，所有命令最后要加分号’；‘）</h3><ul>
-<li><p>登录命令格式 <code>mysql -u 用户名 -p 密码</code></p>
-<ul>
-<li>一般因为使用了管理员权限，用户名为root，-p后面的密码可以不写，在执行此命令后需要继续输入密码</li>
-</ul>
-</li>
-<li><p>如果是第一次登录：</p>
-<ul>
-<li><p>mysql5.6版本之后，在第一次初始化MySQL数据库的时候会生成随机生成的初始密码，该密码的获取可以参照上面第3条。</p>
-</li>
-<li><p><strong>修改密码</strong>：由于初始密码不方便记忆，第一次登录成功后需要设置自己熟悉的密码，修改密码方式与版本相关：</p>
-<ul>
-<li>5.7.6版本之前：<code>set password for &#39;用户名&#39;@&#39;localhost&#39; = password(&quot;新密码&quot;)</code></li>
-<li>5.7.6版本之后：<code>alter user &#39;用户名&#39;@&#39;localhost&#39;identified with mysql_native_password by &#39;新密码&#39; </code></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="6-配置系统环境变量"><a href="#6-配置系统环境变量" class="headerlink" title="6. 配置系统环境变量"></a>6. 配置系统环境变量</h3><p>在Windows中为MySQL配置系统环境变量，新增系统环境变量 <code>MYSQL_HOME</code>,变量值为msyqld 安装路径，例如我安装了5.7版本路径为<code>E:\MySQL\mysql-5.7.37-winx64</code> ,然后再系统环境变量中的path中添加路径：<code>%MYSQL_HOME%\bin</code></p>
-<h3 id="踩坑"><a href="#踩坑" class="headerlink" title="踩坑"></a>踩坑</h3><ul>
-<li>如果出现如“由于找不到msvcr120.dll，无法继续执行代码……”的问题，说明系统缺少vcredist ，此时需要在官网下载vcredist,arm架构系统选择arm版本，64位系统选择x64版本，32位系统选择x86版本，vcredist官网链接:<a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-CN/download/details.aspx?id=40784">vcredist官网</a>,下载安装后，运行该程序，点击修复按钮，修复完成即可正常安装MySQL</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2289,13 +2336,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">157k</span>
+    <span title="站点总字数">164k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:46</span>
+    <span title="站点阅读时长">4:59</span>
   </span>
 </div>
 <div class="busuanzi-count">

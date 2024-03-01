@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"hackertaizi.gitee.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="动态规划算法1. 动态规划简介1.1 动态规划定义 动态规划（Dynamic Programming）：简称 DP，是一种求解多阶段决策过程最优化问题的方法。在动态规划中，通过把原问题分解为相对简单的子问题，先求解子问题，再由子问题的解而得到原问题的解。  1.2 动态规划核心思想 把「原问题」分解为「若干个重叠的子问题」，每个子问题的求解过程都构成一个 「阶段」。在完成一个阶段的计算之后，动态规">
+<meta property="og:type" content="article">
+<meta property="og:title" content="太子的个人博客">
+<meta property="og:url" content="https://hackertaizi.gitee.io/%E5%85%B6%E4%BB%96/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:site_name" content="太子的个人博客">
+<meta property="og:description" content="动态规划算法1. 动态规划简介1.1 动态规划定义 动态规划（Dynamic Programming）：简称 DP，是一种求解多阶段决策过程最优化问题的方法。在动态规划中，通过把原问题分解为相对简单的子问题，先求解子问题，再由子问题的解而得到原问题的解。  1.2 动态规划核心思想 把「原问题」分解为「若干个重叠的子问题」，每个子问题的求解过程都构成一个 「阶段」。在完成一个阶段的计算之后，动态规">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://hackertaizi.gitee.io/%E5%85%B6%E4%BB%96/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%AE%97%E6%B3%95/b32177f4eafe4618265e5a16de555cdc.png">
+<meta property="article:published_time" content="2023-12-25T10:20:56.215Z">
+<meta property="article:modified_time" content="2023-12-26T07:35:08.418Z">
+<meta property="article:author" content="Taizi">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hackertaizi.gitee.io/%E5%85%B6%E4%BB%96/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%AE%97%E6%B3%95/b32177f4eafe4618265e5a16de555cdc.png">
+
+
+<link rel="canonical" href="https://hackertaizi.gitee.io/%E5%85%B6%E4%BB%96/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%AE%97%E6%B3%95/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hackertaizi.gitee.io/%E5%85%B6%E4%BB%96/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%AE%97%E6%B3%95/","path":"其他/动态规划算法/","title":""}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title> | 太子的个人博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">太子的个人博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Have a nice day !</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%AE%97%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">动态规划算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%AE%80%E4%BB%8B"><span class="nav-number">1.1.</span> <span class="nav-text">1. 动态规划简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 动态规划定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 动态规划核心思想</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-%E7%A4%BA%E4%BE%8B"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.3 示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%9A%84%E7%89%B9%E5%BE%81"><span class="nav-number">1.2.</span> <span class="nav-text">2. 动态规划的特征</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E6%9C%80%E4%BC%98%E5%AD%90%E7%BB%93%E6%9E%84%E6%80%A7%E8%B4%A8"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 最优子结构性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E9%87%8D%E5%8F%A0%E5%AD%90%E9%97%AE%E9%A2%98%E6%80%A7%E8%B4%A8"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 重叠子问题性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E6%97%A0%E5%90%8E%E6%95%88%E6%80%A7"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 无后效性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF"><span class="nav-number">1.3.</span> <span class="nav-text">3. 动态规划的基本思路</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Taizi</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/%E5%85%B6%E4%BB%96/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Taizi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | 太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-12-25 18:20:56" itemprop="dateCreated datePublished" datetime="2023-12-25T18:20:56+08:00">2023-12-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-12-26 15:35:08" itemprop="dateModified" datetime="2023-12-26T15:35:08+08:00">2023-12-26</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.8k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="动态规划算法"><a href="#动态规划算法" class="headerlink" title="动态规划算法"></a>动态规划算法</h1><h2 id="1-动态规划简介"><a href="#1-动态规划简介" class="headerlink" title="1. 动态规划简介"></a>1. 动态规划简介</h2><h3 id="1-1-动态规划定义"><a href="#1-1-动态规划定义" class="headerlink" title="1.1 动态规划定义"></a>1.1 动态规划定义</h3><blockquote>
+<p><strong>动态规划（Dynamic Programming）</strong>：简称 <strong>DP</strong>，是一种求解多阶段决策过程最优化问题的方法。在动态规划中，通过把原问题分解为相对简单的子问题，先求解子问题，再由子问题的解而得到原问题的解。</p>
+</blockquote>
+<h3 id="1-2-动态规划核心思想"><a href="#1-2-动态规划核心思想" class="headerlink" title="1.2 动态规划核心思想"></a>1.2 动态规划核心思想</h3><blockquote>
+<p>把「原问题」分解为「若干个重叠的子问题」，每个子问题的求解过程都构成一个 「阶段」。在完成一个阶段的计算之后，动态规划方法才会执行下一个阶段的计算。</p>
+<p>在求解子问题的过程中，按照「自顶向下的记忆化搜索方法」或者「自底向上的递推方法」求解出「子问题的解」，把结果存储在表格中，当需要再次求解此子问题时，直接从表格中查询该子问题的解，从而避免了大量的重复计算。</p>
+</blockquote>
+<h3 id="1-3-示例"><a href="#1-3-示例" class="headerlink" title="1.3 示例"></a>1.3 示例</h3><p>下面先来通过一个简单的例子来介绍一下什么是动态规划算法，然后再来讲解动态规划中的各种术语。</p>
+<blockquote>
+<p>斐波那契数列：数列由 f(0) &#x3D; 0，f(1) &#x3D; 1，f(2) &#x3D; 1 开始，后面的每一项数字都是前面两项数字的和。也就是：</p>
+<p>$f(n) &#x3D; f(n - 2) + f(n - 1)$</p>
+</blockquote>
+<p>可以将原问题$f(n) 递归划分为 $f(n-2) 和 $f(n-1) 两个子问题，递归过程如下图所示：<br><img src="/%E5%85%B6%E4%BB%96/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%AE%97%E6%B3%95/b32177f4eafe4618265e5a16de555cdc.png" alt="b32177f4eafe4618265e5a16de555cdc"></p>
+<p>从图中可以看出，传统递归算法计算时有重复计算问题，为了避免该问题，可以使用动态规划中的表格处理方法。</p>
+<p>此处使用自底向上的递推方法求解出子问题f(n-2) 和 f(n-1) 的解，然后把结果存储在表格中，供随后的计算查询使用，过程如下：</p>
+<ol>
+<li>定义一个数组dp，用于记录斐波那契数列中的值。</li>
+<li>初始化dp[0] &#x3D; 0, dp[1] &#x3D; 1</li>
+<li>根据斐波那契数列的递推公式f(n) &#x3D; f(n - 2) + f(n - 1)，从dp[2] 开始递推计算斐波那契数列的每个数，直到计算出dp[n]。</li>
+<li>返回dp[n]即可得到第n项斐波那契数。</li>
+</ol>
+<p>代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    def <span class="title function_">fib</span><span class="params">(self, n: <span class="type">int</span>)</span> -&gt; <span class="type">int</span>:</span><br><span class="line">        <span class="keyword">if</span> n == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">if</span> n == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        dp = [<span class="number">0</span> <span class="keyword">for</span> _ in <span class="title function_">range</span><span class="params">(n + <span class="number">1</span>)</span>]</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="number">0</span></span><br><span class="line">        dp[<span class="number">1</span>] = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i in <span class="title function_">range</span><span class="params">(<span class="number">2</span>, n + <span class="number">1</span>)</span>:</span><br><span class="line">            dp[i] = dp[i - <span class="number">2</span>] + dp[i - <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> dp[n]</span><br></pre></td></tr></table></figure>
+
+<p><strong>这种使用缓存(哈希表、集合或数组)保存计算结果，从而避免重复计算的方法，就是动态规划算法</strong></p>
+<h2 id="2-动态规划的特征"><a href="#2-动态规划的特征" class="headerlink" title="2. 动态规划的特征"></a>2. 动态规划的特征</h2><p>能够使用动态规划方法解决的问题必须满足一下三个特征：</p>
+<ol>
+<li>最优子结构性质</li>
+<li>重叠子问题性质</li>
+<li>无后效性</li>
+</ol>
+<h3 id="2-1-最优子结构性质"><a href="#2-1-最优子结构性质" class="headerlink" title="2.1 最优子结构性质"></a>2.1 最优子结构性质</h3><blockquote>
+<p><strong>最优子结构</strong>：指的是一个问题的最优解包含其子问题的最优解。</p>
+</blockquote>
+<p>就是说原问题的最优解可以分解成求解子问题的最优解。</p>
+<h3 id="2-2-重叠子问题性质"><a href="#2-2-重叠子问题性质" class="headerlink" title="2.2 重叠子问题性质"></a>2.2 重叠子问题性质</h3><blockquote>
+<p><strong>重叠子问题性质</strong>：指的是在求解子问题的过程中，有大量的子问题是重复的，一个子问题在下一阶段的决策中可能会被多次用到。如果有大量重复的子问题，那么只需要对其求解一次，然后用表格将结果存储下来，以后使用时可以直接查询，不需要再次求解。</p>
+</blockquote>
+<h3 id="2-3-无后效性"><a href="#2-3-无后效性" class="headerlink" title="2.3 无后效性"></a>2.3 无后效性</h3><blockquote>
+<p><strong>无后效性</strong>：指的是子问题的解（状态值）只与之前阶段有关，而与后面阶段无关。当前阶段的若干状态值一旦确定，就不再改变，不会再受到后续阶段决策的影响。</p>
+</blockquote>
+<p>也就是说，<strong>一旦某一个子问题的求解结果确定以后，就不会再被修改</strong>。</p>
+<p>如果一个问题具有「后效性」，则可能需要先将其转化或者逆向求解来消除后效性，然后才可以使用动态规划算法。</p>
+<h2 id="3-动态规划的基本思路"><a href="#3-动态规划的基本思路" class="headerlink" title="3. 动态规划的基本思路"></a>3. 动态规划的基本思路</h2><ol>
+<li><p>划分阶段：将原问题按顺序(时间、空间或其他顺序)分解为若干个相互联系的阶段。划分后的阶段一定是有序的或可排序的，否则问题无解。(这里的「阶段」指的是⼦问题的求解过程。每个⼦问题的求解过程都构成⼀个「阶段」，在完成前⼀阶段的求解后才会进⾏后⼀阶段的求解)</p>
+</li>
+<li><p>定义状态：将原问题划分为若干个子问题，定义状态表示问题的不同阶段和状态。</p>
+</li>
+<li><p>定义状态转移方程：根据子问题之间的关系，定义状态转移方程，表示从一个状态转移到另一个状态的决策过程。</p>
+</li>
+<li><p>确定边界条件：确定问题的边界条件，即最小子问题的解。</p>
+</li>
+<li><p>求解问题：根据状态转移方程和边界条件，求解问题的最优解。</p>
+</li>
+</ol>
+<p>动态规划的核心思想是将原问题划分为若干个子问题，通过求解子问题的最优解来求解原问题的最优解。在求解子问题的过程中，动态规划会保存已经求解过的子问题的解，避免重复计算，从而提高算法的效率。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/ETL/%E5%B8%B8%E7%94%A8%E7%9A%84%E4%B8%9A%E5%8A%A1%E5%BC%80%E5%8F%91%E9%80%BB%E8%BE%91%E6%B1%87%E6%80%BB/" rel="prev" title="常用的业务开发逻辑汇总">
+                  <i class="fa fa-angle-left"></i> 常用的业务开发逻辑汇总
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/ETL/ETL%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/" rel="next" title="">
+                   <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Powered by Hackertaizi</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">168k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">5:05</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

@@ -147,7 +147,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-count">49</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -175,6 +175,276 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/ETL/ETL%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Taizi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/ETL/ETL%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-02-26 18:45:31" itemprop="dateCreated datePublished" datetime="2024-02-26T18:45:31+08:00">2024-02-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-03-01 19:01:29" itemprop="dateModified" datetime="2024-03-01T19:01:29+08:00">2024-03-01</time>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.7k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="ETL开发经验"><a href="#ETL开发经验" class="headerlink" title="ETL开发经验"></a>ETL开发经验</h1><h2 id="表结构设计"><a href="#表结构设计" class="headerlink" title="表结构设计"></a>表结构设计</h2><h2 id="关于同环比的计算"><a href="#关于同环比的计算" class="headerlink" title="关于同环比的计算"></a>关于同环比的计算</h2><h3 id="计算公式："><a href="#计算公式：" class="headerlink" title="计算公式："></a>计算公式：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">一般情况下，如果业务是正向的，即希望数据量越来越高(希望本期高于同期)，同环比计算公式如下（网上的公式都是这样的）：</span><br><span class="line">	同比：同比 = (本期量-同期量) / 同期量 * 100%</span><br><span class="line">	环比：环比 = (本期量-环比周期量) / 环比周期量 * 100%</span><br><span class="line">	</span><br><span class="line">在某些特殊情况下，例如业务上统计量希望越低越好(希望本期低于同期)，此时同环比计算可能会希望计算结果的正负，与一般情况下相反：</span><br><span class="line">例如：</span><br><span class="line">	如果是销售量，我们希望越高越好，那么如果采用上面的公式，当本期高于同期时，同比是一个正数，这正式我们需要的。</span><br><span class="line">	如果是损失量，我们希望越低越好，当本期高于同期时，从业务上来说是一种不好的结果，我们希望得到一个负数，此时同环比公式需要调换一下分子的减数被减数位置，使得到的比值绝对值不变，而符号相反：</span><br><span class="line">	特殊情况下的同比：同比 = (同期量-本期量) / 同期量 * 100%</span><br><span class="line">	特殊情况下的同比：环比 = (环比周期量-本期量) / 环比周期量 * 100%</span><br></pre></td></tr></table></figure>
+
+<h3 id="设计思路："><a href="#设计思路：" class="headerlink" title="设计思路："></a>设计思路：</h3><ul>
+<li><strong>当报表端筛选器都是单选时</strong>，即维度不会出现组合的情况，同一维度可以唯一确定一条数据，前端报表不需要做聚合，这<strong>种情况下可以在数据端提前将同环比算好，在报表端无需多余操作，直接展示即可。</strong></li>
+<li><strong>当报表端筛选器有多选的情况</strong>，此时维度出现组合情况，即前端报表展示结果可能是多条数据聚合计算的结果，<strong>这种情况下不能提前计算同环比</strong>，因为比值无法聚合（分母不同，加和出来聚合结果没有意义），<strong>此时只需要把本期量、同期量、环比周期量等数据算好，比值在报表端进行动态计算。</strong></li>
+</ul>
+<h3 id="代码-x2F-伪代码示例"><a href="#代码-x2F-伪代码示例" class="headerlink" title="代码&#x2F;伪代码示例"></a>代码&#x2F;伪代码示例</h3><p>我们以业务是正向的为例，即上面计算公式中的第一套公式为例：</p>
+<blockquote>
+<p>同比：同比 &#x3D; (本期量-同期量) &#x2F; 同期量 * 100%<br>环比：环比 &#x3D; (本期量-环比周期量) &#x2F; 环比周期量 * 100%</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">	<span class="keyword">CASE</span></span><br><span class="line">		<span class="keyword">WHEN</span> ISNULL(同期量或环比周期量) <span class="keyword">THEN</span> <span class="keyword">NULL</span>  <span class="comment">--分母不为空</span></span><br><span class="line">		<span class="keyword">WHEN</span> 同期量或环比周期量 <span class="operator">=</span> <span class="number">0</span> <span class="keyword">THEN</span> <span class="keyword">NULL</span>  <span class="comment">--分母不为零</span></span><br><span class="line">		<span class="keyword">ELSE</span> (同期量或环比周期量 <span class="operator">-</span> 本期量) <span class="operator">/</span> 同期量或环比周期量   <span class="comment">--套公式</span></span><br><span class="line">	<span class="keyword">END</span> <span class="keyword">AS</span> 同比或环比</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="关于缺失值的处理"><a href="#关于缺失值的处理" class="headerlink" title="关于缺失值的处理"></a>关于缺失值的处理</h2><h3 id="缺失值的概念"><a href="#缺失值的概念" class="headerlink" title="缺失值的概念"></a>缺失值的概念</h3><p>通常情况，若有不可见字符的数据、或者是为了表示数据缺失而使用短横线、斜线等各种符号，这些数据我们统称为缺失值。</p>
+<h3 id="缺失值统一"><a href="#缺失值统一" class="headerlink" title="缺失值统一"></a>缺失值统一</h3><p>一般情况下，从ODS贴源层就要对缺失值进行处理了，这是数据清洗非常重要的一环。</p>
+<p>缺失值处理的第一步就是要对缺失值进行统一，这里<strong>推荐将所有缺失值统一成NULL</strong>，因为数据库对于NULL值支持很多操作，便于后续处理。</p>
+<p>一般情况下，我们只需要考虑将空字符串统一为NULL:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT IF(column_name = &#x27;&#x27;, NULL, column_name)</span><br></pre></td></tr></table></figure>
+
+<p>如果有一些特殊符号表示的缺失值，例如空字符串、短横线等，也可以使用IF直接处理：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT IF(column_name IN (&#x27;&#x27;, &#x27;-&#x27;), NULL, column_name)</span><br></pre></td></tr></table></figure>
+
+<p>如果有一些不可见字符，则需要使用正则表达式处理(这里的正则表达式表示ASCII中的1~37号字符):</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT IF(regexp_replace(column_name, &#x27;[\000-\037]+&#x27;, &#x27;&#x27;) = &#x27;&#x27;, NULL, column_name) </span><br></pre></td></tr></table></figure>
+
+<p>各种其他缺失值情况需要灵活处理及验证。</p>
+<h3 id="缺失值填充"><a href="#缺失值填充" class="headerlink" title="缺失值填充"></a>缺失值填充</h3><p>我们<strong>建议在缺失值统一为NULL后，再将所有缺失值约定一个特定值进行填充</strong>，例如<code>其他</code>、<code>unknown</code>等等，只要是一个不影响业务数据，且含义明确的值。由于缺失值已经统一为NULL，填充操作可以使用coalesce函数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT COALESCE(column_name, &#x27;其他&#x27;) AS column_name   -- 缺失值填充为“其他”</span><br></pre></td></tr></table></figure>
+
+<h3 id="缺失值场景"><a href="#缺失值场景" class="headerlink" title="缺失值场景"></a>缺失值场景</h3><ul>
+<li>表连接的连接字段中如果存在缺失值(null)，则存在缺失值的数据不会与其他表进行关联，<strong>强烈建议在关联前检查关联字段的缺失值情况</strong></li>
+<li>group by 聚合分组的字段中如果存在缺失值(null)，则null值也会作为一种数据进行分组</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/%E5%85%B6%E4%BB%96/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Taizi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/%E5%85%B6%E4%BB%96/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-12-25 18:20:56" itemprop="dateCreated datePublished" datetime="2023-12-25T18:20:56+08:00">2023-12-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-12-26 15:35:08" itemprop="dateModified" datetime="2023-12-26T15:35:08+08:00">2023-12-26</time>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.8k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="动态规划算法"><a href="#动态规划算法" class="headerlink" title="动态规划算法"></a>动态规划算法</h1><h2 id="1-动态规划简介"><a href="#1-动态规划简介" class="headerlink" title="1. 动态规划简介"></a>1. 动态规划简介</h2><h3 id="1-1-动态规划定义"><a href="#1-1-动态规划定义" class="headerlink" title="1.1 动态规划定义"></a>1.1 动态规划定义</h3><blockquote>
+<p><strong>动态规划（Dynamic Programming）</strong>：简称 <strong>DP</strong>，是一种求解多阶段决策过程最优化问题的方法。在动态规划中，通过把原问题分解为相对简单的子问题，先求解子问题，再由子问题的解而得到原问题的解。</p>
+</blockquote>
+<h3 id="1-2-动态规划核心思想"><a href="#1-2-动态规划核心思想" class="headerlink" title="1.2 动态规划核心思想"></a>1.2 动态规划核心思想</h3><blockquote>
+<p>把「原问题」分解为「若干个重叠的子问题」，每个子问题的求解过程都构成一个 「阶段」。在完成一个阶段的计算之后，动态规划方法才会执行下一个阶段的计算。</p>
+<p>在求解子问题的过程中，按照「自顶向下的记忆化搜索方法」或者「自底向上的递推方法」求解出「子问题的解」，把结果存储在表格中，当需要再次求解此子问题时，直接从表格中查询该子问题的解，从而避免了大量的重复计算。</p>
+</blockquote>
+<h3 id="1-3-示例"><a href="#1-3-示例" class="headerlink" title="1.3 示例"></a>1.3 示例</h3><p>下面先来通过一个简单的例子来介绍一下什么是动态规划算法，然后再来讲解动态规划中的各种术语。</p>
+<blockquote>
+<p>斐波那契数列：数列由 f(0) &#x3D; 0，f(1) &#x3D; 1，f(2) &#x3D; 1 开始，后面的每一项数字都是前面两项数字的和。也就是：</p>
+<p>$f(n) &#x3D; f(n - 2) + f(n - 1)$</p>
+</blockquote>
+<p>可以将原问题$f(n) 递归划分为 $f(n-2) 和 $f(n-1) 两个子问题，递归过程如下图所示：<br><img src="/%E5%85%B6%E4%BB%96/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%AE%97%E6%B3%95/b32177f4eafe4618265e5a16de555cdc.png" alt="b32177f4eafe4618265e5a16de555cdc"></p>
+<p>从图中可以看出，传统递归算法计算时有重复计算问题，为了避免该问题，可以使用动态规划中的表格处理方法。</p>
+<p>此处使用自底向上的递推方法求解出子问题f(n-2) 和 f(n-1) 的解，然后把结果存储在表格中，供随后的计算查询使用，过程如下：</p>
+<ol>
+<li>定义一个数组dp，用于记录斐波那契数列中的值。</li>
+<li>初始化dp[0] &#x3D; 0, dp[1] &#x3D; 1</li>
+<li>根据斐波那契数列的递推公式f(n) &#x3D; f(n - 2) + f(n - 1)，从dp[2] 开始递推计算斐波那契数列的每个数，直到计算出dp[n]。</li>
+<li>返回dp[n]即可得到第n项斐波那契数。</li>
+</ol>
+<p>代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    def <span class="title function_">fib</span><span class="params">(self, n: <span class="type">int</span>)</span> -&gt; <span class="type">int</span>:</span><br><span class="line">        <span class="keyword">if</span> n == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">if</span> n == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        dp = [<span class="number">0</span> <span class="keyword">for</span> _ in <span class="title function_">range</span><span class="params">(n + <span class="number">1</span>)</span>]</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="number">0</span></span><br><span class="line">        dp[<span class="number">1</span>] = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i in <span class="title function_">range</span><span class="params">(<span class="number">2</span>, n + <span class="number">1</span>)</span>:</span><br><span class="line">            dp[i] = dp[i - <span class="number">2</span>] + dp[i - <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> dp[n]</span><br></pre></td></tr></table></figure>
+
+<p><strong>这种使用缓存(哈希表、集合或数组)保存计算结果，从而避免重复计算的方法，就是动态规划算法</strong></p>
+<h2 id="2-动态规划的特征"><a href="#2-动态规划的特征" class="headerlink" title="2. 动态规划的特征"></a>2. 动态规划的特征</h2><p>能够使用动态规划方法解决的问题必须满足一下三个特征：</p>
+<ol>
+<li>最优子结构性质</li>
+<li>重叠子问题性质</li>
+<li>无后效性</li>
+</ol>
+<h3 id="2-1-最优子结构性质"><a href="#2-1-最优子结构性质" class="headerlink" title="2.1 最优子结构性质"></a>2.1 最优子结构性质</h3><blockquote>
+<p><strong>最优子结构</strong>：指的是一个问题的最优解包含其子问题的最优解。</p>
+</blockquote>
+<p>就是说原问题的最优解可以分解成求解子问题的最优解。</p>
+<h3 id="2-2-重叠子问题性质"><a href="#2-2-重叠子问题性质" class="headerlink" title="2.2 重叠子问题性质"></a>2.2 重叠子问题性质</h3><blockquote>
+<p><strong>重叠子问题性质</strong>：指的是在求解子问题的过程中，有大量的子问题是重复的，一个子问题在下一阶段的决策中可能会被多次用到。如果有大量重复的子问题，那么只需要对其求解一次，然后用表格将结果存储下来，以后使用时可以直接查询，不需要再次求解。</p>
+</blockquote>
+<h3 id="2-3-无后效性"><a href="#2-3-无后效性" class="headerlink" title="2.3 无后效性"></a>2.3 无后效性</h3><blockquote>
+<p><strong>无后效性</strong>：指的是子问题的解（状态值）只与之前阶段有关，而与后面阶段无关。当前阶段的若干状态值一旦确定，就不再改变，不会再受到后续阶段决策的影响。</p>
+</blockquote>
+<p>也就是说，<strong>一旦某一个子问题的求解结果确定以后，就不会再被修改</strong>。</p>
+<p>如果一个问题具有「后效性」，则可能需要先将其转化或者逆向求解来消除后效性，然后才可以使用动态规划算法。</p>
+<h2 id="3-动态规划的基本思路"><a href="#3-动态规划的基本思路" class="headerlink" title="3. 动态规划的基本思路"></a>3. 动态规划的基本思路</h2><ol>
+<li><p>划分阶段：将原问题按顺序(时间、空间或其他顺序)分解为若干个相互联系的阶段。划分后的阶段一定是有序的或可排序的，否则问题无解。(这里的「阶段」指的是⼦问题的求解过程。每个⼦问题的求解过程都构成⼀个「阶段」，在完成前⼀阶段的求解后才会进⾏后⼀阶段的求解)</p>
+</li>
+<li><p>定义状态：将原问题划分为若干个子问题，定义状态表示问题的不同阶段和状态。</p>
+</li>
+<li><p>定义状态转移方程：根据子问题之间的关系，定义状态转移方程，表示从一个状态转移到另一个状态的决策过程。</p>
+</li>
+<li><p>确定边界条件：确定问题的边界条件，即最小子问题的解。</p>
+</li>
+<li><p>求解问题：根据状态转移方程和边界条件，求解问题的最优解。</p>
+</li>
+</ol>
+<p>动态规划的核心思想是将原问题划分为若干个子问题，通过求解子问题的最优解来求解原问题的最优解。在求解子问题的过程中，动态规划会保存已经求解过的子问题的解，避免重复计算，从而提高算法的效率。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1732,587 +2002,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Markdown/Markdown%20%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Taizi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/Markdown/Markdown%20%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" class="post-title-link" itemprop="url">Markdown基本语法</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-09-28 15:03:45" itemprop="dateModified" datetime="2023-09-28T15:03:45+08:00">2023-09-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Markdown/" itemprop="url" rel="index"><span itemprop="name">Markdown</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>8k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>15 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Markdown-基本语法"><a href="#Markdown-基本语法" class="headerlink" title="Markdown 基本语法"></a>Markdown 基本语法</h1><h2 id="一、标题"><a href="#一、标题" class="headerlink" title="一、标题"></a>一、标题</h2><h3 id="1、使用-x3D-和-标记一级和二级标题"><a href="#1、使用-x3D-和-标记一级和二级标题" class="headerlink" title="1、使用 &#x3D; 和 - 标记一级和二级标题"></a>1、使用 &#x3D; 和 - 标记一级和二级标题</h3><p>例如 ：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">我展示的是一级标题</span></span><br><span class="line"><span class="section">===============</span></span><br><span class="line"><span class="section">我展示的是二级标题</span></span><br><span class="line"><span class="section">---------------</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="2、使用-号标记"><a href="#2、使用-号标记" class="headerlink" title="2、使用#号标记"></a>2、使用#号标记</h3><p>例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 一级标题</span><br><span class="line">## 二级标题</span><br><span class="line">### 三级标题</span><br><span class="line">#### 四级标题</span><br><span class="line">##### 五级标题</span><br><span class="line">###### 六级标题</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="二、段落"><a href="#二、段落" class="headerlink" title="二、段落"></a>二、段落</h2><h3 id="1、Markdown-段落没有特殊的格式，直接编写文字就好，段落的换行是使用两个以上空格加上回车-shift-回车-。当然也可以在段落后面使用一个空行来表示重新开始一个段落。"><a href="#1、Markdown-段落没有特殊的格式，直接编写文字就好，段落的换行是使用两个以上空格加上回车-shift-回车-。当然也可以在段落后面使用一个空行来表示重新开始一个段落。" class="headerlink" title="1、Markdown 段落没有特殊的格式，直接编写文字就好，段落的换行是使用两个以上空格加上回车(shift+回车)。当然也可以在段落后面使用一个空行来表示重新开始一个段落。"></a>1、Markdown 段落没有特殊的格式，直接编写文字就好，段落的换行是使用两个以上空格加上回车(shift+回车)。当然也可以在段落后面使用一个空行来表示重新开始一个段落。</h3><p>例如：</p>
-<p>第一行   </p>
-<p>第二行</p>
-<h1 id="三、字体"><a href="#三、字体" class="headerlink" title="三、字体"></a>三、字体</h1><h2 id="1、Markdown-可以使用以下几种字体："><a href="#1、Markdown-可以使用以下几种字体：" class="headerlink" title="1、Markdown 可以使用以下几种字体："></a>1、Markdown 可以使用以下几种字体：</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">*斜体文本*</span><br><span class="line">_斜体文本_</span><br><span class="line">**粗体文本**</span><br><span class="line">__粗体文本__</span><br><span class="line">***粗斜体文本***</span><br><span class="line">___粗斜体文本___</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="四、线"><a href="#四、线" class="headerlink" title="四、线"></a>四、线</h1><h2 id="1、分割线"><a href="#1、分割线" class="headerlink" title="1、分割线"></a>1、分割线</h2><p>你可以在一行中用三个以上的星号、减号、底线来建立一个分隔线，行内不能有其他东西。你也可以在星号或是减号中间插入空格。下面每种写法都可以建立分隔线：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">***</span><br><span class="line"></span><br><span class="line">* * *</span><br><span class="line"></span><br><span class="line">*****</span><br><span class="line"></span><br><span class="line">- - -</span><br><span class="line"></span><br><span class="line">----------</span><br></pre></td></tr></table></figure>
-
-<h2 id="2、删除线"><a href="#2、删除线" class="headerlink" title="2、删除线"></a>2、删除线</h2><p>如果段落上的文字要添加删除线，只需要在文字的两端加上两个波浪线 ~~ 即可，实例如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">~~RUNOOB.COM~~</span><br><span class="line">~~GOOGLE.COM~~</span><br><span class="line">~~BAIDU.COM~~</span><br></pre></td></tr></table></figure>
-
-<h2 id="3、下划线"><a href="#3、下划线" class="headerlink" title="3、下划线"></a>3、下划线</h2><p>下划线可以通过 HTML 的 <u> 标签来实现：</u></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;u&gt;带下划线文本&lt;/u&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="4、脚注"><a href="#4、脚注" class="headerlink" title="4、脚注"></a>4、脚注</h2><p>脚注是对文本的补充说明。</p>
-<p>Markdown 脚注的格式如下:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[^要注明的文本]</span><br></pre></td></tr></table></figure>
-
-<p>以下实例演示了脚注的用法：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">创建脚注格式类似这样 [^RUNOOB]。</span><br><span class="line"></span><br><span class="line">[^RUNOOB]: 菜鸟教程 -- 学的不仅是技术，更是梦想！！！</span><br></pre></td></tr></table></figure>
-
-<p>演示效果如下：</p>
-<p>创建脚注格式类似这样 [^RUNOOB]。</p>
-<p>[^RUNOOB]: 菜鸟教程 – 学的不仅是技术，更是梦想！！！</p>
-<h1 id="五、列表"><a href="#五、列表" class="headerlink" title="五、列表"></a>五、列表</h1><h1 id="Markdown-列表"><a href="#Markdown-列表" class="headerlink" title="Markdown 列表"></a>Markdown 列表</h1><p>Markdown 支持有序列表和无序列表。</p>
-<p>无序列表使用星号(*)、加号(+)或是减号(-)作为列表标记，这些标记后面要添加一个空格，然后再填写内容：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">* 第一项</span><br><span class="line">* 第二项</span><br><span class="line">* 第三项</span><br><span class="line"></span><br><span class="line">+ 第一项</span><br><span class="line">+ 第二项</span><br><span class="line">+ 第三项</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">- 第一项</span><br><span class="line">- 第二项</span><br><span class="line">- 第三项</span><br></pre></td></tr></table></figure>
-
-<p>演示效果如下：</p>
-<ul>
-<li>第一项</li>
-<li>第二项</li>
-<li>第三项</li>
-</ul>
-<ul>
-<li>第一项</li>
-<li>第二项</li>
-<li>第三项</li>
-</ul>
-<ul>
-<li>第一项</li>
-<li>第二项</li>
-<li>第三项</li>
-</ul>
-<p>有序列表使用数字并加上 . 号来表示，如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. 第一项</span><br><span class="line">2. 第二项</span><br><span class="line">3. 第三项</span><br></pre></td></tr></table></figure>
-
-<p>显示结果如下：</p>
-<ol>
-<li>第一项</li>
-<li>第二项</li>
-<li>第三项</li>
-</ol>
-<h3 id="列表嵌套"><a href="#列表嵌套" class="headerlink" title="列表嵌套"></a>列表嵌套</h3><p>列表嵌套只需在子列表中的选项前面添加四个空格即可：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1. 第一项：</span><br><span class="line">    - 第一项嵌套的第一个元素</span><br><span class="line">    - 第一项嵌套的第二个元素</span><br><span class="line">2. 第二项：</span><br><span class="line">    - 第二项嵌套的第一个元素</span><br><span class="line">    - 第二项嵌套的第二个元素</span><br></pre></td></tr></table></figure>
-
-<p>显示结果如下：</p>
-<ol>
-<li>第一项：<ul>
-<li>第一项嵌套的第一个元素</li>
-<li>第一项嵌套的第二个元素</li>
-</ul>
-</li>
-<li>第二项：<ul>
-<li>第二项嵌套的第一个元素</li>
-<li>第二项嵌套的第二个元素</li>
-</ul>
-</li>
-</ol>
-<h1 id="六、区块"><a href="#六、区块" class="headerlink" title="六、区块"></a>六、区块</h1><h1 id="Markdown-区块"><a href="#Markdown-区块" class="headerlink" title="Markdown 区块"></a>Markdown 区块</h1><p>Markdown 区块引用是在段落开头使用 &gt; 符号 ，然后后面紧跟一个<strong>空格</strong>符号：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; 区块引用</span><br><span class="line">&gt; 菜鸟教程</span><br><span class="line">&gt; 学的不仅是技术更是梦想</span><br></pre></td></tr></table></figure>
-
-<p>显示结果如下：</p>
-<blockquote>
-<p>区块引用<br>菜鸟教程<br>学的不仅是技术更是梦想</p>
-</blockquote>
-<p>另外区块是可以嵌套的，一个 &gt; 符号是最外层，两个 &gt; 符号是第一层嵌套，以此类推：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; 最外层</span><br><span class="line">&gt; &gt; 第一层嵌套</span><br><span class="line">&gt; &gt; &gt; 第二层嵌套</span><br></pre></td></tr></table></figure>
-
-<p>显示结果如下：</p>
-<blockquote>
-<p>最外层</p>
-<blockquote>
-<p>第一层嵌套</p>
-<blockquote>
-<p>第二层嵌套</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<h3 id="区块中使用列表"><a href="#区块中使用列表" class="headerlink" title="区块中使用列表"></a>区块中使用列表</h3><p>区块中使用列表实例如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; 区块中使用列表</span><br><span class="line">&gt; 1. 第一项</span><br><span class="line">&gt; 2. 第二项</span><br><span class="line">&gt; + 第一项</span><br><span class="line">&gt; + 第二项</span><br><span class="line">&gt; + 第三项</span><br></pre></td></tr></table></figure>
-
-<p>显示结果如下：</p>
-<blockquote>
-<p>区块中使用列表</p>
-<ol>
-<li>第一项</li>
-<li>第二项</li>
-</ol>
-<ul>
-<li>第一项</li>
-<li>第二项</li>
-<li>第三项</li>
-</ul>
-</blockquote>
-<h3 id="列表中使用区块"><a href="#列表中使用区块" class="headerlink" title="列表中使用区块"></a>列表中使用区块</h3><p>如果要在列表项目内放进区块，那么就需要在 &gt; 前添加四个空格的缩进。</p>
-<p>列表中使用区块实例如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">* 第一项</span><br><span class="line">    &gt; 菜鸟教程</span><br><span class="line">    &gt; 学的不仅是技术更是梦想</span><br><span class="line">* 第二项</span><br></pre></td></tr></table></figure>
-
-<p>显示结果如下：</p>
-<ul>
-<li>第一项<blockquote>
-<p>菜鸟教程<br>学的不仅是技术更是梦想</p>
-</blockquote>
-</li>
-<li>第二项</li>
-</ul>
-<h1 id="七、代码"><a href="#七、代码" class="headerlink" title="七、代码"></a>七、代码</h1><h1 id="Markdown-代码"><a href="#Markdown-代码" class="headerlink" title="Markdown 代码"></a>Markdown 代码</h1><p>如果是段落上的一个函数或片段的代码可以用反引号把它包起来（&#96;），例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`printf()` 函数</span><br></pre></td></tr></table></figure>
-
-<p>显示结果如下:</p>
-<p><code>printf()</code> 函数</p>
-<h3 id="代码区块"><a href="#代码区块" class="headerlink" title="代码区块"></a>代码区块</h3><p>代码区块使用 <strong>4 个空格</strong>或者一个<strong>制表符（Tab 键）</strong>。</p>
-<p>实例如下：</p>
-<p>​	#include <iostream></iostream></p>
-<p>​    using namespace std;</p>
-<p>​    int main()</p>
-<p>​    {</p>
-<p>​    	return 0</p>
-<p>​    }</p>
-<p>显示结果如下:	</p>
-<p>​    #include <iostream></iostream></p>
-<p>​    using namespace std;</p>
-<p>​    int main()</p>
-<p>​    {</p>
-<p>​    	return 0</p>
-<p>​    }</p>
-<p>你也可以用 &#96;&#96;&#96; 包裹一段代码，并指定一种语言（也可以不指定）：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">```javascript</span><br><span class="line">$(document).ready(function () &#123;</span><br><span class="line">    alert(&#x27;RUNOOB&#x27;);</span><br><span class="line">&#125;);</span><br><span class="line">```</span><br></pre></td></tr></table></figure>
-
-<p>显示结果如下：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="variable language_">document</span>).<span class="title function_">ready</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title function_">alert</span>(<span class="string">&#x27;RUNOOB&#x27;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="八、链接"><a href="#八、链接" class="headerlink" title="八、链接"></a>八、链接</h1><h1 id="Markdown-链接"><a href="#Markdown-链接" class="headerlink" title="Markdown 链接"></a>Markdown 链接</h1><p>链接使用方法如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[链接名称](链接地址)</span><br><span class="line"></span><br><span class="line">或者</span><br><span class="line"></span><br><span class="line">&lt;链接地址&gt;</span><br></pre></td></tr></table></figure>
-
-<p>例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这是一个链接 [菜鸟教程](https://www.runoob.com)</span><br></pre></td></tr></table></figure>
-
-<p>显示结果如下：</p>
-<p>这是一个链接 <a target="_blank" rel="noopener" href="https://www.runoob.com/">菜鸟教程</a></p>
-<p>直接使用链接地址：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;https://www.runoob.com&gt;</span><br></pre></td></tr></table></figure>
-
-<p>显示结果如下：</p>
-<p><a target="_blank" rel="noopener" href="https://www.runoob.com/">https://www.runoob.com</a></p>
-<h3 id="高级链接"><a href="#高级链接" class="headerlink" title="高级链接"></a>高级链接</h3><p>我们可以通过变量来设置一个链接，变量赋值在文档末尾进行：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">这个链接用 1 作为网址变量 [Google][1]</span><br><span class="line">这个链接用 runoob 作为网址变量 [Runoob][runoob]</span><br><span class="line">然后在文档的结尾为变量赋值（网址）</span><br><span class="line"></span><br><span class="line">  [1]: http://www.google.com/</span><br><span class="line">  [runoob]: http://www.runoob.com/</span><br></pre></td></tr></table></figure>
-
-<p>显示结果如下：</p>
-<p>这个链接用 1 作为网址变量 <a target="_blank" rel="noopener" href="http://www.google.com/">Google</a><br>这个链接用 runoob 作为网址变量 <a target="_blank" rel="noopener" href="http://www.runoob.com/">Runoob</a><br>然后在文档的结尾为变量赋值（网址）</p>
-<h1 id="九、图片"><a href="#九、图片" class="headerlink" title="九、图片"></a>九、图片</h1><h1 id="Markdown-图片"><a href="#Markdown-图片" class="headerlink" title="Markdown 图片"></a>Markdown 图片</h1><p>Markdown 图片语法格式如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">![alt 属性文本](图片地址)</span><br><span class="line"></span><br><span class="line">![alt 属性文本](图片地址 &quot;可选标题&quot;)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>开头一个感叹号 !</li>
-<li>接着一个方括号，里面放上图片的替代文字</li>
-<li>接着一个普通括号，里面放上图片的网址，最后还可以用引号包住并加上选择性的 ‘title’ 属性的文字。</li>
-</ul>
-<p>使用实例：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">![RUNOOB 图标](http://static.runoob.com/images/runoob-logo.png)</span><br><span class="line"></span><br><span class="line">![RUNOOB 图标](http://static.runoob.com/images/runoob-logo.png &quot;RUNOOB&quot;)</span><br></pre></td></tr></table></figure>
-
-<p>显示结果如下：</p>
-<p><img src="http://static.runoob.com/images/runoob-logo.png" alt="RUNOOB 图标"></p>
-<p><img src="http://static.runoob.com/images/runoob-logo.png" alt="RUNOOB 图标" title="RUNOOB"></p>
-<p>当然，你也可以像网址那样对图片网址使用变量:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">这个链接用 1 作为网址变量 [RUNOOB][1].</span><br><span class="line">然后在文档的结尾为变量赋值（网址）</span><br><span class="line"></span><br><span class="line">[1]: http://static.runoob.com/images/runoob-logo.png</span><br></pre></td></tr></table></figure>
-
-<p>显示结果如下：</p>
-<p>这个链接用 1 作为网址变量 <a target="_blank" rel="noopener" href="http://www.google.com/">RUNOOB</a>.<br>然后在文档的结尾为变量赋值（网址）</p>
-<p>Markdown 还没有办法指定图片的高度与宽度，如果你需要的话，你可以使用普通的 <img> 标签。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;http://static.runoob.com/images/runoob-logo.png&quot; width=&quot;50%&quot;&gt;</span><br></pre></td></tr></table></figure>
-
-<p>显示结果如下：</p>
-<img src="http://static.runoob.com/images/runoob-logo.png" width="50%">
-
-
-
-<h1 id="十、表格"><a href="#十、表格" class="headerlink" title="十、表格"></a>十、表格</h1><h1 id="Markdown-表格"><a href="#Markdown-表格" class="headerlink" title="Markdown 表格"></a>Markdown 表格</h1><p>Markdown 制作表格使用 | 来分隔不同的单元格，使用 - 来分隔表头和其他行。</p>
-<p>语法格式如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">|  表头   | 表头  |</span><br><span class="line">|  ----  | ----  |</span><br><span class="line">| 单元格  | 单元格 |</span><br><span class="line">| 单元格  | 单元格 |</span><br></pre></td></tr></table></figure>
-
-<p>以上代码显示结果如下：</p>
-<table>
-<thead>
-<tr>
-<th>表头</th>
-<th>表头</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>单元格</td>
-<td>单元格</td>
-</tr>
-<tr>
-<td>单元格</td>
-<td>单元格</td>
-</tr>
-</tbody></table>
-<p><strong>我们可以设置表格的对齐方式：</strong></p>
-<ul>
-<li>-: 设置内容和标题栏居右对齐。</li>
-<li>:- 设置内容和标题栏居左对齐。</li>
-<li>:-: 设置内容和标题栏居中对齐。</li>
-</ul>
-<p>实例如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">| 左对齐 | 右对齐 | 居中对齐 |</span><br><span class="line">| :-----| ----: | :----: |</span><br><span class="line">| 单元格 | 单元格 | 单元格 |</span><br><span class="line">| 单元格 | 单元格 | 单元格 |</span><br></pre></td></tr></table></figure>
-
-<p>以上代码显示结果如下：</p>
-<table>
-<thead>
-<tr>
-<th align="left">左对齐</th>
-<th align="right">右对齐</th>
-<th align="center">居中对齐</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">单元格</td>
-<td align="right">单元格</td>
-<td align="center">单元格</td>
-</tr>
-<tr>
-<td align="left">单元格</td>
-<td align="right">单元格</td>
-<td align="center">单元格</td>
-</tr>
-</tbody></table>
-<h1 id="十一、高级技巧"><a href="#十一、高级技巧" class="headerlink" title="十一、高级技巧"></a>十一、高级技巧</h1><h1 id="Markdown-高级技巧"><a href="#Markdown-高级技巧" class="headerlink" title="Markdown 高级技巧"></a>Markdown 高级技巧</h1><h3 id="支持的-HTML-元素"><a href="#支持的-HTML-元素" class="headerlink" title="支持的 HTML 元素"></a>支持的 HTML 元素</h3><p>不在 Markdown 涵盖范围之内的标签，都可以直接在文档里面用 HTML 撰写。</p>
-<p>目前支持的 HTML 元素有：<code>&lt;kbd&gt; &lt;b&gt; &lt;i&gt; &lt;em&gt; &lt;sup&gt; &lt;sub&gt; &lt;br&gt;</code>等 ，如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">使用 &lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Alt&lt;/kbd&gt;+&lt;kbd&gt;Del&lt;/kbd&gt; 重启电脑</span><br></pre></td></tr></table></figure>
-
-<p>输出结果为：</p>
-<p>使用 <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd> 重启电脑</p>
-<h3 id="转义"><a href="#转义" class="headerlink" title="转义"></a>转义</h3><p>Markdown 使用了很多特殊符号来表示特定的意义，如果需要显示特定的符号则需要使用转义字符，Markdown 使用反斜杠转义特殊字符：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">**文本加粗** </span><br><span class="line">\*\* 正常显示星号 \*\*</span><br></pre></td></tr></table></figure>
-
-<p>输出结果为：</p>
-<p><strong>文本加粗</strong><br>** 正常显示星号 **</p>
-<p>Markdown 支持以下这些符号前面加上反斜杠来帮助插入普通的符号：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">\   反斜线</span><br><span class="line">`   反引号</span><br><span class="line">*   星号</span><br><span class="line">_   下划线</span><br><span class="line">&#123;&#125;  花括号</span><br><span class="line">[]  方括号</span><br><span class="line">()  小括号</span><br><span class="line">#   井字号</span><br><span class="line">+   加号</span><br><span class="line">-   减号</span><br><span class="line">.   英文句点</span><br><span class="line">!   感叹号</span><br></pre></td></tr></table></figure>
-
-<h3 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h3><p>当你需要在编辑器中插入数学公式时，可以使用两个美元符 $$ 包裹 TeX 或 LaTeX 格式的数学公式来实现。提交后，问答和文章页会根据需要加载 Mathjax 对数学公式进行渲染。如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$$</span><br><span class="line">\mathbf&#123;V&#125;_1 \times \mathbf&#123;V&#125;_2 =  \begin&#123;vmatrix&#125; </span><br><span class="line">\mathbf&#123;i&#125; &amp; \mathbf&#123;j&#125; &amp; \mathbf&#123;k&#125; \\</span><br><span class="line">\frac&#123;\partial X&#125;&#123;\partial u&#125; &amp;  \frac&#123;\partial Y&#125;&#123;\partial u&#125; &amp; 0 \\</span><br><span class="line">\frac&#123;\partial X&#125;&#123;\partial v&#125; &amp;  \frac&#123;\partial Y&#125;&#123;\partial v&#125; &amp; 0 \\</span><br><span class="line">\end&#123;vmatrix&#125;</span><br><span class="line">$&#123;$tep1&#125;&#123;\style&#123;visibility:hidden&#125;&#123;(x+1)(x+1)&#125;&#125;</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
-
-<p>输出结果为：<br>$$<br>\mathbf{V}_1 \times \mathbf{V}_2 &#x3D;  \begin{vmatrix}<br>\mathbf{i} &amp; \mathbf{j} &amp; \mathbf{k} \<br>\frac{\partial X}{\partial u} &amp;  \frac{\partial Y}{\partial u} &amp; 0 \<br>\frac{\partial X}{\partial v} &amp;  \frac{\partial Y}{\partial v} &amp; 0 \<br>\end{vmatrix}<br>${$tep1}{\style{visibility:hidden}{(x+1)(x+1)}}<br>$$</p>
-<h2 id="画流程图、时序图、甘特图"><a href="#画流程图、时序图、甘特图" class="headerlink" title="画流程图、时序图、甘特图"></a>画流程图、时序图、甘特图</h2><p>在typora上方工具栏的‘视图’选项卡中选择“源代码格式”，然后可以按以下示例画流程图、时序图、甘特图。</p>
-<p>以下几个实例效果图如下：</p>
-<p><strong>1、横向流程图源码格式：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">```mermaid</span><br><span class="line">graph LR</span><br><span class="line">A[方形] --&gt;B(圆角)</span><br><span class="line">    B --&gt; C&#123;条件a&#125;</span><br><span class="line">    C --&gt;|a=1| D[结果1]</span><br><span class="line">    C --&gt;|a=2| E[结果2]</span><br><span class="line">    F[横向流程图]</span><br><span class="line">```</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">A[方形] --&gt;B(圆角)</span><br><span class="line">    B --&gt; C&#123;条件a&#125;</span><br><span class="line">    C --&gt;|a=1| D[结果1]</span><br><span class="line">    C --&gt;|a=2| E[结果2]</span><br><span class="line">    F[横向流程图]</span><br></pre></td></tr></table></figure>
-
-<p><strong>2、竖向流程图源码格式：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">```mermaid</span><br><span class="line">graph TD</span><br><span class="line">A[方形] --&gt; B(圆角)</span><br><span class="line">    B --&gt; C&#123;条件a&#125;</span><br><span class="line">    C --&gt; |a=1| D[结果1]</span><br><span class="line">    C --&gt; |a=2| E[结果2]</span><br><span class="line">    F[竖向流程图]</span><br><span class="line">```</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line">A[方形] --&gt; B(圆角)</span><br><span class="line">    B --&gt; C&#123;条件a&#125;</span><br><span class="line">    C --&gt; |a=1| D[结果1]</span><br><span class="line">    C --&gt; |a=2| E[结果2]</span><br><span class="line">    F[竖向流程图]</span><br></pre></td></tr></table></figure>
-
-<p><strong>3、标准流程图源码格式：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">```flow</span><br><span class="line">st=&gt;start: 开始框</span><br><span class="line">op=&gt;operation: 处理框</span><br><span class="line">cond=&gt;condition: 判断框(是或否?)</span><br><span class="line">sub1=&gt;subroutine: 子流程</span><br><span class="line">io=&gt;inputoutput: 输入输出框</span><br><span class="line">e=&gt;end: 结束框</span><br><span class="line">st-&gt;op-&gt;cond</span><br><span class="line">cond(yes)-&gt;io-&gt;e</span><br><span class="line">cond(no)-&gt;sub1(right)-&gt;op</span><br><span class="line">```</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">st=&gt;start: 开始框</span><br><span class="line">op=&gt;operation: 处理框</span><br><span class="line">cond=&gt;condition: 判断框(是或否?)</span><br><span class="line">sub1=&gt;subroutine: 子流程</span><br><span class="line">io=&gt;inputoutput: 输入输出框</span><br><span class="line">e=&gt;end: 结束框</span><br><span class="line">st-&gt;op-&gt;cond</span><br><span class="line">cond(yes)-&gt;io-&gt;e</span><br><span class="line">cond(no)-&gt;sub1(right)-&gt;op</span><br></pre></td></tr></table></figure>
-
-<p><strong>4、标准流程图源码格式（横向）：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">```flow</span><br><span class="line">st=&gt;start: 开始框</span><br><span class="line">op=&gt;operation: 处理框</span><br><span class="line">cond=&gt;condition: 判断框(是或否?)</span><br><span class="line">sub1=&gt;subroutine: 子流程</span><br><span class="line">io=&gt;inputoutput: 输入输出框</span><br><span class="line">e=&gt;end: 结束框</span><br><span class="line">st(right)-&gt;op(right)-&gt;cond</span><br><span class="line">cond(yes)-&gt;io(bottom)-&gt;e</span><br><span class="line">cond(no)-&gt;sub1(right)-&gt;op</span><br><span class="line">```</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">st=&gt;start: 开始框</span><br><span class="line">op=&gt;operation: 处理框</span><br><span class="line">cond=&gt;condition: 判断框(是或否?)</span><br><span class="line">sub1=&gt;subroutine: 子流程</span><br><span class="line">io=&gt;inputoutput: 输入输出框</span><br><span class="line">e=&gt;end: 结束框</span><br><span class="line">st(right)-&gt;op(right)-&gt;cond</span><br><span class="line">cond(yes)-&gt;io(bottom)-&gt;e</span><br><span class="line">cond(no)-&gt;sub1(right)-&gt;op</span><br></pre></td></tr></table></figure>
-
-<p><strong>5、UML时序图源码样例：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">```sequence</span><br><span class="line">对象A-&gt;对象B: 对象B你好吗?（请求）</span><br><span class="line">Note right of 对象B: 对象B的描述</span><br><span class="line">Note left of 对象A: 对象A的描述(提示)</span><br><span class="line">对象B--&gt;对象A: 我很好(响应)</span><br><span class="line">对象A-&gt;对象B: 你真的好吗？</span><br><span class="line">```</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">对象A-&gt;对象B: 对象B你好吗?（请求）</span><br><span class="line">Note right of 对象B: 对象B的描述</span><br><span class="line">Note left of 对象A: 对象A的描述(提示)</span><br><span class="line">对象B--&gt;对象A: 我很好(响应)</span><br><span class="line">对象A-&gt;对象B: 你真的好吗？</span><br></pre></td></tr></table></figure>
-
-<p><strong>6、UML时序图源码复杂样例：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">```sequence</span><br><span class="line">Title: 标题：复杂使用</span><br><span class="line">对象A-&gt;对象B: 对象B你好吗?（请求）</span><br><span class="line">Note right of 对象B: 对象B的描述</span><br><span class="line">Note left of 对象A: 对象A的描述(提示)</span><br><span class="line">对象B--&gt;对象A: 我很好(响应)</span><br><span class="line">对象B-&gt;小三: 你好吗</span><br><span class="line">小三--&gt;&gt;对象A: 对象B找我了</span><br><span class="line">对象A-&gt;对象B: 你真的好吗？</span><br><span class="line">Note over 小三,对象B: 我们是朋友</span><br><span class="line">participant C</span><br><span class="line">Note right of C: 没人陪我玩</span><br><span class="line">```</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Title: 标题：复杂使用</span><br><span class="line">对象A-&gt;对象B: 对象B你好吗?（请求）</span><br><span class="line">Note right of 对象B: 对象B的描述</span><br><span class="line">Note left of 对象A: 对象A的描述(提示)</span><br><span class="line">对象B--&gt;对象A: 我很好(响应)</span><br><span class="line">对象B-&gt;小三: 你好吗</span><br><span class="line">小三--&gt;&gt;对象A: 对象B找我了</span><br><span class="line">对象A-&gt;对象B: 你真的好吗？</span><br><span class="line">Note over 小三,对象B: 我们是朋友</span><br><span class="line">participant C</span><br><span class="line">Note right of C: 没人陪我玩</span><br></pre></td></tr></table></figure>
-
-<p><strong>7、UML标准时序图样例：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">```mermaid</span><br><span class="line">%% 时序图例子,-&gt; 直线，--&gt;虚线，-&gt;&gt;实线箭头</span><br><span class="line">  sequenceDiagram</span><br><span class="line">    participant 张三</span><br><span class="line">    participant 李四</span><br><span class="line">    张三-&gt;王五: 王五你好吗？</span><br><span class="line">    loop 健康检查</span><br><span class="line">        王五-&gt;王五: 与疾病战斗</span><br><span class="line">    end</span><br><span class="line">    Note right of 王五: 合理 食物 &lt;br/&gt;看医生...</span><br><span class="line">    李四--&gt;&gt;张三: 很好!</span><br><span class="line">    王五-&gt;李四: 你怎么样?</span><br><span class="line">    李四--&gt;王五: 很好!</span><br><span class="line">```</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">%% 时序图例子,-&gt; 直线，--&gt;虚线，-&gt;&gt;实线箭头</span><br><span class="line">  sequenceDiagram</span><br><span class="line">    participant 张三</span><br><span class="line">    participant 李四</span><br><span class="line">    张三-&gt;王五: 王五你好吗？</span><br><span class="line">    loop 健康检查</span><br><span class="line">        王五-&gt;王五: 与疾病战斗</span><br><span class="line">    end</span><br><span class="line">    Note right of 王五: 合理 食物 &lt;br/&gt;看医生...</span><br><span class="line">    李四--&gt;&gt;张三: 很好!</span><br><span class="line">    王五-&gt;李四: 你怎么样?</span><br><span class="line">    李四--&gt;王五: 很好!</span><br></pre></td></tr></table></figure>
-
-<p><strong>8、甘特图样例：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">```mermaid</span><br><span class="line">%% 语法示例</span><br><span class="line">        gantt</span><br><span class="line">        dateFormat  YYYY-MM-DD</span><br><span class="line">        title 软件开发甘特图</span><br><span class="line">        section 设计</span><br><span class="line">        需求                      :done,    des1, 2014-01-06,2014-01-08</span><br><span class="line">        原型                      :active,  des2, 2014-01-09, 3d</span><br><span class="line">        UI设计                     :         des3, after des2, 5d</span><br><span class="line">    未来任务                     :         des4, after des3, 5d</span><br><span class="line">        section 开发</span><br><span class="line">        学习准备理解需求                      :crit, done, 2014-01-06,24h</span><br><span class="line">        设计框架                             :crit, done, after des2, 2d</span><br><span class="line">        开发                                 :crit, active, 3d</span><br><span class="line">        未来任务                              :crit, 5d</span><br><span class="line">        耍                                   :2d</span><br><span class="line">        section 测试</span><br><span class="line">        功能测试                              :active, a1, after des3, 3d</span><br><span class="line">        压力测试                               :after a1  , 20h</span><br><span class="line">        测试报告                               : 48h</span><br><span class="line">```</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">%% 语法示例</span><br><span class="line">        gantt</span><br><span class="line">        dateFormat  YYYY-MM-DD</span><br><span class="line">        title 软件开发甘特图</span><br><span class="line">        section 设计</span><br><span class="line">        需求                      :done,    des1, 2014-01-06,2014-01-08</span><br><span class="line">        原型                      :active,  des2, 2014-01-09, 3d</span><br><span class="line">        UI设计                     :         des3, after des2, 5d</span><br><span class="line">    未来任务                     :         des4, after des3, 5d</span><br><span class="line">        section 开发</span><br><span class="line">        学习准备理解需求                      :crit, done, 2014-01-06,24h</span><br><span class="line">        设计框架                             :crit, done, after des2, 2d</span><br><span class="line">        开发                                 :crit, active, 3d</span><br><span class="line">        未来任务                              :crit, 5d</span><br><span class="line">        耍                                   :2d</span><br><span class="line">        section 测试</span><br><span class="line">        功能测试                              :active, a1, after des3, 3d</span><br><span class="line">        压力测试                               :after a1  , 20h</span><br><span class="line">        测试报告                               : 48h</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Taizi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2/" class="post-title-link" itemprop="url">MySQL数据检索</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-09-28 15:09:10" itemprop="dateModified" datetime="2023-09-28T15:09:10+08:00">2023-09-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.1k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="MySQL数据检索"><a href="#MySQL数据检索" class="headerlink" title="MySQL数据检索"></a>MySQL数据检索</h1><h2 id="1-联表查询"><a href="#1-联表查询" class="headerlink" title="1. 联表查询"></a>1. 联表查询</h2><p>下面给出两个表，在此基础上介绍联表查询的知识：</p>
-<p>​          user_name 表                                  user_age 表</p>
-<p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2/.%5CMySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2%5Cimage-20220602095148006.png" alt="image-20220602095148006">     <img src="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2/.%5CMySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2%5Cimage-20220602095233457.png" alt="image-20220602095233457"></p>
-<ul>
-<li><p>内连接：</p>
-<blockquote>
-<p>内连接只会输出两表关联条件匹配到的数据。<strong>相当于按条件获取两个表的交集。</strong></p>
-</blockquote>
-<ul>
-<li><p>显式内连接</p>
-<blockquote>
-<p>显式内连接使用INNER JOIN 或 JOIN关键字，适用于两表及多表查询的情况</p>
-</blockquote>
-<p>如以下查询:</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> a.`name`,b.age</span><br><span class="line"><span class="keyword">from</span> user_name a <span class="keyword">INNER</span> <span class="keyword">JOIN</span> user_age b</span><br><span class="line"><span class="keyword">ON</span> a.id <span class="operator">=</span> b.id</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-<p>​				连接结果为：<img src="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2/.%5CMySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2%5Cimage-20220602100454645.png" alt="image-20220602100454645"></p>
-<p>* </p>
-<ul>
-<li><p>隐式内连接（等值连接）</p>
-<blockquote>
-<p>隐式内连接不需要显示的写出连接关键字，在FROM条件中声明要连接的表，WHERE子句中说明连接的条件即可，隐式内连接在多表连接时容易出错，需要注意。</p>
-</blockquote>
-<p>如以下查询：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> a.`name`,b.age</span><br><span class="line"><span class="keyword">from</span> user_name a , user_age b</span><br><span class="line"><span class="keyword">where</span> a.id <span class="operator">=</span> b.id</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>外连接：</p>
-</li>
-</ul>
-<blockquote>
-<p>外连接对于两表关联条件匹配不到的数据，也会输出并将关联不到的列显示为NULL。</p>
-<p>外连接包括左连接&#x2F;左外连接、右连接&#x2F;右外连接、全连接。这里的左连接&#x2F;左外连接是同义的，右连接&#x2F;右外连接也是同义的。</p>
-</blockquote>
-<ul>
-<li>左连接&#x2F;左外连接：</li>
-</ul>
-<blockquote>
-<p>左连接将左表作为主表，主表的数据会全部显示处理，从表根据连接条件进行匹配，匹配不到的行展示为NULL</p>
-</blockquote>
-<p>如以下查询：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> a.`name`,b.age</span><br><span class="line"><span class="keyword">from</span> user_name a <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> user_age b</span><br><span class="line"><span class="keyword">ON</span> a.id <span class="operator">=</span> b.id</span><br></pre></td></tr></table></figure>
-
-<p>连接结果为：<img src="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2/.%5CMySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2%5Cimage-20220602101210493.png" alt="image-20220602101210493"></p>
-<ul>
-<li>右连接&#x2F;右外连接：</li>
-</ul>
-<blockquote>
-<p>右连接将右表作为主表，主表的数据会全部显示处理，从表根据连接条件进行匹配，匹配不到的行展示为NULL</p>
-</blockquote>
-<p>如以下查询：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> a.`name`,b.age</span><br><span class="line"><span class="keyword">from</span> user_name a <span class="keyword">RIGHT</span> <span class="keyword">JOIN</span> user_age b</span><br><span class="line"><span class="keyword">ON</span> a.id <span class="operator">=</span> b.id</span><br></pre></td></tr></table></figure>
-
-<p>连接结果为：<img src="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2/.%5CMySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2%5Cimage-20220602101953139.png" alt="image-20220602101953139"></p>
-<ul>
-<li>全连接：</li>
-</ul>
-<blockquote>
-<p>全连接是将两张表的所有行按连接做匹配，匹配缺失之处使用NULL填充。<strong>相当于按条件获取两个表的并集。</strong></p>
-<p><strong>注意：MySQL不支FULL JOIN的语法，MySQL实现全连接的方式是将左连接和右连接的结果做联合，注意连接条件应该一致</strong></p>
-</blockquote>
-<p>如以下查询：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> a.`name`,b.age <span class="keyword">from</span> user_name a <span class="keyword">RIGHT</span> <span class="keyword">JOIN</span> user_age b <span class="keyword">ON</span> a.id <span class="operator">=</span> b.id</span><br><span class="line"><span class="keyword">UNION</span></span><br><span class="line"><span class="keyword">select</span> a.`name`,b.age <span class="keyword">from</span> user_name a <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> user_age b <span class="keyword">ON</span> a.id <span class="operator">=</span> b.id</span><br></pre></td></tr></table></figure>
-
-<p>连接结果为：<img src="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2/.%5CMySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2%5Cimage-20220602103440328.png" alt="image-20220602103440328"></p>
-<ul>
-<li><strong>注意点：</strong></li>
-</ul>
-<p>注意，表连接时会产生一个暂时表，对于暂时表的过滤应该使用 ON 关键字而非 WHERE 关键字，暂时表完成过滤后会产生连接的结果，此时可以使用WHERE 子句对连接结果进行过滤。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -2325,7 +2014,7 @@
 
   <div class="copyright">
     &copy; 
-    <span itemprop="copyrightYear">2023</span>
+    <span itemprop="copyrightYear">2024</span>
     <span class="with-love">
       <i class="fa fa-heart"></i>
     </span>
@@ -2336,13 +2025,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">164k</span>
+    <span title="站点总字数">168k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:59</span>
+    <span title="站点阅读时长">5:05</span>
   </span>
 </div>
 <div class="busuanzi-count">

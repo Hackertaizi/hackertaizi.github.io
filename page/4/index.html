@@ -147,7 +147,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-count">50</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -268,6 +268,150 @@
 <li>Alt + Insert ：快速生成set、get方法，以及构造器等，常用语实体类实现以上方法及重写toString‘方法的内容。</li>
 <li>Ctrl+Alt+L：格式化代码，去掉无用代码</li>
 <li>Ctrl+Alt+O：格式化导入文件包，去掉无用的import包</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/IDEA/IDEA%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Taizi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/IDEA/IDEA%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/" class="post-title-link" itemprop="url">IDEA基本配置</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-09-27 18:38:50" itemprop="dateModified" datetime="2023-09-27T18:38:50+08:00">2023-09-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">开发工具</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/IDEA/" itemprop="url" rel="index"><span itemprop="name">IDEA</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.5k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="IDEA基本配置"><a href="#IDEA基本配置" class="headerlink" title="IDEA基本配置"></a>IDEA基本配置</h3><h4 id="1-maven仓库配置-当前项目有效"><a href="#1-maven仓库配置-当前项目有效" class="headerlink" title="1. maven仓库配置(当前项目有效)"></a>1. maven仓库配置(当前项目有效)</h4><p>maven设置打开方式：</p>
+<ul>
+<li>settings→Build,Execution,Deployment→Build Tools→Maven</li>
+<li>最右侧点击maven，然后点击设置图标，点击maven settings</li>
+</ul>
+<p>在maven设置中配置Maven home path，地址为maven的安装文件夹的位置，如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E:/Maven/apache-maven-3.8.4</span><br></pre></td></tr></table></figure>
+
+<p>配置maven的配置文件位置，地址为maven安装文件夹下的conf目录下的settings.xml文件，如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E:\Maven\apache-maven-3.8.4\conf\settings.xml</span><br></pre></td></tr></table></figure>
+
+<p>本地的maven仓库地址需要自己指定目录，如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E:\Maven\MyRepository</span><br></pre></td></tr></table></figure>
+
+<p><strong>如果想使之后的项目都沿用此配置，可以在File→New Projects Setup→Setting for new Projects中进行maven配置</strong></p>
+<h4 id="2-文件的基本模板配置（可选，便利性选项）"><a href="#2-文件的基本模板配置（可选，便利性选项）" class="headerlink" title="2. 文件的基本模板配置（可选，便利性选项）"></a>2. 文件的基本模板配置（可选，便利性选项）</h4><p>文件的基本模板规定了文件的创建格式和创建后文件中的基本内容，除了idea自带的模板外，还可以对经常需要创建的文件类型建立模板。</p>
+<p>配置位置在settings→Editor→File and Code Templates→Files,可以指定模板名称、模板内容以及模板类型（即文件的后缀名）等。</p>
+<p>以下是一些模板，随时更新和增加：</p>
+<p>Mybatis配置文件Mybatis.xml，模板内容：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span> ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">mapper</span></span></span><br><span class="line"><span class="meta">        <span class="keyword">PUBLIC</span> <span class="string">&quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;</span></span></span><br><span class="line"><span class="meta">        <span class="string">&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">&quot;&quot;</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>themeleaf.html</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!doctype <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;ch&quot;</span> <span class="attr">xmlns:th</span>=<span class="string">&quot;http://www.thymeleaf.org&quot;</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="3-文件头设置"><a href="#3-文件头设置" class="headerlink" title="3. 文件头设置"></a>3. 文件头设置</h4><p>文件头即创建文件时自动添加的注释，用于标注代码的创建时间、作者等信息。</p>
+<p>设置位置在settings→Editor→File and Code Templates→Includes→File Header</p>
+<p>内容可以自定义，当前设置的内容为：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Created</span> with IntelliJ IDEA</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span> Kaiyuan Zhang</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Version</span> 1.0.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Since</span> 1.0.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@CreateDate</span> $DATE</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@CreateTime</span> $HOUR:$MINUTE</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="4-共享进程堆大小设置（缓解项目build时idea卡死的问题）"><a href="#4-共享进程堆大小设置（缓解项目build时idea卡死的问题）" class="headerlink" title="4. 共享进程堆大小设置（缓解项目build时idea卡死的问题）"></a>4. 共享进程堆大小设置（缓解项目build时idea卡死的问题）</h4><p>如果要为当前项目设置：</p>
+<ul>
+<li>settings→Build,Execution,Deployment→Complier→Shared build process heap size</li>
+</ul>
+<p>如果要为以后新建的所有项目设置（推荐):</p>
+<ul>
+<li>File→New Projects Setup→Setting for new Projects→Build,Execution,Deployment→Complier→Shared build process heap size</li>
 </ul>
 
       
@@ -1148,6 +1292,120 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Hadoop/Hive/Hive%E8%AF%AD%E6%B3%95%E7%B2%BE%E7%82%BC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Taizi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/Hadoop/Hive/Hive%E8%AF%AD%E6%B3%95%E7%B2%BE%E7%82%BC/" class="post-title-link" itemprop="url">Hive语法精炼</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-09-27 18:33:43" itemprop="dateModified" datetime="2023-09-27T18:33:43+08:00">2023-09-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Hadoop/" itemprop="url" rel="index"><span itemprop="name">Hadoop</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Hadoop/Hive/" itemprop="url" rel="index"><span itemprop="name">Hive</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>155</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Hive语法精炼"><a href="#Hive语法精炼" class="headerlink" title="Hive语法精炼"></a>Hive语法精炼</h1><p>以下语法精简可用，但不一定是最全的语法格式，某些可选项可能被忽略，随时补充。</p>
+<ul>
+<li><p>查看数据库</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> databases;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建数据库</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> database [if <span class="keyword">not</span> <span class="keyword">exists</span>] database_name;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除数据库</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> database [if <span class="keyword">exists</span>] database_name;</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Hadoop/Hive/Hive%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E8%AF%AD%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1565,120 +1823,6 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Hadoop/Hive/Hive%E8%AF%AD%E6%B3%95%E7%B2%BE%E7%82%BC/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Taizi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/Hadoop/Hive/Hive%E8%AF%AD%E6%B3%95%E7%B2%BE%E7%82%BC/" class="post-title-link" itemprop="url">Hive语法精炼</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-09-27 18:33:43" itemprop="dateModified" datetime="2023-09-27T18:33:43+08:00">2023-09-27</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Hadoop/" itemprop="url" rel="index"><span itemprop="name">Hadoop</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Hadoop/Hive/" itemprop="url" rel="index"><span itemprop="name">Hive</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>155</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Hive语法精炼"><a href="#Hive语法精炼" class="headerlink" title="Hive语法精炼"></a>Hive语法精炼</h1><p>以下语法精简可用，但不一定是最全的语法格式，某些可选项可能被忽略，随时补充。</p>
-<ul>
-<li><p>查看数据库</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> databases;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>创建数据库</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> database [if <span class="keyword">not</span> <span class="keyword">exists</span>] database_name;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>删除数据库</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> database [if <span class="keyword">exists</span>] database_name;</span><br></pre></td></tr></table></figure></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Hadoop/Hive/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E5%BC%80%E5%8F%91%E6%9E%B6%E6%9E%84%E5%B1%82%E6%AC%A1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1781,354 +1925,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Hadoop/Hive/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%87%BD%E6%95%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Taizi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/Hadoop/Hive/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">数据库函数</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-12-22 17:23:03" itemprop="dateModified" datetime="2023-12-22T17:23:03+08:00">2023-12-22</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Hadoop/" itemprop="url" rel="index"><span itemprop="name">Hadoop</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Hadoop/Hive/" itemprop="url" rel="index"><span itemprop="name">Hive</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>12k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>21 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="数据库函数"><a href="#数据库函数" class="headerlink" title="数据库函数"></a>数据库函数</h1><p>[TOC]</p>
-<h2 id="空值处理"><a href="#空值处理" class="headerlink" title="空值处理"></a>空值处理</h2><h3 id="COALESCE-hive"><a href="#COALESCE-hive" class="headerlink" title="COALESCE	(hive)"></a>COALESCE	(hive)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">	coalesce(expr1,expr2,...)</span><br><span class="line">用途：</span><br><span class="line">	返回列表中第一个非null的值，如果列表中的所有值都是null则返回null</span><br><span class="line">参数说明：</span><br><span class="line">	*expri是要测试的值。所有这些值类型必须相同或为null，否则会引发异常。</span><br><span class="line">返回值：</span><br><span class="line">	返回值类型和参数类型相同。</span><br><span class="line">备注：</span><br><span class="line">	参数至少有一个，否则引发异常。</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="NVL-hive"><a href="#NVL-hive" class="headerlink" title="NVL	(hive)"></a>NVL	(hive)</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">	nvl(expr1,expr2)</span><br><span class="line">用途：</span><br><span class="line">	替换空值，如果第一个参数expr1的值为<span class="keyword">NULL</span>，则返回第二个参数的值。</span><br><span class="line">备注：</span><br><span class="line">	最多只能传递两个参数。</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="格式处理"><a href="#格式处理" class="headerlink" title="格式处理"></a>格式处理</h2><h3 id="TRANSLATE-hive"><a href="#TRANSLATE-hive" class="headerlink" title="TRANSLATE	(hive)"></a>TRANSLATE	(hive)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">	TRANSLATE(input_string, from__characters, to_characters);</span><br><span class="line">用途：</span><br><span class="line">	替换字符串中的字符，第一个字符串是源字符串，第二个字符串是字符串中要替换掉的字符串的表达式，最后一个字符串是要替换为的字符串的表达式。</span><br><span class="line">返回值：</span><br><span class="line">	返回被替换完毕的字符串。</span><br><span class="line">注意：</span><br><span class="line">	如果任何参数为null，函数返回值为null</span><br></pre></td></tr></table></figure>
-
-<p>示例：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- from 和 to 长度一样，如translate(&quot;abcdef-abcdef&quot;,&quot;abcdef&quot;,&quot;123456&quot;);替换不是说把&quot;abcdef&quot;替换成&quot;123456&quot;，而是把a替换成1，把b替换成2，把c替换成3，把d替换成4，e替换成5，f替换成6.</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="built_in">translate</span>(<span class="string">&#x27;abcdef-abcdef&#x27;</span>, <span class="string">&#x27;abcd&#x27;</span>, <span class="string">&#x27;1234&#x27;</span>),<span class="comment">--1234ef-1234ef</span></span><br><span class="line">       <span class="built_in">translate</span>(<span class="string">&#x27;abcdef-abcdef&#x27;</span>, <span class="string">&#x27;ab&#x27;</span>, <span class="string">&#x27;12&#x27;</span>),    <span class="comment">--12cdef-12cdef</span></span><br><span class="line">       <span class="built_in">translate</span>(<span class="string">&#x27;abcdef-abcdef&#x27;</span>, <span class="string">&#x27;ad&#x27;</span>, <span class="string">&#x27;14&#x27;</span>),    <span class="comment">--1bc4ef-1bc4ef</span></span><br><span class="line">       <span class="built_in">translate</span>(<span class="string">&#x27;abcdef-abcdef&#x27;</span>, <span class="string">&#x27;da&#x27;</span>, <span class="string">&#x27;41&#x27;</span>);<span class="comment">--1bc4ef-1bc4ef</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- from 字符串长度&gt;to的字符串长度 ，例如translate(&#x27;abcdef-abcdef&#x27;,&#x27;adbc&#x27;,&#x27;123&#x27;)    意思是把 a替换为1，b替换为2，c替换为3，d替换为空，即删除掉。</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="built_in">translate</span>(<span class="string">&#x27;abcdef-abcdef&#x27;</span>, <span class="string">&#x27;abcd&#x27;</span>, <span class="string">&#x27;123&#x27;</span>), <span class="comment">--123ef-123ef</span></span><br><span class="line">       <span class="built_in">translate</span>(<span class="string">&#x27;abcdef-abcdef&#x27;</span>, <span class="string">&#x27;adbc&#x27;</span>, <span class="string">&#x27;123&#x27;</span>); <span class="comment">--132ef-132ef</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 如果 from里有重复字符 比如abca，1231，重复的字符a对应to的替换不会起作用</span></span><br><span class="line"><span class="keyword">select</span> <span class="built_in">TRANSLATE</span> (<span class="string">&#x27;abcdaabbaaabbb&#x27;</span>,<span class="string">&#x27;aa&#x27;</span>,<span class="string">&#x27;12&#x27;</span>)<span class="comment">--1bcd11bb111bbb </span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="REGEXP-hive"><a href="#REGEXP-hive" class="headerlink" title="REGEXP (hive)"></a>REGEXP (hive)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">	A REGEXP B</span><br><span class="line">用途：</span><br><span class="line">	判断字符串A是否符合正则表达式B，返回结果为boolean(true、false)或者null。</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="REGEXP-REPLACE-hive"><a href="#REGEXP-REPLACE-hive" class="headerlink" title="REGEXP_REPLACE	(hive)"></a>REGEXP_REPLACE	(hive)</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">	REGEXP_REPLACE(string A, string B, string C);</span><br><span class="line">用途：</span><br><span class="line">	将字符串A中的部分字符做替换。</span><br><span class="line">用法：</span><br><span class="line">	将字符串A中满足Java正则表达式B的部分替换为字符串C。</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="REGEXP-EXTRACT-hive"><a href="#REGEXP-EXTRACT-hive" class="headerlink" title="REGEXP_EXTRACT (hive)"></a>REGEXP_EXTRACT (hive)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">	REGEXP_EXTRACT(STRING subject, STRING pattern, INT index)</span><br><span class="line">用途：</span><br><span class="line">	将字符串进行正则拆分</span><br><span class="line">用法：</span><br><span class="line">	将字符串subject按照pattern正则表达式的规则进行拆分，返回index指定部分的字符，index从1开始计。</span><br><span class="line">	* index = 0时，将字符串与整个pattern正则表达式进行匹配，返回匹配结果</span><br><span class="line">	* index = 1时，将字符串与pattern中第一个括号里的表达式进行匹配，返回结果。</span><br><span class="line">	index &gt;=1时以此类推</span><br><span class="line">示例：</span><br><span class="line">	select regexp_extract(&#x27;AA123bbcccc&#x27; ,&#x27;A&#123;2&#125;([1-9]&#123;3&#125;)([a-z]&#123;6&#125;)&#x27;,0);</span><br><span class="line">	结果：AA123bbcccc</span><br><span class="line">	select regexp_extract(&#x27;AA123bbcccc&#x27; ,&#x27;A&#123;2&#125;([1-9]&#123;3&#125;)([a-z]&#123;6&#125;)&#x27;,2);</span><br><span class="line">	结果：bbcccc</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="TRIM-hive"><a href="#TRIM-hive" class="headerlink" title="TRIM	(hive)"></a>TRIM	(hive)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">	TRIM(string)</span><br><span class="line">用途：</span><br><span class="line">	去掉字段首尾的空格</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="LTRIM-hive"><a href="#LTRIM-hive" class="headerlink" title="LTRIM	(hive)"></a>LTRIM	(hive)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">	LTRIM(string)</span><br><span class="line">用途：</span><br><span class="line">	去掉字段的前置空格</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="RTRIM-hive"><a href="#RTRIM-hive" class="headerlink" title="RTRIM	(hive)"></a>RTRIM	(hive)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">	RTRIM(string)</span><br><span class="line">用途：</span><br><span class="line">	去掉字段的后置空格</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="EXPLODE-hive"><a href="#EXPLODE-hive" class="headerlink" title="EXPLODE	(hive)"></a>EXPLODE	(hive)</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">	EXPLODE(col)</span><br><span class="line">用途：</span><br><span class="line">	将某列炸裂为多行。</span><br><span class="line">例如：</span><br><span class="line">	某列字段col<span class="operator">=</span> [<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>],将该列炸裂开explode(col) <span class="operator">=</span> </span><br><span class="line">	a</span><br><span class="line">	b</span><br><span class="line">	c</span><br><span class="line">注意：</span><br><span class="line">	列字段值必须是<span class="keyword">array</span> 或 map类型的字段，如果不是，可以将其转化为<span class="keyword">array</span> 或 map类型后再使用炸裂函数。</span><br><span class="line">	通常，如果字段值是一串有相同分隔符的字符串，可以使用split函数将其转换为<span class="keyword">array</span>类型。</span><br><span class="line">	如果想把某列按另一列字段值炸裂开来，即炸裂是与另一列相关的，则需要使用到<span class="keyword">Lateral</span> <span class="keyword">view</span>函数。</span><br><span class="line">常用组合：</span><br><span class="line">	常与split、<span class="keyword">Lateral</span> <span class="keyword">view</span>函数一起使用。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="LATERAL-VIEW-hive"><a href="#LATERAL-VIEW-hive" class="headerlink" title="LATERAL VIEW	(hive)"></a>LATERAL VIEW	(hive)</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">	<span class="keyword">LATERAL</span> <span class="keyword">VIEW</span> udtf(expression) tableAlias <span class="keyword">AS</span> columnAlias</span><br><span class="line">用途：</span><br><span class="line">	用于和split, explode等UDTF一起使用，它能够将一列数据拆成多行数据，在此基础上可以对拆分后的数据进行聚合。</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="SPLIT-hive"><a href="#SPLIT-hive" class="headerlink" title="SPLIT	(hive)"></a>SPLIT	(hive)</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">	SPLIT(string ,pat)</span><br><span class="line">返回值：</span><br><span class="line">	<span class="keyword">array</span> 数组</span><br><span class="line">用途：</span><br><span class="line">	按照指定分隔符将字符串string使用pat进行分隔</span><br><span class="line">注意：</span><br><span class="line">	第二个参数可以是正则表达式，如果分隔符是正则表达式中的特殊符号，则需要进行转义，有些特殊字符只需\，而有些需要\\。如果整个语句本身是一个字符串的话，转义字符前还需加上\\，即可能有三个或四个\进行转义。</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="常用逻辑"><a href="#常用逻辑" class="headerlink" title="常用逻辑"></a>常用逻辑</h2><h3 id="IF-hive"><a href="#IF-hive" class="headerlink" title="IF	(hive)"></a>IF	(hive)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">	IF( expr1 , expr2 , expr3 )</span><br><span class="line">用途：</span><br><span class="line">	条件判断，如果expr1的值为true，返回值为expr2，如果为false，返回值为exper3。</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="CASE…WHEN…THEN…END-hive"><a href="#CASE…WHEN…THEN…END-hive" class="headerlink" title="CASE…WHEN…THEN…END	(hive)"></a>CASE…WHEN…THEN…END	(hive)</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">用途：</span><br><span class="line">	根据不同条件返回不同的值</span><br><span class="line">用法<span class="number">1</span> <span class="keyword">case</span> 后不跟匹配列：</span><br><span class="line">	<span class="keyword">case</span> </span><br><span class="line">	<span class="keyword">when</span> tb1.os <span class="operator">=</span> <span class="string">&#x27;android&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;android&#x27;</span></span><br><span class="line">	<span class="keyword">when</span> tb1.os <span class="operator">=</span> <span class="string">&#x27;ios&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;iPhone&#x27;</span></span><br><span class="line">	<span class="keyword">else</span> <span class="string">&#x27;PC&#x27;</span></span><br><span class="line">	<span class="keyword">end</span> <span class="keyword">as</span> os,</span><br><span class="line">	</span><br><span class="line">用法<span class="number">2</span> <span class="keyword">case</span> 后跟匹配列</span><br><span class="line">	<span class="keyword">case</span> tb1.os</span><br><span class="line">	<span class="keyword">when</span> <span class="string">&#x27;android&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;android&#x27;</span></span><br><span class="line">	<span class="keyword">when</span> <span class="string">&#x27;ios&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;iPhone&#x27;</span></span><br><span class="line">	<span class="keyword">else</span> <span class="string">&#x27;PC&#x27;</span></span><br><span class="line">	<span class="keyword">end</span> <span class="keyword">as</span> os,</span><br><span class="line">两种用法都可以实现同样的效果</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="排序去重"><a href="#排序去重" class="headerlink" title="排序去重"></a>排序去重</h2><h3 id="ROW-NUMBER-hive"><a href="#ROW-NUMBER-hive" class="headerlink" title="ROW_NUMBER	(hive)"></a>ROW_NUMBER	(hive)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">	row_number()</span><br><span class="line">用途：</span><br><span class="line">	按查出的记录数前后排序，序号不重复。即第1条记录序号为1，第2条记录序号2，第3条记录序号为3（不考虑3条记录的排序字段是否重复）。</span><br><span class="line">常用组合：</span><br><span class="line">	需搭配窗口函数ROW()使用</span><br><span class="line">	ROW_NUMBER() OVER(PARTITION BY COLUMN1 ORDER BY COLUMN2)</span><br><span class="line">	意思是先根据COLUMN1进行结果集分分组，结果集内部按照COLUMN2排序。</span><br><span class="line">	在使用 row_number() over()函数的时候，over()里面的分组以及排序的执行晚于 where、group by、order by 的执行。</span><br><span class="line">总结：</span><br><span class="line">	会按照顺序给出排序，如对10,10,9,8进行排序，输出结果为1,2,3,4</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="RANK-hive"><a href="#RANK-hive" class="headerlink" title="RANK	(hive)"></a>RANK	(hive)</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">	<span class="built_in">RANK</span>()</span><br><span class="line">常用组合：</span><br><span class="line">	需搭配窗口函数<span class="type">ROW</span>()使用</span><br><span class="line">总结：</span><br><span class="line">	排序相同是排名会重复，总数不会变，如对<span class="number">10</span>,<span class="number">10</span>,<span class="number">9</span>,<span class="number">8</span>进行排序，输出结果为<span class="number">1</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="DENSE-RANK-hive"><a href="#DENSE-RANK-hive" class="headerlink" title="DENSE_RANK	(hive)"></a>DENSE_RANK	(hive)</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">	<span class="built_in">DENSE_RANK</span>()</span><br><span class="line">常用组合：</span><br><span class="line">	需搭配窗口函数<span class="type">ROW</span>()使用</span><br><span class="line">总结：</span><br><span class="line">	排序相同时排名会重复，总数会减少，如对<span class="number">10</span>,<span class="number">10</span>,<span class="number">9</span>,<span class="number">8</span>进行排序，输出结果为<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="FIELD-hive-mysql"><a href="#FIELD-hive-mysql" class="headerlink" title="FIELD 	(hive,mysql)"></a>FIELD 	(hive,mysql)</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">		FIELD(col,value_1,value_2,...)</span><br><span class="line">用途：</span><br><span class="line">	用于排序时给出指定的排序顺序。</span><br><span class="line">用法：</span><br><span class="line">	第一个参数col为排序的列，后面的参数<span class="keyword">value</span>可以给出排序顺序，查询结果将按照给定的值排序来进行排序。</span><br><span class="line">常用组合：</span><br><span class="line">	sort <span class="keyword">by</span> field(col,value_1,value_2,...), <span class="keyword">order</span> <span class="keyword">by</span> field(col,value_1,value_2,...)</span><br><span class="line">实例：</span><br><span class="line">	<span class="keyword">select</span> name,age</span><br><span class="line">	<span class="keyword">from</span> student </span><br><span class="line">	<span class="keyword">order</span> <span class="keyword">by</span> field(age,<span class="number">12</span>,<span class="number">11</span>,<span class="number">13</span>,<span class="number">14</span>)</span><br><span class="line">	输出结果将按给定的值顺序来排序</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="时间函数"><a href="#时间函数" class="headerlink" title="时间函数"></a>时间函数</h2><h3 id="DATEDIFF-hive"><a href="#DATEDIFF-hive" class="headerlink" title="DATEDIFF	(hive)"></a>DATEDIFF	(hive)</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">	DATEDIFF(endDate,startDate)</span><br><span class="line">用途：</span><br><span class="line">	返回endDate和startDate相差的天数，返回值是整数。</span><br><span class="line">注意：</span><br><span class="line">	参数类型最好保持一致</span><br><span class="line">	该函数是hive中的形式，与mysql中的同名函数datediff用法不同。</span><br><span class="line">	计算不包括边界值，例如两个相同日期计算差值返回<span class="number">0</span>，两个相邻日期计算差值返回<span class="number">1</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="DATE-ADD（hive）"><a href="#DATE-ADD（hive）" class="headerlink" title="DATE_ADD（hive）"></a>DATE_ADD（hive）</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">	DATE_ADD(<span class="type">date</span>, <span class="type">int</span>)</span><br><span class="line">用途：</span><br><span class="line">	返回某日期增加<span class="type">int</span>天(当<span class="type">int</span>为正数)或者减少<span class="type">int</span>天(当<span class="type">int</span>为负数)后得到的日期</span><br><span class="line">注意：</span><br><span class="line">	<span class="type">date</span>的形式必须是标准形式，即<span class="string">&#x27;yyyy-MM-dd HH:mm:ss&#x27;</span>或 <span class="string">&#x27;yyyy-MM-dd&#x27;</span></span><br><span class="line">	第二个参数可以是正数也可以是负数。</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="DATE-SUB-hive"><a href="#DATE-SUB-hive" class="headerlink" title="DATE_SUB	(hive)"></a>DATE_SUB	(hive)</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">效果与date_add函数相反。</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="DATE-FORMAT-hive"><a href="#DATE-FORMAT-hive" class="headerlink" title="DATE_FORMAT	(hive)"></a>DATE_FORMAT	(hive)</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">	DATE_FORMAT(<span class="type">date</span>,format);</span><br><span class="line">用途：</span><br><span class="line">	格式化日期或日期字符串</span><br><span class="line">用法：</span><br><span class="line">	第一个参数可以为日期或日期字符串，第二个参数为日期格式，函数将返回格式化后的日期字符串。</span><br><span class="line">注意：</span><br><span class="line">	如果日期的月或日是不符合常理的数字，且大于常规值，则返回结果是计算后的结果，例如date_format(<span class="string">&#x27;2022-16-1&#x27;</span>,<span class="string">&#x27;yyyy-MM-dd&#x27;</span>)的返回值为<span class="string">&#x27;2023-04-01&#x27;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="UNIX-TIMESTAMP-hive"><a href="#UNIX-TIMESTAMP-hive" class="headerlink" title="UNIX_TIMESTAMP	(hive)"></a>UNIX_TIMESTAMP	(hive)</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">	UNIX_TIMESTAMP(dateString,[format])</span><br><span class="line">用途：</span><br><span class="line">	返回参数dateString对应的时间戳，时间戳为<span class="number">10</span>位，单位为秒</span><br><span class="line">用法：</span><br><span class="line">	如果dateString满足<span class="string">&#x27;yyyy-MM-dd HH:mm:ss&#x27;</span>的形式，可以直接使用UNIX_TIMESTAMP(dateString)得到其时间戳，如果不满足该形式，则可以在函数内使用格式参数，如UNIX_TIMESTAMP(<span class="string">&#x27;20220719&#x27;</span>,<span class="string">&#x27;yyyyMMdd&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="FROM-UNIXTIME-hive"><a href="#FROM-UNIXTIME-hive" class="headerlink" title="FROM_UNIXTIME	(hive)"></a>FROM_UNIXTIME	(hive)</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">	FROM_UNIXTIME(unix_timestamp,format)</span><br><span class="line">用途：</span><br><span class="line">	将时间戳unix_timestamp按照时间格式format进行转换</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="获取日期中的年月日时分秒周数等-hiveQL"><a href="#获取日期中的年月日时分秒周数等-hiveQL" class="headerlink" title="获取日期中的年月日时分秒周数等	(hiveQL)"></a>获取日期中的年月日时分秒周数等	(hiveQL)</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">	<span class="keyword">year</span>(<span class="type">date</span><span class="operator">/</span><span class="type">timestamp</span>)<span class="comment">----------返回日期中的年</span></span><br><span class="line">	<span class="keyword">month</span>(<span class="type">date</span><span class="operator">/</span><span class="type">timestamp</span>)<span class="comment">----------返回日期中的月</span></span><br><span class="line">	<span class="keyword">day</span>(<span class="type">date</span><span class="operator">/</span><span class="type">timestamp</span>)<span class="comment">----------返回日期中的日</span></span><br><span class="line">	<span class="keyword">hour</span>(<span class="type">date</span><span class="operator">/</span><span class="type">timestamp</span>)<span class="comment">----------返回日期中的小时</span></span><br><span class="line">	<span class="keyword">minute</span>(<span class="type">date</span><span class="operator">/</span><span class="type">timestamp</span>)<span class="comment">----------返回日期中的分钟</span></span><br><span class="line">	<span class="keyword">second</span>(<span class="type">date</span><span class="operator">/</span><span class="type">timestamp</span>)<span class="comment">----------返回日期中的秒</span></span><br><span class="line">	weekofyear(<span class="type">date</span><span class="operator">/</span><span class="type">timestamp</span>)<span class="comment">----------返回日期是当年的哪一周</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="获取日期中的年月日时分秒周数等-PostgreSql-Mysql-Oracle"><a href="#获取日期中的年月日时分秒周数等-PostgreSql-Mysql-Oracle" class="headerlink" title="获取日期中的年月日时分秒周数等	(PostgreSql,Mysql,Oracle)"></a>获取日期中的年月日时分秒周数等	(PostgreSql,Mysql,Oracle)</h3><h3 id="EXTRACT"><a href="#EXTRACT" class="headerlink" title="EXTRACT"></a>EXTRACT</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">	<span class="built_in">extract</span>(<span class="keyword">year</span><span class="operator">|</span><span class="keyword">month</span><span class="operator">|</span><span class="keyword">day</span><span class="operator">|</span><span class="keyword">hour</span><span class="operator">|</span><span class="keyword">minute</span><span class="operator">|</span><span class="keyword">second</span><span class="operator">|</span>week <span class="keyword">from</span> [类型声明] <span class="type">date</span><span class="operator">/</span><span class="type">interval</span>类型值)</span><br><span class="line">如：</span><br><span class="line">	<span class="built_in">extract</span>(week <span class="keyword">from</span> <span class="type">timestamp</span> <span class="string">&#x27;2022-08-01&#x27;</span>) <span class="comment">----获取8月1日处于2022年的第几周</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="TRUNC"><a href="#TRUNC" class="headerlink" title="TRUNC"></a>TRUNC</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">	TRUNC(<span class="type">date</span>, format)</span><br><span class="line">	TRUNC(number,[decimals])</span><br><span class="line">用途：</span><br><span class="line">	TRUNC函数返回以指定元素格式截去一部分的日期值，或者直接对数字格式的数据进行截断</span><br><span class="line">用法：</span><br><span class="line">	第一个参数若为数字number，number为待截取处理的数值，decimals指明需保留小数点后面的位数，为可选项，忽略此项时会截去所有小数部分，第二个参数可以为负数，表示为小数点左边指定位数后面的部分截去，即均以<span class="number">0</span>记。与取整类似，比如参数为<span class="number">1</span>即取整到十分位，如果是<span class="number">-1</span>，则是取整到十位，以此类推；如果所设置的参数为负数，且负数的位数大于整数的字节数的话，则返回为<span class="number">0</span>。如：TRUNC(<span class="number">89.985</span>,<span class="number">-3</span>)<span class="operator">=</span><span class="number">0</span>。</span><br><span class="line">	第一个参数若为日期值<span class="type">date</span>，形式需为标准形式，第二个参数format为截断粒度，如trunc(<span class="string">&#x27;2020-05-02&#x27;</span>, <span class="string">&#x27;YY&#x27;</span>) <span class="operator">=</span> <span class="string">&#x27;2020-01-01&#x27;</span>, format值参考如下：</span><br></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th>Unit</th>
-<th>Valid format parameters</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Year</td>
-<td>SYYYY, YYYY, YEAR, SYEAR, YYY, YY, Y</td>
-</tr>
-<tr>
-<td>ISO Year</td>
-<td>IYYY, IY, I</td>
-</tr>
-<tr>
-<td>Quarter</td>
-<td>Q</td>
-</tr>
-<tr>
-<td>Month</td>
-<td>MONTH, MON, MM, RM</td>
-</tr>
-<tr>
-<td>Week</td>
-<td>WW</td>
-</tr>
-<tr>
-<td>IW</td>
-<td>IW</td>
-</tr>
-<tr>
-<td>W</td>
-<td>W</td>
-</tr>
-<tr>
-<td>Day</td>
-<td>DDD, DD, J</td>
-</tr>
-<tr>
-<td>Start day of the week</td>
-<td>DAY, DY, D</td>
-</tr>
-<tr>
-<td>Hour</td>
-<td>HH, HH12, HH24</td>
-</tr>
-<tr>
-<td>Minute</td>
-<td>MI</td>
-</tr>
-</tbody></table>
-<h3 id="ADD-MONTHS-hive"><a href="#ADD-MONTHS-hive" class="headerlink" title="ADD_MONTHS	(hive)"></a>ADD_MONTHS	(hive)</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">	ADD_MONTHS(<span class="type">date</span>, number)</span><br><span class="line">用途：</span><br><span class="line">	计算日期增减几个月后的日期</span><br><span class="line">用法:</span><br><span class="line">	第一个参数<span class="type">date</span>为日期，需为标准形式，第二个参数为增量值，可以为负数，计算结果为日期增减增量值个月份后的结果。</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="NEXT-DAY-hive"><a href="#NEXT-DAY-hive" class="headerlink" title="NEXT_DAY	(hive)"></a>NEXT_DAY	(hive)</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">	NEXT_DAY(<span class="type">date</span>, weekday)</span><br><span class="line">用途：</span><br><span class="line">	可以取到当前日期的下一个周一的日期，方便进行其他操作。</span><br><span class="line">用法：</span><br><span class="line">	第一个参数<span class="type">date</span>为日期，形式需为标准形式，且粒度至少到日；第二个参数weekday是指定周几，该参数可以使用全拼，也可以使用全拼的前两位或前三位作为缩写，建议使用全拼比较直观。</span><br><span class="line">	weekday取值：Monday，Tuesday、Wednesday、Thursday、Friday、Saturday、Sunday.</span><br><span class="line">示例：</span><br><span class="line">	取日期下一周的周一</span><br><span class="line">	<span class="keyword">select</span> NEXT_DAY(<span class="string">&#x27;2022-10-26&#x27;</span>, <span class="string">&#x27;MONDAY&#x27;</span>)</span><br><span class="line">	<span class="keyword">select</span> NEXT_DAY(<span class="string">&#x27;2022-10-26&#x27;</span>, <span class="string">&#x27;MO&#x27;</span>)</span><br><span class="line">	<span class="keyword">select</span> NEXT_DAY(<span class="string">&#x27;2022-10-26&#x27;</span>, <span class="string">&#x27;MO&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="字符串函数"><a href="#字符串函数" class="headerlink" title="字符串函数"></a>字符串函数</h2><h3 id="CONCAT-hive"><a href="#CONCAT-hive" class="headerlink" title="CONCAT	(hive)"></a>CONCAT	(hive)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">	CONCAT(STRING_1,STRING_2,.....)</span><br><span class="line">用途：</span><br><span class="line">	字符串拼接</span><br><span class="line">用法：</span><br><span class="line">	按顺序将传入的字符串参数拼接成一个字符串。</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="CONCAT-WS-hive"><a href="#CONCAT-WS-hive" class="headerlink" title="CONCAT_WS	(hive)"></a>CONCAT_WS	(hive)</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">	CONCAT_WS(separator, str1, str2, ...)</span><br><span class="line">用途：</span><br><span class="line">	字符串拼接时指定分隔符</span><br><span class="line">注意：</span><br><span class="line">	如果分隔符是 <span class="keyword">NULL</span>，返回值也将为 <span class="keyword">NULL</span>。这个函数会跳过分隔符参数后的任何 <span class="keyword">NULL</span> 和空字符串。分隔符将被加到被连接的字符串之间;</span><br><span class="line">其他说明：</span><br><span class="line">	该函数返回值类型为字符串类型</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="聚合函数"><a href="#聚合函数" class="headerlink" title="聚合函数"></a>聚合函数</h2><h3 id="COLLECT-SET-hive"><a href="#COLLECT-SET-hive" class="headerlink" title="COLLECT_SET	(hive)"></a>COLLECT_SET	(hive)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">	COLLECT_SET(expression)</span><br><span class="line">用途：</span><br><span class="line">	执行列转行操作，可以按照某些列分组，然后将剩余的一列的多行的值放在一个数组里转成一行。如果有多列想要转成一行，可以将这些列使用其他函数(例如concat、concat_ws、map等函数)拼接成一列，然后使用该函数转成一行，再想办法将拼接的列分开即可。</span><br><span class="line">	注意该函数会根据列值进行去重汇总，产生array类型字段。该函数为聚合函数，不在聚合范围内的列需要进行group by操作</span><br><span class="line">	即可以将列数据转为一行</span><br><span class="line">	如果不希望对聚合字段去重，可以使用下面的COLLECT_LIST() 函数</span><br></pre></td></tr></table></figure>
-
-<p>示例：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">-- 现有数据,存放在表student中</span><br><span class="line">age		name</span><br><span class="line">13		小明</span><br><span class="line">13		小红</span><br><span class="line">14		小伟</span><br><span class="line">-- 按照年龄分组，将名字聚合成一行</span><br><span class="line">SELECT </span><br><span class="line">	age </span><br><span class="line">	,COLLECT_SET(name) as names</span><br><span class="line">FROM </span><br><span class="line">	student</span><br><span class="line">GROUP BY </span><br><span class="line">	age</span><br><span class="line">-- 将取得如下结果</span><br><span class="line">age		names</span><br><span class="line">13		[小明，小红]</span><br><span class="line">14		[小伟]</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="COLLECT-LIST"><a href="#COLLECT-LIST" class="headerlink" title="COLLECT_LIST()"></a>COLLECT_LIST()</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">	COLLECT_LIST(expression)</span><br><span class="line">用途：</span><br><span class="line">	执行列转行操作，可以按照某些列分组，然后将剩余的一列的多行的值放在一个数组里转成一行。如果有多列想要转成一行，可以将这些列使用其他函数(例如concat、concat_ws、map等函数)拼接成一列，然后使用该函数转成一行，再想办法将拼接的列分开即可。</span><br><span class="line">	函数不会根据列值进行去重汇总，保留所有列值，产生array类型字段。该函数为聚合函数，不在聚合范围内的列需要进行group by操作</span><br><span class="line">	即可以将列数据转为一行</span><br><span class="line">	如果希望聚合时对聚合列去重，可以使用上面的COLLECT_SET() 函数</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h2 id="窗口函数"><a href="#窗口函数" class="headerlink" title="窗口函数"></a>窗口函数</h2><h3 id="OVER-hive"><a href="#OVER-hive" class="headerlink" title="OVER	(hive)"></a>OVER	(hive)</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">	<span class="keyword">OVER</span>()</span><br><span class="line">用途：</span><br><span class="line">	指定分析函数工作的窗口大小，一般放在函数后面</span><br><span class="line">用法：</span><br><span class="line">	<span class="keyword">over</span>函数是对每一条数据都进行开窗，当<span class="keyword">over</span>括号中没有传入参数时，窗口大小默认为数据集大小。当使用distribute <span class="keyword">by</span> <span class="operator">/</span> sort <span class="keyword">by</span> <span class="operator">/</span> <span class="keyword">order</span> <span class="keyword">by</span>等关键字进行限制时，窗口大小相应地发生变化</span><br><span class="line">	</span><br><span class="line">相关参数(传入<span class="keyword">over</span>后的括号内使用)：</span><br><span class="line">	<span class="keyword">CURRENT</span> <span class="type">ROW</span>: 当前行</span><br><span class="line">	n PRECEDING: 往前n行数据</span><br><span class="line">	n FOLLOWING: 往后n行数据</span><br><span class="line">	UNBOUNDED: 起点</span><br><span class="line">	UNBOUNDED PRECEDING：表示从前面的起点</span><br><span class="line">	UNBOUNDED FOLLOWING：表示到后面的终点</span><br><span class="line">常配合使用的函数：</span><br><span class="line">	窗口函数可以对函数工作范围进行开窗，经常配合使用<span class="keyword">over</span>()的函数有以下几个:</span><br><span class="line">	<span class="built_in">row_number</span>():为结果集的每一行分配一个连续的整数，从<span class="number">1</span>开始</span><br><span class="line">	<span class="built_in">lag</span>(col,n,<span class="keyword">default</span>): 往前第n行数据，第一个参数指定列，第三个参数是当前面第n行该列不存在时的默认值</span><br><span class="line">	<span class="built_in">lead</span>(col,n,<span class="keyword">default</span>)：往后第n行数据，第一个参数指定列，第三个参数是当后面第n行该列不存在时的默认值</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="LAG"><a href="#LAG" class="headerlink" title="LAG"></a>LAG</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">	LAG(col, n, DEFAULT)</span><br><span class="line">用途：</span><br><span class="line">	用于获取当前行之前的行的值，可以用于计算当前行与之前行之间的值的差异或百分比变化等。</span><br><span class="line">用法：</span><br><span class="line">	结合OVER()函数开窗使用，在LAG函数中，第一个参数为列名；第二个参数为偏移量，即往前多少行；最后一个参数为默认值，就是如果往前n行没有值的话，就取这个默认值，如果不指定默认值，则默认值为NULL</span><br><span class="line">示例：</span><br><span class="line">SELECT * FROM TALBE;</span><br><span class="line">	name	time</span><br><span class="line">&gt; 	name1	2023-09-01 </span><br><span class="line">	name1 	2023-09-03</span><br><span class="line">	name1 	2023-09-02</span><br><span class="line">	name2 	2023-09-02</span><br><span class="line">	name2 	2023-09-01</span><br><span class="line">	name2 	2023-09-04</span><br><span class="line">SELECT </span><br><span class="line">	name</span><br><span class="line">	,time</span><br><span class="line">	,LAG(time, 1, &#x27;1970-01-01&#x27;) OVER(PARTITION BY name ORDER BY time) as last_1_time</span><br><span class="line">	,LAG(time, 2) OVER(PARTITION BY name ORDER BY time) as last_2_time</span><br><span class="line">FROM </span><br><span class="line">	TABLE</span><br><span class="line">	name	time		last_1_time		last_2_time</span><br><span class="line">&gt;	name1 	2023-09-01	1970-01-01		NULL</span><br><span class="line">	name1 	2023-09-02	2023-09-01		NULL</span><br><span class="line">	name1 	2023-09-03	2023-09-02		2023-09-01</span><br><span class="line">	name2	2023-09-01	1970-01-01		NULL</span><br><span class="line">	name2	2023-09-02	2023-09-01		NULL</span><br><span class="line">	name2	2023-09-04	2023-09-02		2023-09-01</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="LEAD"><a href="#LEAD" class="headerlink" title="LEAD"></a>LEAD</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">	LEAD(col, n, DEFAULT)</span><br><span class="line">用途：</span><br><span class="line">	用于获取当前行之后的行的值，可以用于计算当前行与之后行之间的值的差异或百分比变化等。</span><br><span class="line">用法：</span><br><span class="line">	结合OVER()函数开窗使用，在LAG函数中，第一个参数为列名；第二个参数为偏移量，即往后多少行；最后一个参数为默认值，就是如果往后n行没有值的话，就取这个默认值，如果不指定默认值，则默认值为NULL</span><br><span class="line">示例：</span><br><span class="line">SELECT * FROM TALBE;</span><br><span class="line">	name 	time</span><br><span class="line">&gt; 	name1	2023-09-01 </span><br><span class="line">	name1 	2023-09-03</span><br><span class="line">	name1 	2023-09-02</span><br><span class="line">	name2 	2023-09-02</span><br><span class="line">	name2 	2023-09-01</span><br><span class="line">	name2 	2023-09-04</span><br><span class="line">SELECT </span><br><span class="line">	name</span><br><span class="line">	,time</span><br><span class="line">	,LEAD(time, 1, &#x27;1970-01-01&#x27;) OVER(PARTITION BY name ORDER BY time) as after_1_time</span><br><span class="line">	,LEAD(time, 2) OVER(PARTITION BY name ORDER BY time) as after_2_time</span><br><span class="line">FROM </span><br><span class="line">	TABLE</span><br><span class="line">	</span><br><span class="line">	name	time		after_1_time	after_2_time</span><br><span class="line">&gt;	name1 	2023-09-01	2023-09-02		2023-09-03</span><br><span class="line">	name1 	2023-09-02	2023-09-03		NULL</span><br><span class="line">	name1 	2023-09-03	1970-01-01		NULL</span><br><span class="line">	name2	2023-09-01	2023-09-02		2023-09-04</span><br><span class="line">	name2	2023-09-02	2023-09-04		NULL</span><br><span class="line">	name2	2023-09-04	1970-01-01		NULL</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="数据类型处理"><a href="#数据类型处理" class="headerlink" title="数据类型处理"></a>数据类型处理</h2><h3 id="CAST"><a href="#CAST" class="headerlink" title="CAST"></a>CAST</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">	CAST(expression AS data_type)</span><br><span class="line">用途：</span><br><span class="line">	将字段类型转换成指定数据类型，显式类型转换</span><br><span class="line">用法：</span><br><span class="line">	expression:任何有效的字段或者表达式</span><br><span class="line">	data_type:要转换的数据类型</span><br><span class="line">特殊说明：</span><br><span class="line">	1.如果将浮点型的数据转换成int类型的，内部操作是通过round()或者floor()函数来实现的，而不是通过cast实现</span><br><span class="line">	2.对于BINARY类型的数据，只能将BINARY类型的数据转换成STRING类型。如果你确信BINARY类型数据是一个数字类型(a number)，这时候你可以利用嵌套的cast操作，比如a是一个BINARY，且它是一个数字类型，那么你可以用下面的查询：</span><br><span class="line">	SELECT (cast(cast(a as string) as double )) from src;</span><br><span class="line">	3.对于Date类型的数据，只能在Date、Timestamp以及String之间进行转换	</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="集合函数"><a href="#集合函数" class="headerlink" title="集合函数"></a>集合函数</h2><h3 id="SIZE"><a href="#SIZE" class="headerlink" title="SIZE"></a>SIZE</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">	SIZE(collection)</span><br><span class="line">用途：</span><br><span class="line">	判断集合大小</span><br><span class="line">用法：</span><br><span class="line">	collection：一个集合类型的字段，或者最终返回类型为集合类型的表达式</span><br><span class="line">特殊说明：</span><br><span class="line">	该函数返回值类型为INT,表示集合的大小</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h3 id="MAP"><a href="#MAP" class="headerlink" title="MAP"></a>MAP</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">	MAP(col1, col2)</span><br><span class="line">用途：</span><br><span class="line">	使用两列构造一个map列</span><br><span class="line">用法：</span><br><span class="line">	col1: 当做key的列</span><br><span class="line">	col2: 当做value的列</span><br><span class="line">其他说明：</span><br><span class="line">	可以使用[]运算符获取map中的值</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="MAP-KEYS"><a href="#MAP-KEYS" class="headerlink" title="MAP_KEYS"></a>MAP_KEYS</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">	MAP_KEYS(map_expression)</span><br><span class="line">用途：</span><br><span class="line">	获取map中的所有key</span><br><span class="line">用法：</span><br><span class="line">	map_expression: map类型的列，或者最终返回类型为map类型的表达式</span><br><span class="line">其他说明：</span><br><span class="line">	该函数返回一个由map中的所有key组成的数组</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="MAP-VALUES"><a href="#MAP-VALUES" class="headerlink" title="MAP_VALUES"></a>MAP_VALUES</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">	MAP_VALUES(map_expression)</span><br><span class="line">用途：</span><br><span class="line">	获取map中的所有value</span><br><span class="line">用法：</span><br><span class="line">	map_expression: map类型的列，或者最终返回类型为map类型的表达式</span><br><span class="line">其他说明：</span><br><span class="line">	该函数返回一个由map中的所有value组成的数组</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="STR-TO-MAP"><a href="#STR-TO-MAP" class="headerlink" title="STR_TO_MAP"></a>STR_TO_MAP</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">	STR_TO_MAP(string, 键值对之间的分隔符， 键值之间的分隔符)</span><br><span class="line">用途：</span><br><span class="line">	将字符串转换为map</span><br><span class="line">其他说明：</span><br><span class="line">	指定的两个分隔符，string本身应该携带这两种分隔符，否则无法进行分割</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="ARRAY"><a href="#ARRAY" class="headerlink" title="ARRAY"></a>ARRAY</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">	ARRAY(col1, col2, col3, ……)</span><br><span class="line">用途：</span><br><span class="line">	根据多列或者多个值构造一个数组</span><br><span class="line">用法：</span><br><span class="line">	指定要作为数组元素的列，即可按照每一列的值来构造数组</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h3 id="ARRAY-CONTAINS"><a href="#ARRAY-CONTAINS" class="headerlink" title="ARRAY_CONTAINS"></a>ARRAY_CONTAINS</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">	ARRAY_CONTAINS(array_expression, value)</span><br><span class="line">用途：</span><br><span class="line">	判断数组中是否包含指定的元素</span><br><span class="line">用法：</span><br><span class="line">	array_expression: array类型的字段，或者最终返回类型为array类型的表达式</span><br><span class="line">	value: 指定值。需要判断指定值是否在数组元素中</span><br><span class="line">其他说明：</span><br><span class="line">	该函数会返回一个布尔类型值true或false，表明指定值是否在数组元素中</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="SORT-ARRAY"><a href="#SORT-ARRAY" class="headerlink" title="SORT_ARRAY"></a>SORT_ARRAY</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">	SORT_ARRAY(array_expresson)</span><br><span class="line">用途：</span><br><span class="line">	对数组元素进行排序</span><br><span class="line">用法：</span><br><span class="line">	array_expression: 需要进行排序的array类型的字段，或者最终返回类型为array类型的表达式</span><br><span class="line">其他说明：</span><br><span class="line">	该函数会对数组元素，按照自然顺序作升序排列，没有提供降序排列方式。如果需要降序排列，可以添加辅助列进行处理。</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="数学运算"><a href="#数学运算" class="headerlink" title="数学运算"></a>数学运算</h2><h3 id="PMOD"><a href="#PMOD" class="headerlink" title="PMOD"></a>PMOD</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">	PMOD(numerator, denominator)</span><br><span class="line">用途：</span><br><span class="line">	求两个数的余数</span><br><span class="line">用法：</span><br><span class="line">	numerator：分子</span><br><span class="line">	denominator：分母</span><br><span class="line">其他说明：</span><br><span class="line">	两个参数可以是任何数值类型的值(INT,DOUBLE等等)</span><br><span class="line">	两个参数中任何一个为null时，返回值为null</span><br><span class="line">	分母为0时，返回值为null</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/5/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -2152,13 +1948,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">168k</span>
+    <span title="站点总字数">170k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">5:05</span>
+    <span title="站点阅读时长">5:09</span>
   </span>
 </div>
 <div class="busuanzi-count">

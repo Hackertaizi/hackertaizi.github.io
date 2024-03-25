@@ -220,7 +220,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-03-18 18:47:43" itemprop="dateModified" datetime="2024-03-18T18:47:43+08:00">2024-03-18</time>
+      <time title="修改时间：2024-03-19 14:41:59" itemprop="dateModified" datetime="2024-03-19T14:41:59+08:00">2024-03-19</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -264,6 +264,7 @@
 <h2 id="1-HiveSql-HQL-执行顺序"><a href="#1-HiveSql-HQL-执行顺序" class="headerlink" title="1. HiveSql (HQL) 执行顺序"></a>1. HiveSql (HQL) 执行顺序</h2><h3 id="1-1-书写顺序"><a href="#1-1-书写顺序" class="headerlink" title="1.1 书写顺序"></a>1.1 书写顺序</h3><p><strong>SELECT</strong></p>
 <p><strong>DISTINCT</strong></p>
 <p><strong>FROM</strong></p>
+<p><strong>[LATERAL VIEW EXPLODE 需要炸裂的列 tbl AS 别名]</strong></p>
 <p><strong>JOIN ON</strong></p>
 <p><strong>WHERE</strong></p>
 <p><strong>GROUP BY</strong></p>
@@ -271,15 +272,15 @@
 <p><strong>ORDER BY</strong></p>
 <p><strong>LIMIT</strong></p>
 <h3 id="1-2-查询语句执行顺序-逻辑顺序，查询优化器可能会重新安排顺序以优化性能"><a href="#1-2-查询语句执行顺序-逻辑顺序，查询优化器可能会重新安排顺序以优化性能" class="headerlink" title="1.2 查询语句执行顺序(逻辑顺序，查询优化器可能会重新安排顺序以优化性能)"></a>1.2 查询语句执行顺序(逻辑顺序，查询优化器可能会重新安排顺序以优化性能)</h3><p><strong>FROM</strong></p>
-<p><strong>JOIN ON (LATERAL VIEW EXPLODE 需要炸裂的列 tbl AS 别名)</strong></p>
+<p>**JOIN ON **</p>
 <p><strong>WHERE</strong></p>
 <p><strong>GROUP BY （SELECT 未执行，不可使用SELECT中的别名）</strong></p>
 <p><strong>聚合函数</strong></p>
-<p><strong>窗口函数</strong></p>
-<p><strong>HAVING (聚合函数及其别名已经解析完毕，此时可以使用聚合列别名)</strong></p>
 <p><strong>SELECT（如果包含开窗函数再，开窗函数最后执行，开窗函数的分区和排序不依赖查询字段）</strong></p>
+<p><strong>HAVING (聚合函数及其别名已经解析完毕，此时可以使用聚合列别名)</strong></p>
 <p><strong>DISTINCT</strong></p>
-<p><strong>ORDER BY</strong> </p>
+<p><strong>窗口函数</strong></p>
+<p><strong>ORDER BY (全局)</strong></p>
 <p><strong>LIMIT</strong></p>
 <p><strong>UNION &#x2F; UNION ALL</strong></p>
 <h4 id="1-2-1-复杂情况下的执行顺序"><a href="#1-2-1-复杂情况下的执行顺序" class="headerlink" title="1.2.1 复杂情况下的执行顺序"></a>1.2.1 复杂情况下的执行顺序</h4><ul>
@@ -778,7 +779,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-11-23 19:00:11" itemprop="dateModified" datetime="2023-11-23T19:00:11+08:00">2023-11-23</time>
+      <time title="修改时间：2024-03-25 19:06:08" itemprop="dateModified" datetime="2024-03-25T19:06:08+08:00">2024-03-25</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -801,14 +802,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>4.4k</span>
+      <span>4.8k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>8 分钟</span>
+      <span>9 分钟</span>
     </span>
 </div>
 
@@ -866,7 +867,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">LocalDate</span> <span class="variable">aThousandDaysLater</span> <span class="operator">=</span> newYearsEve.plusDays(<span class="number">1000</span>); <span class="comment">// plusDays方法会生成一个新对象，然后把新对象赋给aThousandDaysLater，原来的对象newYearsEve不作任何改动</span></span><br><span class="line"><span class="type">String</span> <span class="variable">stra</span> <span class="operator">=</span> <span class="string">&quot;aaa&quot;</span>;</span><br><span class="line"><span class="type">String</span> <span class="variable">strb</span> <span class="operator">=</span> stra.toUpperCase(); <span class="comment">// toUpperCase方法会生成一个新对象，然后赋给strb，原来的字符串对象stra不作任何改变。</span></span><br></pre></td></tr></table></figure>
 
 <p>更改器方法举例：</p>
-<p>例如实体类中的getter&#x2F;setter方法，调用后会改变对象的状态，这种方法都是更改器方法。</p>
+<p>例如实体类中的setter方法，调用后会改变对象的状态，这种方法都是更改器方法。</p>
 </li>
 <li><h4 id="用户自定义类"><a href="#用户自定义类" class="headerlink" title="用户自定义类"></a>用户自定义类</h4><ul>
 <li><h5 id="使用单个源文件："><a href="#使用单个源文件：" class="headerlink" title="使用单个源文件："></a>使用单个源文件：</h5><p>在源文件中，只能有一个公共类（public修饰），可以有任意数目的非公共类。</p>
@@ -883,7 +884,7 @@
 <li>每个类可以有一个以上的构造器</li>
 <li>构造器可以有0个、1个或多个参数</li>
 <li>构造器没有返回值</li>
-<li>构造器总是伴随着new操作符一期使用</li>
+<li>构造器总是伴随着new操作符一起使用</li>
 </ul>
 <p><strong>注意不要在构造器内定义与实例字段同名的局部变量，否则这些变量会屏蔽同名的实例字段。</strong></p>
 </li>
@@ -909,7 +910,7 @@
 </ul>
 <p>相对于将字段直接设置为公有字段，这种方式有以下好处：</p>
 <ul>
-<li>该变内部实现时除了该类的方法外，不会影响其他代码</li>
+<li>改变内部实现时除了该类的方法外，不会影响其他代码</li>
 <li>更改器方法可以完成（进行）错误检查</li>
 </ul>
 </li>
@@ -951,7 +952,24 @@
 </li>
 </ul>
 </li>
-<li><h4 id="方法参数"><a href="#方法参数" class="headerlink" title="方法参数"></a>方法参数</h4></li>
+<li><h4 id="方法参数"><a href="#方法参数" class="headerlink" title="方法参数"></a>方法参数</h4><p>回顾一下如何将参数传递给方法：</p>
+<blockquote>
+<p><strong>按值调用</strong>表示方法接收的是调用者提供的值；而<strong>按引用调用</strong>表示方法接收的是调用者提供的变量地址。</p>
+<p>方法可以修改按引用传递的变量的值，而不能修改按值传递的变量的值。</p>
+</blockquote>
+<p><strong>Java程序设计语言总是采用按值调用，也就是说，方法得到的是所有参数值的一个副本，方法不能修改传递给它的任何参数变量的内容。</strong></p>
+<p>方法能够接受的参数：</p>
+<ul>
+<li>基本数据类型(数字、布尔值)</li>
+<li>对象引用</li>
+</ul>
+<p>Java中对方法参数能做什么和不能做什么：</p>
+<ul>
+<li>方法不能修改基本类型的参数（即数值型或布尔型）</li>
+<li>方法可以改变对象参数的状态<br>解释：方法得到一个对象的引用A后会创建一个对象的副本，也就是一个对象的引用B。这里A和B引用的是同一个对象，所以在方法中，通过B调用对象的方法改变对象的状态，对于A也会产生影响。</li>
+<li>方法不能让一个对象参数引用一个新的对象<br>解释：对象引用传入方法后，方法会创建一个该对象引用的副本，该副本引用一个新对象，在方法结束后副本就被销毁，原对象引用不变。</li>
+</ul>
+</li>
 </ul>
 
       
@@ -1463,6 +1481,310 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/%E5%85%B6%E4%BB%96/Cron%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E8%A1%A8%E8%BE%BE%E5%BC%8F/Cron%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Taizi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/%E5%85%B6%E4%BB%96/Cron%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E8%A1%A8%E8%BE%BE%E5%BC%8F/Cron%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="post-title-link" itemprop="url">Cron表达式</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-09-28 15:41:03" itemprop="dateModified" datetime="2023-09-28T15:41:03+08:00">2023-09-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%85%B6%E4%BB%96/" itemprop="url" rel="index"><span itemprop="name">其他</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.9k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Cron表达式"><a href="#Cron表达式" class="headerlink" title="Cron表达式"></a>Cron表达式</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Cron表达式是一个具有时间含义的字符串，字符串以5<del>6个空格隔开，分为6</del>7个域，格式为<code>X X X X X X X</code>。其中<code>X</code>是一个域的占位符。最后一个代表年份的域非必须，可省略。单个域有多个取值时，使用半角逗号<code>,</code>隔开取值。每个域可以是确定的取值，也可以是具有逻辑意义的特殊字符。每个域最多支持一个前导零。</p>
+<h2 id="语法格式"><a href="#语法格式" class="headerlink" title="语法格式"></a>语法格式</h2><ul>
+<li><p>当为7个域时：</p>
+<p><code>Seconds Minutes Hours DayofMonth Month DayofWeek Year</code></p>
+</li>
+<li><p>当为6个域时：</p>
+<p><code>Seconds Minutes Hours DayofMonth Month DayofWeek</code></p>
+</li>
+</ul>
+<h2 id="域取值"><a href="#域取值" class="headerlink" title="域取值"></a>域取值</h2><p>下表为Cron表达式中六个域能够取的值以及支持的特殊字符。</p>
+<table>
+<thead>
+<tr>
+<th>域</th>
+<th>是否必需</th>
+<th>取值范围</th>
+<th>特殊字符</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>秒</td>
+<td>是</td>
+<td>[0, 59]</td>
+<td>* , - &#x2F;</td>
+</tr>
+<tr>
+<td>分钟</td>
+<td>是</td>
+<td>[0, 59]</td>
+<td>* , - &#x2F;</td>
+</tr>
+<tr>
+<td>小时</td>
+<td>是</td>
+<td>[0, 23]</td>
+<td>* , - &#x2F;</td>
+</tr>
+<tr>
+<td>日期</td>
+<td>是</td>
+<td>[1, 31]</td>
+<td>* , - &#x2F; ? L W</td>
+</tr>
+<tr>
+<td>月份</td>
+<td>是</td>
+<td>[1, 12]或[JAN, DEC]</td>
+<td>* , - &#x2F;</td>
+</tr>
+<tr>
+<td>星期</td>
+<td>是</td>
+<td>[1, 7]或[MON, SUN]。若您使用[1, 7]表达方式，<code>1</code>代表星期一，<code>7</code>代表星期日。</td>
+<td>* , - &#x2F; ? L #</td>
+</tr>
+<tr>
+<td>年</td>
+<td>否</td>
+<td>[当前年份，2099]</td>
+<td>* , - &#x2F;</td>
+</tr>
+</tbody></table>
+<h2 id="特殊字符"><a href="#特殊字符" class="headerlink" title="特殊字符"></a>特殊字符</h2><p>Cron表达式中的每个域都支持一定数量的特殊字符，每个特殊字符有其特殊含义。</p>
+<table>
+<thead>
+<tr>
+<th>特殊字符</th>
+<th>含义</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>*</code></td>
+<td>所有可能的值。</td>
+<td>在月域中，<code>*</code>表示每个月；在星期域中，<code>*</code>表示星期的每一天。</td>
+</tr>
+<tr>
+<td><code>,</code></td>
+<td>列出枚举值。</td>
+<td>在分钟域中，<code>5,20</code>表示分别在5分钟和20分钟触发一次。</td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td>范围。</td>
+<td>在分钟域中，<code>5-20</code>表示从5分钟到20分钟之间每隔一分钟触发一次。</td>
+</tr>
+<tr>
+<td><code>/</code></td>
+<td>指定数值的增量。</td>
+<td>在分钟域中，<code>0/15</code>表示从第0分钟开始，每15分钟。在分钟域中<code>3/20</code>表示从第3分钟开始，每20分钟。</td>
+</tr>
+<tr>
+<td><code>?</code></td>
+<td>不指定值，仅日期和星期域支持该字符。</td>
+<td>当日期或星期域其中之一被指定了值以后，为了避免冲突，需要将另一个域的值设为<code>?</code>。</td>
+</tr>
+<tr>
+<td><code>L</code></td>
+<td>单词Last的首字母，表示最后一天，仅日期和星期域支持该字符。                                                                                                 <strong>说明</strong> 指定<code>L</code>字符时，避免指定列表或者范围，否则，会导致逻辑问题。</td>
+<td>在日期域中，<code>L</code>表示某个月的最后一天。在星期域中，<code>L</code>表示一个星期的最后一天，也就是星期日（<code>SUN</code>）。                                                                  如果在<code>L</code>前有具体的内容，例如，在星期域中的<code>6L</code>表示这个月的最后一个星期六。</td>
+</tr>
+<tr>
+<td><code>W</code></td>
+<td>除周末以外的有效工作日，在离指定日期的最近的有效工作日触发事件。<code>W</code>字符寻找最近有效工作日时不会跨过当前月份，连用字符<code>LW</code>时表示为指定月份的最后一个工作日。</td>
+<td>在日期域中<code>5W</code>，如果5日是星期六，则将在最近的工作日星期五，即4日触发。如果5日是星期天，则将在最近的工作日星期一，即6日触发；如果5日在星期一到星期五中的一天，则就在5日触发。</td>
+</tr>
+<tr>
+<td><code>#</code></td>
+<td>确定每个月第几个星期几，仅星期域支持该字符。</td>
+<td>在星期域中，<code>4#2</code>表示某月的第二个星期四。</td>
+</tr>
+</tbody></table>
+<h2 id="取值示例"><a href="#取值示例" class="headerlink" title="取值示例"></a>取值示例</h2><p>以下为Cron表达式的取值示例。</p>
+<table>
+<thead>
+<tr>
+<th>示例</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>0 15 10 ? * *</code></td>
+<td>每天上午10:15执行任务</td>
+</tr>
+<tr>
+<td><code>0 15 10 * * ?</code></td>
+<td>每天上午10:15执行任务</td>
+</tr>
+<tr>
+<td><code>0 0 12 * * ?</code></td>
+<td>每天中午12:00执行任务</td>
+</tr>
+<tr>
+<td><code>0 0 10,14,16 * * ?</code></td>
+<td>每天上午10:00点、下午14:00以及下午16:00执行任务</td>
+</tr>
+<tr>
+<td><code>0 0/30 9-17 * * ?</code></td>
+<td>每天上午09:00到下午17:00时间段内每隔半小时执行任务</td>
+</tr>
+<tr>
+<td><code>0 * 14 * * ?</code></td>
+<td>每天下午14:00到下午14:59时间段内每隔1分钟执行任务</td>
+</tr>
+<tr>
+<td><code>0 0-5 14 * * ?</code></td>
+<td>每天下午14:00到下午14:05时间段内每隔1分钟执行任务</td>
+</tr>
+<tr>
+<td><code>0 0/5 14 * * ?</code></td>
+<td>每天下午14:00到下午14:55时间段内每隔5分钟执行任务</td>
+</tr>
+<tr>
+<td><code>0 0/5 14,18 * * ?</code></td>
+<td>每天下午14:00到下午14:55、下午18:00到下午18:55时间段内每隔5分钟执行任务</td>
+</tr>
+<tr>
+<td><code>0 0 12 ? * WED</code></td>
+<td>每个星期三中午12:00执行任务</td>
+</tr>
+<tr>
+<td><code>0 15 10 15 * ?</code></td>
+<td>每月15日上午10:15执行任务</td>
+</tr>
+<tr>
+<td><code>0 15 10 L * ?</code></td>
+<td>每月最后一日上午10:15执行任务</td>
+</tr>
+<tr>
+<td><code>0 15 10 ? * 6L</code></td>
+<td>每月最后一个星期六上午10:15执行任务</td>
+</tr>
+<tr>
+<td><code>0 15 10 ? * 6#3</code></td>
+<td>每月第三个星期六上午10:15执行任务</td>
+</tr>
+<tr>
+<td><code>0 10,44 14 ? 3 WED</code></td>
+<td>每年3月的每个星期三下午14:10和14:44执行任务</td>
+</tr>
+<tr>
+<td><code>0 15 10 ? * * 2022</code></td>
+<td>2022年每天上午10:15执行任务</td>
+</tr>
+<tr>
+<td><code>0 15 10 ? * * *</code></td>
+<td>每年每天上午10:15执行任务</td>
+</tr>
+<tr>
+<td><code>0 0/5 14,18 * * ? 2022</code></td>
+<td>2022年每天下午14:00到下午14:55、下午18:00到下午18:55时间段内每隔5分钟执行任务</td>
+</tr>
+<tr>
+<td><code>0 15 10 ? * 6#3 2022,2023</code></td>
+<td>2022年至2023年每月第三个星期六上午10:15执行任务</td>
+</tr>
+<tr>
+<td><code>0 0/30 9-17 * * ? 2022-2025</code></td>
+<td>2022年至2025年每天上午09:00到下午17:30时间段内每隔半小时执行任务</td>
+</tr>
+<tr>
+<td><code>0 10,44 14 ? 3 WED 2022/2</code></td>
+<td>从2022年开始，每隔两年3月的每个星期三下午14:10和14:44执行任务</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/%E5%85%B6%E4%BB%96/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AF%AD%E6%B3%95%E8%A7%84%E5%88%99/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1768,310 +2090,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/%E5%85%B6%E4%BB%96/Cron%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E8%A1%A8%E8%BE%BE%E5%BC%8F/Cron%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Taizi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/%E5%85%B6%E4%BB%96/Cron%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E8%A1%A8%E8%BE%BE%E5%BC%8F/Cron%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="post-title-link" itemprop="url">Cron表达式</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-09-28 15:41:03" itemprop="dateModified" datetime="2023-09-28T15:41:03+08:00">2023-09-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%85%B6%E4%BB%96/" itemprop="url" rel="index"><span itemprop="name">其他</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.9k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>4 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Cron表达式"><a href="#Cron表达式" class="headerlink" title="Cron表达式"></a>Cron表达式</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Cron表达式是一个具有时间含义的字符串，字符串以5<del>6个空格隔开，分为6</del>7个域，格式为<code>X X X X X X X</code>。其中<code>X</code>是一个域的占位符。最后一个代表年份的域非必须，可省略。单个域有多个取值时，使用半角逗号<code>,</code>隔开取值。每个域可以是确定的取值，也可以是具有逻辑意义的特殊字符。每个域最多支持一个前导零。</p>
-<h2 id="语法格式"><a href="#语法格式" class="headerlink" title="语法格式"></a>语法格式</h2><ul>
-<li><p>当为7个域时：</p>
-<p><code>Seconds Minutes Hours DayofMonth Month DayofWeek Year</code></p>
-</li>
-<li><p>当为6个域时：</p>
-<p><code>Seconds Minutes Hours DayofMonth Month DayofWeek</code></p>
-</li>
-</ul>
-<h2 id="域取值"><a href="#域取值" class="headerlink" title="域取值"></a>域取值</h2><p>下表为Cron表达式中六个域能够取的值以及支持的特殊字符。</p>
-<table>
-<thead>
-<tr>
-<th>域</th>
-<th>是否必需</th>
-<th>取值范围</th>
-<th>特殊字符</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>秒</td>
-<td>是</td>
-<td>[0, 59]</td>
-<td>* , - &#x2F;</td>
-</tr>
-<tr>
-<td>分钟</td>
-<td>是</td>
-<td>[0, 59]</td>
-<td>* , - &#x2F;</td>
-</tr>
-<tr>
-<td>小时</td>
-<td>是</td>
-<td>[0, 23]</td>
-<td>* , - &#x2F;</td>
-</tr>
-<tr>
-<td>日期</td>
-<td>是</td>
-<td>[1, 31]</td>
-<td>* , - &#x2F; ? L W</td>
-</tr>
-<tr>
-<td>月份</td>
-<td>是</td>
-<td>[1, 12]或[JAN, DEC]</td>
-<td>* , - &#x2F;</td>
-</tr>
-<tr>
-<td>星期</td>
-<td>是</td>
-<td>[1, 7]或[MON, SUN]。若您使用[1, 7]表达方式，<code>1</code>代表星期一，<code>7</code>代表星期日。</td>
-<td>* , - &#x2F; ? L #</td>
-</tr>
-<tr>
-<td>年</td>
-<td>否</td>
-<td>[当前年份，2099]</td>
-<td>* , - &#x2F;</td>
-</tr>
-</tbody></table>
-<h2 id="特殊字符"><a href="#特殊字符" class="headerlink" title="特殊字符"></a>特殊字符</h2><p>Cron表达式中的每个域都支持一定数量的特殊字符，每个特殊字符有其特殊含义。</p>
-<table>
-<thead>
-<tr>
-<th>特殊字符</th>
-<th>含义</th>
-<th>示例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>*</code></td>
-<td>所有可能的值。</td>
-<td>在月域中，<code>*</code>表示每个月；在星期域中，<code>*</code>表示星期的每一天。</td>
-</tr>
-<tr>
-<td><code>,</code></td>
-<td>列出枚举值。</td>
-<td>在分钟域中，<code>5,20</code>表示分别在5分钟和20分钟触发一次。</td>
-</tr>
-<tr>
-<td><code>-</code></td>
-<td>范围。</td>
-<td>在分钟域中，<code>5-20</code>表示从5分钟到20分钟之间每隔一分钟触发一次。</td>
-</tr>
-<tr>
-<td><code>/</code></td>
-<td>指定数值的增量。</td>
-<td>在分钟域中，<code>0/15</code>表示从第0分钟开始，每15分钟。在分钟域中<code>3/20</code>表示从第3分钟开始，每20分钟。</td>
-</tr>
-<tr>
-<td><code>?</code></td>
-<td>不指定值，仅日期和星期域支持该字符。</td>
-<td>当日期或星期域其中之一被指定了值以后，为了避免冲突，需要将另一个域的值设为<code>?</code>。</td>
-</tr>
-<tr>
-<td><code>L</code></td>
-<td>单词Last的首字母，表示最后一天，仅日期和星期域支持该字符。                                                                                                 <strong>说明</strong> 指定<code>L</code>字符时，避免指定列表或者范围，否则，会导致逻辑问题。</td>
-<td>在日期域中，<code>L</code>表示某个月的最后一天。在星期域中，<code>L</code>表示一个星期的最后一天，也就是星期日（<code>SUN</code>）。                                                                  如果在<code>L</code>前有具体的内容，例如，在星期域中的<code>6L</code>表示这个月的最后一个星期六。</td>
-</tr>
-<tr>
-<td><code>W</code></td>
-<td>除周末以外的有效工作日，在离指定日期的最近的有效工作日触发事件。<code>W</code>字符寻找最近有效工作日时不会跨过当前月份，连用字符<code>LW</code>时表示为指定月份的最后一个工作日。</td>
-<td>在日期域中<code>5W</code>，如果5日是星期六，则将在最近的工作日星期五，即4日触发。如果5日是星期天，则将在最近的工作日星期一，即6日触发；如果5日在星期一到星期五中的一天，则就在5日触发。</td>
-</tr>
-<tr>
-<td><code>#</code></td>
-<td>确定每个月第几个星期几，仅星期域支持该字符。</td>
-<td>在星期域中，<code>4#2</code>表示某月的第二个星期四。</td>
-</tr>
-</tbody></table>
-<h2 id="取值示例"><a href="#取值示例" class="headerlink" title="取值示例"></a>取值示例</h2><p>以下为Cron表达式的取值示例。</p>
-<table>
-<thead>
-<tr>
-<th>示例</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>0 15 10 ? * *</code></td>
-<td>每天上午10:15执行任务</td>
-</tr>
-<tr>
-<td><code>0 15 10 * * ?</code></td>
-<td>每天上午10:15执行任务</td>
-</tr>
-<tr>
-<td><code>0 0 12 * * ?</code></td>
-<td>每天中午12:00执行任务</td>
-</tr>
-<tr>
-<td><code>0 0 10,14,16 * * ?</code></td>
-<td>每天上午10:00点、下午14:00以及下午16:00执行任务</td>
-</tr>
-<tr>
-<td><code>0 0/30 9-17 * * ?</code></td>
-<td>每天上午09:00到下午17:00时间段内每隔半小时执行任务</td>
-</tr>
-<tr>
-<td><code>0 * 14 * * ?</code></td>
-<td>每天下午14:00到下午14:59时间段内每隔1分钟执行任务</td>
-</tr>
-<tr>
-<td><code>0 0-5 14 * * ?</code></td>
-<td>每天下午14:00到下午14:05时间段内每隔1分钟执行任务</td>
-</tr>
-<tr>
-<td><code>0 0/5 14 * * ?</code></td>
-<td>每天下午14:00到下午14:55时间段内每隔5分钟执行任务</td>
-</tr>
-<tr>
-<td><code>0 0/5 14,18 * * ?</code></td>
-<td>每天下午14:00到下午14:55、下午18:00到下午18:55时间段内每隔5分钟执行任务</td>
-</tr>
-<tr>
-<td><code>0 0 12 ? * WED</code></td>
-<td>每个星期三中午12:00执行任务</td>
-</tr>
-<tr>
-<td><code>0 15 10 15 * ?</code></td>
-<td>每月15日上午10:15执行任务</td>
-</tr>
-<tr>
-<td><code>0 15 10 L * ?</code></td>
-<td>每月最后一日上午10:15执行任务</td>
-</tr>
-<tr>
-<td><code>0 15 10 ? * 6L</code></td>
-<td>每月最后一个星期六上午10:15执行任务</td>
-</tr>
-<tr>
-<td><code>0 15 10 ? * 6#3</code></td>
-<td>每月第三个星期六上午10:15执行任务</td>
-</tr>
-<tr>
-<td><code>0 10,44 14 ? 3 WED</code></td>
-<td>每年3月的每个星期三下午14:10和14:44执行任务</td>
-</tr>
-<tr>
-<td><code>0 15 10 ? * * 2022</code></td>
-<td>2022年每天上午10:15执行任务</td>
-</tr>
-<tr>
-<td><code>0 15 10 ? * * *</code></td>
-<td>每年每天上午10:15执行任务</td>
-</tr>
-<tr>
-<td><code>0 0/5 14,18 * * ? 2022</code></td>
-<td>2022年每天下午14:00到下午14:55、下午18:00到下午18:55时间段内每隔5分钟执行任务</td>
-</tr>
-<tr>
-<td><code>0 15 10 ? * 6#3 2022,2023</code></td>
-<td>2022年至2023年每月第三个星期六上午10:15执行任务</td>
-</tr>
-<tr>
-<td><code>0 0/30 9-17 * * ? 2022-2025</code></td>
-<td>2022年至2025年每天上午09:00到下午17:30时间段内每隔半小时执行任务</td>
-</tr>
-<tr>
-<td><code>0 10,44 14 ? 3 WED 2022/2</code></td>
-<td>从2022年开始，每隔两年3月的每个星期三下午14:10和14:44执行任务</td>
-</tr>
-</tbody></table>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -2101,7 +2119,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">5:09</span>
+    <span title="站点阅读时长">5:10</span>
   </span>
 </div>
 <div class="busuanzi-count">

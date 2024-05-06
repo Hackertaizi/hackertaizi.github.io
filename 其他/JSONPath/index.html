@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"hackertaizi.gitee.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="JSONPath1. 介绍JSONPath是一种在JSON数据中查询和提取特定元素的语言，类似地还有XPath语言用于检索xml数据。JSONPath提供了一种简单、有效的方法来定位JSON文档中的元素，并支持基本的查询、筛选和操作。它在Web开发、API集成、数据转换等领域具有广泛的应用，目前JSONPath提供了多种语言的实现版本，包括JavaScript、Java、Python和PHP等。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="太子的个人博客">
+<meta property="og:url" content="https://hackertaizi.gitee.io/%E5%85%B6%E4%BB%96/JSONPath/index.html">
+<meta property="og:site_name" content="太子的个人博客">
+<meta property="og:description" content="JSONPath1. 介绍JSONPath是一种在JSON数据中查询和提取特定元素的语言，类似地还有XPath语言用于检索xml数据。JSONPath提供了一种简单、有效的方法来定位JSON文档中的元素，并支持基本的查询、筛选和操作。它在Web开发、API集成、数据转换等领域具有广泛的应用，目前JSONPath提供了多种语言的实现版本，包括JavaScript、Java、Python和PHP等。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-04-26T05:53:59.146Z">
+<meta property="article:modified_time" content="2024-04-30T02:04:06.978Z">
+<meta property="article:author" content="Taizi">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://hackertaizi.gitee.io/%E5%85%B6%E4%BB%96/JSONPath/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hackertaizi.gitee.io/%E5%85%B6%E4%BB%96/JSONPath/","path":"其他/JSONPath/","title":""}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title> | 太子的个人博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">太子的个人博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Have a nice day !</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JSONPath"><span class="nav-number">1.</span> <span class="nav-text">JSONPath</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.</span> <span class="nav-text">1. 介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E8%AF%AD%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">2. 语法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-JSON%E6%95%B0%E6%8D%AE"><span class="nav-number">3.1.</span> <span class="nav-text">2.1 JSON数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-JSONPath-%E5%92%8C-XPath%E8%AF%AD%E6%B3%95%E5%AF%B9%E6%AF%94"><span class="nav-number">3.2.</span> <span class="nav-text">2.2 JSONPath 和 XPath语法对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-%E5%87%BD%E6%95%B0"><span class="nav-number">3.3.</span> <span class="nav-text">2.3 函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="nav-number">3.4.</span> <span class="nav-text">2.4 过滤器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%E7%A4%BA%E4%BE%8B"><span class="nav-number">4.</span> <span class="nav-text">3. 示例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-Java%E7%A4%BA%E4%BE%8B"><span class="nav-number">4.1.</span> <span class="nav-text">3.1 Java示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-Python%E7%A4%BA%E4%BE%8B"><span class="nav-number">4.2.</span> <span class="nav-text">3.2 Python示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-hive%E7%A4%BA%E4%BE%8B"><span class="nav-number">4.3.</span> <span class="nav-text">3.3 hive示例</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Taizi</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/%E5%85%B6%E4%BB%96/JSONPath/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Taizi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | 太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-04-26 13:53:59" itemprop="dateCreated datePublished" datetime="2024-04-26T13:53:59+08:00">2024-04-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-04-30 10:04:06" itemprop="dateModified" datetime="2024-04-30T10:04:06+08:00">2024-04-30</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>6.2k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>11 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="JSONPath"><a href="#JSONPath" class="headerlink" title="JSONPath"></a>JSONPath</h1><h1 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1. 介绍"></a>1. 介绍</h1><p>JSONPath是一种在JSON数据中查询和提取特定元素的语言，类似地还有XPath语言用于检索xml数据。JSONPath提供了一种简单、有效的方法来定位JSON文档中的元素，并支持基本的查询、筛选和操作。它在Web开发、API集成、数据转换等领域具有广泛的应用，目前JSONPath提供了多种语言的实现版本，包括JavaScript、Java、Python和PHP等。</p>
+<h1 id="2-语法"><a href="#2-语法" class="headerlink" title="2. 语法"></a>2. 语法</h1><h2 id="2-1-JSON数据"><a href="#2-1-JSON数据" class="headerlink" title="2.1 JSON数据"></a>2.1 JSON数据</h2><p>JSON数据主要由两种结构组成：</p>
+<ul>
+<li>对象：对象是{}括起来的内容，主要是{ key：value, key：value, … }的键值对结构，可以按照key进行访问</li>
+<li>数组：数组是[]括起来的内容，主要通过索引进行访问</li>
+</ul>
+<h2 id="2-2-JSONPath-和-XPath语法对比"><a href="#2-2-JSONPath-和-XPath语法对比" class="headerlink" title="2.2 JSONPath 和 XPath语法对比"></a>2.2 JSONPath 和 XPath语法对比</h2><table>
+<thead>
+<tr>
+<th>XPath</th>
+<th>JSONPath</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/</code></td>
+<td><code>$</code></td>
+<td>根节点对象</td>
+</tr>
+<tr>
+<td><code>.</code></td>
+<td><code>@</code></td>
+<td>现行节点(当前节点)</td>
+</tr>
+<tr>
+<td><code>/</code></td>
+<td><code>.</code>or<code>[]</code></td>
+<td>取子节点</td>
+</tr>
+<tr>
+<td>..</td>
+<td>n&#x2F;a</td>
+<td>取父节点，JSONPath不支持</td>
+</tr>
+<tr>
+<td><code>//</code></td>
+<td><code>..</code></td>
+<td>不管位置，选择所有符合条件的内容，相当于递归进行匹配</td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td><code>*</code></td>
+<td>匹配所有元素节点</td>
+</tr>
+<tr>
+<td><code>@</code></td>
+<td>n&#x2F;a</td>
+<td>根据属性访问，JSON不支持，因为JSON是个Key-value递归结构，不需要。</td>
+</tr>
+<tr>
+<td><code>[]</code></td>
+<td><code>[]</code>or<code>[,]</code></td>
+<td>迭代器，用于访问数组元素，表示一个或多个数组下标</td>
+</tr>
+<tr>
+<td><code>[]</code></td>
+<td><code>?()</code></td>
+<td>过滤表达式，支持筛选操作</td>
+</tr>
+<tr>
+<td>n&#x2F;a</td>
+<td><code>()</code></td>
+<td>支持表达式计算</td>
+</tr>
+<tr>
+<td><code>()</code></td>
+<td>n&#x2F;a</td>
+<td>分组，jsonpath不支持</td>
+</tr>
+<tr>
+<td></td>
+<td>[start:end]</td>
+<td>数组切片,切片区间为[start,end),不包括end</td>
+</tr>
+</tbody></table>
+<h2 id="2-3-函数"><a href="#2-3-函数" class="headerlink" title="2.3 函数"></a>2.3 函数</h2><p>可以在JSONPath表达式执行后调用，输入值为表达式结果</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+<th>输出</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>min()</td>
+<td>获取数值类型数组的最小值</td>
+<td>Double</td>
+</tr>
+<tr>
+<td>max()</td>
+<td>获取数值类型数组的最大值</td>
+<td>Double</td>
+</tr>
+<tr>
+<td>avg()</td>
+<td>获取数值类型数组的平均值</td>
+<td>Double</td>
+</tr>
+<tr>
+<td>stddev()</td>
+<td>获取数值类型数组的标准差</td>
+<td>Double</td>
+</tr>
+<tr>
+<td>length()</td>
+<td>获取数值类型数组的长度</td>
+<td>Integer</td>
+</tr>
+</tbody></table>
+<h2 id="2-4-过滤器"><a href="#2-4-过滤器" class="headerlink" title="2.4 过滤器"></a>2.4 过滤器</h2><table>
+<thead>
+<tr>
+<th>操作符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>==</code></td>
+<td>等于符号</td>
+</tr>
+<tr>
+<td><code>!=</code></td>
+<td>不等号</td>
+</tr>
+<tr>
+<td><code>&lt;</code></td>
+<td>小于号</td>
+</tr>
+<tr>
+<td><code>&lt;=</code></td>
+<td>小于等于号</td>
+</tr>
+<tr>
+<td><code>&gt;</code></td>
+<td>大于号</td>
+</tr>
+<tr>
+<td><code>&gt;=</code></td>
+<td>大于等于号</td>
+</tr>
+<tr>
+<td><code>=~</code> or <code>regex</code></td>
+<td>判断是否等于正则表达式</td>
+</tr>
+<tr>
+<td><code>in</code></td>
+<td>所属符号，例如[?(size in [‘S’, ‘M’])]</td>
+</tr>
+<tr>
+<td><code>nin</code></td>
+<td>排除符号</td>
+</tr>
+<tr>
+<td><code>size()</code> or <code>length()</code></td>
+<td>在某些实现中，这两个关键字可用于获取数组或字符串的长度。<br>注意，不是所有的JSONPath实现都支持这两个关键字，且它们的具体名称和用法可能因实现而异。</td>
+</tr>
+<tr>
+<td><code>empty</code></td>
+<td>判空符号</td>
+</tr>
+<tr>
+<td><code>exists</code></td>
+<td>检查某个字段是否存在</td>
+</tr>
+</tbody></table>
+<h1 id="3-示例"><a href="#3-示例" class="headerlink" title="3. 示例"></a>3. 示例</h1><p>待解析的json,获取uProductVers的值</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;deviceId&quot;</span><span class="punctuation">:</span> <span class="string">&quot;XXXXXXXXXX&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;deviceModules&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;moduleId&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;moduleInfos&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                <span class="punctuation">&#123;</span></span><br><span class="line">                    <span class="attr">&quot;key&quot;</span><span class="punctuation">:</span> <span class="string">&quot;uProductFWType&quot;</span><span class="punctuation">,</span></span><br><span class="line">                    <span class="attr">&quot;value&quot;</span><span class="punctuation">:</span> <span class="string">&quot;WIFIWIFIWIFI&quot;</span></span><br><span class="line">                <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="punctuation">&#123;</span></span><br><span class="line">                    <span class="attr">&quot;key&quot;</span><span class="punctuation">:</span> <span class="string">&quot;uProductVers&quot;</span><span class="punctuation">,</span></span><br><span class="line">                    <span class="attr">&quot;value&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1111111111&quot;</span></span><br><span class="line">                <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="punctuation">&#123;</span></span><br><span class="line">                    <span class="attr">&quot;key&quot;</span><span class="punctuation">:</span> <span class="string">&quot;supportUpgrade&quot;</span><span class="punctuation">,</span></span><br><span class="line">                    <span class="attr">&quot;value&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1&quot;</span></span><br><span class="line">                <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="punctuation">&#123;</span></span><br><span class="line">                    <span class="attr">&quot;key&quot;</span><span class="punctuation">:</span> <span class="string">&quot;upgradePackageVer&quot;</span><span class="punctuation">,</span></span><br><span class="line">                    <span class="attr">&quot;value&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0.2&quot;</span></span><br><span class="line">                <span class="punctuation">&#125;</span></span><br><span class="line">            <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;moduleType&quot;</span><span class="punctuation">:</span> <span class="string">&quot;firmware&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;moduleId&quot;</span><span class="punctuation">:</span> <span class="string">&quot;789654321&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;moduleInfos&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                <span class="punctuation">&#123;</span></span><br><span class="line">                    <span class="attr">&quot;key&quot;</span><span class="punctuation">:</span> <span class="string">&quot;baseboardVer&quot;</span><span class="punctuation">,</span></span><br><span class="line">                    <span class="attr">&quot;value&quot;</span><span class="punctuation">:</span> <span class="string">&quot;010101010101&quot;</span></span><br><span class="line">                <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="punctuation">&#123;</span></span><br><span class="line">                    <span class="attr">&quot;key&quot;</span><span class="punctuation">:</span> <span class="string">&quot;supportUpgrade&quot;</span><span class="punctuation">,</span></span><br><span class="line">                    <span class="attr">&quot;value&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1&quot;</span></span><br><span class="line">                <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="punctuation">&#123;</span></span><br><span class="line">                    <span class="attr">&quot;key&quot;</span><span class="punctuation">:</span> <span class="string">&quot;baseboardId&quot;</span><span class="punctuation">,</span></span><br><span class="line">                    <span class="attr">&quot;value&quot;</span><span class="punctuation">:</span> <span class="string">&quot;789654321&quot;</span></span><br><span class="line">                <span class="punctuation">&#125;</span></span><br><span class="line">            <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;moduleType&quot;</span><span class="punctuation">:</span> <span class="string">&quot;baseboard&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="3-1-Java示例"><a href="#3-1-Java示例" class="headerlink" title="3.1 Java示例"></a>3.1 Java示例</h2><ul>
+<li><p>maven中添加依赖：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.jayway.jsonpath<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>json-path<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.4.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>导入JsonPath包</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.jayway.jsonpath.JsonPath;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>解析json，注意返回格式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">jsonStr</span> <span class="operator">=</span> <span class="string">&quot;&#123;\&quot;deviceId\&quot;:\&quot;XXXXXXXXXX\&quot;,\&quot;deviceModules\&quot;:[&#123;\&quot;moduleId\&quot;:\&quot;\&quot;,\&quot;moduleInfos\&quot;:[&#123;\&quot;key\&quot;:\&quot;uProductFWType\&quot;,\&quot;value\&quot;:\&quot;WIFIWIFIWIFI\&quot;&#125;,&#123;\&quot;key\&quot;:\&quot;uProductVers\&quot;,\&quot;value\&quot;:\&quot;1111111111\&quot;&#125;,&#123;\&quot;key\&quot;:\&quot;supportUpgrade\&quot;,\&quot;value\&quot;:\&quot;1\&quot;&#125;,&#123;\&quot;key\&quot;:\&quot;upgradePackageVer\&quot;,\&quot;value\&quot;:\&quot;0.2\&quot;&#125;],\&quot;moduleType\&quot;:\&quot;firmware\&quot;&#125;,&#123;\&quot;moduleId\&quot;:\&quot;789654321\&quot;,\&quot;moduleInfos\&quot;:[&#123;\&quot;key\&quot;:\&quot;baseboardVer\&quot;,\&quot;value\&quot;:\&quot;010101010101\&quot;&#125;,&#123;\&quot;key\&quot;:\&quot;supportUpgrade\&quot;,\&quot;value\&quot;:\&quot;1\&quot;&#125;,&#123;\&quot;key\&quot;:\&quot;baseboardId\&quot;,\&quot;value\&quot;:\&quot;789654321\&quot;&#125;],\&quot;moduleType\&quot;:\&quot;baseboard\&quot;&#125;]&#125;&quot;</span>;</span><br><span class="line"><span class="comment">// 注意返回类型,不确定就用object</span></span><br><span class="line"><span class="type">Object</span> <span class="variable">uProductVers</span> <span class="operator">=</span> JsonPath.read(jsonStr, <span class="string">&quot;$.deviceModules[0].moduleInfos.[?(@.key == &#x27;uProductVers&#x27;)].value&quot;</span>);</span><br><span class="line">System.out.println(uProductVers); <span class="comment">// 输出[&quot;1111111111&quot;]</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="3-2-Python示例"><a href="#3-2-Python示例" class="headerlink" title="3.2 Python示例"></a>3.2 Python示例</h2><ul>
+<li><p>安装jsonpath工具库</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install jsonpath-ng</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>代码示例</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> jsonpath_ng <span class="keyword">import</span> jsonpath,parse</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">jsonstr = <span class="string">&#x27;&#123;&quot;deviceId&quot;:&quot;XXXXXXXXXX&quot;,&quot;deviceModules&quot;:[&#123;&quot;moduleId&quot;:&quot;&quot;,&quot;moduleInfos&quot;:[&#123;&quot;key&quot;:&quot;uProductFWType&quot;,&quot;value&quot;:&quot;WIFIWIFIWIFI&quot;&#125;,&#123;&quot;key&quot;:&quot;uProductVers&quot;,&quot;value&quot;:&quot;1111111111&quot;&#125;,&#123;&quot;key&quot;:&quot;supportUpgrade&quot;,&quot;value&quot;:&quot;1&quot;&#125;,&#123;&quot;key&quot;:&quot;upgradePackageVer&quot;,&quot;value&quot;:&quot;0.2&quot;&#125;],&quot;moduleType&quot;:&quot;firmware&quot;&#125;,&#123;&quot;moduleId&quot;:&quot;789654321&quot;,&quot;moduleInfos&quot;:[&#123;&quot;key&quot;:&quot;baseboardVer&quot;,&quot;value&quot;:&quot;010101010101&quot;&#125;,&#123;&quot;key&quot;:&quot;supportUpgrade&quot;,&quot;value&quot;:&quot;1&quot;&#125;,&#123;&quot;key&quot;:&quot;baseboardId&quot;,&quot;value&quot;:&quot;789654321&quot;&#125;],&quot;moduleType&quot;:&quot;baseboard&quot;&#125;]&#125;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># # 将json字符串解析为json对象</span></span><br><span class="line">json_obj = json.loads(jsonstr)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义JSONPath表达式</span></span><br><span class="line">jsonpath_exp = parse(<span class="string">&quot;$.deviceModules[0].moduleInfos[?(@.key == &#x27;uProductVers&#x27;)].value&quot;</span>)</span><br><span class="line"><span class="comment"># 根据jsonpath表达式解析json</span></span><br><span class="line">target_str = jsonpath_exp.find(json_obj)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打印结果</span></span><br><span class="line"><span class="keyword">if</span> target_str:</span><br><span class="line">    <span class="built_in">print</span>(target_str[<span class="number">0</span>].value)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;无法匹配&quot;</span>)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="3-3-hive示例"><a href="#3-3-hive示例" class="headerlink" title="3.3 hive示例"></a>3.3 hive示例</h2><ul>
+<li><p>示例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT </span><br><span class="line">    GET_JSON_OBJECT(&#x27;&#123;&quot;deviceId&quot;:&quot;XXXXXXXXXX&quot;,&quot;deviceModules&quot;:[&#123;&quot;moduleId&quot;:&quot;&quot;,&quot;moduleInfos&quot;:[&#123;&quot;key&quot;:&quot;uProductFWType&quot;,&quot;value&quot;:&quot;WIFIWIFIWIFI&quot;&#125;,&#123;&quot;key&quot;:&quot;uProductVers&quot;,&quot;value&quot;:&quot;1111111111&quot;&#125;,&#123;&quot;key&quot;:&quot;supportUpgrade&quot;,&quot;value&quot;:&quot;1&quot;&#125;,&#123;&quot;key&quot;:&quot;upgradePackageVer&quot;,&quot;value&quot;:&quot;0.2&quot;&#125;],&quot;moduleType&quot;:&quot;firmware&quot;&#125;,&#123;&quot;moduleId&quot;:&quot;789654321&quot;,&quot;moduleInfos&quot;:[&#123;&quot;key&quot;:&quot;baseboardVer&quot;,&quot;value&quot;:&quot;010101010101&quot;&#125;,&#123;&quot;key&quot;:&quot;supportUpgrade&quot;,&quot;value&quot;:&quot;1&quot;&#125;,&#123;&quot;key&quot;:&quot;baseboardId&quot;,&quot;value&quot;:&quot;789654321&quot;&#125;],&quot;moduleType&quot;:&quot;baseboard&quot;&#125;]&#125;&#x27;</span><br><span class="line">    ,&#x27;$.deviceModules[0].moduleInfos[?(@.key == &quot;uProductVers&quot;)].value&#x27;)</span><br><span class="line">    --- 得到空字符串</span><br></pre></td></tr></table></figure>
+
+<p>hive中的GET_JSON_OBJECT()函数，第二个参数为jsonpath表达式，但是这个表达式不支持过滤器操作。</p>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/ETL/SQL%E8%AF%AD%E5%8F%A5%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F/" rel="prev" title="SQL语句执行顺序">
+                  <i class="fa fa-angle-left"></i> SQL语句执行顺序
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Powered by Hackertaizi</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">179k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">5:26</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

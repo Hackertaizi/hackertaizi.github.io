@@ -147,7 +147,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">50</span>
+          <span class="site-state-item-count">51</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -175,6 +175,291 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/%E5%85%B6%E4%BB%96/JSONPath/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Taizi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/%E5%85%B6%E4%BB%96/JSONPath/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-04-26 13:53:59" itemprop="dateCreated datePublished" datetime="2024-04-26T13:53:59+08:00">2024-04-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-04-30 10:04:06" itemprop="dateModified" datetime="2024-04-30T10:04:06+08:00">2024-04-30</time>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>6.2k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>11 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="JSONPath"><a href="#JSONPath" class="headerlink" title="JSONPath"></a>JSONPath</h1><h1 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1. 介绍"></a>1. 介绍</h1><p>JSONPath是一种在JSON数据中查询和提取特定元素的语言，类似地还有XPath语言用于检索xml数据。JSONPath提供了一种简单、有效的方法来定位JSON文档中的元素，并支持基本的查询、筛选和操作。它在Web开发、API集成、数据转换等领域具有广泛的应用，目前JSONPath提供了多种语言的实现版本，包括JavaScript、Java、Python和PHP等。</p>
+<h1 id="2-语法"><a href="#2-语法" class="headerlink" title="2. 语法"></a>2. 语法</h1><h2 id="2-1-JSON数据"><a href="#2-1-JSON数据" class="headerlink" title="2.1 JSON数据"></a>2.1 JSON数据</h2><p>JSON数据主要由两种结构组成：</p>
+<ul>
+<li>对象：对象是{}括起来的内容，主要是{ key：value, key：value, … }的键值对结构，可以按照key进行访问</li>
+<li>数组：数组是[]括起来的内容，主要通过索引进行访问</li>
+</ul>
+<h2 id="2-2-JSONPath-和-XPath语法对比"><a href="#2-2-JSONPath-和-XPath语法对比" class="headerlink" title="2.2 JSONPath 和 XPath语法对比"></a>2.2 JSONPath 和 XPath语法对比</h2><table>
+<thead>
+<tr>
+<th>XPath</th>
+<th>JSONPath</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/</code></td>
+<td><code>$</code></td>
+<td>根节点对象</td>
+</tr>
+<tr>
+<td><code>.</code></td>
+<td><code>@</code></td>
+<td>现行节点(当前节点)</td>
+</tr>
+<tr>
+<td><code>/</code></td>
+<td><code>.</code>or<code>[]</code></td>
+<td>取子节点</td>
+</tr>
+<tr>
+<td>..</td>
+<td>n&#x2F;a</td>
+<td>取父节点，JSONPath不支持</td>
+</tr>
+<tr>
+<td><code>//</code></td>
+<td><code>..</code></td>
+<td>不管位置，选择所有符合条件的内容，相当于递归进行匹配</td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td><code>*</code></td>
+<td>匹配所有元素节点</td>
+</tr>
+<tr>
+<td><code>@</code></td>
+<td>n&#x2F;a</td>
+<td>根据属性访问，JSON不支持，因为JSON是个Key-value递归结构，不需要。</td>
+</tr>
+<tr>
+<td><code>[]</code></td>
+<td><code>[]</code>or<code>[,]</code></td>
+<td>迭代器，用于访问数组元素，表示一个或多个数组下标</td>
+</tr>
+<tr>
+<td><code>[]</code></td>
+<td><code>?()</code></td>
+<td>过滤表达式，支持筛选操作</td>
+</tr>
+<tr>
+<td>n&#x2F;a</td>
+<td><code>()</code></td>
+<td>支持表达式计算</td>
+</tr>
+<tr>
+<td><code>()</code></td>
+<td>n&#x2F;a</td>
+<td>分组，jsonpath不支持</td>
+</tr>
+<tr>
+<td></td>
+<td>[start:end]</td>
+<td>数组切片,切片区间为[start,end),不包括end</td>
+</tr>
+</tbody></table>
+<h2 id="2-3-函数"><a href="#2-3-函数" class="headerlink" title="2.3 函数"></a>2.3 函数</h2><p>可以在JSONPath表达式执行后调用，输入值为表达式结果</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+<th>输出</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>min()</td>
+<td>获取数值类型数组的最小值</td>
+<td>Double</td>
+</tr>
+<tr>
+<td>max()</td>
+<td>获取数值类型数组的最大值</td>
+<td>Double</td>
+</tr>
+<tr>
+<td>avg()</td>
+<td>获取数值类型数组的平均值</td>
+<td>Double</td>
+</tr>
+<tr>
+<td>stddev()</td>
+<td>获取数值类型数组的标准差</td>
+<td>Double</td>
+</tr>
+<tr>
+<td>length()</td>
+<td>获取数值类型数组的长度</td>
+<td>Integer</td>
+</tr>
+</tbody></table>
+<h2 id="2-4-过滤器"><a href="#2-4-过滤器" class="headerlink" title="2.4 过滤器"></a>2.4 过滤器</h2><table>
+<thead>
+<tr>
+<th>操作符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>==</code></td>
+<td>等于符号</td>
+</tr>
+<tr>
+<td><code>!=</code></td>
+<td>不等号</td>
+</tr>
+<tr>
+<td><code>&lt;</code></td>
+<td>小于号</td>
+</tr>
+<tr>
+<td><code>&lt;=</code></td>
+<td>小于等于号</td>
+</tr>
+<tr>
+<td><code>&gt;</code></td>
+<td>大于号</td>
+</tr>
+<tr>
+<td><code>&gt;=</code></td>
+<td>大于等于号</td>
+</tr>
+<tr>
+<td><code>=~</code> or <code>regex</code></td>
+<td>判断是否等于正则表达式</td>
+</tr>
+<tr>
+<td><code>in</code></td>
+<td>所属符号，例如[?(size in [‘S’, ‘M’])]</td>
+</tr>
+<tr>
+<td><code>nin</code></td>
+<td>排除符号</td>
+</tr>
+<tr>
+<td><code>size()</code> or <code>length()</code></td>
+<td>在某些实现中，这两个关键字可用于获取数组或字符串的长度。<br>注意，不是所有的JSONPath实现都支持这两个关键字，且它们的具体名称和用法可能因实现而异。</td>
+</tr>
+<tr>
+<td><code>empty</code></td>
+<td>判空符号</td>
+</tr>
+<tr>
+<td><code>exists</code></td>
+<td>检查某个字段是否存在</td>
+</tr>
+</tbody></table>
+<h1 id="3-示例"><a href="#3-示例" class="headerlink" title="3. 示例"></a>3. 示例</h1><p>待解析的json,获取uProductVers的值</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;deviceId&quot;</span><span class="punctuation">:</span> <span class="string">&quot;XXXXXXXXXX&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;deviceModules&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;moduleId&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;moduleInfos&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                <span class="punctuation">&#123;</span></span><br><span class="line">                    <span class="attr">&quot;key&quot;</span><span class="punctuation">:</span> <span class="string">&quot;uProductFWType&quot;</span><span class="punctuation">,</span></span><br><span class="line">                    <span class="attr">&quot;value&quot;</span><span class="punctuation">:</span> <span class="string">&quot;WIFIWIFIWIFI&quot;</span></span><br><span class="line">                <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="punctuation">&#123;</span></span><br><span class="line">                    <span class="attr">&quot;key&quot;</span><span class="punctuation">:</span> <span class="string">&quot;uProductVers&quot;</span><span class="punctuation">,</span></span><br><span class="line">                    <span class="attr">&quot;value&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1111111111&quot;</span></span><br><span class="line">                <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="punctuation">&#123;</span></span><br><span class="line">                    <span class="attr">&quot;key&quot;</span><span class="punctuation">:</span> <span class="string">&quot;supportUpgrade&quot;</span><span class="punctuation">,</span></span><br><span class="line">                    <span class="attr">&quot;value&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1&quot;</span></span><br><span class="line">                <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="punctuation">&#123;</span></span><br><span class="line">                    <span class="attr">&quot;key&quot;</span><span class="punctuation">:</span> <span class="string">&quot;upgradePackageVer&quot;</span><span class="punctuation">,</span></span><br><span class="line">                    <span class="attr">&quot;value&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0.2&quot;</span></span><br><span class="line">                <span class="punctuation">&#125;</span></span><br><span class="line">            <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;moduleType&quot;</span><span class="punctuation">:</span> <span class="string">&quot;firmware&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;moduleId&quot;</span><span class="punctuation">:</span> <span class="string">&quot;789654321&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;moduleInfos&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                <span class="punctuation">&#123;</span></span><br><span class="line">                    <span class="attr">&quot;key&quot;</span><span class="punctuation">:</span> <span class="string">&quot;baseboardVer&quot;</span><span class="punctuation">,</span></span><br><span class="line">                    <span class="attr">&quot;value&quot;</span><span class="punctuation">:</span> <span class="string">&quot;010101010101&quot;</span></span><br><span class="line">                <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="punctuation">&#123;</span></span><br><span class="line">                    <span class="attr">&quot;key&quot;</span><span class="punctuation">:</span> <span class="string">&quot;supportUpgrade&quot;</span><span class="punctuation">,</span></span><br><span class="line">                    <span class="attr">&quot;value&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1&quot;</span></span><br><span class="line">                <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="punctuation">&#123;</span></span><br><span class="line">                    <span class="attr">&quot;key&quot;</span><span class="punctuation">:</span> <span class="string">&quot;baseboardId&quot;</span><span class="punctuation">,</span></span><br><span class="line">                    <span class="attr">&quot;value&quot;</span><span class="punctuation">:</span> <span class="string">&quot;789654321&quot;</span></span><br><span class="line">                <span class="punctuation">&#125;</span></span><br><span class="line">            <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;moduleType&quot;</span><span class="punctuation">:</span> <span class="string">&quot;baseboard&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="3-1-Java示例"><a href="#3-1-Java示例" class="headerlink" title="3.1 Java示例"></a>3.1 Java示例</h2><ul>
+<li><p>maven中添加依赖：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.jayway.jsonpath<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>json-path<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.4.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>导入JsonPath包</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.jayway.jsonpath.JsonPath;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>解析json，注意返回格式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">jsonStr</span> <span class="operator">=</span> <span class="string">&quot;&#123;\&quot;deviceId\&quot;:\&quot;XXXXXXXXXX\&quot;,\&quot;deviceModules\&quot;:[&#123;\&quot;moduleId\&quot;:\&quot;\&quot;,\&quot;moduleInfos\&quot;:[&#123;\&quot;key\&quot;:\&quot;uProductFWType\&quot;,\&quot;value\&quot;:\&quot;WIFIWIFIWIFI\&quot;&#125;,&#123;\&quot;key\&quot;:\&quot;uProductVers\&quot;,\&quot;value\&quot;:\&quot;1111111111\&quot;&#125;,&#123;\&quot;key\&quot;:\&quot;supportUpgrade\&quot;,\&quot;value\&quot;:\&quot;1\&quot;&#125;,&#123;\&quot;key\&quot;:\&quot;upgradePackageVer\&quot;,\&quot;value\&quot;:\&quot;0.2\&quot;&#125;],\&quot;moduleType\&quot;:\&quot;firmware\&quot;&#125;,&#123;\&quot;moduleId\&quot;:\&quot;789654321\&quot;,\&quot;moduleInfos\&quot;:[&#123;\&quot;key\&quot;:\&quot;baseboardVer\&quot;,\&quot;value\&quot;:\&quot;010101010101\&quot;&#125;,&#123;\&quot;key\&quot;:\&quot;supportUpgrade\&quot;,\&quot;value\&quot;:\&quot;1\&quot;&#125;,&#123;\&quot;key\&quot;:\&quot;baseboardId\&quot;,\&quot;value\&quot;:\&quot;789654321\&quot;&#125;],\&quot;moduleType\&quot;:\&quot;baseboard\&quot;&#125;]&#125;&quot;</span>;</span><br><span class="line"><span class="comment">// 注意返回类型,不确定就用object</span></span><br><span class="line"><span class="type">Object</span> <span class="variable">uProductVers</span> <span class="operator">=</span> JsonPath.read(jsonStr, <span class="string">&quot;$.deviceModules[0].moduleInfos.[?(@.key == &#x27;uProductVers&#x27;)].value&quot;</span>);</span><br><span class="line">System.out.println(uProductVers); <span class="comment">// 输出[&quot;1111111111&quot;]</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="3-2-Python示例"><a href="#3-2-Python示例" class="headerlink" title="3.2 Python示例"></a>3.2 Python示例</h2><ul>
+<li><p>安装jsonpath工具库</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install jsonpath-ng</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>代码示例</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> jsonpath_ng <span class="keyword">import</span> jsonpath,parse</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">jsonstr = <span class="string">&#x27;&#123;&quot;deviceId&quot;:&quot;XXXXXXXXXX&quot;,&quot;deviceModules&quot;:[&#123;&quot;moduleId&quot;:&quot;&quot;,&quot;moduleInfos&quot;:[&#123;&quot;key&quot;:&quot;uProductFWType&quot;,&quot;value&quot;:&quot;WIFIWIFIWIFI&quot;&#125;,&#123;&quot;key&quot;:&quot;uProductVers&quot;,&quot;value&quot;:&quot;1111111111&quot;&#125;,&#123;&quot;key&quot;:&quot;supportUpgrade&quot;,&quot;value&quot;:&quot;1&quot;&#125;,&#123;&quot;key&quot;:&quot;upgradePackageVer&quot;,&quot;value&quot;:&quot;0.2&quot;&#125;],&quot;moduleType&quot;:&quot;firmware&quot;&#125;,&#123;&quot;moduleId&quot;:&quot;789654321&quot;,&quot;moduleInfos&quot;:[&#123;&quot;key&quot;:&quot;baseboardVer&quot;,&quot;value&quot;:&quot;010101010101&quot;&#125;,&#123;&quot;key&quot;:&quot;supportUpgrade&quot;,&quot;value&quot;:&quot;1&quot;&#125;,&#123;&quot;key&quot;:&quot;baseboardId&quot;,&quot;value&quot;:&quot;789654321&quot;&#125;],&quot;moduleType&quot;:&quot;baseboard&quot;&#125;]&#125;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># # 将json字符串解析为json对象</span></span><br><span class="line">json_obj = json.loads(jsonstr)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义JSONPath表达式</span></span><br><span class="line">jsonpath_exp = parse(<span class="string">&quot;$.deviceModules[0].moduleInfos[?(@.key == &#x27;uProductVers&#x27;)].value&quot;</span>)</span><br><span class="line"><span class="comment"># 根据jsonpath表达式解析json</span></span><br><span class="line">target_str = jsonpath_exp.find(json_obj)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打印结果</span></span><br><span class="line"><span class="keyword">if</span> target_str:</span><br><span class="line">    <span class="built_in">print</span>(target_str[<span class="number">0</span>].value)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;无法匹配&quot;</span>)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="3-3-hive示例"><a href="#3-3-hive示例" class="headerlink" title="3.3 hive示例"></a>3.3 hive示例</h2><ul>
+<li><p>示例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT </span><br><span class="line">    GET_JSON_OBJECT(&#x27;&#123;&quot;deviceId&quot;:&quot;XXXXXXXXXX&quot;,&quot;deviceModules&quot;:[&#123;&quot;moduleId&quot;:&quot;&quot;,&quot;moduleInfos&quot;:[&#123;&quot;key&quot;:&quot;uProductFWType&quot;,&quot;value&quot;:&quot;WIFIWIFIWIFI&quot;&#125;,&#123;&quot;key&quot;:&quot;uProductVers&quot;,&quot;value&quot;:&quot;1111111111&quot;&#125;,&#123;&quot;key&quot;:&quot;supportUpgrade&quot;,&quot;value&quot;:&quot;1&quot;&#125;,&#123;&quot;key&quot;:&quot;upgradePackageVer&quot;,&quot;value&quot;:&quot;0.2&quot;&#125;],&quot;moduleType&quot;:&quot;firmware&quot;&#125;,&#123;&quot;moduleId&quot;:&quot;789654321&quot;,&quot;moduleInfos&quot;:[&#123;&quot;key&quot;:&quot;baseboardVer&quot;,&quot;value&quot;:&quot;010101010101&quot;&#125;,&#123;&quot;key&quot;:&quot;supportUpgrade&quot;,&quot;value&quot;:&quot;1&quot;&#125;,&#123;&quot;key&quot;:&quot;baseboardId&quot;,&quot;value&quot;:&quot;789654321&quot;&#125;],&quot;moduleType&quot;:&quot;baseboard&quot;&#125;]&#125;&#x27;</span><br><span class="line">    ,&#x27;$.deviceModules[0].moduleInfos[?(@.key == &quot;uProductVers&quot;)].value&#x27;)</span><br><span class="line">    --- 得到空字符串</span><br></pre></td></tr></table></figure>
+
+<p>hive中的GET_JSON_OBJECT()函数，第二个参数为jsonpath表达式，但是这个表达式不支持过滤器操作。</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -779,7 +1064,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-03-25 19:06:08" itemprop="dateModified" datetime="2024-03-25T19:06:08+08:00">2024-03-25</time>
+      <time title="修改时间：2024-05-06 19:11:11" itemprop="dateModified" datetime="2024-05-06T19:11:11+08:00">2024-05-06</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -802,14 +1087,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>4.8k</span>
+      <span>7.3k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>9 分钟</span>
+      <span>13 分钟</span>
     </span>
 </div>
 
@@ -821,29 +1106,23 @@
     
     <div class="post-body" itemprop="articleBody">
           <h1 id="3-对象和类"><a href="#3-对象和类" class="headerlink" title="3. 对象和类"></a>3. 对象和类</h1><h2 id="面向对象程序设计概述"><a href="#面向对象程序设计概述" class="headerlink" title="面向对象程序设计概述"></a>面向对象程序设计概述</h2><p>面向对象适合解决规模较大的问题，规模较小的问题可以分解为面向过程的程序化设计问题来解决。</p>
-<h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><h3 id="1-一些基本概念"><a href="#1-一些基本概念" class="headerlink" title="1. 一些基本概念"></a>1. 一些基本概念</h3><ul>
-<li><h4 id="类："><a href="#类：" class="headerlink" title="类："></a>类：</h4><p>类是构造对象的模板或蓝图，由类构造对象的过程称为创建类的实例（即对象是类的示例）。</p>
-</li>
-<li><h4 id="类的部分特性："><a href="#类的部分特性：" class="headerlink" title="类的部分特性："></a>类的部分特性：</h4><ul>
+<h3 id="1-类"><a href="#1-类" class="headerlink" title="1. 类"></a>1. 类</h3><p>类是构造对象的模板或蓝图，由类构造对象的过程称为创建类的实例（即对象是类的示例）。</p>
+<h3 id="2-类的部分特性："><a href="#2-类的部分特性：" class="headerlink" title="2. 类的部分特性："></a>2. 类的部分特性：</h3><ul>
 <li>封装：将数据和行为组合在一个包中，并对对象的使用者隐藏具体的实现方式。对象中的数据称为<strong>实例字段</strong>，操作数据的过程称为<strong>方法</strong>，作为一个类的实例，特定对象都有一组特定的实例字段值，这些值的集合就是对象的当前<strong>状态</strong>。<br><strong>实现封装的关键在于：不能让类的方法直接访问其他类中的实例字段</strong>。</li>
 <li>继承：<strong>可以通过扩展其他类来构建新类。</strong>Java中所有的类都扩展自Object类，拓展后的新类具有被扩展类的全部属性和方法，只需要在新类中提供适用于这个新类的新方法和新数据字段即可。</li>
 </ul>
-</li>
-<li><h4 id="对象的主要特性："><a href="#对象的主要特性：" class="headerlink" title="对象的主要特性："></a>对象的主要特性：</h4><ul>
+<h3 id="3-对象的主要特性："><a href="#3-对象的主要特性：" class="headerlink" title="3. 对象的主要特性："></a>3. 对象的主要特性：</h3><ul>
 <li>对象的行为：可以对对象完成哪些操作？或者可以对对象应用哪些方法？<br>用对象的可调用方法来定义。</li>
 <li>对象的状态：当调用那些方法时，对象会如何响应？<br>对象保存着描述当前状况的信息，这就是对象的状态。</li>
 <li>对象的标识：如何区分具有相同行为与状态的不同对象？</li>
 </ul>
-</li>
-<li><h4 id="常见的类之间的关系"><a href="#常见的类之间的关系" class="headerlink" title="常见的类之间的关系"></a>常见的类之间的关系</h4><ul>
+<h3 id="4-常见的类之间的关系"><a href="#4-常见的类之间的关系" class="headerlink" title="4. 常见的类之间的关系"></a>4. 常见的类之间的关系</h3><ul>
 <li>依赖（“uses-a”）关系：<br>类的依赖关系是指一个类的实现要依赖于其他类的实现，即如果一个类的方法使用或者操纵另一个类的对象，就说一个类依赖于另一个类。<br><strong>应该尽可能地将相互依赖的类减至最少，也就是减少类之间的耦合。</strong></li>
 <li>聚合（“has-a”）关系：<br>类的聚合关系是指一个类包含另一个类的对象作为其成员变量，这个成员变量可以被多个方法使用，但是这个成员变量的生命周期不受包含它的类的生命周期的影响。</li>
 <li>继承（“is-a”）关系：<br>一个类继承另一个类。</li>
 </ul>
-</li>
-<li><h4 id="Java中的预定义类"><a href="#Java中的预定义类" class="headerlink" title="Java中的预定义类"></a>Java中的预定义类</h4><p>Java的JDK中封装了很多基础的类，可以直接调用</p>
-</li>
-<li><h4 id="构造对象"><a href="#构造对象" class="headerlink" title="构造对象"></a>构造对象</h4><p>使用对象的前提，是要先构造对象，然后指定其初始状态。完成这一操作的是<strong>构造器</strong>（或叫构造函数），即构造器主要用来构造并初始化对象。<br>构造器的名字应该与类名相同，构造一个对象，需要在构造器前面加上<code>new</code>操作符, 例如:</p>
+<h2 id="使用预定义类"><a href="#使用预定义类" class="headerlink" title="使用预定义类"></a>使用预定义类</h2><h3 id="1-Java中的预定义类"><a href="#1-Java中的预定义类" class="headerlink" title="1. Java中的预定义类"></a>1. Java中的预定义类</h3><p>Java的JDK中封装了很多基础的类，可以直接调用</p>
+<h3 id="2-构造对象"><a href="#2-构造对象" class="headerlink" title="2. 构造对象"></a>2. 构造对象</h3><p>使用对象的前提，是要先构造对象，然后指定其初始状态。完成这一操作的是<strong>构造器</strong>（或叫构造函数），即构造器主要用来构造并初始化对象。<br>构造器的名字应该与类名相同，构造一个对象，需要在构造器前面加上<code>new</code>操作符, 例如:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">Date</span>();</span><br></pre></td></tr></table></figure>
 
 <p>如果希望构造的对象可以多次使用，可以将对象存放在一个变量中：</p>
@@ -861,25 +1140,20 @@
 <p>有两个部分，new Date()构造了一个Date类型的对象，它的值是对新创建对象的一个引用。这个引用存储在对象变量deadline中。</p>
 <p>可以显式地将对象变量设置为null，表示这个对象变量目前没有引用任何对象：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Date</span> <span class="variable">deadline</span> <span class="operator">=</span> <span class="literal">null</span>; <span class="comment">//显式表达</span></span><br><span class="line">Date deadline; <span class="comment">// 隐式表达</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><h4 id="更改器方法和访问器方法"><a href="#更改器方法和访问器方法" class="headerlink" title="更改器方法和访问器方法"></a>更改器方法和访问器方法</h4><p>只访问对象而不修改对象的方法称为<strong>访问器方法</strong>，修改对象状态的方法称为<strong>更改器方法</strong>。</p>
+
+<h3 id="3-更改器方法和访问器方法"><a href="#3-更改器方法和访问器方法" class="headerlink" title="3. 更改器方法和访问器方法"></a>3. 更改器方法和访问器方法</h3><p>只访问对象而不修改对象的方法称为<strong>访问器方法</strong>，修改对象状态的方法称为<strong>更改器方法</strong>。</p>
 <p>访问器方法举例：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">LocalDate</span> <span class="variable">aThousandDaysLater</span> <span class="operator">=</span> newYearsEve.plusDays(<span class="number">1000</span>); <span class="comment">// plusDays方法会生成一个新对象，然后把新对象赋给aThousandDaysLater，原来的对象newYearsEve不作任何改动</span></span><br><span class="line"><span class="type">String</span> <span class="variable">stra</span> <span class="operator">=</span> <span class="string">&quot;aaa&quot;</span>;</span><br><span class="line"><span class="type">String</span> <span class="variable">strb</span> <span class="operator">=</span> stra.toUpperCase(); <span class="comment">// toUpperCase方法会生成一个新对象，然后赋给strb，原来的字符串对象stra不作任何改变。</span></span><br></pre></td></tr></table></figure>
 
 <p>更改器方法举例：</p>
 <p>例如实体类中的setter方法，调用后会改变对象的状态，这种方法都是更改器方法。</p>
-</li>
-<li><h4 id="用户自定义类"><a href="#用户自定义类" class="headerlink" title="用户自定义类"></a>用户自定义类</h4><ul>
-<li><h5 id="使用单个源文件："><a href="#使用单个源文件：" class="headerlink" title="使用单个源文件："></a>使用单个源文件：</h5><p>在源文件中，只能有一个公共类（public修饰），可以有任意数目的非公共类。</p>
-</li>
-<li><h5 id="使用多个源文件："><a href="#使用多个源文件：" class="headerlink" title="使用多个源文件："></a>使用多个源文件：</h5><p>也可以将多个类放在多个原文件中，例如有Employee和EmployeeTest两个类，<strong>其中EmployeeTest类对象中使用到了Employee类的对象</strong>，分别存放在Employee.java和EmployeeTest.java两个源文件中，这时可以有两种编译源程序的方法：一种是使用通配符调用Java编译器：<code>javac Employee*.java</code>.这时所有与通配符匹配的源文件都将编译成类文件。或者可以使用一下命令：<code>javac EmployeeTest.java</code> 这种方式并没有显式地编译Employee.java.但是当编译器发现EmployeeTest.java中使用到了Employee类时，他会查找名为Employee.class的类文件，如果没有找到就查找Employee.java源文件并对其进行编译。更重要的是，如果Employee.java的版本较已有的Employee.class文件版本更新，Java编译器就会自动地重新编译这个文件。</p>
-</li>
-<li><h5 id="关于public、private："><a href="#关于public、private：" class="headerlink" title="关于public、private："></a>关于public、private：</h5><ul>
+<h2 id="用户自定义类"><a href="#用户自定义类" class="headerlink" title="用户自定义类"></a>用户自定义类</h2><h3 id="1-使用单个源文件："><a href="#1-使用单个源文件：" class="headerlink" title="1. 使用单个源文件："></a>1. 使用单个源文件：</h3><p>在源文件中，只能有一个公共类（public修饰），可以有任意数目的非公共类。</p>
+<h3 id="2-使用多个源文件："><a href="#2-使用多个源文件：" class="headerlink" title="2. 使用多个源文件："></a>2. 使用多个源文件：</h3><p>也可以将多个类放在多个原文件中，例如有Employee和EmployeeTest两个类，<strong>其中EmployeeTest类对象中使用到了Employee类的对象</strong>，分别存放在Employee.java和EmployeeTest.java两个源文件中，这时可以有两种编译源程序的方法：一种是使用通配符调用Java编译器：<code>javac Employee*.java</code>.这时所有与通配符匹配的源文件都将编译成类文件。或者可以使用一下命令：<code>javac EmployeeTest.java</code> 这种方式并没有显式地编译Employee.java.但是当编译器发现EmployeeTest.java中使用到了Employee类时，他会查找名为Employee.class的类文件，如果没有找到就查找Employee.java源文件并对其进行编译。更重要的是，如果Employee.java的版本较已有的Employee.class文件版本更新，Java编译器就会自动地重新编译这个文件。</p>
+<h3 id="3-关于public、private："><a href="#3-关于public、private：" class="headerlink" title="3. 关于public、private："></a>3. 关于public、private：</h3><ul>
 <li>public：关键字public意味着任何类的任何方法都可以调用</li>
 <li>private：关键字private确保了只有类自身的方法可以调用，而其他类不能调用</li>
 </ul>
-</li>
-<li><h5 id="关于构造器："><a href="#关于构造器：" class="headerlink" title="关于构造器："></a>关于构造器：</h5><ul>
+<h3 id="4-关于构造器："><a href="#4-关于构造器：" class="headerlink" title="4. 关于构造器："></a>4. 关于构造器：</h3><ul>
 <li>构造器与类同名</li>
 <li>每个类可以有一个以上的构造器</li>
 <li>构造器可以有0个、1个或多个参数</li>
@@ -887,22 +1161,18 @@
 <li>构造器总是伴随着new操作符一起使用</li>
 </ul>
 <p><strong>注意不要在构造器内定义与实例字段同名的局部变量，否则这些变量会屏蔽同名的实例字段。</strong></p>
-</li>
-<li><h5 id="使用var声明局部变量："><a href="#使用var声明局部变量：" class="headerlink" title="使用var声明局部变量："></a>使用var声明局部变量：</h5><p>在Java10中，如果可以从变量的初始值推导出他们的类型，那么可以用var关键字声明局部变量，而无需指定类型。例如：</p>
+<h3 id="5-使用var声明局部变量："><a href="#5-使用var声明局部变量：" class="headerlink" title="5. 使用var声明局部变量："></a>5. 使用var声明局部变量：</h3><p>在Java10中，如果可以从变量的初始值推导出他们的类型，那么可以用var关键字声明局部变量，而无需指定类型。例如：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">var</span> <span class="variable">str</span> <span class="operator">=</span> <span class="string">&quot;Hello, World!&quot;</span>; <span class="comment">// 推断str的类型为String</span></span><br><span class="line"><span class="type">var</span> <span class="variable">num</span> <span class="operator">=</span> <span class="number">10</span>; <span class="comment">// 推断num的类型为int</span></span><br><span class="line"><span class="type">var</span> <span class="variable">list</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;String&gt;(); <span class="comment">// 推断list的类型为ArrayList&lt;String&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p><strong>注意var关键字只能用于方法中的局部变量。参数和字段的类型必须声明。</strong></p>
-</li>
-<li><h5 id="使用null引用："><a href="#使用null引用：" class="headerlink" title="使用null引用："></a>使用null引用：</h5><p>当对象变量为null时，如果对该对象变量调用方法，会产生空指针异常。为了避免这种情况，可以将null参数转化为一个适当的非null值。</p>
-</li>
-<li><h5 id="显式参数与隐式参数："><a href="#显式参数与隐式参数：" class="headerlink" title="显式参数与隐式参数："></a>显式参数与隐式参数：</h5><ul>
+<h3 id="6-使用null引用："><a href="#6-使用null引用：" class="headerlink" title="6. 使用null引用："></a>6. 使用null引用：</h3><p>当对象变量为null时，如果对该对象变量调用方法，会产生空指针异常。为了避免这种情况，可以将null参数转化为一个适当的非null值。</p>
+<h3 id="7-显式参数与隐式参数："><a href="#7-显式参数与隐式参数：" class="headerlink" title="7. 显式参数与隐式参数："></a>7. 显式参数与隐式参数：</h3><ul>
 <li><p>显式参数：位于方法名后面括号中的参数就是显式参数</p>
 </li>
 <li><p>隐式参数：隐式参数是指在方法调用时自动传递给方法的参数，不需要在方法调用中显式地指定。通常用关键字this指示隐式参数。一般的getter方法中就有隐式参数：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.name; <span class="comment">//name就是一个隐式参数</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
-</li>
-<li><h5 id="封装的优点"><a href="#封装的优点" class="headerlink" title="封装的优点:"></a>封装的优点:</h5><p>一般地，如果想要获取或设置一个对象中的实例字段的值，可以在类定义时提供以下内容：</p>
+<h3 id="8-封装的优点"><a href="#8-封装的优点" class="headerlink" title="8. 封装的优点:"></a>8. 封装的优点:</h3><p>一般地，如果想要获取或设置一个对象中的实例字段的值，可以在类定义时提供以下内容：</p>
 <ul>
 <li>一个私有的数据字段</li>
 <li>一个公有的字段访问器方法（如getter方法）</li>
@@ -913,31 +1183,24 @@
 <li>改变内部实现时除了该类的方法外，不会影响其他代码</li>
 <li>更改器方法可以完成（进行）错误检查</li>
 </ul>
-</li>
-<li><h5 id="基于类的访问权限："><a href="#基于类的访问权限：" class="headerlink" title="基于类的访问权限："></a>基于类的访问权限：</h5><p><strong>一个方法可以访问所属类的所有对象的私有数据。</strong></p>
-</li>
-<li><h5 id="私有方法"><a href="#私有方法" class="headerlink" title="私有方法"></a>私有方法</h5><p>特殊情况下，方法可以设置成私有的。例如可能希望将一个计算代码分解成若干个独立的辅助方法，这些辅助方法不应该成为公共接口的一部分，这时最好将这些辅助的方法设置为私有。</p>
-</li>
-<li><h5 id="final实例字段"><a href="#final实例字段" class="headerlink" title="final实例字段"></a>final实例字段</h5><p>定义为final的实例字段必须在构造对象时初始化，必须确保在每个构造器执行之后，这个字段的值已经设置，并且之后不能再修改这个字段。</p>
+<h3 id="9-基于类的访问权限："><a href="#9-基于类的访问权限：" class="headerlink" title="9. 基于类的访问权限："></a>9. 基于类的访问权限：</h3><p><strong>一个方法可以访问所属类的所有对象的私有数据。</strong></p>
+<h3 id="10-私有方法"><a href="#10-私有方法" class="headerlink" title="10. 私有方法"></a>10. 私有方法</h3><p>特殊情况下，方法可以设置成私有的。例如可能希望将一个计算代码分解成若干个独立的辅助方法，这些辅助方法不应该成为公共接口的一部分，这时最好将这些辅助的方法设置为私有。</p>
+<h3 id="11-final实例字段"><a href="#11-final实例字段" class="headerlink" title="11. final实例字段"></a>11. final实例字段</h3><p>定义为final的实例字段必须在构造对象时初始化，必须确保在每个构造器执行之后，这个字段的值已经设置，并且之后不能再修改这个字段。</p>
 <p>final修饰符对于基本类型和不可变类（类中的所有方法都不会改变对象，也就是没有更改器方法，例如String类）的字段尤其有用。</p>
 <p>对于可变的类，使用final修饰符可能会造成混乱，例如：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> StringBuilder evaluations;</span><br><span class="line">evaluations = <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line"><span class="comment">// final 关键字只是表示存储在evaluations变量中的对象引用不会再指示另一个不同的StringBuilder对象，但这个对象仍然是可以修改的</span></span><br><span class="line">evaluations.append(<span class="string">&quot;Hello&quot;</span>);</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><h4 id="静态字段与静态方法"><a href="#静态字段与静态方法" class="headerlink" title="静态字段与静态方法"></a>静态字段与静态方法</h4><ul>
-<li><h5 id="静态字段"><a href="#静态字段" class="headerlink" title="静态字段"></a>静态字段</h5><p>可以使用<code>static</code>修饰符将字段指定为静态的。静态字段属于类而不属于任何的单个对象。而对于非静态的实例字段，每个对象都有自己的一个副本。</p>
-</li>
-<li><h5 id="静态常量"><a href="#静态常量" class="headerlink" title="静态常量"></a>静态常量</h5><p>可以同时使用<code>static</code>和<code>final</code>修饰符来定义一个<strong>静态常量</strong>，这表示该量既是不可修改的，也是直接属于类的。例如，Math中有静态常量：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> StringBuilder evaluations;</span><br><span class="line">evaluations = <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line"><span class="comment">// final 关键字只是表示存储在evaluations变量中的对象引用不会再指示另一个不同的StringBuilder对象，但这个对象仍然是可以修改的</span></span><br><span class="line">evaluations.append(<span class="string">&quot;Hello&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="静态字段与静态方法"><a href="#静态字段与静态方法" class="headerlink" title="静态字段与静态方法"></a>静态字段与静态方法</h2><h3 id="1-静态字段"><a href="#1-静态字段" class="headerlink" title="1. 静态字段"></a>1. 静态字段</h3><p>可以使用<code>static</code>修饰符将字段指定为静态的。静态字段属于类而不属于任何的单个对象。而对于非静态的实例字段，每个对象都有自己的一个副本。</p>
+<h3 id="2-静态常量"><a href="#2-静态常量" class="headerlink" title="2. 静态常量"></a>2. 静态常量</h3><p>可以同时使用<code>static</code>和<code>final</code>修饰符来定义一个<strong>静态常量</strong>，这表示该量既是不可修改的，也是直接属于类的。例如，Math中有静态常量：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Math</span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">double</span> <span class="variable">PI</span> <span class="operator">=</span> <span class="number">3.14159265358979323846</span>;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>在程序中，可以使用Math.PI来访问这个静态常量。经常使用的System.out也是一个静态常量。</p>
-</li>
-<li><h5 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h5><p>静态方法是不在对象上执行的方法（直接通过类执行），例如，Math.pow(x,a)会计算x的a次幂。在完成运算时，它不是用任何Math类的对象，换句话说，它没有隐式参数。</p>
+<h3 id="3-静态方法"><a href="#3-静态方法" class="headerlink" title="3. 静态方法"></a>3. 静态方法</h3><p>静态方法是不在对象上执行的方法（直接通过类执行），例如，Math.pow(x,a)会计算x的a次幂。在完成运算时，它不是用任何Math类的对象，换句话说，它没有隐式参数。</p>
 <p>以下两种情况可以使用静态方法：</p>
 <ul>
-<li>方法不需要访问对象的状态，它需要的所有参数都通过显示参数提供（例如Math.pow)</li>
-<li>方法只需要访问类的静态字段。</li>
-</ul>
+<li><p>方法不需要访问对象的状态，它需要的所有参数都通过显示参数提供（例如Math.pow)</p>
+</li>
+<li><p>方法只需要访问类的静态字段。</p>
 </li>
 <li><h5 id="工厂方法"><a href="#工厂方法" class="headerlink" title="工厂方法"></a>工厂方法</h5><p>静态方法还有另外一种常见的用途。类似LocalDate和NumberFormat的类使用静态工厂方法来构造对象。例如有工厂方法：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">LocalDate.now()</span><br><span class="line">LocalDate.of()</span><br><span class="line">NumberFormat.getCurrencyInstance()</span><br><span class="line">NumberFormat.getPercentInstance()</span><br></pre></td></tr></table></figure>
@@ -951,8 +1214,7 @@
 <li><h5 id="main方法"><a href="#main方法" class="headerlink" title="main方法"></a>main方法</h5><p>main方法也是一个静态方法，它不对任何对象进行操作。事实上，在程序启动时还没有任何对象，静态的main方法将执行并构造程序所需要的对象。</p>
 </li>
 </ul>
-</li>
-<li><h4 id="方法参数"><a href="#方法参数" class="headerlink" title="方法参数"></a>方法参数</h4><p>回顾一下如何将参数传递给方法：</p>
+<h2 id="方法参数"><a href="#方法参数" class="headerlink" title="方法参数"></a>方法参数</h2><p>回顾一下如何将参数传递给方法：</p>
 <blockquote>
 <p><strong>按值调用</strong>表示方法接收的是调用者提供的值；而<strong>按引用调用</strong>表示方法接收的是调用者提供的变量地址。</p>
 <p>方法可以修改按引用传递的变量的值，而不能修改按值传递的变量的值。</p>
@@ -965,12 +1227,77 @@
 </ul>
 <p>Java中对方法参数能做什么和不能做什么：</p>
 <ul>
-<li>方法不能修改基本类型的参数（即数值型或布尔型）</li>
-<li>方法可以改变对象参数的状态<br>解释：方法得到一个对象的引用A后会创建一个对象的副本，也就是一个对象的引用B。这里A和B引用的是同一个对象，所以在方法中，通过B调用对象的方法改变对象的状态，对于A也会产生影响。</li>
-<li>方法不能让一个对象参数引用一个新的对象<br>解释：对象引用传入方法后，方法会创建一个该对象引用的副本，该副本引用一个新对象，在方法结束后副本就被销毁，原对象引用不变。</li>
+<li><strong>方法不能修改基本类型的参数（即数值型或布尔型）</strong></li>
+<li><strong>方法可以改变对象参数的状态</strong><br>解释：方法得到一个对象的引用A后会创建一个对象的副本，也就是一个对象的引用B。这里A和B引用的是同一个对象，所以在方法中，通过B调用对象的方法改变对象的状态，对于A也会产生影响。</li>
+<li><strong>方法不能让一个对象参数引用一个新的对象</strong><br>解释：对象引用传入方法后，方法会创建一个该对象引用的副本，该副本引用一个新对象，在方法结束后副本就被销毁，原对象引用不变。</li>
 </ul>
+<h2 id="对象构造"><a href="#对象构造" class="headerlink" title="对象构造"></a><strong>对象构造</strong></h2><h3 id="1-重载"><a href="#1-重载" class="headerlink" title="1. 重载"></a>1. 重载</h3><p><strong>定义</strong></p>
+<p>在同一个类中可以定义多个同名但参数列表不同的方法，这就是类的重载。在调用这些重载方法时，编译器会根据参数类型和参数数量来确定调用哪个方法，如果匹配不到合适的方法，就会抛出一个异常。（这个查找匹配的过程称为重载解析）</p>
+<p><strong>方法的签名</strong></p>
+<p>如果要完整地描述一个方法，需要指定方法名和参数类型，这叫做方法的签名。返回类型不是方法签名的一部分，所以不能存在两个方法名和参数类型都相同，而返回类型不同的方法。</p>
+<h3 id="2-默认字段的初始化"><a href="#2-默认字段的初始化" class="headerlink" title="2. 默认字段的初始化"></a>2. 默认字段的初始化</h3><p>方法中的局部变量必须<strong>明确地</strong>初始化，但是在类中，如果没有初始化示例字段，那么实例字段将被初始化为默认值，具体默认值如下：</p>
+<ul>
+<li>数值型：0</li>
+<li>布尔型：false</li>
+<li>对象引用：null</li>
+</ul>
+<h3 id="3-无参数的构造器"><a href="#3-无参数的构造器" class="headerlink" title="3. 无参数的构造器"></a>3. 无参数的构造器</h3><p>很多类都会包含一个无参数的构造器，由无参数的构造器构造对象时，可以将对象的状态设置为合适的默认值。</p>
+<p>如果编写一个类时没有编写构造器(没有任何构造器)，则Java会提供一个无参数的构造器，这个构造器会将所有的实例字段设置为默认值。</p>
+<p>如果类中至少提供了一个构造器，但是没有提供无参构造器，那么构造对象时如果不提供将是不合法的。</p>
+<h3 id="4-显式字段初始化"><a href="#4-显式字段初始化" class="headerlink" title="4. 显式字段初始化"></a>4. 显式字段初始化</h3><p>可以在类定义中直接为任何字段赋值，例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Employee</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以在构造器执行之前先完成这个赋值操作。如果一个类的所有构造器都希望把某个特定的实例字段设置为同一个值，这个语法就特别有用。</p>
+<p>初始值不一定是常量值，也可以用类中的方法对实例字段进行初始化。</p>
+<blockquote>
+<p>注意：在C++中不能直接初始化实例字段，必须在构造器中设置实例字段的初始值。</p>
+</blockquote>
+<h3 id="5-参数名"><a href="#5-参数名" class="headerlink" title="5. 参数名"></a>5. 参数名</h3><p>编写构造器时，常常在参数命名时感到困惑。</p>
+<p>通常，我们可以使用单个字母作为参数名，缺点是参数含义不易懂</p>
+<p>也有一种习惯，在每个参数名前面加上一个字母“a”,含义也比较清晰：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="title function_">Employee</span><span class="params">(String aName, <span class="type">double</span> aSalary)</span>&#123;</span><br><span class="line">    name = aName;</span><br><span class="line">    salary = aSalary;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>还有一种常用的技巧，基于这样的事实：<strong>参数变量会遮蔽同名的实例字段</strong>。例如，如果将参数名指定为salary，salary将指示这个参数，而不是实例字段，但此时，在方法内可以使用<code>this.salary</code>来访问实例字段（关键字this指示一个方法的隐式参数）：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="title function_">Employee</span><span class="params">(String name, <span class="type">double</span> salary)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">    <span class="built_in">this</span>.salary = salary;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-调用另一个构造器"><a href="#6-调用另一个构造器" class="headerlink" title="6. 调用另一个构造器"></a>6. 调用另一个构造器</h3><p>如果<strong>构造器的第一个语句</strong>形如<code>this(...)</code>，这个构造器将调用同一个类的另一个构造器，例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="title function_">Employee</span><span class="params">(<span class="type">double</span> s)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>(<span class="string">&quot;Employee #&quot;</span>+nextId, s);</span><br><span class="line">    nextId++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>采用这个这种方式使用this关键字时非常有用，这样对公共的构造器代码只需要编写一次即可。</p>
+<h3 id="7-初始化块"><a href="#7-初始化块" class="headerlink" title="7. 初始化块"></a>7. 初始化块</h3><p>前面提到了两种初始化数据字段的方法：</p>
+<ul>
+<li>在构造器中设置值</li>
+<li>在声明中赋值</li>
+</ul>
+<p>Java还有一种称为初始化块的机制，在一个类的声明中，可以包含任意多个代码块，只要构造这个类的对象，这些代码块就会被执行：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Employee</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> nextId;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> id;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">double</span> salary;</span><br><span class="line">    <span class="comment">//初始化块</span></span><br><span class="line">    &#123;</span><br><span class="line">        id = nextId;</span><br><span class="line">        nextId++;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Employee</span><span class="params">(String n, <span class="type">double</span> s)</span>&#123;</span><br><span class="line">        name = n;</span><br><span class="line">        salaray = s;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Employee</span><span class="params">()</span>&#123;</span><br><span class="line">        name = <span class="string">&quot;&quot;</span>;</span><br><span class="line">        salary = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个例子中，无论使用哪个构造器构造对象，初始化块中的代码都会被首先执行，然后才运行构造器的主体部分。</p>
+<p>可以在初始化块中设置字段，及时字段在类的后面才定义，但建议初始化块放在字段定义之后。</p>
+<p>下面给出调用构造器的具体处理步骤：</p>
+<ol>
+<li><p>如果构造器的第一行调用了另一个构造器，则基于所提供的参数执行第二个构造器</p>
 </li>
+<li><p>否则，</p>
+<p>a. 所有数据字段初始化为其默认值（0、false或null）</p>
+<p>b. 按照在类声明中出现的顺序，执行所有字段的初始化方法和初始化块。</p>
+</li>
+<li><p>执行构造器主体代码</p>
+</li>
+</ol>
+<p>静态字段的初始化</p>
+<ul>
+<li><p>通过提供一个初始值：前面已经介绍过：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">nextId</span> <span class="operator">=</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果类的静态字段需要很复杂的初始化代码，可以使用静态的初始化块：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">var</span> <span class="variable">generator</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Random</span>();</span><br><span class="line">    nextId = generator.nextInt(<span class="number">10000</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
+<p>在类第一次加载的时候，将会进行静态字段的初始化。和实例字段一样，除非将静态字段显式地设置为其他值，否则默认的初始值是0、false或null。所有静态字段的初始化方法以及静态初始化块都将依照类声明中出现的顺序执行。</p>
+<h3 id="8-对象析构与finalize方法"><a href="#8-对象析构与finalize方法" class="headerlink" title="8. 对象析构与finalize方法"></a>8. 对象析构与finalize方法</h3><p>有些面向对象的语言，特别是C++，有显式的析构器方法，其中放置一些当对象不再使用时需要执行的清理代码。在析构器中，最常见的操作是回收分配给对象的存储空间。Java会自动完成垃圾回收，不需要人工回收内存，所以java不支持析构器。</p>
+<p>当然，某些对象使用了内存之外的其他资源，例如，文件或使用了系统资源的另一个对象的句柄，在这种情况下，当资源不再需要时，将其回收和再利用显得十分重要。</p>
+<p>如果一个资源一旦使用完就需要立即关闭，应当提供一个必要的close()方法来完成必要的清理工作。可以在对象使用完时调用这个closer方法。</p>
+<p>不要使用finalize方法来完成清理，改方法原本要在垃圾回收前调用，改方法已经被废弃。</p>
 
       
     </div>
@@ -1777,321 +2104,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/%E5%85%B6%E4%BB%96/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AF%AD%E6%B3%95%E8%A7%84%E5%88%99/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Taizi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/%E5%85%B6%E4%BB%96/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AF%AD%E6%B3%95%E8%A7%84%E5%88%99/" class="post-title-link" itemprop="url">正则表达式</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-09-28 15:43:19" itemprop="dateModified" datetime="2023-09-28T15:43:19+08:00">2023-09-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%85%B6%E4%BB%96/" itemprop="url" rel="index"><span itemprop="name">其他</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>2.7k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>5 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="正则表达式语法规则"><a href="#正则表达式语法规则" class="headerlink" title="正则表达式语法规则"></a>正则表达式语法规则</h1><ul>
-<li><h2 id="普通字符"><a href="#普通字符" class="headerlink" title="普通字符"></a>普通字符</h2><p>普通字符包括没有显式指定为元字符的所有可打印和不可打印字符。这包括所有大写和小写字母、所有数字、所有标点符号和一些其他符号</p>
-<table>
-<thead>
-<tr>
-<th>字符</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>[ABC]</td>
-<td>匹配[…]中的所有字符，例如[abc]匹配字符串 “adsdfbdsc” 中的所有 a b c字母</td>
-</tr>
-<tr>
-<td>[^ABC]</td>
-<td>匹配除了[…]中字符的所有字符，例如[ ^abc]匹配字符串 “adsdfbdsc” 中除 a b c字母外的其他所有字母</td>
-</tr>
-<tr>
-<td>[A-Z]</td>
-<td>[A-Z] 表示一个区间，匹配所有大写字母，[a-z] 表示所有小写字母。</td>
-</tr>
-<tr>
-<td>.</td>
-<td>匹配除换行符（\n、\r）之外的任何单个字符，相等于 [ ^\n\r]。</td>
-</tr>
-<tr>
-<td>[\s\S]</td>
-<td>匹配所有。\s 是匹配所有空白符，包括换行，\S 非空白符，不包括换行。</td>
-</tr>
-<tr>
-<td>\w</td>
-<td>匹配字母、数字、下划线。等价于 [A-Za-z0-9_]</td>
-</tr>
-</tbody></table>
-</li>
-<li><h2 id="非打印字符"><a href="#非打印字符" class="headerlink" title="非打印字符"></a>非打印字符</h2><p>非打印字符也可以是正则表达式的组成部分。下表列出了表示非打印字符的转义序列：</p>
-<table>
-<thead>
-<tr>
-<th>字符</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>\cx</td>
-<td>匹配由x指明的控制字符。例如， \cM 匹配一个 Control-M 或回车符。x 的值必须为 A-Z 或 a-z 之一。否则，将 c 视为一个原义的 ‘c’ 字符。</td>
-</tr>
-<tr>
-<td>\f</td>
-<td>匹配一个换页符。等价于 \x0c 和 \cL。</td>
-</tr>
-<tr>
-<td>\n</td>
-<td>匹配一个换行符。等价于 \x0a 和 \cJ。</td>
-</tr>
-<tr>
-<td>\r</td>
-<td>匹配一个回车符。等价于 \x0d 和 \cM。</td>
-</tr>
-<tr>
-<td>\s</td>
-<td>匹配任何空白字符，包括空格、制表符、换页符等等。等价于 [ \f\n\r\t\v]。注意 Unicode 正则表达式会匹配全角空格符。</td>
-</tr>
-<tr>
-<td>\S</td>
-<td>匹配任何非空白字符。等价于 [^ \f\n\r\t\v]。</td>
-</tr>
-<tr>
-<td>\t</td>
-<td>匹配一个制表符。等价于 \x09 和 \cI。</td>
-</tr>
-<tr>
-<td>\v</td>
-<td>匹配一个垂直制表符。等价于 \x0b 和 \cK。</td>
-</tr>
-</tbody></table>
-</li>
-<li><h2 id="特殊字符"><a href="#特殊字符" class="headerlink" title="特殊字符"></a>特殊字符</h2><p>所谓特殊字符，就是一些有特殊含义的字符，如 *，简单的说就是表示任何字符串的意思。如果要查找字符串中的 * 符号，则需要对 * 进行转义，即在其前加一个 \，runo*ob 匹配字符串 <strong>runo*ob</strong>。</p>
-<p>许多元字符要求在试图匹配它们时特别对待。若要匹配这些特殊字符，必须首先使字符”转义”，即，将反斜杠字符\ 放在它们前面。下表列出了正则表达式中的特殊字符：</p>
-<table>
-<thead>
-<tr>
-<th>特别字符</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>$</td>
-<td>匹配输入字符串的结尾位置。如果设置了 RegExp 对象的 Multiline 属性，则 $ 也匹配 ‘\n’ 或 ‘\r’。要匹配 $ 字符本身，请使用 $。</td>
-</tr>
-<tr>
-<td>( )</td>
-<td>标记一个子表达式的开始和结束位置。子表达式可以获取供以后使用。要匹配这些字符，请使用 ( 和 )。</td>
-</tr>
-<tr>
-<td>*</td>
-<td>匹配前面的子表达式零次或多次。要匹配 * 字符，请使用 \*。</td>
-</tr>
-<tr>
-<td>+</td>
-<td>匹配前面的子表达式一次或多次。要匹配 + 字符，请使用 \+。</td>
-</tr>
-<tr>
-<td>.</td>
-<td>匹配除换行符 \n 之外的任何单字符。要匹配 . ，请使用\ . 。</td>
-</tr>
-<tr>
-<td>[</td>
-<td>标记一个中括号表达式的开始。要匹配 [，请使用 \[。</td>
-</tr>
-<tr>
-<td>?</td>
-<td>匹配前面的子表达式零次或一次，或指明一个非贪婪限定符。要匹配 ? 字符，请使用 ?。</td>
-</tr>
-<tr>
-<td>\</td>
-<td>将下一个字符标记为或特殊字符、或原义字符、或向后引用、或八进制转义符。例如， ‘n’ 匹配字符 ‘n’。’\n’ 匹配换行符。序列 ‘\\‘ 匹配 “\“，而 ‘\(‘ 则匹配 “(“。</td>
-</tr>
-<tr>
-<td>^</td>
-<td>匹配输入字符串的开始位置，除非在方括号表达式中使用，当该符号在方括号表达式中使用时，表示不接受该方括号表达式中的字符集合。要匹配 ^ 字符本身，请使用 ^。</td>
-</tr>
-<tr>
-<td>{</td>
-<td>标记限定符表达式的开始。要匹配 {，请使用 \{。</td>
-</tr>
-<tr>
-<td>|</td>
-<td>指明两项之间的一个选择。要匹配 |，请使用 \</td>
-</tr>
-</tbody></table>
-</li>
-<li><h2 id="限定符"><a href="#限定符" class="headerlink" title="限定符"></a>限定符</h2><p>限定符用来指定正则表达式的一个给定组件必须要出现多少次才能满足匹配。有 * 或 + 或 ? 或 {n} 或 {n,} 或 {n,m} 共6种。</p>
-<p>正则表达式的限定符有：</p>
-<table>
-<thead>
-<tr>
-<th>字符</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>*</td>
-<td>匹配前面的子表达式零次或多次。例如，zo* 能匹配 <strong>“z”</strong> 以及 **”zoo”*<em>。</em> 等价于 {0,}。</td>
-</tr>
-<tr>
-<td>+</td>
-<td>匹配前面的子表达式一次或多次。例如，zo+ 能匹配 <strong>“zo”</strong> 以及 “**zoo”**，但不能匹配 **”z”**。+ 等价于 {1,}。</td>
-</tr>
-<tr>
-<td>?</td>
-<td>匹配前面的子表达式零次或一次。例如，do(es)?  可以匹配 <strong>“do”</strong> 、 **”does”**、 <strong>“doxy”</strong> 中的 <strong>“do”</strong> 和 **”does”**。? 等价于 {0,1}。</td>
-</tr>
-<tr>
-<td>{n}</td>
-<td>n 是一个非负整数。匹配确定的 <strong>n</strong> 次。例如，o{2} 不能匹配 <strong>“Bob”</strong> 中的 <strong>o</strong>，但是能匹配 <strong>“food”</strong> 中的两个 <strong>o</strong>。</td>
-</tr>
-<tr>
-<td>{n,}</td>
-<td>n 是一个非负整数。至少匹配n 次。例如，o{2,} 不能匹配 <strong>“Bob”</strong> 中的 <strong>o</strong>，但能匹配 <strong>“foooood”</strong> 中的所有 <strong>o</strong>。o{1,} 等价于 o+。o{0,} 则等价于 o*。</td>
-</tr>
-<tr>
-<td>{n,m}</td>
-<td>m 和 n 均为非负整数，其中 n &lt;&#x3D; m。最少匹配 n 次且最多匹配 m 次。例如，o{1,3} 将匹配 <strong>“fooooood”</strong> 中的前三个 <strong>o</strong>。o{0,1} 等价于 o?。请注意在逗号和两个数之间不能有空格。</td>
-</tr>
-</tbody></table>
-<p>*** 和 + 限定符都是贪婪的，因为它们会尽可能多的匹配文字，只要在它们的后面加上一个 ? 就可以实现非贪婪或最小匹配。**</p>
-</li>
-<li><h2 id="定位符"><a href="#定位符" class="headerlink" title="定位符"></a>定位符</h2><p>定位符使您能够将正则表达式固定到行首或行尾。它们还使您能够创建这样的正则表达式，这些正则表达式出现在一个单词内、在一个单词的开头或者一个单词的结尾。</p>
-<p>定位符用来描述字符串或单词的边界，^ 和 $ 分别指字符串的开始与结束，\b 描述单词的前或后边界，\B 表示非单词边界。</p>
-<p>正则表达式的定位符有：</p>
-<table>
-<thead>
-<tr>
-<th>字符</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>^</td>
-<td>匹配输入字符串开始的位置。如果设置了 RegExp 对象的 Multiline 属性，^ 还会与 \n 或 \r 之后的位置匹配。</td>
-</tr>
-<tr>
-<td>$</td>
-<td>匹配输入字符串结尾的位置。如果设置了 RegExp 对象的 Multiline 属性，$ 还会与 \n 或 \r 之前的位置匹配。</td>
-</tr>
-<tr>
-<td>\b</td>
-<td>匹配一个单词边界，即字与空格间的位置。</td>
-</tr>
-<tr>
-<td>\B</td>
-<td>非单词边界匹配。</td>
-</tr>
-</tbody></table>
-<p><strong>注意</strong>：不能将限定符与定位符一起使用。由于在紧靠换行或者单词边界的前面或后面不能有一个以上位置，因此不允许诸如 ^* 之类的表达式。</p>
-</li>
-<li><h2 id="选择"><a href="#选择" class="headerlink" title="选择"></a>选择</h2><p>用圆括号 () 将所有选择项括起来，相邻的选择项之间用 | 分隔。</p>
-<p>() 表示捕获分组，() 会把每个分组里的匹配的值保存起来， 多个匹配值可以通过数字 n 来查看(<strong>n</strong> 是一个数字，表示第 n 个捕获组的内容)。</p>
-<p><img src="/%E5%85%B6%E4%BB%96/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AF%AD%E6%B3%95%E8%A7%84%E5%88%99/366574CC-3706-4B4C-8782-1BFF4CF57582.jpg" alt="img"></p>
-<p><img src="/%E5%85%B6%E4%BB%96/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AF%AD%E6%B3%95%E8%A7%84%E5%88%99/82A7298A-2A94-49E3-AA27-A7778EE89711.jpg" alt="img"></p>
-<p>但用圆括号会有一个副作用，使相关的匹配会被缓存，此时可用 ?: 放在第一个选项前来消除这种副作用。</p>
-<p>其中 ?: 是非捕获元之一，还有两个非捕获元是 ?&#x3D; 和 ?!，这两个还有更多的含义，前者为正向预查，在任何开始匹配圆括号内的正则表达式模式的位置来匹配搜索字符串，后者为负向预查，在任何开始不匹配该正则表达式模式的位置来匹配搜索字符串。</p>
-<p>以下列出 ?&#x3D;、?&lt;&#x3D;、?!、?&lt;! 的使用区别：</p>
-<p>exp1(?&#x3D;exp2)：查找 exp2 前面的 exp1。</p>
-<p><img src="/%E5%85%B6%E4%BB%96/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AF%AD%E6%B3%95%E8%A7%84%E5%88%99/reg-111.jpg" alt="img"></p>
-<p>(?&lt;&#x3D;exp2)exp1：查找 exp2 后面的 exp1。</p>
-<p><img src="/%E5%85%B6%E4%BB%96/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AF%AD%E6%B3%95%E8%A7%84%E5%88%99/reg-222.jpg" alt="img"></p>
-<p>exp1(?!exp2)：查找后面不是 exp2 的 exp1。</p>
-<p><img src="/%E5%85%B6%E4%BB%96/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AF%AD%E6%B3%95%E8%A7%84%E5%88%99/reg-333.jpg" alt="img"></p>
-<p>(?&lt;!exp2)exp1：查找前面不是 exp2 的 exp1。</p>
-<p><img src="/%E5%85%B6%E4%BB%96/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AF%AD%E6%B3%95%E8%A7%84%E5%88%99/reg-444.jpg" alt="img"></p>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>
@@ -2113,13 +2127,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">170k</span>
+    <span title="站点总字数">179k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">5:10</span>
+    <span title="站点阅读时长">5:26</span>
   </span>
 </div>
 <div class="busuanzi-count">

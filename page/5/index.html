@@ -147,18 +147,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-count">52</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-count">33</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -272,6 +272,116 @@
 <li><p>删除数据库</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> database [if <span class="keyword">exists</span>] database_name;</span><br></pre></td></tr></table></figure></li>
 </ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.github.io/Hadoop/Hive/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E5%BC%80%E5%8F%91%E6%9E%B6%E6%9E%84%E5%B1%82%E6%AC%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Taizi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/Hadoop/Hive/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E5%BC%80%E5%8F%91%E6%9E%B6%E6%9E%84%E5%B1%82%E6%AC%A1/" class="post-title-link" itemprop="url">数据仓库开发架构层次</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-09-27 18:29:07" itemprop="dateModified" datetime="2023-09-27T18:29:07+08:00">2023-09-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Hadoop/" itemprop="url" rel="index"><span itemprop="name">Hadoop</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Hadoop/Hive/" itemprop="url" rel="index"><span itemprop="name">Hive</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>644</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="数据仓库开发架构层次"><a href="#数据仓库开发架构层次" class="headerlink" title="数据仓库开发架构层次"></a>数据仓库开发架构层次</h1><h2 id="一、STG原始数据层（数据落地）"><a href="#一、STG原始数据层（数据落地）" class="headerlink" title="一、STG原始数据层（数据落地）"></a>一、STG原始数据层（数据落地）</h2><p>这层的工作主要是原始数据在数据仓库的落地，数据结构和原始数据保持一致，不做逻辑处理。</p>
+<h2 id="二、ODS数据操作层（数据清洗）"><a href="#二、ODS数据操作层（数据清洗）" class="headerlink" title="二、ODS数据操作层（数据清洗）"></a>二、ODS数据操作层（数据清洗）</h2><p>用于原始数据在数据平台的落地。数据从数据结构、数据之间的逻辑关系上都与STG原始数据层基本保持一致。源数据进入这一层时，要进行业务字段提取、去掉不用的字段、脏数据处理等，也就是进行数据清洗。</p>
+<p><strong>在实际开发中，不一定会同时创建STG层和ODS层，因为两个层差异不大，更多的是直接创建ODS层。</strong></p>
+<h2 id="三、DWD数据明细层（合成明细表）"><a href="#三、DWD数据明细层（合成明细表）" class="headerlink" title="三、DWD数据明细层（合成明细表）"></a>三、DWD数据明细层（合成明细表）</h2><p>用于源系统数据在数据平台中的永久存储。它用以支撑DWS层和ADS层无法覆盖的需求，比如数据明细方面的需求。这一层主要解决数据质量问题以及数据的完整性度问题。一般会生成整个开发流程中最为明细的数据表。</p>
+<h2 id="四、DWS数据服务层（数据轻度聚合）"><a href="#四、DWS数据服务层（数据轻度聚合）" class="headerlink" title="四、DWS数据服务层（数据轻度聚合）"></a>四、DWS数据服务层（数据轻度聚合）</h2><p>数据汇总层，该层会在DWD层的数据基础上。对数据做轻度的聚合操作，生成一系列的中间表，提升公共指标的复用性，减少重复加工。按照业务划分，如流量、产品、用户等，生成字段比较多的宽表，用于提供后续的业务查询，OLAP分析，数据分发等。</p>
+<h2 id="五、ADS应用数据层（业务指标聚合）"><a href="#五、ADS应用数据层（业务指标聚合）" class="headerlink" title="五、ADS应用数据层（业务指标聚合）"></a>五、ADS应用数据层（业务指标聚合）</h2><p>该层存放数据产品个性化的统计指标数据，一般以某个业务应用为出发点进行建设，ADS层只关心自己需要的数据，不会全盘考虑企业整体的数据架构和应用。面向实际的业务数据需求，以DWD或者DWS层的数据为基础，组成各种统计报表。</p>
+<h2 id="六、DIM维度层（"><a href="#六、DIM维度层（" class="headerlink" title="六、DIM维度层（"></a>六、DIM维度层（</h2><p>主要存储公共的属性数据，比如产品类别、地理位置、时间详情等信息。</p>
 
       
     </div>
@@ -2191,629 +2301,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hackertaizi.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E8%AF%AD%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Taizi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E8%AF%AD%E6%B3%95/" class="post-title-link" itemprop="url">MySQL语法</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-01-30 09:56:30" itemprop="dateCreated datePublished" datetime="2023-01-30T09:56:30+08:00">2023-01-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-09-28 15:09:17" itemprop="dateModified" datetime="2023-09-28T15:09:17+08:00">2023-09-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>17k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>31 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="MySQL语法"><a href="#MySQL语法" class="headerlink" title="MySQL语法"></a>MySQL语法</h1><h2 id="一、创建数据库"><a href="#一、创建数据库" class="headerlink" title="一、创建数据库"></a>一、创建数据库</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE DATABASE `数据库名`</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="二、删除数据库"><a href="#二、删除数据库" class="headerlink" title="二、删除数据库"></a>二、删除数据库</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP DATABASE `数据库名`</span><br></pre></td></tr></table></figure>
-
-<h2 id="三、选择数据库"><a href="#三、选择数据库" class="headerlink" title="三、选择数据库"></a>三、选择数据库</h2><p>在命令行中，使用以下命令选择数据库：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use 数据库名</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="四、数据类型"><a href="#四、数据类型" class="headerlink" title="四、数据类型"></a>四、数据类型</h2><ul>
-<li><h3 id="数值类型"><a href="#数值类型" class="headerlink" title="数值类型"></a>数值类型</h3><p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E8%AF%AD%E6%B3%95/Users\59737\AppData\Roaming\Typora\typora-user-images\image-20220111111721111.png" alt="image-20220111111721111"></p>
-</li>
-<li><h3 id="日期和时间类型"><a href="#日期和时间类型" class="headerlink" title="日期和时间类型"></a>日期和时间类型</h3></li>
-</ul>
-<p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E8%AF%AD%E6%B3%95/Users\59737\AppData\Roaming\Typora\typora-user-images\image-20220111111827606.png" alt="image-20220111111827606"></p>
-<ul>
-<li><h3 id="字符串类型"><a href="#字符串类型" class="headerlink" title="字符串类型"></a>字符串类型</h3></li>
-</ul>
-<p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E8%AF%AD%E6%B3%95/Users\59737\AppData\Roaming\Typora\typora-user-images\image-20220111111925757.png" alt="image-20220111111925757"></p>
-<h2 id="五、创建数据表"><a href="#五、创建数据表" class="headerlink" title="五、创建数据表"></a>五、创建数据表</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE table_name(column_name column_type);</span><br></pre></td></tr></table></figure>
-
-<p>例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE IF NOT EXISTS `runoob_tbl`(</span><br><span class="line">   `runoob_id` INT UNSIGNED AUTO_INCREMENT,</span><br><span class="line">   `runoob_title` VARCHAR(100) NOT NULL,</span><br><span class="line">   `runoob_author` VARCHAR(40) NOT NULL,</span><br><span class="line">   `submission_date` DATE,</span><br><span class="line">   PRIMARY KEY ( `runoob_id` )</span><br><span class="line">)ENGINE=InnoDB DEFAULT CHARSET=utf8;</span><br></pre></td></tr></table></figure>
-
-<p>例子解析：</p>
-<ul>
-<li><p>如果你不想字段为 <strong>NULL</strong> 可以设置字段的属性为 <strong>NOT NULL</strong>， 在操作数据库时如果输入该字段的数据为<strong>NULL</strong> ，就会报错。</p>
-</li>
-<li><p>AUTO_INCREMENT定义列为自增的属性，一般用于主键，数值会自动加1。</p>
-</li>
-<li><p>PRIMARY KEY关键字用于定义列为主键。 您可以使用多列来定义主键，列间以逗号分隔。</p>
-</li>
-<li><p>ENGINE 设置存储引擎，CHARSET 设置编码。</p>
-</li>
-</ul>
-<h3 id="通过命令行创建表"><a href="#通过命令行创建表" class="headerlink" title="通过命令行创建表"></a>通过命令行创建表</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE table_name;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="六、删除数据表"><a href="#六、删除数据表" class="headerlink" title="六、删除数据表"></a>六、删除数据表</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP TABLE table_name;</span><br></pre></td></tr></table></figure>
-
-<h3 id="在命令行中删除表"><a href="#在命令行中删除表" class="headerlink" title="在命令行中删除表"></a>在命令行中删除表</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP TABLE table_name;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="七、插入数据"><a href="#七、插入数据" class="headerlink" title="七、插入数据"></a>七、插入数据</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO table_name ( field1, field2,...fieldN )</span><br><span class="line">                       VALUES</span><br><span class="line">                       ( value1, value2,...valueN );</span><br></pre></td></tr></table></figure>
-
-<p>如果数据是字符型，必须使用单引号或者双引号，如：”value”。</p>
-<p>当需要插入多条数据时，可以再values后多跟几个括号，用逗号隔开，如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO table_name ( field1, field2,...fieldN )</span><br><span class="line">                      VALUES</span><br><span class="line">                     ( value1, value2,...valueN ),( value1, value2,...valueN ),( value1, value2,...valueN );</span><br></pre></td></tr></table></figure>
-
-<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><p>插入数据时，列名可以加反单引号，也可以不加；对于要插入的字符类型的值，要加单引号而不是反单引号。</p>
-<p>在命令行中插入数据的语法同上。</p>
-<h2 id="八、查询数据"><a href="#八、查询数据" class="headerlink" title="八、查询数据"></a>八、查询数据</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT column_name,column_name</span><br><span class="line">FROM table_name</span><br><span class="line">[WHERE Clause]</span><br><span class="line">[LIMIT N][ OFFSET M]</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>查询语句中你可以使用一个或者多个表，表之间使用逗号(,)分割，并使用WHERE语句来设定查询条件。</li>
-<li>SELECT 命令可以读取一条或者多条记录。</li>
-<li>你可以使用星号（*）来代替其他字段，SELECT语句会返回表的所有字段数据</li>
-<li>你可以使用 WHERE 语句来包含任何条件。</li>
-<li>你可以使用 LIMIT 属性来设定返回的记录数。</li>
-<li>你可以通过OFFSET指定SELECT语句开始查询的数据偏移量。默认情况下偏移量为0。</li>
-</ul>
-<h4 id="注意-1"><a href="#注意-1" class="headerlink" title="注意"></a>注意</h4><p>查询中涉及到字符串时要使用单引号或双引号包括，表名可以使用反单引号，也可以直接写出。</p>
-<p>命令行模式下查询数据的语法同上。</p>
-<h2 id="九、WHERE-字句"><a href="#九、WHERE-字句" class="headerlink" title="九、WHERE 字句"></a>九、WHERE 字句</h2><p>where字句用于在查询数据时有条件地筛选数据。</p>
-<p>语法格式如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT field1, field2,...fieldN FROM table_name1, table_name2...</span><br><span class="line">[WHERE condition1 [AND [OR]] condition2.....</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>查询语句中你可以使用一个或者多个表，表之间使用逗号, 分割，并使用WHERE语句来设定查询条件。</li>
-<li>你可以在 WHERE 子句中指定任何条件。</li>
-<li>你可以使用 AND 或者 OR 指定一个或多个条件。</li>
-<li>WHERE 子句也可以运用于 SQL 的 DELETE 或者 UPDATE 命令。</li>
-<li>WHERE 子句类似于程序语言中的 if 条件，根据 MySQL 表中的字段值来读取指定的数据。</li>
-</ul>
-<p>一下为操作符列表，可用于WHERE字句中。</p>
-<p>下表中实例假定A为10，B为20</p>
-<p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E8%AF%AD%E6%B3%95/Users\59737\AppData\Roaming\Typora\typora-user-images\image-20220111133500917.png" alt="image-20220111133500917"></p>
-<p>命令行模式下WHERE子句的用法同上。</p>
-<h2 id="十、修改-x2F-更新数据"><a href="#十、修改-x2F-更新数据" class="headerlink" title="十、修改&#x2F;更新数据"></a>十、修改&#x2F;更新数据</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">UPDATE table_name SET field1=new-value1, field2=new-value2</span><br><span class="line">[WHERE Clause]</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>你可以同时更新一个或多个字段。</li>
-<li>你可以在 WHERE 子句中指定任何条件。</li>
-<li>你可以在一个单独表中同时更新数据。</li>
-</ul>
-<p>当你需要更新数据表中指定行的数据时 WHERE 子句是非常有用的。</p>
-<h2 id="十一、删除表中的数据"><a href="#十一、删除表中的数据" class="headerlink" title="十一、删除表中的数据"></a>十一、删除表中的数据</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DELETE FROM table_name [WHERE Clause]</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>如果没有指定 WHERE 子句，MySQL 表中的所有记录将被删除。</li>
-<li>你可以在 WHERE 子句中指定任何条件</li>
-<li>您可以在单个表中一次性删除记录。</li>
-</ul>
-<p>当你想删除数据表中指定的记录时 WHERE 子句是非常有用的。</p>
-<p>在命令行中删除表中的记录的方法同上。</p>
-<h2 id="十二、LIKE-子句"><a href="#十二、LIKE-子句" class="headerlink" title="十二、LIKE 子句"></a>十二、LIKE 子句</h2><p>LIKE 子句常与WHERE子句一起使用，用来表示含有某些字符的关键字看，可以用百分号%来表示任意字符，如果没有使用百分号%，LIKE子句与等号&#x3D;的效果是一样的。</p>
-<p>语法格式如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT field1, field2,...fieldN </span><br><span class="line">FROM table_name</span><br><span class="line">WHERE field1 LIKE condition1 [AND [OR]] filed2 = &#x27;somevalue&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>在命令行模式下LIKE子句的语法格式同上。</p>
-<h2 id="十三、UNION操作符-（连接两个select语句的结果）"><a href="#十三、UNION操作符-（连接两个select语句的结果）" class="headerlink" title="十三、UNION操作符  （连接两个select语句的结果）"></a>十三、UNION操作符  （连接两个select语句的结果）</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SELECT expression1, expression2, ... expression_n</span><br><span class="line">FROM tables</span><br><span class="line">[WHERE conditions]</span><br><span class="line">UNION [ALL | DISTINCT]</span><br><span class="line">SELECT expression1, expression2, ... expression_n</span><br><span class="line">FROM tables</span><br><span class="line">[WHERE conditions];</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>expression1, expression2, … expression_n</strong>: 要检索的列。</li>
-<li><strong>tables:</strong> 要检索的数据表。</li>
-<li><strong>WHERE conditions:</strong> 可选， 检索条件。</li>
-<li><strong>DISTINCT:</strong> 可选，删除结果集中重复的数据。默认情况下 UNION 操作符已经删除了重复数据，所以 DISTINCT 修饰符对结果没啥影响。</li>
-<li><strong>ALL:</strong> 可选，返回所有结果集，包含重复数据。</li>
-</ul>
-<h2 id="十四、排序"><a href="#十四、排序" class="headerlink" title="十四、排序"></a>十四、排序</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT field1, field2,...fieldN FROM table_name1, table_name2...</span><br><span class="line">ORDER BY field1 [ASC [DESC][默认 ASC]], [field2...] [ASC [DESC][默认 ASC]]</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>你可以使用任何字段来作为排序的条件，从而返回排序后的查询结果。</li>
-<li>你可以设定多个字段来排序。</li>
-<li>你可以使用 ASC 或 DESC 关键字来设置查询结果是按升序或降序排列。 默认情况下，它是按升序排列。</li>
-<li>你可以添加 WHERE…LIKE 子句来设置条件。</li>
-</ul>
-<p>在命令行模式下排序的语法格式同上。</p>
-<h2 id="十五、分组"><a href="#十五、分组" class="headerlink" title="十五、分组"></a>十五、分组</h2><p>SQL中分组使用<strong>GROUP BY</strong>语句，根据一个或多个列对结果集进行分组。在分组的列上我们可以使用COUNT,SUM,AVG等函数。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT column_name, function(column_name)</span><br><span class="line">FROM table_name</span><br><span class="line">WHERE column_name operator value</span><br><span class="line">GROUP BY column_name;</span><br></pre></td></tr></table></figure>
-
-<p><strong>WITH ROLLUP</strong> 可以实现在分组统计数据基础上再进行相同的统计（SUM,AVG,COUNT…）。</p>
-<h4 id="理解和注意点："><a href="#理解和注意点：" class="headerlink" title="理解和注意点："></a>理解和注意点：</h4><p><strong>SELECT 的列必须是用于分组的列的一个或多个，不能包括其他列。</strong>理解如下：</p>
-<p>要对某个表按某一列或者某几列进行分组，可以理解为除了这几列外，其余的列都放在了统一单元格里，例如：</p>
-<p>原始表：</p>
-<table>
-<thead>
-<tr>
-<th>name</th>
-<th>id</th>
-<th>num</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>a</td>
-<td>1</td>
-<td>12</td>
-</tr>
-<tr>
-<td>b</td>
-<td>2</td>
-<td>12</td>
-</tr>
-<tr>
-<td>c</td>
-<td>3</td>
-<td>13</td>
-</tr>
-</tbody></table>
-<p>假设我们按照num列进行分组，即group by num，则得到：</p>
-<table>
-<thead>
-<tr>
-<th>name</th>
-<th>id</th>
-<th>num</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>a   b</td>
-<td>1  2</td>
-<td>12</td>
-</tr>
-<tr>
-<td>c</td>
-<td>3</td>
-<td>13</td>
-</tr>
-</tbody></table>
-<p>可以看到，其余列因为分组已经写到了一起，所以select时只能选择分组的列，而不能包含其余列。</p>
-<h2 id="十六、表链接"><a href="#十六、表链接" class="headerlink" title="十六、表链接"></a>十六、表链接</h2><p>可以在SELECT，UPDATE和DELETE语句中使用JOIN来联合多表查询。</p>
-<p>JOIN 按照功能大致分为如下三类：</p>
-<ul>
-<li><strong>INNER JOIN（内连接,或等值连接）</strong>：获取两个表中字段匹配关系的记录。</li>
-<li><strong>LEFT JOIN（左连接）：</strong>获取左表所有记录，即使右表没有对应匹配的记录。</li>
-<li><strong>RIGHT JOIN（右连接）：</strong> 与 LEFT JOIN 相反，用于获取右表所有记录，即使左表没有对应匹配的记录。</li>
-</ul>
-<h2 id="十七、NULL值处理"><a href="#十七、NULL值处理" class="headerlink" title="十七、NULL值处理"></a>十七、NULL值处理</h2><p>处理NULL值的三大运算符：</p>
-<ul>
-<li><strong>IS NULL:</strong> 当列的值是 NULL,此运算符返回 true。</li>
-<li><strong>IS NOT NULL:</strong> 当列的值不为 NULL, 运算符返回 true。</li>
-<li><strong>&lt;&#x3D;&gt;:</strong> 比较操作符（不同于 &#x3D; 运算符），当比较的的两个值相等或者都为 NULL 时返回 true。</li>
-</ul>
-<h2 id="十八、MySQL正则表达式"><a href="#十八、MySQL正则表达式" class="headerlink" title="十八、MySQL正则表达式"></a>十八、MySQL正则表达式</h2><p>MySQL中使用<strong>REGEXP</strong>操作符来进行正则表达式匹配</p>
-<p>正则表达式如下：</p>
-<p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E8%AF%AD%E6%B3%95/Users\59737\AppData\Roaming\Typora\typora-user-images\image-20220111140640057.png" alt="image-20220111140640057"></p>
-<p>实例：<br>查找name字段中以‘st’开头的所有数据：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT name FROM person_tbl WHERE name REGEXP &#x27;^st&#x27;;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="十九、MySQL事务"><a href="#十九、MySQL事务" class="headerlink" title="十九、MySQL事务"></a>十九、MySQL事务</h2><p>MySQL 事务主要用于处理操作量大，复杂度高的数据。比如说，在人员管理系统中，你删除一个人员，你既需要删除人员的基本资料，也要删除和该人员相关的信息，如信箱，文章等等，这样，这些数据库操作语句就构成一个事务！</p>
-<ul>
-<li>在 MySQL 中只有使用了 Innodb 数据库引擎的数据库或表才支持事务。</li>
-<li>事务处理可以用来维护数据库的完整性，保证成批的 SQL 语句要么全部执行，要么全部不执行。</li>
-<li>事务用来管理 insert,update,delete 语句</li>
-</ul>
-<p>一般来说，事务是必须满足4个条件（ACID）：：原子性（<strong>A</strong>tomicity，或称不可分割性）、一致性（<strong>C</strong>onsistency）、隔离性（<strong>I</strong>solation，又称独立性）、持久性（<strong>D</strong>urability）。</p>
-<ul>
-<li><strong>原子性：</strong>一个事务（transaction）中的所有操作，要么全部完成，要么全部不完成，不会结束在中间某个环节。事务在执行过程中发生错误，会被回滚（Rollback）到事务开始前的状态，就像这个事务从来没有执行过一样。</li>
-<li><strong>一致性：</strong>在事务开始之前和事务结束以后，数据库的完整性没有被破坏。这表示写入的资料必须完全符合所有的预设规则，这包含资料的精确度、串联性以及后续数据库可以自发性地完成预定的工作。</li>
-<li><strong>隔离性：</strong>数据库允许多个并发事务同时对其数据进行读写和修改的能力，隔离性可以防止多个事务并发执行时由于交叉执行而导致数据的不一致。事务隔离分为不同级别，包括读未提交（Read uncommitted）、读提交（read committed）、可重复读（repeatable  read）和串行化（Serializable）。</li>
-<li><strong>持久性：</strong>事务处理结束后，对数据的修改就是永久的，即便系统故障也不会丢失。</li>
-</ul>
-<blockquote>
-<p>在 MySQL 命令行的默认设置下，事务都是自动提交的，即执行 SQL 语句后就会马上执行 COMMIT  操作。因此要显式地开启一个事务务须使用命令 BEGIN 或 START TRANSACTION，或者执行命令 SET  AUTOCOMMIT&#x3D;0，用来禁止使用当前会话的自动提交。</p>
-</blockquote>
-<h3 id="事务控制语句："><a href="#事务控制语句：" class="headerlink" title="事务控制语句："></a>事务控制语句：</h3><ul>
-<li>BEGIN 或 START TRANSACTION 显式地开启一个事务；</li>
-<li>COMMIT 也可以使用 COMMIT WORK，不过二者是等价的。COMMIT 会提交事务，并使已对数据库进行的所有修改成为永久性的；</li>
-<li>ROLLBACK 也可以使用 ROLLBACK WORK，不过二者是等价的。回滚会结束用户的事务，并撤销正在进行的所有未提交的修改；</li>
-<li>SAVEPOINT identifier，SAVEPOINT 允许在事务中创建一个保存点，一个事务中可以有多个 SAVEPOINT；</li>
-<li>RELEASE SAVEPOINT identifier 删除一个事务的保存点，当没有指定的保存点时，执行该语句会抛出一个异常；</li>
-<li>ROLLBACK TO identifier 把事务回滚到标记点；</li>
-<li>SET TRANSACTION 用来设置事务的隔离级别。InnoDB 存储引擎提供事务的隔离级别有READ UNCOMMITTED、READ COMMITTED、REPEATABLE READ 和 SERIALIZABLE。</li>
-</ul>
-<h3 id="MYSQL-事务处理主要有两种方法："><a href="#MYSQL-事务处理主要有两种方法：" class="headerlink" title="MYSQL 事务处理主要有两种方法："></a>MYSQL 事务处理主要有两种方法：</h3><p>1、用 BEGIN, ROLLBACK, COMMIT来实现</p>
-<ul>
-<li><strong>BEGIN</strong> 开始一个事务</li>
-<li><strong>ROLLBACK</strong> 事务回滚</li>
-<li><strong>COMMIT</strong>  事务确认</li>
-</ul>
-<p>2、直接用 SET 来改变 MySQL 的自动提交模式: </p>
-<ul>
-<li><strong>SET AUTOCOMMIT&#x3D;0</strong>   禁止自动提交</li>
-<li><strong>SET AUTOCOMMIT&#x3D;1</strong> 开启自动提交</li>
-</ul>
-<h2 id="二十、ALTER命令"><a href="#二十、ALTER命令" class="headerlink" title="二十、ALTER命令"></a>二十、ALTER命令</h2><p>当我们需要修改数据表名或者修改数据表字段时，就需要使用到MySQL ALTER命令。</p>
-<h3 id="删除、添加或修改表字段"><a href="#删除、添加或修改表字段" class="headerlink" title="删除、添加或修改表字段"></a>删除、添加或修改表字段</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE testalter_tbl  DROP i;</span><br></pre></td></tr></table></figure>
-
-<p>如果数据表中只剩余一个字段则无法使用DROP来删除字段。</p>
-<p>MySQL 中使用  ADD 子句来向数据表中添加列，如下实例在表 testalter_tbl 中添加 i 字段，并定义数据类型:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE testalter_tbl ADD i INT;</span><br></pre></td></tr></table></figure>
-
-<p>执行以上命令后，i 字段会自动添加到数据表字段的末尾。</p>
-<p>如果你需要指定新增字段的位置，可以使用MySQL提供的关键字 FIRST (设定位第一列)， AFTER 字段名（设定位于某个字段之后）。FIRST 和 AFTER 关键字可用于 ADD 与 MODIFY  子句，所以如果你想重置数据表字段的位置就需要先使用 DROP 删除字段然后使用 ADD 来添加字段并设置位置。如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE testalter_tbl DROP i;</span><br><span class="line">ALTER TABLE testalter_tbl ADD i INT FIRST;</span><br><span class="line">ALTER TABLE testalter_tbl DROP i;</span><br><span class="line">ALTER TABLE testalter_tbl ADD i INT AFTER c;</span><br></pre></td></tr></table></figure>
-
-<h3 id="修改字段类型和名称"><a href="#修改字段类型和名称" class="headerlink" title="修改字段类型和名称"></a>修改字段类型和名称</h3><p>如果需要修改字段类型及名称, 你可以在ALTER命令中使用 MODIFY 或 CHANGE 子句 。</p>
-<p>例如，把字段 c 的类型从 CHAR(1) 改为 CHAR(10)，可以执行以下命令:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE testalter_tbl MODIFY c CHAR(10);</span><br></pre></td></tr></table></figure>
-
-<p>使用 CHANGE 子句, 语法有很大的不同。 在 CHANGE 关键字之后，紧跟着的是你要修改的字段名，然后指定新字段名及类型。尝试如下实例：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE testalter_tbl CHANGE i j BIGINT;</span><br><span class="line">ALTER TABLE testalter_tbl CHANGE j j INT;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="ALTER-TABLE-对-Null-值和默认值的影响"><a href="#ALTER-TABLE-对-Null-值和默认值的影响" class="headerlink" title="ALTER TABLE 对 Null 值和默认值的影响"></a>ALTER TABLE 对 Null 值和默认值的影响</h3><p>当你修改字段时，你可以指定是否包含值或者是否设置默认值。</p>
-<p>以下实例，指定字段 j 为 NOT NULL 且默认值为100 。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE testalter_tbl </span><br><span class="line">    -&gt; MODIFY j BIGINT NOT NULL DEFAULT 100;</span><br></pre></td></tr></table></figure>
-
-<p>如果你不设置默认值，MySQL会自动设置该字段默认为 NULL。</p>
-<h3 id="修改字段默认值"><a href="#修改字段默认值" class="headerlink" title="修改字段默认值"></a>修改字段默认值</h3><p>你可以使用 ALTER 来修改字段的默认值，尝试以下实例：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE testalter_tbl ALTER i SET DEFAULT 1000;</span><br></pre></td></tr></table></figure>
-
-<h3 id="修改表名"><a href="#修改表名" class="headerlink" title="修改表名"></a>修改表名</h3><p>如果需要修改数据表的名称，可以在  ALTER TABLE 语句中使用 RENAME 子句来实现。</p>
-<p>尝试以下实例将数据表 testalter_tbl 重命名为 alter_tbl：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE testalter_tbl RENAME TO alter_tbl;</span><br></pre></td></tr></table></figure>
-
-<h3 id="修改存储引擎"><a href="#修改存储引擎" class="headerlink" title="修改存储引擎"></a>修改存储引擎</h3><p>修改为myisam</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table tableName engine=myisam;</span><br></pre></td></tr></table></figure>
-
-<h3 id="删除外键约束"><a href="#删除外键约束" class="headerlink" title="删除外键约束"></a>删除外键约束</h3><p>keyName是外键别名</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table tableName drop foreign key keyName</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="二十一、索引"><a href="#二十一、索引" class="headerlink" title="二十一、索引"></a>二十一、索引</h2><h3 id="普通索引"><a href="#普通索引" class="headerlink" title="普通索引"></a>普通索引</h3><h4 id="创建索引"><a href="#创建索引" class="headerlink" title="创建索引"></a>创建索引</h4><p>这是最基本的索引，没有任何限制</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE INDEX indexName ON table_name (column_name)</span><br></pre></td></tr></table></figure>
-
-<p>如果是CHAR，VARCHAR类型，length可以小于字段实际长度；如果是BLOB和TEXT类型，必须指定 length。</p>
-<h4 id="修改表结构-添加索引"><a href="#修改表结构-添加索引" class="headerlink" title="修改表结构(添加索引)"></a>修改表结构(添加索引)</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER table tableName ADD INDEX indexName(columnName)</span><br></pre></td></tr></table></figure>
-
-<h4 id="创建表的时候直接指定"><a href="#创建表的时候直接指定" class="headerlink" title="创建表的时候直接指定"></a>创建表的时候直接指定</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE mytable(  </span><br><span class="line"> </span><br><span class="line">ID INT NOT NULL,   </span><br><span class="line"> </span><br><span class="line">username VARCHAR(16) NOT NULL,  </span><br><span class="line"> </span><br><span class="line">INDEX [indexName] (username(length))  </span><br><span class="line"> </span><br><span class="line">);  </span><br></pre></td></tr></table></figure>
-
-<h4 id="删除索引的语法"><a href="#删除索引的语法" class="headerlink" title="删除索引的语法"></a>删除索引的语法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP INDEX [indexName] ON mytable; </span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="唯一索引"><a href="#唯一索引" class="headerlink" title="唯一索引"></a>唯一索引</h3><p>它与前面的普通索引类似，不同的就是：索引列的值必须唯一，但允许有空值。如果是组合索引，则列值的组合必须唯一。它有以下几种创建方式：</p>
-<h4 id="创建索引-1"><a href="#创建索引-1" class="headerlink" title="创建索引"></a>创建索引</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE UNIQUE INDEX indexName ON mytable(username(length)) </span><br></pre></td></tr></table></figure>
-
-<h4 id="修改表结构"><a href="#修改表结构" class="headerlink" title="修改表结构"></a>修改表结构</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER table mytable ADD UNIQUE [indexName] (username(length))</span><br></pre></td></tr></table></figure>
-
-<h4 id="创建表的时候直接指定-1"><a href="#创建表的时候直接指定-1" class="headerlink" title="创建表的时候直接指定"></a>创建表的时候直接指定</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE mytable(  </span><br><span class="line"> </span><br><span class="line">ID INT NOT NULL,   </span><br><span class="line"> </span><br><span class="line">username VARCHAR(16) NOT NULL,  </span><br><span class="line"> </span><br><span class="line">UNIQUE [indexName] (username(length))  </span><br><span class="line"> </span><br><span class="line">);  </span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="使用ALTER-命令添加和删除索引"><a href="#使用ALTER-命令添加和删除索引" class="headerlink" title="使用ALTER 命令添加和删除索引"></a>使用ALTER 命令添加和删除索引</h3><p>有四种方式来添加数据表的索引：</p>
-<ul>
-<li>**ALTER TABLE tbl_name ADD PRIMARY KEY (column_list):**该语句添加一个主键，这意味着索引值必须是唯一的，且不能为NULL。</li>
-<li><strong>ALTER TABLE tbl_name ADD UNIQUE index_name (column_list):</strong> 这条语句创建索引的值必须是唯一的（除了NULL外，NULL可能会出现多次）。</li>
-<li><strong>ALTER TABLE tbl_name ADD INDEX index_name (column_list):</strong> 添加普通索引，索引值可出现多次。</li>
-<li>**ALTER TABLE tbl_name ADD FULLTEXT index_name (column_list):**该语句指定了索引为  FULLTEXT ，用于全文索引。</li>
-</ul>
-<p>以下实例为在表中添加索引。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE testalter_tbl ADD INDEX (c);</span><br></pre></td></tr></table></figure>
-
-<p>你还可以在 ALTER 命令中使用 DROP 子句来删除索引。尝试以下实例删除索引:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE testalter_tbl DROP INDEX c;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="使用-ALTER-命令添加和删除主键"><a href="#使用-ALTER-命令添加和删除主键" class="headerlink" title="使用 ALTER  命令添加和删除主键"></a>使用 ALTER  命令添加和删除主键</h3><p>主键作用于列上（可以一个列或多个列联合主键），添加主键索引时，你需要确保该主键默认不为空（NOT NULL）。实例如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE testalter_tbl MODIFY i INT NOT NULL;</span><br><span class="line">mysql&gt; ALTER TABLE testalter_tbl ADD PRIMARY KEY (i);</span><br></pre></td></tr></table></figure>
-
-<p>你也可以使用 ALTER 命令删除主键：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE testalter_tbl DROP PRIMARY KEY;</span><br></pre></td></tr></table></figure>
-
-<p>删除主键时只需指定PRIMARY KEY，但在删除索引时，你必须知道索引名。</p>
-<hr>
-<h3 id="显示索引信息"><a href="#显示索引信息" class="headerlink" title="显示索引信息"></a>显示索引信息</h3><p>你可以使用 SHOW INDEX 命令来列出表中的相关的索引信息。可以通过添加 \G 来格式化输出信息。</p>
-<p>尝试以下实例:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SHOW INDEX FROM table_name\G</span><br><span class="line">........</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="二十二、临时表"><a href="#二十二、临时表" class="headerlink" title="二十二、临时表"></a>二十二、临时表</h2><p>MySQL 临时表在我们需要保存一些临时数据时是非常有用的。临时表只在当前连接可见，当关闭连接时，Mysql会自动删除表并释放所有空间。</p>
-<p>临时表在MySQL 3.23版本中添加，如果你的MySQL版本低于 3.23版本就无法使用MySQL的临时表。不过现在一般很少有再使用这么低版本的MySQL数据库服务了。</p>
-<p>MySQL临时表只在当前连接可见，如果你使用PHP脚本来创建MySQL临时表，那每当PHP脚本执行完成后，该临时表也会自动销毁。</p>
-<p>如果你使用了其他MySQL客户端程序连接MySQL数据库服务器来创建临时表，那么只有在关闭客户端程序时才会销毁临时表，当然你也可以手动销毁。</p>
-<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>以下展示了使用MySQL 临时表的简单实例，以下的SQL代码可以适用于PHP脚本的mysql_query()函数。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE TEMPORARY TABLE SalesSummary (</span><br><span class="line">    -&gt; product_name VARCHAR(50) NOT NULL</span><br><span class="line">    -&gt; , total_sales DECIMAL(12,2) NOT NULL DEFAULT 0.00</span><br><span class="line">    -&gt; , avg_unit_price DECIMAL(7,2) NOT NULL DEFAULT 0.00</span><br><span class="line">    -&gt; , total_units_sold INT UNSIGNED NOT NULL DEFAULT 0</span><br><span class="line">);</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; INSERT INTO SalesSummary</span><br><span class="line">    -&gt; (product_name, total_sales, avg_unit_price, total_units_sold)</span><br><span class="line">    -&gt; VALUES</span><br><span class="line">    -&gt; (&#x27;cucumber&#x27;, 100.25, 90, 2);</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM SalesSummary;</span><br><span class="line">+--------------+-------------+----------------+------------------+</span><br><span class="line">| product_name | total_sales | avg_unit_price | total_units_sold |</span><br><span class="line">+--------------+-------------+----------------+------------------+</span><br><span class="line">| cucumber     |      100.25 |          90.00 |                2 |</span><br><span class="line">+--------------+-------------+----------------+------------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-
-<p>当你使用 <strong>SHOW TABLES</strong>命令显示数据表列表时，你将无法看到 SalesSummary表。</p>
-<p>如果你退出当前MySQL会话，再使用 <strong>SELECT</strong>命令来读取原先创建的临时表数据，那你会发现数据库中没有该表的存在，因为在你退出时该临时表已经被销毁了。</p>
-<hr>
-<h3 id="删除MySQL-临时表"><a href="#删除MySQL-临时表" class="headerlink" title="删除MySQL 临时表"></a>删除MySQL 临时表</h3><p>默认情况下，当你断开与数据库的连接后，临时表就会自动被销毁。当然你也可以在当前MySQL会话使用 <strong>DROP TABLE</strong>  命令来手动删除临时表。</p>
-<p>以下是手动删除临时表的实例：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE TEMPORARY TABLE SalesSummary (</span><br><span class="line">    -&gt; product_name VARCHAR(50) NOT NULL</span><br><span class="line">    -&gt; , total_sales DECIMAL(12,2) NOT NULL DEFAULT 0.00</span><br><span class="line">    -&gt; , avg_unit_price DECIMAL(7,2) NOT NULL DEFAULT 0.00</span><br><span class="line">    -&gt; , total_units_sold INT UNSIGNED NOT NULL DEFAULT 0</span><br><span class="line">);</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; INSERT INTO SalesSummary</span><br><span class="line">    -&gt; (product_name, total_sales, avg_unit_price, total_units_sold)</span><br><span class="line">    -&gt; VALUES</span><br><span class="line">    -&gt; (&#x27;cucumber&#x27;, 100.25, 90, 2);</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM SalesSummary;</span><br><span class="line">+--------------+-------------+----------------+------------------+</span><br><span class="line">| product_name | total_sales | avg_unit_price | total_units_sold |</span><br><span class="line">+--------------+-------------+----------------+------------------+</span><br><span class="line">| cucumber     |      100.25 |          90.00 |                2 |</span><br><span class="line">+--------------+-------------+----------------+------------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br><span class="line">mysql&gt; DROP TABLE SalesSummary;</span><br><span class="line">mysql&gt;  SELECT * FROM SalesSummary;</span><br><span class="line">ERROR 1146: Table &#x27;RUNOOB.SalesSummary&#x27; doesn&#x27;t exist</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="二十三、复制表"><a href="#二十三、复制表" class="headerlink" title="二十三、复制表"></a>二十三、复制表</h2><p><strong>第一、只复制表结构到新表</strong></p>
-<p>create table 新表 select * from 旧表 where 1&#x3D;2</p>
-<p>或者</p>
-<p>create table 新表 like 旧表 </p>
-<p><strong>第二、复制表结构及数据到新表</strong></p>
-<p>create table新表 select * from 旧表 </p>
-<h2 id="二十四、元数据"><a href="#二十四、元数据" class="headerlink" title="二十四、元数据"></a>二十四、元数据</h2><p>在命令行模式中，可以很容易地获取以下的服务器信息：</p>
-<ul>
-<li><strong>查询结果信息：</strong> SELECT, UPDATE 或 DELETE语句影响的记录数。</li>
-<li><strong>数据库和数据表的信息：</strong> 包含了数据库及数据表的结构信息。</li>
-<li><strong>MySQL服务器信息：</strong> 包含了数据库服务器的当前状态，版本号等。</li>
-</ul>
-<h4 id="数据库和数据表列表"><a href="#数据库和数据表列表" class="headerlink" title="数据库和数据表列表"></a>数据库和数据表列表</h4><p>可以使用SHOW TABLES或SHOW DATABASES语句来获取数据库和数据表列表。</p>
-<h4 id="获取服务器元数据"><a href="#获取服务器元数据" class="headerlink" title="获取服务器元数据"></a>获取服务器元数据</h4><p>命令如下表：</p>
-<p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E8%AF%AD%E6%B3%95/Users\59737\AppData\Roaming\Typora\typora-user-images\image-20220111144610993.png" alt="image-20220111144610993"></p>
-<h2 id="二十五、序列"><a href="#二十五、序列" class="headerlink" title="二十五、序列"></a>二十五、序列</h2><p>MySQL 序列是一组整数：1, 2, 3, …，由于一张数据表只能有一个字段自增主键， 如果你想实现其他字段也实现自动增加，就可以使用MySQL序列来实现</p>
-<h3 id="使用-AUTO-INCREMENT"><a href="#使用-AUTO-INCREMENT" class="headerlink" title="使用 AUTO_INCREMENT"></a>使用 AUTO_INCREMENT</h3><p>MySQL 中最简单使用序列的方法就是使用 MySQL AUTO_INCREMENT 来定义序列。</p>
-<h4 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h4><p>以下实例中创建了数据表 insect， insect 表中 id 无需指定值可实现自动增长。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE TABLE insect</span><br><span class="line">    -&gt; (</span><br><span class="line">    -&gt; id INT UNSIGNED NOT NULL AUTO_INCREMENT,</span><br><span class="line">    -&gt; PRIMARY KEY (id),</span><br><span class="line">    -&gt; name VARCHAR(30) NOT NULL, # type of insect</span><br><span class="line">    -&gt; date DATE NOT NULL, # date collected</span><br><span class="line">    -&gt; origin VARCHAR(30) NOT NULL # where collected</span><br><span class="line">);</span><br><span class="line">Query OK, 0 rows affected (0.02 sec)</span><br><span class="line">mysql&gt; INSERT INTO insect (id,name,date,origin) VALUES</span><br><span class="line">    -&gt; (NULL,&#x27;housefly&#x27;,&#x27;2001-09-10&#x27;,&#x27;kitchen&#x27;),</span><br><span class="line">    -&gt; (NULL,&#x27;millipede&#x27;,&#x27;2001-09-10&#x27;,&#x27;driveway&#x27;),</span><br><span class="line">    -&gt; (NULL,&#x27;grasshopper&#x27;,&#x27;2001-09-10&#x27;,&#x27;front yard&#x27;);</span><br><span class="line">Query OK, 3 rows affected (0.02 sec)</span><br><span class="line">Records: 3  Duplicates: 0  Warnings: 0</span><br><span class="line">mysql&gt; SELECT * FROM insect ORDER BY id;</span><br><span class="line">+----+-------------+------------+------------+</span><br><span class="line">| id | name        | date       | origin     |</span><br><span class="line">+----+-------------+------------+------------+</span><br><span class="line">|  1 | housefly    | 2001-09-10 | kitchen    |</span><br><span class="line">|  2 | millipede   | 2001-09-10 | driveway   |</span><br><span class="line">|  3 | grasshopper | 2001-09-10 | front yard |</span><br><span class="line">+----+-------------+------------+------------+</span><br><span class="line">3 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-
-<h3 id="获取AUTO-INCREMENT值"><a href="#获取AUTO-INCREMENT值" class="headerlink" title="获取AUTO_INCREMENT值"></a>获取AUTO_INCREMENT值</h3><p>在MySQL的客户端中你可以使用 SQL中的LAST_INSERT_ID( ) 函数来获取最后的插入表中的自增列的值。</p>
-<h3 id="重置序列"><a href="#重置序列" class="headerlink" title="重置序列"></a>重置序列</h3><p>如果你删除了数据表中的多条记录，并希望对剩下数据的AUTO_INCREMENT列进行重新排列，那么你可以通过删除自增的列，然后重新添加来实现。 不过该操作要非常小心，如果在删除的同时又有新记录添加，有可能会出现数据混乱。操作如下所示：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE insect DROP id;</span><br><span class="line">mysql&gt; ALTER TABLE insect</span><br><span class="line">    -&gt; ADD id INT UNSIGNED NOT NULL AUTO_INCREMENT FIRST,</span><br><span class="line">    -&gt; ADD PRIMARY KEY (id);</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="设置序列的开始值"><a href="#设置序列的开始值" class="headerlink" title="设置序列的开始值"></a>设置序列的开始值</h3><p>一般情况下序列的开始值为1，但如果你需要指定一个开始值100，那我们可以通过以下语句来实现：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE TABLE insect</span><br><span class="line">    -&gt; (</span><br><span class="line">    -&gt; id INT UNSIGNED NOT NULL AUTO_INCREMENT,</span><br><span class="line">    -&gt; PRIMARY KEY (id),</span><br><span class="line">    -&gt; name VARCHAR(30) NOT NULL, </span><br><span class="line">    -&gt; date DATE NOT NULL,</span><br><span class="line">    -&gt; origin VARCHAR(30) NOT NULL</span><br><span class="line">)engine=innodb auto_increment=100 charset=utf8;</span><br></pre></td></tr></table></figure>
-
-<p>或者你也可以在表创建成功后，通过以下语句来实现：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE t AUTO_INCREMENT = 100;</span><br></pre></td></tr></table></figure>
-
-<p>​			</p>
-<h2 id="二十六、处理重复数据"><a href="#二十六、处理重复数据" class="headerlink" title="二十六、处理重复数据"></a>二十六、处理重复数据</h2><h3 id="防止表中出现重复数据"><a href="#防止表中出现重复数据" class="headerlink" title="防止表中出现重复数据"></a>防止表中出现重复数据</h3><p>你可以在 MySQL 数据表中设置指定的字段为 <strong>PRIMARY KEY（主键）</strong>  或者 <strong>UNIQUE（唯一）</strong> 索引来保证数据的唯一性。</p>
-<p>如果你想设置表中字段数据不能重复，你可以设置双主键模式来设置数据的唯一性， 如果你设置了双主键，那么那个键的默认值不能为 NULL，可设置为 NOT NULL。</p>
-<p>INSERT IGNORE INTO 与 INSERT INTO 的区别就是 INSERT IGNORE INTO  会忽略数据库中已经存在的数据，如果数据库没有数据，就插入新的数据，如果有数据的话就跳过这条数据。这样就可以保留数据库中已经存在数据，达到在间隙中插入数据的目的。</p>
-<p>另一种设置数据的唯一性方法是添加一个 UNIQUE 索引，如下所示：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE person_tbl</span><br><span class="line">(</span><br><span class="line">   first_name CHAR(20) NOT NULL,</span><br><span class="line">   last_name CHAR(20) NOT NULL,</span><br><span class="line">   sex CHAR(10),</span><br><span class="line">   UNIQUE (last_name, first_name)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<h3 id="统计重复数据"><a href="#统计重复数据" class="headerlink" title="统计重复数据"></a>统计重复数据</h3><p>一般情况下，查询重复的值，请执行以下操作：</p>
-<ul>
-<li>确定哪一列包含的值可能会重复。</li>
-<li>在列选择列表使用COUNT(*)列出的那些列。</li>
-<li>在GROUP BY子句中列出的列。</li>
-<li>HAVING子句设置重复数大于1。</li>
-</ul>
-<h3 id="过滤重复数据"><a href="#过滤重复数据" class="headerlink" title="过滤重复数据"></a>过滤重复数据</h3><p>如果你需要读取不重复的数据可以在 SELECT 语句中使用 DISTINCT 关键字来过滤重复数据。</p>
-<p>你也可以使用 GROUP BY 来读取数据表中不重复的数据。</p>
-<h3 id="删除重复数据"><a href="#删除重复数据" class="headerlink" title="删除重复数据"></a>删除重复数据</h3><p>如果你想删除数据表中的重复数据，你可以使用以下的SQL语句：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE TABLE tmp SELECT last_name, first_name, sex FROM person_tbl  GROUP BY (last_name, first_name, sex);</span><br><span class="line">mysql&gt; DROP TABLE person_tbl;</span><br><span class="line">mysql&gt; ALTER TABLE tmp RENAME TO person_tbl;</span><br></pre></td></tr></table></figure>
-
-<p>当然你也可以在数据表中添加 INDEX（索引） 和 PRIMAY KEY（主键）这种简单的方法来删除表中的重复记录。方法如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER IGNORE TABLE person_tbl</span><br><span class="line">    -&gt; ADD PRIMARY KEY (last_name, first_name);</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="二十七、导出数据"><a href="#二十七、导出数据" class="headerlink" title="二十七、导出数据"></a>二十七、导出数据</h2><ul>
-<li>使用 <strong>SELECT … INTO OUTFILE</strong> 语句导出数据</li>
-</ul>
-<p>以下实例中我们将数据表 runoob_tbl 数据导出到 &#x2F;tmp&#x2F;runoob.txt 文件中: </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT * FROM runoob_tbl </span><br><span class="line">    -&gt; INTO OUTFILE &#x27;/tmp/runoob.txt&#x27;;</span><br></pre></td></tr></table></figure>
-
-<p>你可以通过命令选项来设置数据输出的指定格式，以下实例为导出 CSV 格式：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT * FROM passwd INTO OUTFILE &#x27;/tmp/runoob.txt&#x27;</span><br><span class="line">    -&gt; FIELDS TERMINATED BY &#x27;,&#x27; ENCLOSED BY &#x27;&quot;&#x27;</span><br><span class="line">    -&gt; LINES TERMINATED BY &#x27;\r\n&#x27;;</span><br></pre></td></tr></table></figure>
-
-<p>在下面的例子中，生成一个文件，各值用逗号隔开。这种格式可以被许多程序使用。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT a,b,a+b INTO OUTFILE &#x27;/tmp/result.text&#x27;</span><br><span class="line">FIELDS TERMINATED BY &#x27;,&#x27; OPTIONALLY ENCLOSED BY &#x27;&quot;&#x27;</span><br><span class="line">LINES TERMINATED BY &#x27;\n&#x27;</span><br><span class="line">FROM test_table;</span><br></pre></td></tr></table></figure>
-
-<h3 id="SELECT-…-INTO-OUTFILE-语句的属性"><a href="#SELECT-…-INTO-OUTFILE-语句的属性" class="headerlink" title="SELECT … INTO OUTFILE 语句的属性:"></a>SELECT … INTO OUTFILE 语句的属性:</h3><ul>
-<li>LOAD DATA INFILE是SELECT … INTO OUTFILE的逆操作，SELECT句法。为了将一个数据库的数据写入一个文件，使用SELECT … INTO OUTFILE，为了将文件读回数据库，使用LOAD DATA INFILE。</li>
-<li>SELECT…INTO OUTFILE ‘file_name’形式的SELECT可以把被选择的行写入一个文件中。该文件被创建到服务器主机上，因此您必须拥有FILE权限，才能使用此语法。  </li>
-<li>输出不能是一个已存在的文件。防止文件数据被篡改。</li>
-<li>你需要有一个登陆服务器的账号来检索文件。否则 SELECT … INTO OUTFILE 不会起任何作用。</li>
-<li>在UNIX中，该文件被创建后是可读的，权限由MySQL服务器所拥有。这意味着，虽然你就可以读取该文件，但可能无法将其删除。</li>
-</ul>
-<h3 id="导出表作为原始数据"><a href="#导出表作为原始数据" class="headerlink" title="导出表作为原始数据"></a>导出表作为原始数据</h3><p>mysqldump 是 mysql 用于转存储数据库的实用程序。它主要产生一个 SQL 脚本，其中包含从头重新创建数据库所必需的命令 CREATE TABLE INSERT 等。</p>
-<p>使用 mysqldump 导出数据需要使用  –tab 选项来指定导出文件指定的目录，该目标必须是可写的。</p>
-<p>以下实例将数据表 runoob_tbl 导出到 &#x2F;tmp 目录中：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ mysqldump -u root -p --no-create-info \</span><br><span class="line">            --tab=/tmp RUNOOB runoob_tbl</span><br><span class="line">password ******</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="导出-SQL-格式的数据"><a href="#导出-SQL-格式的数据" class="headerlink" title="导出 SQL 格式的数据"></a>导出 SQL 格式的数据</h3><p>导出 SQL 格式的数据到指定文件，如下所示：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ mysqldump -u root -p RUNOOB runoob_tbl &gt; dump.txt</span><br><span class="line">password ******</span><br></pre></td></tr></table></figure>
-
-<p>如果你需要导出整个数据库的数据，可以使用以下命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ mysqldump -u root -p RUNOOB &gt; database_dump.txt</span><br><span class="line">password ******</span><br></pre></td></tr></table></figure>
-
-<p>如果需要备份所有数据库，可以使用以下命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ mysqldump -u root -p --all-databases &gt; database_dump.txt</span><br><span class="line">password ******</span><br></pre></td></tr></table></figure>
-
-<h3 id="将数据表及数据库拷贝至其他主机"><a href="#将数据表及数据库拷贝至其他主机" class="headerlink" title="将数据表及数据库拷贝至其他主机"></a>将数据表及数据库拷贝至其他主机</h3><p>如果你需要将数据拷贝至其他的 MySQL 服务器上, 你可以在 mysqldump 命令中指定数据库名及数据表。</p>
-<p>在源主机上执行以下命令，将数据备份至 dump.txt 文件中:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ mysqldump -u root -p database_name table_name &gt; dump.txt</span><br><span class="line">password *****</span><br></pre></td></tr></table></figure>
-
-<p>如果完整备份数据库，则无需使用特定的表名称。</p>
-<p>如果你需要将备份的数据库导入到MySQL服务器中，可以使用以下命令，使用以下命令你需要确认数据库已经创建：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ mysql -u root -p database_name &lt; dump.txt</span><br><span class="line">password *****</span><br></pre></td></tr></table></figure>
-
-<p>你也可以使用以下命令将导出的数据直接导入到远程的服务器上，但请确保两台服务器是相通的，是可以相互访问的：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ mysqldump -u root -p database_name \</span><br><span class="line">       | mysql -h other-host.com database_name</span><br></pre></td></tr></table></figure>
-
-<p>以上命令中使用了管道来将导出的数据导入到指定的远程主机上。</p>
-<h2 id="二十八、导入数据"><a href="#二十八、导入数据" class="headerlink" title="二十八、导入数据"></a>二十八、导入数据</h2><h2 id="1、mysql-命令导入"><a href="#1、mysql-命令导入" class="headerlink" title="1、mysql  命令导入"></a>1、mysql  命令导入</h2><p>使用 mysql 命令导入语法格式为： </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u用户名    -p密码    &lt;  要导入的数据库数据(runoob.sql)</span><br></pre></td></tr></table></figure>
-
-<p><strong>实例：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># mysql -uroot -p123456 &lt; runoob.sql</span><br></pre></td></tr></table></figure>
-
-<p>以上命令将将备份的整个数据库  runoob.sql 导入。</p>
-<hr>
-<h2 id="2、source-命令导入"><a href="#2、source-命令导入" class="headerlink" title="2、source  命令导入"></a>2、source  命令导入</h2><p>source 命令导入数据库需要先登录到数库终端：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create database abc;      # 创建数据库</span><br><span class="line">mysql&gt; use abc;                  # 使用已创建的数据库 </span><br><span class="line">mysql&gt; set names utf8;           # 设置编码</span><br><span class="line">mysql&gt; source /home/abc/abc.sql  # 导入备份数据库</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="3、使用-LOAD-DATA-导入数据"><a href="#3、使用-LOAD-DATA-导入数据" class="headerlink" title="3、使用  LOAD DATA 导入数据"></a>3、使用  LOAD DATA 导入数据</h2><p>MySQL 中提供了LOAD DATA INFILE语句来插入数据。 以下实例中将从当前目录中读取文件 dump.txt ，将该文件中的数据插入到当前数据库的 mytbl 表中。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; LOAD DATA LOCAL INFILE &#x27;dump.txt&#x27; INTO TABLE mytbl;</span><br></pre></td></tr></table></figure>
-
-<p>　如果指定LOCAL关键词，则表明从客户主机上按路径读取文件。如果没有指定，则文件在服务器上按路径读取文件。</p>
-<p>你能明确地在LOAD DATA语句中指出列值的分隔符和行尾标记，但是默认标记是定位符和换行符。</p>
-<p>两个命令的 FIELDS 和 LINES 子句的语法是一样的。两个子句都是可选的，但是如果两个同时被指定，FIELDS 子句必须出现在 LINES 子句之前。</p>
-<p>如果用户指定一个 FIELDS 子句，它的子句 （TERMINATED BY、[OPTIONALLY] ENCLOSED BY 和 ESCAPED BY) 也是可选的，不过，用户必须至少指定它们中的一个。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; LOAD DATA LOCAL INFILE &#x27;dump.txt&#x27; INTO TABLE mytbl</span><br><span class="line">  -&gt; FIELDS TERMINATED BY &#x27;:&#x27;</span><br><span class="line">  -&gt; LINES TERMINATED BY &#x27;\r\n&#x27;;</span><br></pre></td></tr></table></figure>
-
-<p>LOAD DATA 默认情况下是按照数据文件中列的顺序插入数据的，如果数据文件中的列与插入表中的列不一致，则需要指定列的顺序。</p>
-<p>如，在数据文件中的列顺序是 a,b,c，但在插入表的列顺序为b,c,a，则数据导入语法如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; LOAD DATA LOCAL INFILE &#x27;dump.txt&#x27; </span><br><span class="line">    -&gt; INTO TABLE mytbl (b, c, a);</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="4、使用-mysqlimport-导入数据"><a href="#4、使用-mysqlimport-导入数据" class="headerlink" title="4、使用 mysqlimport 导入数据"></a>4、使用 mysqlimport 导入数据</h2><p>mysqlimport 客户端提供了 LOAD DATA INFILEQL 语句的一个命令行接口。mysqlimport 的大多数选项直接对应 LOAD DATA INFILE 子句。</p>
-<p>从文件 dump.txt 中将数据导入到 mytbl 数据表中, 可以使用以下命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ mysqlimport -u root -p --local mytbl dump.txt</span><br><span class="line">password *****</span><br></pre></td></tr></table></figure>
-
-<p> mysqlimport 命令可以指定选项来设置指定格式,命令语句格式如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ mysqlimport -u root -p --local --fields-terminated-by=&quot;:&quot; \</span><br><span class="line">   --lines-terminated-by=&quot;\r\n&quot;  mytbl dump.txt</span><br><span class="line">password *****</span><br></pre></td></tr></table></figure>
-
-<p> mysqlimport 语句中使用 –columns 选项来设置列的顺序：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ mysqlimport -u root -p --local --columns=b,c,a \</span><br><span class="line">    mytbl dump.txt</span><br><span class="line">password *****</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="mysqlimport的常用选项介绍"><a href="#mysqlimport的常用选项介绍" class="headerlink" title="mysqlimport的常用选项介绍"></a>mysqlimport的常用选项介绍</h2><p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E8%AF%AD%E6%B3%95/Users\59737\AppData\Roaming\Typora\typora-user-images\image-20220111151649888.png" alt="image-20220111151649888"></p>
-<p>mysqlimport 命令常用的选项还有 -v 显示版本（version）， -p 提示输入密码（password）等。</p>
-<h2 id="二十九、函数"><a href="#二十九、函数" class="headerlink" title="二十九、函数"></a>二十九、函数</h2><h3 id="字符串函数"><a href="#字符串函数" class="headerlink" title="字符串函数"></a>字符串函数</h3><p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E8%AF%AD%E6%B3%95/Users\59737\AppData\Roaming\Typora\typora-user-images\image-20220111151839188.png" alt="image-20220111151839188"><br><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E8%AF%AD%E6%B3%95/Users\59737\AppData\Roaming\Typora\typora-user-images\image-20220111151943783.png" alt="image-20220111151943783"><br><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E8%AF%AD%E6%B3%95/Users\59737\AppData\Roaming\Typora\typora-user-images\image-20220111152039568.png" alt="image-20220111152039568"></p>
-<p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E8%AF%AD%E6%B3%95/Users\59737\AppData\Roaming\Typora\typora-user-images\image-20220111152116038.png" alt="image-20220111152116038"></p>
-<p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E8%AF%AD%E6%B3%95/Users\59737\AppData\Roaming\Typora\typora-user-images\image-20220111152158149.png" alt="image-20220111152158149"></p>
-<p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E8%AF%AD%E6%B3%95/Users\59737\AppData\Roaming\Typora\typora-user-images\image-20220111152405200.png" alt="image-20220111152405200"></p>
-<p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E8%AF%AD%E6%B3%95/Users\59737\AppData\Roaming\Typora\typora-user-images\image-20220111152515546.png" alt="image-20220111152515546"></p>
-<h3 id="数字函数"><a href="#数字函数" class="headerlink" title="数字函数"></a>数字函数</h3><p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E8%AF%AD%E6%B3%95/Users\59737\AppData\Roaming\Typora\typora-user-images\image-20220111152652291.png" alt="image-20220111152652291"></p>
-<p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E8%AF%AD%E6%B3%95/Users\59737\AppData\Roaming\Typora\typora-user-images\image-20220111152719340.png" alt="image-20220111152719340"></p>
-<p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E8%AF%AD%E6%B3%95/Users\59737\AppData\Roaming\Typora\typora-user-images\image-20220111152805594.png" alt="image-20220111152805594"></p>
-<p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E8%AF%AD%E6%B3%95/Users\59737\AppData\Roaming\Typora\typora-user-images\image-20220111152848876.png" alt="image-20220111152848876"></p>
-<p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E8%AF%AD%E6%B3%95/Users\59737\AppData\Roaming\Typora\typora-user-images\image-20220111152911882.png" alt="image-20220111152911882"></p>
-<p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E8%AF%AD%E6%B3%95/Users\59737\AppData\Roaming\Typora\typora-user-images\image-20220111152951861.png" alt="image-20220111152951861"></p>
-<h3 id="日期函数"><a href="#日期函数" class="headerlink" title="日期函数"></a>日期函数</h3><p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E8%AF%AD%E6%B3%95/Users\59737\AppData\Roaming\Typora\typora-user-images\image-20220111153103656.png" alt="image-20220111153103656"></p>
-<p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E8%AF%AD%E6%B3%95/Users\59737\AppData\Roaming\Typora\typora-user-images\image-20220111153132694.png" alt="image-20220111153132694"></p>
-<p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E8%AF%AD%E6%B3%95/Users\59737\AppData\Roaming\Typora\typora-user-images\image-20220111153213321.png" alt="image-20220111153213321"></p>
-<p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E8%AF%AD%E6%B3%95/Users\59737\AppData\Roaming\Typora\typora-user-images\image-20220111153243604.png" alt="image-20220111153243604"></p>
-<p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E8%AF%AD%E6%B3%95/Users\59737\AppData\Roaming\Typora\typora-user-images\image-20220111153314853.png" alt="image-20220111153314853"></p>
-<p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E8%AF%AD%E6%B3%95/Users\59737\AppData\Roaming\Typora\typora-user-images\image-20220111153418806.png" alt="image-20220111153418806"></p>
-<p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E8%AF%AD%E6%B3%95/Users\59737\AppData\Roaming\Typora\typora-user-images\image-20220111153453973.png" alt="image-20220111153453973"></p>
-<p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E8%AF%AD%E6%B3%95/Users\59737\AppData\Roaming\Typora\typora-user-images\image-20220111153538504.png" alt="image-20220111153538504"></p>
-<p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E8%AF%AD%E6%B3%95/Users\59737\AppData\Roaming\Typora\typora-user-images\image-20220111153612980.png" alt="image-20220111153612980"></p>
-<p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E8%AF%AD%E6%B3%95/Users\59737\AppData\Roaming\Typora\typora-user-images\image-20220111153652982.png" alt="image-20220111153652982"></p>
-<p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E8%AF%AD%E6%B3%95/Users\59737\AppData\Roaming\Typora\typora-user-images\image-20220111153735999.png" alt="image-20220111153735999"></p>
-<p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E8%AF%AD%E6%B3%95/Users\59737\AppData\Roaming\Typora\typora-user-images\image-20220111153808883.png" alt="image-20220111153808883"></p>
-<p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E8%AF%AD%E6%B3%95/Users\59737\AppData\Roaming\Typora\typora-user-images\image-20220111153830820.png" alt="image-20220111153830820"></p>
-<h3 id="高级函数"><a href="#高级函数" class="headerlink" title="高级函数"></a>高级函数</h3><p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E8%AF%AD%E6%B3%95/Users\59737\AppData\Roaming\Typora\typora-user-images\image-20220111153906531.png" alt="image-20220111153906531"></p>
-<p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E8%AF%AD%E6%B3%95/Users\59737\AppData\Roaming\Typora\typora-user-images\image-20220111153943903.png" alt="image-20220111153943903"></p>
-<p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E8%AF%AD%E6%B3%95/Users\59737\AppData\Roaming\Typora\typora-user-images\image-20220111154017960.png" alt="image-20220111154017960"></p>
-<p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E8%AF%AD%E6%B3%95/Users\59737\AppData\Roaming\Typora\typora-user-images\image-20220111154053153.png" alt="image-20220111154053153"></p>
-<p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E8%AF%AD%E6%B3%95/Users\59737\AppData\Roaming\Typora\typora-user-images\image-20220111154115363.png" alt="image-20220111154115363"></p>
-<h2 id="三十、运算符"><a href="#三十、运算符" class="headerlink" title="三十、运算符"></a>三十、运算符</h2><p>MySQL有以下几种运算符：</p>
-<ul>
-<li>算术运算符</li>
-<li>比较运算符</li>
-<li>逻辑运算符</li>
-<li>位运算符</li>
-</ul>
-<h3 id="算数运算符"><a href="#算数运算符" class="headerlink" title="算数运算符"></a>算数运算符</h3><p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E8%AF%AD%E6%B3%95/Users\59737\AppData\Roaming\Typora\typora-user-images\image-20220111154256455.png" alt="image-20220111154256455"></p>
-<p>在除法运算和模运算中，如果除数为0，将是非法除数，返回结果为NULL。</p>
-<h3 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h3><p>SELECT 语句中的条件语句经常要使用比较运算符。通过这些比较运算符，可以判断表中的哪些记录是符合条件的。比较结果为真，则返回 1，为假则返回 0，比较结果不确定则返回 NULL。</p>
-<p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E8%AF%AD%E6%B3%95/Users\59737\AppData\Roaming\Typora\typora-user-images\image-20220111154411540.png" alt="image-20220111154411540"></p>
-<h3 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h3><p>逻辑运算符用来判断表达式的真假。如果表达式是真，结果返回 1。如果表达式是假，结果返回 0。</p>
-<p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E8%AF%AD%E6%B3%95/Users\59737\AppData\Roaming\Typora\typora-user-images\image-20220111154456858.png" alt="image-20220111154456858"></p>
-<h3 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h3><p>位运算符是在二进制数上进行计算的运算符。位运算会先将操作数变成二进制数，进行位运算。然后再将计算结果从二进制数变回十进制数。</p>
-<p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E8%AF%AD%E6%B3%95/Users\59737\AppData\Roaming\Typora\typora-user-images\image-20220111154530641.png" alt="image-20220111154530641"></p>
-<h3 id="运算符优先级"><a href="#运算符优先级" class="headerlink" title="运算符优先级"></a>运算符优先级</h3><p>最低优先级为： :&#x3D;。</p>
-<p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E8%AF%AD%E6%B3%95/Users\59737\AppData\Roaming\Typora\typora-user-images\image-20220111154619306.png" alt="image-20220111154619306"></p>
-<p>最高优先级为： !、BINARY、 COLLATE。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/6/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -2837,13 +2324,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">180k</span>
+    <span title="站点总字数">185k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">5:27</span>
+    <span title="站点阅读时长">5:36</span>
   </span>
 </div>
 <div class="busuanzi-count">

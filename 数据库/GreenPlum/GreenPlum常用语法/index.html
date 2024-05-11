@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"hackertaizi.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="GreenPlum常用语法DDL1. 表1.1 建表123456789101112CREATE TABLE [IF NOT EXISTS] table_name(	column1 datatype [constraint],    column2 datatype [constraint],      column3 datatype [constraint],     ...      [ co">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GreenPlum常用语法">
+<meta property="og:url" content="https://hackertaizi.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93/GreenPlum/GreenPlum%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/index.html">
+<meta property="og:site_name" content="太子的个人博客">
+<meta property="og:description" content="GreenPlum常用语法DDL1. 表1.1 建表123456789101112CREATE TABLE [IF NOT EXISTS] table_name(	column1 datatype [constraint],    column2 datatype [constraint],      column3 datatype [constraint],     ...      [ co">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-05-11T07:33:41.522Z">
+<meta property="article:modified_time" content="2024-05-11T10:20:53.334Z">
+<meta property="article:author" content="Taizi">
+<meta property="article:tag" content="数据库">
+<meta property="article:tag" content="GreenPlum">
+<meta property="article:tag" content="PostgreSQL">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://hackertaizi.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93/GreenPlum/GreenPlum%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hackertaizi.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93/GreenPlum/GreenPlum%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/","path":"数据库/GreenPlum/GreenPlum常用语法/","title":"GreenPlum常用语法"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>GreenPlum常用语法 | 太子的个人博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">太子的个人博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Have a nice day !</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#GreenPlum%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">GreenPlum常用语法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DDL"><span class="nav-number">2.</span> <span class="nav-text">DDL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E8%A1%A8"><span class="nav-number">2.1.</span> <span class="nav-text">1. 表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E5%BB%BA%E8%A1%A8"><span class="nav-number">2.1.1.</span> <span class="nav-text">1.1 建表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E5%88%86%E5%8C%BA"><span class="nav-number">2.1.2.</span> <span class="nav-text">1.2 分区</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-1-%E6%B7%BB%E5%8A%A0%E5%88%86%E5%8C%BA"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">1.2.1 添加分区</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-2-%E5%88%A0%E9%99%A4%E5%88%86%E5%8C%BA"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">1.2.2 删除分区</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-%E5%88%86%E5%B8%83"><span class="nav-number">2.1.3.</span> <span class="nav-text">1.3 分布</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%B3%A8%E9%87%8A"><span class="nav-number">2.2.</span> <span class="nav-text">2. 注释</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E6%B7%BB%E5%8A%A0%E6%B3%A8%E9%87%8A"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.1 添加注释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E4%BF%AE%E6%94%B9%E6%B3%A8%E9%87%8A"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2 修改注释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E5%88%A0%E9%99%A4%E6%B3%A8%E9%87%8A"><span class="nav-number">2.2.3.</span> <span class="nav-text">2.3 删除注释</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%AD%97%E6%AE%B5"><span class="nav-number">2.3.</span> <span class="nav-text">3. 字段</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E6%96%B0%E5%A2%9E%E5%AD%97%E6%AE%B5"><span class="nav-number">2.3.1.</span> <span class="nav-text">3.1 新增字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E4%BF%AE%E6%94%B9%E5%AD%97%E6%AE%B5"><span class="nav-number">2.3.2.</span> <span class="nav-text">3.2 修改字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E5%88%A0%E9%99%A4%E5%AD%97%E6%AE%B5"><span class="nav-number">2.3.3.</span> <span class="nav-text">3.3 删除字段</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E7%B4%A2%E5%BC%95"><span class="nav-number">2.4.</span> <span class="nav-text">4. 索引</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-0-%E5%91%BD%E5%90%8D"><span class="nav-number">2.4.1.</span> <span class="nav-text">4.0 命名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E6%B7%BB%E5%8A%A0%E7%B4%A2%E5%BC%95"><span class="nav-number">2.4.2.</span> <span class="nav-text">4.1 添加索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E5%88%A0%E9%99%A4%E7%B4%A2%E5%BC%95"><span class="nav-number">2.4.3.</span> <span class="nav-text">4.2 删除索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-%E6%9F%A5%E7%9C%8B%E7%B4%A2%E5%BC%95"><span class="nav-number">2.4.4.</span> <span class="nav-text">4.3 查看索引</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DML"><span class="nav-number">3.</span> <span class="nav-text">DML</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E6%8F%92%E5%85%A5"><span class="nav-number">3.1.</span> <span class="nav-text">1. 插入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%88%A0%E9%99%A4"><span class="nav-number">3.2.</span> <span class="nav-text">2. 删除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E6%9B%B4%E6%96%B0"><span class="nav-number">3.3.</span> <span class="nav-text">3. 更新</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E6%9F%A5%E8%AF%A2"><span class="nav-number">3.4.</span> <span class="nav-text">4. 查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E5%AD%98%E5%82%A8%E4%BD%BF%E7%94%A8%E6%83%85%E5%86%B5%E6%9F%A5%E8%AF%A2"><span class="nav-number">3.5.</span> <span class="nav-text">5. 存储使用情况查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E5%88%86%E5%8C%BA%E8%A1%A8%E5%8C%85%E5%90%AB%E7%9A%84%E5%88%86%E5%8C%BA%E6%9F%A5%E8%AF%A2"><span class="nav-number">3.6.</span> <span class="nav-text">6. 分区表包含的分区查询</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Taizi</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">52</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93/GreenPlum/GreenPlum%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Taizi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="GreenPlum常用语法 | 太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          GreenPlum常用语法
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-05-11 15:33:41 / 修改时间：18:20:53" itemprop="dateCreated datePublished" datetime="2024-05-11T15:33:41+08:00">2024-05-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/GreenPlum/" itemprop="url" rel="index"><span itemprop="name">GreenPlum</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>4.6k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>8 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="GreenPlum常用语法"><a href="#GreenPlum常用语法" class="headerlink" title="GreenPlum常用语法"></a>GreenPlum常用语法</h1><h1 id="DDL"><a href="#DDL" class="headerlink" title="DDL"></a>DDL</h1><h2 id="1-表"><a href="#1-表" class="headerlink" title="1. 表"></a>1. 表</h2><h3 id="1-1-建表"><a href="#1-1-建表" class="headerlink" title="1.1 建表"></a>1.1 建表</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> [IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span>] table_name(</span><br><span class="line">	column1 datatype [<span class="keyword">constraint</span>],</span><br><span class="line">    column2 datatype [<span class="keyword">constraint</span>],  </span><br><span class="line">    column3 datatype [<span class="keyword">constraint</span>], </span><br><span class="line">    ...  </span><br><span class="line">    [ <span class="keyword">constraint</span> ],  </span><br><span class="line">    ...</span><br><span class="line">)</span><br><span class="line">DISTRIBUTED <span class="keyword">BY</span>(colum)</span><br><span class="line"><span class="keyword">PARTITION</span> <span class="keyword">BY</span> LIST(<span class="keyword">column</span>)(</span><br><span class="line">	<span class="keyword">PARTITION</span> pname	<span class="keyword">VALUES</span>(<span class="string">&#x27;value&#x27;</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>table_name: 表名</li>
+<li>column1、2、3：列名</li>
+<li>datatype: 列数据类型（常用的有<code>int</code>、<code>varchar(255)</code>、<code>text</code>、<code>timestamp</code>、<code>array</code>等类型）</li>
+<li><code>[constraint]</code> 是可选的，用于定义列或表级别的约束（例如 <code>NOT NULL</code>, <code>UNIQUE</code>, <code>PRIMARY KEY</code>, <code>FOREIGN KEY</code> 等）。</li>
+<li>DISTRIBUTED BY：指定一列或几列为分布键，数据将依照分布键分发到各个计算节点上，避免数据倾斜。</li>
+<li>PARTITION BY LIST：指定一列作为分区键，分区表建表时指定的分区为初始分区。这里是通过字段建立分区，还有其他建立分区的方式，如范围分区等等。</li>
+</ul>
+<h3 id="1-2-分区"><a href="#1-2-分区" class="headerlink" title="1.2 分区"></a>1.2 分区</h3><h4 id="1-2-1-添加分区"><a href="#1-2-1-添加分区" class="headerlink" title="1.2.1 添加分区"></a>1.2.1 添加分区</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> table_name <span class="keyword">ADD</span> <span class="keyword">PARTITION</span> partition_name <span class="keyword">VALUES</span>(<span class="string">&#x27;value&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-2-2-删除分区"><a href="#1-2-2-删除分区" class="headerlink" title="1.2.2 删除分区"></a>1.2.2 删除分区</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> table_name <span class="keyword">DROP</span> <span class="keyword">PARTITION</span> partition_name;</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-3-分布"><a href="#1-3-分布" class="headerlink" title="1.3 分布"></a>1.3 分布</h3><p>分布键一般在建表时指定。</p>
+<p>可以修改已有表的分布键：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> your_table_name <span class="keyword">SET</span> DISTRIBUTED <span class="keyword">BY</span> (column_name);</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-注释"><a href="#2-注释" class="headerlink" title="2. 注释"></a>2. 注释</h2><h3 id="2-1-添加注释"><a href="#2-1-添加注释" class="headerlink" title="2.1 添加注释"></a>2.1 添加注释</h3><ul>
+<li><p>给表添加注释：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">COMMENT <span class="keyword">ON</span> <span class="keyword">TABLE</span> schema_name.table_name <span class="keyword">IS</span> <span class="string">&#x27;table_comment&#x27;</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>给字段添加注释：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">COMMENT <span class="keyword">ON</span> <span class="keyword">COLUMN</span> schema_name.table_name.column_name <span class="keyword">IS</span> <span class="string">&#x27;column_comment&#x27;</span>;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="2-2-修改注释"><a href="#2-2-修改注释" class="headerlink" title="2.2 修改注释"></a>2.2 修改注释</h3><p>重新添加注释，就可以将原来的注释替换掉。</p>
+<h3 id="2-3-删除注释"><a href="#2-3-删除注释" class="headerlink" title="2.3 删除注释"></a>2.3 删除注释</h3><p>可通过重新添加一个空字符串注释来实现效果</p>
+<h2 id="3-字段"><a href="#3-字段" class="headerlink" title="3. 字段"></a>3. 字段</h2><h3 id="3-1-新增字段"><a href="#3-1-新增字段" class="headerlink" title="3.1 新增字段"></a>3.1 新增字段</h3><p>新增的字段无法指定位置，默认在最后</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> table_name <span class="keyword">ADD</span> <span class="keyword">COLUMN</span> new_column_name data_type [<span class="keyword">constraint</span>];</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-修改字段"><a href="#3-2-修改字段" class="headerlink" title="3.2 修改字段"></a>3.2 修改字段</h3><ul>
+<li><p>修改字段数据类型：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> your_table_name <span class="keyword">ALTER</span> <span class="keyword">COLUMN</span> column_name TYPE new_data_type <span class="keyword">USING</span> expression;</span><br></pre></td></tr></table></figure>
+
+<p>其中<code>expression</code>是一个可选的表达式，用于转换旧数据到新数据类型。如果数据类型转换是隐式的（即不需要额外的表达式），则可以省略<code>USING</code>子句。</p>
+</li>
+<li><p>重命名字段：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> your_table_name RENAME <span class="keyword">COLUMN</span> old_column_name <span class="keyword">TO</span> new_column_name;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置或修改字段的默认值：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> your_table_name <span class="keyword">ALTER</span> <span class="keyword">COLUMN</span> column_name <span class="keyword">SET</span> <span class="keyword">DEFAULT</span> default_value;  </span><br><span class="line"><span class="comment">-- 或者移除默认值  </span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> your_table_name <span class="keyword">ALTER</span> <span class="keyword">COLUMN</span> column_name <span class="keyword">DROP</span> <span class="keyword">DEFAULT</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加或删除字段的约束（例如NOT NULL）:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 添加NOT NULL约束  </span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> your_table_name <span class="keyword">ALTER</span> <span class="keyword">COLUMN</span> column_name <span class="keyword">SET</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span>;  </span><br><span class="line"><span class="comment">-- 移除NOT NULL约束（注意：这可能需要提供一个默认值或者先确保表中没有NULL值）  </span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> your_table_name <span class="keyword">ALTER</span> <span class="keyword">COLUMN</span> column_name <span class="keyword">DROP</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span>;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="3-3-删除字段"><a href="#3-3-删除字段" class="headerlink" title="3.3 删除字段"></a>3.3 删除字段</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> your_table_name <span class="keyword">DROP</span> <span class="keyword">COLUMN</span> column_name;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-索引"><a href="#4-索引" class="headerlink" title="4. 索引"></a>4. 索引</h2><h3 id="4-0-命名"><a href="#4-0-命名" class="headerlink" title="4.0 命名"></a>4.0 命名</h3><p>greenplum的索引名称是唯一的，删除索引时只会根据索引名字进行删除，不关心具体的表，所以索引命名时不能重复。</p>
+<p>建议命名规范：idx_表名_索引字段名(有多个字段就用下划线分隔)</p>
+<h3 id="4-1-添加索引"><a href="#4-1-添加索引" class="headerlink" title="4.1 添加索引"></a>4.1 添加索引</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> [<span class="keyword">UNIQUE</span>] [CONCURRENTLY] INDEX index_name  </span><br><span class="line"><span class="keyword">ON</span> table_name [<span class="keyword">USING</span> <span class="keyword">method</span>]  </span><br><span class="line">(column_name [op_class] [SORTBY &#123;<span class="keyword">ASC</span><span class="operator">|</span><span class="keyword">DESC</span>&#125;] [, ...]  </span><br><span class="line">[<span class="keyword">WITH</span> (storage_parameter <span class="operator">=</span> <span class="keyword">value</span> [, ...] )]);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>UNIQUE</code>：如果指定，索引将包含唯一值。</li>
+<li><code>CONCURRENTLY</code>：允许在不锁定表的情况下创建索引。但是，在创建索引期间，对表的写操作可能会慢一些。</li>
+<li><code>index_name</code>：索引的名称。</li>
+<li><code>table_name</code>：要在其上创建索引的表的名称。</li>
+<li><code>method</code>：索引方法（如B-Tree、Bitmap等）。如果不指定，将使用B-Tree。</li>
+<li><code>column_name</code>：要在其中创建索引的列的名称。</li>
+<li><code>op_class</code>：操作符类（可选）。对于某些索引方法，这允许你指定索引中使用的操作符集合。</li>
+<li><code>SORTBY &#123;ASC|DESC&#125;</code>：指定索引中列的排序顺序（仅对特定索引方法有效，如B-Tree）。</li>
+<li><code>WITH (storage_parameter = value [, ...] )</code>：指定索引的存储参数（可选）。</li>
+</ul>
+<p>假设有一个名为students的表，想要为last_name列添加一个B-Tree索引，可以使用以下SQL语句：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> INDEX idx_students_last_name <span class="keyword">ON</span> students(last_name);</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-2-删除索引"><a href="#4-2-删除索引" class="headerlink" title="4.2 删除索引"></a>4.2 删除索引</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> INDEX [IF <span class="keyword">EXISTS</span>] index_name [, ...] [CASCADE <span class="operator">|</span> RESTRICT];</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>IF EXISTS</code>：这是一个可选的子句，用于在索引不存在时防止产生错误。如果指定了<code>IF EXISTS</code>并且索引不存在，那么命令将不会做任何事情，也不会产生错误。</li>
+<li><code>index_name</code>：要删除的索引的名称。</li>
+<li><code>CASCADE | RESTRICT</code>：这两个关键字用于处理依赖对象。<code>CASCADE</code>会删除索引以及依赖于该索引的所有对象（例如，依赖于该索引的外键约束）。<code>RESTRICT</code>是默认行为，它会在存在任何依赖对象时阻止删除索引。</li>
+</ul>
+<h3 id="4-3-查看索引"><a href="#4-3-查看索引" class="headerlink" title="4.3 查看索引"></a>4.3 查看索引</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> indexname, indexdef  </span><br><span class="line"><span class="keyword">FROM</span> pg_indexes  </span><br><span class="line"><span class="keyword">WHERE</span> tablename <span class="operator">=</span> <span class="string">&#x27;table_name&#x27;</span>;  <span class="comment">-- 无需schema名称</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="DML"><a href="#DML" class="headerlink" title="DML"></a>DML</h1><h2 id="1-插入"><a href="#1-插入" class="headerlink" title="1. 插入"></a>1. 插入</h2><p>greenplum 没有覆盖写入语法，可以先清空表，再写入</p>
+<ul>
+<li><p>INSERT INTO:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> your_table_name (column1, column2, ...)  </span><br><span class="line"><span class="keyword">VALUES</span> (value1, value2, ...);  </span><br><span class="line"></span><br><span class="line"><span class="comment">-- 或者插入多行  </span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> your_table_name (column1, column2, ...)  </span><br><span class="line"><span class="keyword">VALUES</span>   </span><br><span class="line">(value1a, value2a, ...),  </span><br><span class="line">(value1b, value2b, ...),  </span><br><span class="line">...;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>COPY:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">COPY</span> your_table_name (column1, column2, ...)  </span><br><span class="line"><span class="keyword">FROM</span> <span class="string">&#x27;/path/to/your/datafile&#x27;</span>  </span><br><span class="line"><span class="keyword">WITH</span> (FORMAT CSV, HEADER <span class="literal">TRUE</span>);</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="2-删除"><a href="#2-删除" class="headerlink" title="2. 删除"></a>2. 删除</h2><ul>
+<li><p>DELETE:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> table_name <span class="keyword">WHERE</span> <span class="keyword">condition</span>; <span class="comment">-- 删除满足条件的行  </span></span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> table_name; <span class="comment">-- 删除表中的所有行</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>：DELETE语句是DML（数据操作语言）语句，它只删除数据，而不释放表的空间。因此，频繁使用DELETE可能会导致表膨胀，并需要定期进行VACUUM操作来回收空间。</p>
+</li>
+<li><p>TRUNCATE:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TRUNCATE TABLE table_name;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>：TRUNCATE语句会立即释放表的空间，并重置任何相关的序列。因此，在使用TRUNCATE之前，请确保了解它的这些行为。</p>
+</li>
+</ul>
+<h2 id="3-更新"><a href="#3-更新" class="headerlink" title="3. 更新"></a>3. 更新</h2><ul>
+<li><p>UPDATE:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> table_name <span class="keyword">SET</span> column1 <span class="operator">=</span> value1, column2 <span class="operator">=</span> value2 <span class="keyword">WHERE</span> <span class="keyword">condition</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>也可以使用子查询来更新表：<br>假设有一个名为<code>target_table</code>的表，想要根据<code>another_table</code>中的数据来更新<code>target_table</code>的<code>column1</code>列。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> target_table  </span><br><span class="line"><span class="keyword">SET</span> column1 <span class="operator">=</span> (  </span><br><span class="line">    <span class="keyword">SELECT</span> another_column  </span><br><span class="line">    <span class="keyword">FROM</span> another_table  </span><br><span class="line">    <span class="keyword">WHERE</span> target_table.id <span class="operator">=</span> another_table.id <span class="comment">-- 假设id是连接两个表的键  </span></span><br><span class="line">)  </span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">EXISTS</span> (  </span><br><span class="line">    <span class="keyword">SELECT</span> <span class="number">1</span>  </span><br><span class="line">    <span class="keyword">FROM</span> another_table  </span><br><span class="line">    <span class="keyword">WHERE</span> target_table.id <span class="operator">=</span> another_table.id  </span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>还可以使用JOIN实现复杂的更新操作：<br>例如，使用JOIN来根据<code>join_table</code>中的数据更新<code>target_table</code>的<code>column1</code>和<code>column2</code>列</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> target_table t  </span><br><span class="line"><span class="keyword">SET</span>   </span><br><span class="line">    column1 <span class="operator">=</span> jt.column_a,  </span><br><span class="line">    column2 <span class="operator">=</span> jt.column_b  </span><br><span class="line"><span class="keyword">FROM</span>   </span><br><span class="line">    join_table jt  </span><br><span class="line"><span class="keyword">WHERE</span>   </span><br><span class="line">    t.id <span class="operator">=</span> jt.id; <span class="comment">-- 假设id是连接两个表的键</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="4-查询"><a href="#4-查询" class="headerlink" title="4. 查询"></a>4. 查询</h2><p>SELECT ,比较常用，不再赘述。</p>
+<h2 id="5-存储使用情况查询"><a href="#5-存储使用情况查询" class="headerlink" title="5. 存储使用情况查询"></a>5. 存储使用情况查询</h2><ul>
+<li><p>查询某个表，或者某分区表的一个子分区表的存储使用情况：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> pg_size_pretty(pg_relation_size(<span class="string">&#x27;schema_name.table_name&#x27;</span>));</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查询一个分区表，下面所有子表的存储使用情况：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">WITH</span> partition_oids <span class="keyword">AS</span> (</span><br><span class="line">    <span class="keyword">SELECT</span> c.oid</span><br><span class="line">    <span class="keyword">FROM</span> pg_class c</span><br><span class="line">    <span class="keyword">JOIN</span> pg_inherits i <span class="keyword">ON</span> c.oid <span class="operator">=</span> i.inhrelid</span><br><span class="line">    <span class="keyword">WHERE</span> i.inhparent <span class="operator">=</span> <span class="string">&#x27;schema_name.table_name&#x27;</span>::regclass</span><br><span class="line">)</span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    p.relname <span class="keyword">AS</span> partition_name,</span><br><span class="line">    pg_size_pretty(pg_total_relation_size(p.oid)) <span class="keyword">AS</span> partition_size</span><br><span class="line"><span class="keyword">FROM</span> pg_class p</span><br><span class="line"><span class="keyword">JOIN</span> partition_oids po <span class="keyword">ON</span> p.oid <span class="operator">=</span> po.oid;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="6-分区表包含的分区查询"><a href="#6-分区表包含的分区查询" class="headerlink" title="6. 分区表包含的分区查询"></a>6. 分区表包含的分区查询</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">  tablename <span class="keyword">AS</span> parent_table,</span><br><span class="line">  partitiontablename <span class="keyword">AS</span> child_table</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">  pg_partitions</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">  tablename <span class="operator">=</span> <span class="string">&#x27;table_name&#x27;</span></span><br><span class="line">  <span class="keyword">AND</span> schemaname <span class="operator">=</span> <span class="string">&#x27;schema_name&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag"># 数据库</a>
+              <a href="/tags/GreenPlum/" rel="tag"># GreenPlum</a>
+              <a href="/tags/PostgreSQL/" rel="tag"># PostgreSQL</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/%E5%85%B6%E4%BB%96/JSONPath/" rel="prev" title="JSONPath">
+                  <i class="fa fa-angle-left"></i> JSONPath
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Powered by Hackertaizi</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">185k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">5:36</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

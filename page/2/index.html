@@ -147,18 +147,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-count">52</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-count">33</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -175,6 +175,310 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.github.io/%E5%85%B6%E4%BB%96/Cron%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E8%A1%A8%E8%BE%BE%E5%BC%8F/Cron%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Taizi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/%E5%85%B6%E4%BB%96/Cron%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E8%A1%A8%E8%BE%BE%E5%BC%8F/Cron%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="post-title-link" itemprop="url">Cron表达式</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-09-28 15:41:03" itemprop="dateModified" datetime="2023-09-28T15:41:03+08:00">2023-09-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%85%B6%E4%BB%96/" itemprop="url" rel="index"><span itemprop="name">其他</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.9k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Cron表达式"><a href="#Cron表达式" class="headerlink" title="Cron表达式"></a>Cron表达式</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Cron表达式是一个具有时间含义的字符串，字符串以5<del>6个空格隔开，分为6</del>7个域，格式为<code>X X X X X X X</code>。其中<code>X</code>是一个域的占位符。最后一个代表年份的域非必须，可省略。单个域有多个取值时，使用半角逗号<code>,</code>隔开取值。每个域可以是确定的取值，也可以是具有逻辑意义的特殊字符。每个域最多支持一个前导零。</p>
+<h2 id="语法格式"><a href="#语法格式" class="headerlink" title="语法格式"></a>语法格式</h2><ul>
+<li><p>当为7个域时：</p>
+<p><code>Seconds Minutes Hours DayofMonth Month DayofWeek Year</code></p>
+</li>
+<li><p>当为6个域时：</p>
+<p><code>Seconds Minutes Hours DayofMonth Month DayofWeek</code></p>
+</li>
+</ul>
+<h2 id="域取值"><a href="#域取值" class="headerlink" title="域取值"></a>域取值</h2><p>下表为Cron表达式中六个域能够取的值以及支持的特殊字符。</p>
+<table>
+<thead>
+<tr>
+<th>域</th>
+<th>是否必需</th>
+<th>取值范围</th>
+<th>特殊字符</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>秒</td>
+<td>是</td>
+<td>[0, 59]</td>
+<td>* , - &#x2F;</td>
+</tr>
+<tr>
+<td>分钟</td>
+<td>是</td>
+<td>[0, 59]</td>
+<td>* , - &#x2F;</td>
+</tr>
+<tr>
+<td>小时</td>
+<td>是</td>
+<td>[0, 23]</td>
+<td>* , - &#x2F;</td>
+</tr>
+<tr>
+<td>日期</td>
+<td>是</td>
+<td>[1, 31]</td>
+<td>* , - &#x2F; ? L W</td>
+</tr>
+<tr>
+<td>月份</td>
+<td>是</td>
+<td>[1, 12]或[JAN, DEC]</td>
+<td>* , - &#x2F;</td>
+</tr>
+<tr>
+<td>星期</td>
+<td>是</td>
+<td>[1, 7]或[MON, SUN]。若您使用[1, 7]表达方式，<code>1</code>代表星期一，<code>7</code>代表星期日。</td>
+<td>* , - &#x2F; ? L #</td>
+</tr>
+<tr>
+<td>年</td>
+<td>否</td>
+<td>[当前年份，2099]</td>
+<td>* , - &#x2F;</td>
+</tr>
+</tbody></table>
+<h2 id="特殊字符"><a href="#特殊字符" class="headerlink" title="特殊字符"></a>特殊字符</h2><p>Cron表达式中的每个域都支持一定数量的特殊字符，每个特殊字符有其特殊含义。</p>
+<table>
+<thead>
+<tr>
+<th>特殊字符</th>
+<th>含义</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>*</code></td>
+<td>所有可能的值。</td>
+<td>在月域中，<code>*</code>表示每个月；在星期域中，<code>*</code>表示星期的每一天。</td>
+</tr>
+<tr>
+<td><code>,</code></td>
+<td>列出枚举值。</td>
+<td>在分钟域中，<code>5,20</code>表示分别在5分钟和20分钟触发一次。</td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td>范围。</td>
+<td>在分钟域中，<code>5-20</code>表示从5分钟到20分钟之间每隔一分钟触发一次。</td>
+</tr>
+<tr>
+<td><code>/</code></td>
+<td>指定数值的增量。</td>
+<td>在分钟域中，<code>0/15</code>表示从第0分钟开始，每15分钟。在分钟域中<code>3/20</code>表示从第3分钟开始，每20分钟。</td>
+</tr>
+<tr>
+<td><code>?</code></td>
+<td>不指定值，仅日期和星期域支持该字符。</td>
+<td>当日期或星期域其中之一被指定了值以后，为了避免冲突，需要将另一个域的值设为<code>?</code>。</td>
+</tr>
+<tr>
+<td><code>L</code></td>
+<td>单词Last的首字母，表示最后一天，仅日期和星期域支持该字符。                                                                                                 <strong>说明</strong> 指定<code>L</code>字符时，避免指定列表或者范围，否则，会导致逻辑问题。</td>
+<td>在日期域中，<code>L</code>表示某个月的最后一天。在星期域中，<code>L</code>表示一个星期的最后一天，也就是星期日（<code>SUN</code>）。                                                                  如果在<code>L</code>前有具体的内容，例如，在星期域中的<code>6L</code>表示这个月的最后一个星期六。</td>
+</tr>
+<tr>
+<td><code>W</code></td>
+<td>除周末以外的有效工作日，在离指定日期的最近的有效工作日触发事件。<code>W</code>字符寻找最近有效工作日时不会跨过当前月份，连用字符<code>LW</code>时表示为指定月份的最后一个工作日。</td>
+<td>在日期域中<code>5W</code>，如果5日是星期六，则将在最近的工作日星期五，即4日触发。如果5日是星期天，则将在最近的工作日星期一，即6日触发；如果5日在星期一到星期五中的一天，则就在5日触发。</td>
+</tr>
+<tr>
+<td><code>#</code></td>
+<td>确定每个月第几个星期几，仅星期域支持该字符。</td>
+<td>在星期域中，<code>4#2</code>表示某月的第二个星期四。</td>
+</tr>
+</tbody></table>
+<h2 id="取值示例"><a href="#取值示例" class="headerlink" title="取值示例"></a>取值示例</h2><p>以下为Cron表达式的取值示例。</p>
+<table>
+<thead>
+<tr>
+<th>示例</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>0 15 10 ? * *</code></td>
+<td>每天上午10:15执行任务</td>
+</tr>
+<tr>
+<td><code>0 15 10 * * ?</code></td>
+<td>每天上午10:15执行任务</td>
+</tr>
+<tr>
+<td><code>0 0 12 * * ?</code></td>
+<td>每天中午12:00执行任务</td>
+</tr>
+<tr>
+<td><code>0 0 10,14,16 * * ?</code></td>
+<td>每天上午10:00点、下午14:00以及下午16:00执行任务</td>
+</tr>
+<tr>
+<td><code>0 0/30 9-17 * * ?</code></td>
+<td>每天上午09:00到下午17:00时间段内每隔半小时执行任务</td>
+</tr>
+<tr>
+<td><code>0 * 14 * * ?</code></td>
+<td>每天下午14:00到下午14:59时间段内每隔1分钟执行任务</td>
+</tr>
+<tr>
+<td><code>0 0-5 14 * * ?</code></td>
+<td>每天下午14:00到下午14:05时间段内每隔1分钟执行任务</td>
+</tr>
+<tr>
+<td><code>0 0/5 14 * * ?</code></td>
+<td>每天下午14:00到下午14:55时间段内每隔5分钟执行任务</td>
+</tr>
+<tr>
+<td><code>0 0/5 14,18 * * ?</code></td>
+<td>每天下午14:00到下午14:55、下午18:00到下午18:55时间段内每隔5分钟执行任务</td>
+</tr>
+<tr>
+<td><code>0 0 12 ? * WED</code></td>
+<td>每个星期三中午12:00执行任务</td>
+</tr>
+<tr>
+<td><code>0 15 10 15 * ?</code></td>
+<td>每月15日上午10:15执行任务</td>
+</tr>
+<tr>
+<td><code>0 15 10 L * ?</code></td>
+<td>每月最后一日上午10:15执行任务</td>
+</tr>
+<tr>
+<td><code>0 15 10 ? * 6L</code></td>
+<td>每月最后一个星期六上午10:15执行任务</td>
+</tr>
+<tr>
+<td><code>0 15 10 ? * 6#3</code></td>
+<td>每月第三个星期六上午10:15执行任务</td>
+</tr>
+<tr>
+<td><code>0 10,44 14 ? 3 WED</code></td>
+<td>每年3月的每个星期三下午14:10和14:44执行任务</td>
+</tr>
+<tr>
+<td><code>0 15 10 ? * * 2022</code></td>
+<td>2022年每天上午10:15执行任务</td>
+</tr>
+<tr>
+<td><code>0 15 10 ? * * *</code></td>
+<td>每年每天上午10:15执行任务</td>
+</tr>
+<tr>
+<td><code>0 0/5 14,18 * * ? 2022</code></td>
+<td>2022年每天下午14:00到下午14:55、下午18:00到下午18:55时间段内每隔5分钟执行任务</td>
+</tr>
+<tr>
+<td><code>0 15 10 ? * 6#3 2022,2023</code></td>
+<td>2022年至2023年每月第三个星期六上午10:15执行任务</td>
+</tr>
+<tr>
+<td><code>0 0/30 9-17 * * ? 2022-2025</code></td>
+<td>2022年至2025年每天上午09:00到下午17:30时间段内每隔半小时执行任务</td>
+</tr>
+<tr>
+<td><code>0 10,44 14 ? 3 WED 2022/2</code></td>
+<td>从2022年开始，每隔两年3月的每个星期三下午14:10和14:44执行任务</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1027,6 +1331,147 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E5%AE%89%E8%A3%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Taizi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E5%AE%89%E8%A3%85/" class="post-title-link" itemprop="url">在Windows操作系统下安装MySQL</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-09-28 15:09:02" itemprop="dateModified" datetime="2023-09-28T15:09:02+08:00">2023-09-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="MySQL安装"><a href="#MySQL安装" class="headerlink" title="MySQL安装"></a>MySQL安装</h2><h3 id="1-下载安装"><a href="#1-下载安装" class="headerlink" title="1. 下载安装"></a>1. 下载安装</h3><ul>
+<li>MySQL官网:<a target="_blank" rel="noopener" href="https://www.mysql.com/cn/">mysql官网链接</a></li>
+</ul>
+<p>在官网中，可以在首页最下方选择需要下载的MySQL版本，通常情况下，下载的是社区版的MySQL：</p>
+<ul>
+<li>MySQL社区版：<a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/mysql/">mysql communtiy downloads</a></li>
+</ul>
+<p>其中x64适用于64位系统，x86适用于32位系统。</p>
+<p>下面教程以5.7版本的MySQL安装为例，下载好后，将压缩包解压到合适位置，比如我当前的解压路径为：<code>E:\MySQL\mysql-5.7.37-winx64</code>，在该目录下新建my.ini文件，文件内容模板如下：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[mysqld]</span></span><br><span class="line"><span class="comment"># 设置3306端口</span></span><br><span class="line"><span class="attr">port</span>=<span class="number">3306</span></span><br><span class="line"><span class="comment"># 设置mysql的安装目录   ----------是你的文件路径-------------</span></span><br><span class="line"><span class="attr">basedir</span>=E:\MySQL\mysql-<span class="number">5.7</span>.<span class="number">37</span>-winx64</span><br><span class="line"><span class="comment"># 设置mysql数据库的数据的存放目录  ---------是你的文件路径data文件夹自行创建</span></span><br><span class="line"><span class="attr">datadir</span>=E:\MySQL\mysql-<span class="number">5.7</span>.<span class="number">37</span>-winx64\data</span><br><span class="line"><span class="comment"># 允许最大连接数</span></span><br><span class="line"><span class="attr">max_connections</span>=<span class="number">200</span></span><br><span class="line"><span class="comment"># 允许连接失败的次数。</span></span><br><span class="line"><span class="attr">max_connect_errors</span>=<span class="number">10</span></span><br><span class="line"><span class="comment"># 服务端使用的字符集默认为utf8mb4</span></span><br><span class="line"><span class="attr">character-set-server</span>=utf8mb4</span><br><span class="line"><span class="comment"># 创建新表时将使用的默认存储引擎</span></span><br><span class="line"><span class="attr">default-storage-engine</span>=INNODB</span><br><span class="line"><span class="comment"># 默认使用“mysql_native_password”插件认证</span></span><br><span class="line"><span class="comment">#mysql_native_password</span></span><br><span class="line"><span class="attr">default_authentication_plugin</span>=mysql_native_password</span><br><span class="line"><span class="section">[mysql]</span></span><br><span class="line"><span class="comment"># 设置mysql客户端默认字符集</span></span><br><span class="line"><span class="attr">default-character-set</span>=utf8mb4</span><br><span class="line"><span class="section">[client]</span></span><br><span class="line"><span class="comment"># 设置mysql客户端连接服务端时默认使用的端口</span></span><br><span class="line"><span class="attr">port</span>=<span class="number">3306</span></span><br><span class="line"><span class="attr">default-character-set</span>=utf8mb4</span><br></pre></td></tr></table></figure>
+
+<p>文件中主要根据情况修改MySQL的安装目录路径basedir，以及MySQL的数据存放目录datadir。</p>
+<h3 id="2-初始化数据库"><a href="#2-初始化数据库" class="headerlink" title="2. 初始化数据库"></a>2. 初始化数据库</h3><p>使用管理员身份打开命令提示符，进入mysql安装目录下的bin目录，如<code>E:\MySQL\mysql-5.7.37-winx64\bin</code> ,执行命令<code>mysqld  --initialize --console</code> ,进行目录的初始化，此时安装目录下会自动建立配置文件中设置的数据存放目录，同时，命令行中可以看到生成的随机初始化密码，此密码用于首次登录MySQL，需要记住。如果没记住的话，在刚刚生成的MySQL安装目录下的data目录下的以.err为后缀的文件中可以找到MySQL的随机初始密码。</p>
+<h3 id="3-安装数据库"><a href="#3-安装数据库" class="headerlink" title="3. 安装数据库"></a>3. 安装数据库</h3><p>依然是在管理员权限下的MySQL目录的bin目录下，执行命令<code>mysqld  -install</code>，进行mysqld的安装。</p>
+<h3 id="4-启动数据库"><a href="#4-启动数据库" class="headerlink" title="4. 启动数据库"></a>4. 启动数据库</h3><p>使用命令行的管理员权限，在MySQL安装目录的bin目录下，使用命令<code>net start mysql</code> 来启动MySQL数据库。</p>
+<h3 id="5-登录MySQL数据库（注意，登录数据库后，所有命令最后要加分号’；‘）"><a href="#5-登录MySQL数据库（注意，登录数据库后，所有命令最后要加分号’；‘）" class="headerlink" title="5. 登录MySQL数据库（注意，登录数据库后，所有命令最后要加分号’；‘）"></a>5. 登录MySQL数据库（注意，登录数据库后，所有命令最后要加分号’；‘）</h3><ul>
+<li><p>登录命令格式 <code>mysql -u 用户名 -p 密码</code></p>
+<ul>
+<li>一般因为使用了管理员权限，用户名为root，-p后面的密码可以不写，在执行此命令后需要继续输入密码</li>
+</ul>
+</li>
+<li><p>如果是第一次登录：</p>
+<ul>
+<li><p>mysql5.6版本之后，在第一次初始化MySQL数据库的时候会生成随机生成的初始密码，该密码的获取可以参照上面第3条。</p>
+</li>
+<li><p><strong>修改密码</strong>：由于初始密码不方便记忆，第一次登录成功后需要设置自己熟悉的密码，修改密码方式与版本相关：</p>
+<ul>
+<li>5.7.6版本之前：<code>set password for &#39;用户名&#39;@&#39;localhost&#39; = password(&quot;新密码&quot;)</code></li>
+<li>5.7.6版本之后：<code>alter user &#39;用户名&#39;@&#39;localhost&#39;identified with mysql_native_password by &#39;新密码&#39; </code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-配置系统环境变量"><a href="#6-配置系统环境变量" class="headerlink" title="6. 配置系统环境变量"></a>6. 配置系统环境变量</h3><p>在Windows中为MySQL配置系统环境变量，新增系统环境变量 <code>MYSQL_HOME</code>,变量值为msyqld 安装路径，例如我安装了5.7版本路径为<code>E:\MySQL\mysql-5.7.37-winx64</code> ,然后再系统环境变量中的path中添加路径：<code>%MYSQL_HOME%\bin</code></p>
+<h3 id="踩坑"><a href="#踩坑" class="headerlink" title="踩坑"></a>踩坑</h3><ul>
+<li>如果出现如“由于找不到msvcr120.dll，无法继续执行代码……”的问题，说明系统缺少vcredist ，此时需要在官网下载vcredist,arm架构系统选择arm版本，64位系统选择x64版本，32位系统选择x86版本，vcredist官网链接:<a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-CN/download/details.aspx?id=40784">vcredist官网</a>,下载安装后，运行该程序，点击修复按钮，修复完成即可正常安装MySQL</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://hackertaizi.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1174,147 +1619,6 @@
 <li><strong>注意点：</strong></li>
 </ul>
 <p>注意，表连接时会产生一个暂时表，对于暂时表的过滤应该使用 ON 关键字而非 WHERE 关键字，暂时表完成过滤后会产生连接的结果，此时可以使用WHERE 子句对连接结果进行过滤。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hackertaizi.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E5%AE%89%E8%A3%85/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Taizi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E5%AE%89%E8%A3%85/" class="post-title-link" itemprop="url">在Windows操作系统下安装MySQL</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-09-28 15:09:02" itemprop="dateModified" datetime="2023-09-28T15:09:02+08:00">2023-09-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>2k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>4 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="MySQL安装"><a href="#MySQL安装" class="headerlink" title="MySQL安装"></a>MySQL安装</h2><h3 id="1-下载安装"><a href="#1-下载安装" class="headerlink" title="1. 下载安装"></a>1. 下载安装</h3><ul>
-<li>MySQL官网:<a target="_blank" rel="noopener" href="https://www.mysql.com/cn/">mysql官网链接</a></li>
-</ul>
-<p>在官网中，可以在首页最下方选择需要下载的MySQL版本，通常情况下，下载的是社区版的MySQL：</p>
-<ul>
-<li>MySQL社区版：<a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/mysql/">mysql communtiy downloads</a></li>
-</ul>
-<p>其中x64适用于64位系统，x86适用于32位系统。</p>
-<p>下面教程以5.7版本的MySQL安装为例，下载好后，将压缩包解压到合适位置，比如我当前的解压路径为：<code>E:\MySQL\mysql-5.7.37-winx64</code>，在该目录下新建my.ini文件，文件内容模板如下：</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[mysqld]</span></span><br><span class="line"><span class="comment"># 设置3306端口</span></span><br><span class="line"><span class="attr">port</span>=<span class="number">3306</span></span><br><span class="line"><span class="comment"># 设置mysql的安装目录   ----------是你的文件路径-------------</span></span><br><span class="line"><span class="attr">basedir</span>=E:\MySQL\mysql-<span class="number">5.7</span>.<span class="number">37</span>-winx64</span><br><span class="line"><span class="comment"># 设置mysql数据库的数据的存放目录  ---------是你的文件路径data文件夹自行创建</span></span><br><span class="line"><span class="attr">datadir</span>=E:\MySQL\mysql-<span class="number">5.7</span>.<span class="number">37</span>-winx64\data</span><br><span class="line"><span class="comment"># 允许最大连接数</span></span><br><span class="line"><span class="attr">max_connections</span>=<span class="number">200</span></span><br><span class="line"><span class="comment"># 允许连接失败的次数。</span></span><br><span class="line"><span class="attr">max_connect_errors</span>=<span class="number">10</span></span><br><span class="line"><span class="comment"># 服务端使用的字符集默认为utf8mb4</span></span><br><span class="line"><span class="attr">character-set-server</span>=utf8mb4</span><br><span class="line"><span class="comment"># 创建新表时将使用的默认存储引擎</span></span><br><span class="line"><span class="attr">default-storage-engine</span>=INNODB</span><br><span class="line"><span class="comment"># 默认使用“mysql_native_password”插件认证</span></span><br><span class="line"><span class="comment">#mysql_native_password</span></span><br><span class="line"><span class="attr">default_authentication_plugin</span>=mysql_native_password</span><br><span class="line"><span class="section">[mysql]</span></span><br><span class="line"><span class="comment"># 设置mysql客户端默认字符集</span></span><br><span class="line"><span class="attr">default-character-set</span>=utf8mb4</span><br><span class="line"><span class="section">[client]</span></span><br><span class="line"><span class="comment"># 设置mysql客户端连接服务端时默认使用的端口</span></span><br><span class="line"><span class="attr">port</span>=<span class="number">3306</span></span><br><span class="line"><span class="attr">default-character-set</span>=utf8mb4</span><br></pre></td></tr></table></figure>
-
-<p>文件中主要根据情况修改MySQL的安装目录路径basedir，以及MySQL的数据存放目录datadir。</p>
-<h3 id="2-初始化数据库"><a href="#2-初始化数据库" class="headerlink" title="2. 初始化数据库"></a>2. 初始化数据库</h3><p>使用管理员身份打开命令提示符，进入mysql安装目录下的bin目录，如<code>E:\MySQL\mysql-5.7.37-winx64\bin</code> ,执行命令<code>mysqld  --initialize --console</code> ,进行目录的初始化，此时安装目录下会自动建立配置文件中设置的数据存放目录，同时，命令行中可以看到生成的随机初始化密码，此密码用于首次登录MySQL，需要记住。如果没记住的话，在刚刚生成的MySQL安装目录下的data目录下的以.err为后缀的文件中可以找到MySQL的随机初始密码。</p>
-<h3 id="3-安装数据库"><a href="#3-安装数据库" class="headerlink" title="3. 安装数据库"></a>3. 安装数据库</h3><p>依然是在管理员权限下的MySQL目录的bin目录下，执行命令<code>mysqld  -install</code>，进行mysqld的安装。</p>
-<h3 id="4-启动数据库"><a href="#4-启动数据库" class="headerlink" title="4. 启动数据库"></a>4. 启动数据库</h3><p>使用命令行的管理员权限，在MySQL安装目录的bin目录下，使用命令<code>net start mysql</code> 来启动MySQL数据库。</p>
-<h3 id="5-登录MySQL数据库（注意，登录数据库后，所有命令最后要加分号’；‘）"><a href="#5-登录MySQL数据库（注意，登录数据库后，所有命令最后要加分号’；‘）" class="headerlink" title="5. 登录MySQL数据库（注意，登录数据库后，所有命令最后要加分号’；‘）"></a>5. 登录MySQL数据库（注意，登录数据库后，所有命令最后要加分号’；‘）</h3><ul>
-<li><p>登录命令格式 <code>mysql -u 用户名 -p 密码</code></p>
-<ul>
-<li>一般因为使用了管理员权限，用户名为root，-p后面的密码可以不写，在执行此命令后需要继续输入密码</li>
-</ul>
-</li>
-<li><p>如果是第一次登录：</p>
-<ul>
-<li><p>mysql5.6版本之后，在第一次初始化MySQL数据库的时候会生成随机生成的初始密码，该密码的获取可以参照上面第3条。</p>
-</li>
-<li><p><strong>修改密码</strong>：由于初始密码不方便记忆，第一次登录成功后需要设置自己熟悉的密码，修改密码方式与版本相关：</p>
-<ul>
-<li>5.7.6版本之前：<code>set password for &#39;用户名&#39;@&#39;localhost&#39; = password(&quot;新密码&quot;)</code></li>
-<li>5.7.6版本之后：<code>alter user &#39;用户名&#39;@&#39;localhost&#39;identified with mysql_native_password by &#39;新密码&#39; </code></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="6-配置系统环境变量"><a href="#6-配置系统环境变量" class="headerlink" title="6. 配置系统环境变量"></a>6. 配置系统环境变量</h3><p>在Windows中为MySQL配置系统环境变量，新增系统环境变量 <code>MYSQL_HOME</code>,变量值为msyqld 安装路径，例如我安装了5.7版本路径为<code>E:\MySQL\mysql-5.7.37-winx64</code> ,然后再系统环境变量中的path中添加路径：<code>%MYSQL_HOME%\bin</code></p>
-<h3 id="踩坑"><a href="#踩坑" class="headerlink" title="踩坑"></a>踩坑</h3><ul>
-<li>如果出现如“由于找不到msvcr120.dll，无法继续执行代码……”的问题，说明系统缺少vcredist ，此时需要在官网下载vcredist,arm架构系统选择arm版本，64位系统选择x64版本，32位系统选择x86版本，vcredist官网链接:<a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-CN/download/details.aspx?id=40784">vcredist官网</a>,下载安装后，运行该程序，点击修复按钮，修复完成即可正常安装MySQL</li>
-</ul>
 
       
     </div>
@@ -1951,140 +2255,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hackertaizi.github.io/Java/Java%E6%B3%A8%E8%A7%A3/Java%E6%B3%A8%E8%A7%A3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Taizi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/Java/Java%E6%B3%A8%E8%A7%A3/Java%E6%B3%A8%E8%A7%A3/" class="post-title-link" itemprop="url">Java注解</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-09-27 18:55:41" itemprop="dateModified" datetime="2023-09-27T18:55:41+08:00">2023-09-27</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Java/Java%E6%B3%A8%E8%A7%A3/" itemprop="url" rel="index"><span itemprop="name">Java注解</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.5k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>3 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Java注解"><a href="#Java注解" class="headerlink" title="Java注解"></a>Java注解</h1><h2 id="1、-Autowired-（Spring注解）"><a href="#1、-Autowired-（Spring注解）" class="headerlink" title="1、@Autowired （Spring注解）"></a>1、@Autowired （Spring注解）</h2><p>@Autowired注解用于对象的自动装配，默认先通过类型进行装配，类型装配不成功时再通过名字进行装配，如果都不成功，可以使用@Qualifier(value&#x3D;“ ”）注解来指定名字协助装配，否则报错。</p>
-<h2 id="2-Resource-（Java注解）"><a href="#2-Resource-（Java注解）" class="headerlink" title="2. @Resource  （Java注解）"></a>2. @Resource  （Java注解）</h2><p>@Resource注解用于对象的自动装配，默认先通过名字进行装配，当名字装配不成功时再通过类型进行装配，如果都不成功，可以使用其name属性指定对象名字进行装配，格式如：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Resource(name=&quot;&quot;)</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="3-Nullable"><a href="#3-Nullable" class="headerlink" title="3.  @Nullable"></a>3.  @Nullable</h2><p>使用该注解标记的字段可以为null。</p>
-<h2 id="4-Component"><a href="#4-Component" class="headerlink" title="4. @Component"></a>4. @Component</h2><p>把普通的实体类pojo配置到spring容器中，相当于配置文件中的</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;&quot;</span> <span class="attr">class</span>=<span class="string">&quot;&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>该注解泛指各种组件，就是当某个类不属于各种归类的时候（不属于controller、service等的时候），就可以使用@Component来标注这个类。</p>
-<p><strong>注意：</strong>使用该注解时，需要先在配置文件中使用</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">”包路径”</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>指定了要扫描的包后，这个包下的类的@Component注解才会生效。</p>
-<h2 id="5-Value"><a href="#5-Value" class="headerlink" title="5. @Value"></a>5. @Value</h2><p>上面的@Component注解只能配置类，当需要配置类的属性时，需要用到@Value注解，此注解可以声明在类的属性或者属性的set方法上，括号中跟值，例如：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Value(&quot;值&quot;)</span></span><br></pre></td></tr></table></figure>
-
-<p>相当于在配置文件中进行了属性配置：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;name&quot;</span> <span class="attr">value</span>=<span class="string">&quot;值&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="6-Repository（-Component衍生注解）"><a href="#6-Repository（-Component衍生注解）" class="headerlink" title="6. @Repository（@Component衍生注解）"></a>6. @Repository（@Component衍生注解）</h2><p>@Component的衍生注解，作用于@Component相同，<strong>用于装配Dao层下的类。</strong></p>
-<h2 id="7-Service（-Component衍生注解）"><a href="#7-Service（-Component衍生注解）" class="headerlink" title="7. @Service（@Component衍生注解）"></a>7. @Service（@Component衍生注解）</h2><p>@Component的衍生注解，作用于@Component相同，<strong>用于装配Service层下的类。</strong></p>
-<h2 id="8-Controller（-Component衍生注解）"><a href="#8-Controller（-Component衍生注解）" class="headerlink" title="8. @Controller（@Component衍生注解）"></a>8. @Controller（@Component衍生注解）</h2><p>@Component的衍生注解，作用于@Component相同，<strong>用于装配Controller层下的类。</strong></p>
-<h2 id="9-Scope"><a href="#9-Scope" class="headerlink" title="9. @Scope"></a>9. @Scope</h2><p>置于类上，用于配置类的作用域，如单例模式、原型模式等。例如：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Scope(&quot;singleton&quot;)</span> <span class="comment">//单例模式</span></span><br><span class="line"><span class="meta">@Scope(&quot;prototype&quot;)</span> <span class="comment">//原型模式</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="10-Configration"><a href="#10-Configration" class="headerlink" title="10. @Configration"></a>10. @Configration</h2><p>写在类前，声明一个类是Java 配置类，声明后，该java类的作用与xml配置文件相同。</p>
-<h2 id="11-ComponentScan"><a href="#11-ComponentScan" class="headerlink" title="11. @ComponentScan"></a>11. @ComponentScan</h2><p>配合@Configration注解为java配置类设置扫描路径，相当于xml配置文件中的&lt;context:component-scan base-package&#x3D;”包路径”&gt;语句，用法如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ComponentScan(&quot;扫描路径&quot;)</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="12-Import"><a href="#12-Import" class="headerlink" title="12. @Import"></a>12. @Import</h2><p>配合<br>@Configration注解将多个java配置类集合到一起，相当于xml配置文件中的import语句。</p>
-<h2 id="13-Bean"><a href="#13-Bean" class="headerlink" title="13. @Bean"></a>13. @Bean</h2><p>用于方法前，注册一个bean，相当于配置文件中的bean标签，方法的名字就相当于bean标签中的id属性，方法的返回值就相当于bean标签中的class属性</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -2108,13 +2278,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">180k</span>
+    <span title="站点总字数">185k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">5:27</span>
+    <span title="站点阅读时长">5:36</span>
   </span>
 </div>
 <div class="busuanzi-count">

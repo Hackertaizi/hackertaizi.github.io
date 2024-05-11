@@ -17,16 +17,16 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"hackertaizi.gitee.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"hackertaizi.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="Hive 文件格式一、 ORC Files1. ORC文件格式概述ORC(Optimized Row Columnar)文件格式提供了一种非常高效的方式来存储hive数据。它旨在克服其他Hive文件格式的限制。使用ORC文件可以提升Hive在读、写、处理数据时的性能。 以RCFile 格式做比较，ORC文件格式有许多有优点，例如：   单个文件作为每个任务的输出，这减少了NameNode的负载 .">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hive文件格式">
-<meta property="og:url" content="https://hackertaizi.gitee.io/Hadoop/Hive/Hive%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F/index.html">
+<meta property="og:url" content="https://hackertaizi.github.io/Hadoop/Hive/Hive%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F/index.html">
 <meta property="og:site_name" content="太子的个人博客">
 <meta property="og:description" content="Hive 文件格式一、 ORC Files1. ORC文件格式概述ORC(Optimized Row Columnar)文件格式提供了一种非常高效的方式来存储hive数据。它旨在克服其他Hive文件格式的限制。使用ORC文件可以提升Hive在读、写、处理数据时的性能。 以RCFile 格式做比较，ORC文件格式有许多有优点，例如：   单个文件作为每个任务的输出，这减少了NameNode的负载 .">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://hackertaizi.gitee.io/Hadoop/Hive/Hive%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F/.%5CHive%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%5Cimage-20220530141339875.png">
+<meta property="og:image" content="https://hackertaizi.github.io/Hadoop/Hive/Hive%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F/.%5CHive%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%5Cimage-20220530141339875.png">
 <meta property="article:published_time" content="2023-09-16T05:48:25.458Z">
 <meta property="article:modified_time" content="2023-09-27T10:32:56.550Z">
 <meta property="article:author" content="Taizi">
@@ -34,14 +34,14 @@
 <meta property="article:tag" content="Hive">
 <meta property="article:tag" content="Hadoop">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://hackertaizi.gitee.io/Hadoop/Hive/Hive%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F/.%5CHive%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%5Cimage-20220530141339875.png">
+<meta name="twitter:image" content="https://hackertaizi.github.io/Hadoop/Hive/Hive%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F/.%5CHive%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%5Cimage-20220530141339875.png">
 
 
-<link rel="canonical" href="https://hackertaizi.gitee.io/Hadoop/Hive/Hive%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F/">
+<link rel="canonical" href="https://hackertaizi.github.io/Hadoop/Hive/Hive%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hackertaizi.gitee.io/Hadoop/Hive/Hive%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F/","path":"Hadoop/Hive/Hive文件格式/","title":"Hive文件格式"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hackertaizi.github.io/Hadoop/Hive/Hive%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F/","path":"Hadoop/Hive/Hive文件格式/","title":"Hive文件格式"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>Hive文件格式 | 太子的个人博客</title>
@@ -195,7 +195,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Hadoop/Hive/Hive%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F/">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.github.io/Hadoop/Hive/Hive%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -438,8 +438,8 @@
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/Hadoop/Hive/%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E8%A6%81%E7%82%B9/" rel="next" title="数据开发要点">
-                  数据开发要点 <i class="fa fa-angle-right"></i>
+                <a href="/Hadoop/Hive/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E5%BC%80%E5%8F%91%E6%9E%B6%E6%9E%84%E5%B1%82%E6%AC%A1/" rel="next" title="数据仓库开发架构层次">
+                  数据仓库开发架构层次 <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>

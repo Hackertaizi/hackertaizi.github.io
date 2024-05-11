@@ -17,12 +17,12 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"hackertaizi.gitee.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"hackertaizi.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="Mapper层 查询用户已经使用的次数 查询城市白名单 为用户添加一次使用记录  Service层 调用mapper层，获取用户已经使用的次数 调用mapper层，获取城市白名单，判断用户所在城市是否支持 调用mapper层，为用户添加一次使用记录  Controller层 调用Service层，根据使用次数返回结果 调用Service层，根据service的判断结果返回结果 如果前两次返回结果都">
 <meta property="og:type" content="article">
 <meta property="og:title" content="逻辑层关系梳理">
-<meta property="og:url" content="https://hackertaizi.gitee.io/Java/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/%E9%80%BB%E8%BE%91%E5%B1%82%E5%85%B3%E7%B3%BB%E6%A2%B3%E7%90%86/index.html">
+<meta property="og:url" content="https://hackertaizi.github.io/Java/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/%E9%80%BB%E8%BE%91%E5%B1%82%E5%85%B3%E7%B3%BB%E6%A2%B3%E7%90%86/index.html">
 <meta property="og:site_name" content="太子的个人博客">
 <meta property="og:description" content="Mapper层 查询用户已经使用的次数 查询城市白名单 为用户添加一次使用记录  Service层 调用mapper层，获取用户已经使用的次数 调用mapper层，获取城市白名单，判断用户所在城市是否支持 调用mapper层，为用户添加一次使用记录  Controller层 调用Service层，根据使用次数返回结果 调用Service层，根据service的判断结果返回结果 如果前两次返回结果都">
 <meta property="og:locale" content="zh_CN">
@@ -34,11 +34,11 @@
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://hackertaizi.gitee.io/Java/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/%E9%80%BB%E8%BE%91%E5%B1%82%E5%85%B3%E7%B3%BB%E6%A2%B3%E7%90%86/">
+<link rel="canonical" href="https://hackertaizi.github.io/Java/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/%E9%80%BB%E8%BE%91%E5%B1%82%E5%85%B3%E7%B3%BB%E6%A2%B3%E7%90%86/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hackertaizi.gitee.io/Java/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/%E9%80%BB%E8%BE%91%E5%B1%82%E5%85%B3%E7%B3%BB%E6%A2%B3%E7%90%86/","path":"Java/开发经验/逻辑层关系梳理/","title":"逻辑层关系梳理"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hackertaizi.github.io/Java/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/%E9%80%BB%E8%BE%91%E5%B1%82%E5%85%B3%E7%B3%BB%E6%A2%B3%E7%90%86/","path":"Java/开发经验/逻辑层关系梳理/","title":"逻辑层关系梳理"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>逻辑层关系梳理 | 太子的个人博客</title>
@@ -192,7 +192,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://hackertaizi.gitee.io/Java/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/%E9%80%BB%E8%BE%91%E5%B1%82%E5%85%B3%E7%B3%BB%E6%A2%B3%E7%90%86/">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.github.io/Java/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/%E9%80%BB%E8%BE%91%E5%B1%82%E5%85%B3%E7%B3%BB%E6%A2%B3%E7%90%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -307,8 +307,8 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/Java/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/Java%E5%AE%9E%E6%88%98%E7%BB%8F%E9%AA%8C/" rel="prev" title="Java实战经验">
-                  <i class="fa fa-angle-left"></i> Java实战经验
+                <a href="/Java/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/%E7%A9%BA%E5%80%BC%E5%88%A4%E6%96%AD/" rel="prev" title="空值判断">
+                  <i class="fa fa-angle-left"></i> 空值判断
                 </a>
             </div>
             <div class="post-nav-item">

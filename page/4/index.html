@@ -184,6 +184,128 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.github.io/Java/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/1.Java%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%8E%AF%E5%A2%83/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Taizi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/Java/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/1.Java%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%8E%AF%E5%A2%83/" class="post-title-link" itemprop="url">1.Java程序设计环境</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-09-27 18:42:13" itemprop="dateModified" datetime="2023-09-27T18:42:13+08:00">2023-09-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">Java核心技术</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>571</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="1-Java程序设计环境"><a href="#1-Java程序设计环境" class="headerlink" title="1. Java程序设计环境"></a>1. Java程序设计环境</h1><h2 id="一些术语"><a href="#一些术语" class="headerlink" title="一些术语"></a>一些术语</h2><ul>
+<li>JDK：Java Development Kit（Java开发工具包）</li>
+<li>JRE: Java Runtime Environment （Java运行时环境）</li>
+<li>Java SE：Java Standard Edition（Java标准版，用于桌面或简单服务器应用的Java平台）</li>
+<li>Java EE:   Java Enterprise Edition（Java企业版，用于复杂服务器应用的Java平台）</li>
+<li>Java ME:  Java Micro Edition （Java 微型版，用于小型设备的Java平台）</li>
+</ul>
+<h2 id="使用命令行工具对Java代码进行编译"><a href="#使用命令行工具对Java代码进行编译" class="headerlink" title="使用命令行工具对Java代码进行编译"></a>使用命令行工具对Java代码进行编译</h2><ol>
+<li>首先必须安装JDK，并且配置好环境变量</li>
+<li>Java 代码存放在以   .java结尾的文档中</li>
+<li>使用命令  <code>javac ClassName.java</code> ,  javac程序是一个Java编译器，它将.java文件编译成字节码文件.class, 所以编译后将得到ClassName.class字节码文件。</li>
+<li>使用命令<code>java ClassName</code>, java 程序启动Java虚拟机，虚拟机执行编译器编译到类文件中的字节码。</li>
+</ol>
+<p><strong>注意点：</strong></p>
+<ul>
+<li>注意JDK版本，以及环境变量的配置</li>
+<li><strong>Java区分大小写，类名第一个字母需要大写</strong></li>
+<li>javac 编译器需要一个文件名（ClassName.java),  而Java程序运行时只需要指定类名（ClassName), 不需要带扩展名.java或.class。</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://hackertaizi.github.io/Java/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/2.Java%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -883,7 +1005,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hackertaizi.github.io/Java/JDK/JDK%E7%9A%84%E5%8D%B8%E8%BD%BD%E4%B8%8E%E5%AE%89%E8%A3%85/">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.github.io/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/IDEA/IDEA%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%B1%87%E6%80%BB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -901,7 +1023,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/Java/JDK/JDK%E7%9A%84%E5%8D%B8%E8%BD%BD%E4%B8%8E%E5%AE%89%E8%A3%85/" class="post-title-link" itemprop="url">JDK的卸载与安装</a>
+          <a href="/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/IDEA/IDEA%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%B1%87%E6%80%BB/" class="post-title-link" itemprop="url">IDEA常用快捷键汇总</a>
         </h2>
 
         <div class="post-meta-container">
@@ -919,7 +1041,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-09-27 18:45:56" itemprop="dateModified" datetime="2023-09-27T18:45:56+08:00">2023-09-27</time>
+      <time title="修改时间：2023-09-27 18:38:20" itemprop="dateModified" datetime="2023-09-27T18:38:20+08:00">2023-09-27</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -927,11 +1049,11 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+          <a href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">开发工具</span></a>
         </span>
           ，
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Java/JDK/" itemprop="url" rel="index"><span itemprop="name">JDK</span></a>
+          <a href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/IDEA/" itemprop="url" rel="index"><span itemprop="name">IDEA</span></a>
         </span>
     </span>
 
@@ -942,7 +1064,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>427</span>
+      <span>234</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -960,23 +1082,14 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="JDK的卸载与安装"><a href="#JDK的卸载与安装" class="headerlink" title="JDK的卸载与安装"></a>JDK的卸载与安装</h1><h2 id="1-JDK安装"><a href="#1-JDK安装" class="headerlink" title="1.JDK安装"></a>1.JDK安装</h2><blockquote>
-<ul>
-<li>百度搜索  JDK+版本号  ，根据系统版本，在oracle官网上下载对应版本的JDK（需要登录oracle账号）</li>
-<li>双击安装jdk，注意配置好安装路径，路径在配置环境变量时要使用  </li>
-<li>配置系统环境变量，在系统环境变量中新建名为“JAVA_HOME”的环境变量，变量值为JDK的安装路径</li>
-<li>配置path环境变量，在系统环境变量中的path变量中新建两个变量，分别为<br>%JAVA_HOME%\bin<br>%JAVA_HOME%\jre\bin</li>
-<li>注意在高版本的JDK中，可能不存在jre目录，需要查询进一步的解决方法</li>
-<li>命令提示符中运行 java -version 命令，查询到版本信息，说明jdk安装成功</li>
+          <h1 id="IDEA常用快捷键汇总"><a href="#IDEA常用快捷键汇总" class="headerlink" title="IDEA常用快捷键汇总"></a>IDEA常用快捷键汇总</h1><ul>
+<li>Alt + Enter  ：万能快捷键，可用于报错、创建对象等多种情况</li>
+<li>Ctrl + O ：快速重写，在一个类继承了另一个类之后，可以使用此快捷键快速重写父类的方法</li>
+<li>Ctrl + P ：查看参数，用于在方法的参数列表中查看方法有哪些参数</li>
+<li>Alt + Insert ：快速生成set、get方法，以及构造器等，常用语实体类实现以上方法及重写toString‘方法的内容。</li>
+<li>Ctrl+Alt+L：格式化代码，去掉无用代码</li>
+<li>Ctrl+Alt+O：格式化导入文件包，去掉无用的import包</li>
 </ul>
-</blockquote>
-<h2 id="2-JDK卸载"><a href="#2-JDK卸载" class="headerlink" title="2.JDK卸载"></a>2.JDK卸载</h2><blockquote>
-<ul>
-<li>查找并卸载JDK安装目录，可通过系统环境变量中的JavaHome环境变量中查找安装目录，然后将其删除</li>
-<li>删除环境变量，将系统环境变量中与JavaHome有关的环境变量删除</li>
-<li>命令提示符中运行 java -version 命令，查询不到版本信息，说明jdk卸载成功</li>
-</ul>
-</blockquote>
 
       
     </div>
@@ -1120,117 +1233,6 @@
 <p>如果要为以后新建的所有项目设置（推荐):</p>
 <ul>
 <li>File→New Projects Setup→Setting for new Projects→Build,Execution,Deployment→Complier→Shared build process heap size</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hackertaizi.github.io/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/IDEA/IDEA%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%B1%87%E6%80%BB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Taizi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/IDEA/IDEA%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%B1%87%E6%80%BB/" class="post-title-link" itemprop="url">IDEA常用快捷键汇总</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-09-27 18:38:20" itemprop="dateModified" datetime="2023-09-27T18:38:20+08:00">2023-09-27</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">开发工具</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/IDEA/" itemprop="url" rel="index"><span itemprop="name">IDEA</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>234</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="IDEA常用快捷键汇总"><a href="#IDEA常用快捷键汇总" class="headerlink" title="IDEA常用快捷键汇总"></a>IDEA常用快捷键汇总</h1><ul>
-<li>Alt + Enter  ：万能快捷键，可用于报错、创建对象等多种情况</li>
-<li>Ctrl + O ：快速重写，在一个类继承了另一个类之后，可以使用此快捷键快速重写父类的方法</li>
-<li>Ctrl + P ：查看参数，用于在方法的参数列表中查看方法有哪些参数</li>
-<li>Alt + Insert ：快速生成set、get方法，以及构造器等，常用语实体类实现以上方法及重写toString‘方法的内容。</li>
-<li>Ctrl+Alt+L：格式化代码，去掉无用代码</li>
-<li>Ctrl+Alt+O：格式化导入文件包，去掉无用的import包</li>
 </ul>
 
       
@@ -2543,13 +2545,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">186k</span>
+    <span title="站点总字数">189k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">5:39</span>
+    <span title="站点阅读时长">5:44</span>
   </span>
 </div>
 <div class="busuanzi-count">

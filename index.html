@@ -1288,7 +1288,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-05-14 19:31:29" itemprop="dateModified" datetime="2024-05-14T19:31:29+08:00">2024-05-14</time>
+      <time title="修改时间：2024-06-01 14:33:49" itemprop="dateModified" datetime="2024-06-01T14:33:49+08:00">2024-06-01</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1311,14 +1311,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>9.9k</span>
+      <span>13k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>18 分钟</span>
+      <span>23 分钟</span>
     </span>
 </div>
 
@@ -1604,6 +1604,100 @@
 </blockquote>
 <p>类路径所列出的目录和归档文件是搜寻类的起始点。</p>
 <p>虚拟机搜寻类文件时，首先要查看Java API类，找不到就查看类路径。</p>
+<p>编译器查找文件较复杂，如果引用了一个类而没有指定这个类的包，编译器将首先查找包含这个类的包，先检查所有import指令，确定其中是否包含这个类，如果找到了一个以上的类，就会产生编译错误。</p>
+<p>编译器还会查看源文件(.java)是否比类文件(.class, 经源文件编译后生成)新，如果是，则源文件自动重新编译。</p>
+<h3 id="7-设置类路径"><a href="#7-设置类路径" class="headerlink" title="7. 设置类路径"></a>7. 设置类路径</h3><ul>
+<li><p>使用 -classpath选项：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -classpath /home/user/classdir:.:/home/user/archives/archive.jar MyPath</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置CLASSPATH环境变量：</p>
+<ul>
+<li><p>bash命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export CLASSPATH=/home/user/classdir:.:/home/user/archives/archive.jar</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Windows Shell:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set CLASSPATH=c:\classdir;.;c:\archives\archive.jar</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>直到退出shell为止，类路径设置均有效。</p>
+</li>
+</ul>
+<h2 id="JAR文件"><a href="#JAR文件" class="headerlink" title="JAR文件"></a>JAR文件</h2><p>JAR文件相关知识，参见《Java核心技术 卷I》第143~148页。</p>
+<h2 id="文档注释（Javadoc）"><a href="#文档注释（Javadoc）" class="headerlink" title="文档注释（Javadoc）"></a>文档注释（Javadoc）</h2><p>JDK中包含了一个很有用的工具，叫做javadoc，它可以由源文件生成一个HTML文档。</p>
+<h3 id="1-注释的插入"><a href="#1-注释的插入" class="headerlink" title="1. 注释的插入"></a>1. 注释的插入</h3><p>javadoc实用工具从下面几项中抽取信息：</p>
+<ul>
+<li>模块</li>
+<li>包</li>
+<li>公共类与接口</li>
+<li>公共的和受保护的字段</li>
+<li>公共的和受保护的构造器和方法</li>
+</ul>
+<p>注释放在所描述的特性的前面，以 &#x2F;**开始，并以 *&#x2F;结束。</p>
+<p>每个&#x2F;** … *&#x2F;文档注释，包含标记，以及之后紧跟着的自由格式文本，标记以@开始，例如@since、@param</p>
+<p>自由格式文本的第一句应该是一个概要性的句子，javadoc工具自动地将这些句子抽取出来生成概要页。并且自由格式文本中可以使用HTML修饰符。</p>
+<h3 id="2-类注释"><a href="#2-类注释" class="headerlink" title="2. 类注释"></a>2. 类注释</h3><p>类注释必须放在import语句之后，类定义之前，例如我在idea中配置的自动创建的类注释：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Created</span> with IntelliJ IDEA</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span> Kaiyuan Zhang</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Version</span> 1.0.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Since</span> 1.0.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@CreateDate</span> 2024/5/25</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@CreateTime</span> 10:43</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<p>这是我写的一些标签，注意都不符合javadoc的规范，也不是自定义的标签。另外，javadoc注释没有必要在每一行的开头都加一个星号*，IDE自带的功能。</p>
+<p>后面会推荐一些常用的标签，<strong>这些标签将对生成的HTML文档内容产生影响</strong></p>
+<h3 id="3-方法注释"><a href="#3-方法注释" class="headerlink" title="3. 方法注释"></a>3. 方法注释</h3><p>方法注释必须放在所描述的方法之前，除了通用标记之外，还可以使用下面的标记：</p>
+<ul>
+<li>@param variable description<br>给当前方法的参数部分添加一个条目，描述可以占据多行以及使用HTML标记，一个方法的所有@param标记必须放到一起</li>
+<li>@return description<br>给当前方法添加返回部分，描述可以占据多行以及使用HTML标记</li>
+<li>@throws class description<br>添加一个注释，表示方法有可能抛出异常</li>
+</ul>
+<h3 id="4-字段注释"><a href="#4-字段注释" class="headerlink" title="4. 字段注释"></a>4. 字段注释</h3><p>只需要对公用字段（通常指的是静态常量）建立注释，例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">	The &quot;Hearts&quot; card suit</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">HEARTS</span> <span class="operator">=</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-通用注释"><a href="#5-通用注释" class="headerlink" title="5. 通用注释"></a>5. 通用注释</h3><ul>
+<li>@since text<br>建立一个”since”（始于）条目，text可以是引入这个特性的版本的任何描述，例如@since 1.7.1</li>
+</ul>
+<p>以下标记可以用在类文档注释中：</p>
+<ul>
+<li><p>@author name<br>生成一个”author”（作者）条目，可以使用多个@author标记，每个标记对应一个作者。</p>
+</li>
+<li><p>@version text</p>
+<p>生成一个”version”（版本）条目，这里的文本可以是对当前版本的任何描述</p>
+</li>
+<li><p>@see reference</p>
+<p>在”see also”部分添加一个超链接，可以用于类中，也可以用于方法中，这里的reference 引用可以有以下选择：</p>
+<ul>
+<li><p>package.class#feature label<br>这种情况最常用，只要提供类、方法或变量的名字，javadoc就在文档中插入一个超链接，例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@see</span> com.horstman.corejava.Employee#raiseSalary(<span class="type">double</span>)</span><br></pre></td></tr></table></figure>
+
+<p>这会建立一个链接到com.horstman.corejava.Employee类的raiseSalary(double)方法的超链接。可以省略包名，甚至包名类名都省去，这样一来，这会位于当前包或当前类中。注意一定使用井号#分隔类名与方法名，或者类名与变量名。</p>
+</li>
+<li><p>&lt;a href&#x3D;”…”&gt;label    <a href="...">label</a><br>超链接中可以是任何url，label是一个可选标签，作为连接锚。如果省略了标签，用户看到的锚就是目标代码名或者URL。</p>
+</li>
+<li><p>“text”<br>文本会显示在”see also” 部分</p>
+</li>
+</ul>
+</li>
+<li><p>@link</p>
+</li>
+</ul>
+<p>​	如果愿意，可以在文档注释中的任何位置放置指向其他类或方法的超链接。可以在注释中的任何位置插入一个形式如下的特殊标记：<br>​	{@link package.class#feature label}<br>​	这里的特性描述规则与@see 标记的规则相同</p>
+<h3 id="6-包注释"><a href="#6-包注释" class="headerlink" title="6. 包注释"></a>6. 包注释</h3><p>类、方法、变量的注释，只需将文档注释放置在java源文件中即可。但是，要想产生包注释，就需要在每一个包目录中添加一个单独的文件。有如下两个选择：</p>
+<ul>
+<li>提供一个名为 <code>pakcage-info.java</code> 的Java文件。这个文件必须包含一个初始的以&#x2F;** 和 *&#x2F;界定的javadoc注释，后面是一个package语句。它不能包含更多的代码或注释。</li>
+<li>提供一个名为<code>package.html</code>的HTML文件。会抽取&lt;body&gt;…之间的所有文本。</li>
+</ul>
+<h3 id="7-注释抽取"><a href="#7-注释抽取" class="headerlink" title="7. 注释抽取"></a>7. 注释抽取</h3><p>假设希望将生成的HTML文件放在名为docDirectory的目录下，执行以下步骤：</p>
+<ol>
+<li><p>命令行，切换到包含想要生成文档的源文件的目录，如果有嵌套的包需要生成文档，例如com.horstman.corejava，就必须切换到包含子目录com的目录（如果提供了overview.html文件的话，就是这个文件所在的目录）。</p>
+</li>
+<li><p>如果是一个包，应该运行命令：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javadoc -d docDirectory nameOfpackage</span><br></pre></td></tr></table></figure>
+
+<p>或者如果要为多个包生成文档，运行：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javadoc -d docDirectory nameOfpackage1 nameOfpackage2 ...</span><br></pre></td></tr></table></figure>
+
+<p>如果文件在无名的包中，就应该运行：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javadoc -d docDirectory *.java</span><br></pre></td></tr></table></figure>
+
+<p>如果省略了 -d docDirectory 选项，那么HTML文件就会被提取到当前目录下，可能会带来混乱，不推荐。</p>
+<p>IEDA中可以使用tools–generate Javadoc选项直接生成html文件。</p>
+</li>
+</ol>
 
       
     </div>
@@ -2129,13 +2223,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">186k</span>
+    <span title="站点总字数">189k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">5:39</span>
+    <span title="站点阅读时长">5:44</span>
   </span>
 </div>
 <div class="busuanzi-count">

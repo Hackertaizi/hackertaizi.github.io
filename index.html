@@ -147,7 +147,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">52</span>
+          <span class="site-state-item-count">54</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -175,6 +175,352 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93/GreenPlum/GreenPlum%E5%88%86%E5%8C%BA%E6%96%B9%E5%BC%8F%E6%B1%87%E6%80%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Taizi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/%E6%95%B0%E6%8D%AE%E5%BA%93/GreenPlum/GreenPlum%E5%88%86%E5%8C%BA%E6%96%B9%E5%BC%8F%E6%B1%87%E6%80%BB/" class="post-title-link" itemprop="url">GreenPlum分区方式汇总</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-07-01 18:57:38" itemprop="dateCreated datePublished" datetime="2024-07-01T18:57:38+08:00">2024-07-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-07-02 14:48:50" itemprop="dateModified" datetime="2024-07-02T14:48:50+08:00">2024-07-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/GreenPlum/" itemprop="url" rel="index"><span itemprop="name">GreenPlum</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.7k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="GreenPlum分区方式汇总"><a href="#GreenPlum分区方式汇总" class="headerlink" title="GreenPlum分区方式汇总"></a>GreenPlum分区方式汇总</h1><h2 id="1-分区原理"><a href="#1-分区原理" class="headerlink" title="1. 分区原理"></a>1. 分区原理</h2><p>分区表意思是将一个大表在物理上分割成几块，GP中的分区表和PostgreSQL中实现原理一样，都是用过表继承、约束来实现。但是与PostgreSQL也有所不同，在PostgreSQL中，一个父表，多个子表来实现分区表，需要手动向子表插入数据，如果向父表插入数据，则直接会被插入到父表中，在GP中，直接向父表插入数据，根据约束会直接自动向对应的子表插入数据，当分区子表不存在时，插入失败。也就是说，数据插入是根据分区键的值来自动插入对应分区的。</p>
+<h2 id="2-分区表创建"><a href="#2-分区表创建" class="headerlink" title="2. 分区表创建"></a>2. 分区表创建</h2><h3 id="2-1-范围分区"><a href="#2-1-范围分区" class="headerlink" title="2.1 范围分区"></a>2.1 范围分区</h3><p>允许一个或多个字段的数值范围将表数据分配到不同的分区中</p>
+<figure class="highlight postgresql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> test_partition_range(</span><br><span class="line">	id <span class="type">int</span>,</span><br><span class="line">    <span class="type">name</span> <span class="type">varchar</span>(<span class="number">64</span>),</span><br><span class="line">    fdate <span class="type">varchar</span>(<span class="number">10</span>)</span><br><span class="line">)</span><br><span class="line">distributed <span class="keyword">by</span> (id)</span><br><span class="line"><span class="keyword">partition by range</span>(fdate)(</span><br><span class="line">	<span class="keyword">partition</span> p1 <span class="keyword">start</span> (<span class="string">&#x27;2024-01-01&#x27;</span>) inclusive <span class="keyword">end</span> (<span class="string">&#x27;2024-01-31&#x27;</span>) <span class="keyword">exclusive</span>,</span><br><span class="line">    <span class="keyword">partition</span> p2 <span class="keyword">start</span> (<span class="string">&#x27;2024-02-01&#x27;</span>) inclusive <span class="keyword">end</span> (<span class="string">&#x27;2024-02-29&#x27;</span>) <span class="keyword">exclusive</span>,</span><br><span class="line">    <span class="keyword">default</span> <span class="keyword">partition</span> default_p</span><br><span class="line">);</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	inclusive: 指定包含，例如上面的分区p1包含‘2024-01-01’</span></span><br><span class="line"><span class="comment">	exclusive: 指定不包含，例如上面的分区p2不包含‘2024-01-31’</span></span><br><span class="line"><span class="comment">	如果不是用上述关键字，默认情况下，起始边界值包含在分区内，而结束边界值不包含在分区内。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	default partition: 默认分区，用于存储不符合任何已定义分区条件的数据。</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-2-快速分区"><a href="#2-2-快速分区" class="headerlink" title="2.2 快速分区"></a>2.2 快速分区</h3><figure class="highlight postgresql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> test_partition_every(</span><br><span class="line">	id <span class="type">int</span>,</span><br><span class="line">    <span class="type">name</span> <span class="type">varchar</span>(<span class="number">64</span>),</span><br><span class="line">    fdate <span class="type">date</span></span><br><span class="line">)</span><br><span class="line">distributed <span class="keyword">by</span> (id)</span><br><span class="line"><span class="keyword">partition by range</span>(fdate)(</span><br><span class="line">	<span class="keyword">partition</span> pn <span class="keyword">start</span> (<span class="string">&#x27;2024-01-01&#x27;</span>::<span class="type">date</span>) <span class="keyword">end</span> (<span class="string">&#x27;2024-01-31&#x27;</span>::<span class="type">date</span>) every(<span class="string">&#x27;1day&#x27;</span>::<span class="type">interval</span>),</span><br><span class="line">    <span class="keyword">default</span> <span class="keyword">partition</span> default_p</span><br><span class="line">);</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	every: 指定跨越基数</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-3-列表分区"><a href="#2-3-列表分区" class="headerlink" title="2.3 列表分区"></a>2.3 列表分区</h3><p>根据某一列的值进行分区，相同数据归入同一个分区</p>
+<figure class="highlight postgresql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> test_partition_list(</span><br><span class="line">	id <span class="type">int</span>,</span><br><span class="line">    <span class="type">name</span> <span class="type">varchar</span>(<span class="number">64</span>),</span><br><span class="line">    fdate <span class="type">varchar</span>(<span class="number">10</span>)</span><br><span class="line">)</span><br><span class="line">distributed <span class="keyword">by</span> (id)</span><br><span class="line"><span class="keyword">partition by range</span>(fdate)(</span><br><span class="line">	<span class="keyword">partition</span> p1 <span class="keyword">values</span>(<span class="string">&#x27;2024-01-01&#x27;</span>,<span class="string">&#x27;2024-01-02&#x27;</span>)</span><br><span class="line">    <span class="keyword">partition</span> p2 <span class="keyword">values</span>(<span class="string">&#x27;2024-01-03&#x27;</span>)</span><br><span class="line">    <span class="keyword">default</span> <span class="keyword">partition</span> pd</span><br><span class="line">);</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	inclusive: 指定包含，例如上面的分区p1包含‘2024-01-01’</span></span><br><span class="line"><span class="comment">	exclusive: 指定不包含，例如上面的分区p2不包含‘2024-01-31’</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="3-分区操作"><a href="#3-分区操作" class="headerlink" title="3. 分区操作"></a>3. 分区操作</h2><h3 id="3-1-分区-split"><a href="#3-1-分区-split" class="headerlink" title="3.1 分区 split"></a>3.1 分区 split</h3><figure class="highlight postgresql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 将范围分区p2在 ‘2024-02-15’ 左右切分成两块</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> test_partition_range SPLIT <span class="keyword">PARTITION</span> p2 AT (<span class="string">&#x27;2024-02-15&#x27;</span>) <span class="keyword">INTO</span> (<span class="keyword">PARTITION</span> p2, <span class="keyword">PARTITION</span> p3);</span><br><span class="line"></span><br><span class="line"><span class="comment">--切割默认分区</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> test_partition_range SPLIT <span class="keyword">DEFAULT</span> <span class="keyword">PARTITION</span> <span class="keyword">START</span>(<span class="string">&#x27;2024-03-01&#x27;</span>) <span class="keyword">END</span> (<span class="string">&#x27;2024-03-31&#x27;</span>) <span class="keyword">INTO</span> (<span class="keyword">PARTITION</span> p4, <span class="keyword">DEFAULT</span> <span class="keyword">PARTITION</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-分区-add"><a href="#3-2-分区-add" class="headerlink" title="3.2 分区 add"></a>3.2 分区 add</h3><p>如果存在DEFAULT PARTITON, 则不能随意添加分区，可以 SPLIT DEFAULT PARTITION.</p>
+<p>新添加的分区范围不能与现有的分区重叠（包括默认分区），因为数据库无法确定如何分配重叠范围内的数据。</p>
+<figure class="highlight postgresql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> test_partition_range <span class="keyword">ADD</span> <span class="keyword">PARTITION</span> p3 <span class="keyword">start</span> (<span class="string">&#x27;2024-03-01&#x27;</span>) <span class="keyword">end</span> (<span class="string">&#x27;2024-03-31&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-分区-drop"><a href="#3-3-分区-drop" class="headerlink" title="3.3 分区 drop"></a>3.3 分区 drop</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE test_partition_range DROP PARTITION p1;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="4-子分区创建与操作"><a href="#4-子分区创建与操作" class="headerlink" title="4. 子分区创建与操作"></a>4. 子分区创建与操作</h2><h3 id="4-1-子分区创建"><a href="#4-1-子分区创建" class="headerlink" title="4.1 子分区创建"></a>4.1 子分区创建</h3><p>在GP中，分区可以嵌套增加，分区下可以建立子分区</p>
+<figure class="highlight postgresql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> test_partition_range(</span><br><span class="line">	id <span class="type">int</span>,</span><br><span class="line">    <span class="type">name</span> <span class="type">varchar</span>(<span class="number">64</span>),</span><br><span class="line">    fdate <span class="type">varchar</span>(<span class="number">10</span>)</span><br><span class="line">)</span><br><span class="line">distributed <span class="keyword">by</span> (id)</span><br><span class="line"><span class="keyword">partition by range</span>(fdate)</span><br><span class="line">subpartition <span class="keyword">by</span> list(<span class="type">name</span>)</span><br><span class="line">subpartition <span class="keyword">template</span></span><br><span class="line">(</span><br><span class="line">	subpartition c1 <span class="keyword">values</span>(<span class="string">&#x27;xiaoming&#x27;</span>),</span><br><span class="line">    subpartition c2 <span class="keyword">values</span>(<span class="string">&#x27;lihua&#x27;</span>)</span><br><span class="line">)</span><br><span class="line">(</span><br><span class="line">	<span class="keyword">partition</span> p1 <span class="keyword">start</span> (<span class="string">&#x27;2024-01-01&#x27;</span>) inclusive <span class="keyword">end</span> (<span class="string">&#x27;2024-01-31&#x27;</span>) <span class="keyword">exclusive</span>,</span><br><span class="line">    <span class="keyword">partition</span> p2 <span class="keyword">start</span> (<span class="string">&#x27;2024-02-01&#x27;</span>) inclusive <span class="keyword">end</span> (<span class="string">&#x27;2024-02-29&#x27;</span>) <span class="keyword">exclusive</span>,</span><br><span class="line">    <span class="keyword">default</span> <span class="keyword">partition</span> default_p</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-2-truncate-子分区"><a href="#4-2-truncate-子分区" class="headerlink" title="4.2 truncate 子分区"></a>4.2 truncate 子分区</h3><figure class="highlight postgresql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> test_partition_range <span class="keyword">ALTER</span> <span class="keyword">PARTITION</span> p1 <span class="keyword">truncate</span> <span class="keyword">partition</span> c2;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-3-drop-子分区"><a href="#4-3-drop-子分区" class="headerlink" title="4.3 drop 子分区"></a>4.3 drop 子分区</h3><figure class="highlight postgresql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> test_partition_range <span class="keyword">ALTER</span> <span class="keyword">PARTITION</span> p1 <span class="keyword">drop</span> <span class="keyword">partition</span> c2;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93/GreenPlum/GreenPlum%E8%A1%A8%E8%AE%BE%E8%AE%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Taizi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/%E6%95%B0%E6%8D%AE%E5%BA%93/GreenPlum/GreenPlum%E8%A1%A8%E8%AE%BE%E8%AE%A1/" class="post-title-link" itemprop="url">GreenPlum表设计</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-07-01 18:34:24" itemprop="dateCreated datePublished" datetime="2024-07-01T18:34:24+08:00">2024-07-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-07-02 14:48:36" itemprop="dateModified" datetime="2024-07-02T14:48:36+08:00">2024-07-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/GreenPlum/" itemprop="url" rel="index"><span itemprop="name">GreenPlum</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.8k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="GreenPlum表设计"><a href="#GreenPlum表设计" class="headerlink" title="GreenPlum表设计"></a>GreenPlum表设计</h1><h2 id="1-数据类型"><a href="#1-数据类型" class="headerlink" title="1. 数据类型"></a>1. 数据类型</h2><ul>
+<li>在满足业务需求的条件下，尽可能选择空间占用最小的数据类型，以节省存储空间。</li>
+<li>GP中，CHAR、VARCHAR、TEXT之间不存在性能差异，只是在使用 char 的时候增加了存储尺寸，导致更多的存储空间。</li>
+<li>定长字符串类型使用 varchar，而不使用 char。</li>
+<li>对于 Numeric 类型来说，应该尽量选择更小的数据类型来适应数据；比如，选择 BIGINT 类型来存储 SMALLINT 类型范围内的数值，会造成空间的大量浪费。</li>
+<li>用来做 Table Join 的 Column 来说，应该考虑选择相同的数据类型。如果做 Join 的 Column具有相同的数据类型(比如主键 PrimaryKey 与外键 ForeignKey)，其工作效率会更高。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>数据类型</th>
+<th>选择该数据类型的字段</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>VARCHAR(n)</td>
+<td>变长的字符串类型描述字段，有长度限制</td>
+</tr>
+<tr>
+<td>2</td>
+<td>TEXT</td>
+<td>超大文本字段，变长，无长度限制</td>
+</tr>
+<tr>
+<td>3</td>
+<td>DATE</td>
+<td>只用于表示日期</td>
+</tr>
+<tr>
+<td>4</td>
+<td>TIME</td>
+<td>只用于表示一日内时间</td>
+</tr>
+<tr>
+<td>5</td>
+<td>TIMESTAMP</td>
+<td>时间和日期</td>
+</tr>
+<tr>
+<td>6</td>
+<td>BOOLEAN</td>
+<td>布尔类型</td>
+</tr>
+<tr>
+<td>7</td>
+<td>SMALLINT</td>
+<td>较小的整数，-32768 – +32768</td>
+</tr>
+<tr>
+<td>8</td>
+<td>INTEGER</td>
+<td>一般大小的整数，最大约 21 亿</td>
+</tr>
+<tr>
+<td>9</td>
+<td>BIGINT</td>
+<td>超大整数</td>
+</tr>
+<tr>
+<td>10</td>
+<td>DECIMAL(m,n)</td>
+<td>用户声明精确度，无限制</td>
+</tr>
+</tbody></table>
+<h2 id="2-数据分布"><a href="#2-数据分布" class="headerlink" title="2. 数据分布"></a>2. 数据分布</h2><p>Greenplum 数据仓库平台的数据表 DK 设计规范如下：</p>
+<ol>
+<li>每个数据表必须通过 Distribiuted 子句显式指定分布键 DK，不允许使用默认 DK 的方式创<br>建数据表；</li>
+<li>对从 TD 系统过来的数据表，分布键应采用 TD 的 PI 字段。</li>
+<li><strong>分布键字段原则上为 1 个，应尽量不要超过 3 个；</strong></li>
+<li>父子表的分布键应完全一致；</li>
+<li>中间过程表、临时表、派生表的 DK 应尽可能保持和源表一致；</li>
+<li>具有关联关系的数据表，应尽可能使用关联字段作为分布键；</li>
+<li>对于维表、代码表，应选择其主键作为分布键；</li>
+<li>对于实体表，应选择其逻辑主键作为分布键；</li>
+<li>分布键字段不可执行 Update 操作；</li>
+<li><strong>尽量避免使用随机分布策略，虽然其数据分布是均匀的，但随机分布策略总会导致在查询执</strong><br><strong>行时，数据在节点之间的交换和迁移，影响执行性能；</strong></li>
+<li>为了保证数据分布均匀，在没有合适字段作为分布键的情况下，应选择数据表的主键作为分<br>布键；</li>
+<li>对于没有逻辑主键，又没有其他合适字段作为分布键的数据表，才建议设置其分布策略为<br>Distributed Randomly， 这只应该为最后的选择；</li>
+<li>随机分布的适合使用场景：查询时不需要和其它表关联、或只与小表关联的数据表，<br>使用随机分布策略</li>
+</ol>
+<h2 id="3-数据分区"><a href="#3-数据分区" class="headerlink" title="3. 数据分区"></a>3. 数据分区</h2><p>Greenplum 数据库数据分区使用规范如下：</p>
+<ol>
+<li>在性能可以满足的情况下，尽量不使用数据分区；</li>
+<li>因会造成表对象数量过多，增加执行计划生成的复杂性，禁止使用二级分区；</li>
+<li>数据量在 3 亿以上，或者单表容量超过 50GB，建议设计为分区表；</li>
+<li>表的数据在单个实例的数据量在 50 万级别以下，不需要分区；</li>
+<li>单个子分区的记录数小于 1000 万，说明分区粒度太细；</li>
+<li>分区字段不可以 UPDATE,需要用 delete + insert 替代实现。</li>
+</ol>
+<h2 id="4-数据表压缩"><a href="#4-数据表压缩" class="headerlink" title="4. 数据表压缩"></a>4. 数据表压缩</h2><p>Greenplum 数据表分两种类型：堆表和 AO 表（Append-optimized）。要对数据进行压缩，数据表只可以是 AO 表。<br>Greenplum 数据表压缩的设计规范如下：</p>
+<ol>
+<li>需要频繁更新的数据表不应使用压缩存储；</li>
+<li>数据量在百万级以下的小表，不建议使用压缩存储；</li>
+<li>不要在压缩文件系统使用压缩存储；</li>
+<li>压缩表建议统一使用 zlib 压缩算法，压缩级别为 5 (appendonly&#x3D;true, compresstype&#x3D;zlib,<br> compresslevel&#x3D;5);，此压缩设置满足大多数的使用场景。</li>
+<li>建议对数据仓库中的记录数超过 1000 万的事实表、历史数据表采用压缩存储；</li>
+<li>所有不再更新的历史数据表、备份表、归档表统一使用压缩存储；</li>
+</ol>
+<h2 id="5-数据表行列存储"><a href="#5-数据表行列存储" class="headerlink" title="5. 数据表行列存储"></a>5. 数据表行列存储</h2><p>Greenplum 数据仓库平台行列存储规范如下：</p>
+<ol>
+<li>通常情况下采用行存储，只有在频繁查询，并且访问模式是只访问少量字段的情况下，才优<br>先使用列存储。</li>
+<li>如果选择的 Column 数量经常大于 30 个以上的数据表，不建议使用列存储；</li>
+<li>建议控制数据库中列存储数据表的数量，过多的列存表会造成系统文件数量的急剧膨胀，影<br>响系统性能；</li>
+<li>数据量在 1000 万以下的数据表，不建议使用列存储；</li>
+<li>列存储表虽然查询和加载数据的效率很高，但是它只能支持 select、insert 和 truncate 操<br>作，不支持 update 和 delete 操作，所以它只适合存放经过处理基本最终无变化的历史数据，<br>用来提供高效的查询访问；</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1868,338 +2214,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hackertaizi.github.io/%E5%85%B6%E4%BB%96/%E7%BB%93%E6%9E%84%E6%80%A7%E6%80%9D%E7%BB%B4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Taizi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/%E5%85%B6%E4%BB%96/%E7%BB%93%E6%9E%84%E6%80%A7%E6%80%9D%E7%BB%B4/" class="post-title-link" itemprop="url">结构性思维</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-10-21 10:18:48" itemprop="dateCreated datePublished" datetime="2023-10-21T10:18:48+08:00">2023-10-21</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-11-06 08:58:18" itemprop="dateModified" datetime="2023-11-06T08:58:18+08:00">2023-11-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%85%B6%E4%BB%96/" itemprop="url" rel="index"><span itemprop="name">其他</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.4k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="结构性思维"><a href="#结构性思维" class="headerlink" title="结构性思维"></a>结构性思维</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">核心总结：</span><br><span class="line">	图像化：构思图</span><br><span class="line">	核心要点：</span><br><span class="line">		结论先行：说话做事以目标为导向，注意使用场景。</span><br><span class="line">		上下先行：注意因果逻辑。</span><br></pre></td></tr></table></figure>
-
-<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><table>
-<thead>
-<tr>
-<th>核心点</th>
-<th>定义</th>
-<th>内容</th>
-<th>应用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>构思图</td>
-<td><img src="/%E5%85%B6%E4%BB%96/%E7%BB%93%E6%9E%84%E6%80%A7%E6%80%9D%E7%BB%B4/blogfile-master\source_posts\其他\结构性思维\image-20231021.png"></td>
-<td>结构性思维的图形化<br>G：Goal，也就是你沟通表达的目的、目标和结论<br>A、B、C：解构得到的步骤，也就是因为A、B、C，所以才有了G<br>A1、B1、C1、……：更深层次的解构，同时强调了逻辑的顺序性</td>
-<td></td>
-</tr>
-<tr>
-<td>结论先行</td>
-<td>向别人传递信息时，先给出结论的思维和行为方式。</td>
-<td>1. 结论先行本质上是一种用户思维，为用户考虑。<br>2. 结论先行的思想可以用在文案标题中，标题点明内容的重点。<br>3. 结论先行可以为行动提供指南，结论先行的思维决定了以终为始的行动，即向着目标行动。</td>
-<td><strong>用户思维</strong>：<br>case1：时间紧，短时间内需要传递重要信息<br>case2：信息多，例如向领导汇报时，信息量如果很大，先讲结论。<br>case3：ta需要，例如你讲解时有人提问原因原理，这时你就需要告诉他结论<br><strong>标题应用</strong>：<br><br>标题就是结论，标题要从内容中来，比如写年终总结报告时，标题不要写成《年终总结》，而要点明你的内容要点。<br><strong>提供行动指南</strong>：<br>例如企业领导者能看到发展的愿景，那么他还需要将这些愿景描绘传递给员工，让他们知道奋斗的方向和结果。</td>
-</tr>
-<tr>
-<td>上下对应</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<h2 id="1-什么是结构性思维"><a href="#1-什么是结构性思维" class="headerlink" title="1. 什么是结构性思维"></a>1. 什么是结构性思维</h2><p><img src="/%E5%85%B6%E4%BB%96/%E7%BB%93%E6%9E%84%E6%80%A7%E6%80%9D%E7%BB%B4/8X6hPmjPTp.jpg" alt="8X6hPmjPTp"></p>
-<p>透过现象看本质</p>
-<h2 id="2-解构与建构"><a href="#2-解构与建构" class="headerlink" title="2. 解构与建构"></a>2. 解构与建构</h2><p>解构：从整体到部分</p>
-<p>建构：从部分到整体</p>
-<p>eg: 电影剧本的批量生产、汽车流水线、高考作文的套路</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">个人感想：</span><br><span class="line">	通过解构虽然提高了生产效率，但对于参与的个体来讲，发展是受限的，并且是大量同质的。</span><br></pre></td></tr></table></figure>
-
-<h2 id><a href="#" class="headerlink" title></a></h2><h2 id="3-构思图"><a href="#3-构思图" class="headerlink" title="3. 构思图"></a>3. 构思图</h2><p><img src="/%E5%85%B6%E4%BB%96/%E7%BB%93%E6%9E%84%E6%80%A7%E6%80%9D%E7%BB%B4/image-20231021104612408.png" alt="image-20231021104612408"></p>
-<p>G:goal , 沟通和表达的目的、目标和结论</p>
-<p>构思图的原则：</p>
-<ol>
-<li><p>结论先行：先说结果，goal</p>
-</li>
-<li><p>上下对应：因果逻辑存在：因为ABC，所以goal</p>
-</li>
-<li><p>分类清楚：A  B  C</p>
-</li>
-<li><p>排序逻辑：A1  A2  A3</p>
-</li>
-</ol>
-<p>构思图应用示例：</p>
-<p><img src="/%E5%85%B6%E4%BB%96/%E7%BB%93%E6%9E%84%E6%80%A7%E6%80%9D%E7%BB%B4/image-20231021105741955.png" alt="image-20231021105741955"></p>
-<h2 id="4-结论先行——用户思维应用"><a href="#4-结论先行——用户思维应用" class="headerlink" title="4. 结论先行——用户思维应用"></a>4. 结论先行——用户思维应用</h2><p>结论先行：说话先说结论，让对方快速地理解你想表达的意思。</p>
-<p>应用场景：</p>
-<pre><code> 1. 时间紧 ：例如战地记者
- 2. 信息多 ：例如汇报
- 3. ta需要 ：例如你说话时别人要问你结论
-</code></pre>
-<p>底层是用户思维</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">个人感想：</span><br><span class="line">	1. 能保证重要信息快速传达给对方</span><br><span class="line">	2. 避免信息漏传，如果长篇大论先扯，自己反而可能忘了要说的事。</span><br><span class="line">	3. 先说结论避免长篇大论给对面</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="5-结论先行——让标题会说话"><a href="#5-结论先行——让标题会说话" class="headerlink" title="5. 结论先行——让标题会说话"></a>5. 结论先行——让标题会说话</h2><p>重点：标题就是GOAL ，标题从内容中来</p>
-<p>其他：一些起标题的方法，1. 左右对称：做什么：得什么，例如好好学习，天天向上；2. 制造悬念，加问句；</p>
-<h2 id="6-结论先行——为行动确定指南"><a href="#6-结论先行——为行动确定指南" class="headerlink" title="6. 结论先行——为行动确定指南"></a>6. 结论先行——为行动确定指南</h2><p>重点：结论先行的思维决定了以终为始的行动</p>
-<p>以终为始：明确目标，找到关键要务，然后再付诸实践。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">个人感想：</span><br><span class="line">	看起来不可能或难以完成的任务：解构</span><br><span class="line">	所以很少有什么事是不可完成的</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="7-上下对应——建立因果逻辑关系"><a href="#7-上下对应——建立因果逻辑关系" class="headerlink" title="7. 上下对应——建立因果逻辑关系"></a>7. 上下对应——建立因果逻辑关系</h2><p>上下对应：</p>
-<p>讲理。</p>
-<p>“知其然，并知其所以然”</p>
-<p>完成了，并且要知道为什么完成了。</p>
-<p>因果之间的强逻辑。</p>
-<p>说服：</p>
-<p>​	定义核心词</p>
-<p>​	逐字审题法</p>
-<p>项目方案：</p>
-<p>​	1st. 当前问题</p>
-<p>​	2nd. 解决方案</p>
-<p>​	3rd. 具体案例</p>
-<p>PPT写作：</p>
-<p>​	有内容的主题句</p>
-<h2 id="8-分类清楚"><a href="#8-分类清楚" class="headerlink" title="8. 分类清楚"></a>8. 分类清楚</h2><h3 id="什么是分类"><a href="#什么是分类" class="headerlink" title="什么是分类"></a>什么是分类</h3><p>分类：按照种类、等级或性质分别归类</p>
-<p>分类的意义：</p>
-<p>​	</p>
-<p>​	分类便于记忆</p>
-<p>​	分类便于计算</p>
-<h3 id="分类的MECE原则"><a href="#分类的MECE原则" class="headerlink" title="分类的MECE原则"></a>分类的MECE原则</h3><p>分类标准：麦肯锡MECE原则</p>
-<p>​	part1.相互独立       没有交集</p>
-<p>​	part2.完全穷尽       全集</p>
-<p>​	也就是不重不漏</p>
-<p><img src="/%E5%85%B6%E4%BB%96/%E7%BB%93%E6%9E%84%E6%80%A7%E6%80%9D%E7%BB%B4/image-20231021143716527.png" alt="image-20231021143716527"></p>
-<p>如何符合MECE原则：</p>
-<p>​	part1.界定范围</p>
-<p>​	part2.明确标准</p>
-<p>做分类，图、表比文字好！</p>
-<h3 id="思维的层次感"><a href="#思维的层次感" class="headerlink" title="思维的层次感"></a>思维的层次感</h3><p>应对复杂问题：分类讨论</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hackertaizi.github.io/Java/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/%E5%B8%B8%E7%94%A8Java%20API/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Taizi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/Java/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/%E5%B8%B8%E7%94%A8Java%20API/" class="post-title-link" itemprop="url">常用的Java API</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-09-23 11:07:44" itemprop="dateCreated datePublished" datetime="2023-09-23T11:07:44+08:00">2023-09-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-09-27 18:44:54" itemprop="dateModified" datetime="2023-09-27T18:44:54+08:00">2023-09-27</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Java/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">Java核心技术</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>2.3k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>4 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="常用Java-API"><a href="#常用Java-API" class="headerlink" title="常用Java API"></a>常用Java API</h1><h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">length()：返回字符串的长度。</span><br><span class="line"></span><br><span class="line">charAt(int index)：返回指定索引处的字符。</span><br><span class="line"></span><br><span class="line">substring(int beginIndex, int endIndex)：返回从beginIndex到endIndex-1的子字符串。</span><br><span class="line"></span><br><span class="line">indexOf(String str)：返回指定字符串在此字符串中第一次出现的索引。</span><br><span class="line"></span><br><span class="line">lastIndexOf(String str)：返回指定字符串在此字符串中最后一次出现的索引。</span><br><span class="line"></span><br><span class="line">startsWith(String prefix)：测试此字符串是否以指定的前缀开头。</span><br><span class="line"></span><br><span class="line">endsWith(String suffix)：测试此字符串是否以指定的后缀结尾。</span><br><span class="line"></span><br><span class="line">toUpperCase()：将此字符串转换为大写。</span><br><span class="line"></span><br><span class="line">toLowerCase()：将此字符串转换为小写。</span><br><span class="line"></span><br><span class="line">trim()：返回字符串的副本，忽略前导空白和尾部空白。</span><br><span class="line"></span><br><span class="line">replace(char oldChar, char newChar)：返回一个新字符串，其中所有出现的oldChar都被替换为newChar。</span><br><span class="line"></span><br><span class="line">split(String regex)：根据给定的正则表达式拆分此字符串。</span><br><span class="line"></span><br><span class="line">equals(Object anObject)：将此字符串与指定对象进行比较。</span><br><span class="line"></span><br><span class="line">compareTo(String anotherString)：按字典顺序比较两个字符串。</span><br><span class="line"></span><br><span class="line">valueOf()：将其他类型的数据转换为字符串。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="StringBuilder"><a href="#StringBuilder" class="headerlink" title="StringBuilder"></a>StringBuilder</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">append(String str)：将指定的字符串追加到此字符序列。</span><br><span class="line"></span><br><span class="line">insert(int offset, String str)：将指定的字符串插入此字符序列中。</span><br><span class="line"></span><br><span class="line">delete(int start, int end)：删除此字符序列中指定范围内的字符。</span><br><span class="line"></span><br><span class="line">replace(int start, int end, String str)：使用指定的字符串替换此字符序列中指定范围内的字符。</span><br><span class="line"></span><br><span class="line">reverse()：将此字符序列用其反转形式取代。</span><br><span class="line"></span><br><span class="line">length()：返回此字符序列的长度。</span><br><span class="line"></span><br><span class="line">capacity()：返回此字符序列的当前容量。</span><br><span class="line"></span><br><span class="line">charAt(int index)：返回此字符序列中指定索引处的 char 值。</span><br><span class="line"></span><br><span class="line">setCharAt(int index, char ch)：将此字符序列中指定索引处的字符设置为 ch。</span><br><span class="line"></span><br><span class="line">toString()：返回此字符序列的字符串表示形式。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="Scanner"><a href="#Scanner" class="headerlink" title="Scanner"></a>Scanner</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line">next()：读取下一个字符串，以空格作为分隔符。</span><br><span class="line">nextLine()：读取下一行字符串，以换行符作为分隔符。</span><br><span class="line">nextInt()：读取下一个整数。</span><br><span class="line">nextDouble()：读取下一个双精度浮点数。</span><br><span class="line">useDelimiter(String pattern)：设置分隔符模式。</span><br><span class="line">hasNext()：检查是否还有下一个输入项。</span><br><span class="line">hasNextInt()：检查下一个输入项是否为整数。</span><br><span class="line">hasNextDouble()：检查下一个输入项是否为双精度浮点数。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="System"><a href="#System" class="headerlink" title="System"></a>System</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">System.out.println()：将文本输出到控制台。</span><br><span class="line"></span><br><span class="line">System.err.println()：将错误消息输出到控制台。</span><br><span class="line"></span><br><span class="line">System.currentTimeMillis()：返回当前时间的毫秒数。</span><br><span class="line"></span><br><span class="line">System.exit(int status)：终止Java虚拟机。</span><br><span class="line"></span><br><span class="line">System.getProperty(String key)：获取系统属性。</span><br><span class="line"></span><br><span class="line">System.getenv(String name)：获取环境变量。</span><br><span class="line"></span><br><span class="line">System.arraycopy(Object src, int srcPos, Object dest, int destPos, int length)：将一个数组的一部分复制到另一个数组中。</span><br><span class="line"></span><br><span class="line">System.gc()：请求Java虚拟机进行垃圾回收。</span><br><span class="line"></span><br><span class="line">System.setOut(PrintStream out)：将标准输出流重定向到指定的PrintStream。</span><br><span class="line"></span><br><span class="line">System.setErr(PrintStream err)：将标准错误流重定向到指定的PrintStream。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="Console"><a href="#Console" class="headerlink" title="Console"></a>Console</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">    System.console()：获取当前Java虚拟机的控制台对象，如果没有控制台，则返回null。</span><br><span class="line"></span><br><span class="line">    Console.readLine(String fmt, Object... args)：从控制台读取一行输入，可以使用格式化字符串指定提示信息。</span><br><span class="line"></span><br><span class="line">    Console.readPassword(String fmt, Object... args)：从控制台读取密码，输入的字符将被隐藏。</span><br><span class="line"></span><br><span class="line">    Console.writer()：获取控制台的输出流，可以使用它输出信息到控制台。</span><br><span class="line"></span><br><span class="line">    Console.format(String fmt, Object... args)：使用格式化字符串输出信息到控制台。</span><br><span class="line"></span><br><span class="line">    Console.printf(String fmt, Object... args)：使用格式化字符串输出信息到控制台，与format方法类似。</span><br><span class="line"></span><br><span class="line">需要注意的是，Java Console只能在命令行模式下使用，不能在图形界面下使用。另外，Java Console在某些操作系统上可能不可用，例如在Windows上使用Eclipse时，Java Console可能无法正常工作。</span><br></pre></td></tr></table></figure>
-
-
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -2223,13 +2237,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">189k</span>
+    <span title="站点总字数">194k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">5:44</span>
+    <span title="站点阅读时长">5:52</span>
   </span>
 </div>
 <div class="busuanzi-count">

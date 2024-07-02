@@ -19,31 +19,30 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"hackertaizi.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="MyBatis 注解@Param注解一、有多个基本类型参数有多个基本类型参数时，需要在每个参数前添加@Param注解。 二、方法参数需要起别名时当方法参数需要起别名时，需要在参数前添加@Param注解，注解内说明参数的别名。 三、当XML配置文件中存在$符号时虽然在XML使用$符号传参会有SQL注入的风险，但当不得不使用$符号传参时，必须在Mapper层方法的参数前添加@Param注解。 四、在动">
+    <meta name="description" content="GreenPlum表设计1. 数据类型 在满足业务需求的条件下，尽可能选择空间占用最小的数据类型，以节省存储空间。 GP中，CHAR、VARCHAR、TEXT之间不存在性能差异，只是在使用 char 的时候增加了存储尺寸，导致更多的存储空间。 定长字符串类型使用 varchar，而不使用 char。 对于 Numeric 类型来说，应该尽量选择更小的数据类型来适应数据；比如，选择 BIGINT 类">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MyBatis注解">
-<meta property="og:url" content="https://hackertaizi.github.io/Java/Java%E4%B8%AD%E9%97%B4%E4%BB%B6/MyBatis/MyBatis%20@Param%E6%B3%A8%E8%A7%A3%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E8%AF%B4%E6%98%8E/index.html">
+<meta property="og:title" content="GreenPlum表设计">
+<meta property="og:url" content="https://hackertaizi.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93/GreenPlum/GreenPlum%E8%A1%A8%E8%AE%BE%E8%AE%A1/index.html">
 <meta property="og:site_name" content="太子的个人博客">
-<meta property="og:description" content="MyBatis 注解@Param注解一、有多个基本类型参数有多个基本类型参数时，需要在每个参数前添加@Param注解。 二、方法参数需要起别名时当方法参数需要起别名时，需要在参数前添加@Param注解，注解内说明参数的别名。 三、当XML配置文件中存在$符号时虽然在XML使用$符号传参会有SQL注入的风险，但当不得不使用$符号传参时，必须在Mapper层方法的参数前添加@Param注解。 四、在动">
+<meta property="og:description" content="GreenPlum表设计1. 数据类型 在满足业务需求的条件下，尽可能选择空间占用最小的数据类型，以节省存储空间。 GP中，CHAR、VARCHAR、TEXT之间不存在性能差异，只是在使用 char 的时候增加了存储尺寸，导致更多的存储空间。 定长字符串类型使用 varchar，而不使用 char。 对于 Numeric 类型来说，应该尽量选择更小的数据类型来适应数据；比如，选择 BIGINT 类">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-09-16T05:48:25.584Z">
-<meta property="article:modified_time" content="2023-09-28T06:53:59.802Z">
+<meta property="article:published_time" content="2024-07-01T10:34:24.033Z">
+<meta property="article:modified_time" content="2024-07-02T06:48:36.283Z">
 <meta property="article:author" content="Taizi">
-<meta property="article:tag" content="Java">
-<meta property="article:tag" content="Java注解">
-<meta property="article:tag" content="Java中间件">
-<meta property="article:tag" content="MyBatis">
+<meta property="article:tag" content="数据库">
+<meta property="article:tag" content="GreenPlum">
+<meta property="article:tag" content="PostgreSQL">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://hackertaizi.github.io/Java/Java%E4%B8%AD%E9%97%B4%E4%BB%B6/MyBatis/MyBatis%20@Param%E6%B3%A8%E8%A7%A3%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E8%AF%B4%E6%98%8E/">
+<link rel="canonical" href="https://hackertaizi.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93/GreenPlum/GreenPlum%E8%A1%A8%E8%AE%BE%E8%AE%A1/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hackertaizi.github.io/Java/Java%E4%B8%AD%E9%97%B4%E4%BB%B6/MyBatis/MyBatis%20@Param%E6%B3%A8%E8%A7%A3%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E8%AF%B4%E6%98%8E/","path":"Java/Java中间件/MyBatis/MyBatis @Param注解使用场景说明/","title":"MyBatis注解"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hackertaizi.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93/GreenPlum/GreenPlum%E8%A1%A8%E8%AE%BE%E8%AE%A1/","path":"数据库/GreenPlum/GreenPlum表设计/","title":"GreenPlum表设计"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>MyBatis注解 | 太子的个人博客</title>
+<title>GreenPlum表设计 | 太子的个人博客</title>
   
 
 
@@ -143,7 +142,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MyBatis-%E6%B3%A8%E8%A7%A3"><span class="nav-number">1.</span> <span class="nav-text">MyBatis 注解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Param%E6%B3%A8%E8%A7%A3"><span class="nav-number">1.1.</span> <span class="nav-text">@Param注解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%9C%89%E5%A4%9A%E4%B8%AA%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E5%8F%82%E6%95%B0"><span class="nav-number">1.1.1.</span> <span class="nav-text">一、有多个基本类型参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%96%B9%E6%B3%95%E5%8F%82%E6%95%B0%E9%9C%80%E8%A6%81%E8%B5%B7%E5%88%AB%E5%90%8D%E6%97%B6"><span class="nav-number">1.1.2.</span> <span class="nav-text">二、方法参数需要起别名时</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%BD%93XML%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%B8%AD%E5%AD%98%E5%9C%A8-%E7%AC%A6%E5%8F%B7%E6%97%B6"><span class="nav-number">1.1.3.</span> <span class="nav-text">三、当XML配置文件中存在$符号时</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%9C%A8%E5%8A%A8%E6%80%81SQL%E4%B8%AD%E4%BD%BF%E7%94%A8%E4%BA%86%E5%8F%82%E6%95%B0%E4%BD%9C%E4%B8%BA%E5%88%A4%E6%96%AD%E6%9D%A1%E4%BB%B6"><span class="nav-number">1.1.4.</span> <span class="nav-text">四、在动态SQL中使用了参数作为判断条件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E4%B8%80%E8%88%AC%E6%83%85%E5%86%B5%E4%B8%8B%EF%BC%8C%E5%8D%95%E4%B8%AA%E5%8F%82%E6%95%B0%E4%B8%8D%E9%9C%80%E8%A6%81%E5%8A%A0-Param%E6%B3%A8%E8%A7%A3"><span class="nav-number">1.1.5.</span> <span class="nav-text">五、一般情况下，单个参数不需要加@Param注解</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#GreenPlum%E8%A1%A8%E8%AE%BE%E8%AE%A1"><span class="nav-number">1.</span> <span class="nav-text">GreenPlum表设计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.1.</span> <span class="nav-text">1. 数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%95%B0%E6%8D%AE%E5%88%86%E5%B8%83"><span class="nav-number">1.2.</span> <span class="nav-text">2. 数据分布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E6%95%B0%E6%8D%AE%E5%88%86%E5%8C%BA"><span class="nav-number">1.3.</span> <span class="nav-text">3. 数据分区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E6%95%B0%E6%8D%AE%E8%A1%A8%E5%8E%8B%E7%BC%A9"><span class="nav-number">1.4.</span> <span class="nav-text">4. 数据表压缩</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E6%95%B0%E6%8D%AE%E8%A1%A8%E8%A1%8C%E5%88%97%E5%AD%98%E5%82%A8"><span class="nav-number">1.5.</span> <span class="nav-text">5. 数据表行列存储</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -194,7 +193,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://hackertaizi.github.io/Java/Java%E4%B8%AD%E9%97%B4%E4%BB%B6/MyBatis/MyBatis%20@Param%E6%B3%A8%E8%A7%A3%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E8%AF%B4%E6%98%8E/">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93/GreenPlum/GreenPlum%E8%A1%A8%E8%AE%BE%E8%AE%A1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -207,12 +206,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="MyBatis注解 | 太子的个人博客">
+      <meta itemprop="name" content="GreenPlum表设计 | 太子的个人博客">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          MyBatis注解
+          GreenPlum表设计
         </h1>
 
         <div class="post-meta-container">
@@ -223,14 +222,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
+      <time title="创建时间：2024-07-01 18:34:24" itemprop="dateCreated datePublished" datetime="2024-07-01T18:34:24+08:00">2024-07-01</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-09-28 14:53:59" itemprop="dateModified" datetime="2023-09-28T14:53:59+08:00">2023-09-28</time>
+      <time title="修改时间：2024-07-02 14:48:36" itemprop="dateModified" datetime="2024-07-02T14:48:36+08:00">2024-07-02</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -238,15 +237,11 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
         </span>
           ，
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Java/Java%E4%B8%AD%E9%97%B4%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">Java中间件</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Java/Java%E4%B8%AD%E9%97%B4%E4%BB%B6/MyBatis/" itemprop="url" rel="index"><span itemprop="name">MyBatis</span></a>
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/GreenPlum/" itemprop="url" rel="index"><span itemprop="name">GreenPlum</span></a>
         </span>
     </span>
 
@@ -264,14 +259,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>344</span>
+      <span>1.8k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
+      <span>3 分钟</span>
     </span>
 </div>
 
@@ -281,11 +276,114 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h1 id="MyBatis-注解"><a href="#MyBatis-注解" class="headerlink" title="MyBatis 注解"></a>MyBatis 注解</h1><h2 id="Param注解"><a href="#Param注解" class="headerlink" title="@Param注解"></a>@Param注解</h2><h3 id="一、有多个基本类型参数"><a href="#一、有多个基本类型参数" class="headerlink" title="一、有多个基本类型参数"></a>一、有多个基本类型参数</h3><p>有多个基本类型参数时，需要在每个参数前添加@Param注解。</p>
-<h3 id="二、方法参数需要起别名时"><a href="#二、方法参数需要起别名时" class="headerlink" title="二、方法参数需要起别名时"></a>二、方法参数需要起别名时</h3><p>当方法参数需要起别名时，需要在参数前添加@Param注解，注解内说明参数的别名。</p>
-<h3 id="三、当XML配置文件中存在-符号时"><a href="#三、当XML配置文件中存在-符号时" class="headerlink" title="三、当XML配置文件中存在$符号时"></a>三、当XML配置文件中存在$符号时</h3><p>虽然在XML使用$符号传参会有SQL注入的风险，但当不得不使用$符号传参时，必须在Mapper层方法的参数前添加@Param注解。</p>
-<h3 id="四、在动态SQL中使用了参数作为判断条件"><a href="#四、在动态SQL中使用了参数作为判断条件" class="headerlink" title="四、在动态SQL中使用了参数作为判断条件"></a>四、在动态SQL中使用了参数作为判断条件</h3><p>如果在动态SQL中使用了参数作为判断条件，则在mapper层的该参数前必须使用@Param注解。</p>
-<h3 id="五、一般情况下，单个参数不需要加-Param注解"><a href="#五、一般情况下，单个参数不需要加-Param注解" class="headerlink" title="五、一般情况下，单个参数不需要加@Param注解"></a>五、一般情况下，单个参数不需要加@Param注解</h3><p>如果只传入了一个参数，并且该参数没有被特殊使用（如需要起别名、被用作动态SQL的判断条件等），可以不加@Param注解。</p>
+    <div class="post-body" itemprop="articleBody"><h1 id="GreenPlum表设计"><a href="#GreenPlum表设计" class="headerlink" title="GreenPlum表设计"></a>GreenPlum表设计</h1><h2 id="1-数据类型"><a href="#1-数据类型" class="headerlink" title="1. 数据类型"></a>1. 数据类型</h2><ul>
+<li>在满足业务需求的条件下，尽可能选择空间占用最小的数据类型，以节省存储空间。</li>
+<li>GP中，CHAR、VARCHAR、TEXT之间不存在性能差异，只是在使用 char 的时候增加了存储尺寸，导致更多的存储空间。</li>
+<li>定长字符串类型使用 varchar，而不使用 char。</li>
+<li>对于 Numeric 类型来说，应该尽量选择更小的数据类型来适应数据；比如，选择 BIGINT 类型来存储 SMALLINT 类型范围内的数值，会造成空间的大量浪费。</li>
+<li>用来做 Table Join 的 Column 来说，应该考虑选择相同的数据类型。如果做 Join 的 Column具有相同的数据类型(比如主键 PrimaryKey 与外键 ForeignKey)，其工作效率会更高。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>数据类型</th>
+<th>选择该数据类型的字段</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>VARCHAR(n)</td>
+<td>变长的字符串类型描述字段，有长度限制</td>
+</tr>
+<tr>
+<td>2</td>
+<td>TEXT</td>
+<td>超大文本字段，变长，无长度限制</td>
+</tr>
+<tr>
+<td>3</td>
+<td>DATE</td>
+<td>只用于表示日期</td>
+</tr>
+<tr>
+<td>4</td>
+<td>TIME</td>
+<td>只用于表示一日内时间</td>
+</tr>
+<tr>
+<td>5</td>
+<td>TIMESTAMP</td>
+<td>时间和日期</td>
+</tr>
+<tr>
+<td>6</td>
+<td>BOOLEAN</td>
+<td>布尔类型</td>
+</tr>
+<tr>
+<td>7</td>
+<td>SMALLINT</td>
+<td>较小的整数，-32768 – +32768</td>
+</tr>
+<tr>
+<td>8</td>
+<td>INTEGER</td>
+<td>一般大小的整数，最大约 21 亿</td>
+</tr>
+<tr>
+<td>9</td>
+<td>BIGINT</td>
+<td>超大整数</td>
+</tr>
+<tr>
+<td>10</td>
+<td>DECIMAL(m,n)</td>
+<td>用户声明精确度，无限制</td>
+</tr>
+</tbody></table>
+<h2 id="2-数据分布"><a href="#2-数据分布" class="headerlink" title="2. 数据分布"></a>2. 数据分布</h2><p>Greenplum 数据仓库平台的数据表 DK 设计规范如下：</p>
+<ol>
+<li>每个数据表必须通过 Distribiuted 子句显式指定分布键 DK，不允许使用默认 DK 的方式创<br>建数据表；</li>
+<li>对从 TD 系统过来的数据表，分布键应采用 TD 的 PI 字段。</li>
+<li><strong>分布键字段原则上为 1 个，应尽量不要超过 3 个；</strong></li>
+<li>父子表的分布键应完全一致；</li>
+<li>中间过程表、临时表、派生表的 DK 应尽可能保持和源表一致；</li>
+<li>具有关联关系的数据表，应尽可能使用关联字段作为分布键；</li>
+<li>对于维表、代码表，应选择其主键作为分布键；</li>
+<li>对于实体表，应选择其逻辑主键作为分布键；</li>
+<li>分布键字段不可执行 Update 操作；</li>
+<li><strong>尽量避免使用随机分布策略，虽然其数据分布是均匀的，但随机分布策略总会导致在查询执</strong><br><strong>行时，数据在节点之间的交换和迁移，影响执行性能；</strong></li>
+<li>为了保证数据分布均匀，在没有合适字段作为分布键的情况下，应选择数据表的主键作为分<br>布键；</li>
+<li>对于没有逻辑主键，又没有其他合适字段作为分布键的数据表，才建议设置其分布策略为<br>Distributed Randomly， 这只应该为最后的选择；</li>
+<li>随机分布的适合使用场景：查询时不需要和其它表关联、或只与小表关联的数据表，<br>使用随机分布策略</li>
+</ol>
+<h2 id="3-数据分区"><a href="#3-数据分区" class="headerlink" title="3. 数据分区"></a>3. 数据分区</h2><p>Greenplum 数据库数据分区使用规范如下：</p>
+<ol>
+<li>在性能可以满足的情况下，尽量不使用数据分区；</li>
+<li>因会造成表对象数量过多，增加执行计划生成的复杂性，禁止使用二级分区；</li>
+<li>数据量在 3 亿以上，或者单表容量超过 50GB，建议设计为分区表；</li>
+<li>表的数据在单个实例的数据量在 50 万级别以下，不需要分区；</li>
+<li>单个子分区的记录数小于 1000 万，说明分区粒度太细；</li>
+<li>分区字段不可以 UPDATE,需要用 delete + insert 替代实现。</li>
+</ol>
+<h2 id="4-数据表压缩"><a href="#4-数据表压缩" class="headerlink" title="4. 数据表压缩"></a>4. 数据表压缩</h2><p>Greenplum 数据表分两种类型：堆表和 AO 表（Append-optimized）。要对数据进行压缩，数据表只可以是 AO 表。<br>Greenplum 数据表压缩的设计规范如下：</p>
+<ol>
+<li>需要频繁更新的数据表不应使用压缩存储；</li>
+<li>数据量在百万级以下的小表，不建议使用压缩存储；</li>
+<li>不要在压缩文件系统使用压缩存储；</li>
+<li>压缩表建议统一使用 zlib 压缩算法，压缩级别为 5 (appendonly&#x3D;true, compresstype&#x3D;zlib,<br> compresslevel&#x3D;5);，此压缩设置满足大多数的使用场景。</li>
+<li>建议对数据仓库中的记录数超过 1000 万的事实表、历史数据表采用压缩存储；</li>
+<li>所有不再更新的历史数据表、备份表、归档表统一使用压缩存储；</li>
+</ol>
+<h2 id="5-数据表行列存储"><a href="#5-数据表行列存储" class="headerlink" title="5. 数据表行列存储"></a>5. 数据表行列存储</h2><p>Greenplum 数据仓库平台行列存储规范如下：</p>
+<ol>
+<li>通常情况下采用行存储，只有在频繁查询，并且访问模式是只访问少量字段的情况下，才优<br>先使用列存储。</li>
+<li>如果选择的 Column 数量经常大于 30 个以上的数据表，不建议使用列存储；</li>
+<li>建议控制数据库中列存储数据表的数量，过多的列存表会造成系统文件数量的急剧膨胀，影<br>响系统性能；</li>
+<li>数据量在 1000 万以下的数据表，不建议使用列存储；</li>
+<li>列存储表虽然查询和加载数据的效率很高，但是它只能支持 select、insert 和 truncate 操<br>作，不支持 update 和 delete 操作，所以它只适合存放经过处理基本最终无变化的历史数据，<br>用来提供高效的查询访问；</li>
+</ol>
 
     </div>
 
@@ -295,23 +393,22 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Java/" rel="tag"># Java</a>
-              <a href="/tags/Java%E6%B3%A8%E8%A7%A3/" rel="tag"># Java注解</a>
-              <a href="/tags/Java%E4%B8%AD%E9%97%B4%E4%BB%B6/" rel="tag"># Java中间件</a>
-              <a href="/tags/MyBatis/" rel="tag"># MyBatis</a>
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag"># 数据库</a>
+              <a href="/tags/GreenPlum/" rel="tag"># GreenPlum</a>
+              <a href="/tags/PostgreSQL/" rel="tag"># PostgreSQL</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/Java/Java%E4%B8%AD%E9%97%B4%E4%BB%B6/Maven/maven%E5%AE%89%E8%A3%85/" rel="prev" title="maven安装">
-                  <i class="fa fa-angle-left"></i> maven安装
+                <a href="/%E6%95%B0%E6%8D%AE%E5%BA%93/GreenPlum/GreenPlum%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/" rel="prev" title="GreenPlum常用语法">
+                  <i class="fa fa-angle-left"></i> GreenPlum常用语法
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/Java/Java%E4%B8%AD%E9%97%B4%E4%BB%B6/MyBatis/Mybatis%E4%BD%BF%E7%94%A8/" rel="next" title="MyBatis使用">
-                  MyBatis使用 <i class="fa fa-angle-right"></i>
+                <a href="/%E6%95%B0%E6%8D%AE%E5%BA%93/GreenPlum/GreenPlum%E5%88%86%E5%8C%BA%E6%96%B9%E5%BC%8F%E6%B1%87%E6%80%BB/" rel="next" title="GreenPlum分区方式汇总">
+                  GreenPlum分区方式汇总 <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>

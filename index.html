@@ -147,7 +147,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">54</span>
+          <span class="site-state-item-count">55</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -158,7 +158,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-count">34</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -175,6 +175,149 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.github.io/Python/Requests%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E5%AE%9E%E8%B7%B5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Taizi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/Python/Requests%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E5%AE%9E%E8%B7%B5/" class="post-title-link" itemprop="url">Requests网络请求实践</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-07-15 17:19:26 / 修改时间：19:08:53" itemprop="dateCreated datePublished" datetime="2024-07-15T17:19:26+08:00">2024-07-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.6k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Requests网络请求实践"><a href="#Requests网络请求实践" class="headerlink" title="Requests网络请求实践"></a>Requests网络请求实践</h1><h2 id="1-背景"><a href="#1-背景" class="headerlink" title="1. 背景"></a>1. 背景</h2><p>公司现有链式网站，可以近乎实时查询单台设备的状态数据。比通过大数据平台查询要快很多，但缺点也很明显，每次最多查看或导出3000条数据，查看非常不方便。为此，计划编写一个python脚本，通过调用网站相关接口，多次调用接口，将数据处理合并后写入一个excel文件。</p>
+<h2 id="2-开发"><a href="#2-开发" class="headerlink" title="2. 开发"></a>2. 开发</h2><h3 id="2-1-浏览器开发者工具的使用"><a href="#2-1-浏览器开发者工具的使用" class="headerlink" title="2.1 浏览器开发者工具的使用"></a>2.1 浏览器开发者工具的使用</h3><blockquote>
+<p>以下流程实践中我是倒着一步一步走过来的，因为对网络请求相关知识不熟悉，踩了很多坑。进行了大量测试，另外，感谢GPT！</p>
+</blockquote>
+<p>系统有两层登录鉴权，一层是用户中心，还有一层是系统本身。</p>
+<p>这里首先要介绍一下浏览器的开发者工具，后面会另开博客详细学习介绍。打开网页前，按下“F12”键，可以打开开发者工具。从这里我们可以看到控制台、网络、内存等等很多版块。这次网络请求，主要查看的是网络版块，在触发页面操作，例如登录操作时，可以在该版块看到一系列相关的网络请求。</p>
+<p>本次登录后，我们触发数据下载请求。在这个过程中，涉及到鉴权、下载接口调用等。</p>
+<p>这里的开发者工具我们以火狐浏览器为例，其他浏览器大同小异</p>
+<p><img src="/Python/Requests%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E5%AE%9E%E8%B7%B5/e5oDbDeQTI.jpg" alt="e5oDbDeQTI"></p>
+<p><img src="/Python/Requests%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E5%AE%9E%E8%B7%B5/image-20240715172704329.png" alt="image-20240715172704329"></p>
+<p><img src="/Python/Requests%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E5%AE%9E%E8%B7%B5/0F7xwuIYiF.jpg" alt="0F7xwuIYiF"></p>
+<p>如上图，在点击下载按钮后，我发现对应的网络请求是<code>devPropertyExp</code>,然后点击该请求，可以看到一些非常关键的信息：</p>
+<ul>
+<li>请求的URL：可以看到请求类型（例如GET&#x2F;POST等)、请求接口地址等</li>
+<li>请求头：可以看到很多与请求相关的格式等要求，例如上下文类型Content-Type，限定了请求体的格式等。还可以看到一些请求时在请求体中必要的参数，按我这次的经验来看，请求头参数中，前面没有小问号的参数一般是必填参数，python请求时最好在请求体里面加上。</li>
+<li>请求体：包含了请求时必须告知服务器的一些参数，在请求体页面可以看到，一般在网页上是一些输入的信息或者选择的信息。</li>
+</ul>
+<h3 id="2-2-python网络请求包requests的使用"><a href="#2-2-python网络请求包requests的使用" class="headerlink" title="2.2 python网络请求包requests的使用"></a>2.2 python网络请求包requests的使用</h3><blockquote>
+<p>有关python各种常用包的使用，后续会单独学习并建立博客，这里简单介绍一下使用</p>
+</blockquote>
+<p>引入requests包：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br></pre></td></tr></table></figure>
+
+<p>触发请求：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># POST请求</span></span><br><span class="line">respon_obj = requests.post(</span><br><span class="line">	url = <span class="string">&#x27;请求的url&#x27;</span>,</span><br><span class="line">	data = <span class="string">&#x27;请求体&#x27;</span>,   <span class="comment"># 要注意请求头中的上下文类型，这里是一个json字符串还是一个json对象</span></span><br><span class="line">    header = <span class="string">&#x27;请求头&#x27;</span> <span class="comment"># 可以另外创建一个dict对象（键值对对象），这里直接引用</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># GET请求</span></span><br><span class="line">respon_obj = requests.get(</span><br><span class="line">	url = <span class="string">&#x27;请求的url,可以直接附带参数，在?后附带参数param=value,多个参数用&amp;连接；也可以不带参数，把参数放在param选项里面&#x27;</span>,</span><br><span class="line">	data = &#123;请求体键值对&#125;,   <span class="comment"># 要注意请求头中的上下文类型，这里是一个json字符串还是一个json对象</span></span><br><span class="line">    header = &#123;请求头键值对&#125;, <span class="comment"># 可以另外创建一个dict对象（键值对对象），这里直接引用</span></span><br><span class="line">    params = &#123;参数键值对&#125; <span class="comment">#这里配置的参数，请求时python会拼接到url后面</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>返回值处理：</p>
+<p>请求的返回结果是一个<code>requests.models.Response</code>对象，代表一个HTTP响应，无法直接使用，但是可以通过访问响应的内容（content）或文本（text）属性来获取内容的字符串表示。字符串一般是一个json对象，使用json包进行解析，并读取需要的属性即可</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line">result = respon_obj.text</span><br><span class="line"><span class="built_in">print</span>(result) <span class="comment"># 输出响应</span></span><br><span class="line">json_str = json.loads(result)</span><br><span class="line">token = json_str[<span class="string">&#x27;token&#x27;</span>]  <span class="comment"># 获取token</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-鉴权处理"><a href="#2-3-鉴权处理" class="headerlink" title="2.3 鉴权处理"></a>2.3 鉴权处理</h3><ul>
+<li>获取本系统的token</li>
+</ul>
+<p>上面我们提到一个关键的数据下载接口是<code>devPropertyExp</code>，但直接调用会发现调用失败，因为请求头中必须包含token。token从何而来？我们看到上面有一个<code>exchangeToken</code>接口，并且其响应体中正是包含了这个token。从接口名我们可以看出，token通过交换得来的。然后在exchangeToken的请求头中，我们也可以看到一个Token参数，即调用这个接口可以获取本系统的token。</p>
+<ul>
+<li>获取用户中心的token</li>
+</ul>
+<p>这时就明白了，因为我们是先登录用户中心，然后再跳转这个系统，所以是先获取用户中心的token，然后使用用户中心的token换取这个系统的token。现在我们要看用户中心的token是怎么来的，这时我们继续往上回溯，可以看到一个<code>getTokenAndUserInfo</code>的GET 接口，这个接口的相应体中正好有我们要的用户中心的token，所以需要调用这个接口即可。<code>getTokenAndUserInfo</code>这个接口没有请求体，由于是一个GET接口，参数都在url后面，可以看到有一个code参数和一个client_id参数。多次调用发现client_id是不变的，而code参数每次调用都不一样。且同一个code调用一次后就失效了，所以这个code也相当于一个token的作用，怎么获取code呢？</p>
+<ul>
+<li>获取code</li>
+</ul>
+<p>继续向上回溯，还有一个GET方式的接口，这个方法的响应体正是这个code！但是这个GET接口的url中也有一个名为domainToken的参数，所以，想要调用这个接口还需要获取domainToken</p>
+<ul>
+<li>获取domainToken</li>
+</ul>
+<p>继续向上回溯，就剩一个OPTIONS类型的接口了。这个接口的url中也有domainToken，并且这个接口没有响应体和请求体。测试发现这个domainToken可以重复使用，不清楚有没有时效（大概率是有的），但是没法再向上回溯了。只好将domainToken写死在代码里面了。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">正向梳理整个过程：</span><br><span class="line">通过浏览器开发者工具获取domainToken &gt; 调用GET类型接口获取code &gt; 调用getTokenAndUserInfo接口获取用户中心Token &gt; 调用exchangeToken接口换取本系统的token &gt; 借助本系统的token，调用devPropertyExp获取数据</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -2062,158 +2205,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hackertaizi.github.io/%E5%85%B6%E4%BB%96/TreeMap/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Taizi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/%E5%85%B6%E4%BB%96/TreeMap/" class="post-title-link" itemprop="url">TreeMap</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-11-06 08:57:34" itemprop="dateCreated datePublished" datetime="2023-11-06T08:57:34+08:00">2023-11-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-11-13 09:17:31" itemprop="dateModified" datetime="2023-11-13T09:17:31+08:00">2023-11-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%85%B6%E4%BB%96/" itemprop="url" rel="index"><span itemprop="name">其他</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>2.8k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>5 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="TreeMap"><a href="#TreeMap" class="headerlink" title="TreeMap"></a>TreeMap</h1><h2 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h2><p>TreeMap是map家族的一员，用来存放key-value键值对。</p>
-<h2 id="2-特点"><a href="#2-特点" class="headerlink" title="2. 特点"></a>2. 特点</h2><ul>
-<li>有序性：<br>TreeMap中的键值对是按照键的自然顺序或自定义顺序排列，key不可以为null，可以快速地进行插入、查找、删除等操作。</li>
-<li>元素唯一性：<br>TreeMap中的键是唯一的，不允许出现相同的键。如果在TreeMap中插入一个已经存在的键，则新的值会覆盖原有的值。</li>
-<li>可排序性：<br>由于TreeMap是有序的，因此它提供了多种按照键排序的方法，例如自然排序和自定义排序。</li>
-<li>线程不安全：<br>TreeMap是线程不安全的，如果要在多线程环境下使用，需要进行同步处理。</li>
-<li>性能优异：<br>TreeMap的基本操作时间复杂度为O(log n), 具有良好的性能表现，适合处理大量的键值对。</li>
-<li>内存占用较高：<br>TreeMap底层使用的红黑树结构决定了它的内存占用较高，要略高于HashMap。</li>
-</ul>
-<h2 id="3-应用场景"><a href="#3-应用场景" class="headerlink" title="3. 应用场景"></a>3. 应用场景</h2><p>基于以上特点描述，在需要对数据进行<strong>排序</strong>或者<strong>快速查找</strong>的场景下，可以考虑使用TreeMap。</p>
-<h2 id="4-使用"><a href="#4-使用" class="headerlink" title="4. 使用"></a>4. 使用</h2><ul>
-<li><p>自然排序(针对数字和字符串，按数字自然顺序或字符串的字符顺序排序)：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;  </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;  </span><br><span class="line">        <span class="comment">// 创建一个TreeMap实例  </span></span><br><span class="line">        TreeMap&lt;Integer, String&gt; treeMap = <span class="keyword">new</span> <span class="title class_">TreeMap</span>&lt;&gt;();  </span><br><span class="line">  </span><br><span class="line">        <span class="comment">// 添加一些元素  </span></span><br><span class="line">        treeMap.put(<span class="number">3</span>, <span class="string">&quot;Three&quot;</span>);  </span><br><span class="line">        treeMap.put(<span class="number">2</span>, <span class="string">&quot;Two&quot;</span>);  </span><br><span class="line">        treeMap.put(<span class="number">1</span>, <span class="string">&quot;One&quot;</span>);  </span><br><span class="line">  </span><br><span class="line">        <span class="comment">// 输出TreeMap，将按键的自然顺序排序  </span></span><br><span class="line">        System.out.println(<span class="string">&quot;TreeMap: &quot;</span> + treeMap);  <span class="comment">// TreeMap: &#123;1=One, 2=Two, 3=Three&#125;</span></span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>定制排序：<br>通过构造函数指定排序的Comparator可以实现定制化排序</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;  </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;  </span><br><span class="line">        Comparator&lt;String&gt; comparator = <span class="keyword">new</span> <span class="title class_">Comparator</span>&lt;String&gt;() &#123;  </span><br><span class="line">            <span class="meta">@Override</span>  </span><br><span class="line">            <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">compare</span><span class="params">(String o1, String o2)</span> &#123;  </span><br><span class="line">                <span class="keyword">return</span> o2.compareTo(o1);  <span class="comment">// 降序排序  </span></span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;;  </span><br><span class="line">        TreeMap&lt;String, String&gt; treeMap = <span class="keyword">new</span> <span class="title class_">TreeMap</span>&lt;&gt;(comparator);  </span><br><span class="line">        treeMap.put(<span class="string">&quot;b&quot;</span>, <span class="string">&quot;B&quot;</span>);  </span><br><span class="line">        treeMap.put(<span class="string">&quot;a&quot;</span>, <span class="string">&quot;A&quot;</span>);  </span><br><span class="line">        treeMap.put(<span class="string">&quot;c&quot;</span>, <span class="string">&quot;C&quot;</span>);  </span><br><span class="line">        System.out.println(treeMap);  <span class="comment">// 输出: &#123;c=C, b=B, a=A&#125;  </span></span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="5-实现原理"><a href="#5-实现原理" class="headerlink" title="5. 实现原理"></a>5. 实现原理</h2><p>TreeMap底层是基于红黑树实现的，红黑树是一棵自平衡的二叉排序树。</p>
-<p>从二叉树说起：</p>
-<ul>
-<li><p>二叉树：<br>每个节点最多有两个子树的树形结构。<br><img src="/%E5%85%B6%E4%BB%96/TreeMap/image-20231105203739536.png" alt="image-20231105203739536"></p>
-</li>
-<li><p>平衡二叉树：<br>平衡二叉树或者是一棵空树，或者是具有以下性质的二叉树：它的左子树和右子树都是平衡二叉树，且左子树和右子树的高度差的绝对值不超过1。<br><img src="/%E5%85%B6%E4%BB%96/TreeMap/image-20231105204215000.png" alt="image-20231105204215000"></p>
-</li>
-<li><p>平衡二叉排序树：<br>在平衡二叉树的基础上，如果左子树非空，则左子树上所有节点的值均小于根节点的值，如果右子树非空，则右子树上的所有节点的值均大于根节点的值。这样的树就是平衡二叉排序树。<br><img src="/%E5%85%B6%E4%BB%96/TreeMap/image-20231105205415958.png" alt="image-20231105205415958"></p>
-</li>
-</ul>
-<h3 id="红黑树："><a href="#红黑树：" class="headerlink" title="红黑树："></a>红黑树：</h3><p>平衡二叉排序树，在需要增加和删除节点的时候，为了保持平衡需要做大量的旋转操作，红黑树可以解决该问题。</p>
-<h4 id="红黑树的性质"><a href="#红黑树的性质" class="headerlink" title="红黑树的性质"></a>红黑树的性质</h4><p>在平衡二叉排序树的基础上：</p>
-<p>  ①每个节点只能是黑色或红色</p>
-<p>  ②根节点是黑色</p>
-<p>  ③每个叶子节点（指空节点NIL）都是黑色的</p>
-<p>  ④红色节点的子节点必须是黑色，即一条路径上不能出现两个相邻的红色节点。。</p>
-<p>  ⑤从任一节点到其每个叶子的所有路径都包含相同数目的黑色节点。</p>
-<p>  这样的树就是红黑树。<br>  <img src="/%E5%85%B6%E4%BB%96/TreeMap/image-20231105210154658.png" alt="image-20231105210154658"></p>
-<p>红黑树的插入效率很高，插入一个元素的时候只需要进行最多三次旋转。</p>
-<h4 id="红黑树的平衡维护-左旋、右旋、变色"><a href="#红黑树的平衡维护-左旋、右旋、变色" class="headerlink" title="红黑树的平衡维护(左旋、右旋、变色)"></a>红黑树的平衡维护(左旋、右旋、变色)</h4><h5 id="左旋和右旋："><a href="#左旋和右旋：" class="headerlink" title="左旋和右旋："></a>左旋和右旋：</h5><p>旋转操作是为了维持二叉树的平衡性，节点的左旋是指将根节点的右侧往左拉，原先的右子节点变成新的父节点，并把多余的左子节点出让，给已经降级的根节点当右子节点：</p>
-<p><img src="/%E5%85%B6%E4%BB%96/TreeMap/image-20231105210640691.png" alt="image-20231105210640691"></p>
-<p>相反地，右旋则是将根节点的左侧往右拉，原先的左子节点变成新的父节点，并把多余的右子节点出让，给已经将降级的根节点当右子节点：</p>
-<p><img src="/%E5%85%B6%E4%BB%96/TreeMap/image-20231105210651111.png" alt="image-20231105210651111"></p>
-<h5 id="红黑树节点的插入、删除："><a href="#红黑树节点的插入、删除：" class="headerlink" title="红黑树节点的插入、删除："></a>红黑树节点的插入、删除：</h5><p>红黑树详解：<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000012728513">https://segmentfault.com/a/1190000012728513</a></p>
-<h2 id="TreeMap源码解析："><a href="#TreeMap源码解析：" class="headerlink" title="TreeMap源码解析："></a>TreeMap源码解析：</h2><ul>
-<li><p>左旋：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 对节点p进行左旋</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">rotateLeft</span><span class="params">(Entry&lt;K,V&gt; p)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (p != <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="comment">// r是p的右子树</span></span><br><span class="line">            Entry&lt;K,V&gt; r = p.right;</span><br><span class="line">            <span class="comment">// r的左子树成为p的右子树</span></span><br><span class="line">            p.right = r.left;</span><br><span class="line">            <span class="keyword">if</span> (r.left != <span class="literal">null</span>)</span><br><span class="line">                r.left.parent = p;</span><br><span class="line">            <span class="comment">// 使r成为根节点</span></span><br><span class="line">            r.parent = p.parent;</span><br><span class="line">            <span class="keyword">if</span> (p.parent == <span class="literal">null</span>)</span><br><span class="line">                root = r;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (p.parent.left == p)</span><br><span class="line">                p.parent.left = r;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                p.parent.right = r;</span><br><span class="line">            <span class="comment">// 使p成为r的左子树</span></span><br><span class="line">            r.left = p;</span><br><span class="line">            p.parent = r;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/%E5%85%B6%E4%BB%96/TreeMap/image-20231112213452258.png" alt="image-20231112213452258"></p>
-</li>
-<li><p>右旋：右旋的操作与左旋相反</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">rotateRight</span><span class="params">(Entry&lt;K,V&gt; p)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (p != <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="comment">// l是p的左子树</span></span><br><span class="line">            Entry&lt;K,V&gt; l = p.left;</span><br><span class="line">            <span class="comment">// l的右子树成为p的左子树</span></span><br><span class="line">            p.left = l.right;</span><br><span class="line">            <span class="keyword">if</span> (l.right != <span class="literal">null</span>) l.right.parent = p;</span><br><span class="line">            <span class="comment">// 使l成为根节点</span></span><br><span class="line">            l.parent = p.parent;</span><br><span class="line">            <span class="keyword">if</span> (p.parent == <span class="literal">null</span>)</span><br><span class="line">                root = l;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (p.parent.right == p)</span><br><span class="line">                p.parent.right = l;</span><br><span class="line">            <span class="keyword">else</span> p.parent.left = l;</span><br><span class="line">            <span class="comment">// 使p成为l的右子树</span></span><br><span class="line">            l.right = p;</span><br><span class="line">            p.parent = l;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>关于TreeMap插入、删除节点时的分析，可以<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_46761894/article/details/127330170">查看文章</a></p>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -2237,13 +2228,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">194k</span>
+    <span title="站点总字数">196k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">5:52</span>
+    <span title="站点阅读时长">5:56</span>
   </span>
 </div>
 <div class="busuanzi-count">

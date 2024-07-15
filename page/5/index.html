@@ -147,7 +147,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">54</span>
+          <span class="site-state-item-count">55</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -158,7 +158,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-count">34</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -175,6 +175,125 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.github.io/Hadoop/Hive/%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E8%A6%81%E7%82%B9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Taizi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/Hadoop/Hive/%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E8%A6%81%E7%82%B9/" class="post-title-link" itemprop="url">数据开发要点</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-09-27 18:30:53" itemprop="dateModified" datetime="2023-09-27T18:30:53+08:00">2023-09-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Hadoop/" itemprop="url" rel="index"><span itemprop="name">Hadoop</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Hadoop/Hive/" itemprop="url" rel="index"><span itemprop="name">Hive</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.9k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="数据开发要点"><a href="#数据开发要点" class="headerlink" title="数据开发要点"></a>数据开发要点</h1><ul>
+<li><p>多表连接时，首行连接语句中指明分区，动态分区则指明变量(如：pdate&#x3D;’${a}’),指明分区后，主体的select语句中不必再写分区字段。</p>
+</li>
+<li><p>多表连接时，需要特别注意主表的连接字段是否为NULL或空字符串，需要的时候可以进行过滤，以下是一种过滤方式：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">coalesce</span>(join_field,<span class="string">&#x27;&#x27;</span>)<span class="operator">!=</span><span class="string">&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>分区表的多表连接，因为一般要指定两个表的分区字段相同，所以两个表的select语句中都要包含分区字段。</p>
+</li>
+<li><p>建表语句末尾加分号。</p>
+</li>
+<li><p>注意变量命名，特别是在使用了函数处理之后，在多表联查时很容易出现问题，查每个表时，要保证字段名字正确，使用函数处理的字段在处理结束后要使用<code>as</code>关键字命名，例如：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> overwrite <span class="keyword">table</span> hdw_opnwp.purify_water_unnet_device_bind_details_model <span class="keyword">partition</span>(pdate <span class="operator">=</span> <span class="string">&#x27;$&#123;a&#125;&#x27;</span>)</span><br><span class="line"><span class="keyword">select</span> </span><br><span class="line">t1.bind_unbind_ind</span><br><span class="line">,<span class="built_in">coalesce</span>(t1.net_unnet_flag,t2.net_unnet_flag)</span><br><span class="line">,t1.l_bind_user_num <span class="keyword">as</span> user_num</span><br><span class="line">,t1.l_bind_machine_seq_num <span class="keyword">as</span> machine_seq_num</span><br><span class="line">,if(<span class="built_in">coalesce</span>(t1.l_bind_device_model_num,<span class="string">&#x27;&#x27;</span>)<span class="operator">=</span><span class="string">&#x27;&#x27;</span>,if(length(t1.l_bind_machine_seq_num)<span class="operator">=</span><span class="number">20</span>,substr(t1.l_bind_machine_seq_num,<span class="number">1</span>,<span class="number">9</span>),if(length(t1.l_bind_machine_seq_num)<span class="operator">=</span><span class="number">22</span>,substr(t1.l_bind_machine_seq_num,<span class="number">1</span>,<span class="number">11</span>),<span class="keyword">NULL</span>)),t1.l_bind_device_model_num) <span class="keyword">as</span> device_model_num<span class="comment">--如果设备型号为空，从机编中补全设备型号</span></span><br><span class="line">,t1.l_bind_bind_tm</span><br><span class="line">,t1.l_bind_unbind_tm</span><br><span class="line">,t2.industry_cd</span><br><span class="line">,t2.industry_desc</span><br><span class="line">,t2.device_model_desc</span><br><span class="line"><span class="keyword">from</span> (</span><br><span class="line">    <span class="keyword">select</span> bind_unbind_ind</span><br><span class="line">    ,net_unnet_flag</span><br><span class="line">    ,l_bind_user_num</span><br><span class="line">    ,l_bind_machine_seq_num</span><br><span class="line">    ,l_bind_device_model_num</span><br><span class="line">    ,l_bind_bind_tm</span><br><span class="line">    ,l_bind_unbind_tm</span><br><span class="line">    ,pdate</span><br><span class="line">    <span class="keyword">from</span> hdw_opnwp.purify_water_unnet_device_bind_details</span><br><span class="line">    <span class="keyword">where</span> pdate <span class="operator">=</span> <span class="string">&#x27;$&#123;a&#125;&#x27;</span></span><br><span class="line">) t1</span><br><span class="line"><span class="keyword">left</span> <span class="keyword">join</span>(</span><br><span class="line">    <span class="keyword">select</span> if(device_model_num <span class="operator">=</span> <span class="string">&#x27;&#x27;</span>, <span class="keyword">NULL</span>, device_model_num) <span class="keyword">as</span> device_model_num</span><br><span class="line">    ,industry_cd</span><br><span class="line">    ,if(industry_desc <span class="operator">=</span> <span class="string">&#x27;&#x27;</span>, <span class="keyword">NULL</span>, industry_desc) <span class="keyword">as</span> industry_desc <span class="comment">----如果这里没有重新命名，上面连接会出错，提示非法字段</span></span><br><span class="line">    ,if(net_unnet_flag <span class="operator">=</span> <span class="string">&#x27;&#x27;</span>, <span class="keyword">NULL</span>, net_unnet_flag) <span class="keyword">as</span> net_unnet_flag<span class="comment">----如果这里没有重新命名，上面连接会出错，提示非法字段</span></span><br><span class="line">    ,if(device_model_desc <span class="operator">=</span> <span class="string">&#x27;&#x27;</span>, <span class="keyword">NULL</span>, device_model_desc) <span class="keyword">as</span> device_model_desc<span class="comment">----如果这里没有重新命名，上面连接会出错，提示非法字段</span></span><br><span class="line">    ,pdate</span><br><span class="line">    <span class="keyword">from</span> hdw_dwb.t02_dim_dev_prod</span><br><span class="line">    <span class="keyword">where</span> pdate <span class="operator">=</span> <span class="string">&#x27;$&#123;a&#125;&#x27;</span></span><br><span class="line">    <span class="keyword">and</span> industry_cd <span class="operator">=</span> <span class="string">&#x27;V1441&#x27;</span></span><br><span class="line">) t2</span><br><span class="line"><span class="keyword">on</span> t1.l_bind_device_model_num <span class="operator">=</span> t2.device_model_num<span class="comment">--条件中使用的字段名需要注意</span></span><br><span class="line"><span class="keyword">where</span> t1.pdate <span class="operator">=</span> t2.pdate </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>建表时，注释内也不要出现英文分号“ ; ”，因为分号代表建表语句的结束，会引发错误。</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -398,120 +517,6 @@
 </blockquote>
 <h4 id="5-2-压缩"><a href="#5-2-压缩" class="headerlink" title="5.2 压缩"></a>5.2 压缩</h4><p>流使用编解码器进行压缩，编解码器被指定为该表中所有流的表属性。为了优化内存的使用，压缩是在每个块生成的时候以增量的方式进行的。可以直接跳过压缩块，而无需先解压再扫描。流中的位置使用块的开始位置和块中的偏移来表示。</p>
 <p>编码解码器可以是Snappy，Zlib，或者none。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hackertaizi.github.io/Hadoop/Hive/Hive%E8%AF%AD%E6%B3%95%E7%B2%BE%E7%82%BC/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Taizi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/Hadoop/Hive/Hive%E8%AF%AD%E6%B3%95%E7%B2%BE%E7%82%BC/" class="post-title-link" itemprop="url">Hive语法精炼</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-09-27 18:33:43" itemprop="dateModified" datetime="2023-09-27T18:33:43+08:00">2023-09-27</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Hadoop/" itemprop="url" rel="index"><span itemprop="name">Hadoop</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Hadoop/Hive/" itemprop="url" rel="index"><span itemprop="name">Hive</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>155</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Hive语法精炼"><a href="#Hive语法精炼" class="headerlink" title="Hive语法精炼"></a>Hive语法精炼</h1><p>以下语法精简可用，但不一定是最全的语法格式，某些可选项可能被忽略，随时补充。</p>
-<ul>
-<li><p>查看数据库</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> databases;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>创建数据库</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> database [if <span class="keyword">not</span> <span class="keyword">exists</span>] database_name;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>删除数据库</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> database [if <span class="keyword">exists</span>] database_name;</span><br></pre></td></tr></table></figure></li>
-</ul>
 
       
     </div>
@@ -1039,6 +1044,120 @@
 <h2 id="四、DWS数据服务层（数据轻度聚合）"><a href="#四、DWS数据服务层（数据轻度聚合）" class="headerlink" title="四、DWS数据服务层（数据轻度聚合）"></a>四、DWS数据服务层（数据轻度聚合）</h2><p>数据汇总层，该层会在DWD层的数据基础上。对数据做轻度的聚合操作，生成一系列的中间表，提升公共指标的复用性，减少重复加工。按照业务划分，如流量、产品、用户等，生成字段比较多的宽表，用于提供后续的业务查询，OLAP分析，数据分发等。</p>
 <h2 id="五、ADS应用数据层（业务指标聚合）"><a href="#五、ADS应用数据层（业务指标聚合）" class="headerlink" title="五、ADS应用数据层（业务指标聚合）"></a>五、ADS应用数据层（业务指标聚合）</h2><p>该层存放数据产品个性化的统计指标数据，一般以某个业务应用为出发点进行建设，ADS层只关心自己需要的数据，不会全盘考虑企业整体的数据架构和应用。面向实际的业务数据需求，以DWD或者DWS层的数据为基础，组成各种统计报表。</p>
 <h2 id="六、DIM维度层（"><a href="#六、DIM维度层（" class="headerlink" title="六、DIM维度层（"></a>六、DIM维度层（</h2><p>主要存储公共的属性数据，比如产品类别、地理位置、时间详情等信息。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.github.io/Hadoop/Hive/Hive%E8%AF%AD%E6%B3%95%E7%B2%BE%E7%82%BC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Taizi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/Hadoop/Hive/Hive%E8%AF%AD%E6%B3%95%E7%B2%BE%E7%82%BC/" class="post-title-link" itemprop="url">Hive语法精炼</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-09-16 13:48:25" itemprop="dateCreated datePublished" datetime="2023-09-16T13:48:25+08:00">2023-09-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-09-27 18:33:43" itemprop="dateModified" datetime="2023-09-27T18:33:43+08:00">2023-09-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Hadoop/" itemprop="url" rel="index"><span itemprop="name">Hadoop</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Hadoop/Hive/" itemprop="url" rel="index"><span itemprop="name">Hive</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>155</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Hive语法精炼"><a href="#Hive语法精炼" class="headerlink" title="Hive语法精炼"></a>Hive语法精炼</h1><p>以下语法精简可用，但不一定是最全的语法格式，某些可选项可能被忽略，随时补充。</p>
+<ul>
+<li><p>查看数据库</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> databases;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建数据库</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> database [if <span class="keyword">not</span> <span class="keyword">exists</span>] database_name;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除数据库</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> database [if <span class="keyword">exists</span>] database_name;</span><br></pre></td></tr></table></figure></li>
+</ul>
 
       
     </div>
@@ -2556,163 +2675,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hackertaizi.github.io/Hadoop/Hadoop%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Hadoop%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Taizi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 太子的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/Hadoop/Hadoop%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Hadoop%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Hadoop学习笔记</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-02-15 18:09:12" itemprop="dateCreated datePublished" datetime="2023-02-15T18:09:12+08:00">2023-02-15</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-09-27 18:26:20" itemprop="dateModified" datetime="2023-09-27T18:26:20+08:00">2023-09-27</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Hadoop/" itemprop="url" rel="index"><span itemprop="name">Hadoop</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Hadoop/Hadoop%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">Hadoop学习笔记</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>2.5k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>5 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Hadoop学习笔记"><a href="#Hadoop学习笔记" class="headerlink" title="Hadoop学习笔记"></a>Hadoop学习笔记</h1><h3 id="1-一些基本命令"><a href="#1-一些基本命令" class="headerlink" title="1. 一些基本命令"></a>1. 一些基本命令</h3><p>启动hadoop：<br>1)开启SSH传输服务：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service ssh start</span><br></pre></td></tr></table></figure>
-
-<p>2)启动hadoop：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">一次启动</span><br><span class="line">[bash] hadoop安装路径/sbin/start-all.sh</span><br><span class="line">也可以手动多次启动</span><br></pre></td></tr></table></figure>
-
-<p>操作HDFS系统：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hadoop 2.x版本</span><br><span class="line">hadoop安装路径/bin/hdfs dfs -命令</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hadoop 3.x版本</span><br><span class="line">hadoop安装路径/bin/hdfs fs -命令</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-mapreduce样例运行时的文件系统切换"><a href="#2-mapreduce样例运行时的文件系统切换" class="headerlink" title="2. mapreduce样例运行时的文件系统切换"></a>2. mapreduce样例运行时的文件系统切换</h3><p>在运行诸如mapreduce样例中的grep、wordcount等功能时，很重要的一点是指定文件的输入文件夹路径和输出文件夹（注意输出文件夹不需要提前创建），此时，我们指定的路径是本地路径还是HDFS中的路径呢？需要在Hadoop的配置文件core-site.xml进行指定，当不配置路径时，默认文件系统的路径是Hadoop的安装文件夹下，此外，可以通过配置将文件系统切换为HDFS，在core-site.xml中添加以下配置指定HDFS中NameNode的地址即可：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">name</span>&gt;</span>fs.defaultFS<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">value</span>&gt;</span>hdfs://localhost:9000<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>添加此配置后，运行wordcount等案例时，指定的输入输出路径就是HDFS中的路径了。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.2.jar wordcount /user/root/input /user/root/output</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-hadoop50070监控界面中无法下载HDFS中的文件"><a href="#3-hadoop50070监控界面中无法下载HDFS中的文件" class="headerlink" title="3. hadoop50070监控界面中无法下载HDFS中的文件"></a>3. hadoop50070监控界面中无法下载HDFS中的文件</h3><p>添加主机到虚拟机集群的IP映射，将虚拟机hosts文件中的内容添加到windows主机中<br>虚拟机hosts文件路径：<code>/etc/hosts</code><br>windows hosts文件路径：<code>C:\Windows\System32\drivers\etc\hosts</code></p>
-<p>添加后重启服务器或虚拟机即可。</p>
-<h3 id="4-格式化NameNode（首次启动集群时格式化，不要总格式化）"><a href="#4-格式化NameNode（首次启动集群时格式化，不要总格式化）" class="headerlink" title="4. 格式化NameNode（首次启动集群时格式化，不要总格式化）"></a>4. 格式化NameNode（首次启动集群时格式化，不要总格式化）</h3><p><strong>注意：格式化NameNode，会产生新的集群id,导致NameNode和DataNode的集群id不一致，集群找不到已往数据。所以，格式NameNode时，一定要先删除data数据和log日志，然后再格式化NameNode。(集群id不一致将导致DataNode和NameNode不能同时启动)</strong></p>
-<p><strong>提示：NameNode和DataNode的集群id可以在<code>安装路径/data/tmp/dfs/name/current/VERSION</code> <code>安装路径/data/tmp/dfs/data/current/</code>中或者<code>安装路径/tmp/dfs/name/current/VERSION</code> <code>安装路径/tmp/dfs/data/current/VERSION</code>中查看</strong></p>
-<p>查看java进程，查看NameNode和DataNode是否关闭(jps是JDK中的命令，非linux自带命令)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jps</span><br></pre></td></tr></table></figure>
-
-<p>将hadoop安装目录下的data文件夹 和 logs文件夹删除</p>
-<p>格式化NameNode：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop安装目录下/bin/hdfs namenode -format</span><br></pre></td></tr></table></figure>
-
-<h3 id="5-通过yarn运行MapReduce程序时的问题处理"><a href="#5-通过yarn运行MapReduce程序时的问题处理" class="headerlink" title="5. 通过yarn运行MapReduce程序时的问题处理"></a>5. 通过yarn运行MapReduce程序时的问题处理</h3><ul>
-<li>资源监控页面配置</li>
-</ul>
-<p>yarn资源监控界面需要在yarn-site.xml中配置主机名称，默认名称为0.0.0.0,默认端口号为8088，在启动yarn（ResourceManager和NodeManager）后可以访问资源监控页面，查看MapReduce任务的执行情况和资源使用情况。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;property&gt;</span><br><span class="line">	&lt;name&gt;yarn.resourcemanager.hostname&lt;/name&gt;</span><br><span class="line">	&lt;value&gt;主机名称，自己指定&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>运行失败时classpath配置</li>
-</ul>
-<p>通过yarn运行MR程序时，可能出现运行失败的情况，可以在hadoop安装目录&#x2F;logs&#x2F;userlogs&#x2F;目录下，根据报错信息找到出错应用日志的位置。如报错信息中显示：<code>Error: Could not find or load main class org.apache.hadoop.mapreduce.v2.app.</code>，需要将hadoop的classpath信息写入配置。在命令行中执行<code>hadoop classpath</code>,得到路径将其复制，然后写入yarn-site.xml以及mapred-site.xml中:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;property&gt;</span><br><span class="line">	&lt;name&gt;yarn.application.classpath&lt;/name&gt;</span><br><span class="line">	&lt;value&gt;classpath内容&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>虚拟内存超限配置</li>
-</ul>
-<p>如果运行任务遇到虚拟内存使用超过限制的报错，可以在yarn-site.xml中添加参数，使程序运行时跳过内存检查：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;property&gt;</span><br><span class="line">	&lt;name&gt;yarn.nodemanager.pmem-check-enabled&lt;/name&gt;</span><br><span class="line">	&lt;value&gt;false&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">	&lt;name&gt;yarn.nodemanager.vmem-check-enabled&lt;/name&gt;</span><br><span class="line">	&lt;value&gt;false&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>由于NameNode开启了安全模式（safe-mode）导致程序运行时DataNode权限不足的问题</li>
-</ul>
-<p>退出安全模式：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hdfs dfsadmin -safemode leave</span><br></pre></td></tr></table></figure>
-
-
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/6/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -2736,13 +2698,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">194k</span>
+    <span title="站点总字数">196k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">5:52</span>
+    <span title="站点阅读时长">5:56</span>
   </span>
 </div>
 <div class="busuanzi-count">

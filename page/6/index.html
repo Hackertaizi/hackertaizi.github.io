@@ -147,7 +147,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">54</span>
+          <span class="site-state-item-count">55</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -158,7 +158,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-count">34</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -175,6 +175,163 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.github.io/Hadoop/Hadoop%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Hadoop%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Taizi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/Hadoop/Hadoop%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Hadoop%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Hadoop学习笔记</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-02-15 18:09:12" itemprop="dateCreated datePublished" datetime="2023-02-15T18:09:12+08:00">2023-02-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-09-27 18:26:20" itemprop="dateModified" datetime="2023-09-27T18:26:20+08:00">2023-09-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Hadoop/" itemprop="url" rel="index"><span itemprop="name">Hadoop</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Hadoop/Hadoop%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">Hadoop学习笔记</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.5k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Hadoop学习笔记"><a href="#Hadoop学习笔记" class="headerlink" title="Hadoop学习笔记"></a>Hadoop学习笔记</h1><h3 id="1-一些基本命令"><a href="#1-一些基本命令" class="headerlink" title="1. 一些基本命令"></a>1. 一些基本命令</h3><p>启动hadoop：<br>1)开启SSH传输服务：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service ssh start</span><br></pre></td></tr></table></figure>
+
+<p>2)启动hadoop：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">一次启动</span><br><span class="line">[bash] hadoop安装路径/sbin/start-all.sh</span><br><span class="line">也可以手动多次启动</span><br></pre></td></tr></table></figure>
+
+<p>操作HDFS系统：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hadoop 2.x版本</span><br><span class="line">hadoop安装路径/bin/hdfs dfs -命令</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hadoop 3.x版本</span><br><span class="line">hadoop安装路径/bin/hdfs fs -命令</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-mapreduce样例运行时的文件系统切换"><a href="#2-mapreduce样例运行时的文件系统切换" class="headerlink" title="2. mapreduce样例运行时的文件系统切换"></a>2. mapreduce样例运行时的文件系统切换</h3><p>在运行诸如mapreduce样例中的grep、wordcount等功能时，很重要的一点是指定文件的输入文件夹路径和输出文件夹（注意输出文件夹不需要提前创建），此时，我们指定的路径是本地路径还是HDFS中的路径呢？需要在Hadoop的配置文件core-site.xml进行指定，当不配置路径时，默认文件系统的路径是Hadoop的安装文件夹下，此外，可以通过配置将文件系统切换为HDFS，在core-site.xml中添加以下配置指定HDFS中NameNode的地址即可：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">name</span>&gt;</span>fs.defaultFS<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">value</span>&gt;</span>hdfs://localhost:9000<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>添加此配置后，运行wordcount等案例时，指定的输入输出路径就是HDFS中的路径了。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.2.jar wordcount /user/root/input /user/root/output</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-hadoop50070监控界面中无法下载HDFS中的文件"><a href="#3-hadoop50070监控界面中无法下载HDFS中的文件" class="headerlink" title="3. hadoop50070监控界面中无法下载HDFS中的文件"></a>3. hadoop50070监控界面中无法下载HDFS中的文件</h3><p>添加主机到虚拟机集群的IP映射，将虚拟机hosts文件中的内容添加到windows主机中<br>虚拟机hosts文件路径：<code>/etc/hosts</code><br>windows hosts文件路径：<code>C:\Windows\System32\drivers\etc\hosts</code></p>
+<p>添加后重启服务器或虚拟机即可。</p>
+<h3 id="4-格式化NameNode（首次启动集群时格式化，不要总格式化）"><a href="#4-格式化NameNode（首次启动集群时格式化，不要总格式化）" class="headerlink" title="4. 格式化NameNode（首次启动集群时格式化，不要总格式化）"></a>4. 格式化NameNode（首次启动集群时格式化，不要总格式化）</h3><p><strong>注意：格式化NameNode，会产生新的集群id,导致NameNode和DataNode的集群id不一致，集群找不到已往数据。所以，格式NameNode时，一定要先删除data数据和log日志，然后再格式化NameNode。(集群id不一致将导致DataNode和NameNode不能同时启动)</strong></p>
+<p><strong>提示：NameNode和DataNode的集群id可以在<code>安装路径/data/tmp/dfs/name/current/VERSION</code> <code>安装路径/data/tmp/dfs/data/current/</code>中或者<code>安装路径/tmp/dfs/name/current/VERSION</code> <code>安装路径/tmp/dfs/data/current/VERSION</code>中查看</strong></p>
+<p>查看java进程，查看NameNode和DataNode是否关闭(jps是JDK中的命令，非linux自带命令)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jps</span><br></pre></td></tr></table></figure>
+
+<p>将hadoop安装目录下的data文件夹 和 logs文件夹删除</p>
+<p>格式化NameNode：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop安装目录下/bin/hdfs namenode -format</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-通过yarn运行MapReduce程序时的问题处理"><a href="#5-通过yarn运行MapReduce程序时的问题处理" class="headerlink" title="5. 通过yarn运行MapReduce程序时的问题处理"></a>5. 通过yarn运行MapReduce程序时的问题处理</h3><ul>
+<li>资源监控页面配置</li>
+</ul>
+<p>yarn资源监控界面需要在yarn-site.xml中配置主机名称，默认名称为0.0.0.0,默认端口号为8088，在启动yarn（ResourceManager和NodeManager）后可以访问资源监控页面，查看MapReduce任务的执行情况和资源使用情况。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;property&gt;</span><br><span class="line">	&lt;name&gt;yarn.resourcemanager.hostname&lt;/name&gt;</span><br><span class="line">	&lt;value&gt;主机名称，自己指定&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>运行失败时classpath配置</li>
+</ul>
+<p>通过yarn运行MR程序时，可能出现运行失败的情况，可以在hadoop安装目录&#x2F;logs&#x2F;userlogs&#x2F;目录下，根据报错信息找到出错应用日志的位置。如报错信息中显示：<code>Error: Could not find or load main class org.apache.hadoop.mapreduce.v2.app.</code>，需要将hadoop的classpath信息写入配置。在命令行中执行<code>hadoop classpath</code>,得到路径将其复制，然后写入yarn-site.xml以及mapred-site.xml中:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;property&gt;</span><br><span class="line">	&lt;name&gt;yarn.application.classpath&lt;/name&gt;</span><br><span class="line">	&lt;value&gt;classpath内容&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>虚拟内存超限配置</li>
+</ul>
+<p>如果运行任务遇到虚拟内存使用超过限制的报错，可以在yarn-site.xml中添加参数，使程序运行时跳过内存检查：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;property&gt;</span><br><span class="line">	&lt;name&gt;yarn.nodemanager.pmem-check-enabled&lt;/name&gt;</span><br><span class="line">	&lt;value&gt;false&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">	&lt;name&gt;yarn.nodemanager.vmem-check-enabled&lt;/name&gt;</span><br><span class="line">	&lt;value&gt;false&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>由于NameNode开启了安全模式（safe-mode）导致程序运行时DataNode权限不足的问题</li>
+</ul>
+<p>退出安全模式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hdfs dfsadmin -safemode leave</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1649,13 +1806,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">194k</span>
+    <span title="站点总字数">196k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">5:52</span>
+    <span title="站点阅读时长">5:56</span>
   </span>
 </div>
 <div class="busuanzi-count">

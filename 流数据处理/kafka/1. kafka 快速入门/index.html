@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"hackertaizi.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="1. kafka 快速入门1. kafka架构![6960b34cb7f157199eac5b33dfd1ab72](.&#x2F;1. kafka 快速入门&#x2F;6960b34cb7f157199eac5b33dfd1ab72.png) 2.  基本概念2.1 生产者（Producer） 定义：生产者是发送消息的一方，负责创建消息并将其投递到Kafka中。 功能：生产者通过Kafka的AP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1.kafka快速入门">
+<meta property="og:url" content="https://hackertaizi.github.io/%E6%B5%81%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/kafka/1.%20kafka%20%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/index.html">
+<meta property="og:site_name" content="太子的个人博客">
+<meta property="og:description" content="1. kafka 快速入门1. kafka架构![6960b34cb7f157199eac5b33dfd1ab72](.&#x2F;1. kafka 快速入门&#x2F;6960b34cb7f157199eac5b33dfd1ab72.png) 2.  基本概念2.1 生产者（Producer） 定义：生产者是发送消息的一方，负责创建消息并将其投递到Kafka中。 功能：生产者通过Kafka的AP">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-08-02T07:32:56.642Z">
+<meta property="article:modified_time" content="2024-09-10T10:29:06.420Z">
+<meta property="article:author" content="Taizi">
+<meta property="article:tag" content="kafka">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://hackertaizi.github.io/%E6%B5%81%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/kafka/1.%20kafka%20%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hackertaizi.github.io/%E6%B5%81%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/kafka/1.%20kafka%20%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/","path":"流数据处理/kafka/1. kafka 快速入门/","title":"1.kafka快速入门"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>1.kafka快速入门 | 太子的个人博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">太子的个人博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Have a nice day !</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/categories/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-kafka-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8"><span class="nav-number">1.</span> <span class="nav-text">1. kafka 快速入门</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-kafka%E6%9E%B6%E6%9E%84"><span class="nav-number">1.1.</span> <span class="nav-text">1. kafka架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.2.</span> <span class="nav-text">2.  基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E7%94%9F%E4%BA%A7%E8%80%85%EF%BC%88Producer%EF%BC%89"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 生产者（Producer）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E6%B6%88%E8%B4%B9%E8%80%85%EF%BC%88Consumer%EF%BC%89"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 消费者（Consumer）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E4%BB%A3%E7%90%86%E8%8A%82%E7%82%B9%EF%BC%88Broker%EF%BC%89"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 代理节点（Broker）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E4%B8%BB%E9%A2%98%EF%BC%88Topic%EF%BC%89"><span class="nav-number">1.2.4.</span> <span class="nav-text">2.4 主题（Topic）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-%E5%88%86%E5%8C%BA%EF%BC%88Partition%EF%BC%89"><span class="nav-number">1.2.5.</span> <span class="nav-text">2.5 分区（Partition）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-%E5%89%AF%E6%9C%AC%EF%BC%88Replica%EF%BC%89"><span class="nav-number">1.2.6.</span> <span class="nav-text">2.6 副本（Replica）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-ZooKeeper"><span class="nav-number">1.2.7.</span> <span class="nav-text">2.7 ZooKeeper</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-8-%E6%B6%88%E6%81%AF%E8%AE%B0%E5%BD%95%EF%BC%88Record%EF%BC%89"><span class="nav-number">1.2.8.</span> <span class="nav-text">2.8 消息记录（Record）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E6%95%B0%E6%8D%AE%E6%B5%81%E8%BD%AC%E8%BF%87%E7%A8%8B"><span class="nav-number">1.3.</span> <span class="nav-text">3. 数据流转过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E6%95%B0%E6%8D%AE%E4%BA%A7%E7%94%9F-amp-%E6%8E%A8%E9%80%81"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 数据产生&amp;推送</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-borker%E6%B6%88%E6%81%AF%E4%BB%A3%E7%90%86"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 borker消息代理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-kafka%E6%B6%88%E6%81%AF%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.4.</span> <span class="nav-text">4. kafka消息模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-0-%E6%B6%88%E8%B4%B9%E8%80%85%E6%B6%88%E8%B4%B9%E5%8E%9F%E5%88%99"><span class="nav-number">1.4.1.</span> <span class="nav-text">4.0 消费者消费原则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E7%82%B9%E5%AF%B9%E7%82%B9%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.4.2.</span> <span class="nav-text">4.1 点对点模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.4.3.</span> <span class="nav-text">4.2 发布订阅模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-%E5%88%86%E5%8C%BA%E4%B8%8E%E6%B6%88%E6%81%AF%E9%A1%BA%E5%BA%8F"><span class="nav-number">1.4.4.</span> <span class="nav-text">4.3 分区与消息顺序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E8%AF%AD%E4%B9%89"><span class="nav-number">1.4.5.</span> <span class="nav-text">4.4 消息传递语义</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E7%94%9F%E4%BA%A7%E8%80%85API"><span class="nav-number">1.5.</span> <span class="nav-text">5. 生产者API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E6%B6%88%E8%B4%B9%E8%80%85API"><span class="nav-number">1.6.</span> <span class="nav-text">6. 消费者API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-%E5%BA%8F%E5%88%97%E5%8C%96"><span class="nav-number">1.7.</span> <span class="nav-text">7. 序列化</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Taizi</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">64</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.github.io/%E6%B5%81%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/kafka/1.%20kafka%20%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Taizi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="1.kafka快速入门 | 太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          1.kafka快速入门
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-08-02 15:32:56" itemprop="dateCreated datePublished" datetime="2024-08-02T15:32:56+08:00">2024-08-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-09-10 18:29:06" itemprop="dateModified" datetime="2024-09-10T18:29:06+08:00">2024-09-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%B5%81%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">流数据处理</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%B5%81%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/kafka/" itemprop="url" rel="index"><span itemprop="name">kafka</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>4.4k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>8 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="1-kafka-快速入门"><a href="#1-kafka-快速入门" class="headerlink" title="1. kafka 快速入门"></a>1. kafka 快速入门</h1><h2 id="1-kafka架构"><a href="#1-kafka架构" class="headerlink" title="1. kafka架构"></a>1. kafka架构</h2><p>![6960b34cb7f157199eac5b33dfd1ab72](.&#x2F;1. kafka 快速入门&#x2F;6960b34cb7f157199eac5b33dfd1ab72.png)</p>
+<h2 id="2-基本概念"><a href="#2-基本概念" class="headerlink" title="2.  基本概念"></a>2.  基本概念</h2><h3 id="2-1-生产者（Producer）"><a href="#2-1-生产者（Producer）" class="headerlink" title="2.1 生产者（Producer）"></a>2.1 生产者（Producer）</h3><ul>
+<li><strong>定义</strong>：生产者是发送消息的一方，负责创建消息并将其投递到Kafka中。</li>
+<li><strong>功能</strong>：生产者通过Kafka的API将消息发送到指定的主题（Topic）。</li>
+</ul>
+<h3 id="2-2-消费者（Consumer）"><a href="#2-2-消费者（Consumer）" class="headerlink" title="2.2 消费者（Consumer）"></a>2.2 消费者（Consumer）</h3><ul>
+<li><strong>定义</strong>：消费者是接收消息的一方，负责从Kafka中订阅并消费消息。</li>
+<li><strong>消费者组（Consumer Group, CG）</strong>：由多个消费者组成，每个消费者组内的消费者负责消费不同分区的数据，一个分区只能由一个组内消费者消费，消费者组之间互不影响。</li>
+</ul>
+<h3 id="2-3-代理节点（Broker）"><a href="#2-3-代理节点（Broker）" class="headerlink" title="2.3 代理节点（Broker）"></a>2.3 代理节点（Broker）</h3><ul>
+<li><strong>定义</strong>：对于Kafka而言，Broker可以简单地看作一个独立的Kafka服务节点或Kafka服务实例。</li>
+<li><strong>功能</strong>：Broker负责接收生产者发送的消息，并将其存储到磁盘中，同时也负责为消费者提供消息。</li>
+</ul>
+<h3 id="2-4-主题（Topic）"><a href="#2-4-主题（Topic）" class="headerlink" title="2.4 主题（Topic）"></a>2.4 主题（Topic）</h3><ul>
+<li><strong>定义</strong>：Kafka中的消息以主题为单位进行归类。</li>
+<li><strong>特点</strong>：生产者将消息发送到特定的主题，而消费者则订阅主题并消费其中的消息。一个主题可以包含多个分区（Partition），以实现消息的并行处理和负载均衡。</li>
+</ul>
+<h3 id="2-5-分区（Partition）"><a href="#2-5-分区（Partition）" class="headerlink" title="2.5 分区（Partition）"></a>2.5 分区（Partition）</h3><ul>
+<li><p><strong>定义</strong>：分区是主题的细分，一个分区只属于单个主题。</p>
+</li>
+<li><p><strong>特点</strong>：同一主题下的不同分区包含的消息是不同的，分区在存储层面可以看作一个可追加的日志（Log）文件。消息在被追加到分区日志文件的时候都会分配一个特定的偏移量（Offset），Kafka通过Offset来保证消息在分区内的顺序性。</p>
+<blockquote>
+<p>Offset（偏移量）用于唯一标识分区中每条消息的位置。它是一个长整型（long）的数字，每条消息被发送到分区时，都会被分配一个递增的Offset值。这个值帮助Kafka跟踪消息的顺序和位置，确保消息的有序性和一致性。</p>
+<p>消费者通过指定Offset来读取分区中的消息。它们可以指定从特定的Offset开始读取，或者从分区的开始（Offset  0）或结束（最新的Offset）读取。Kafka还允许消费者将它们的读取位置（即Offset）保存起来，以便在发生故障或重启后能够继续从上次停止的地方开始读取消息。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="2-6-副本（Replica）"><a href="#2-6-副本（Replica）" class="headerlink" title="2.6 副本（Replica）"></a>2.6 副本（Replica）</h3><ul>
+<li><strong>定义</strong>：Kafka为分区引入了多副本机制，以提升容灾能力。</li>
+<li><strong>特点</strong>：同一分区的不同副本中保存的是相同的消息（在同一时刻，副本之间并非完全一样），副本之间是“一主多从”的关系。其中leader副本负责处理读写请求，follower副本只负责与leader副本的消息同步。当leader副本出现故障时，会从follower副本中重新选举新的leader副本对外提供服务。</li>
+</ul>
+<h3 id="2-7-ZooKeeper"><a href="#2-7-ZooKeeper" class="headerlink" title="2.7 ZooKeeper"></a>2.7 ZooKeeper</h3><ul>
+<li><strong>定义</strong>：ZooKeeper是一个分布式协调服务，用于管理Kafka集群的元数据和控制器的选举等操作。</li>
+<li><strong>功能</strong>：在Kafka中，ZooKeeper负责维护集群的元数据，如Broker的注册信息、主题的分区信息等。</li>
+</ul>
+<h3 id="2-8-消息记录（Record）"><a href="#2-8-消息记录（Record）" class="headerlink" title="2.8 消息记录（Record）"></a>2.8 消息记录（Record）</h3><ul>
+<li><strong>定义</strong>：消息记录是Kafka存储和处理的基本单位</li>
+<li><strong>特点</strong>：</li>
+<li>每个消息记录通常包含以下几个关键部分：<ol>
+<li><strong>键（Key）</strong>：这是一个可选的字段，用于消息的分区。如果消息指定了键，Kafka将根据这个键的哈希值来决定消息应该被发送到哪个分区。这对于确保具有相同键的消息能够按顺序到达并存储在同一分区中非常有用，这对于某些应用场景（如会话管理）至关重要。</li>
+<li><strong>值（Value）</strong>：这是消息的实际内容，可以是任意类型的数据（如字符串、JSON对象等），具体取决于你的应用场景。值字段是消息记录的主体部分，包含了实际需要传递的信息。</li>
+<li><strong>时间戳（Timestamp）</strong>：时间戳是消息被创建或记录的时间。Kafka会自动为每条消息记录分配一个时间戳，这对于后续的数据处理（如基于时间的窗口操作）和日志管理非常有用。</li>
+<li><strong>偏移量（Offset）</strong>：每个分区中的消息记录都有一个唯一的偏移量标识。偏移量是消息在分区中的顺序号，用于Kafka消费者定位并读取消息。每当有新的消息被写入分区时，它的偏移量就会递增。</li>
+<li><strong>头部（Headers）</strong>：Kafka消息还支持可选的头部信息，这是一个从字符串键到字节数组的映射。头部信息可以用于传递元数据或额外的上下文信息，而不会干扰消息的实际内容。</li>
+</ol>
+</li>
+</ul>
+<h2 id="3-数据流转过程"><a href="#3-数据流转过程" class="headerlink" title="3. 数据流转过程"></a>3. 数据流转过程</h2><h3 id="3-1-数据产生-amp-推送"><a href="#3-1-数据产生-amp-推送" class="headerlink" title="3.1 数据产生&amp;推送"></a>3.1 数据产生&amp;推送</h3><blockquote>
+<p> 数据由生产者应用产生，通常情况下会在kafka中提前创建好topic，生产者推送数据到kafka时会将消息记录发送到指定的topic中。</p>
+<p>在kafka分布式集群中，topic下还有broker、分区、副本等机制，那么数据会推送到哪里呢？</p>
+</blockquote>
+<ol>
+<li><p>首先，topic无需选择，因为消息会发送到指定topic。</p>
+</li>
+<li><p>然后，选择分区partition，通常基于以下规则：</p>
+</li>
+</ol>
+<ul>
+<li><p>使用分区策略：</p>
+<ul>
+<li><strong>轮询策略</strong>：这是默认的分区策略，能够保证消息最大限度地被平均分配到所有分区。即如果topic有N个分区，那么第1条消息被发送到第1个分区，第2条消息被发送到第2个分区，以此类推，直到第N条消息被发送到第N个分区，然后又从头开始循环。</li>
+<li><strong>按消息键保序策略</strong>：如果生产者为消息指定了key，那么Kafka会根据key的hash值来计算分区号，确保具有相同key的消息被发送到同一个分区，从而保持消息的顺序性。</li>
+<li><del>随机策略：已废弃</del></li>
+</ul>
+</li>
+<li><p>指定分区号：如果生产者在发送消息时直接指定了分区号，那么Kafka会直接将消息发送到指定的分区。</p>
+</li>
+</ul>
+<ol start="3">
+<li>选择broker：</li>
+</ol>
+<ul>
+<li><strong>Leader副本</strong>：在Kafka中，每个分区都会有一个或多个副本（Replica），其中一个是Leader副本，负责处理读写请求。生产者发送的消息会被推送到该分区的Leader副本所在的broker。</li>
+<li><strong>副本分配</strong>：Kafka会根据一定的算法将分区的副本分配到不同的broker上，以确保数据的可靠性和可用性。通常，这个算法会尽量保证每个broker上的负载均衡，并且会尽量将不同分区的Leader副本分散到不同的broker上。</li>
+</ul>
+<h3 id="3-2-borker消息代理"><a href="#3-2-borker消息代理" class="headerlink" title="3.2 borker消息代理"></a>3.2 borker消息代理</h3><p>![image-20240807161855792](.&#x2F;1. kafka 快速入门&#x2F;image-20240807161855792.png)</p>
+<p>消息进入kafka进群后，由集群中的broker进行消息代理，同一分区的leader和follower，在默认的分配策略下，leader和副本会尽量跨broker分布在不同的broker中，使每个broker中的leader和broker数量大致相等，以增加容错性，避免单节点故障带来影响，并分散处理请求的负载。</p>
+<h2 id="4-kafka消息模型"><a href="#4-kafka消息模型" class="headerlink" title="4. kafka消息模型"></a>4. kafka消息模型</h2><h3 id="4-0-消费者消费原则"><a href="#4-0-消费者消费原则" class="headerlink" title="4.0 消费者消费原则"></a>4.0 消费者消费原则</h3><p>![image-20240807165500221](.&#x2F;1. kafka 快速入门&#x2F;image-20240807165500221.png)</p>
+<ul>
+<li>分区是最小的并行单位</li>
+<li>一个消费者可以消费多个分区</li>
+<li>一个分区可以被多个消费者组里的消费者消费</li>
+<li>一个分区不能同时被同一个消费者组里的多个消费者消费，这是处于提高性能减少开销的考虑，避免为了处理同时消费要维护的锁机制和其他额外开销。</li>
+</ul>
+<h3 id="4-1-点对点模式"><a href="#4-1-点对点模式" class="headerlink" title="4.1 点对点模式"></a>4.1 点对点模式</h3><p>![image-20240807170857632](.&#x2F;1. kafka 快速入门&#x2F;image-20240807170857632.png)</p>
+<p><strong>特点</strong>：</p>
+<ul>
+<li>点对点模式是一种一对一的消息传递模式。</li>
+<li>消息生产者将消息发送给特定的消费者，而不是发布到一个主题。</li>
+<li>消息只能被一个消费者接收和处理，即使有多个消费者监听同一个队列，也只有一个消费者能获取到该消息。</li>
+<li>在Kafka中，可以通过创建单个消费者组，并设置消费者组的消费者数量为1来模拟点对点模式，但实际上Kafka更偏向于发布订阅模式。</li>
+</ul>
+<p><strong>应用场景</strong>：</p>
+<ul>
+<li>需要确保消息被特定消费者接收的场景，如任务分配、订单处理等。</li>
+<li>消息传递过程中需要保持消息顺序的场景，因为点对点模式可以保证消息的顺序性。</li>
+</ul>
+<h3 id="4-2-发布订阅模式"><a href="#4-2-发布订阅模式" class="headerlink" title="4.2 发布订阅模式"></a>4.2 发布订阅模式</h3><p>![image-20240807170102587](.&#x2F;1. kafka 快速入门&#x2F;image-20240807170102587.png)</p>
+<p><strong>特点</strong>：</p>
+<ul>
+<li>发布订阅模式是一种一对多的消息传递模式。</li>
+<li>消息生产者将消息发送到一个或多个主题（Topic），而订阅者可以选择订阅一个或多个主题来接收消息。</li>
+<li>每个订阅者都可以独立地消费消息，而发布者和订阅者之间没有直接的联系。</li>
+<li>消息一旦被发布到某个主题，所有订阅了该主题的消费者都可以接收到该消息。</li>
+</ul>
+<p>如果需要所有消费者都可以订阅同一个分区数据，可以将每个消费者放在不同的消费者组中。</p>
+<p><strong>应用场景</strong>：</p>
+<ul>
+<li>需要广播消息给多个消费者的场景，如新闻推送、系统通知等。</li>
+<li>解耦消息生产者和消费者的场景，生产者和消费者之间不需要知道对方的存在，只需要关注主题即可。</li>
+</ul>
+<h3 id="4-3-分区与消息顺序"><a href="#4-3-分区与消息顺序" class="headerlink" title="4.3 分区与消息顺序"></a>4.3 分区与消息顺序</h3><p>![image-20240807171523575](.&#x2F;1. kafka 快速入门&#x2F;image-20240807171523575.png)</p>
+<ul>
+<li>同一个生产者发送到同一分区的消息，先发送的offset比后发送的offset小</li>
+<li>同一个生产者发送到不同分的消息，消息顺序无法保证</li>
+<li>消费者按照消息在分区里的存放顺序进行消费, 如果消费者订阅了多个分区，同一分区里的数据不一定是连续消费的，但消费顺序是确定的，即图中对于column1，partition0消费顺序一定是M1&gt;M2&gt;M3, 实际消费可能是M1-&gt;M4-&gt;M2-&gt;M3</li>
+<li>kafka只保证分区内的消息顺序，不能保证分区间的消息顺序</li>
+</ul>
+<h3 id="4-4-消息传递语义"><a href="#4-4-消息传递语义" class="headerlink" title="4.4 消息传递语义"></a>4.4 消息传递语义</h3><p>生产者向broker发送消息后，broker接收确认后，会返回一条确认消息。</p>
+<p>kafka内部有一个特殊的topic：<code>__consumer_offset</code>，负责存储消费者的消费位置，消费者在消费时需要提交消费位置来更新这个topic中的offset内容。</p>
+<ul>
+<li><p>最多一次：消息可能丢失，但永远不会重复发送&#x2F;消费</p>
+<ul>
+<li><p>生产者</p>
+<p>生产者发送消息后，无论消息发送成功与否，不再重新发送</p>
+</li>
+<li><p>消费者</p>
+<p>消费者先提交消费位置，再读取消费信息。如果在读取消费信息时失败，下一次消费时，由于刚刚已提交消费位置，这次消息将被跳过。</p>
+</li>
+</ul>
+</li>
+<li><p>最少一次：消息不会丢失，但可能会重复发送&#x2F;消费</p>
+<ul>
+<li><p>生产者</p>
+<p>生产者发送消息后，broker成功接收到消息，但是broker返回给生产者的确认消息在传递过程中失败了，这是producer会再次发送该消息，导致重复发送</p>
+</li>
+<li><p>消费者</p>
+<p>消费者先读取消费信息，再提交消费位置，但提交消费位置时失败了，这将导致下一次消费时再次读取这条消息，即重复消费。</p>
+</li>
+</ul>
+</li>
+<li><p>精确一次：保证消息被传递到服务端且在服务端不重复</p>
+<p>实现比较困难</p>
+</li>
+</ul>
+<h2 id="5-生产者API"><a href="#5-生产者API" class="headerlink" title="5. 生产者API"></a>5. 生产者API</h2><h2 id="6-消费者API"><a href="#6-消费者API" class="headerlink" title="6. 消费者API"></a>6. 消费者API</h2><h2 id="7-序列化"><a href="#7-序列化" class="headerlink" title="7. 序列化"></a>7. 序列化</h2>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/kafka/" rel="tag"># kafka</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/%E6%95%B0%E6%8D%AE%E5%BA%93/ElasticSearch/4.%20ElasticSearch%20Query%20DSL/" rel="prev" title="">
+                  <i class="fa fa-angle-left"></i> 
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/%E5%85%B6%E4%BB%96/Floyd%E7%AE%97%E6%B3%95/" rel="next" title="">
+                   <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Powered by Hackertaizi</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">225k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">6:49</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

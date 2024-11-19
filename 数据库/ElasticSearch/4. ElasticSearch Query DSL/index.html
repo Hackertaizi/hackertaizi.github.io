@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"hackertaizi.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="4. ElasticSearch Query DSL1. 简介ElasticSearch的查询语法DSL（Domain Specific Language）实质上是发起一个HTTP请求，查询语法以JSON格式书写，并放在请求的请求体中。 即通过 HTTP+JSON 的方式即可完成对ElasticSearch的操作。 在ElasticSearch中，建议先建立索引和映射，然后再向索引中写入数据。 2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="太子的个人博客">
+<meta property="og:url" content="https://hackertaizi.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93/ElasticSearch/4.%20ElasticSearch%20Query%20DSL/index.html">
+<meta property="og:site_name" content="太子的个人博客">
+<meta property="og:description" content="4. ElasticSearch Query DSL1. 简介ElasticSearch的查询语法DSL（Domain Specific Language）实质上是发起一个HTTP请求，查询语法以JSON格式书写，并放在请求的请求体中。 即通过 HTTP+JSON 的方式即可完成对ElasticSearch的操作。 在ElasticSearch中，建议先建立索引和映射，然后再向索引中写入数据。 2">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-07-18T07:23:54.475Z">
+<meta property="article:modified_time" content="2024-08-16T11:21:21.660Z">
+<meta property="article:author" content="Taizi">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://hackertaizi.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93/ElasticSearch/4.%20ElasticSearch%20Query%20DSL/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hackertaizi.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93/ElasticSearch/4.%20ElasticSearch%20Query%20DSL/","path":"数据库/ElasticSearch/4. ElasticSearch Query DSL/","title":""}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title> | 太子的个人博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">太子的个人博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Have a nice day !</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/categories/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#4-ElasticSearch-Query-DSL"><span class="nav-number">1.</span> <span class="nav-text">4. ElasticSearch Query DSL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E7%AE%80%E4%BB%8B"><span class="nav-number">1.1.</span> <span class="nav-text">1. 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E7%B4%A2%E5%BC%95%E6%93%8D%E4%BD%9C"><span class="nav-number">1.2.</span> <span class="nav-text">2. 索引操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E5%88%9B%E5%BB%BA%E7%B4%A2%E5%BC%95"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 创建索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E6%9F%A5%E8%AF%A2%E7%B4%A2%E5%BC%95"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 查询索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E5%88%A0%E9%99%A4%E7%B4%A2%E5%BC%95"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 删除索引</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E6%96%87%E6%A1%A3%E6%93%8D%E4%BD%9C"><span class="nav-number">1.3.</span> <span class="nav-text">3. 文档操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E5%88%9B%E5%BB%BA%E6%96%87%E6%A1%A3"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 创建文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E6%9F%A5%E8%AF%A2%E6%96%87%E6%A1%A3"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 查询文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E4%BF%AE%E6%94%B9%E6%96%87%E6%A1%A3"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.3 修改文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-%E5%88%A0%E9%99%A4%E6%96%87%E6%A1%A3"><span class="nav-number">1.3.4.</span> <span class="nav-text">3.4 删除文档</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E5%A4%8D%E6%9D%82%E7%9A%84%E6%9F%A5%E8%AF%A2%E6%93%8D%E4%BD%9C"><span class="nav-number">1.4.</span> <span class="nav-text">4. 复杂的查询操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E6%9D%A1%E4%BB%B6%E6%9F%A5%E8%AF%A2"><span class="nav-number">1.4.1.</span> <span class="nav-text">4.1 条件查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2"><span class="nav-number">1.4.2.</span> <span class="nav-text">4.2 分页查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-%E6%9F%A5%E8%AF%A2%E6%8C%87%E5%AE%9A%E5%AD%97%E6%AE%B5"><span class="nav-number">1.4.3.</span> <span class="nav-text">4.3 查询指定字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-%E6%9F%A5%E8%AF%A2%E6%8E%92%E5%BA%8F"><span class="nav-number">1.4.4.</span> <span class="nav-text">4.4 查询排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-%E5%A4%9A%E6%9D%A1%E4%BB%B6%E6%9F%A5%E8%AF%A2"><span class="nav-number">1.4.5.</span> <span class="nav-text">4.5 多条件查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-6-%E8%8C%83%E5%9B%B4%E6%9F%A5%E8%AF%A2"><span class="nav-number">1.4.6.</span> <span class="nav-text">4.6 范围查询</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E5%85%A8%E6%96%87%E6%A3%80%E7%B4%A2"><span class="nav-number">1.5.</span> <span class="nav-text">5. 全文检索</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-%E5%85%A8%E6%96%87%E6%A3%80%E7%B4%A2"><span class="nav-number">1.5.1.</span> <span class="nav-text">5.1 全文检索</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-%E5%AE%8C%E5%85%A8%E5%8C%B9%E9%85%8D%E6%9F%A5%E8%AF%A2"><span class="nav-number">1.5.2.</span> <span class="nav-text">5.2 完全匹配查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-%E9%AB%98%E4%BA%AE%E6%9F%A5%E8%AF%A2"><span class="nav-number">1.5.3.</span> <span class="nav-text">5.3 高亮查询</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E8%81%9A%E5%90%88%E6%9F%A5%E8%AF%A2"><span class="nav-number">1.6.</span> <span class="nav-text">6. 聚合查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-%E6%98%A0%E5%B0%84%EF%BC%88mapping%EF%BC%89"><span class="nav-number">1.7.</span> <span class="nav-text">7. 映射（mapping）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-%E9%85%8D%E7%BD%AE%E6%98%A0%E5%B0%84"><span class="nav-number">1.7.1.</span> <span class="nav-text">7.1 配置映射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-%E5%8A%A8%E6%80%81%E6%98%A0%E5%B0%84"><span class="nav-number">1.7.2.</span> <span class="nav-text">7.2 动态映射</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#7-2-1-%E6%A6%82%E5%BF%B5"><span class="nav-number">1.7.2.1.</span> <span class="nav-text">7.2.1 概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-2-2-%E7%89%B9%E7%82%B9"><span class="nav-number">1.7.2.2.</span> <span class="nav-text">7.2.2 特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-2-3-%E9%85%8D%E7%BD%AE"><span class="nav-number">1.7.2.3.</span> <span class="nav-text">7.2.3 配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-2-4-%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">1.7.2.4.</span> <span class="nav-text">7.2.4 适用场景</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-3-%E5%85%B3%E4%BA%8E%E6%98%A0%E5%B0%84%E7%9A%84%E7%96%91%E9%97%AE"><span class="nav-number">1.7.3.</span> <span class="nav-text">7.3 关于映射的疑问</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Taizi</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">64</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hackertaizi.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93/ElasticSearch/4.%20ElasticSearch%20Query%20DSL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Taizi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | 太子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-07-18 15:23:54" itemprop="dateCreated datePublished" datetime="2024-07-18T15:23:54+08:00">2024-07-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-08-16 19:21:21" itemprop="dateModified" datetime="2024-08-16T19:21:21+08:00">2024-08-16</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>16k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>30 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="4-ElasticSearch-Query-DSL"><a href="#4-ElasticSearch-Query-DSL" class="headerlink" title="4. ElasticSearch Query DSL"></a>4. ElasticSearch Query DSL</h1><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h2><p>ElasticSearch的查询语法DSL（Domain Specific Language）实质上是发起一个HTTP请求，查询语法以JSON格式书写，并放在请求的请求体中。</p>
+<p>即通过 HTTP+JSON 的方式即可完成对ElasticSearch的操作。</p>
+<p><strong>在ElasticSearch中，建议先建立索引和映射，然后再向索引中写入数据。</strong></p>
+<h2 id="2-索引操作"><a href="#2-索引操作" class="headerlink" title="2. 索引操作"></a>2. 索引操作</h2><blockquote>
+<p>以下所有操作通过Kibana测试工具进行，由于Kibana和ES时高度集成的，一般都部署在同一网络中，所以通过Kibana进行操作时，HTTP请求的URL路径中可以忽略服务器信息（域名或ip地址等）</p>
+</blockquote>
+<h3 id="2-1-创建索引"><a href="#2-1-创建索引" class="headerlink" title="2.1 创建索引"></a>2.1 创建索引</h3><blockquote>
+<p>创建索引，相当于在关系型数据库中创建数据库</p>
+</blockquote>
+<p>创建一个名为<code>index_zky</code>的索引：</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PUT /index_zky</span><br></pre></td></tr></table></figure>
+
+<p>![image-20240719102601483](.&#x2F;4. ElasticSearch Query DSL&#x2F;image-20240719102601483.png)</p>
+<p>可以看到，响应结果表明：</p>
+<ul>
+<li>创建索引的请求已经被集群中的主节点接收并认可</li>
+<li>索引的分片请求已经被足量的分片接收并认可</li>
+<li>索引名为：index_zky</li>
+</ul>
+<blockquote>
+<p>为什么使用PUT方法？</p>
+<p>PUT方法用于更新，或在某些情况下创建资源。且PUT请求时幂等的，即多次请求同一个URL，返回结果应该是一样的。多次请求创建同一个索引，ES在第二次后会忽略请求，返回索引已经存在的提示。但索引的状态没有发生改变，这是符合幂等性的。</p>
+<p>在ES中，创建索引只能使用PUT请求。</p>
+</blockquote>
+<p>再次尝试创建该索引：<br>![image-20240719104055988](.&#x2F;4. ElasticSearch Query DSL&#x2F;image-20240719104055988.png)</p>
+<h3 id="2-2-查询索引"><a href="#2-2-查询索引" class="headerlink" title="2.2 查询索引"></a>2.2 查询索引</h3><ul>
+<li><p>查询指定索引信息</p>
+<p>查询名为<code>index_zky</code>的索引的信息：</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /index_zky</span><br></pre></td></tr></table></figure>
+
+<p>响应：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;index_zky&quot;</span> <span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;aliases&quot;</span> <span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;mappings&quot;</span> <span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;settings&quot;</span> <span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;index&quot;</span> <span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;routing&quot;</span> <span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">          <span class="attr">&quot;allocation&quot;</span> <span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;include&quot;</span> <span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">              <span class="attr">&quot;_tier_preference&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;data_content&quot;</span></span><br><span class="line">            <span class="punctuation">&#125;</span></span><br><span class="line">          <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;search&quot;</span> <span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">          <span class="attr">&quot;slowlog&quot;</span> <span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;level&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;info&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;threshold&quot;</span> <span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">              <span class="attr">&quot;fetch&quot;</span> <span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;warn&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;200ms&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;trace&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;50ms&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;debug&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;80ms&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;info&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;100ms&quot;</span></span><br><span class="line">              <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">              <span class="attr">&quot;query&quot;</span> <span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;warn&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;500ms&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;trace&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;50ms&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;debug&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;100ms&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;info&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;200ms&quot;</span></span><br><span class="line">              <span class="punctuation">&#125;</span></span><br><span class="line">            <span class="punctuation">&#125;</span></span><br><span class="line">          <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;refresh_interval&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;10s&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;indexing&quot;</span> <span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">          <span class="attr">&quot;slowlog&quot;</span> <span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;level&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;info&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;threshold&quot;</span> <span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">              <span class="attr">&quot;index&quot;</span> <span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;warn&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;200ms&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;trace&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;20ms&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;debug&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;50ms&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;info&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;100ms&quot;</span></span><br><span class="line">              <span class="punctuation">&#125;</span></span><br><span class="line">            <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;source&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;1000&quot;</span></span><br><span class="line">          <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;number_of_shards&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;1&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;provided_name&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;index_zky&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;creation_date&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;1721355853799&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;unassigned&quot;</span> <span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">          <span class="attr">&quot;node_left&quot;</span> <span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;delayed_timeout&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;5m&quot;</span></span><br><span class="line">          <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;number_of_replicas&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;1&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;uuid&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;oS-SNjsDRKCKdExevJDkQg&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;version&quot;</span> <span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">          <span class="attr">&quot;created&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;7100099&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">      <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>含义（来自于GPT ）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">aliases</span><br><span class="line">    值：&#123; &#125;</span><br><span class="line">    含义：这个索引没有设置别名。别名允许你通过不同的名称来引用同一个索引，这在某些场景下非常有用，比如在不中断服务的情况下重新索引数据。</span><br><span class="line">mappings</span><br><span class="line">    值：&#123; &#125;</span><br><span class="line">    含义：这里映射部分为空，可能是因为查询没有包含具体的字段映射信息，或者该索引尚未定义任何字段映射。在Elasticsearch中，映射定义了索引中文档的结构，包括字段的名称、类型以及如何处理这些字段的索引和搜索。</span><br><span class="line">settings</span><br><span class="line">    index.routing.allocation.include._tier_preference</span><br><span class="line">        值：&quot;data_content&quot;</span><br><span class="line">        含义：这指定了索引的分片应该被分配到哪些节点上。在这个例子中，它表明分片应该被分配到标记为data_content的数据层节点上。这是一种节点选择策略，用于优化索引的性能和可用性。</span><br><span class="line">    search.slowlog</span><br><span class="line">        level：&quot;info&quot;</span><br><span class="line">        threshold：定义了不同日志级别（info, debug, warn, trace）的慢查询阈值。例如，对于查询日志（query），信息级别（info）的阈值被设置为200ms，意味着执行时间超过200ms的查询将被记录为信息级别的日志。</span><br><span class="line">    refresh_interval</span><br><span class="line">        值：&quot;10s&quot;</span><br><span class="line">        含义：这定义了索引的刷新间隔，即Elasticsearch多久会将内存中的更改刷新到磁盘上的索引文件中。较短的刷新间隔可以提供更快的近实时搜索能力，但会增加磁盘I/O和索引的压力。</span><br><span class="line">    indexing.slowlog</span><br><span class="line">        level：&quot;info&quot;</span><br><span class="line">        threshold：定义了索引操作（如文档索引）的慢日志阈值。例如，对于索引操作，信息级别的阈值被设置为100ms。</span><br><span class="line">        source：&quot;1000&quot;，这可能指的是与慢日志相关的某个特定设置，但具体含义可能因Elasticsearch版本而异。在某些版本中，这个值可能与慢日志记录的源文档数量或大小有关。</span><br><span class="line">    number_of_shards</span><br><span class="line">        值：&quot;1&quot;</span><br><span class="line">        含义：这个索引被分成了1个分片。分片是Elasticsearch分布式存储和搜索机制的基础，它们允许索引数据跨多个节点进行分配，从而提高性能和可扩展性。</span><br><span class="line">    number_of_replicas</span><br><span class="line">        值：&quot;1&quot;</span><br><span class="line">        含义：这个索引有1个副本。副本是分片的额外拷贝，用于提供数据的冗余和容错能力。在这个例子中，每个分片都有一个副本，这意味着如果原始分片所在的节点发生故障，副本可以接管并提供数据的访问。</span><br><span class="line">    provided_name</span><br><span class="line">        值：&quot;index_zky&quot;</span><br><span class="line">        含义：这是创建索引时提供的名称。</span><br><span class="line">    creation_date</span><br><span class="line">        值：&quot;1721355853799&quot;</span><br><span class="line">        含义：这是索引的创建时间戳，表示索引在Elasticsearch集群中被创建的具体时间。</span><br><span class="line">    unassigned.node_left.delayed_timeout</span><br><span class="line">        值：&quot;5m&quot;</span><br><span class="line">        含义：这定义了当一个节点离开集群时，其上的分片被标记为未分配状态的延迟超时时间。在这个例子中，如果节点离开集群，其上的分片将在5分钟后被标记为未分配状态，以便集群可以重新平衡分片到其他节点上。</span><br><span class="line">    uuid</span><br><span class="line">        值：&quot;oS-SNjsDRKCKdExevJDkQg&quot;</span><br><span class="line">        含义：这是索引的唯一标识符。</span><br><span class="line">    version.created</span><br><span class="line">        值：&quot;7100099&quot;</span><br><span class="line">        含义：这表示创建索引时使用的Elasticsearch的内部版本号。这个数字可以帮助你了解索引是在哪个版本的Elasticsearch上创建的，尽管它并不直接对应于Elasticsearch的发布版本号。</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>查询所有索引信息</p>
+<p>查看集群中的所有索引信息：</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /_cat/indices?v</span><br></pre></td></tr></table></figure>
+
+<p>命令解析：</p>
+<ul>
+<li>_cat：这是ElasticSearch的一个API，用于获取集群的各类信息，如索引、节点、健康状态等</li>
+<li>indicies: 这是_cat API 的一个特定端点，用于列出集群中的所有索引</li>
+<li>v: ?后面的内容是URL中的查询字符串部分，<code>v</code>参数是一个常见的选项，用于以“详细”或“垂直”格式输出信息。这种格式通常包括更多的列，并且每列数据都垂直排列，使得输出更易于阅读。如果没有<code>?v</code>参数，输出可能会更加紧凑，只包含最基本的信息。</li>
+</ul>
+<p>响应结果：</p>
+<p>![image-20240719110018257](.&#x2F;4. ElasticSearch Query DSL&#x2F;image-20240719110018257.png)</p>
+<p>响应结果解析：</p>
+<ul>
+<li><p><code>health</code>：</p>
+<p>健康状态可以是<code>green</code>（一切正常，所有副本都已分配并可用）、<code>yellow</code>（所有主分片都可用，但一个或多个副本分片不可用或未分配）或<code>red</code>（一个或多个主分片不可用）。</p>
+</li>
+<li><p><code>status</code>：这个字段通常与<code>health</code>字段相似</p>
+</li>
+<li><p><code>index</code>：索引名</p>
+</li>
+<li><p><code>uuid</code>：<br>这是索引的唯一标识符（UUID），用于在Elasticsearch集群中唯一地标识索引。它与索引名称不同，因为索引名称可能在不同的集群或命名空间中重复，但UUID是全局唯一的。</p>
+</li>
+<li><p><code>pri</code>：<br>这个字段表示索引的主分片（primary shard）数量。主分片是负责存储索引数据并处理与该索引相关的读写操作的分片。</p>
+</li>
+<li><p><code>rep</code>：<br>这个字段表示索引的副本分片（replica shard）数量。副本分片是主分片的复制，用于提供数据的冗余和容错能力。如果主分片所在的节点发生故障，副本分片可以接管并提供数据的访问。</p>
+</li>
+<li><p><code>docs.count</code>：这个字段表示索引中存储的文档总数。</p>
+</li>
+<li><p><code>docs.deleted</code>：<br>这个字段表示索引中已被标记为删除但尚未从磁盘上物理删除的文档数量。在Elasticsearch中，文档删除是逻辑上的，即它们被标记为已删除，但在物理上可能仍然存在于磁盘上，直到后台合并过程将它们从磁盘上清除。</p>
+</li>
+<li><p><code>store.size</code>：<br>这个字段表示索引在磁盘上占用的总空间大小（不包括副本分片）。它反映了索引数据、索引结构以及可能的其他元数据的总大小。</p>
+</li>
+<li><p><code>pri.store.size</code>：<br>这个字段表示索引的主分片在磁盘上占用的空间大小。与<code>store.size</code>不同，它只考虑主分片，而不包括副本分片。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-3-删除索引"><a href="#2-3-删除索引" class="headerlink" title="2.3 删除索引"></a>2.3 删除索引</h3><p>删除指定索引：</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DELETE /index_zky</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="3-文档操作"><a href="#3-文档操作" class="headerlink" title="3. 文档操作"></a>3. 文档操作</h2><h3 id="3-1-创建文档"><a href="#3-1-创建文档" class="headerlink" title="3.1 创建文档"></a>3.1 创建文档</h3><ul>
+<li><p>POST方法创建</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">POST /index_zky/_doc</span><br><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;:&quot;xiao zhang&quot;,</span><br><span class="line">  &quot;age&quot;:18,</span><br><span class="line">  &quot;sex&quot;:&quot;男&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>返回结果：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;_index&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;index_zky&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;_type&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;_doc&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;_id&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;_eqqyZABYVRWZibKx-9Y&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;_version&quot;</span> <span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;result&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;created&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;_shards&quot;</span> <span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;total&quot;</span> <span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;successful&quot;</span> <span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;failed&quot;</span> <span class="punctuation">:</span> <span class="number">0</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;_seq_no&quot;</span> <span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;_primary_term&quot;</span> <span class="punctuation">:</span> <span class="number">1</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这种创建数据的方式只能使用POST请求，返回结果中的id字段是随机生成的，多次触发该请求，响应的结果是不同的，相当与创建了多个文档，即这个操作是非幂等性的，因此只能使用POST请求不能使用PUT请求。</p>
+</blockquote>
+<blockquote>
+<p>_doc API : ElasticSearch中的<code>_doc</code> API 主要与文档的增、删、改、查等操作相关，但并不直接作为一个独立的API存在，而是作为文档操作API中的一个关键组成部分。在ElasticSearch中，文档是存储和索引的基本单位，而<code>_doc</code>通常用于指定文档操作的具体路径或类型（在ElasticSearch 7.x及以后版本中，默认的类型名就是<code>_doc</code>）</p>
+</blockquote>
+</li>
+<li><p>PUT方法创建</p>
+<ul>
+<li><p>_doc<br>创建一个id为001的文档</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">PUT /index_zky/_doc/001</span><br><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;:&quot;xiao ming&quot;,</span><br><span class="line">  &quot;age&quot;:18,</span><br><span class="line">  &quot;sex&quot;:&quot;男&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>响应结果：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;_index&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;index_zky&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;_type&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;_doc&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;_id&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;001&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;_version&quot;</span> <span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;result&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;created&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;_shards&quot;</span> <span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;total&quot;</span> <span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;successful&quot;</span> <span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;failed&quot;</span> <span class="punctuation">:</span> <span class="number">0</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;_seq_no&quot;</span> <span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;_primary_term&quot;</span> <span class="punctuation">:</span> <span class="number">1</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>可以看到，响应结果里的id正是创建文档时指定的001，这样，这个请求无论进行多少次，结果都是相同的。即该请求是幂等的，可以使用PUT请求。</p>
+</blockquote>
+</li>
+<li><p>_create<br>同上，创建数据也可以使用<code>_create</code>接口：</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">PUT /index_zky/_create/001</span><br><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;:&quot;xiao ming&quot;,</span><br><span class="line">  &quot;age&quot;:18,</span><br><span class="line">  &quot;sex&quot;:&quot;男&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h3 id="3-2-查询文档"><a href="#3-2-查询文档" class="headerlink" title="3.2 查询文档"></a>3.2 查询文档</h3><ul>
+<li>查询索引下指定id的数据<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /index_zky/_doc/001</span><br></pre></td></tr></table></figure>
+
+响应结果：<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;_index&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;index_zky&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;_type&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;_doc&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;_id&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;001&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;_version&quot;</span> <span class="punctuation">:</span> <span class="number">4</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;_seq_no&quot;</span> <span class="punctuation">:</span> <span class="number">4</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;_primary_term&quot;</span> <span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;found&quot;</span> <span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;_source&quot;</span> <span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;name&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;xiao ming&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;age&quot;</span> <span class="punctuation">:</span> <span class="number">18</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;sex&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;男&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></li>
+<li>查询索引下所有数据<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /index_zky/_search</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="3-3-修改文档"><a href="#3-3-修改文档" class="headerlink" title="3.3 修改文档"></a>3.3 修改文档</h3><ul>
+<li><p>全量修改<br>全量修改是覆盖性修改，操作是幂等性的，可通过PUT请求实现：</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">PUT /index_zky/_doc/001</span><br><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;:&quot;xiao ming&quot;,</span><br><span class="line">  &quot;age&quot;:28, #年龄改成28</span><br><span class="line">  &quot;sex&quot;:&quot;男&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>局部修改</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">POST /index_zky/_update/001</span><br><span class="line">&#123;</span><br><span class="line">  &quot;doc&quot;: &#123;</span><br><span class="line">    &quot;age&quot;:&quot;19&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>ElasticSearch在内部通过增加文档的版本号（version）来处理更新，将旧文档标记为删除，并添加一个包含更新内容的新文档。这意味着，每次局部更新都会生成一个新的文档版本。</p>
+<p>由于局部更新只修改文档的一部分，且可能受到其他并发操作的影响（如其他客户端同时也在更新同一文档），因此多次执行相同的局部更新请求可能会得到不同的结果（例如，文档的版本号会增加，而其他字段可能因并发操作而发生变化）</p>
+<p>即结果是非幂等的，采用POST请求。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="3-4-删除文档"><a href="#3-4-删除文档" class="headerlink" title="3.4 删除文档"></a>3.4 删除文档</h3><ul>
+<li><p>删除指定文档</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DELETE /index_zky/_doc/001</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="4-复杂的查询操作"><a href="#4-复杂的查询操作" class="headerlink" title="4. 复杂的查询操作"></a>4. 复杂的查询操作</h2><h3 id="4-1-条件查询"><a href="#4-1-条件查询" class="headerlink" title="4.1 条件查询"></a>4.1 条件查询</h3><ul>
+<li><p>通过url进行条件过滤（非常少用）</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET http://域名：端口号/索引名/_search?q=字段名：字段值</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查询条件在请求体中（常用）</p>
+<ul>
+<li><p>单条件查询：查询age为18的数据</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">GET /index_zky/_search</span><br><span class="line">&#123;</span><br><span class="line">	&quot;query&quot;:&#123;</span><br><span class="line">		&quot;match&quot;:&#123;</span><br><span class="line">			&quot;age&quot;:18</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>全量查询：不限制条件</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">GET /index_zky/_search</span><br><span class="line">&#123;</span><br><span class="line">	&quot;query&quot;:&#123;</span><br><span class="line">		&quot;match_all&quot;:&#123;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h3 id="4-2-分页查询"><a href="#4-2-分页查询" class="headerlink" title="4.2 分页查询"></a>4.2 分页查询</h3><p>  分页查询，每页两条，查询第一页数据：</p>
+  <figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">GET /index_zky/_search</span><br><span class="line">&#123;</span><br><span class="line">	&quot;query&quot;:&#123;</span><br><span class="line">		&quot;match_all&quot;:&#123;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">	&quot;from&quot; : 0,</span><br><span class="line">	&quot;size&quot; : 2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>  from: 从哪条数据开始，</p>
+<blockquote>
+<p>计算公式 ：（页码-1）*每页数据条数<br>比如每页数据有两条，想看第二页的数据，那么起始值from&#x3D;（2-1）*2 &#x3D; 2</p>
+</blockquote>
+<p>  size：每页显示的数据条数</p>
+<h3 id="4-3-查询指定字段"><a href="#4-3-查询指定字段" class="headerlink" title="4.3 查询指定字段"></a>4.3 查询指定字段</h3><p>例如只查询name字段：</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">GET /index_zky/_search</span><br><span class="line">&#123;</span><br><span class="line">	&quot;query&quot;:&#123;</span><br><span class="line">		&quot;match_all&quot;:&#123;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">	&quot;_source&quot; : [&quot;name&quot;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>返回的数据结果_source中，只会包含name字段的信息</p>
+</blockquote>
+<h3 id="4-4-查询排序"><a href="#4-4-查询排序" class="headerlink" title="4.4 查询排序"></a>4.4 查询排序</h3><p>对查询结果按照指定字段（如age）排序：</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">GET /index_zky/_search</span><br><span class="line">&#123;</span><br><span class="line">	&quot;query&quot;:&#123;</span><br><span class="line">		&quot;match_all&quot;:&#123;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">	&quot;sort&quot;:&#123;</span><br><span class="line">		&quot;age&quot;:&#123;</span><br><span class="line">			&quot;order&quot;:&quot;desc&quot;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-5-多条件查询"><a href="#4-5-多条件查询" class="headerlink" title="4.5 多条件查询"></a>4.5 多条件查询</h3><p>多个查询条件，结合逻辑表达式使用：</p>
+<p>逻辑表达式：</p>
+<blockquote>
+<p>must :类似于sql中的and语义，表示条件必须同时成立<br>should:类似于sql中的or语义，表示任意一个条件成立即可<br>not must：类似于sql中的not语义，表示条件不成立</p>
+</blockquote>
+<p>查询名字为小张，且年龄为18的数据:</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">GET /index_zky/_search</span><br><span class="line">&#123;</span><br><span class="line">	&quot;query&quot;:&#123;</span><br><span class="line">		&quot;bool&quot;:&#123;</span><br><span class="line">			&quot;must&quot;:[</span><br><span class="line">				&#123;</span><br><span class="line">					&quot;match&quot;:&#123;</span><br><span class="line">						&quot;name&quot;:&quot;xiao zhang&quot;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;,</span><br><span class="line">				&#123;</span><br><span class="line">					&quot;match&quot;:&#123;</span><br><span class="line">						&quot;age&quot;:18</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			]</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-6-范围查询"><a href="#4-6-范围查询" class="headerlink" title="4.6 范围查询"></a>4.6 范围查询</h3><p>类似于sql中的非等值查询</p>
+<p>查询年龄大于15的数据：</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">GET /index_zky/_search</span><br><span class="line">&#123;</span><br><span class="line">	&quot;query&quot;:&#123;</span><br><span class="line">		&quot;match_all&quot;:&#123;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">	&quot;filter&quot;:&#123;</span><br><span class="line">		&quot;range&quot;:&#123;</span><br><span class="line">			&quot;price&quot;:&#123;</span><br><span class="line">				&quot;gt&quot;:15</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>大于：gt</p>
+<p>大于等于：gte</p>
+<p>小于：lt</p>
+<p>小于等于：lte</p>
+</blockquote>
+<h2 id="5-全文检索"><a href="#5-全文检索" class="headerlink" title="5. 全文检索"></a>5. 全文检索</h2><h3 id="5-1-全文检索"><a href="#5-1-全文检索" class="headerlink" title="5.1 全文检索"></a>5.1 全文检索</h3><p>对于文本类型的数据，进行匹配查询时，ES会对文本进行分词，查询条件也会被分词，然后通过倒排索引，将所有符合条件的数据全都查询出来。这类似于sql中的模糊查询。</p>
+<p>例如，查询name为”xiao”的数据：</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">GET /index_zky/_search</span><br><span class="line">&#123;</span><br><span class="line">	&quot;query&quot;:&#123;</span><br><span class="line">		&quot;match&quot;:&#123;</span><br><span class="line">			&quot;name&quot;:&quot;xiao&quot;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>返回结果（只展示命中数据部分）：</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&quot;hits&quot; : [</span><br><span class="line">      &#123;</span><br><span class="line">        &quot;_index&quot; : &quot;index_zky&quot;,</span><br><span class="line">        &quot;_type&quot; : &quot;_doc&quot;,</span><br><span class="line">        &quot;_id&quot; : &quot;_eqqyZABYVRWZibKx-9Y&quot;,</span><br><span class="line">        &quot;_score&quot; : 0.18232156,</span><br><span class="line">        &quot;_source&quot; : &#123;</span><br><span class="line">          &quot;name&quot; : &quot;xiao zhang&quot;,</span><br><span class="line">          &quot;age&quot; : 18,</span><br><span class="line">          &quot;sex&quot; : &quot;男&quot;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        &quot;_index&quot; : &quot;index_zky&quot;,</span><br><span class="line">        &quot;_type&quot; : &quot;_doc&quot;,</span><br><span class="line">        &quot;_id&quot; : &quot;001&quot;,</span><br><span class="line">        &quot;_score&quot; : 0.18232156,</span><br><span class="line">        &quot;_source&quot; : &#123;</span><br><span class="line">          &quot;name&quot; : &quot;xiao ming&quot;,</span><br><span class="line">          &quot;age&quot; : &quot;19&quot;,</span><br><span class="line">          &quot;sex&quot; : &quot;男&quot;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line"> ]</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>可以看到，查询是指定的name为“xiao”，但是返回结果把name中带有“xiao“这个词的数据都查询出来了，因为ES对name进行了分词。同样地，查询条件也会被分词，例如查询name：“张李”，会把name中带有”张“字和”李“字的所有数据都查出来。</p>
+</blockquote>
+<h3 id="5-2-完全匹配查询"><a href="#5-2-完全匹配查询" class="headerlink" title="5.2 完全匹配查询"></a>5.2 完全匹配查询</h3><p>将匹配查询的关键字<code>match</code>替换为<code>match_phrase</code>，匹配条件不会被分词，也不会通过分词方式查询数据。</p>
+<h3 id="5-3-高亮查询"><a href="#5-3-高亮查询" class="headerlink" title="5.3 高亮查询"></a>5.3 高亮查询</h3><p>对查询结果高亮显示，例如对name高亮显示：</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">GET /index_zky/_search</span><br><span class="line">&#123;</span><br><span class="line">	&quot;query&quot;:&#123;</span><br><span class="line">		&quot;match_phrse&quot;:&#123;</span><br><span class="line">			&quot;name&quot;:&quot;xiao zhang&quot;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">	&quot;highlight&quot;:&#123;</span><br><span class="line">		&quot;fields&quot;:&#123;</span><br><span class="line">			&quot;name&quot;:&#123;&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>返回结果（只展示命中部分）：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;hits&quot;</span> <span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">      <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;_index&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;index_zky&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;_type&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;_doc&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;_id&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;_eqqyZABYVRWZibKx-9Y&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;_score&quot;</span> <span class="punctuation">:</span> <span class="number">0.87546873</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;_source&quot;</span> <span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">          <span class="attr">&quot;name&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;xiao zhang&quot;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;age&quot;</span> <span class="punctuation">:</span> <span class="number">18</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;sex&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;男&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;highlight&quot;</span> <span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">          <span class="attr">&quot;name&quot;</span> <span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">            <span class="string">&quot;&lt;em&gt;xiao&lt;/em&gt; &lt;em&gt;zhang&lt;/em&gt;&quot;</span></span><br><span class="line">          <span class="punctuation">]</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">      <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="6-聚合查询"><a href="#6-聚合查询" class="headerlink" title="6. 聚合查询"></a>6. 聚合查询</h2><p>聚合查询示例：</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">GET /index_zky/_search</span><br><span class="line">&#123;</span><br><span class="line">	&quot;aggs&quot;:&#123;  //聚合操作</span><br><span class="line">		&quot;age_count&quot;:&#123; //聚合名称，可以随意指定</span><br><span class="line">			&quot;terms&quot;:&#123; // 聚合类型，这里是分组聚合</span><br><span class="line">				&quot;field&quot;:&quot;age&quot; // 聚合字段</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">	&quot;size&quot;:0 //size指定为0表示希望返回结果中不展示原始数据</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>返回结果：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;took&quot;</span> <span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;timed_out&quot;</span> <span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;_shards&quot;</span> <span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;total&quot;</span> <span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;successful&quot;</span> <span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;skipped&quot;</span> <span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;failed&quot;</span> <span class="punctuation">:</span> <span class="number">0</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;hits&quot;</span> <span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;total&quot;</span> <span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;value&quot;</span> <span class="punctuation">:</span> <span class="number">4</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;relation&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;eq&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;max_score&quot;</span> <span class="punctuation">:</span> <span class="literal"><span class="keyword">null</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;hits&quot;</span> <span class="punctuation">:</span> <span class="punctuation">[</span> <span class="punctuation">]</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;aggregations&quot;</span> <span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;age_count&quot;</span> <span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;doc_count_error_upper_bound&quot;</span> <span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;sum_other_doc_count&quot;</span> <span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;buckets&quot;</span> <span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">          <span class="attr">&quot;key&quot;</span> <span class="punctuation">:</span> <span class="number">18</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;doc_count&quot;</span> <span class="punctuation">:</span> <span class="number">2</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">          <span class="attr">&quot;key&quot;</span> <span class="punctuation">:</span> <span class="number">19</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;doc_count&quot;</span> <span class="punctuation">:</span> <span class="number">1</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">          <span class="attr">&quot;key&quot;</span> <span class="punctuation">:</span> <span class="number">28</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;doc_count&quot;</span> <span class="punctuation">:</span> <span class="number">1</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">      <span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>结果中可以看出，返回了每个age的值对应的文档数。</p>
+<p>聚合类型还有（来源于GPT）：</p>
+<ol>
+<li><code>terms</code> 聚合：<ul>
+<li>关键字：<code>terms</code></li>
+<li>描述：用于对一组文本值进行分组统计，例如，统计某个字段的不同值的数量。</li>
+</ul>
+</li>
+<li><code>metric</code> 聚合：<ul>
+<li>关键字：虽然 <code>metric</code> 本身不是一个具体的聚合类型，但它代表了一类计算数值的聚合，如平均值、最小值、最大值、总和等。</li>
+<li>具体类型包括：<code>avg</code>（平均值）、<code>min</code>（最小值）、<code>max</code>（最大值）、<code>sum</code>（总和）、<code>cardinality</code>（基数统计，用于估算不重复值的数量）等。</li>
+</ul>
+</li>
+<li><code>bucket</code> 聚合：<ul>
+<li>关键字：<code>bucket</code> 也不是一个具体的聚合类型，但它指的是将文档集合划分为多个桶（bucket）或组的聚合操作。</li>
+<li>具体类型包括：<code>date_histogram</code>（按日期直方图分组）、<code>histogram</code>（按数值范围分组）、<code>range</code>（按数值范围分组，但范围由用户定义）、<code>geo_hash_grid</code>（按地理位置网格分组）等。</li>
+</ul>
+</li>
+<li><code>pipeline</code> 聚合：<ul>
+<li>关键字：<code>pipeline</code></li>
+<li>描述：这些聚合是在其他聚合的结果上运行的，用于对聚合结果进行进一步的处理或计算。例如，<code>bucket_sort</code>（对桶进行排序）、<code>moving_avg</code>（计算移动平均值）、<code>cumulative_sum</code>（计算累计和）等。</li>
+</ul>
+</li>
+<li><code>filter</code> 聚合：<ul>
+<li>关键字：<code>filter</code></li>
+<li>描述：用于在聚合之前应用一个过滤器来限制哪些文档被包含在聚合结果中。虽然 <code>filter</code> 聚合本身不直接计算任何指标，但它可以与其他聚合类型结合使用来提供过滤后的聚合结果。</li>
+</ul>
+</li>
+<li><code>nested</code> 聚合：<ul>
+<li>关键字：<code>nested</code></li>
+<li>描述：用于对嵌套对象字段中的数据进行聚合。由于 Elasticsearch 默认将嵌套对象扁平化处理，<code>nested</code> 聚合允许你按嵌套对象的独立实例进行聚合。</li>
+</ul>
+</li>
+<li><code>geo_distance</code> 聚合：<ul>
+<li>关键字：<code>geo_distance</code></li>
+<li>描述：这是一种特殊的桶聚合，用于基于地理位置点和距离范围对文档进行分组。它通常与地理位置数据一起使用。</li>
+</ul>
+</li>
+</ol>
+<p>这些聚合操作可以单独使用，也可以组合使用来构建复杂的查询和分析逻辑。</p>
+<h2 id="7-映射（mapping）"><a href="#7-映射（mapping）" class="headerlink" title="7. 映射（mapping）"></a>7. 映射（mapping）</h2><blockquote>
+<p>配置映射是定义索引中的文档结构和字段数据类型的过程，映射机制允许开发者精确控制数据的存储和索引方式，从而优化搜索性能，以及满足特定的业务需求。</p>
+</blockquote>
+<h3 id="7-1-配置映射"><a href="#7-1-配置映射" class="headerlink" title="7.1 配置映射"></a>7.1 配置映射</h3><figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">PUT /index_zky/_mapping</span><br><span class="line">&#123;</span><br><span class="line">	&quot;properties&quot;:&#123;</span><br><span class="line">		&quot;name&quot;:&#123;</span><br><span class="line">			&quot;type&quot;:&quot;text&quot;,</span><br><span class="line">			&quot;index&quot;:true</span><br><span class="line">		&#125;,</span><br><span class="line">		&quot;age&quot;:&#123;</span><br><span class="line">			&quot;type&quot;:&quot;keyword&quot;,</span><br><span class="line">			&quot;index&quot;:false</span><br><span class="line">		&#125;</span><br><span class="line">		&quot;sex&quot;:&#123;</span><br><span class="line">			&quot;type&quot;:&quot;keyword&quot;,</span><br><span class="line">			&quot;index&quot;:true</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上映射为索引<code>index_zky</code>定义了文档接口和字段类型，<code>name</code>字段配置为text类型，表明该字段支持全文检索（模糊查询），index为true表明该字段可以被索引到；<code>age</code>字段类型配置为keyword类型，表示该字段只支持精确查询，无法被全文检索，同时index设置为false表示该字段无法被索引到。以此类推。映射中还可以配置很多其他信息。</p>
+<p>映射可以配置的信息（来源于GPT）：</p>
+<ol>
+<li><p>字段名称（Field Names）</p>
+<ul>
+<li><strong>字段名</strong>：为索引中的每个字段指定一个唯一的名称。字段名可以是任意的，但通常应该能够反映字段的内容或用途。</li>
+</ul>
+</li>
+<li><p>字段类型（Field Types）</p>
+</li>
+</ol>
+<p>​	Elasticsearch支持多种数据类型，配置映射时需要为每个字段指定一个合适的类型。常见的字段类型包括：</p>
+<ul>
+<li>字符串类型：<ul>
+<li><code>text</code>：用于全文搜索的文本字段，会被分词器处理。</li>
+<li><code>keyword</code>：用于精确值匹配的文本字段，不会被分词。</li>
+</ul>
+</li>
+<li>数值类型：<ul>
+<li><code>long</code>、<code>integer</code>、<code>short</code>、<code>byte</code>、<code>double</code>、<code>float</code>、<code>half_float</code>、<code>scaled_float</code>：用于存储数值数据。</li>
+</ul>
+</li>
+<li><strong>日期类型</strong>（<code>date</code>）：用于存储日期和时间。</li>
+<li><strong>布尔类型</strong>（<code>boolean</code>）：用于存储布尔值（true或false）。</li>
+<li><strong>二进制类型</strong>（<code>binary</code>）：用于存储二进制数据，如图片、PDF文件等。</li>
+<li><strong>范围类型</strong>：用于存储数值范围，如整数范围、浮点数范围等。</li>
+<li>复合类型：<ul>
+<li><strong>数组</strong>（<code>array</code>）：用于存储字段值的数组。</li>
+<li><strong>对象</strong>（<code>object</code>）：用于存储嵌套的对象。</li>
+</ul>
+</li>
+</ul>
+<ol start="3">
+<li>索引选项（Indexing Options）</li>
+</ol>
+<ul>
+<li><strong>是否索引</strong>（<code>index</code>）：指定字段是否应该被索引。默认为<code>true</code>，表示字段会被索引并可用于搜索。如果设置为<code>false</code>，则字段不会被索引，不能用于搜索。</li>
+<li><strong>存储选项</strong>（<code>store</code>）：指定字段的原始值是否应该被独立存储。默认为<code>false</code>，表示字段值不会独立存储，而是从<code>_source</code>字段中提取。如果设置为<code>true</code>，则字段的原始值会被独立存储，这可以提高检索效率但会增加存储空间。</li>
+</ul>
+<ol start="4">
+<li>分析器（Analyzer）</li>
+</ol>
+<p>​	对于<code>text</code>类型的字段，可以指定一个分析器（Analyzer）来控制文本的分词和索引方式。Elasticsearch提供了多种内置分析器，也可以自定义分析器。</p>
+<ol start="5">
+<li>其他映射参数</li>
+</ol>
+<p>​	除了上述基本信息外，还可以配置其他映射参数来满足特定的需求，例如：</p>
+<ul>
+<li>**<code>ignore_above</code>**：指定一个长度阈值，超过该长度的字段值将被忽略。</li>
+<li>**<code>null_value</code>**：为字段指定一个默认值，当字段值为null时，将使用此默认值进行索引和搜索。</li>
+<li>**<code>properties</code>**：对于复合类型（如对象）的字段，可以在<code>properties</code>下指定嵌套字段的映射信息。</li>
+</ul>
+<h3 id="7-2-动态映射"><a href="#7-2-动态映射" class="headerlink" title="7.2 动态映射"></a>7.2 动态映射</h3><h4 id="7-2-1-概念"><a href="#7-2-1-概念" class="headerlink" title="7.2.1 概念"></a>7.2.1 概念</h4><p>动态映射是ElasticSearch自动推断和创建字段类型的过程。当索引中插入新文档时，如果文档包含了映射中尚未定义的新字段，ElasticSearch会根据字段的值自动推断其类型并将其添加到映射中。</p>
+<h4 id="7-2-2-特点"><a href="#7-2-2-特点" class="headerlink" title="7.2.2 特点"></a>7.2.2 特点</h4><ol>
+<li>方便快捷：<ul>
+<li>无需提前定义所有字段类型，减少了开发和配置的工作量。</li>
+<li>适用于数据结构不固定或变化频繁的场景，如日志分析、社交媒体数据采集等。</li>
+</ul>
+</li>
+<li>适应性强：<ul>
+<li>能够自动适应新字段的加入，无需手动修改映射配置。</li>
+</ul>
+</li>
+<li>不精确性：<ul>
+<li>自动推断的类型可能不完全符合预期，例如字符串类型的日期被推断为文本类型。</li>
+</ul>
+</li>
+<li>风险控制：<ul>
+<li>在高并发写入时可能会引起映射爆炸（Mapping Explosion）问题，导致内存和性能问题。</li>
+<li>映射变化可能会影响查询性能和结果的准确性。</li>
+</ul>
+</li>
+</ol>
+<h4 id="7-2-3-配置"><a href="#7-2-3-配置" class="headerlink" title="7.2.3 配置"></a>7.2.3 配置</h4><ol>
+<li>启用&#x2F;禁用动态映射：<ul>
+<li>可以通过设置<code>dynamic</code>参数来控制是否启用动态映射。<code>dynamic</code>参数可以设置为<code>true</code>（默认）、<code>false</code>（忽略新字段）、<code>strict</code>（遇到未知字段时抛出异常）或<code>runtime</code>（动态创建运行时字段）。</li>
+</ul>
+</li>
+<li>日期检测：<ul>
+<li>如果启用了日期检测（<code>date_detection</code>），ElasticSearch会检查新的字符串字段，以查看其内容是否匹配<code>dynamic_date_formats</code>中指定的任何日期模式。如果匹配，则将该字段映射为日期类型。</li>
+</ul>
+</li>
+<li>数字检测：<ul>
+<li>通过设置<code>numeric_detection</code>参数，可以启用数字检测。如果启用了此功能，ElasticSearch会尝试将看起来像数字的字符串字段映射为数值类型。</li>
+</ul>
+</li>
+<li>动态模板：<ul>
+<li>动态模板（Dynamic Templates）允许用户定义自定义的映射规则，这些规则可以基于匹配条件应用于动态添加的字段。通过动态模板，可以更精细地控制字段的映射行为。</li>
+</ul>
+</li>
+</ol>
+<h4 id="7-2-4-适用场景"><a href="#7-2-4-适用场景" class="headerlink" title="7.2.4 适用场景"></a>7.2.4 适用场景</h4><ul>
+<li><strong>数据结构不固定或频繁变化的应用</strong>：如日志分析、社交媒体数据采集等。</li>
+<li><strong>开发阶段或快速原型设计时</strong>：用于快速验证数据模型。</li>
+</ul>
+<h3 id="7-3-关于映射的疑问"><a href="#7-3-关于映射的疑问" class="headerlink" title="7.3 关于映射的疑问"></a>7.3 关于映射的疑问</h3><ul>
+<li><p>ElasticSearch 7.x 版本已经删除了类型（type）的概念，为什么映射中还需要配置type？</p>
+<blockquote>
+<p>首先要明确两个type的不同。</p>
+<p>7.x版本删除的type，是<code>_type</code>接口，这是用来表示被索引的文档或实体的类型，在之前版本中，每个索引可以包含多个<code>_type</code>，每个<code>_type</code>代表一种具有特定字段结构的文档类型。在7.x 版本以后，所有的文档类型都被统一为<code>_doc</code>。</p>
+<p>映射中配置的type，是指字段的数据类型。它定义了索引中文档字段的存储方式和数据类型。</p>
+</blockquote>
+</li>
+<li><p>如果先向索引中写入了数据，然后才建立映射，会产生什么影响？</p>
+<blockquote>
+<ol>
+<li>默认数据类型和设置：<ul>
+<li>Elasticsearch会根据字段的值自动推断数据类型。例如，如果字段包含文本数据，它可能会被推断为<code>text</code>类型，并使用默认的分析器（如<code>standard</code>分析器）进行分词。</li>
+<li>对于一些复杂的数据类型（如嵌套对象、地理位置等），如果没有在映射中明确指定，Elasticsearch可能无法正确存储或查询这些数据。</li>
+</ul>
+</li>
+<li>性能影响：<ul>
+<li>在数据写入后建立映射可能会导致性能下降，因为Elasticsearch需要在写入数据时动态地调整和优化索引结构。</li>
+<li>特别是当大量数据已经写入时，修改映射（尤其是添加新字段或更改字段类型）可能会变得复杂且耗时，甚至需要重建索引。</li>
+</ul>
+</li>
+<li>查询和聚合的限制：<ul>
+<li>默认情况下，Elasticsearch可能不会为所有字段启用索引或存储设置，这可能会影响查询和聚合操作的性能。</li>
+<li>如果需要对特定字段进行精确匹配查询、全文搜索、排序或聚合，最好在映射中明确指定这些字段的设置。</li>
+</ul>
+</li>
+<li>数据一致性和准确性：<ul>
+<li>自动推断的映射可能无法准确反映数据的实际结构和业务需求。</li>
+<li>例如，如果某个字段本应包含精确的日期信息，但由于自动推断错误而被视为文本类型，那么在进行日期范围查询时可能会出现问题。</li>
+</ul>
+</li>
+<li>安全性：<ul>
+<li>自动映射可能会暴露数据的敏感信息或结构，如果这些信息在映射中未得到妥善保护。</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<p><strong>在ElasticSearch中，建议先建立索引和映射，然后再向索引中写入数据。</strong></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/%E6%95%B0%E6%8D%AE%E5%BA%93/ElasticSearch/3.%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4/" rel="prev" title="">
+                  <i class="fa fa-angle-left"></i> 
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/%E6%B5%81%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/kafka/1.%20kafka%20%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" rel="next" title="1.kafka快速入门">
+                  1.kafka快速入门 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Powered by Hackertaizi</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">225k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">6:49</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

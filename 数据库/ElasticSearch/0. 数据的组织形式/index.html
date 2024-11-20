@@ -21,14 +21,17 @@
 
     <meta name="description" content="0. 数据的组织形式1. 数据的组织形式1.1 结构化数据能够通过一定结构来组织数据。例如关系型数据，数据之间存在一定的关系，可以使用二维表格的形式来组织数据。关系型数据通常使用关系型数据库来存储，例如MySQL、oracle等数据库，并通过sql进行查询优点：数据结构清晰、查询方便缺点：在已有的数据结构上进行扩展比较困难 1.2 非结构化数据无法通过特定结构来组织的数据。例如图片、音视频、报表、">
 <meta property="og:type" content="article">
-<meta property="og:title" content="太子的个人博客">
+<meta property="og:title" content="0. 数据的组织形式">
 <meta property="og:url" content="https://hackertaizi.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93/ElasticSearch/0.%20%E6%95%B0%E6%8D%AE%E7%9A%84%E7%BB%84%E7%BB%87%E5%BD%A2%E5%BC%8F/index.html">
 <meta property="og:site_name" content="太子的个人博客">
 <meta property="og:description" content="0. 数据的组织形式1. 数据的组织形式1.1 结构化数据能够通过一定结构来组织数据。例如关系型数据，数据之间存在一定的关系，可以使用二维表格的形式来组织数据。关系型数据通常使用关系型数据库来存储，例如MySQL、oracle等数据库，并通过sql进行查询优点：数据结构清晰、查询方便缺点：在已有的数据结构上进行扩展比较困难 1.2 非结构化数据无法通过特定结构来组织的数据。例如图片、音视频、报表、">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-07-16T06:51:33.821Z">
-<meta property="article:modified_time" content="2024-07-18T06:18:21.557Z">
+<meta property="article:modified_time" content="2024-11-20T05:09:54.723Z">
 <meta property="article:author" content="Taizi">
+<meta property="article:tag" content="数据库">
+<meta property="article:tag" content="GreenPlum">
+<meta property="article:tag" content="PostgreSQL">
 <meta name="twitter:card" content="summary">
 
 
@@ -36,10 +39,10 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hackertaizi.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93/ElasticSearch/0.%20%E6%95%B0%E6%8D%AE%E7%9A%84%E7%BB%84%E7%BB%87%E5%BD%A2%E5%BC%8F/","path":"数据库/ElasticSearch/0. 数据的组织形式/","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hackertaizi.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93/ElasticSearch/0.%20%E6%95%B0%E6%8D%AE%E7%9A%84%E7%BB%84%E7%BB%87%E5%BD%A2%E5%BC%8F/","path":"数据库/ElasticSearch/0. 数据的组织形式/","title":"0. 数据的组织形式"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title> | 太子的个人博客</title>
+<title>0. 数据的组织形式 | 太子的个人博客</title>
   
 
 
@@ -158,12 +161,12 @@
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-count">26</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-count">39</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -203,12 +206,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | 太子的个人博客">
+      <meta itemprop="name" content="0. 数据的组织形式 | 太子的个人博客">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          
+          0. 数据的组织形式
         </h1>
 
         <div class="post-meta-container">
@@ -226,7 +229,20 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-07-18 14:18:21" itemprop="dateModified" datetime="2024-07-18T14:18:21+08:00">2024-07-18</time>
+      <time title="修改时间：2024-11-20 13:09:54" itemprop="dateModified" datetime="2024-11-20T13:09:54+08:00">2024-11-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/ElasticSearch/" itemprop="url" rel="index"><span itemprop="name">ElasticSearch</span></a>
+        </span>
     </span>
 
   
@@ -272,6 +288,11 @@
     
 
     <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag"># 数据库</a>
+              <a href="/tags/GreenPlum/" rel="tag"># GreenPlum</a>
+              <a href="/tags/PostgreSQL/" rel="tag"># PostgreSQL</a>
+          </div>
 
         
 
@@ -282,8 +303,8 @@
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/%E6%95%B0%E6%8D%AE%E5%BA%93/ElasticSearch/1.%20%E8%83%8C%E6%99%AF%E7%9F%A5%E8%AF%86/" rel="next" title="">
-                   <i class="fa fa-angle-right"></i>
+                <a href="/%E6%95%B0%E6%8D%AE%E5%BA%93/ElasticSearch/1.%20%E8%83%8C%E6%99%AF%E7%9F%A5%E8%AF%86/" rel="next" title="1. 背景知识">
+                  1. 背景知识 <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>

@@ -21,14 +21,15 @@
 
     <meta name="description" content="4. ElasticSearch Query DSL1. 简介ElasticSearch的查询语法DSL（Domain Specific Language）实质上是发起一个HTTP请求，查询语法以JSON格式书写，并放在请求的请求体中。 即通过 HTTP+JSON 的方式即可完成对ElasticSearch的操作。 在ElasticSearch中，建议先建立索引和映射，然后再向索引中写入数据。 2">
 <meta property="og:type" content="article">
-<meta property="og:title" content="太子的个人博客">
+<meta property="og:title" content="4. ElasticSearch Query DSL">
 <meta property="og:url" content="https://hackertaizi.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93/ElasticSearch/4.%20ElasticSearch%20Query%20DSL/index.html">
 <meta property="og:site_name" content="太子的个人博客">
 <meta property="og:description" content="4. ElasticSearch Query DSL1. 简介ElasticSearch的查询语法DSL（Domain Specific Language）实质上是发起一个HTTP请求，查询语法以JSON格式书写，并放在请求的请求体中。 即通过 HTTP+JSON 的方式即可完成对ElasticSearch的操作。 在ElasticSearch中，建议先建立索引和映射，然后再向索引中写入数据。 2">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-07-18T07:23:54.475Z">
-<meta property="article:modified_time" content="2024-08-16T11:21:21.660Z">
+<meta property="article:modified_time" content="2024-11-20T05:10:42.742Z">
 <meta property="article:author" content="Taizi">
+<meta property="article:tag" content="ElasticSearch">
 <meta name="twitter:card" content="summary">
 
 
@@ -36,10 +37,10 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hackertaizi.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93/ElasticSearch/4.%20ElasticSearch%20Query%20DSL/","path":"数据库/ElasticSearch/4. ElasticSearch Query DSL/","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hackertaizi.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93/ElasticSearch/4.%20ElasticSearch%20Query%20DSL/","path":"数据库/ElasticSearch/4. ElasticSearch Query DSL/","title":"4. ElasticSearch Query DSL"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title> | 太子的个人博客</title>
+<title>4. ElasticSearch Query DSL | 太子的个人博客</title>
   
 
 
@@ -158,12 +159,12 @@
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-count">26</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-count">39</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -203,12 +204,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | 太子的个人博客">
+      <meta itemprop="name" content="4. ElasticSearch Query DSL | 太子的个人博客">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          
+          4. ElasticSearch Query DSL
         </h1>
 
         <div class="post-meta-container">
@@ -226,7 +227,20 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-08-16 19:21:21" itemprop="dateModified" datetime="2024-08-16T19:21:21+08:00">2024-08-16</time>
+      <time title="修改时间：2024-11-20 13:10:42" itemprop="dateModified" datetime="2024-11-20T13:10:42+08:00">2024-11-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/ElasticSearch/" itemprop="url" rel="index"><span itemprop="name">ElasticSearch</span></a>
+        </span>
     </span>
 
   
@@ -660,13 +674,16 @@
     
 
     <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ElasticSearch/" rel="tag"># ElasticSearch</a>
+          </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/%E6%95%B0%E6%8D%AE%E5%BA%93/ElasticSearch/3.%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4/" rel="prev" title="">
-                  <i class="fa fa-angle-left"></i> 
+                <a href="/%E6%95%B0%E6%8D%AE%E5%BA%93/ElasticSearch/3.%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4/" rel="prev" title="3. 分布式集群">
+                  <i class="fa fa-angle-left"></i> 3. 分布式集群
                 </a>
             </div>
             <div class="post-nav-item">

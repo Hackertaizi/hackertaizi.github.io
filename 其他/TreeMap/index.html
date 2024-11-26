@@ -26,18 +26,18 @@
 <meta property="og:site_name" content="太子的个人博客">
 <meta property="og:description" content="TreeMap1. 概述TreeMap是map家族的一员，用来存放key-value键值对。 2. 特点 有序性：TreeMap中的键值对是按照键的自然顺序或自定义顺序排列，key不可以为null，可以快速地进行插入、查找、删除等操作。 元素唯一性：TreeMap中的键是唯一的，不允许出现相同的键。如果在TreeMap中插入一个已经存在的键，则新的值会覆盖原有的值。 可排序性：由于TreeMap是">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://hackertaizi.github.io/%E5%85%B6%E4%BB%96/TreeMap/image-20231105203739536.png">
-<meta property="og:image" content="https://hackertaizi.github.io/%E5%85%B6%E4%BB%96/TreeMap/image-20231105204215000.png">
-<meta property="og:image" content="https://hackertaizi.github.io/%E5%85%B6%E4%BB%96/TreeMap/image-20231105205415958.png">
-<meta property="og:image" content="https://hackertaizi.github.io/%E5%85%B6%E4%BB%96/TreeMap/image-20231105210154658.png">
-<meta property="og:image" content="https://hackertaizi.github.io/%E5%85%B6%E4%BB%96/TreeMap/image-20231105210640691.png">
-<meta property="og:image" content="https://hackertaizi.github.io/%E5%85%B6%E4%BB%96/TreeMap/image-20231105210651111.png">
-<meta property="og:image" content="https://hackertaizi.github.io/%E5%85%B6%E4%BB%96/TreeMap/image-20231112213452258.png">
+<meta property="og:image" content="https://hackertaizi.github.io/TreeMap/image-20231105203739536.png">
+<meta property="og:image" content="https://hackertaizi.github.io/TreeMap/image-20231105204215000.png">
+<meta property="og:image" content="https://hackertaizi.github.io/TreeMap/image-20231105205415958.png">
+<meta property="og:image" content="https://hackertaizi.github.io/TreeMap/image-20231105210154658.png">
+<meta property="og:image" content="https://hackertaizi.github.io/TreeMap/image-20231105210640691.png">
+<meta property="og:image" content="https://hackertaizi.github.io/TreeMap/image-20231105210651111.png">
+<meta property="og:image" content="https://hackertaizi.github.io/TreeMap/image-20231112213452258.png">
 <meta property="article:published_time" content="2023-11-06T00:57:34.984Z">
 <meta property="article:modified_time" content="2023-11-13T01:17:31.736Z">
 <meta property="article:author" content="Taizi">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://hackertaizi.github.io/%E5%85%B6%E4%BB%96/TreeMap/image-20231105203739536.png">
+<meta name="twitter:image" content="https://hackertaizi.github.io/TreeMap/image-20231105203739536.png">
 
 
 <link rel="canonical" href="https://hackertaizi.github.io/%E5%85%B6%E4%BB%96/TreeMap/">
@@ -297,11 +297,11 @@
 <h2 id="5-实现原理"><a href="#5-实现原理" class="headerlink" title="5. 实现原理"></a>5. 实现原理</h2><p>TreeMap底层是基于红黑树实现的，红黑树是一棵自平衡的二叉排序树。</p>
 <p>从二叉树说起：</p>
 <ul>
-<li><p>二叉树：<br>每个节点最多有两个子树的树形结构。<br><img src="/%E5%85%B6%E4%BB%96/TreeMap/image-20231105203739536.png" alt="image-20231105203739536"></p>
+<li><p>二叉树：<br>每个节点最多有两个子树的树形结构。<br><img src="/./TreeMap/image-20231105203739536.png" alt="image-20231105203739536"></p>
 </li>
-<li><p>平衡二叉树：<br>平衡二叉树或者是一棵空树，或者是具有以下性质的二叉树：它的左子树和右子树都是平衡二叉树，且左子树和右子树的高度差的绝对值不超过1。<br><img src="/%E5%85%B6%E4%BB%96/TreeMap/image-20231105204215000.png" alt="image-20231105204215000"></p>
+<li><p>平衡二叉树：<br>平衡二叉树或者是一棵空树，或者是具有以下性质的二叉树：它的左子树和右子树都是平衡二叉树，且左子树和右子树的高度差的绝对值不超过1。<br><img src="/./TreeMap/image-20231105204215000.png" alt="image-20231105204215000"></p>
 </li>
-<li><p>平衡二叉排序树：<br>在平衡二叉树的基础上，如果左子树非空，则左子树上所有节点的值均小于根节点的值，如果右子树非空，则右子树上的所有节点的值均大于根节点的值。这样的树就是平衡二叉排序树。<br><img src="/%E5%85%B6%E4%BB%96/TreeMap/image-20231105205415958.png" alt="image-20231105205415958"></p>
+<li><p>平衡二叉排序树：<br>在平衡二叉树的基础上，如果左子树非空，则左子树上所有节点的值均小于根节点的值，如果右子树非空，则右子树上的所有节点的值均大于根节点的值。这样的树就是平衡二叉排序树。<br><img src="/./TreeMap/image-20231105205415958.png" alt="image-20231105205415958"></p>
 </li>
 </ul>
 <h3 id="红黑树："><a href="#红黑树：" class="headerlink" title="红黑树："></a>红黑树：</h3><p>平衡二叉排序树，在需要增加和删除节点的时候，为了保持平衡需要做大量的旋转操作，红黑树可以解决该问题。</p>
@@ -311,18 +311,18 @@
 <p>  ③每个叶子节点（指空节点NIL）都是黑色的</p>
 <p>  ④红色节点的子节点必须是黑色，即一条路径上不能出现两个相邻的红色节点。。</p>
 <p>  ⑤从任一节点到其每个叶子的所有路径都包含相同数目的黑色节点。</p>
-<p>  这样的树就是红黑树。<br>  <img src="/%E5%85%B6%E4%BB%96/TreeMap/image-20231105210154658.png" alt="image-20231105210154658"></p>
+<p>  这样的树就是红黑树。<br>  <img src="/./TreeMap/image-20231105210154658.png" alt="image-20231105210154658"></p>
 <p>红黑树的插入效率很高，插入一个元素的时候只需要进行最多三次旋转。</p>
 <h4 id="红黑树的平衡维护-左旋、右旋、变色"><a href="#红黑树的平衡维护-左旋、右旋、变色" class="headerlink" title="红黑树的平衡维护(左旋、右旋、变色)"></a>红黑树的平衡维护(左旋、右旋、变色)</h4><h5 id="左旋和右旋："><a href="#左旋和右旋：" class="headerlink" title="左旋和右旋："></a>左旋和右旋：</h5><p>旋转操作是为了维持二叉树的平衡性，节点的左旋是指将根节点的右侧往左拉，原先的右子节点变成新的父节点，并把多余的左子节点出让，给已经降级的根节点当右子节点：</p>
-<p><img src="/%E5%85%B6%E4%BB%96/TreeMap/image-20231105210640691.png" alt="image-20231105210640691"></p>
+<p><img src="/./TreeMap/image-20231105210640691.png" alt="image-20231105210640691"></p>
 <p>相反地，右旋则是将根节点的左侧往右拉，原先的左子节点变成新的父节点，并把多余的右子节点出让，给已经将降级的根节点当右子节点：</p>
-<p><img src="/%E5%85%B6%E4%BB%96/TreeMap/image-20231105210651111.png" alt="image-20231105210651111"></p>
+<p><img src="/./TreeMap/image-20231105210651111.png" alt="image-20231105210651111"></p>
 <h5 id="红黑树节点的插入、删除："><a href="#红黑树节点的插入、删除：" class="headerlink" title="红黑树节点的插入、删除："></a>红黑树节点的插入、删除：</h5><p>红黑树详解：<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000012728513">https://segmentfault.com/a/1190000012728513</a></p>
 <h2 id="TreeMap源码解析："><a href="#TreeMap源码解析：" class="headerlink" title="TreeMap源码解析："></a>TreeMap源码解析：</h2><ul>
 <li><p>左旋：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 对节点p进行左旋</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">rotateLeft</span><span class="params">(Entry&lt;K,V&gt; p)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (p != <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="comment">// r是p的右子树</span></span><br><span class="line">            Entry&lt;K,V&gt; r = p.right;</span><br><span class="line">            <span class="comment">// r的左子树成为p的右子树</span></span><br><span class="line">            p.right = r.left;</span><br><span class="line">            <span class="keyword">if</span> (r.left != <span class="literal">null</span>)</span><br><span class="line">                r.left.parent = p;</span><br><span class="line">            <span class="comment">// 使r成为根节点</span></span><br><span class="line">            r.parent = p.parent;</span><br><span class="line">            <span class="keyword">if</span> (p.parent == <span class="literal">null</span>)</span><br><span class="line">                root = r;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (p.parent.left == p)</span><br><span class="line">                p.parent.left = r;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                p.parent.right = r;</span><br><span class="line">            <span class="comment">// 使p成为r的左子树</span></span><br><span class="line">            r.left = p;</span><br><span class="line">            p.parent = r;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="/%E5%85%B6%E4%BB%96/TreeMap/image-20231112213452258.png" alt="image-20231112213452258"></p>
+<p><img src="/./TreeMap/image-20231112213452258.png" alt="image-20231112213452258"></p>
 </li>
 <li><p>右旋：右旋的操作与左旋相反</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">rotateRight</span><span class="params">(Entry&lt;K,V&gt; p)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (p != <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="comment">// l是p的左子树</span></span><br><span class="line">            Entry&lt;K,V&gt; l = p.left;</span><br><span class="line">            <span class="comment">// l的右子树成为p的左子树</span></span><br><span class="line">            p.left = l.right;</span><br><span class="line">            <span class="keyword">if</span> (l.right != <span class="literal">null</span>) l.right.parent = p;</span><br><span class="line">            <span class="comment">// 使l成为根节点</span></span><br><span class="line">            l.parent = p.parent;</span><br><span class="line">            <span class="keyword">if</span> (p.parent == <span class="literal">null</span>)</span><br><span class="line">                root = l;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (p.parent.right == p)</span><br><span class="line">                p.parent.right = l;</span><br><span class="line">            <span class="keyword">else</span> p.parent.left = l;</span><br><span class="line">            <span class="comment">// 使p成为l的右子树</span></span><br><span class="line">            l.right = p;</span><br><span class="line">            p.parent = l;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
@@ -381,13 +381,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">225k</span>
+    <span title="站点总字数">224k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">6:49</span>
+    <span title="站点阅读时长">6:47</span>
   </span>
 </div>
 <div class="busuanzi-count">

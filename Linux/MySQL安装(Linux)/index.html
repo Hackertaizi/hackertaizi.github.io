@@ -26,8 +26,8 @@
 <meta property="og:site_name" content="太子的个人博客">
 <meta property="og:description" content="MySQL安装(Linux)说明：本教程案例为CentOS7系统下安装MySQL8.0.31版本 一、下载MySQL安装包安装包需要根据系统版本选择 下载地址 二、安装MySQL安装新版mysql之前，需要先将系统自带的Mariadb-lib卸载 查询mariadb： 1rpm -qa|grep mariadb  删除自带的mariadb： 1rpm -e --nodeps mariadb-lib">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://hackertaizi.github.io/Linux/MySQL%E5%AE%89%E8%A3%85(Linux)/image-20230112184038119.png">
-<meta property="og:image" content="https://hackertaizi.github.io/Linux/MySQL%E5%AE%89%E8%A3%85(Linux)/image-20230112185019036.png">
+<meta property="og:image" content="https://hackertaizi.github.io/MySQL%E5%AE%89%E8%A3%85(Linux)/image-20230112184038119.png">
+<meta property="og:image" content="https://hackertaizi.github.io/MySQL%E5%AE%89%E8%A3%85(Linux)/image-20230112185019036.png">
 <meta property="article:published_time" content="2023-09-16T05:48:25.726Z">
 <meta property="article:modified_time" content="2023-09-28T07:02:45.867Z">
 <meta property="article:author" content="Taizi">
@@ -35,7 +35,7 @@
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="MySQL">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://hackertaizi.github.io/Linux/MySQL%E5%AE%89%E8%A3%85(Linux)/image-20230112184038119.png">
+<meta name="twitter:image" content="https://hackertaizi.github.io/MySQL%E5%AE%89%E8%A3%85(Linux)/image-20230112184038119.png">
 
 
 <link rel="canonical" href="https://hackertaizi.github.io/Linux/MySQL%E5%AE%89%E8%A3%85(Linux)/">
@@ -297,9 +297,9 @@
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh mysql-community-server-8.0.31-1.el7.x86_64.rpm</span><br></pre></td></tr></table></figure>
 
-<p>安装过程中可能会出现报错：<br><img src="/Linux/MySQL%E5%AE%89%E8%A3%85(Linux)/image-20230112184038119.png" alt="image-20230112184038119"></p>
+<p>安装过程中可能会出现报错：<br><img src="/./MySQL%E5%AE%89%E8%A3%85(Linux)/image-20230112184038119.png" alt="image-20230112184038119"></p>
 <p>如果安装过程中出现这个错误就在后面添加 –force –nodeps，这可能是由于yum安装了旧版本的GPG keys造成的，当然，通过报错信息也可以解决，不难看出安装这个依赖包需要先安装mysql-community-client-plugins-8这个包，我们的解压目录里是有这个包的。使用相同的安装命令先安装这个plugins这个包，然后再安装libs包即可。</p>
-<p>之后安装 mysql-community-server-8.0.31-1.el7.x86_64.rpm也可能会出错：<br><img src="/Linux/MySQL%E5%AE%89%E8%A3%85(Linux)/image-20230112185019036.png" alt="image-20230112185019036"></p>
+<p>之后安装 mysql-community-server-8.0.31-1.el7.x86_64.rpm也可能会出错：<br><img src="/./MySQL%E5%AE%89%E8%A3%85(Linux)/image-20230112185019036.png" alt="image-20230112185019036"></p>
 <p>通过命令后加参数–force –nodeps依旧可以强制安装，也可以按照提示先把这些需要的依赖包安装上。如图，第一部分是perl相关的包，可以使用yum进行下载安装：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y perl-Module-Install.noarch</span><br></pre></td></tr></table></figure>
 
@@ -468,13 +468,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">225k</span>
+    <span title="站点总字数">224k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">6:49</span>
+    <span title="站点阅读时长">6:47</span>
   </span>
 </div>
 <div class="busuanzi-count">
